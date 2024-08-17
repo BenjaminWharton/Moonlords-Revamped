@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Regions>
+    <region id="1">
+        <name value="zbase1"/>
+        <shape type="rect">
+            <quad value="232.3435,50.344,252.4262,65.1091"/>
+        </shape>
+    </region>
+    <region id="2">
+        <name value="zbase2"/>
+        <shape type="rect">
+            <quad value="170.4064,100.5017,196.9682,126.9853"/>
+        </shape>
+    </region>
+    <region id="3">
+        <name value="zbase3"/>
+        <shape type="rect">
+            <quad value="217.2207,175.704,244.8051,199.4414"/>
+        </shape>
+    </region>
+    <region id="4">
+        <name value="sporecrawlactivate"/>
+        <shape type="rect">
+            <quad value="209.4133,130.4843,220.0263,151.9785"/>
+        </shape>
+    </region>
+    <region id="5">
+        <name value="zbase4"/>
+        <shape type="rect">
+            <quad value="165.7446,154.8771,181.9384,172.824"/>
+        </shape>
+    </region>
+    <region id="6">
+        <name value="Optionalactivate"/>
+        <shape type="rect">
+            <quad value="189.3605,165.2243,196.5112,169.4597"/>
+        </shape>
+    </region>
+    <region id="7">
+        <name value="Optionalzone"/>
+        <shape type="rect">
+            <quad value="185.2292,169.2434,200.289,204.1337"/>
+        </shape>
+    </region>
+    <region id="8">
+        <name value="MetaliskActivate"/>
+        <shape type="rect">
+            <quad value="174.7053,67.9973,189.7851,73.1896"/>
+        </shape>
+    </region>
+    <region id="9">
+        <name value="QueenStart"/>
+        <shape type="rect">
+            <quad value="145.5085,96.588,152.2158,99.511"/>
+        </shape>
+    </region>
+    <region id="10">
+        <name value="Escort Quest init"/>
+        <shape type="rect">
+            <quad value="197.2021,82.0231,200.8256,85.503"/>
+        </shape>
+    </region>
+    <region id="11">
+        <name value="escortstart"/>
+        <shape type="rect">
+            <quad value="209.267,94.8293,214.267,98.829"/>
+        </shape>
+    </region>
+    <region id="12">
+        <name value="SpawningpoolQuest"/>
+        <shape type="rect">
+            <quad value="244.6118,113.4997,248.1877,119.089"/>
+        </shape>
+    </region>
+    <region id="14">
+        <name value="StartBase"/>
+        <shape type="rect">
+            <quad value="235.0781,7.2331,253.6787,17.1313"/>
+        </shape>
+    </region>
+    <region id="15">
+        <name value="HydraLairQuest"/>
+        <shape type="rect">
+            <quad value="175.4245,68.1596,188.4042,74.536"/>
+        </shape>
+    </region>
+    <region id="18">
+        <name value="zbase5"/>
+        <shape type="rect">
+            <quad value="106.569,131.0825,125.485,148.1667"/>
+        </shape>
+    </region>
+    <region id="19">
+        <name value="optionalpool4"/>
+        <shape type="rect">
+            <quad value="209.0493,35.0996,211.1567,38.723"/>
+        </shape>
+    </region>
+    <region id="20">
+        <name value="OptionalEnrageMetalisk"/>
+        <shape type="rect">
+            <quad value="173,52.0002,179,58"/>
+        </shape>
+    </region>
+    <region id="22">
+        <name value="MoonLordBeacon"/>
+        <shape type="rect">
+            <quad value="213.5732,126.996,216.8947,129.1076"/>
+        </shape>
+    </region>
+    <region id="23">
+        <name value="OptionalRampzbase2"/>
+        <shape type="rect">
+            <quad value="215.6347,109.0974,219.9685,120.9584"/>
+        </shape>
+    </region>
+    <region id="24">
+        <name value="optionalpool5"/>
+        <shape type="rect">
+            <quad value="168.1958,73.636,172.866,76.8461"/>
+        </shape>
+    </region>
+    <region id="25">
+        <name value="OptionalMetaliskLair"/>
+        <shape type="rect">
+            <quad value="129.2956,158.8876,133.698,165.1472"/>
+        </shape>
+    </region>
+    <region id="13">
+        <name value="zbase5+1"/>
+        <shape type="rect">
+            <quad value="115.4362,62.106,130.7658,66.9538"/>
+        </shape>
+    </region>
+    <region id="26">
+        <name value="zbase5+2"/>
+        <shape type="rect">
+            <quad value="74.1943,102.8605,78.534,122.4301"/>
+        </shape>
+    </region>
+    <region id="27">
+        <name value="bottomQuestSpire"/>
+        <shape type="rect">
+            <quad value="102.9992,6.6381,112.0014,30.3625"/>
+        </shape>
+    </region>
+    <region id="29">
+        <name value="TopLeftphase1"/>
+        <shape type="rect">
+            <quad value="21.3647,176.9626,38.3146,187.45"/>
+        </shape>
+    </region>
+    <region id="28">
+        <name value="TopRightOptional1"/>
+        <shape type="rect">
+            <quad value="147.715,207.0317,160.5417,211.4006"/>
+        </shape>
+    </region>
+    <region id="30">
+        <name value="TopRightOptional2"/>
+        <shape type="rect">
+            <quad value="179.027,234.737,191.8537,239.106"/>
+        </shape>
+    </region>
+    <region id="31">
+        <name value="optionalgreaterspire"/>
+        <shape type="rect">
+            <quad value="94.9113,172.3337,100.1477,176.803"/>
+        </shape>
+    </region>
+    <region id="32">
+        <name value="NoFinalSniping"/>
+        <shape type="rect">
+            <quad value="140.8505,207,250.8503,237"/>
+        </shape>
+        <shape type="rect">
+            <quad value="201.8403,193.45,251.8403,215.45"/>
+        </shape>
+    </region>
+    <region id="16">
+        <name value="secret2"/>
+        <shape type="rect">
+            <quad value="72.4313,243.242,74.6804,246.963"/>
+        </shape>
+    </region>
+    <region id="17">
+        <name value="bonusZealots"/>
+        <shape type="rect">
+            <quad value="249.3015,145.0715,252.9587,147.9348"/>
+        </shape>
+    </region>
+    <region id="21">
+        <name value="OptionalEscort2"/>
+        <shape type="rect">
+            <quad value="105.4792,47.621,115.3151,53.681"/>
+        </shape>
+    </region>
+    <region id="33">
+        <name value="lostzealotbeamout"/>
+        <shape type="rect">
+            <quad value="141.8642,99.5168,152.9096,122.6777"/>
+        </shape>
+    </region>
+    <region id="34">
+        <name value="archive2"/>
+        <shape type="rect">
+            <quad value="202.7734,30.8457,207.1066,33.5131"/>
+        </shape>
+    </region>
+    <region id="35">
+        <name value="OptionalEscort3"/>
+        <shape type="rect">
+            <quad value="74.983,216.1586,84.8188,222.2185"/>
+        </shape>
+    </region>
+    <region id="36">
+        <name value="escort3 init"/>
+        <shape type="rect">
+            <quad value="35.6044,208.6582,49.4946,218.5856"/>
+        </shape>
+    </region>
+    <region id="37">
+        <name value="hiddenshrine2"/>
+        <shape type="rect">
+            <quad value="146.8488,132.9697,150.92,140.5393"/>
+        </shape>
+    </region>
+    <region id="38">
+        <name value="Stage10 lost zealots"/>
+        <shape type="rect">
+            <quad value="91.0268,218.528,106.2653,241.833"/>
+        </shape>
+    </region>
+    <region id="39">
+        <name value="Stage6FullArea"/>
+        <color value="255,192,192,192"/>
+        <shape type="rect">
+            <quad value="55.8425,43.3454,140.158,127.6552"/>
+        </shape>
+    </region>
+    <region id="40">
+        <name value="Treasure1"/>
+        <shape type="rect">
+            <quad value="70.9707,209.9323,76.7658,212.8144"/>
+        </shape>
+    </region>
+    <region id="41">
+        <name value="Treasure2"/>
+        <shape type="rect">
+            <quad value="248.6181,190.5295,254.4133,193.4116"/>
+        </shape>
+    </region>
+    <region id="42">
+        <name value="Treasure3"/>
+        <shape type="rect">
+            <quad value="148.6811,79.1738,154.4763,82.056"/>
+        </shape>
+    </region>
+    <region id="43">
+        <name value="Treasure4"/>
+        <shape type="rect">
+            <quad value="118.9362,148.9411,124.7314,151.8232"/>
+        </shape>
+    </region>
+    <region id="44">
+        <name value="Treasure5"/>
+        <shape type="rect">
+            <quad value="87.9375,3.1403,93.7326,6.0224"/>
+        </shape>
+    </region>
+    <region id="45">
+        <name value="Treasure6"/>
+        <shape type="rect">
+            <quad value="205.7873,102.054,211.5825,104.936"/>
+        </shape>
+    </region>
+    <region id="46">
+        <name value="Treasure7"/>
+        <shape type="rect">
+            <quad value="47.354,77.5104,53.1491,80.3925"/>
+        </shape>
+    </region>
+    <region id="47">
+        <name value="Treasure8"/>
+        <shape type="rect">
+            <quad value="47.9143,160.9841,53.7094,163.8662"/>
+        </shape>
+    </region>
+    <region id="48">
+        <name value="Treasure9"/>
+        <shape type="rect">
+            <quad value="107.8564,187.6677,113.6516,190.5498"/>
+        </shape>
+    </region>
+    <region id="49">
+        <name value="Treasure0"/>
+        <shape type="rect">
+            <quad value="4.2827,36.712,10.078,39.594"/>
+        </shape>
+    </region>
+</Regions>

@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CButton id="Eviscerate">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-zealotcleave.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="BladeStorm">
+        <Icon value="Assets\BladeStorm.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Blood">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-immortalchampionchargeexplode.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="CancelInfusion">
+        <Icon value="Assets\Textures\btn-command-cancel.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ChatCommands">
+        <Icon value="Assets\Textures\ui_tip_questionmark.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Dexterity">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-phoenixrange.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="Bane">
+        <Icon value="Assets\MutationEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Boil">
+        <Icon value="Assets\Textures\btn-ability-terran-emp-color.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Boulder">
+        <Icon value="Assets\Textures\btn-upgrade-terran-explosiveshrapnelshells.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ConsumeGravityHero">
+        <Icon value="Assets\Textures\btn-ability-protoss-soulabsorbtion.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="DeflectorDrone">
+        <Icon value="Assets\Textures\btn-ability-protoss-gatewayservitordrone-red.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="TimeHeroChronofield">
+        <Icon value="Assets\Chronofield.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Dematerialize">
+        <Icon value="Assets\DematerializeEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/ChargeText/ParticleHeroDematerialize"/>
+    </CButton>
+    <CButton id="DestroyerDrone">
+        <Icon value="Assets\Textures\btn-ability-protoss-gatewayservitordrone-yellow.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Disintegrate">
+        <Icon value="Assets\Disintegrate Ex2.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Distortion">
+        <Icon value="Assets\DistortionEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Doom">
+        <Icon value="Assets\Doom Ex2.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="AlteredTimeline">
+        <Icon value="Assets\AlteredTimelineEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Earthquake">
+        <Icon value="Assets\EarthquakeEx4.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseEarth"/>
+        <HotkeyAlias value="InfuseEarth"/>
+    </CButton>
+    <CButton id="ElementalStacks">
+        <TooltipAppender/>
+        <Icon value="Assets\Textures\btn-blank.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Elemental Stacks"/>
+    </CButton>
+    <CButton id="ElementalStacks2">
+        <Icon value="Assets\Textures\btn-blank.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="ElementalStacks2"/>
+    </CButton>
+    <CButton id="EmergencyRecall">
+        <TooltipImage value="Assets\Textures\btn-ability-protoss-recall.dds"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-recall.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="EruptionEarth">
+        <Icon value="Assets\EruptionEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseFire"/>
+        <HotkeyAlias value="InfuseFire"/>
+    </CButton>
+    <CButton id="EruptionFire">
+        <Icon value="Assets\EruptionEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseEarth"/>
+        <HotkeyAlias value="InfuseEarth"/>
+    </CButton>
+    <CButton id="EternalLife">
+        <Icon value="Assets\EternalLifeEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseWater"/>
+        <HotkeyAlias value="InfuseWater"/>
+    </CButton>
+    <CButton id="EverlastingStorm">
+        <Icon value="Assets\EverlastingWindstormEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseWind"/>
+        <HotkeyAlias value="InfuseWind"/>
+    </CButton>
+    <CButton id="Exploder">
+        <Icon value="Assets\Textures\btn-ability-protoss-recallondeath.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-recallondeath.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="FireBlast">
+        <Icon value="Assets\FireBlastEx11.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseFire"/>
+        <HotkeyAlias value="InfuseFire"/>
+    </CButton>
+    <CButton id="FirestormFire">
+        <Tooltip value="Button/Tooltip/Firestorm"/>
+        <Icon value="Assets\FirestormEx14.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseWind"/>
+        <HotkeyAlias value="InfuseWind"/>
+    </CButton>
+    <CButton id="FirestormWind">
+        <Icon value="Assets\FirestormEx14.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseFire"/>
+        <HotkeyAlias value="InfuseFire"/>
+    </CButton>
+    <CButton id="Fortify">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-organiccarapace.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ForwardBeam">
+        <Icon value="Assets\ForwardBeamEx2.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Freeze">
+        <Icon value="Assets\Textures\ui_hots_icon_flashfreeze.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GasBomb">
+        <Icon value="Assets\GasBomb.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GlaiveBarrage">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-resonatingglaives.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GravityDash">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-dashrange&amp;cdr.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GravityShot">
+        <Icon value="Assets\Textures\btn-ability-protoss-destructionwave.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GravitySlivers">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-supplicantsacrifice-lightingstrike.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GuardianShell">
+        <Icon value="Assets\Textures\btn-ability-spearofadun-guardianshell.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <TooltipFlags index="ShowHotkey" value="0"/>
+    </CButton>
+    <CButton id="HealerDrone">
+        <Icon value="Assets\Textures\btn-ability-protoss-gatewayservitordrone-blue.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="HealingBlast">
+        <Icon value="Assets\Textures\btn-ability-spearofadun-shieldovercharge.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="HealingStation">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-building-protoss-shieldbattery.dds"/>
+    </CButton>
+    <CButton id="HealingStationShell">
+        <Icon value="Assets\Textures\btn-ability-protoss-invulnerabilityshield.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="HealingWave">
+        <Icon value="Assets\Textures\btn-ability-protoss-astralwind.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="HellfireQuake">
+        <Icon value="Assets\HellfireQuakeEx2.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseEarth"/>
+        <HotkeyAlias value="InfuseEarth"/>
+    </CButton>
+    <CButton id="HoloShield">
+        <Icon value="Assets\HoloShieldEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Hurricane">
+        <Icon value="Assets\btn-ability-protoss-hurricane.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Flood">
+        <Icon value="Assets\TidalWaveEx5.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="IcefireBlast">
+        <Icon value="Assets\IcefireBlastEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseFire"/>
+        <HotkeyAlias value="InfuseFire"/>
+    </CButton>
+    <CButton id="IcefireBlastY">
+        <Name value="Button/Name/IcefireBlast"/>
+        <Tooltip value="Button/Tooltip/IcefireBlast"/>
+        <Icon value="Assets\IcefireBlastEx3.dds"/>
+        <AlertName value="Button/Name/IcefireBlast"/>
+        <AlertTooltip value="Button/Tooltip/IcefireBlast"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="NatureHeroHarvest">
+        <Icon value="Assets\Textures\btn-ability-zerg-consume.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="InfuseEarth">
+        <Icon value="Assets\InfuseEarthEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="InfuseFire">
+        <Icon value="Assets\InfuseFireEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="InfuseWater">
+        <Icon value="Assets\InfuseWaterEx4.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="InfuseWind">
+        <Icon value="Assets\InfuseWindEx4.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="LaunchOrbsOfDestruction">
+        <Icon value="Assets\OrbOfDestruction.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/Name/OrbsOfDestructionChargeText"/>
+    </CButton>
+    <CButton id="LaunchOrbsOfHavoc">
+        <Icon value="Assets\OrbOfHavoc.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/Name/OrbsOfHavocChargeText"/>
+    </CButton>
+    <CButton id="LaunchOrbsOfAttrition">
+        <Icon value="Assets\OrbOfAttrition.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/Name/OrbsOfAttritionChargeText"/>
+    </CButton>
+    <CButton id="LaunchOrbsOfVitality">
+        <Icon value="Assets\OrbOfVitality.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/Name/OrbsOfVitalityChargeText"/>
+    </CButton>
+    <CButton id="Lava">
+        <Icon value="Assets\Textures\ui_tipicon_evolution_baneling-lava.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="LightningStrikes">
+        <Icon value="Assets\Textures\ui_tipicon_campaign_zerus03-zurvanlightning.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="MLLeap">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-zealotchampionengage.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Massive">
+        <Icon value="Assets\btn-upgrade-zerg-Massive.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="MicroBurst">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-resonatingglaives.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="MobileBeam">
+        <Icon value="Assets\MobileBeam.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="MusclePoison">
+        <Icon value="Assets\MusclePoison.dds"/>
+        <AlertIcon value="Assets\MusclePoison.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="RapidRepairs">
+        <Icon value="Assets\Textures\btn-ability-protoss-prismaticbeam.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ResourceCollector">
+        <Icon value="Assets\Textures\icon-mineral-nobg.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="CrystalRain">
+        <Icon value="Assets\CrystalRain.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="MorphToCorpser">
+        <Hotkey value="Button/Hotkey/RoachCorpse"/>
+        <HotkeyAlias value="MorphToCorpser"/>
+    </CButton>
+    <CButton id="MorphToSwarmling">
+        <Hotkey value="Button/Hotkey/ZerglingSwarm"/>
+        <HotkeyAlias value="MorphToSwarmling"/>
+    </CButton>
+    <CButton id="OrbsOfLuck">
+        <Icon value="Assets\Textures\ui-editoricon-previewer_reload.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Overdrive">
+        <Icon value="Assets\Textures\btn-ability-protoss-arcshield.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ParticleDestroyer">
+        <Icon value="Assets\Textures\btn-ability-zeratul-avatarofform-psionicblast.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="PlasmaCannon">
+        <Icon value="Assets\Textures\btn-ability-protoss-shadowcannon.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ProbeCannon">
+        <Icon value="Assets\ProbeCannonEx2.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Projection">
+        <Icon value="Assets\ProjectionEx2.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ProtossAlliesTeleport">
+        <Icon value="Assets\Textures\btn-ability-protoss-massrecall.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="PylonOvercharge">
+        <Name value="Button/Name/PylonOverchargge"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-structureovercharge.dds"/>
+        <Hotkey value="Button/Hotkey/PylonOverchargge"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="QuicksandEarth">
+        <Icon value="Assets\QuicksandEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseWater"/>
+        <HotkeyAlias value="InfuseWater"/>
+    </CButton>
+    <CButton id="QuicksandWater">
+        <Icon value="Assets\QuicksandEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseEarth"/>
+        <HotkeyAlias value="InfuseEarth"/>
+    </CButton>
+    <CButton id="ReactiveShields">
+        <Icon value="Assets\Textures\btn-ability-protoss-shieldcapacitor.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Recharge">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-researchbosoniccore.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Reinforce">
+        <Icon value="Assets\Textures\btn-ability-spearofadun-warpinreinforcements.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-spearofadun-warpinreinforcements.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Renew">
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-ultralisk-healingadaptation.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Renew/ChargeText"/>
+    </CButton>
+    <CButton id="Repel">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-empoweraoeattacks.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="RotatingBeam">
+        <Icon value="Assets\Textures\btn-ability-protoss-beambounce.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="SandstormEarth">
+        <Icon value="Assets\SandstormEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseWind"/>
+        <HotkeyAlias value="InfuseWind"/>
+    </CButton>
+    <CButton id="SandstormWind">
+        <Icon value="Assets\SandstormEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseEarth"/>
+        <HotkeyAlias value="InfuseEarth"/>
+    </CButton>
+    <CButton id="Shielder">
+        <Icon value="Assets\Textures\btn-ability-protoss-gatewayservitordrone-green.dds"/>
+        <AlertName value="Button/Name/ShielderDrone"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Slash">
+        <Icon value="Assets\Textures\btn-ability-protoss-whirlwind.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Splitter">
+        <Icon value="Assets\Textures\btn-ability-protoss-purify.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Stealth">
+        <Icon value="Assets\StealthEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="SteamFire">
+        <Tooltip value="Button/Tooltip/Steam"/>
+        <Icon value="Assets\SteamEx13.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseWater"/>
+        <HotkeyAlias value="InfuseWater"/>
+    </CButton>
+    <CButton id="SteamWater">
+        <Icon value="Assets\SteamEx13.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseFire"/>
+        <HotkeyAlias value="InfuseFire"/>
+    </CButton>
+    <CButton id="SweepingBeam">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-colossuschampionslowbeam.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="SystemsReset">
+        <Icon value="Assets\Textures\btn-ability-zeratul-immortal-enternitybarrier.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ThunderstormWater">
+        <Icon value="Assets\ThunderstormEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseWind"/>
+        <HotkeyAlias value="InfuseWind"/>
+    </CButton>
+    <CButton id="ThunderstormWind">
+        <Icon value="Assets\ThunderstormEx1.dds"/>
+        <Hotkey value="Button/Hotkey/InfuseWater"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="InfuseWater"/>
+    </CButton>
+    <CButton id="ElementalHeroSiphon">
+        <Icon value="Assets\SiphonEx6.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseWater"/>
+        <HotkeyAlias value="InfuseWater"/>
+    </CButton>
+    <CButton id="TimberLance">
+        <Icon value="Assets\Textures\btn-ability-zerg-stab.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="TimeHeroEscape">
+        <Icon value="Assets\TimeriftEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Timewave">
+        <Icon value="Assets\TimewaveEx18.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Timerift">
+        <Icon value="Assets\TimeriftEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Recombulator">
+        <Icon value="Assets\Recombulatorex5.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="SubarmorPolymerflow">
+        <Icon value="Assets\SubarmorEx6.dds"/>
+        <ChargeText value="SubarmorPolymerflowChargeText"/>
+    </CButton>
+    <CButton id="Tornado">
+        <Icon value="Assets\tornadoEx4.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ToxicVapor">
+        <Icon value="Assets\ToxicVaporEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="ToxicVapor/ChargeText"/>
+    </CButton>
+    <CButton id="Substitution">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-stasisfield.dds"/>
+    </CButton>
+    <CButton id="Trickery">
+        <Icon value="Assets\TrickeryEx2.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ExplosiveVolley">
+        <Icon value="Assets\Textures\btn-ability-protoss-phasedisruptor.dds"/>
+        <AlertName value="Button/Name/UnknownButton"/>
+        <AlertTooltip value="Button/Tooltip/UnknownButton"/>
+    </CButton>
+    <CButton id="Discharge">
+        <Icon value="Assets\Textures\btn-ability-terran-emp-color.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Upheaval">
+        <Icon value="Assets\btn-upgrade-zerg-upheaval.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="WarpInAdept">
+        <Hotkey value="Button/Hotkey/Adept"/>
+        <HotkeyAlias value="WarpInAdept"/>
+    </CButton>
+    <CButton id="Warpout">
+        <Icon value="Assets\Warpout Ex4.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/ChargeText/TwilightHeroWarpout"/>
+    </CButton>
+    <CButton id="Nightstorm">
+        <Icon value="Assets\NightstormEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="MultiphaseShield">
+        <Icon value="Assets\Textures\btn-ability-protoss-shieldcapacitor.dds"/>
+        <ChargeText value="MultiphaseShieldChargeText"/>
+    </CButton>
+    <CButton id="Multishot">
+        <Icon value="Assets\Textures\btn-lostviking_sidemissiles.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Fireball">
+        <Icon value="Assets\Fireballex2.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Blastwave">
+        <Icon value="Assets\BlastwaveEx6.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="FireInfusion">
+        <Icon value="Assets\Fire Infusionex2.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Lifetap">
+        <Icon value="Assets\EnergytapEx5.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Decoy">
+        <Icon value="Assets\Textures\btn-ability-protoss-chronoboost.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="OrbitalCannon">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-purificationblast.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="PlasmaTorpedo">
+        <Icon value="Assets\Textures\btn-upgrade-stetmann-banelingmanashieldefficiency.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="PoisonCloud">
+        <Icon value="Assets\Textures\btn-ability-zerg-poisonnova.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="PoisonCloudChargeText"/>
+    </CButton>
+    <CButton id="Inferno">
+        <Icon value="Assets\Textures\btn-ability-zerg-yagdra-firewave.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Lightning">
+        <Icon value="Assets\LightningEx1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Frostshock">
+        <Icon value="Assets\Frost Shockex1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Thunderfury">
+        <Icon value="Assets\Textures\btn-ability-protoss-feedback-color.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="StaticShield">
+        <Icon value="Assets\Textures\btn-ability-protoss-cloakfield-color.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="StaticShieldChargeCount"/>
+    </CButton>
+    <CButton id="BlackDeath">
+        <Icon value="Assets\Textures\btn-ability-zerg-blindingcloud.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Poisonbolt">
+        <Icon value="Assets\Textures\btn-ability-zerg-contaminate-color.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="PowerDrain">
+        <Icon value="Assets\Textures\btn-ability-protoss-gravitonbeam-color.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="MagmaArmor">
+        <Icon value="Assets\MagmaArmorex1.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="MagmaArmorChargeText"/>
+    </CButton>
+    <CButton id="HealingReagent">
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-ultralisk-healingadaptation.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Shockwave">
+        <Icon value="Assets\ShockwaveEx6.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Strafe">
+        <Icon value="Assets\Textures\btn-ability-protoss-psytrousoxideon.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Shadowcrash">
+        <Icon value="Assets\ShadowcrashEx2.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Shadowcontrol">
+        <Icon value="Assets\Shadowplay Ex2.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GuidedMissile">
+        <Icon value="Assets\Textures\btn-techupgrade-terran-seekermissile.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="TwistCannon">
+        <Icon value="Assets\Twilight CannonEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="WallofDarkness">
+        <Icon value="Assets\WallOfDarknessEx3.dds"/>
+        <ChargeText value="WallOfDarknessChargeCount"/>
+    </CButton>
+    <CButton id="PowerPlating">
+        <Icon value="Assets\Textures\btn-techupgrade-terran-juggernautplating.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="WaterBlast">
+        <Icon value="Assets\btn-ability-protoss-waterblast.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Expel">
+        <Icon value="Assets\Textures\btn-ability-zerg-banelingspooge.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Expel/ChargeText"/>
+    </CButton>
+    <CButton id="Windstorm">
+        <Icon value="Assets\WindstormEx5.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Hotkey value="Button/Hotkey/InfuseWind"/>
+        <HotkeyAlias value="InfuseWind"/>
+    </CButton>
+    <CButton id="ZealotAttack">
+        <Icon value="Assets\Textures\ui_tipicon_campaign_attack.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+</Catalog>

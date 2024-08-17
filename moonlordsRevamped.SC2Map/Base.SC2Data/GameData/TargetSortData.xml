@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTargetSortBehaviorCount id="AirHeroNotLifted">
+        <WhichUnit Value="Target"/>
+        <Descending value="1"/>
+        <Behavior value="Lifted"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortValidator id="WaterHeroNotSoakedNotFrozen">
+        <WhichUnit Value="Target"/>
+        <Descending value="1"/>
+        <Validator value="WaterHeroNotSoakedNotFrozen"/>
+    </CTargetSortValidator>
+</Catalog>

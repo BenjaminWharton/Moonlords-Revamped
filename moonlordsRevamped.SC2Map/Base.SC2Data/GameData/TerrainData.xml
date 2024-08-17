@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CTerrain id="Endion">
+        <BlendTextures index="6" value="KorhalCityEx2_8"/>
+        <HeightMapEnabled value="1"/>
+    </CTerrain>
+</Catalog>

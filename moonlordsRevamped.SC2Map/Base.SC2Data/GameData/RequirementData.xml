@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRequirement id="ArmBroodlingEscort">
+        <NodeArray index="Use" Link="LTCountUnitBroodlingEscortQueuedOrBetterAtUnit8"/>
+    </CRequirement>
+    <CRequirement id="BeamHeroHasCross">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCrossCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BlackDeathSpread1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq0CountUpgradeBlackDeathRangeCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ButtonUpdater1">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq1CountBehaviorButtonUpdater1QueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ButtonUpdater2">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq1CountBehaviorButtonUpdater2QueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="DistendIsLevel1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradeDistendQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="EarthHeroFaultLinesGT0">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTCountUpgradeFaultLinesCompleteOnly0"/>
+    </CRequirement>
+    <CRequirement id="EarthHeroFaultLinesGT1">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTCountUpgradeFaultLinesCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="ExpansionIsLvl0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq0CountUpgradeExpansionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BufferStacks">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="LTCountBehaviorBufferQueuedOrBetterAtUnitMul10CountUpgradeBufferQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ExpelCombo1">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq1CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ExpelCombo2">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq2CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ExpelCombo3">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq3CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ExpelCombo4">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq4CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ExpelCombo5">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq5CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ExpelCombo6">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq6CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ExpelCombo7">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq7CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ExpelCombo8">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq8CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ExpelCombo9">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq9CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ExpelCombo10">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq10CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="FirewallLvl0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq0CountUpgradeFirewallQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FirewallLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq2CountUpgradeFirewallQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="GatewayHeroNoRecentlyProtected">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountBehaviorGatewayHeroRecentlyProtectedQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IllusionHeroDuplicateGT0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeDuplicateCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="IllusionHeroDuplicateGT1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="GTCountUpgradeDuplicateCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="MagmaArmorStacks">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="LTCountBehaviorMagmaArmorQueuedOrBetterAtUnitSum4Mul2CountUpgradeMoltenFuryQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="IsEarthInfused">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq1CountBehaviorEarthInfusedQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsFireInfusedAndHas3FireStacksAnd3WaterStacks">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndEq1CountBehaviorFireInfusedQueuedOrBetterAtUnitEq3CountBehaviorFireStackQueuedOrBetterAtUnitEq3CountBehaviorWaterStackQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsEarthInfusedAndHas3EarthStacksAnd3FireStacks">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndEq1CountBehaviorEarthInfusedQueuedOrBetterAtUnitEq3CountBehaviorEarthStackQueuedOrBetterAtUnitEq3CountBehaviorFireStackQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsEarthInfusedAndNot3EarthStacksOr3FireStacks">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndEq1CountBehaviorEarthInfusedQueuedOrBetterAtUnitOrNE3CountBehaviorEarthStackQueuedOrBetterAtUnitNE3CountBehaviorFireStackQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsInfused">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="OrEq1CountBehaviorFireInfusedQueuedOrBetterAtUnitEq1CountBehaviorWindInfusedQueuedOrBetterAtUnitEq1CountBehaviorEarthInfusedQueuedOrBetterAtUnitEq1CountBehaviorWaterInfusedQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsWaterInfusedAndNot3WaterStacksOr3WindStacks">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndEq1CountBehaviorWaterInfusedQueuedOrBetterAtUnitOrNE3CountBehaviorWaterStackQueuedOrBetterAtUnitNE3CountBehaviorWindStackQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsWaterInfusedAndHas3WaterStacksAnd3WindStacks">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndEq1CountBehaviorWaterInfusedQueuedOrBetterAtUnitEq3CountBehaviorWaterStackQueuedOrBetterAtUnitAnd3CountBehaviorWindStackQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsWindInfusedAndNot3WindStacksOr3EarthStacks">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndEq1CountBehaviorWindInfusedQueuedOrBetterAtUnitOrNE3CountBehaviorWindStackQueuedOrBetterAtUnitNE3CountBehaviorEarthStackQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsWindInfusedAndHas3WindStacksAnd3EarthStacks">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndEq1CountBehaviorWindInfusedQueuedOrBetterAtUnitEq3CountBehaviorWindStackQueuedOrBetterAtUnitEq3CountBehaviorEarthStackQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsFireInfusedAndNot3FireStacksOr3WaterStacks">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndEq1CountBehaviorFireInfusedQueuedOrBetterAtUnitOrNE3CountBehaviorFireStackQueuedOrBetterAtUnitNE3CountBehaviorWaterStackQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsWaterInfused">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq1CountBehaviorWaterInfusedQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsWindInfused">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq1CountBehaviorWindInfusedQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NatureHeroHasCultivate">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCultivateCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NotInfused">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndEq0CountBehaviorEarthInfusedQueuedOrBetterAtUnitEq0CountBehaviorFireInfusedQueuedOrBetterAtUnitEq0CountBehaviorWaterInfusedQueuedOrBetterAtUnitEq0CountBehaviorWindInfusedQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ParticleheroReloadGTLvl0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="GTCountUpgradeReloadCompleteOnly0"/>
+    </CRequirement>
+    <CRequirement id="ParticleheroReloadGTLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="GTCountUpgradeReloadCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="PotentialIsLvl0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq0CountUpgradePotentialQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PotentialIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradePotentialQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PotentialIsLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq2CountUpgradePotentialQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PotentialIsLvl3">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq3CountUpgradePotentialQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PotentialIsLvl4">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq4CountUpgradePotentialQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PotentialIsLvl5">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq5CountUpgradePotentialQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ProbeHeroHasSeism">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeSeismCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ProbeHeroTailGunGT0">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeTailGunCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RematerializeIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradeRematerializeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FlowIsLvl0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq0CountUpgradeFlowQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FlowIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradeFlowQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FlowIsLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq2CountUpgradeFlowQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="EarthHeroBonusSkinLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradeEarthHeroBonusSkinQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="EarthHeroBonusSkinLvl0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq0CountUpgradeEarthHeroBonusSkinQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DilationIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq0CountUpgradeDilationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ShadowHeroHasPenumbra">
+        <EditorCategories value="Race:Protoss"/>
+        <NodeArray index="Use" Link="CountUpgradeShadowHeroPenumbraCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShadowplayLimit">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="GT106576107SumMulCountUpgradeShadowplayLimitCompleteOnly24CountBehaviorShadowplayStackQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SteamIsLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq2CountUpgradeSteamQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SteamIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradeSteamQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SteamIsLvl0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq0CountUpgradeSteamQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FirewallLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradeFirewallQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HaveCharge">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="And1CountUpgradeChargeTalentQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HaveLandslide">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="And1CountUpgradeLandslideQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TimeHeroDimensionLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="EqCountUpgradeTimeHeroDimensionCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="TimeHeroDimensionLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="EqCountUpgradeTimeHeroDimensionCompleteOnly2"/>
+    </CRequirement>
+    <CRequirement id="TimeHeroDimensionLvl3">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="EqCountUpgradeTimeHeroDimensionCompleteOnly3"/>
+    </CRequirement>
+    <CRequirement id="TimeHeroEscapeOnCooldown">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="CountBehaviorTimeHeroEscapeCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="TimeHeroHasEscape">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeTimeHeroEscapeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="TimeHeroKronosOnCooldown">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="CountBehaviorTimeHeroKronosCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicVaporCombo0">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq0CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsFireInfused">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq1CountBehaviorFireInfusedQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ExpelCombo0">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq0CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicVaporCombo1">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq1CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicVaporCombo2">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq2CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicVaporCombo3">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq3CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicVaporCombo4">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq4CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicVaporCombo5">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq5CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicVaporCombo6">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq6CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicVaporCombo7">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq7CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicVaporCombo8">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq8CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicVaporCombo9">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq9CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicVaporCombo10">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Eq10CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="TwilightHeroHasNightwarp">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeNightwarpCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Unstoppable">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeUnstoppableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WarpDrone">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="LT0CountUpgradeWarpDroneCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="BlackDeathSpread3">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq2CountUpgradeBlackDeathRangeCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="BlackDeathSpread2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq1CountUpgradeBlackDeathRangeCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseThorupgrade1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="LTCountUpgradeThorQuestRewardCompleteOnlyTechTreeCheat1"/>
+    </CRequirement>
+    <CRequirement id="UseMeteor1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq1CountUpgradeFireballMeteorCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseMeteor2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq2CountUpgradeFireballMeteorCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseMeteorChain">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq1CountUpgradeFireballMeteorChainCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseArmageddon">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq1CountUpgradeArmageddonCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseMultiphaseRep0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq0CountUpgradeMultiphaseShieldFastCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseMultiphase1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq1CountUpgradeMultiphaseShieldredCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseMultiphase0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq0CountUpgradeMultiphaseShieldredCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseMultiphase3">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq3CountUpgradeMultiphaseShieldredCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseMultiphaseRep1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq1CountUpgradeMultiphaseShieldFastCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseMultiphaseRep2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq2CountUpgradeMultiphaseShieldFastCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseMultishotFire">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeMultishotFlamesCompleteOnly1346870113TechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseOrbitalCannonAE">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq1CountUpgradeOrbitalCannonAECompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseOrbitalCannonAE2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq2CountUpgradeOrbitalCannonAECompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseDematerialize1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="GTECountUpgradeDematerializeEOLCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="UseMultiphase2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq2CountUpgradeMultiphaseShieldredCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WarpHeroDurableIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="EqCountUpgradeWarpHeroDurableCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="WarpHeroWarpDroneOnCooldown">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="CountBehaviorWarpDroneHiddenCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="WarpgateIsLvl0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq0CountUpgradeWarpgateQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CondensationIsLvl0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq0CountUpgradeCondensationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ExpansionIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradeExpansionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ExtractIsGT0">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="GTCountUpgradeEnervateQueuedOrBetter0"/>
+    </CRequirement>
+    <CRequirement id="WarpgateIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradeWarpgateQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CondensationIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradeCondensationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WarpgateIsLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq2CountUpgradeWarpgateQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CondensationIsLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq2CountUpgradeCondensationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WarpgateIsLvl3">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="Eq3CountUpgradeWarpgateQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WaterHeroReservoirIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="EqCountUpgradeReservoirCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="WaterHeroReservoirIsLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="EqCountUpgradeReservoirCompleteOnly2"/>
+    </CRequirement>
+</Catalog>

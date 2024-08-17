@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preload>
+<Asset path="assets\textures\ui_void_loading_purifier03.dds" Type="Image"/>
+<Asset path="assets\textures\changelingportrait_static.dds" Type="Image"/>
+<Asset path="assets\textures\ui_commandertraiticon_alarak.dds" Type="Image"/>
+<Asset path="assets\textures\ui_void_loading_epilogue03.dds" Type="Image"/>
+<Asset path="assets\textures\leviathanportrait_static.dds" Type="Image"/>
+<Asset path="assets\textures\hybrid_protossadvanced_experimented_portrait_static.dds" Type="Image"/>
+<Asset path="assets\textures\ui_hots_loading_missionselect_zzerus01.dds" Type="Image"/>
+<Asset path="assets\textures\ui_void_loading_purifier01.dds" Type="Image"/>
+<Asset path="assets\textures\ui_charbaricons_zerg_all.dds" Type="Image"/>
+<Asset path="assets\textures\sm_pt05_marsaraskypano.dds" Type="Image"/>
+<Asset path="assets\textures\sm_pt05_marsaraskypano.lvl0" Type="Image"/>
+<Asset path="assets\textures\loading-ulnar.dds" Type="Image"/>
+<Asset path="assets\textures\credits_2017_charbattlezone.dds" Type="Image"/>
+<Asset path="assets\textures\voidthrasherportrait_static.dds" Type="Image"/>
+<Asset path="assets\textures\blank.dds" Type="Image"/>
+<Asset path="assets\textures\ui_void_loading_aiur01.dds" Type="Image"/>
+<Asset path="assets\textures\lurker_primal_collection_portrait_static.dds" Type="Image"/>
+<Asset path="assets\textures\korhalskybox_korhacloudbg_diffuse.dds" Type="Image"/>
+<Asset path="assets\textures\zergling_webby_collection_portrait_static.dds" Type="Image"/>
+<Asset path="assets\textures\ui_void_loading_prologue01.dds" Type="Image"/>
+<Asset path="assets\textures\ui_void_shared_progressbarframe.dds" Type="Image"/>
+<Asset path="assets\textures\starbackground.dds" Type="Image"/>
+<Asset path="assets\textures\ui_hots_loading_missionselect_zhybrid03.dds" Type="Image"/>
+<Asset path="assets\textures\korhalskybox_korhacloudbg_diffuse.lvl0" Type="Image"/>
+<Asset path="assets\textures\mrjack_zerusbg_matte.dds" Type="Image"/>
+<Asset path="assets\textures\evolutionbg.dds" Type="Image"/>
+<Asset path="assets\textures\ui_void_loading_shakuras01.dds" Type="Image"/>
+<Asset path="assets\textures\loading-zeratul01.dds" Type="Image"/>
+<Asset path="assets\textures\sc2_ui_coop_detail_background_artanis.dds" Type="Image"/>
+<Asset path="assets\textures\evolutionbg.lvl0" Type="Image"/>
+<Asset path="editordata\images\brushtextureoptimize.tga" Type="Image"/>
+<Asset path="assets\textures\ui_void_shared_progressbarfill.dds" Type="Image"/>
+<Asset path="assets\textures\mrjack_zerusbg_matte.lvl0" Type="Image"/>
+<Asset path="assets\textures\narudportraitex2_static.dds" Type="Image"/>
+<Asset path="assets\textures\ui_homepanel_commander_artanis.dds" Type="Image"/>
+<Asset path="assets\textures\queen_webby_collection_portrait_static.dds" Type="Image"/>
+<Asset path="assets\textures\starbackground.lvl0" Type="Image"/>
+<Asset path="assets\wallofdarknessex3.dds" Type="Image"/>
+<Asset path="assets\textures\ui_void_loading_taldarim01.dds" Type="Image"/>
+<Asset path="assets\textures\spotterportrait_static.dds" Type="Image"/>
+<Actor id="SYSTEM_ActorConfig"/>
+<Actor id="Blast_Craters" Variations="0,1,2,3"/>
+<Actor id="Elsecaro_Large_Rock" Variations="1,3,4,6,7"/>
+<Actor id="Elsecaro_Large_Rock_NoShadow" Variations="3,5,7"/>
+<Actor id="Elsecaro_Medium_Rock" Variations="0,1,2,3,4,5,6,7,8,9"/>
+<Actor id="Elsecaro_Medium_Rock_Group" Variations="0,1,2,3,4,5,6,7"/>
+<Actor id="Elsecaro_Small_Rock" Variations="0,1,2,3,4,5"/>
+<Actor id="Elsecaro_Small_Rock_Group" Variations="0,1,2,3"/>
+<Actor id="JarbanMinor_Medium_Rock" Variations="1,8"/>
+<Actor id="JarbanMinor_Medium_Rock_Group" Variations="2"/>
+<Actor id="Moopy" Variations="0,5,10"/>
+<Actor id="PurificationDesert_GroundTrim_Destroyed" Variations="16"/>
+<Actor id="PurificationDesert_Ramp" Variations="0,1"/>
+<Actor id="Purifier_Trees_Log" Variations="0,1,2,3"/>
+<Actor id="Purifier_Trees_Regular" Variations="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"/>
+<Actor id="Slayn_Brambles" Variations="0,1,2,3,4,5"/>
+<Actor id="Slayn_TallGrass" Variations="0,1,2,3,4,5,6,7"/>
+<Behavior id="Enrage"/>
+<Behavior id="BladeStorm"/>
+<Behavior id="CastLeftSide"/>
+<Behavior id="ChronoWave"/>
+<Behavior id="ShadowplayMedic"/>
+<Behavior id="ThorStopMoveIndicatorFate"/>
+<Behavior id="ThorStopMoveIndicatorFollow"/>
+<Behavior id="Inspiration"/>
+<Behavior id="MLPowerField"/>
+<Behavior id="MoonLord"/>
+<Behavior id="RewardEnergyAuraBase"/>
+<Behavior id="ShadowplayDummy"/>
+<Behavior id="TimedSuicideNOSHOW"/>
+<Behavior id="ShadowplayHeroic"/>
+<Behavior id="PylonWeaponDisable"/>
+<Behavior id="InitOrbType"/>
+<Behavior id="ButtonUpdater1"/>
+<Behavior id="ButtonUpdater2"/>
+<Behavior id="DemonRageStack"/>
+<Behavior id="DifficultyBuff"/>
+<Behavior id="KillHatch"/>
+<Behavior id="IsChampionMode"/>
+<Behavior id="IsMainObjective"/>
+<Behavior id="MicroBurstAutocast"/>
+<Behavior id="ArdentDefender"/>
+<Behavior id="Champion"/>
+<Behavior id="Champion2"/>
+<Behavior id="CloakofFear"/>
+<Behavior id="CoopInitdelay"/>
+<Behavior id="Dematfieldcheck"/>
+<Behavior id="DodgeballSpire"/>
+<Behavior id="Doom"/>
+<Behavior id="Easy"/>
+<Behavior id="EasyDefense"/>
+<Behavior id="Energytap"/>
+<Behavior id="Flying"/>
+<Behavior id="Gandalfcheck"/>
+<Behavior id="MassacreHelper"/>
+<Behavior id="Stage11HiveInvulnerable"/>
+<Behavior id="TornadoAutocast"/>
+<Behavior id="NinjaCheck"/>
+<Behavior id="NoCollision"/>
+<Behavior id="NoFunds"/>
+<Behavior id="RestlessPassive"/>
+<Behavior id="GreaterSpireBonusLightningDamage"/>
+<Behavior id="Guardian"/>
+<Behavior id="Insane"/>
+<Behavior id="HealingReagentBonusArmor"/>
+<Behavior id="Legendary"/>
+<Behavior id="LightningEnchanted2"/>
+<Behavior id="MusclePoison"/>
+<Behavior id="Normal"/>
+<Behavior id="MightAuraChampion"/>
+<Behavior id="FireEnchanted"/>
+<Behavior id="Lightning"/>
+<Behavior id="HasteAuraChampion"/>
+<Behavior id="HardShell"/>
+<Behavior id="Newbprotection"/>
+<Behavior id="Hard"/>
+<Behavior id="PlasmaTorpedo"/>
+<Behavior id="PoisonCloud"/>
+<Behavior id="Poisoned"/>
+<Behavior id="OverlordBanelingdrop"/>
+<Behavior id="RewardEnergyAura"/>
+<Behavior id="TerminatorHidden"/>
+<Behavior id="ThorScienceSeekerProduce"/>
+<Behavior id="HurricaneAutocast"/>
+<Behavior id="UnitIsInActiveArmyTriggers"/>
+<Behavior id="Shadowcrash"/>
+<Behavior id="Shadowplay"/>
+<Behavior id="ShadowplayStack"/>
+<Behavior id="StoneSkin"/>
+<Behavior id="StaticArmor"/>
+<Behavior id="Thunderfury"/>
+<Behavior id="TimedSuicide"/>
+<Behavior id="Youfailed"/>
+<Behavior id="Dontrushmebro"/>
+<Behavior id="TooLate"/>
+<Behavior id="ZergBossDmgBonusHidden"/>
+<Behavior id="annihilatornomovecheck"/>
+<Behavior id="levelup"/>
+<Behavior id="plasmacharge"/>
+<Behavior id="rewardarmor"/>
+<Behavior id="rewarddmg"/>
+<Effect id="WarbotBLM"/>
+<Effect id="FullHeal"/>
+<Effect id="MultiphaseShieldreplenishset"/>
+<Effect id="ZapSet"/>
+<Effect id="AnnihilatorLaserTrackingDamage"/>
+<Effect id="NatureHeroExpelCostUpMP"/>
+<Effect id="PoisonHeroHealingReagentMU"/>
+<Effect id="PoisonHeroPoisonBoltMU"/>
+<Effect id="PoisonHeroMusclePoisonMU"/>
+<Effect id="DarknessSet"/>
+<Effect id="ImmortalStrafeImpactSet"/>
+<Effect id="LightningHitDamage"/>
+<Effect id="ShadowplayApplyEntropy"/>
+<Effect id="FireballImpactSearchSpire"/>
+<Effect id="LightningHeroThunderfurySet"/>
+<Effect id="LightningHeroThunderfuryWrathSet"/>
+<Effect id="BossBanelingThrow"/>
+<Effect id="PoisonBubbleAtTarget"/>
+<Effect id="PoisonBubble"/>
+<Effect id="BossFirespewerSet"/>
+<Effect id="ChampionLightningDamage"/>
+<Effect id="PsnDotDamage"/>
+<Effect id="FireballDamage"/>
+<Effect id="FireDotDamage"/>
+<Effect id="LightningDamage"/>
+<Effect id="PsnDMGDamage"/>
+<Effect id="ShadowcrashImpact"/>
+<Effect id="DoomDetonate"/>
+<Effect id="MultishotImpactSearchArea"/>
+<Effect id="GuidedImpactSearchArea"/>
+<Model id="PingBoss"/>
+<Model id="PingObjective"/>
+<Model id="SiegeTankSiegedAttackImpact"/>
+<Sound id="Immortal_Help"/>
+<Sound id="ChallengescombinedExecutor00055"/>
+<Sound id="ChallengescombinedExecutor00116"/>
+<Sound id="UI_BNet_Achievement"/>
+<Sound id="SOA_ChronoSurge"/>
+<Sound id="SuperBossIncomingSound"/>
+<Sound id="DarkEnergySound"/>
+<Sound id="MegaBossIncomingSound"/>
+<Terrain id="Endion"/>
+<Unit id="Baneling"/>
+<Unit id="Thor"/>
+<Unit id="Banshee"/>
+<Unit id="Pylon"/>
+<Unit id="Forge"/>
+<Unit id="PhotonCannon"/>
+<Unit id="TemplarArchive"/>
+<Unit id="DarkShrine"/>
+<Unit id="Zealot"/>
+<Unit id="Stalker"/>
+<Unit id="Sentry"/>
+<Unit id="Probe"/>
+<Unit id="Hatchery"/>
+<Unit id="SpawningPool"/>
+<Unit id="EvolutionChamber"/>
+<Unit id="Spire"/>
+<Unit id="SpineCrawler"/>
+<Unit id="SporeCrawler"/>
+<Unit id="Lair"/>
+<Unit id="Hive"/>
+<Unit id="GreaterSpire"/>
+<Unit id="Zergling"/>
+<Unit id="Overlord"/>
+<Unit id="Ultralisk"/>
+<Unit id="Roach"/>
+<Unit id="BroodLord"/>
+<Unit id="HydraliskBurrowed"/>
+<Unit id="RoachBurrowed"/>
+<Unit id="Queen"/>
+<Unit id="Overseer"/>
+<Unit id="WarpGate"/>
+<Unit id="Archon"/>
+<Unit id="NydusCanal"/>
+<Unit id="Adept"/>
+<Unit id="DestructibleRampVerticalHuge"/>
+<Unit id="DestructibleRampHorizontalHuge"/>
+<Unit id="ScienceVessel"/>
+<Unit id="GasCanisterProtoss"/>
+<Unit id="RoachCorpserBurrowed"/>
+<Unit id="RoachCorpser"/>
+<Unit id="HydraliskImpalerBurrowed"/>
+<Unit id="HotSSwarmling"/>
+<Unit id="HotSTorrasque"/>
+<Unit id="HotSNoxious"/>
+<Unit id="HotSSplitterlingBig"/>
+<Unit id="ProtossAlliesImmortal"/>
+<Unit id="ProtossAlliesHighTemplar"/>
+<Unit id="Metalisk"/>
+<Unit id="GatewayHero"/>
+<Unit id="GravityHero"/>
+<Unit id="AcidLord"/>
+<Unit id="BladeStormUnit"/>
+<Unit id="AirHero"/>
+<Unit id="PowerFieldPylon"/>
+<Unit id="OrbOfLuck"/>
+<Unit id="FortressLord"/>
+<Unit id="MindLord"/>
+<Unit id="HordeLord"/>
+<Unit id="ChaosOrbPurple"/>
+<Unit id="ChaosOrbGreen"/>
+<Unit id="ExtinctionOrb"/>
+<Unit id="Disintegrator"/>
+<Unit id="CorruptionLord"/>
+<Unit id="DreadLord"/>
+<Unit id="ExtinctionLord"/>
+<Unit id="HorrorLord"/>
+<Unit id="CorrosionLord"/>
+<Unit id="EvolutionLord"/>
+<Unit id="BeastLord"/>
+<Unit id="DeathLord"/>
+<Unit id="DoomLord"/>
+<Unit id="ChaosOrbRed"/>
+<Unit id="FireLord"/>
+<Unit id="ElementalHero"/>
+<Unit id="StormLord"/>
+<Unit id="SerpentLord"/>
+<Unit id="PrimalLord"/>
+<Unit id="ZergLord"/>
+<Unit id="TyrantLord"/>
+<Unit id="SporeLord"/>
+<Unit id="InfectionLord"/>
+<Unit id="ShadowLord"/>
+<Unit id="MutationLord"/>
+<Unit id="OblivionLord"/>
+<Unit id="ImpendingDoom"/>
+<Unit id="SiegeLord"/>
+<Unit id="VoidLord"/>
+<Unit id="SkyLord"/>
+<Unit id="PlagueLord"/>
+<Unit id="RockLord"/>
+<Unit id="SlimeLord"/>
+<Unit id="ChaosLord"/>
+<Unit id="OceanLord"/>
+<Unit id="ThunderLord"/>
+<Unit id="SwarmLord"/>
+<Unit id="EarthHero"/>
+<Unit id="Demolisher"/>
+<Unit id="IllusionHero"/>
+<Unit id="BeamHero"/>
+<Unit id="NatureHero"/>
+<Unit id="LuckHero"/>
+<Unit id="WaterHero"/>
+<Unit id="TwilightHero"/>
+<Unit id="ParticleHero"/>
+<Unit id="ThorAttackIndicator"/>
+<Unit id="TimeHero"/>
+<Unit id="WarpHeroMissile"/>
+<Unit id="WarpHero"/>
+<Unit id="ParasiteLord"/>
+<Unit id="FleshLord"/>
+<Unit id="AnnihilatorV2"/>
+<Unit id="AnnihilatorStopMoveIndicator"/>
+<Unit id="AnnihilatorV3"/>
+<Unit id="ThorV2"/>
+<Unit id="ThorV3"/>
+<Unit id="Annihilator"/>
+<Unit id="Odin2"/>
+<Unit id="PoisonHero"/>
+<Unit id="ShadowHero"/>
+<Unit id="Firespewer"/>
+<Unit id="FireHero"/>
+<Unit id="LightningHero"/>
+<Unit id="CarnageLord"/>
+<Unit id="ChampionOverlord"/>
+<Unit id="PlasmaTorpedo"/>
+<Unit id="ProbeHero"/>
+<Unit id="HiveLord"/>
+<Unit id="SwarmQueen2"/>
+<Unit id="ThornLord"/>
+<Unit id="WingedHorror"/>
+<Unit id="MobileNydusworm"/>
+<Unit id="Superlisk"/>
+<Unit id="BladeHero"/>
+<Unit id="DemonLord"/>
+</Preload>

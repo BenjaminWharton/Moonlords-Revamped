@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BankList>
+    <Bank Name="Moonlords" Player="3"/>
+    <Bank Name="Moonlords" Player="4"/>
+    <Bank Name="Moonlords" Player="2"/>
+    <Bank Name="Moonlords" Player="1"/>
+</BankList>

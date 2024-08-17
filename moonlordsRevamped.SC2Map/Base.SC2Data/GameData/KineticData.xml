@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CKineticFollow id="AirHeroFollowHurricane">
+        <Where Effect="AirHeroHurricaneCUSet" Value="TargetUnit"/>
+    </CKineticFollow>
+    <CKineticFollow id="AirHeroFollowTornado">
+        <Where Effect="AirHeroTornadoFate" Value="TargetUnit"/>
+    </CKineticFollow>
+    <CKineticDistance id="AirHeroTornadoDebrisDistance">
+        <DistanceAwayFrom Effect="AirHeroTornadoFate" Value="TargetUnit"/>
+        <Distance value="0">
+            <AccumulatorArray value="AirHeroDebrisRotationDistance"/>
+        </Distance>
+    </CKineticDistance>
+    <CKineticDistance id="AirHeroOverdriveMonsoonDistance">
+        <Distance value="1.2"/>
+    </CKineticDistance>
+    <CKineticRotate id="AirHeroOverdriveMonsoonRotate">
+        <Duration value="1"/>
+        <Yaw value="-270"/>
+    </CKineticRotate>
+    <CKineticFollow id="FollowCaster"/>
+    <CKineticFollow id="FollowSource">
+        <Where Value="SourceUnit"/>
+    </CKineticFollow>
+    <CKineticDistance id="TwilightHeroMatrixDistance">
+        <Distance value="1.5"/>
+    </CKineticDistance>
+    <CKineticRotate id="TwilightHeroMatrixRotate">
+        <Duration value="1"/>
+        <Yaw value="360"/>
+    </CKineticRotate>
+    <CKineticRotate id="AirHeroTornadoDebrisRotate">
+        <Duration value="1"/>
+        <Around Effect="AirHeroTornadoFate" Value="TargetUnit"/>
+        <Yaw value="-270"/>
+    </CKineticRotate>
+</Catalog>

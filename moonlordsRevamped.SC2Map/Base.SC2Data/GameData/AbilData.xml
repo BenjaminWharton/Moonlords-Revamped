@@ -1,0 +1,2378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilEffectTarget id="BlackDeath">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="PoisonHeroBlackDeath"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CursorEffect value="BlackDeathSpread2SpreadSearch"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BlackDeath"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Eviscerate">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="EviscerateCP"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="500"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Eviscerate"/>
+        <Cost>
+            <Vital index="Energy" value="20"/>
+        </Cost>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="BladeStorm">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="BladeStormDummy"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="8"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BladeStorm"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+        </Cost>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="BloodUI">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" removed="1"/>
+        <Cost>
+            <Charge CountMax="1000"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Blood">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Boil">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="BoilInitSet"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Invulnerable"/>
+        <CursorEffect value="BoilSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Boil"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+        </Cost>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Boulder">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="BoulderOffset"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="12"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Boulder"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilArmMagazine id="BroodLordHangar">
+        <InfoArray index="Ammo1" Time="0.75" CountStart="8">
+            <Charge CountMax="8" Link="Abil/##id##"/>
+            <Cooldown Link="Abil/##id##"/>
+        </InfoArray>
+        <ExternalAngle index="0" value="0"/>
+        <ExternalAngle index="1" value="45"/>
+        <ExternalAngle value="90"/>
+        <ExternalAngle value="135"/>
+        <ExternalAngle value="180"/>
+        <ExternalAngle value="225"/>
+        <ExternalAngle value="270"/>
+        <ExternalAngle value="315"/>
+    </CAbilArmMagazine>
+    <CAbilEffectInstant id="CancelInfusion">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="RemoveInfusionSet"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CancelInfusion" Requirements="IsInfused"/>
+        <Flags index="Transient" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilAugment id="Charge">
+        <CmdButtonArray index="Execute" Requirements="HaveVoidZealotCharge"/>
+        <Cost>
+            <Cooldown TimeUse="5"/>
+        </Cost>
+    </CAbilAugment>
+    <CAbilEffectTarget id="DreadCharge">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="DreadChargeCasterLM"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="4"/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <Range value="8"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray value="ChargeMaxDistance"/>
+        <AutoCastValidatorArray value="NotStructureTarget"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Charge"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead"/>
+        <TargetFilters value="-;Self,Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="Earthquake">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="EarthquakeCP"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+            <Cooldown TimeUse="6"/>
+        </Cost>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Earthquake" Requirements="IsEarthInfusedAndNot3EarthStacksOr3FireStacks"/>
+        <Flags index="Transient" value="1"/>
+        <CursorEffect value="EarthquakeSA"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="EternalLife">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="EternalLifeCastSet"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="100"/>
+            <Charge Link="Abil/ElementalHeroSiphon"/>
+            <Cooldown Link="Abil/ElementalHeroSiphon" TimeUse="11.25"/>
+        </Cost>
+        <InterruptCost>
+            <Charge Link="Abil/ElementalHeroSiphon"/>
+            <Cooldown Link="Abil/ElementalHeroSiphon"/>
+        </InterruptCost>
+        <Arc value="360"/>
+        <Marker Link="Abil/ElementalHeroSiphon"/>
+        <AINotifyEffect value="SiphonCastSet"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="EternalLife" Requirements="IsWaterInfusedAndHas3WaterStacksAnd3WindStacks"/>
+        <CursorEffect value="EternalLifeSA"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="ForwardBeam">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ForwardBeamInit"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="12"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ForwardBeam"/>
+        <Cost>
+            <Vital index="Energy" value="20"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GasBomb">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="GasBombLM"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="12"/>
+        <CursorEffect value="GasBombSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GasBomb"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="GlaiveBarrage">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="AdeptAB"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="8"/>
+            <Cooldown TimeUse="1"/>
+        </Cost>
+        <Arc value="360"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Visible;Ally,Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
+        <AutoCastValidatorArray value="GlaiveBarrageLT9"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GlaiveBarrage"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="HealingStation">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="HealingStationCU"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="12"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HealingStation"/>
+        <Cost>
+            <Vital index="Energy" value="60"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="HealingStationShell">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="HealingStationShellAB"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="6"/>
+        </Cost>
+        <TargetFilters value="-;Neutral,Enemy,Missile,Item,Dead,Hidden"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <Range value="3"/>
+        <Arc value="360"/>
+        <AutoCastFilters value="-;Neutral,Enemy,Missile,Item,Dead,Hidden"/>
+        <AutoCastRange value="3"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HealingStationShell"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="HellfireQuake">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="HellfireQuakeCastSet"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+            <Charge Link="Abil/Earthquake"/>
+            <Cooldown Link="Abil/Earthquake" TimeUse="6"/>
+        </Cost>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HellfireQuake" Requirements="IsEarthInfusedAndHas3EarthStacksAnd3FireStacks"/>
+        <Flags index="Transient" value="1"/>
+        <CursorEffect value="HellfireQuakeSA"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="HoloShield">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Range value="6"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HoloShield"/>
+        <Effect index="0" value="HoloShieldCU"/>
+        <Cost>
+            <Vital index="Energy" value="70"/>
+            <Cooldown TimeUse="5"/>
+        </Cost>
+        <CursorEffect value="HoloShieldSA"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Distortion">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="DistortionOffset"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <InterruptCost>
+            <Charge Link="Abil/HoloShield"/>
+            <Cooldown Link="Abil/HoloShield"/>
+        </InterruptCost>
+        <Range value="500"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Distortion"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="HorrorZerglingLeap">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="HorrorZerglingDelay"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="0.5"/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <Range value="8"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="6"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HotSRaptorCharge"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="IcefireBlast">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="IcefireBlastInit"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+            <Charge Link="Abil/FireBlast"/>
+            <Cooldown Link="Abil/FireBlast" TimeUse="4"/>
+        </Cost>
+        <InterruptCost>
+            <Charge Link="Abil/FireBlast"/>
+            <Cooldown Link="Abil/FireBlast"/>
+        </InterruptCost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/FireBlast"/>
+        <AINotifyEffect value="FireBlast"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="IcefireBlast" Requirements="IsFireInfusedAndHas3FireStacksAnd3WaterStacks"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="IllusionHeroStealth">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <TimeUse value="8"/>
+            </Charge>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Stealth">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="LaunchOrbsOfDestruction">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="OrbOfDestructionInit"/>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <IgnoreFilters value="-;Player,Ally"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LaunchOrbsOfDestruction"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AcquireAttackers value="1"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Cooldown TimeUse="0.01"/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="LaunchOrbsOfHavoc">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="OrbOfHavocSwitch"/>
+        <InterruptCost>
+            <Charge Link="Abil/LaunchOrbsOfDestruction"/>
+            <Cooldown Link="Abil/LaunchOrbsOfDestruction"/>
+        </InterruptCost>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/LaunchOrbsOfDestruction"/>
+        <AINotifyEffect value="LaunchOrbsOfDestruction"/>
+        <IgnoreFilters value="-;Player,Ally"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LaunchOrbsOfHavoc"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AcquireAttackers value="1"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Cooldown TimeUse="0.01"/>
+        </Cost>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="LaunchOrbsOfAttrition">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="OrbOfAttritionSwitch"/>
+        <InterruptCost>
+            <Charge Link="Abil/LaunchOrbsOfDestruction"/>
+            <Cooldown Link="Abil/LaunchOrbsOfDestruction"/>
+        </InterruptCost>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/LaunchOrbsOfDestruction"/>
+        <AINotifyEffect value="LaunchOrbsOfDestruction"/>
+        <IgnoreFilters value="-;Player,Ally"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LaunchOrbsOfAttrition"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AcquireAttackers value="1"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Cooldown TimeUse="0.01"/>
+        </Cost>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="LaunchOrbsOfVitality">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="OrbOfVitalitySwitch"/>
+        <InterruptCost>
+            <Charge Link="Abil/LaunchOrbsOfDestruction"/>
+            <Cooldown Link="Abil/LaunchOrbsOfDestruction"/>
+        </InterruptCost>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/LaunchOrbsOfDestruction"/>
+        <AINotifyEffect value="LaunchOrbsOfDestruction"/>
+        <IgnoreFilters value="-;Player,Ally"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LaunchOrbsOfVitality"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AcquireAttackers value="1"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Cooldown TimeUse="0.01"/>
+        </Cost>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="RapidRepairsButtonDummy">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Cost>
+            <Charge CountMax="10"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RapidRepairs">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="SweepingBeam">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SweepingBeamInitLM"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="12"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SweepingBeam"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MLLeap">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="MLLeapSwitch"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="8"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MLLeap"/>
+        <CursorEffect value="MLLeapInitImpactSA"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="CrystalRain">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="CrystalRainInit"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+            <Charge Link="Abil/MineralSpikes"/>
+            <Cooldown Link="Abil/MineralSpikes"/>
+        </Cost>
+        <Range value="12"/>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CursorEffect value="CrystalRainSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CrystalRain"/>
+        <ArcSlop value="0"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="OrbOfVitalityRecurHeal" parent="heal">
+        <Name value="Abil/Name/OrbOfVitalityRecurHeal"/>
+        <Effect index="0" value="OrbOfVitalityRecurHealerSwitch"/>
+        <TargetFilters index="0" value="Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <SmartValidatorArray index="2" removed="1"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray index="2" removed="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="HealingStationHeal" parent="heal">
+        <Name value="Abil/Name/HealingStationHeal"/>
+        <Effect index="0" value="HealingStationHealSwitch"/>
+        <Cost>
+            <Charge Link="Abil/HealingStationHeal"/>
+            <Cooldown Link="Abil/HealingStationHeal" TimeStart="0.25"/>
+        </Cost>
+        <TargetFilters index="0" value="Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <Range index="0" value="3"/>
+        <Arc value="360"/>
+        <SmartValidatorArray index="2" removed="1"/>
+        <AutoCastRange value="3"/>
+        <AutoCastValidatorArray index="2" removed="1"/>
+        <FollowRange value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MobileBeam">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="MobileBeamCU"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="12"/>
+        <AINotifyEffect value=""/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MobileBeam"/>
+        <CursorEffect value="MobileBeamSA"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="OrbsOfLuck">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="OrbsOfLuckInitSet"/>
+        <Flags index="Transient" value="1"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="OrbsOfLuck"/>
+        <Cost>
+            <Vital index="Energy" value="70"/>
+            <Cooldown TimeUse="5"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="ParticleDestroyer">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ParticleDestroyerDMG"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+            <Cooldown TimeUse="3"/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <Range value="8"/>
+        <AutoCastFilters value="Visible;Player,Ally,Psionic,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="8"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ParticleDestroyer"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ProbeCannon">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ProbeCannonInitSet"/>
+        <Range value="12"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ProbeCannon"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="PylonOvercharge">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="PylonOverchargeAB"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="25"/>
+        </Cost>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Visible;-"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PylonOvercharge"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="ResourceCollectorButtonDummy">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Charge CountMax="200"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ResourceCollector">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="RotatingBeam">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="RotatingBeamInit"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="12"/>
+        <CursorEffect value="RotatingBeamSplatSA"/>
+        <AINotifyEffect value=""/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RotatingBeam"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Slash">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ZealotSlashDMG"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="10"/>
+            <Cooldown TimeUse="2"/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.5"/>
+        <Arc value="360"/>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="0.5"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="SystemsReset">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SystemsResetInit"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+            <Charge Link="Abil/ImmortalOverload"/>
+            <Cooldown Link="Abil/ImmortalOverload" TimeUse="10"/>
+        </Cost>
+        <AutoCastRange value="1"/>
+        <AutoCastValidatorArray value="CasterShieldsLT1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SystemsReset"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Projection">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ProjectionCaaastSet"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="7"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Projection"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="PsionicStorm">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="PsionicStormCP"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+            <Cooldown TimeUse="5"/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Neutral,Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="7"/>
+        <AutoCastFilters value="Visible;Player,Ally,Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="7"/>
+        <AutoCastValidatorArray value="CasterEnergyGE50"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HighArchonPsiStorm"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="QuicksandEarth">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="QuicksandEarthCP"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+            <Charge Link="Abil/EruptionFire"/>
+            <Cooldown Link="Abil/EruptionFire" TimeUse="6"/>
+        </Cost>
+        <InterruptCost>
+            <Charge Link="Abil/EruptionFire"/>
+            <Cooldown Link="Abil/EruptionFire"/>
+        </InterruptCost>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/EruptionFire"/>
+        <CursorEffect value="QuicksandEarthSA"/>
+        <AINotifyEffect value="EruptionFire"/>
+        <SetLastTarget value="Move"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="QuicksandEarth" Requirements="IsEarthInfused"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="EruptionFire">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="EruptionFireCastSet"/>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="EruptionFire" Requirements="IsFireInfused"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <SetLastTarget value="Move"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Cooldown TimeUse="8"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="EruptionEarth">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="EruptionEarthCastSet"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Charge Link="Abil/EruptionFire"/>
+            <Cooldown Link="Abil/EruptionFire" TimeUse="8"/>
+        </Cost>
+        <InterruptCost>
+            <Charge Link="Abil/EruptionFire"/>
+            <Cooldown Link="Abil/EruptionFire"/>
+        </InterruptCost>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/EruptionFire"/>
+        <AINotifyEffect value="EruptionFire"/>
+        <SetLastTarget value="Move"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="EruptionEarth" Requirements="IsEarthInfused"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="FireBlast">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="FireBlastOffset"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="FireBlast" Requirements="IsFireInfusedAndNot3FireStacksOr3WaterStacks"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+            <Cooldown TimeUse="4"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="FirestormFire">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="FirestormFireCastSet"/>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <CursorEffect value="FirestormFireSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="FirestormFire" Requirements="IsFireInfused"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Cooldown TimeUse="8"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="FirestormWind">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="FirestormWindCastSet"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Charge Link="Abil/FirestormFire"/>
+            <Cooldown Link="Abil/FirestormFire" TimeUse="6"/>
+        </Cost>
+        <InterruptCost>
+            <Charge Link="Abil/FirestormFire"/>
+            <Cooldown Link="Abil/FirestormFire"/>
+        </InterruptCost>
+        <Range value="14"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/FirestormFire"/>
+        <CursorEffect value="FirestormWindSA"/>
+        <AINotifyEffect value="FirestormFire"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="FirestormWind" Requirements="IsWindInfused"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="InfuseEarth">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="InfuseEarth" Requirements="NotInfused"/>
+        <Effect index="0" value="InfuseEarthInitSet"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="20"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="InfuseFire">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="InfuseFire" Requirements="NotInfused"/>
+        <Effect index="0" value="InfuseFireInitSet"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="20"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="InfuseWater">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="InfuseWater" Requirements="NotInfused"/>
+        <Effect index="0" value="InfuseWaterInitSet"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="20"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="InfuseWind">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="InfuseWind" Requirements="NotInfused"/>
+        <Effect index="0" value="InfuseWindInitSet"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="20"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="QuicksandWater">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="QuicksandWaterCP"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+            <Charge Link="Abil/EruptionFire"/>
+            <Cooldown Link="Abil/EruptionFire" TimeUse="6"/>
+        </Cost>
+        <InterruptCost>
+            <Charge Link="Abil/EruptionFire"/>
+            <Cooldown Link="Abil/EruptionFire"/>
+        </InterruptCost>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/EruptionFire"/>
+        <CursorEffect value="QuicksandWaterSA"/>
+        <AINotifyEffect value="EruptionFire"/>
+        <SetLastTarget value="Move"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="QuicksandWater" Requirements="IsWaterInfused"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="NatureHeroRenew">
+        <Alignment value="Positive"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="RenewInitSet"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Ally,Neutral,Enemy"/>
+        <AutoCastValidatorArray value="CasterIsMissingHealth"/>
+        <AutoCastValidatorArray value="EnergyGE95PCaster"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Renew"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="SandstormWind">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SandstormWind" Requirements="IsWindInfused"/>
+        <Effect index="0" value="SandstormWindCP"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Cooldown TimeUse="9"/>
+        </Cost>
+        <CursorEffect value="SandstormWindSA"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral,Enemy"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="SandstormEarth">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SandstormEarthCP"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Charge Link="Abil/SandstormWind"/>
+            <Cooldown Link="Abil/SandstormWind" TimeUse="12"/>
+        </Cost>
+        <InterruptCost>
+            <Charge Link="Abil/SandstormWind"/>
+            <Cooldown Link="Abil/SandstormWind"/>
+        </InterruptCost>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/SandstormWind"/>
+        <CursorEffect value="SandstormEarthSA"/>
+        <AINotifyEffect value="SandstormWind"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SandstormEarth" Requirements="IsEarthInfused"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="SteamFire">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SteamFire" Requirements="IsFireInfused"/>
+        <Effect index="0" value="SteamFireCastSet"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <IgnoreFilters value="-;Player,Ally"/>
+        <CursorEffect value="SteamFireSA"/>
+        <Flags index="RequireTargetVision" value="0"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="SteamWater">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SteamWaterCastSet"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+            <Charge Link="Abil/SteamFire"/>
+            <Cooldown Link="Abil/SteamFire" TimeUse="10"/>
+        </Cost>
+        <InterruptCost>
+            <Charge Link="Abil/SteamFire"/>
+            <Cooldown Link="Abil/SteamFire"/>
+        </InterruptCost>
+        <TargetFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/SteamFire"/>
+        <AINotifyEffect value="SteamFire"/>
+        <IgnoreFilters value="-;Player,Ally"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SteamWater" Requirements="IsWaterInfused"/>
+        <CursorEffect value="SteamWaterSA"/>
+        <Flags index="RequireTargetVision" value="0"/>
+    </CAbilEffectTarget>
+    <CAbilAugment id="SuicideCharge" parent="Charge">
+        <Name value="Abil/Name/SuicideCharge"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ResearchLocustLifetimeIncrease" Requirements=""/>
+        <AutoCastValidatorArray index="0" removed="1"/>
+    </CAbilAugment>
+    <CAbilEffectTarget id="ConsumeGravityHero">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ConsumeSet"/>
+        <Range value="10"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ConsumeGravityHero"/>
+        <Cost>
+            <Vital index="Energy" value="80"/>
+        </Cost>
+        <Flags index="AutoCast" value="1"/>
+        <TargetFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="DefensiveMatrix">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="0"/>
+        <Cost index="0">
+            <Vital index="Energy" value="30"/>
+            <VitalFraction index="Energy" value="2"/>
+            <Cooldown TimeUse="0.5"/>
+        </Cost>
+        <TargetFilters value="-;Neutral,Enemy,RawResource,HarvestableResource,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="ShieldsAreLessThan20"/>
+        <AutoCastValidatorArray value="NotWarpingIn"/>
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="DestroyerDroneSplitter">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="DestroyerDroneSet"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <VitalFraction index="Energy" value="2"/>
+            <Cooldown TimeUse="1"/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <AutoCastFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Splitter">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="Discharge">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="DischargeSet"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Arc value="360"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral"/>
+        <AINotifyEffect value="DischargeSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Discharge"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Discharge"/>
+        <Cost>
+            <Cooldown TimeUse="9"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="ShadowHeroDisintegrate">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="DisintegrateTarget"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <TargetFilters value="-;Self,Ally,Neutral,Enemy,Structure,Heroic,Missile,Item,Dead,Hidden"/>
+        <Range value="500"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Disintegrate"/>
+    </CAbilEffectTarget>
+    <CAbilArmMagazine id="DroneHangerShielder">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Leash value="0.1"/>
+        <InfoArray index="Ammo1" CountStart="1" Manage="Recall" Unit="ShielderDrone">
+            <Charge Link="Abil/##id##"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="Shielder"/>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <InfoArray index="Ammo2" CountStart="1" Manage="Recall">
+            <Charge Link="Abil/##id##"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button Requirements="CrossSpectrumDampenersResearched"/>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <ExternalAngle value="135"/>
+        <MaxCount value="1"/>
+    </CAbilArmMagazine>
+    <CAbilArmMagazine id="DroneHangerHealer">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Leash value="0.1"/>
+        <InfoArray index="Ammo1" CountStart="1" Manage="Recall" Unit="HealerDrone">
+            <Charge Link="Abil/##id##"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="HealerDrone"/>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <InfoArray index="Ammo2" CountStart="1" Manage="Recall">
+            <Charge Link="Abil/##id##"/>
+            <Cooldown Link="Abil/##id##"/>
+        </InfoArray>
+        <ExternalAngle value="270"/>
+        <MaxCount value="1"/>
+    </CAbilArmMagazine>
+    <CAbilArmMagazine id="DroneHangerDestroyer">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Leash value="0.1"/>
+        <InfoArray index="Ammo1" CountStart="1" Manage="Recall" Unit="DestroyerDrone">
+            <Charge Link="Abil/##id##"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="DestroyerDrone">
+                <Flags index="AllowSelfCast" value="1"/>
+            </Button>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <InfoArray index="Ammo2" CountStart="1" Manage="Recall">
+            <Charge Link="Abil/##id##"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button Requirements="CrossSpectrumDampenersResearched"/>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <ExternalAngle value="225"/>
+        <MaxCount value="1"/>
+        <Flags index="AutoCreate" value="1"/>
+    </CAbilArmMagazine>
+    <CAbilEffectTarget id="DropBeam">
+        <AbilSetId value="Graviton"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="GravitonBeam5"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Cost>
+            <Charge Link="Abil/GravitonBeam"/>
+            <Cooldown Link="Abil/GravitonBeam"/>
+        </Cost>
+        <TargetFilters value="Ground,Visible;Self,Neutral,Massive,Structure,Destructible,Invulnerable"/>
+        <Range value="4"/>
+        <RangeSlop value="4"/>
+        <CancelableArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GravitonBeam">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="EmergencyRecall">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="EmergencyRecallSet"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="12"/>
+        </Cost>
+        <TargetFilters value="-;Ally,Neutral,Enemy,Structure,Heroic,Missile,Item,Stasis,Dead,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <Range value="10"/>
+        <Arc value="360"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Visible;Ally,Neutral,Enemy,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="ShieldsAreLessThan20"/>
+        <AutoCastValidatorArray value="NotWarpingIn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="EmergencyRecall" PreemptLevel="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Exploder">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ExploderSA"/>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <CursorEffect value="ExploderSA"/>
+        <AINotifyEffect value="ExploderSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Exploder"/>
+        <Cost>
+            <Vital index="Energy" value="60"/>
+        </Cost>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="ExplosiveVolley">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ExplosiveVolleySearchTargets"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ExplosiveVolley"/>
+        <Cost>
+            <Cooldown TimeUse="2.5"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Fortify">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="FortifySA"/>
+        <TargetFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead"/>
+        <AutoCastValidatorArray value="NotFortified"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Fortify"/>
+        <CursorEffect value="FortifySA"/>
+        <Cost>
+            <Vital index="Energy" value="65"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Freeze">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="FreezeInitSet"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden"/>
+        <CursorEffect value="FreezeSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Freeze"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+        </Cost>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GravityDash">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="GravityDashOffset"/>
+        <Range value="500"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GravityDash"/>
+        <Flags index="LineMovement" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="60"/>
+        </Cost>
+        <RangeSlop value="10"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GravityShot">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="GravityShotCPOffset"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="500"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GravityShot"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSFarthestDistance"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GravitySlivers">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="GravitySliversCP"/>
+        <Range value="10"/>
+        <IgnoreFilters value="-;Neutral"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GravitySlivers"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="60"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="HealingBlast">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="HealingBlastLM"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="5"/>
+            <Charge Link=""/>
+            <Cooldown TimeUse="2"/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSShields"/>
+        </TargetSorts>
+        <Range value="8"/>
+        <Arc value="360"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy,Missile,Invulnerable"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray value="ShieldsNotFull"/>
+        <AutoCastValidatorArray value="NotWarpingIn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HealingBlast" PreemptLevel="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="HealingWave">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="HealingWaveInitSet"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HealingWave"/>
+        <Cost>
+            <Vital index="Energy" value="60"/>
+        </Cost>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Visible;-"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AutoCastValidatorArray value="CasterisMissingShieldorHealth"/>
+        <CursorEffect value="HealingWaveSA"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Hurricane">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="AirHeroHurricane"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Hurricane"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilTrain id="LarvaTrainSwarm">
+        <InfoArray index="Train2" Time="27">
+            <Button DefaultButtonFace="MorphToCorpser"/>
+            <Unit value="RoachCorpser"/>
+        </InfoArray>
+        <InfoArray index="Train10">
+            <Resource index="Minerals" value="0"/>
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train17">
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train18">
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train21">
+            <Button Requirements=""/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="LarvaTrainSwarmling">
+        <InfoArray index="Train1" Time="24">
+            <Resource index="Minerals" value="0"/>
+            <Button Requirements=""/>
+            <Unit index="1" removed="1"/>
+            <Unit index="2" removed="1"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilEffectTarget id="Lava">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="EarthHeroLavaInitSwitch"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="10"/>
+        <CursorEffect value="LavaSA"/>
+        <AINotifyEffect value="LavaSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Lava"/>
+        <Cost>
+            <Vital index="Energy" value="45"/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AcquireAttackers value="1"/>
+        <ArcSlop value="0"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="LightningStrikes">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="LightningStrikesOffset"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <Range value="10"/>
+        <Arc value="360"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Structure,Missile,Hidden,Invulnerable"/>
+        <AutoCastRange value="3"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LightningStrikes"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="LocustFlyingLaunch">
+        <Cost index="0">
+            <Cooldown TimeUse="2.5"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MicroBurst">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="AirHeroMicroBurst"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <AINotifyEffect value="MicroBurstSet"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MicroBurst"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AutoCastValidatorArray value="NotLifted"/>
+    </CAbilEffectTarget>
+    <CAbilTrain id="MorphSplitterlingBigToMedium">
+        <!--InfoArray index="Train1" Effect="HotSSplitterlingCopyOrders"-->
+        <InfoArray index="Train1">
+            <Unit value="HotSSplitterlingMedium"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilEffectTarget id="TimeHeroMutation">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="Mutation"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Missile,Dead,Hidden,Invulnerable"/>
+        <Range value="12"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AINotifyEffect value="Mutation"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Bane"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Dematerialize">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="DematerializeInitSet"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <TargetFilters value="Visible;Player,Missile,Dead,Hidden,Invulnerable"/>
+        <Range value="12"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Dematerialize"/>
+    </CAbilEffectTarget>
+    <CAbilResearch id="ForgeResearch">
+        <InfoArray index="Research8">
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Button Requirements=""/>
+        </InfoArray>
+    </CAbilResearch>
+    <CAbilEffectTarget id="MassRecall">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="TimeHeroAlterTimeline">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="AlterTimeSearch"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="12"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CursorEffect value="AlterTimeSearch"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AlteredTimeline"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="NanoRepair">
+        <TargetFilters index="0" value="Mechanical,Visible;Self,Enemy,Air,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <Range index="0" value="6"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="Overdrive">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="OverdriveSet"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Overdrive"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="PickupGas100">
+        <AutoCastFilters value="Ground;Player,Enemy,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Benign"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="PlasmaCannon">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="PlasmaCannonLM"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <Range value="10"/>
+        <Arc value="360"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Psionic,Heroic"/>
+        <AutoCastRange value="10"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PlasmaCannon"/>
+        <Cost>
+            <Cooldown TimeUse="11"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="PoisonNova">
+        <Cost index="0">
+            <Cooldown TimeUse="5"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="ReactiveShields">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ApplyReactiveShields"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="45"/>
+        </Cost>
+        <Arc value="360"/>
+        <AINotifyEffect value="ReactiveShieldsSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ReactiveShields"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="Recharge">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="RechargeCP"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <TargetFilters value="-;Ally,Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead"/>
+        <AutoCastFilters value="-;Ally,Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Hidden"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Recharge"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="TwilightHeroRecombulator">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="Recombulator"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="ReApproachable" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AutoCastValidatorArray value="EnemiesNearby"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Recombulator"/>
+        <CursorEffect value="RecombulatorSearch"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="ChampionLightning">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="ChampionLightningInit"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="12"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TwistCannon"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="FireHeroFireball">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="FireballInit"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="20"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="500"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Fireball"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Reinforce">
+        <TechPlayer value="Owner"/>
+        <OrderArray index="0" Model="Assets\UI\Cursors\WayPointConfirm_Void\WayPointConfirm_Void.m3"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ReinforceSpawnZealot"/>
+        <Range value="10"/>
+        <AINotifyEffect value="ReinforceSpawnZealot"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Reinforce"/>
+        <Cost>
+            <Vital index="Energy" value="100"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilArmMagazine id="DroneHangerDeflector">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Leash value="0.1"/>
+        <InfoArray index="Ammo1" CountStart="1" Manage="Recall" Unit="DeflectorDrone">
+            <Charge Link="Abil/##id##"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="DeflectorDrone"/>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <InfoArray index="Ammo2" CountStart="1" Manage="Recall">
+            <Charge Link="Abil/##id##"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button Requirements="CrossSpectrumDampenersResearched"/>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <ExternalAngle value="90"/>
+        <MaxCount value="1"/>
+    </CAbilArmMagazine>
+    <CAbilAugment id="ShadowCharge">
+        <Cost>
+            <Cooldown TimeUse="0"/>
+        </Cost>
+        <CmdButtonArray index="Execute" Requirements="HaveCharge"/>
+    </CAbilAugment>
+    <CAbilEffectTarget id="Splitter">
+        <OrderArray index="0" DisplayType="Legacy"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SplitterOffsetCP"/>
+        <Range value="12"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Splitter"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="LineMovement" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilAugment id="EssenceCharge" parent="Charge">
+        <Name value="Abil/Name/EssenceCharge"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="DehakaMirrorImage" Requirements=""/>
+        <Cost>
+            <Cooldown TimeUse="0"/>
+        </Cost>
+        <Effect value="EssenceCharge"/>
+        <AutoCastValidatorArray index="0" removed="1"/>
+    </CAbilAugment>
+    <CAbilEffectTarget id="Teleport">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ProtossAlliesTeleport"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CastIntroTime value="0.4"/>
+        <AINotifyEffect value=""/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ProtossAlliesTeleport"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ThunderstormWind">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ThunderstormWindOffset"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ThunderstormWind" Requirements="IsWindInfused"/>
+        <Cost>
+            <Vital index="Energy" value="65"/>
+            <Cooldown TimeUse="7.5"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ThunderstormWater">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ThunderstormWaterOffset"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="65"/>
+            <Charge Link="Abil/ThunderstormWind"/>
+            <Cooldown Link="Abil/ThunderstormWind" TimeUse="10"/>
+        </Cost>
+        <InterruptCost>
+            <Charge Link="Abil/ThunderstormWind"/>
+            <Cooldown Link="Abil/ThunderstormWind"/>
+        </InterruptCost>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/ThunderstormWind"/>
+        <AINotifyEffect value="ThunderstormWind"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ThunderstormWater" Requirements="IsWaterInfused"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="ElementalHeroSiphon">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SiphonCastSet"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="100"/>
+            <Cooldown TimeUse="15"/>
+        </Cost>
+        <Arc value="360"/>
+        <AINotifyEffect value="SiphonCastSet"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ElementalHeroSiphon" Requirements="IsWaterInfusedAndNot3WaterStacksOr3WindStacks"/>
+        <CursorEffect value="SiphonSA"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="TimberLance">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="TimberLanceOffset"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <TargetFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="500"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TimberLance"/>
+        <Cost>
+            <Vital index="Life" value="75"/>
+        </Cost>
+        <AutoCastValidatorArray value="CasterNotBelow50PHealth"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="TimeHeroTimewave">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="TimewaveInit"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="500"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Timewave"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="TimeHeroTimerift">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="TimeHeroTimeriftCastInit"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="60"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Timerift"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Tornado">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="AirHeroTornadoCU"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Tornado"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CursorEffect value="TornadoSA"/>
+    </CAbilEffectTarget>
+    <CAbilMorph id="TorrasqueChrysalis">
+        <InfoArray index="1">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="2"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Delay" value="2"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="2"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilEffectTarget id="NatureHeroToxicVapor">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Life" value="150"/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="12"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="CasterNotBelow50PHealth"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ToxicVapor"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="Substitution">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SubstitutionSet"/>
+        <Cost>
+            <Vital index="Life" value="300"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Substitution"/>
+        <Flags index="Transient" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Trickery">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="TrickeryInitSet"/>
+        <Cost>
+            <Vital index="Energy" value="90"/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="6"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Trickery"/>
+        <Flags index="AutoCast" value="1"/>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CursorEffect value="TrickerySA"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Upheaval">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="UpheavalOffsets"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="500"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Upheaval"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="4"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="VoidSentryShieldRepair">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="HealerDroneSet"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="0"/>
+        <TargetFilters index="0" value="Visible;Self,Neutral,Enemy,Missile,Uncommandable,UnderConstruction,Dead,Hidden"/>
+        <Range index="0" value="10"/>
+        <RangeSlop value="100"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy,Missile,Stasis,Dead,Hallucination"/>
+        <AutoCastRange value="10"/>
+        <CmdButtonArray index="Execute" Requirements=""/>
+        <TargetSorts>
+            <SortArray index="0" value="TSShieldsFraction"/>
+            <SortArray index="1" value="TSDistance"/>
+            <SortArray index="2" removed="1"/>
+        </TargetSorts>
+        <AutoCastValidatorArray index="1" value="CasterHasEnergy"/>
+        <AutoCastValidatorArray index="2" value="MissingHealthOrShields"/>
+    </CAbilEffectTarget>
+    <CAbilWarpTrain id="WarpInReinforcements">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <InfoArray index="Train1" Time="5" Unit="Zealot">
+            <Button DefaultButtonFace="Zealot"/>
+        </InfoArray>
+        <InfoArray index="Train2" Time="5" Unit="Stalker">
+            <Button DefaultButtonFace="Stalker"/>
+        </InfoArray>
+        <InfoArray index="Train3" Time="5" Unit="Archon">
+            <Button DefaultButtonFace="Archon"/>
+        </InfoArray>
+        <InfoArray index="Train4" Time="5" Unit="ProtossAlliesImmortal">
+            <Button DefaultButtonFace="Immortal"/>
+        </InfoArray>
+        <InfoArray index="Train5" Time="5" Unit="Adept">
+            <Button DefaultButtonFace="WarpInAdept" State="Restricted"/>
+        </InfoArray>
+        <InfoArray index="Train6" Time="5" Unit="Sentry">
+            <Button DefaultButtonFace="Sentry"/>
+        </InfoArray>
+        <InfoArray index="Train7" Time="5" Unit="ProtossAlliesHighTemplar">
+            <Button DefaultButtonFace="HighTemplar"/>
+        </InfoArray>
+    </CAbilWarpTrain>
+    <CAbilEffectTarget id="TwilightHeroWarpout">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="TwilightHeroWarpoutSwitch"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <TargetFilters value="-;Enemy,Missile,Dead,Hidden"/>
+        <Range value="12"/>
+        <IgnoreFilters value="-;Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Warpout"/>
+        <CursorEffect value="WarpoutNightwarpSA"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ParticleHeroOrbitalCannon">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="OrbitalCannon"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="12"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CursorEffect value="OrbitalCannonSearch"/>
+        <AINotifyEffect value="OrbitalCannon"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="OrbitalCannon"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="ParticleHeroPlasmaTorpedo">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AutoCastValidatorArray value="EnemiesNearby"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PlasmaTorpedo"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Shockwave">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="ShockwaveInit"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="20"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="500"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Shockwave"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="TwilightHeroNightstorm">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="Nightstorm"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="12"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CursorEffect value="PsiStormSearch"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Nightstorm"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="TwilightHeroTwilightCannon">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="TwilightCannonInit"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <Range value="500"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TwistCannon"/>
+    </CAbilEffectTarget>
+    <CAbilAugment id="SuperUltraCharge">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Charge"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AbilCmd value="attack,Execute"/>
+        <Cost>
+            <Cooldown Link="Charge" Location="Unit" TimeUse="10"/>
+        </Cost>
+        <AutoCastValidatorArray value="CasterNotHoldingPosition"/>
+    </CAbilAugment>
+    <CAbilEffectTarget id="WarpHeroDecoy">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="WarpHeroDecoyCU"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="10"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Decoy"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Doom">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="DummyEffectTarget"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Neutral,Missile,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Doom"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GuidedMissile">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="DummyEffect"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="500"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GuidedMissile"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="ShadowHeroEnergytap">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Lifetap"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="WarpHeroMultishot">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="DummyEffect"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="12"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Multishot"/>
+        <AINotifyEffect value="WarpHeroMultishotDummy"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MusclePoison">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="MusclePoisonDummy"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AINotifyEffect value="LightningHeroThunderfury"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MusclePoison"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="FireInfusion">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="FireInfusionInit"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="FireInfusion"/>
+        <Flags index="Transient" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Fireball">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Fireball"/>
+        <Range value="12"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Effect index="0" value="DummyEffect"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="LightningHeroFrostShock">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="FrostshockCastSet"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Missile,Item,Dead"/>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Frostshock"/>
+        <CursorEffect value="FrostshockSpreadSearch"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="Inferno">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AllowMovingSuppressed" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <AutoCastFilters value="Visible;Self,Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="3"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AutoCastValidatorArray value="EnemiesInFront"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Inferno"/>
+        <Effect index="0" value="InfernoInit"/>
+    </CAbilEffectInstant>
+    <CAbilTrain id="LarvaTrain">
+        <InfoArray index="Train2">
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train10">
+            <Button Requirements=""/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilEffectTarget id="LightningHeroLightning">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DummyEffect"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="500"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Lightning"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Poisonbolt">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="DummyEffect"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="500"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <Marker Link="Abil/Lightning"/>
+        <AINotifyEffect value="Lightning"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Poisonbolt"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="PowerDrain">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PowerDrain"/>
+        <Effect index="0" value="PowerDrainApplySet"/>
+        <Flags index="Transient" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HealingReagent">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="ApplyHealingReagent"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Marker Link="Abil/PowerDrain"/>
+        <AINotifyEffect value="PowerDrain"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HealingReagent"/>
+    </CAbilEffectInstant>
+    <CAbilBuild id="ProtossBuild">
+        <InfoArray index="Build2" Time="3"/>
+        <InfoArray index="Build4" Time="10">
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Build8" Time="10">
+            <Button Requirements=""/>
+        </InfoArray>
+    </CAbilBuild>
+    <CAbilEffectTarget id="FireHeroBlastwave">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="FireHeroBlastwaveSA"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="1"/>
+                <Link value="Abil/PsiStorm"/>
+                <TimeUse value="3"/>
+            </Charge>
+            <Cooldown Link="Abil/PsiStorm"/>
+        </Cost>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE10"/>
+        <CastOutroTime value="0.25"/>
+        <Marker Link="Abil/PsiStorm"/>
+        <CursorEffect value="FireHeroBlastwaveSA"/>
+        <AINotifyEffect value="PsiStorm"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Blastwave"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ShadowHeroShadowplay">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="ShadowplayDummyEffectTarget"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Neutral,Missile,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Shadowcontrol"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ShadowHeroShadowcrash">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="DummyEffect"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="500"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Shadowcrash"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="WarpHeroStrafe">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="DummyEffect"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AutoCastValidatorArray value="EnemiesNearby"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Strafe"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="LightningHeroThunderfury">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="35"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Thunderfury"/>
+    </CAbilEffectTarget>
+    <CAbilMorph id="UpgradeToWarpGate"/>
+    <CAbilWarpTrain id="WarpGateTrain">
+        <InfoArray index="Train1">
+            <Charge TimeUse="22.5"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Charge CountUse="0" TimeUse="0"/>
+            <Cooldown TimeUse="27.5"/>
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train4" Unit="ProtossAlliesHighTemplar">
+            <Charge>
+                <CountMax value="0"/>
+                <CountStart value="0"/>
+                <CountUse value="0"/>
+                <TimeUse value="0"/>
+            </Charge>
+            <Cooldown Location="Unit" TimeUse="45"/>
+            <Button State="Available" Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Charge>
+                <CountMax value="0"/>
+                <CountStart value="0"/>
+                <CountUse value="0"/>
+                <TimeUse value="0"/>
+            </Charge>
+            <Cooldown TimeUse="35"/>
+            <Button State="Available" Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Charge CountStart="0" CountUse="0" TimeUse="0"/>
+            <Cooldown TimeUse="25"/>
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train8" Time="5" Unit="Archon">
+            <Cooldown TimeUse="90"/>
+            <Button DefaultButtonFace="Archon"/>
+        </InfoArray>
+        <InfoArray index="Train9" Time="5" Unit="ProtossAlliesImmortal">
+            <Cooldown Location="Unit" TimeUse="90"/>
+            <Button DefaultButtonFace="Immortal"/>
+        </InfoArray>
+    </CAbilWarpTrain>
+    <CAbilEffectTarget id="WaterBlast">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="WaterBlastOffset"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <TargetFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Invulnerable"/>
+        <Range value="500"/>
+        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="WaterBlast"/>
+        <Cost>
+            <Vital index="Shields" value="80"/>
+        </Cost>
+        <AutoCastValidatorArray value="CasterShieldsGE10"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="NatureHeroExpel">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Expel"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Windstorm">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="WindstormCastSet"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="45"/>
+            <Cooldown TimeUse="7.5"/>
+        </Cost>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <CursorEffect value="WindstormSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Windstorm" Requirements="IsWindInfusedAndNot3WindStacksOr3EarthStacks"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="EverlastingStorm">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="EverlastingStormCP"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="45"/>
+            <Charge Link="Abil/Windstorm"/>
+            <Cooldown Link="Abil/Windstorm" TimeUse="7.5"/>
+        </Cost>
+        <InterruptCost>
+            <Charge Link="Abil/Windstorm"/>
+            <Cooldown Link="Abil/Windstorm"/>
+        </InterruptCost>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <Marker Link="Abil/Windstorm"/>
+        <CursorEffect value="EverlastingStormSA"/>
+        <AINotifyEffect value="Windstorm"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="EverlastingStorm" Requirements="IsWindInfusedAndHas3WindStacksAnd3EarthStacks"/>
+    </CAbilEffectTarget>
+</Catalog>

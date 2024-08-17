@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <!-- Unit Name Templates -->
+    <Frame type="UnitStatusUnitName" name="UnitStatusHeroNameTemplate">
+        <Frame type="Label" name="Label">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="HeroStatusName"/>
+            <RenderType val="HDR"/>
+        </Frame>
+    </Frame>
+
+    <!-- Hero Shields/Health Bar/Energy -->
+    <Frame type="UnitStatusFrame" name="StatusFrameTemplate">
+        <Height val="55"/>
+        <Width val="350"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="175"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="40"/>
+            <Width val="101"/>
+            <Texture val="@UI/LotV_HeroUnit_UnitStatusFrame_Protoss"/>
+            <RenderPriority val="500"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel" template="CustomHeroStatusFrame/UnitStatusHeroNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="LotV_UnitStatus/UnitStatusSegmentedShieldsBarTemplate">
+            <Anchor side="Top" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="12"/>
+            <Height val="7"/>
+            <Width val="79"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar" template="LotV_UnitStatus/UnitStatusSegmentedHealthBarTemplate">
+            <Anchor side="Top" relative="$parent/ShieldsBar" pos="Max" offset="-2"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Height val="9"/>
+            <Width val="79"/>
+        </Frame>
+
+        <Frame type="UnitStatusEnergyBar" name="EnergyBar" template="LotV_UnitStatus/UnitStatusSegmentedEnergyTemplate">
+            <Anchor side="Top" relative="$parent/HealthBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/HealthBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="79"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="LotV_UnitStatus/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/EnergyBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/EnergyBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="79"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="LotV_UnitStatus/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ProgressBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="79"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+    </Frame>
+
+    <!-- Hero Shields/Health Bar/Energy -->
+    <Frame type="UnitStatusFrame" name="StatusFrameLargeTemplate">
+        <Height val="55"/>
+        <Width val="400"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="200"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="40"/>
+            <Width val="121"/>
+            <Texture val="@UI/LotV_HeroUnit_UnitStatusFrame_Protoss"/>
+            <RenderPriority val="500"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel" template="CustomHeroStatusFrame/UnitStatusHeroNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="LotV_UnitStatus/UnitStatusSegmentedShieldsBarTemplate">
+            <Anchor side="Top" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="13"/>
+            <Height val="7"/>
+            <Width val="98"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar" template="LotV_UnitStatus/UnitStatusSegmentedHealthBarTemplate">
+            <Anchor side="Top" relative="$parent/ShieldsBar" pos="Max" offset="-2"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Height val="9"/>
+            <Width val="98"/>
+        </Frame>
+
+        <Frame type="UnitStatusEnergyBar" name="EnergyBar" template="LotV_UnitStatus/UnitStatusSegmentedEnergyTemplate">
+            <Anchor side="Top" relative="$parent/HealthBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/HealthBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="98"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="LotV_UnitStatus/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/EnergyBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/EnergyBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="98"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="LotV_UnitStatus/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ProgressBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="98"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+    </Frame>
+
+    <!-- Hero Shields/Health Bar/Energy -->
+    <Frame type="UnitStatusFrame" name="StatusFrameHealthEnergyLargeTemplate">
+        <Height val="55"/>
+        <Width val="400"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="200"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="40"/>
+            <Width val="141"/>
+            <Texture val="@UI/LotV_HeroUnit_UnitStatusFrame_Protoss"/>
+            <RenderPriority val="500"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel" template="CustomHeroStatusFrame/UnitStatusHeroNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="LotV_UnitStatus/UnitStatusSegmentedShieldsBarTemplate">
+            <Anchor side="Top" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="13"/>
+            <Height val="7"/>
+            <Width val="118"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar" template="LotV_UnitStatus/UnitStatusSegmentedHealthBarTemplate">
+            <Anchor side="Top" relative="$parent/ShieldsBar" pos="Max" offset="-2"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Height val="12"/>
+            <Width val="118"/>
+        </Frame>
+
+        <Frame type="UnitStatusEnergyBar" name="EnergyBar" template="LotV_UnitStatus/UnitStatusSegmentedEnergyTemplate">
+            <Anchor side="Top" relative="$parent/HealthBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/HealthBar" pos="Min" offset="0"/>
+            <Height val="9"/>
+            <Width val="118"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="LotV_UnitStatus/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/EnergyBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/EnergyBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="118"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="LotV_UnitStatus/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ProgressBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="118"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+    </Frame>
+
+    <!-- Hero Shields Bar -->
+    <Frame type="UnitStatusFrame" name="StatusFrameLargeOnlyShieldsTemplate">
+        <Height val="55"/>
+        <Width val="400"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="200"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="20"/>
+            <Width val="121"/>
+            <Texture val="@UI/LotV_HeroUnit_UnitStatusFrame_Protoss"/>
+            <RenderPriority val="500"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel" template="CustomHeroStatusFrame/UnitStatusHeroNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="LotV_UnitStatus/UnitStatusSegmentedShieldsBarTemplate">
+            <Anchor side="Top" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="5"/>
+            <Anchor side="Left" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="13"/>
+            <Height val="10"/>
+            <Width val="98"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="LotV_UnitStatus/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/ShieldsBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="98"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="LotV_UnitStatus/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ProgressBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="98"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+    </Frame>
+
+    <!-- Hero Shields Bar -->
+    <Frame type="UnitStatusFrame" name="StatusFrameOnlyShieldsNoNameTemplate">
+        <Height val="55"/>
+        <Width val="350"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="175"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="20"/>
+            <Width val="111"/>
+            <Texture val="@UI/LotV_HeroUnit_UnitStatusFrame_Protoss"/>
+            <RenderPriority val="500"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="LotV_UnitStatus/UnitStatusSegmentedShieldsBarTemplate">
+            <Anchor side="Top" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="5"/>
+            <Anchor side="Left" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="12"/>
+            <Height val="10"/>
+            <Width val="89"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="LotV_UnitStatus/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/ShieldsBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="89"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="LotV_UnitStatus/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ProgressBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="89"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+    </Frame>
+
+    <!-- Hero Shields Bar -->
+    <Frame type="UnitStatusFrame" name="StatusFrameMassiveOnlyShieldsTemplate">
+        <Height val="55"/>
+        <Width val="450"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="225"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="27"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="29"/>
+            <Width val="251"/>
+            <Texture val="Assets\Textures\CustomBossBarFrameFriendly.dds"/>
+            <RenderPriority val="500"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel" template="CustomHeroStatusFrame/UnitStatusHeroNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="LotV_UnitStatus/UnitStatusShieldsBarTemplate">
+            <Anchor side="Top" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="7"/>
+            <Anchor side="Left" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="8"/>
+            <Height val="14"/>
+            <Width val="235"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="LotV_UnitStatus/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/ShieldsBar" pos="Max" offset="3"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Height val="10"/>
+            <Width val="235"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="LotV_UnitStatus/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ProgressBar" pos="Min" offset="0"/>
+            <Height val="10"/>
+            <Width val="235"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+    </Frame>
+
+ <!-- Hero Shields/Health Bar/Energy -->
+    <Frame type="UnitStatusFrame" name="StatusFrameSmallTemplate">
+        <Height val="55"/>
+        <Width val="250"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="125"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="40"/>
+            <Width val="81"/>
+            <Texture val="@UI/LotV_HeroUnit_UnitStatusFrame_Protoss"/>
+            <RenderPriority val="500"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel" template="CustomHeroStatusFrame/UnitStatusHeroNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="LotV_UnitStatus/UnitStatusSegmentedShieldsBarTemplate">
+            <Anchor side="Top" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="8"/>
+            <Height val="7"/>
+            <Width val="67"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar" template="LotV_UnitStatus/UnitStatusSegmentedHealthBarTemplate">
+            <Anchor side="Top" relative="$parent/ShieldsBar" pos="Max" offset="-2"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Height val="9"/>
+            <Width val="67"/>
+        </Frame>
+
+        <Frame type="UnitStatusEnergyBar" name="EnergyBar" template="LotV_UnitStatus/UnitStatusSegmentedEnergyTemplate">
+            <Anchor side="Top" relative="$parent/HealthBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/HealthBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="67"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="LotV_UnitStatus/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/EnergyBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/EnergyBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="67"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="LotV_UnitStatus/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ProgressBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="67"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+    </Frame>
+
+<!-- Hero Energy Bar -->
+    <Frame type="UnitStatusFrame" name="StatusFrameSmallOnlyEnergyTemplate">
+        <Height val="55"/>
+        <Width val="250"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="125"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="20"/>
+            <Width val="81"/>
+            <Texture val="@UI/LotV_HeroUnit_UnitStatusFrame_Protoss"/>
+            <RenderPriority val="500"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel" template="CustomHeroStatusFrame/UnitStatusHeroNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusEnergyBar" name="EnergyBar" template="LotV_UnitStatus/UnitStatusSegmentedEnergyTemplate">
+            <Anchor side="Top" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="5"/>
+            <Anchor side="Left" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="8"/>
+            <Height val="10"/>
+            <Width val="67"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="LotV_UnitStatus/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/EnergyBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/EnergyBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="67"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="LotV_UnitStatus/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="-1"/>
+            <Anchor side="Left" relative="$parent/ProgressBar" pos="Min" offset="0"/>
+            <Height val="7"/>
+            <Width val="67"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+    </Frame>
+</Desc>

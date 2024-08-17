@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CutsceneState cutsceneVersion="1.300000">
+    <CCutsceneNodeActor guid="11541272635645520990" name="Archon Attack Beam top.1" position="-0.006386,0.002464,10.731644" scale="0.307583,0.413182,0.336598" rotation="19.999884,-0.000898,-89.999947" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,1.000000" teamColorEmissive="0.545100,0.062700,0.086100,1.000000">
+        <CCutsceneElementObject guid="4705292766233914462" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="12824843880005790814" name="Animation Layer">
+            <CCutsceneElementAnim guid="8852584595377777758" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="12279449726671705219" name="Archon Attack Beam top.2" position="-0.006386,0.002464,10.731644" scale="0.307583,0.413182,0.336598" rotation="0.000958,19.999863,-0.000272" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,1.000000" teamColorEmissive="0.545100,0.062700,0.086100,1.000000">
+        <CCutsceneElementObject guid="7140887481494852739" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11865375232494195843" name="Animation Layer">
+            <CCutsceneElementAnim guid="8465977444561114243" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11759597904710374337" name="Archon Attack Beam top.3" position="-0.006386,0.002464,10.731644" scale="0.307583,0.413182,0.336598" rotation="-19.999838,0.001007,-270.000183" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,1.000000" teamColorEmissive="0.545100,0.062700,0.086100,1.000000">
+        <CCutsceneElementObject guid="6639339680572675009" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11901747737226417089" name="Animation Layer">
+            <CCutsceneElementAnim guid="8227649828225586113" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11447850446881572367" name="Archon Attack Beam top.4" position="-0.006386,0.002464,10.731644" scale="0.307583,0.413182,0.336598" rotation="-0.000970,-19.999865,-180.000168" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="6991461593949947407" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11823016432892659215" name="Animation Layer">
+            <CCutsceneElementAnim guid="6407095549419683961" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="12556136622196351201" name="Archon Attack Beam top.5" position="-0.006386,-1.028629,10.420053" scale="0.307583,0.559249,0.336598" rotation="-10.489851,7.887882,-224.734802" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8663940742056075489" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="10589413768134484193" name="Animation Layer">
+            <CCutsceneElementAnim guid="6307302857239347734" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="10413046283394335496" name="Archon Attack Beam top.6" position="-0.006386,-1.028629,10.420053" scale="0.307583,0.559249,0.336598" rotation="7.745059,10.595177,-314.679291" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="9169101081616827144" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11335259346204082952" name="Animation Layer">
+            <CCutsceneElementAnim guid="6727563799071277832" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11699097253464380890" name="Archon Attack Beam top.7" position="1.020500,0.031105,10.420053" scale="0.307583,0.559249,0.336598" rotation="-10.690487,7.612242,-223.246948" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8863906087728715226" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11241583162129442149" name="Animation Layer">
+            <CCutsceneElementAnim guid="8308455450575955301" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="10823726184177492220" name="Archon Attack Beam top.8" position="-0.034500,1.042770,10.420053" scale="0.307583,0.559249,0.336598" rotation="-7.745060,-10.595154,-134.679642" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="4906021747263693052" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="9874212629902156028" name="Animation Layer">
+            <CCutsceneElementAnim guid="8367632524079133981" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="13132485544756058021" name="Archon Attack Beam side.1" position="-0.006386,1.352844,9.369328" scale="0.307583,0.413182,0.336598" rotation="-70.000114,-0.001163,-89.999657" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="6252271691198830501" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="13671199732659581433" name="Animation Layer">
+            <CCutsceneElementAnim guid="9097973986726703609" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11863150397268323840" name="Archon Attack Beam side.2" position="-0.006386,1.352844,9.369328" scale="0.307583,0.413182,0.336598" rotation="-89.998886,19.999823,-0.000283" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="6218740969734158031" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="10648419983692674767" name="Animation Layer">
+            <CCutsceneElementAnim guid="7324165139684144847" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="13411150588296196671" name="Archon Attack Beam side.3" position="-0.006386,1.352844,9.369328" scale="0.307583,0.413182,0.336598" rotation="-109.999664,0.000979,-270.000244" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="6693592922969502271" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11439601466598912575" name="Animation Layer">
+            <CCutsceneElementAnim guid="9055553133059142207" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11701908716336902847" name="Archon Attack Beam side.4" position="-0.006386,1.352844,9.369328" scale="0.307583,0.413182,0.336598" rotation="-90.000984,-19.999889,-180.000031" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8638288666991456959" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="12747236479815578303" name="Animation Layer">
+            <CCutsceneElementAnim guid="4878216559380591295" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="12938212569724296559" name="Archon Attack Beam side.5" position="-0.006386,1.041260,10.400429" scale="0.307583,0.559249,0.336598" rotation="-100.489761,7.887894,-224.734787" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="6519649503680208239" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11087504100951661935" name="Animation Layer">
+            <CCutsceneElementAnim guid="8877603107375704969" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="9528660750618402100" name="Archon Attack Beam side.6" position="-0.006386,1.041260,10.400429" scale="0.307583,0.559249,0.336598" rotation="-82.254730,10.595204,-314.679321" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="7438578700579314996" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="10907147739973360948" name="Animation Layer">
+            <CCutsceneElementAnim guid="8338460536200043828" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11033918760608226376" name="Archon Attack Beam side.7" position="1.020500,1.041260,9.340694" scale="0.307583,0.559249,0.336598" rotation="-100.690376,7.612232,-223.246979" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="7404844396770909256" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="12387309238145408072" name="Animation Layer">
+            <CCutsceneElementAnim guid="4684947367488805960" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="9493621424342605967" name="Archon Attack Beam side.8" position="-0.034500,1.041260,8.329037" scale="0.307583,0.559249,0.336598" rotation="-97.744926,-10.595149,-134.679581" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="7295153773705759963" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="10634000249411407067" name="Animation Layer">
+            <CCutsceneElementAnim guid="5981274684599373019" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="12116404903514366716" name="Archon Attack Beam side1.1" position="1.359451,0.002464,9.372331" scale="0.307583,0.413182,0.336598" rotation="89.997581,70.000374,-179.997650" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8050688650943816444" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11410547944636446060" name="Animation Layer">
+            <CCutsceneElementAnim guid="5967275791491167596" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="10358518660078785454" name="Archon Attack Beam side1.2" position="1.359451,0.002464,9.372331" scale="0.307583,0.413182,0.336598" rotation="180.847366,70.082359,-180.797791" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8730215026801005486" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="12115824770716875777" name="Animation Layer">
+            <CCutsceneElementAnim guid="8986956484448697345" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11581462704505507790" name="Archon Attack Beam side1.3" position="1.359451,0.002464,9.372331" scale="0.307583,0.413182,0.336598" rotation="-90.002541,70.000275,-179.997925" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="6898606604082237390" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11032101379068678094" name="Animation Layer">
+            <CCutsceneElementAnim guid="5590855000529126406" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="10322626142341358254" name="Archon Attack Beam side1.4" position="1.359451,0.002464,9.372331" scale="0.307583,0.413182,0.336598" rotation="-0.002666,70.000443,-179.997421" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="7504139861061460654" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="13300363475880174254" name="Animation Layer">
+            <CCutsceneElementAnim guid="7112293766703608432" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11392728657498665868" name="Archon Attack Beam side1.5" position="1.047852,-1.028629,9.372338" scale="0.307583,0.559249,0.336598" rotation="-127.270584,76.901878,-98.189400" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8617423414772036492" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="10278627259455409317" name="Animation Layer">
+            <CCutsceneElementAnim guid="5601146727214910629" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11142877230245136973" name="Archon Attack Beam side1.6" position="1.047852,-1.028629,9.372338" scale="0.307583,0.559249,0.336598" rotation="144.228149,76.902237,-458.188477" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="6785542555226131021" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="9688042236516551245" name="Animation Layer">
+            <CCutsceneElementAnim guid="5761166222037928525" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="13160391326054227467" name="Archon Attack Beam side1.7" position="1.047859,0.031105,8.345453" scale="0.307583,0.559249,0.336598" rotation="-125.771614,76.902176,-98.189178" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="5334558147889077771" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="13783262090503921163" name="Animation Layer">
+            <CCutsceneElementAnim guid="5415077261291822603" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="12082799342397088286" name="Archon Attack Beam side1.8" position="1.047859,1.042770,9.400446" scale="0.307583,0.559249,0.336598" rotation="-35.770821,76.901878,-98.189186" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="7912451660656861726" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11495794595705840158" name="Animation Layer">
+            <CCutsceneElementAnim guid="4736101849506439710" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11856200937609419549" name="Archon Attack Beam side2.1" position="-0.006386,-1.373985,9.383715" scale="0.307583,0.413182,0.336598" rotation="109.999748,-0.000697,-89.999847" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="7118305926504569629" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="9593736219788251029" name="Animation Layer">
+            <CCutsceneElementAnim guid="8169087583360847765" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="9975692252507917876" name="Archon Attack Beam side2.2" position="-0.006386,-1.373985,9.383715" scale="0.307583,0.413182,0.336598" rotation="90.000801,19.999790,-0.000289" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="5158972423879118388" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="13625891370040938036" name="Animation Layer">
+            <CCutsceneElementAnim guid="7573773762640334388" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="12122172632073502188" name="Archon Attack Beam side2.3" position="-0.006386,-1.373985,9.383715" scale="0.307583,0.413182,0.336598" rotation="70.000153,0.000920,-270.000183" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="6654957380577787372" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="9638782563970711020" name="Animation Layer">
+            <CCutsceneElementAnim guid="6009628249317178860" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="12889946192427448164" name="Archon Attack Beam side2.4" position="-0.006386,-1.373985,9.383715" scale="0.307583,0.413182,0.336598" rotation="89.999237,-19.999952,-180.000092" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="7870021784463570788" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11164987945105586020" name="Animation Layer">
+            <CCutsceneElementAnim guid="6865650618666153828" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="9290521687921446357" name="Archon Attack Beam side2.5" position="-0.006386,-1.062408,8.352610" scale="0.307583,0.559249,0.336598" rotation="79.510231,7.887906,-224.734894" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="5035378320827403733" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="12237344942080314837" name="Animation Layer">
+            <CCutsceneElementAnim guid="5407149684946816469" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="10288709997588643196" name="Archon Attack Beam side2.6" position="-0.006386,-1.062408,8.352610" scale="0.307583,0.559249,0.336598" rotation="97.745064,10.595190,-314.679291" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8011539902280236412" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11025244533201304956" name="Animation Layer">
+            <CCutsceneElementAnim guid="7841357733051235708" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="10688150813173851136" name="Archon Attack Beam side2.7" position="1.020500,-1.062393,9.412350" scale="0.307583,0.559249,0.336598" rotation="79.309593,7.612227,-223.247147" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8328845421154116608" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="13085627864475739136" name="Animation Layer">
+            <CCutsceneElementAnim guid="8547146832009470976" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="13125721569632079304" name="Archon Attack Beam side2.8" position="-0.034500,-1.062393,10.424037" scale="0.307583,0.559249,0.336598" rotation="82.255066,-10.595146,-134.679535" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8161788494232571336" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11465736518117248456" name="Animation Layer">
+            <CCutsceneElementAnim guid="4723370696487095752" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="12327128839000255472" name="Archon Attack Beam side3.1" position="-1.324184,0.002464,9.392937" scale="0.307583,0.413182,0.336598" rotation="90.001854,-70.000175,0.001948" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="6460954135508642800" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="9834665373311790064" name="Animation Layer">
+            <CCutsceneElementAnim guid="4642389455382342640" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="13085510261188503406" name="Archon Attack Beam side3.2" position="-1.324184,0.002464,9.392937" scale="0.307583,0.413182,0.336598" rotation="0.002632,-70.000275,0.002529" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8277706853385676654" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="10017622968560953198" name="Animation Layer">
+            <CCutsceneElementAnim guid="6686014052509669604" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="13476605950151237623" name="Archon Attack Beam side3.3" position="-1.324184,0.002464,9.392937" scale="0.307583,0.413182,0.336598" rotation="-89.996498,-70.000229,-359.997192" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="5105863072777379831" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="13621590070240616439" name="Animation Layer">
+            <CCutsceneElementAnim guid="7262120510034419703" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="13236292146702167993" name="Archon Attack Beam side3.4" position="-1.324184,0.002464,9.392937" scale="0.307583,0.413182,0.336598" rotation="-179.997391,-70.002106,-359.996979" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="5867741937518882745" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="13091367932816633785" name="Animation Layer">
+            <CCutsceneElementAnim guid="7255291823264477113" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="12665566375272511039" name="Archon Attack Beam side3.5" position="-1.012566,-1.028629,9.392954" scale="0.307583,0.559249,0.336598" rotation="-52.729649,-76.902649,-278.188782" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="5238688882416940607" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="12805701550299149887" name="Animation Layer">
+            <CCutsceneElementAnim guid="5951305097345496639" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="10459368584759035547" name="Archon Attack Beam side3.6" position="-1.012566,-1.028629,9.392954" scale="0.307583,0.559249,0.336598" rotation="35.770210,-76.902390,-278.189728" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="7203253422671349403" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="9529474904948295323" name="Animation Layer">
+            <CCutsceneElementAnim guid="7026373915873114005" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11714034977550407442" name="Archon Attack Beam side3.7" position="-1.012611,0.031105,10.419811" scale="0.307583,0.559249,0.336598" rotation="-54.228806,-76.901611,-278.189941" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8514647758205526383" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="10576111711006925167" name="Animation Layer">
+            <CCutsceneElementAnim guid="8253546212266516847" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="13144534177647806566" name="Archon Attack Beam side3.8" position="-1.012573,1.042770,9.364829" scale="0.307583,0.559249,0.336598" rotation="-144.229355,-76.901619,-278.190247" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="5515050660689463398" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11154034135527180390" name="Animation Layer">
+            <CCutsceneElementAnim guid="8252745506165213286" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="10820728371858715555" name="Archon Attack Beam bot.1" position="0.000999,0.016151,8.045029" scale="0.307583,0.413182,0.336598" rotation="160.000275,0.000768,-270.000488" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="5896764575648396195" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="13039215568792662947" name="Animation Layer">
+            <CCutsceneElementAnim guid="7489086084201062155" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="13659912713705091587" name="Archon Attack Beam bot.2" position="0.000999,0.016151,8.045029" scale="0.307583,0.413182,0.336598" rotation="180.306534,-19.915192,-179.896515" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8821215172350439939" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="13273860514607002115" name="Animation Layer">
+            <CCutsceneElementAnim guid="7402696523701285379" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11591896765333602541" name="Archon Attack Beam bot.3" position="0.000999,0.016151,8.045029" scale="0.307583,0.413182,0.336598" rotation="-160.000305,-0.000810,-90.000412" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8057402529156530413" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="12466902077472063409" name="Animation Layer">
+            <CCutsceneElementAnim guid="8058611128769265585" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11025302662960111423" name="Archon Attack Beam bot.4" position="0.000999,0.016151,8.045029" scale="0.307583,0.413182,0.336598" rotation="-179.978638,20.027426,0.664062" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8674437147964989247" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="13697047267698532159" name="Animation Layer">
+            <CCutsceneElementAnim guid="8120583720528240447" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="12067239307189703811" name="Archon Attack Beam bot.5" position="0.000999,-1.014942,8.356640" scale="0.307583,0.559249,0.336598" rotation="-169.510483,-7.887457,-44.735516" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="6962236081037923459" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11732598201632183427" name="Animation Layer">
+            <CCutsceneElementAnim guid="7678468383551804547" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="11675964408697364397" name="Archon Attack Beam bot.6" position="0.000999,-1.014942,8.356640" scale="0.307583,0.559249,0.336598" rotation="172.254852,-10.594567,-494.679626" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="7209607572326883245" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="11560410556601155730" name="Animation Layer">
+            <CCutsceneElementAnim guid="6704603970073215122" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="12668931734506497157" name="Archon Attack Beam bot.7" position="-1.025894,0.044792,8.356635" scale="0.307583,0.559249,0.336598" rotation="-169.309814,-7.612176,-43.247822" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="8341960502585255045" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="9967816188195530916" name="Animation Layer">
+            <CCutsceneElementAnim guid="8318682805345740964" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="13406489021062989186" name="Archon Attack Beam bot.8" position="0.029091,1.056458,8.356648" scale="0.307583,0.559249,0.336598" rotation="-172.254974,10.595111,45.320389" modelLink="ArchonAttackBeam" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,0.000000" teamColorEmissive="0.545100,0.062700,0.086100,0.000000">
+        <CCutsceneElementObject guid="5760073690756826498" duration="5000" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="10802309977082054018" name="Animation Layer">
+            <CCutsceneElementAnim guid="7228508487974798722" duration="5000" lockedToEnd="1" anim="Birth" priority="7" originalDuration="533" originalMoveSpeed="1000.000000" movespeed="1000.000000" fullMatchLegacy="1"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+</CutsceneState>
