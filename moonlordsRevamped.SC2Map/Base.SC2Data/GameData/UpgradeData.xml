@@ -939,9 +939,9 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Sever">
-        <EffectArray Reference="Effect,EviscerateSeverSet,Chance" Value="0.01"/>
-        <EffectArray Reference="Effect,EviscerateDMG,AttributeFactor[Heroic]" Value="0.1"/>
-        <EffectArray Reference="Effect,EviscerateDMG,AttributeFactor[Structure]" Value="0.1"/>
+        <EffectArray Reference="Effect,EviscerateSeverSet,Chance" Value="0.1"/>
+        <EffectArray Reference="Effect,EviscerateDMG,AttributeFactor[Heroic]" Value="0.15"/>
+        <EffectArray Reference="Effect,EviscerateDMG,AttributeFactor[Structure]" Value="0.15"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -955,7 +955,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Slash">
-        <EffectArray Reference="Effect,EciscerateSA,AreaArray[0].Radius" Value="0.25"/>
+        <EffectArray Reference="Effect,EviscerateSA,AreaArray[0].Radius" Value="0.25"/>
         <EffectArray Reference="Actor,EviscerateMissile,Scale" Value="0.250000"/>
         <EffectArray Reference="Actor,BladeHeroEviscerateQuad,Width" Value="0.250000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>

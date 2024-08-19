@@ -11,6 +11,7 @@
     <CButton id="Blood">
         <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-immortalchampionchargeexplode.dds"/>
         <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/ChargeText/Blood"/>
     </CButton>
     <CButton id="CancelInfusion">
         <Icon value="Assets\Textures\btn-command-cancel.dds"/>

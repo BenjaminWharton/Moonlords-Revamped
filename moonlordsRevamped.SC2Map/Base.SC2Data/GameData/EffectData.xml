@@ -1653,15 +1653,9 @@
         <BehaviorLink value="BloodStack"/>
         <Count value="100"/>
     </CEffectRemoveBehavior>
-    <CEffectModifyUnit id="BloodResetMU">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactUnit Value="Caster"/>
-        <Cost Abil="BloodUI,Execute" ChargeCountUse="100"/>
-    </CEffectModifyUnit>
     <CEffectSet id="BloodResetSet">
         <ValidatorArray value="Has100Blood"/>
         <EditorCategories value=""/>
-        <EffectArray value="BloodResetMU"/>
         <EffectArray value="BloodResetRB"/>
         <EffectArray value="BloodResetAB"/>
         <EffectArray value="BloodResetOrbitAB"/>
@@ -3150,19 +3144,22 @@
     </CEffectCreatePersistent>
     <CEffectDamage id="EviscerateDMG">
         <EditorCategories value="Race:Protoss"/>
-        <Amount value="4"/>
-        <ArmorReduction value="0.04"/>
+        <Amount value="40"/>
+        <ArmorReduction value="1"/>
         <Death value="Eviscerate"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="EviscerateLM">
         <EditorCategories value="Race:Protoss"/>
         <LaunchLocation Value="SourcePoint"/>
         <ImpactLocation Value="TargetPoint"/>
-        <PeriodicEffect value="EciscerateSA"/>
+        <PeriodicEffect value="EviscerateSA"/>
         <AmmoUnit value="EviscerateMissile"/>
         <LaunchEffect value="EviscerateMU"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
     </CEffectLaunchMissile>
-    <CEffectEnumArea id="EciscerateSA">
+    <CEffectEnumArea id="EviscerateSA">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="SourceUnitOrPoint"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
@@ -3183,6 +3180,7 @@
         <EffectArray value="BloodSwitch"/>
         <EffectArray value="EviscerateSeverSet"/>
         <EffectArray value="EviscerateDMG"/>
+        <ValidatorArray value="noMarkers"/>
     </CEffectSet>
     <CEffectDamage id="BladeStormDMG">
         <EditorCategories value="Race:Protoss"/>
@@ -3225,30 +3223,18 @@
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="Blood"/>
     </CEffectApplyBehavior>
-    <CEffectModifyUnit id="BloodHeroicMUStack">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactUnit Value="Caster"/>
-        <Cost Abil="BloodUI,Execute" ChargeCountUse="-5"/>
-    </CEffectModifyUnit>
-    <CEffectModifyUnit id="BloodMUStack">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactUnit Value="Caster"/>
-        <Cost Abil="BloodUI,Execute" ChargeCountUse="-1"/>
-    </CEffectModifyUnit>
     <CEffectApplyBehavior id="BloodHeroicAB">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="BloodHeroic"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BloodHeroicABStack">
-        <ValidatorArray index="0" removed="1"/>
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="BloodStack"/>
-        <Count value="5"/>
+        <Count value="25"/>
     </CEffectApplyBehavior>
     <CEffectSet id="BloodHeroicSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="BloodHeroicMUStack"/>
         <EffectArray value="BloodHeroicABStack"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
@@ -3260,27 +3246,20 @@
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="BloodStack"/>
-        <Count value="3"/>
+        <Count value="4"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BloodABStack">
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
         <Behavior value="BloodStack"/>
     </CEffectApplyBehavior>
-    <CEffectModifyUnit id="BloodMassiveMUStack">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactUnit Value="Caster"/>
-        <Cost Abil="BloodUI,Execute" ChargeCountUse="-3"/>
-    </CEffectModifyUnit>
     <CEffectSet id="BloodMassiveSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="BloodMassiveMUStack"/>
         <EffectArray value="BloodMassiveABStack"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
     <CEffectSet id="BloodSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="BloodMUStack"/>
         <EffectArray value="BloodABStack"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
@@ -3295,7 +3274,7 @@
         <Behavior value="Severed"/>
     </CEffectApplyBehavior>
     <CEffectCreateUnit id="EviscerateSeverCU">
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
         <CreateFlags index="Placement" value="0"/>
         <SpawnOwner Value="Target"/>

@@ -1239,6 +1239,7 @@
         <InfoIcon value="Assets\BladeStorm.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="15"/>
+        <MaxStackCount value="0"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ProbeCannon">
         <InfoIcon value="Assets\ProbeCannonEx2.dds"/>
@@ -1758,7 +1759,7 @@
     <CBehaviorBuff id="Severed">
         <InfoIcon value="Assets\Textures\btn-upgrade-protoss-fenix-zealotcleave.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Modification AttackSpeedMultiplier="0.5">
+        <Modification RadiusMultiplier="0.5" AttackSpeedMultiplier="0.5">
             <UnifiedDamageDealtFraction index="Spell" value="-0.5"/>
             <UnifiedDamageDealtFraction index="Melee" value="-0.5"/>
             <UnifiedDamageDealtFraction index="Ranged" value="-0.5"/>

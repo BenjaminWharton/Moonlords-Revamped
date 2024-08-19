@@ -7431,7 +7431,7 @@
             <LayoutButtons Face="BladeStorm" Type="AbilCmd" AbilCmd="BladeStorm,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="MLLeap" Type="AbilCmd" AbilCmd="MLLeap,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="Eviscerate" Type="AbilCmd" AbilCmd="Eviscerate,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="Blood" Type="AbilCmd" AbilCmd="BloodUI,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="Blood" Type="Passive" Row="2" Column="4"/>
             <LayoutButtons Face="Substitution" Type="AbilCmd" AbilCmd="Substitution,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="0.375"/>

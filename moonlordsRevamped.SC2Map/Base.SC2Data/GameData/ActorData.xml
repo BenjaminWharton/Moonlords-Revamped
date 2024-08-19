@@ -379,6 +379,16 @@
         <Color value="255,255,255,0"/>
         <Text value="Actor/Text/AnnihilatorDematerializationFieldIcon"/>
     </CActorText>
+    <CActorModel id="IllusionHeroFearless" parent="ModelAddition">
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.IllusionHeroFearless.On" Send="Create"/>
+        <On Terms="Behavior.IllusionHeroFearless.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor {15,30,80 5.000000}"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Model value="Trickery"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
     <CActorModel id="WarpGateWarpCast">
         <On Terms="Abil.WarpInReinforcements.SourceStart" Send="Create"/>
     </CActorModel>

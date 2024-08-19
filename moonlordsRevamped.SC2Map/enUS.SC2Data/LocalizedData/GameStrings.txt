@@ -1,6 +1,5 @@
 ﻿Abil/Name/BlackDeath=Black Death
 Abil/Name/BladeStorm=Blade Storm
-Abil/Name/BloodUI=Blood
 Abil/Name/Boil=Boil
 Abil/Name/Boulder=Boulder
 Abil/Name/CancelInfusion=Cancel Infusion
@@ -777,6 +776,7 @@ Behavior/Tooltip/WindInfused=Infused with the element of Wind.
 Behavior/Tooltip/Youfailed=Lol you thought you could snipe the last Hive?
 Behavior/Tooltip/Youfailedhidden=This unit can no longer be harmed.
 Behavior/Tooltip/Zephyr=This unit is slowed
+Button/ChargeText/Blood=<d ref="$BehaviorStackCount:BloodStack$"/>
 Button/ChargeText/ParticleHeroDematerialize=<s val="BInvisible"validator="ParticleHeroNoLeftover" ><d ref="$BehaviorStackCount:ParticleHeroLeftover$"/></s>
 Button/ChargeText/TwilightHeroWarpout=<s val="BInvisible"validator="TwilightHeroNoDistribute" ><d ref="$BehaviorStackCount:TwilightHeroDistribute$"/></s>
 Button/Name/AlteredTimeline=Altered Timeline
@@ -945,7 +945,7 @@ Button/Tooltip/BladeHero=For glory!
 Button/Tooltip/BladeStorm=Launch a missile that travels in a circular path towards the target point periodically dealing damage in a radius of <c val="FFFF80"><d ref="Effect,BladeStormSA,AreaArray[0].Radius" precision="1"/></c>.
 Button/Tooltip/BladeStormUnit=
 Button/Tooltip/Blastwave=Instantly hits all enemy units in the target area for <c val="FFFF80"><d ref="Effect,FireHeroBlastwaveDMG,Amount"/></c> damage while slowing and stunning them.
-Button/Tooltip/Blood=Gain <c val="FFFF80">1</c> Blood and heal <c val="FFFF80"><d ref="Effect,BloodDeathHeal,VitalArray[Life].ChangeFraction*100" precision="1"/>%</c> max health when enemies affected by your abilities die. Massive units give <c val="FFFF80">2</c> extra Blood and heroic units give <c val="FFFF80">4</c> extra Blood.<n/><n/>When <c val="FFFF80">100</c> Blood is gained, Blood count is reset, Substitution is cast for free, and you are healed for <c val="FFFF80"><d ref="Effect,BloodResetHeal,VitalArray[Life].Change*80"/></c> health over <c val="FFFF80">10</c> seconds.
+Button/Tooltip/Blood=Gain <c val="FFFF80">1</c> Blood and heal <c val="FFFF80"><d ref="Effect,BloodDeathHeal,VitalArray[Life].ChangeFraction*100" precision="1"/>%</c> max health when enemies affected by your abilities die. Massive units give <c val="FFFF80"><d ref="Effect,BloodMassiveABStack,Count"/></c> Blood and heroic units give <c val="FFFF80"><d ref="Effect,BloodHeroicABStack,Count"/></c> Blood.<n/><n/>When <c val="FFFF80">100</c> Blood is gained, Blood count is reset, Substitution is cast for free, and you are healed for <c val="FFFF80"><d ref="Effect,BloodResetHeal,VitalArray[Life].Change*80"/></c> health over <c val="FFFF80">10</c> seconds.
 Button/Tooltip/Boil=Deal <c val="FFFF80"><d ref="Effect,BoilDMG,Amount"/></c> damage to enemies within a radius of <c val="FFFF80"><d ref="Effect,BoilSA,AreaArray[0].Radius" precision="1"/></c> around the target area.<n/><n/>Enemies that are soaked will be applied with Scalded, which deals <c val="FFFF80"><d ref="Effect,ScaldedDMG,Amount*4"/></c> dps per stack for <c val="FFFF80"><d ref="Behavior,ScaldedBase,Duration"/></c> seconds.<n/><n/>Scalded enemies gain another stack each time they get soaked, stacking up to <c val="FFFF80"><d ref="Behavior,ScaldedStack,MaxStackCount"/></c> times.
 Button/Tooltip/Boulder=Roll a Boulder towards the target location that deals <c val="FFFF80"><d ref="Effect,BoulderDMG,Amount*16"/></c> damage per second within a radius of <c val="FFFF80"><d ref="Effect,BoulderSA,AreaArray[0].Radius" precision="1"/></c> to enemies that it passes through.
 Button/Tooltip/BoulderY=Roll a Boulder towards the target location.
@@ -998,7 +998,7 @@ Button/Tooltip/EverlastingStormU=
 Button/Tooltip/EverlastingStormUp=
 Button/Tooltip/EverlastingStormUpg=
 Button/Tooltip/EverlastingStormUpgr=
-Button/Tooltip/Eviscerate=Launch a missile towards the target point that periodically deals damage in a radius of <c val="FFFF80"><d ref="Effect,EciscerateSA,AreaArray[0].Radius" precision="2"/></c>
+Button/Tooltip/Eviscerate=Launch a missile towards the target point that periodically deals damage in a radius of <c val="FFFF80"><d ref="Effect,EviscerateSA,AreaArray[0].Radius" precision="2"/></c>
 Button/Tooltip/Eviserate=
 Button/Tooltip/EvolutionLord=Generates two Spawns of Dehaka that deal 100% normal damage but have 50% life. Spawns last <d time="30"/>.
 Button/Tooltip/Expel=Deal <c val="FFFF80"><d ref="Effect,NatureHeroExpelDMG,Amount"/></c> damage to enemies within a radius of <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelRadiusBase,Amount"/></c> around your hero and slow them by <c val="FFFF80"><d ref="1-Behavior,Tangled,Modification.MoveSpeedMultiplier*100" precision="1"/>%</c> for <c val="FFFF80"><d ref="Behavior,Tangled,Duration"/></c> seconds<n/><n/>Casting <c val="FFFF80">Expel</c> adds <c val="FFFF80"><d ref="Effect,AddRenewComboPowerCP,PeriodCount" precision="1"/></c> combo power to <c val="FFFF80">Renew</c></c><n/><n/>Each combo power increases the damage area by <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelRadiusMultiplier,Amount" precision="1"/></c>, damage by <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelDamageMultiplier,Amount*100"/>%</c> and health cost by <c val="FFFF80"><d ref="Effect,NatureHeroExpelCostUpCP,PeriodCount*25"/></c> for the next <c val="FFFF80">Expel</c> cast<n/><n/>Casting <c val="FFFF80">Expel</c> consumes all stacks
@@ -1760,6 +1760,8 @@ DocInfo/PatchNote511=  - Overload is now triggered after 5 Distortion hits inste
 DocInfo/PatchNote512=  - Can now have up to 5 Holo Shields
 DocInfo/PatchNote513=  - Increased Holo Shield base hp but reduced its reward scaling
 DocInfo/PatchNote514=  - Altered Distend, Aegis, Shroud, Network, Fearless and Assassinate
+DocInfo/PatchNote515=- Blade Hero
+DocInfo/PatchNote516=  - Orbit now stacks
 DocInfo/Screenshot01=Reward points carry over to subsequent games and can be beneficial in a variety of ways.
 DocInfo/Screenshot02=Standing near a Pylon enables you to teleport to any other base.
 DocInfo/Screenshot05=Spend talent points to increase your power.
@@ -2068,17 +2070,13 @@ Effect/Name/BloodFanaticalLeapIncrease=Blood Fanatical
 Effect/Name/BloodFanaticalStartSet=Blood Fanatical
 Effect/Name/BloodHeroicAB=Blood Heroic
 Effect/Name/BloodHeroicABStack=Blood Heroic
-Effect/Name/BloodHeroicMUStack=Blood Heroic
 Effect/Name/BloodHeroicSet=Blood Heroic
-Effect/Name/BloodMUStack=Blood
 Effect/Name/BloodMassiveAB=Blood Massive
 Effect/Name/BloodMassiveABStack=Blood Massive
-Effect/Name/BloodMassiveMUStack=Blood Massive
 Effect/Name/BloodMassiveSet=Blood Massive
 Effect/Name/BloodResetAB=Blood Reset
 Effect/Name/BloodResetFurorAB=Blood Reset Furor
 Effect/Name/BloodResetHeal=Blood Reset
-Effect/Name/BloodResetMU=Blood Reset
 Effect/Name/BloodResetOrbitAB=Blood Reset Orbit
 Effect/Name/BloodResetRB=Blood Reset
 Effect/Name/BloodResetSet=Blood Reset
@@ -2321,7 +2319,6 @@ Effect/Name/EasyAreaKill=EasyAreaKill
 Effect/Name/EasyAreaKillSearch=EasyAreaKillSearch
 Effect/Name/EasyDefenseRemove=EasyDefenseRemove
 Effect/Name/Easydefenseset=Easydefenseset
-Effect/Name/EciscerateSA=Eciscerate
 Effect/Name/ElementalHeroInfuseEarthSet=Elemental Hero - Infuse Earth (Set)
 Effect/Name/EmergencyRecallHeal=Emergency Recall
 Effect/Name/EmergencyRecallSet=Emergency Recall
@@ -2381,6 +2378,7 @@ Effect/Name/EviscerateCP=Eviscerate
 Effect/Name/EviscerateDMG=Eviscerate
 Effect/Name/EviscerateLM=Eviscerate
 Effect/Name/EviscerateMU=Eviscerate
+Effect/Name/EviscerateSA=Eviscerate
 Effect/Name/EviscerateSet=Eviscerate
 Effect/Name/EviscerateSeverAB=Eviscerate Sever
 Effect/Name/EviscerateSeverCU=Eviscerate Sever
@@ -4570,6 +4568,7 @@ Param/Value/0575CF0A=x1
 Param/Value/05A82FB5=Mobile Nydusworm
 Param/Value/05CAB118=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/05E1AAD1=A Rock Lord has been spawned by the Mind Lord.
+Param/Value/06057DEF=normal win in less than 
 Param/Value/06590F36=Monsoon 0/1
 Param/Value/068A203D=Whenever an enemy triggers Static Charge they will permanently deal 5% less damage to the Lightning Hero, stacking up to 30 times (multiplicative)
 Param/Value/06AAD9C9=Help other players gain <c val="FF0000">1000</c>,<c val="FF8000">500</c>,<c val="FFFF00">250</c>,<c val="00FF00">125</c>,<c val="0000FF">50</c> achievements
@@ -4588,6 +4587,7 @@ Param/Value/07FEEF72=Minerals and Rich minerals have a 4/8% chance to apply thei
 Param/Value/081B4D68=Increase health/shields healed by 100/200/300
 Param/Value/087597F9=When a target hit by your Twilight Cannon dies you gain 0/1/2/3 Energy per Second for 15 seconds.
 Param/Value/08942AF7=New Quest: 
+Param/Value/08A1627F=easy win in less than 
 Param/Value/08ACDE90=Upgrades 
 Param/Value/08B8E897=You have not enabled this hero.
 Param/Value/090B621C=Each stack of Power Drain increases shield maximum by 0/50 and shield regeneration 0/1
@@ -5299,6 +5299,7 @@ Param/Value/5BFDC7EB=Pool destroyed.<n/>
 Param/Value/5C16AE15=Stability 0/3
 Param/Value/5C335A7D=Pool drained!<n/>Reward: +100% bonus xp from killing Zerglings!
 Param/Value/5C447203=A powerful warrior who possesses the ability to make or break material bonds.<n/><n/>To enable this hero you have to complete the game on normal or higher
+Param/Value/5C4F84DD=Insane win in less than 
 Param/Value/5C501B7A=A Sky Lord has spawned.
 Param/Value/5C7717B4=A Dread Lord has spawned.
 Param/Value/5C87DA11=Guardian
@@ -5929,6 +5930,7 @@ Param/Value/A982C084=Leftover 0/1
 Param/Value/A98D56A4=Increase sight radius by 4/8 and reduce shield regeneration delay by 25/50%
 Param/Value/A9A22F62=Increases energy supply for the cannon: impact radius +0/33/66%
 Param/Value/A9A69446=Phantom 0/1
+Param/Value/A9A8DA2C=Legendary win in less than 
 Param/Value/A9C63A25=Structure Attack Speed +
 Param/Value/A9D2B39B=Residue 0/2
 Param/Value/A9F65EA2=Network 0/2
@@ -5973,7 +5975,7 @@ Param/Value/AE4EE13A=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s
 Param/Value/AE776B2D=Adds 2/4 more lines to Upheaval, but increases the energy cost by 10/20<n/>Requires level 10+
 Param/Value/AE7873AB=Capacity 0/4
 Param/Value/AEA1AB0E=Warpgate 0/3
-Param/Value/AED7498D=Increase Blade Storm duration by 50/100%
+Param/Value/AED7498D=Increase Blade Storm duration by 33/66%
 Param/Value/AEFC34B5=Frost 0/2
 Param/Value/AF510837=You have not enabled this hero.
 Param/Value/AF78B136=Gain a 50/100% per Orb used on impact  to summon a mini Vitality Orb which will heal surrounding allies for 15 seconds and create a Vitality explosion on death.<n/><n/>Additionally enemies or allies hit by a Vitality explosion have 2/4% to summon 1 Mini Vitality Orb
@@ -6156,7 +6158,7 @@ Param/Value/C619A4CB=/
 Param/Value/C62AE8EB=Evolution complete
 Param/Value/C62C1DC9=Selfdestruct in 
 Param/Value/C638ED24=Burst 0/1
-Param/Value/C647C19A=1/2/3% chance for a non heroic enemy unit to be cut in half when damaged by Eviscerate. Enemies that are cut in half will split into two units of the same type and have greatly reduced stats.<n/><n/>Deal 10/20/30% extra damage to units that cannot be cut in half
+Param/Value/C647C19A=Gain a 10/20/30% chance for a non heroic enemy unit to be cut in half when damaged by Eviscerate. Enemies that are cut in half will split into two units of the same type and have greatly reduced stats.<n/><n/>Deal 15/30/45% extra damage to units that cannot be cut in half
 Param/Value/C64EA804=Unit Energy Maximum +
 Param/Value/C657F1FF=An Infection Lord has been spawned by the Mind Lord.
 Param/Value/C65CA7AB=Endless 0/3
@@ -6301,6 +6303,7 @@ Param/Value/D8532154=h:
 Param/Value/D875C7D6=Allied units or structures in the initial cast area of Exploder will explode on death. (only positive talents apply)
 Param/Value/D88137C1=A Parasite Lord has been spawned by the Mind Lord.
 Param/Value/D88DF10C=Havoc Orb launches and returns will periodically (Alacrity improves this) leave behind Havoc Wisps which will follow your hero and strike nearby enemies with lightning<n/><n/>Self destructs once it has attacked 2 times or after 20 seconds have passed
+Param/Value/D8AECE0C=hard win in less than 
 Param/Value/D8B46491=Blue and yellow spires are connected - kill one and the other will fall as well - Blue indicated spires die much easier.
 Param/Value/D8FA54AB=Warning
 Param/Value/D9018F10=no Thor today
