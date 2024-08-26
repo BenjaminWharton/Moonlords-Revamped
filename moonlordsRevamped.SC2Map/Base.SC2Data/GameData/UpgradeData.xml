@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CUpgrade id="Absorb">
-        <EffectArray Reference="Effect,BloodResetHeal,VitalArray[Life].Change" Value="2.5"/>
-        <EffectArray Reference="Effect,BloodDeathHeal,VitalArray[Life].ChangeFraction" Value="0.001"/>
+        <EffectArray Reference="Effect,BloodDeathHeal,VitalArray[Life].Change" Value="2.5"/>
+        <EffectArray Reference="Effect,BloodMassiveDeathHeal,VitalArray[Life].Change" Value="10"/>
+        <EffectArray Reference="Effect,BloodHeroicDeathHeal,VitalArray[Life].Change" Value="62.5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -162,6 +163,10 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
+    <CUpgrade id="BladeHeroDecapitate">
+        <EffectArray Operation="Set" Reference="Effect,BladeHeroLeapDecapitateInit,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
     <CUpgrade id="Blitz">
         <EffectArray Reference="Effect,ProbeCannonBlitzOffset,PeriodCount" Value="5"/>
         <EffectArray Reference="Effect,ProbeCannonAllyTailgunOffset,PeriodCount" Value="5"/>
@@ -307,12 +312,12 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Crash">
-        <EffectArray Reference="Effect,MLLeapCrashSA,AreaArray[0].Radius" Value="0.5"/>
+        <EffectArray Reference="Effect,BladeHeroLeapCrashSA,AreaArray[0].Radius" Value="0.5"/>
         <EffectArray Reference="Effect,MLLeapHeroDMG,Amount" Value="50"/>
         <EffectArray Reference="Actor,MLLeapImpactKBImpact,Scale" Value="0.230000"/>
         <EffectArray Reference="Actor,LeapImpactKBImpact2,Scale" Value="0.110000"/>
         <EffectArray Reference="Actor,MLLeapImpactKBImpact3,Scale" Value="0.700000"/>
-        <EffectArray Operation="Set" Reference="Effect,MLLeapCrashSA,AreaArray[0].MaxCount" Value="4294967295"/>
+        <EffectArray Operation="Set" Reference="Effect,BladeHeroLeapCrashSA,AreaArray[0].MaxCount" Value="4294967295"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -347,7 +352,7 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Desolation">
-        <EffectArray Reference="Effect,MLLeapInitImpactSA,AreaArray[0].Radius" Value="0.5"/>
+        <EffectArray Reference="Effect,BladeHeroLeapImpactSA,AreaArray[0].Radius" Value="0.5"/>
         <EffectArray Reference="Actor,MLLeapImpact,Scale" Value="0.250000"/>
         <EffectArray Reference="Actor,MLLeapImpact2,Scale" Value="0.125000"/>
         <EffectArray Reference="Actor,MLLeapImpact3,Scale" Value="0.830000"/>
@@ -544,6 +549,7 @@
     <CUpgrade id="Excaliber">
         <EffectArray Reference="Effect,EviscerateCP,PeriodCount" Value="1"/>
         <EffectArray Reference="Effect,SubstitutionFrenzyCP,PeriodCount" Value="1"/>
+        <EffectArray Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -553,9 +559,9 @@
     </CUpgrade>
     <CUpgrade id="Fanatical">
         <EffectArray Operation="Set" Reference="Effect,BloodFanaticalAB,Chance" Value="1"/>
-        <EffectArray Reference="Behavior,Fanatical,Duration" Value="4.000000"/>
+        <EffectArray Reference="Behavior,Fanatical,Duration" Value="5.000000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Fence">
         <EffectArray Operation="Subtract" Reference="Behavior,Fenced,Modification.MoveSpeedMultiplier" Value="0.25"/>
@@ -942,6 +948,7 @@
         <EffectArray Reference="Effect,EviscerateSeverSet,Chance" Value="0.1"/>
         <EffectArray Reference="Effect,EviscerateDMG,AttributeFactor[Heroic]" Value="0.15"/>
         <EffectArray Reference="Effect,EviscerateDMG,AttributeFactor[Structure]" Value="0.15"/>
+        <EffectArray Reference="Effect,BladeHeroLeapDecapitateSet,Chance" Value="0.2"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -984,7 +991,7 @@
     <CUpgrade id="Spring">
         <EffectArray Operation="Set" Reference="Effect,MLLeapSpringLM,Chance" Value="1"/>
         <EffectArray Operation="Set" Reference="Effect,MLLeapLM,Chance" Value="0"/>
-        <EffectArray Reference="Abil,MLLeap,Range[0]" Value="2"/>
+        <EffectArray Reference="Abil,BladeHeroLeap,Range[0]" Value="2"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="StaticEnergy">

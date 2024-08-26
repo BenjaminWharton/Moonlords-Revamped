@@ -498,6 +498,7 @@
     </CButton>
     <CButton id="Substitution">
         <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-stasisfield.dds"/>
+        <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="Trickery">
         <Icon value="Assets\TrickeryEx2.dds"/>

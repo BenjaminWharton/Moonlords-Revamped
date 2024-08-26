@@ -5037,36 +5037,6 @@ void gf_achievementsforplayer (int lp_player, int lp_achievement) {
 void gf_achievementretroadd (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
-    if (((PlayerHandle(lp_player) == "2-S2-1-798311") || (PlayerHandle(lp_player) == "2-S2-1-253101") || (PlayerHandle(lp_player) == "2-S2-1-1941189") || (PlayerHandle(lp_player) == ""))) {
-        while ((gf_achievementgetlevel(lp_player, 5) < 5)) {
-            gf_achievementnew(lp_player, 5);
-        }
-    }
-
-    if (((PlayerHandle(lp_player) == "2-S2-1-1718559") || (PlayerHandle(lp_player) == "2-S2-1-1278768") || (PlayerHandle(lp_player) == "2-S2-1-365493") || (PlayerHandle(lp_player) == "2-S2-1-798311") || (PlayerHandle(lp_player) == ""))) {
-        while ((gf_achievementgetlevel(lp_player, 4) < 5)) {
-            gf_achievementnew(lp_player, 4);
-        }
-    }
-
-    if (((PlayerHandle(lp_player) == "2-S2-1-1718559") || (PlayerHandle(lp_player) == "2-S2-1-1941189") || (PlayerHandle(lp_player) == "2-S2-1-411582") || (PlayerHandle(lp_player) == ""))) {
-        while ((gf_achievementgetlevel(lp_player, 3) < 5)) {
-            gf_achievementnew(lp_player, 3);
-        }
-    }
-
-    if (((PlayerHandle(lp_player) == "2-S2-1-1278768") || (PlayerHandle(lp_player) == "2-S2-1-798311") || (PlayerHandle(lp_player) == "2-S2-1-1929059") || (PlayerHandle(lp_player) == ""))) {
-        while ((gf_achievementgetlevel(lp_player, 2) < 5)) {
-            gf_achievementnew(lp_player, 2);
-        }
-    }
-
-    if (((PlayerHandle(lp_player) == "2-S2-1-1278768") || (PlayerHandle(lp_player) == "2-S2-1-798311") || (PlayerHandle(lp_player) == "2-S2-1-1929059") || (PlayerHandle(lp_player) == ""))) {
-        while ((gf_achievementgetlevel(lp_player, 1) < 5)) {
-            gf_achievementnew(lp_player, 1);
-        }
-    }
-
 }
 
 trigger auto_gf_upgradebuttonflasher_Trigger = null;
@@ -6371,6 +6341,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialogbuttons[2][2][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 475, 250, StringExternal("Param/Value/CB7C00E5"), StringExternal("Param/Value/A649F7D2"), "");
     gv_talentsdialogbuttons[3][2][lv_i] = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 475, 300, StringExternal("Param/Value/C59F7E08"), StringExternal("Param/Value/842617C5"), "");
+    gv_talentsdialogbuttons[4][2][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 475, 350, StringExternal("Param/Value/3F999B07"), StringExternal("Param/Value/BF0E6E80"), "");
     gv_talentsdialogbuttons[5][2][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 700, 100, StringExternal("Param/Value/F7D4BB43"), StringExternal("Param/Value/361D87E0"), "");
@@ -9720,6 +9692,12 @@ void gf_TalentPressedBladeHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         TechTreeUpgradeAddLevel(lv_pn, "Excaliber", 1);
         libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Excaliber ")+IntToText(TechTreeUpgradeCount(lv_pn, "Excaliber", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
         gv_talentpointsavailable[lv_player] -= 1;
+        if ((UnitBehaviorCount(gv_hero[lv_player], "Fanatical") > 0)) {
+            UnitCreateEffectUnit(gv_hero[lv_player], "BladeHeroBloodFanaticalEvisStartSwitch", gv_hero[lv_player]);
+        }
+        else {
+            UnitCreateEffectUnit(gv_hero[lv_player], "BladeHeroBloodFanaticalEvisEndSwitch", gv_hero[lv_player]);
+        }
     }
 
     if ((lv_buttonnumber == 0) && (lv_buttonrow == 1) && (TechTreeUpgradeCount(lv_pn, "Broaden", c_techCountQueuedOrBetter) < 3)) {
@@ -9776,6 +9754,12 @@ void gf_TalentPressedBladeHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
+    if ((lv_buttonnumber == 4) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BladeHeroDecapitate", c_techCountQueuedOrBetter) < 1)) {
+        TechTreeUpgradeAddLevel(lv_pn, "BladeHeroDecapitate", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Decapitate ")+IntToText(TechTreeUpgradeCount(lv_pn, "BladeHeroDecapitate", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
     if ((lv_buttonnumber == 5) && (lv_buttonrow == 2) && (gf_Currentlevel() >= 10) && (TechTreeUpgradeCount(lv_pn, "Hurdle", c_techCountQueuedOrBetter) < 1)) {
         TechTreeUpgradeAddLevel(lv_pn, "Hurdle", 1);
         libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Hurdle ")+IntToText(TechTreeUpgradeCount(lv_pn, "Hurdle", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
@@ -9824,9 +9808,9 @@ void gf_TalentPressedBladeHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    if ((lv_buttonnumber == 5) && (lv_buttonrow == 4) && (gf_Currentlevel() >= 10) && (TechTreeUpgradeCount(lv_pn, "Fanatical", c_techCountQueuedOrBetter) < 3)) {
+    if ((lv_buttonnumber == 5) && (lv_buttonrow == 4) && (gf_Currentlevel() >= 10) && (TechTreeUpgradeCount(lv_pn, "Fanatical", c_techCountQueuedOrBetter) < 2)) {
         TechTreeUpgradeAddLevel(lv_pn, "Fanatical", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Fanatical ")+IntToText(TechTreeUpgradeCount(lv_pn, "Fanatical", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Fanatical ")+IntToText(TechTreeUpgradeCount(lv_pn, "Fanatical", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
@@ -19669,6 +19653,91 @@ bool gt_pickhero_Func (bool testConds, bool runActions) {
         lv_spawnpoint = Point(239.0, 8.0);
     }
 
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[4]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "1", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/62E2BE6C"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[5]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/536DA636"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[7]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/59B13B34"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[6]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/AF510837"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[3]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/AC6CC410"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[8]) && (gf_achievementpointsum(EventPlayer()) < 100)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/08B8E897"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[9]) && (gf_achievementpointsum(EventPlayer()) < 125)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/10947E28"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[10]) && (gf_achievementpointsum(EventPlayer()) < 150)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/74FEE002"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[11]) && ((gf_achievementpointsum(EventPlayer()) < 300) || ((gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)))) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/280D5965"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[12]) && ((gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0) || (gf_achievementpointsum(EventPlayer()) < 350))) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/A5DC3960"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[13]) && (gf_achievementpointsum(EventPlayer()) < 175)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/1E87993F"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[14]) && (gf_achievementpointsum(EventPlayer()) < 275)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/C95EDE74"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[15]) && (gf_achievementpointsum(EventPlayer()) < 200)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/FDC6A25A"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[16]) && (gf_achievementpointsum(EventPlayer()) < 250)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/BDB04A9D"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[17]) && (gf_achievementpointsum(EventPlayer()) < 50)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/6CD79BE3"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[18]) && (gf_achievementpointsum(EventPlayer()) < 225)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/8834EE6F"));
+        return true;
+    }
+
+    if ((EventDialogControl() == gv_zheropickdialogbuttons[19]) && (gf_achievementpointsum(EventPlayer()) < 75)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/EF43D47F"));
+        return true;
+    }
+
     DialogSetVisible(DialogControlGetDialog(EventDialogControl()), PlayerGroupSingle(EventPlayer()), false);
     if ((EventDialogControl() == gv_zheropickdialogbuttons[0])) {
         UnitCreate(1, "FireHero", 0, EventPlayer(), lv_spawnpoint, 270.0);
@@ -23918,7 +23987,7 @@ bool gt_LeapCastHurdle_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_LeapCastHurdle_Init () {
     gt_LeapCastHurdle = TriggerCreate("gt_LeapCastHurdle_Func");
-    TriggerAddEventUnitAbility(gt_LeapCastHurdle, null, AbilityCommand("MLLeap", 0), c_abilEffectStageCast, false);
+    TriggerAddEventUnitAbility(gt_LeapCastHurdle, null, AbilityCommand("BladeHeroLeap", 0), c_abilEffectStageCast, false);
 }
 
 //--------------------------------------------------------------------------------------------------

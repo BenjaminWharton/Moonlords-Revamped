@@ -8,6 +8,182 @@
         <AreaArray Radius="1.5" Fraction="1"/>
         <RevealerParams DetectFilters="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
+    <CEffectModifyPlayer id="BladeHeroBloodFanaticalEvisDecreaseEx2">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="12.5"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BladeHeroBloodFanaticalEvisIncreaseEx1">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="20"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BladeHeroBloodFanaticalEvisIncreaseEx2">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="25"/>
+    </CEffectModifyPlayer>
+    <CEffectSwitch id="BladeHeroBloodFanaticalEvisStartSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="BladeHeroExcaliburLvl1" Effect="BladeHeroBloodFanaticalEvisDecreaseEx1"/>
+        <CaseArray Validator="BladeHeroExcaliburLvl2" Effect="BladeHeroBloodFanaticalEvisDecreaseEx2"/>
+        <CaseDefault value="BloodFanaticalEvisDecrease"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="BladeHeroBloodFanaticalEvisEndSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="BladeHeroExcaliburLvl1" Effect="BladeHeroBloodFanaticalEvisIncreaseEx1"/>
+        <CaseArray Validator="BladeHeroExcaliburLvl2" Effect="BladeHeroBloodFanaticalEvisIncreaseEx2"/>
+        <CaseDefault value="BloodFanaticalEvisIncrease"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="BladeHeroBloodHPAB10">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BladeHeroBloodHP"/>
+        <Count value="10"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="BladeHeroBloodHPAB5">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BladeHeroBloodHP"/>
+        <Count value="5"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="BladeHeroBloodHPAB2">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BladeHeroBloodHP"/>
+        <Count value="2"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="BladeHeroBloodHPSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="BladeHeroBloodHPLT500" Effect="BladeHeroBloodHPAB10"/>
+        <CaseArray Validator="BladeHeroBloodHPLT1000" Effect="BladeHeroBloodHPAB5"/>
+        <CaseDefault value="BladeHeroBloodHPAB2"/>
+    </CEffectSwitch>
+    <CEffectUserData id="BladeHeroLeapDistanceDataDec">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="LeapDistance"/>
+        <Amount value="0.25"/>
+        <SourceKey value="LeapDistance"/>
+        <Operation value="Subtract"/>
+        <ValidateMax value="500000"/>
+        <EffectSuccess value="BladeHeroLeapDistanceSwitch"/>
+        <EffectFailure value="BladeHeroLeapDistanceTarget"/>
+    </CEffectUserData>
+    <CEffectUserData id="BladeHeroLeapDistanceDataInit">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="LeapDistance"/>
+        <Amount value="0">
+            <AccumulatorArray value="DistanceFromCasterUnittoTargetPoint"/>
+        </Amount>
+        <SourceKey value="LeapDistance"/>
+        <Operation value="Set"/>
+    </CEffectUserData>
+    <CEffectSet id="BladeHeroLeapDecapitateInit">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <EffectArray value="BladeHeroLeapDecapitateSet"/>
+    </CEffectSet>
+    <CEffectSet id="BladeHeroLeapDecapitateSet">
+        <ValidatorArray value="NotSevered"/>
+        <ValidatorArray value="NotHeroicAndNotStructure"/>
+        <ValidatorArray value="NotHover"/>
+        <ValidatorArray value="NotMechanical"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0.4"/>
+        <EffectArray value="EviscerateSeverAB"/>
+        <EffectArray value="BladeHeroLeapDecapitateCU"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="BladeHeroLeapDistanceOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="BladeHeroLeapDistanceDataDec"/>
+        <PeriodicOffsetArray value="0,-0.25,0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="BladeHeroLeapDistanceOffsetBack">
+        <EditorCategories value="Race:Protoss"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="BladeHeroLeapSwitch"/>
+        <PeriodicOffsetArray value="0,0.25,0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="BladeHeroLeapDistanceOffsetStart">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="OriginPoint"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <InitialEffect value="BladeHeroLeapDistanceOffset"/>
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="BladeHeroLeapDistanceSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="LeapTravelValidation" Effect="BladeHeroLeapDistanceOffsetBack"/>
+        <CaseDefault value="BladeHeroLeapDistanceOffset"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSwitch>
+    <CEffectCreatePersistent id="BladeHeroLeap">
+        <EditorCategories value="Race:Protoss"/>
+        <InitialEffect value="BladeHeroLeapDistanceDataInit"/>
+        <FinalEffect value="BladeHeroLeapDistanceOffsetStart"/>
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="BladeHeroLeapDistanceEndSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="LeapTravelValidation" Effect="BladeHeroLeapDistanceOffsetBack"/>
+        <CaseDefault value="BladeHeroLeapSwitch"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSwitch>
+    <CEffectCreatePersistent id="BladeHeroLeapDistanceTarget">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Effect="BladeHeroLeap"/>
+        <InitialEffect value="BladeHeroLeapDistanceEndSwitch"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="BladeHeroLeapKBAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="BladeHeroLeapKB"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="BladeHeroLeapKBRB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="BladeHeroLeapKB"/>
+    </CEffectRemoveBehavior>
+    <CEffectModifyPlayer id="BladeHeroBloodFanaticalEvisDecreaseEx1">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="10"/>
+    </CEffectModifyPlayer>
+    <CEffectIssueOrder id="BladeHeroLeapOrder">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="stop"/>
+        <Player Value="Caster"/>
+    </CEffectIssueOrder>
+    <CEffectModifyUnit id="BloodMassiveDeathHeal">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <Change value="30"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="BloodHeroicDeathHeal">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <Change value="187.5"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectCreateUnit id="BladeHeroLeapDecapitateCU">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnOwner Value="Target"/>
+        <SpawnEffect value="BladeHeroLeapDecapitateCUSet"/>
+        <TypeFallbackUnit Value="Target"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="BladeHeroLeapDecapitateCUSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BloodSwitch"/>
+        <EffectArray value="EviscerateSeverAB"/>
+        <EffectArray value="EviscerateSeverMU50"/>
+        <EffectArray value="BladeHeroLeapKBOffset"/>
+        <EffectArray value="MLLeapHeroDMG"/>
+        <EffectArray value="ApplyUnitWasStunned"/>
+    </CEffectSet>
     <CEffectApplyKinetic id="FollowCasterAK">
         <EditorCategories value="Race:Protoss"/>
         <Kinetic value="FollowCaster"/>
@@ -1570,7 +1746,7 @@
         <EditorCategories value="Race:Protoss"/>
         <ImpactUnit Value="Caster"/>
         <VitalArray index="Life">
-            <ChangeFraction value="0.002"/>
+            <Change value="7.5"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectApplyBehavior id="BloodFanaticalAB">
@@ -1582,7 +1758,7 @@
     <CEffectModifyPlayer id="BloodFanaticalLeapDecrease">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/BloodFanaticalEvisDecrease"/>
-        <EffectArray Operation="Set" Reference="Abil,MLLeap,Cost[0].Vital[Energy]" Value="25"/>
+        <EffectArray Operation="Set" Reference="Abil,BladeHeroLeap,Cost[0].Vital[Energy]" Value="25"/>
     </CEffectModifyPlayer>
     <CEffectModifyPlayer id="BloodFanaticalBladeIncrease">
         <EditorCategories value="Race:Protoss"/>
@@ -1591,14 +1767,14 @@
     </CEffectModifyPlayer>
     <CEffectSet id="BloodFanaticalEndSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="BloodFanaticalEvisIncrease"/>
+        <EffectArray value="BladeHeroBloodFanaticalEvisEndSwitch"/>
         <EffectArray value="BloodFanaticalBladeIncrease"/>
         <EffectArray value="BloodFanaticalLeapIncrease"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
     <CEffectModifyPlayer id="BloodFanaticalEvisDecrease">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray Operation="Set" Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="10"/>
+        <EffectArray Operation="Set" Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="7.5"/>
     </CEffectModifyPlayer>
     <CEffectModifyPlayer id="BloodFanaticalBladeDecrease">
         <EditorCategories value="Race:Protoss"/>
@@ -1607,40 +1783,26 @@
     </CEffectModifyPlayer>
     <CEffectModifyPlayer id="BloodFanaticalEvisIncrease">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray Operation="Set" Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="20"/>
+        <EffectArray Operation="Set" Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="15"/>
     </CEffectModifyPlayer>
     <CEffectModifyPlayer id="BloodFanaticalLeapIncrease">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/BloodFanaticalEvisDecrease"/>
-        <EffectArray Operation="Set" Reference="Abil,MLLeap,Cost[0].Vital[Energy]" Value="50"/>
+        <EffectArray Operation="Set" Reference="Abil,BladeHeroLeap,Cost[0].Vital[Energy]" Value="50"/>
     </CEffectModifyPlayer>
     <CEffectSet id="BloodFanaticalStartSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="BloodFanaticalEvisDecrease"/>
+        <EffectArray value="BladeHeroBloodFanaticalEvisStartSwitch"/>
         <EffectArray value="BloodFanaticalBladeDecrease"/>
         <EffectArray value="BloodFanaticalLeapDecrease"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="BloodResetAB">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="BloodHeal"/>
-    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BloodResetFurorAB">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="Furor"/>
     </CEffectApplyBehavior>
-    <CEffectModifyUnit id="BloodResetHeal">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactUnit Value="Caster"/>
-        <VitalArray index="Life">
-            <Change value="5">
-                <AccumulatorArray value="HealingMultiplier"/>
-            </Change>
-        </VitalArray>
-    </CEffectModifyUnit>
     <CEffectApplyBehavior id="BloodResetOrbitAB">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
@@ -1657,11 +1819,11 @@
         <ValidatorArray value="Has100Blood"/>
         <EditorCategories value=""/>
         <EffectArray value="BloodResetRB"/>
-        <EffectArray value="BloodResetAB"/>
         <EffectArray value="BloodResetOrbitAB"/>
         <EffectArray value="BloodResetFurorAB"/>
         <EffectArray value="BloodFanaticalAB"/>
         <EffectArray value="SubstitutionSet"/>
+        <EffectArray value="BladeHeroBloodHPSwitch"/>
     </CEffectSet>
     <CEffectApplyBehavior id="BuffAttackAB">
         <EditorCategories value="Race:Zerg"/>
@@ -2811,29 +2973,17 @@
         <PeriodicPeriodArray value="0.4"/>
         <Chance value="0.15"/>
     </CEffectCreatePersistent>
-    <CEffectApplyBehavior id="LeapPathingCheckAB">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="PathingCheck"/>
-    </CEffectApplyBehavior>
-    <CEffectLaunchMissile id="LeapPathingCheckLM">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="OriginPoint"/>
-        <Movers Link="MLLeapMover"/>
-        <DeathType value="Unknown"/>
-        <ValidatorArray index="0" value="LeapTravelValidation"/>
-    </CEffectLaunchMissile>
-    <CEffectSet id="MLLeapInitNoLeapSet">
+    <CEffectSet id="BladeHeroLeapNoLeapSet">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/MLLeapInitLeapSet"/>
         <EffectArray value="MLLeapVigorAB"/>
-        <EffectArray value="MLLeapInitImpactSA"/>
+        <EffectArray value="BladeHeroLeapImpactSA"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
-    <CEffectSwitch id="MLLeapSwitch">
+    <CEffectSwitch id="BladeHeroLeapSwitch">
         <EditorCategories value="Race:Protoss"/>
-        <CaseArray Validator="DistanceFromCasterLT1" Effect="MLLeapInitNoLeapSet"/>
-        <CaseArray Effect="MLLeapInitLeapSet"/>
+        <CaseArray Validator="DistanceFromCasterLT1" Effect="BladeHeroLeapNoLeapSet"/>
+        <CaseDefault value="BladeHeroLeapLeapSet"/>
         <TargetLocationType value="Point"/>
     </CEffectSwitch>
     <CEffectLaunchMissile id="CrystalRainLM">
@@ -3184,8 +3334,8 @@
     </CEffectSet>
     <CEffectDamage id="BladeStormDMG">
         <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="0.07"/>
-        <Amount value="7"/>
+        <ArmorReduction value="0.0625"/>
+        <Amount value="5"/>
         <Death value="Eviscerate"/>
     </CEffectDamage>
     <CEffectSet id="BladeStormDummy">
@@ -3235,6 +3385,7 @@
     </CEffectApplyBehavior>
     <CEffectSet id="BloodHeroicSet">
         <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BloodHeroicDeathHeal"/>
         <EffectArray value="BloodHeroicABStack"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
@@ -3249,17 +3400,19 @@
         <Count value="4"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BloodABStack">
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="BloodStack"/>
     </CEffectApplyBehavior>
     <CEffectSet id="BloodMassiveSet">
         <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BloodMassiveDeathHeal"/>
         <EffectArray value="BloodMassiveABStack"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
     <CEffectSet id="BloodSet">
         <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BloodDeathHeal"/>
         <EffectArray value="BloodABStack"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
@@ -3780,65 +3933,65 @@
         <PeriodicOffsetArray value="4,0,0"/>
         <PeriodicOffsetArray value="-4,0,0"/>
     </CEffectCreatePersistent>
-    <CEffectSet id="LeapCrashSet">
+    <CEffectSet id="BladeHeroLeapCrashSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="BloodSwitch"/>
-        <EffectArray value="MLLeapCrashDMG"/>
+        <EffectArray value="BladeHeroLeapCrashDMG"/>
     </CEffectSet>
-    <CEffectDamage id="MLLeapCrashDMG">
+    <CEffectDamage id="BladeHeroLeapCrashDMG">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/MLLeapDMG"/>
+        <DamageModifierSource Value="Caster"/>
         <ArmorReduction value="0.5"/>
         <Amount value="50"/>
         <Death value="Eviscerate"/>
-        <DamageModifierSource Value="Caster"/>
     </CEffectDamage>
     <CEffectDamage id="MLLeapHeroDMG">
         <ValidatorArray value="IsHeroOrStructureOrMassiveOrMechanicalOrHover"/>
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/MLLeapDMG"/>
         <ArmorReduction value="1"/>
         <Amount value="100"/>
         <Death value="Eviscerate"/>
         <ExcludeArray Value="Target"/>
         <DamageModifierSource Value="Caster"/>
     </CEffectDamage>
-    <CEffectEnumArea id="MLLeapCrashSA">
+    <CEffectEnumArea id="BladeHeroLeapCrashSA">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="SourceUnit"/>
         <ExcludeArray Value="Source"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray MaxCount="0" Effect="LeapCrashSet"/>
+        <AreaArray MaxCount="0" Effect="BladeHeroLeapCrashSet"/>
     </CEffectEnumArea>
-    <CEffectSet id="MLLeapImpactSet">
+    <CEffectSet id="BladeHeroLeapKBImpactSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="BloodSwitch"/>
         <EffectArray value="ApplyUnitWasStunnedSource"/>
-        <EffectArray value="MLLeapCrashSA"/>
+        <EffectArray value="BladeHeroLeapCrashSA"/>
         <EffectArray value="MLLeapDMG"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
-    <CEffectSet id="MLLeapInitImpactSet">
+    <CEffectSet id="BladeHeroLeapImpactSet">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/MLLeapImpactSet"/>
         <EffectArray value="BloodSwitch"/>
-        <EffectArray value="MLLeapHeroDMG"/>
+        <EffectArray value="BladeHeroLeapDecapitateInit"/>
         <EffectArray value="BladeHeroLeapKBOffset"/>
+        <EffectArray value="MLLeapHeroDMG"/>
     </CEffectSet>
-    <CEffectLaunchMissile id="MLLeapKBLM">
+    <CEffectLaunchMissile id="BladeHeroLeapKBLM">
         <ValidatorArray index="0" removed="1"/>
         <EditorCategories value="Race:Protoss"/>
         <LaunchLocation Effect="BladeHeroLeapKBOffset" Value="TargetUnit"/>
         <ImpactLocation Value="TargetPoint"/>
-        <FinishEffect value="MLLeapImpactSet"/>
+        <LaunchEffect value="BladeHeroLeapKBAB"/>
+        <ImpactEffect value="BladeHeroLeapKBRB"/>
+        <FinishEffect value="BladeHeroLeapKBImpactSet"/>
+        <PeriodCount value="1"/>
+        <Flags index="Placement" value="1"/>
+        <Flags index="PlacementIgnoreCliffTest" value="1"/>
+        <PlacementRange value="2"/>
         <Movers Link="LeapKnockback1" IfRangeLTE="3.5"/>
         <Movers Link="LeapKnockback2" IfRangeLTE="5"/>
         <Movers Link="LeapKnockback3" IfRangeLTE="500"/>
         <DeathType value="Unknown"/>
-        <Flags index="Placement" value="1"/>
-        <Flags index="PlacementIgnoreCliffTest" value="1"/>
-        <PlacementRange value="2"/>
-        <PeriodCount value="1"/>
     </CEffectLaunchMissile>
     <CEffectLaunchMissile id="MLLeapSpringLM">
         <ValidatorArray index="0" value="MLLeapLMTargetFilters"/>
@@ -3847,12 +4000,12 @@
         <Chance value="0"/>
         <LaunchLocation Value="CasterUnit"/>
         <ImpactLocation Value="TargetPoint"/>
-        <ImpactEffect value="MLLeapInitImpactSA"/>
+        <ImpactEffect value="BladeHeroLeapImpactSA"/>
         <PeriodicEffect value="MLLeapRedirectMissile"/>
         <AmmoUnit value="MLLeapLMWeapon"/>
         <Movers Link="LeapMoverSpring"/>
         <DeathType value="Unknown"/>
-        <FinishEffect value="LeapPathingCheckAB"/>
+        <FinishEffect value="BladeHeroLeapOrder"/>
     </CEffectLaunchMissile>
     <CEffectCreatePersistent id="BladeHeroLeapKBOffset">
         <ValidatorArray value="NotHeroicAndNotStructure"/>
@@ -3864,7 +4017,7 @@
         <OffsetVectorStartLocation Value="SourcePoint"/>
         <Flags index="RandomOffset" value="1"/>
         <PeriodCount value="1"/>
-        <PeriodicEffectArray value="MLLeapKBLM"/>
+        <PeriodicEffectArray value="BladeHeroLeapKBLM"/>
         <PeriodicOffsetArray value="0,-3,0"/>
         <PeriodicOffsetArray value="0,-4,0"/>
         <PeriodicOffsetArray value="0,-5,0"/>
@@ -3878,7 +4031,7 @@
         <Death value="Eviscerate"/>
         <DamageModifierSource Value="Caster"/>
     </CEffectDamage>
-    <CEffectSet id="MLLeapInitLeapSet">
+    <CEffectSet id="BladeHeroLeapLeapSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="MLLeapVigorAB"/>
         <EffectArray value="MLLeapLM"/>
@@ -3889,11 +4042,11 @@
         <EditorCategories value="Race:Protoss"/>
         <LaunchLocation Value="CasterUnit"/>
         <ImpactLocation Value="TargetPoint"/>
-        <ImpactEffect value="MLLeapInitImpactSA"/>
+        <ImpactEffect value="BladeHeroLeapImpactSA"/>
         <PeriodicEffect value="MLLeapRedirectMissile"/>
         <Movers Link="MLLeapMover"/>
         <DeathType value="Unknown"/>
-        <FinishEffect value="LeapPathingCheckAB"/>
+        <FinishEffect value="BladeHeroLeapOrder"/>
     </CEffectLaunchMissile>
     <CEffectRedirectMissile id="MLLeapRedirectMissile">
         <EditorCategories value="Race:Protoss"/>
@@ -3902,11 +4055,11 @@
         <ValidatorArray value="LeapTravelValidation"/>
         <ImpactFilters value="-;Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectRedirectMissile>
-    <CEffectEnumArea id="MLLeapInitImpactSA">
+    <CEffectEnumArea id="BladeHeroLeapImpactSA">
         <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2" Effect="MLLeapInitImpactSet"/>
         <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="BladeHeroLeapImpactSet"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="MLLeapVigorAB">
         <EditorCategories value="Race:Protoss"/>

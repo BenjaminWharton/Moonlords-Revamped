@@ -76,7 +76,6 @@
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="ExpelComboCount" State="QueuedOrBetterAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorFireInfusedQueuedOrBetterAtUnit">
@@ -109,7 +108,6 @@
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="ToxicVaporComboCount" State="QueuedOrBetterAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorWarpDroneHiddenCompleteOnlyAtUnit">
@@ -180,6 +178,11 @@
     <CRequirementCountUpgrade id="CountUpgradeEnervateQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Enervate" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeExcaliberCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="Excaliber" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeExpansionQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
@@ -306,7 +309,6 @@
         <OperandArray index="1" value="CountBehaviorEarthInfusedQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq0CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="0"/>
         <OperandArray index="1" value="CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
@@ -315,7 +317,6 @@
         <OperandArray index="1" value="CountBehaviorFireInfusedQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq0CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="0"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
@@ -376,12 +377,10 @@
         <OperandArray index="1" value="CountUpgradeWarpgateQueuedOrBetter"/>
     </CRequirementEq>
     <CRequirementEq id="Eq10CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="10"/>
         <OperandArray index="1" value="CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq10CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="10"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
@@ -398,7 +397,6 @@
         <OperandArray index="1" value="CountBehaviorEarthInfusedQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq1CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="1"/>
         <OperandArray index="1" value="CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
@@ -407,7 +405,6 @@
         <OperandArray index="1" value="CountBehaviorFireInfusedQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq1CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="1"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
@@ -492,12 +489,10 @@
         <OperandArray index="1" value="CountUpgradeWarpgateQueuedOrBetter"/>
     </CRequirementEq>
     <CRequirementEq id="Eq2CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="2"/>
         <OperandArray index="1" value="CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq2CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="2"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
@@ -554,7 +549,6 @@
         <OperandArray index="1" value="CountBehaviorEarthStackQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq3CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="3"/>
         <OperandArray index="1" value="CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
@@ -563,7 +557,6 @@
         <OperandArray index="1" value="CountBehaviorFireStackQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq3CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="3"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
@@ -588,12 +581,10 @@
         <OperandArray index="1" value="CountUpgradeWarpgateQueuedOrBetter"/>
     </CRequirementEq>
     <CRequirementEq id="Eq4CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="4"/>
         <OperandArray index="1" value="CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq4CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="4"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
@@ -602,12 +593,10 @@
         <OperandArray index="1" value="CountUpgradePotentialQueuedOrBetter"/>
     </CRequirementEq>
     <CRequirementEq id="Eq5CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="5"/>
         <OperandArray index="1" value="CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq5CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="5"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
@@ -616,44 +605,46 @@
         <OperandArray index="1" value="CountUpgradePotentialQueuedOrBetter"/>
     </CRequirementEq>
     <CRequirementEq id="Eq6CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="6"/>
         <OperandArray index="1" value="CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq6CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="6"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq7CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="7"/>
         <OperandArray index="1" value="CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq7CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="7"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq8CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="8"/>
         <OperandArray index="1" value="CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq8CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="8"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq9CountBehaviorExpelComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="9"/>
         <OperandArray index="1" value="CountBehaviorExpelComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="Eq9CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="9"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeExcaliberCompleteOnly1">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeExcaliberCompleteOnly"/>
+        <OperandArray index="1" value="1"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeExcaliberCompleteOnly2">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeExcaliberCompleteOnly"/>
+        <OperandArray index="1" value="2"/>
     </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeReservoirCompleteOnly1">
         <OperandArray index="0" value="CountUpgradeReservoirCompleteOnly"/>

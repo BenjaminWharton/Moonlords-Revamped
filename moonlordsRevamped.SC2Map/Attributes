@@ -30,7 +30,7 @@
         </Value>
         <Default>
             <Slot Id="0"/>
-            <Value Id="5"/>
+            <Value Id="1"/>
         </Default>
         <Default>
             <Slot Id="1"/>

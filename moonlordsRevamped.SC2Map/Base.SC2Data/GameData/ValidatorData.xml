@@ -48,6 +48,26 @@
         <Find value="1"/>
         <Value value="BeamHeroHasCross"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="BladeHeroBloodHPLT500">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="500"/>
+        <Behavior value="BladeHeroBloodHP"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="BladeHeroBloodHPLT1000">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="1000"/>
+        <Behavior value="BladeHeroBloodHP"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="BladeHeroExcaliburLvl1">
+        <Find value="1"/>
+        <Value value="BladeHeroExcaliburLvl1"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="BladeHeroExcaliburLvl2">
+        <Find value="1"/>
+        <Value value="BladeHeroExcaliburLvl2"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="BufferStacks">
         <ResultNoPlayer value="Error"/>
         <Find value="1"/>
@@ -354,11 +374,11 @@
         <Behavior value="PierceCount"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="LeapTravelValidation">
-        <CombineArray value="SourceUnitNotOnPathableAllowsStructure"/>
+        <CombineArray value="TargetPointNotOnPathableAllowsStructure"/>
         <CombineArray value="NoInvulnerableEnemyStructures"/>
     </CValidatorCombine>
     <CValidatorLocationEnumArea id="NoInvulnerableEnemyStructures">
-        <AreaArray Compare="GT" Radius="0.1"/>
+        <AreaArray Compare="GT" Radius="0.25"/>
         <SearchFilters value="Structure,Invulnerable;Player,Ally,Missile,Item,Stasis,Dead,Hidden"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareBehaviorCount id="NotShadowplayed">
@@ -640,9 +660,8 @@
         <Value value="1"/>
         <Behavior value="SweepingBeamAlternatingSides"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorLocationPathable id="SourceUnitNotOnPathableAllowsStructure">
+    <CValidatorLocationPathable id="TargetPointNotOnPathableAllowsStructure">
         <ResultFailed value="MustTargetWalkableLocation"/>
-        <WhichLocation Value="SourceUnit"/>
         <Find value="0"/>
     </CValidatorLocationPathable>
     <CValidatorCombine id="SourceisAliveandWithin5Range">

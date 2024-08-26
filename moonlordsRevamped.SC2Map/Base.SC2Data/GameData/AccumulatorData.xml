@@ -23,6 +23,9 @@
     <CAccumulatorBehavior id="DestructionOrbCounter">
         <Behavior value="DestructionOrbCounter"/>
     </CAccumulatorBehavior>
+    <CAccumulatorDistance id="DistanceFromCasterUnittoTargetPoint">
+        <EndLocation Value="TargetPoint"/>
+    </CAccumulatorDistance>
     <CAccumulatorBehavior id="EnergyAuraStackcountMultiply">
         <MinAccumulation value="0"/>
         <ApplicationRule value="AdditiveMultiply"/>

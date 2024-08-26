@@ -1515,7 +1515,7 @@
         <AutoScaleFromSelectionFactor value="1.000000"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
-    <CActorRange id="BladeHeroLeapRange" parent="RangeAbil" abil="MLLeap"/>
+    <CActorRange id="BladeHeroLeapRange" parent="RangeAbil" abil="BladeHeroLeap"/>
     <CActorModelMaterial id="BladeHeroUpgradeGlaze" parent="BehaviorGlaze" buff="Anointed">
         <On index="5" removed="1"/>
         <On index="6" removed="1"/>
@@ -3203,8 +3203,9 @@
     <CActorSimple id="Severed">
         <On Terms="Behavior.Severed.On" Send="Create"/>
         <On Terms="ActorCreation" Target="_Unit" Send="SetScale 0.600000 0.000000 Size"/>
-        <On Terms="Behavior.Severed.Off" Target="_Unit" Send="ClearScale 0.000000 Size"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="Behavior.Severed.Off" Send="Destroy"/>
+        <Supporter Subject="_Unit"/>
     </CActorSimple>
     <CActorSimple id="IsVitalityOrb">
         <On Terms="Behavior.IsVitalityOrb.On" Send="Create"/>
@@ -3225,38 +3226,38 @@
         <On Terms="Behavior.IsAttritionOrb.Off" Send="Destroy"/>
     </CActorSimple>
     <CActorSound id="LeapImpactSound2" parent="SoundOneShot">
-        <On Terms="Effect.MLLeapInitImpactSA.Start" Send="Create"/>
+        <On Terms="Effect.BladeHeroLeapImpactSA.Start" Send="Create"/>
         <Sound value="ShadowBladeImpact"/>
     </CActorSound>
     <CActorSound id="LeapLaunchSound" parent="SoundOneShot">
-        <On Terms="Abil.MLLeap.SourceCastStart" Send="Create"/>
+        <On Terms="Abil.BladeHeroLeap.SourceCastStart" Send="Create"/>
         <Sound value="Dehaka_Jump_Leap"/>
     </CActorSound>
     <CActorSound id="LeapImpactSound" parent="SoundOneShot">
-        <On Terms="Effect.MLLeapInitImpactSA.Start" Send="Create"/>
+        <On Terms="Effect.BladeHeroLeapImpactSA.Start" Send="Create"/>
         <Sound value="Dehaka_Jump_Land"/>
     </CActorSound>
     <CActorModel id="MLLeapImpact" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.MLLeapInitImpactSA.Start" Send="Create"/>
+        <On Terms="Effect.BladeHeroLeapImpactSA.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,100,0"/>
         <HostSiteOps Ops="SOpSourceUnit SOpAttachCenter SOpMoveUpBy1" HoldPosition="1" HoldRotation="1"/>
     </CActorModel>
     <CActorModel id="MLLeapImpact2" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.MLLeapInitImpactSA.Start" Send="Create"/>
+        <On Terms="Effect.BladeHeroLeapImpactSA.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,100,0"/>
         <HostSiteOps Ops="SOpSourceUnit SOpAttachCenter SOpMoveUpBy1" HoldPosition="1" HoldRotation="1"/>
         <Model value="MLLeapImpact"/>
         <Scale value="0.500000"/>
     </CActorModel>
     <CActorModel id="LeapImpactKBImpact2" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.MLLeapCrashSA.Start" Send="Create"/>
+        <On Terms="Effect.BladeHeroLeapCrashSA.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,100,0"/>
         <HostSiteOps Ops="SOpSourceUnit SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
         <Model value="MLLeapImpact"/>
         <Scale value="0.070000"/>
     </CActorModel>
     <CActorModel id="MLLeapImpact3" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.MLLeapInitImpactSA.Start" Send="Create"/>
+        <On Terms="Effect.BladeHeroLeapImpactSA.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="TimerSet 0.250000 Death"/>
         <On Terms="TimerExpired; TimerName Death" Send="Destroy"/>
         <HostSiteOps Ops="SOpSourceUnit SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
@@ -3264,7 +3265,7 @@
         <Scale value="3.300000"/>
     </CActorModel>
     <CActorModel id="MLLeapImpactKBImpact3" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.MLLeapCrashSA.Start" Send="Create"/>
+        <On Terms="Effect.BladeHeroLeapCrashSA.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="TimerSet 0.250000 Death"/>
         <On Terms="TimerExpired; TimerName Death" Send="Destroy"/>
         <HostSiteOps Ops="SOpSourceUnit SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
@@ -3272,13 +3273,13 @@
         <Scale value="0.450000"/>
     </CActorModel>
     <CActorModel id="MLLeapImpactKBImpact" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.MLLeapCrashSA.Start" Send="Create"/>
+        <On Terms="Effect.BladeHeroLeapCrashSA.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,100,0"/>
         <HostSiteOps Ops="SOpSourceUnit SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
         <Model value="MLLeapImpact"/>
         <Scale value="0.150000"/>
     </CActorModel>
-    <CActorSplat id="MLLeapSplat" parent="ProtossCursorSplat" abil="MLLeap">
+    <CActorSplat id="MLLeapSplat" parent="ProtossCursorSplat" abil="BladeHeroLeap">
         <Model value="VoidProtossAOECursorSplat"/>
     </CActorSplat>
     <CActorModel id="OrbOfDestructionImpact2" parent="ModelAnimationStyleOneShot">
@@ -7278,10 +7279,10 @@
         <On index="3" Terms="UnitRevive.BladeHero"/>
         <On index="4" Terms="UnitConstruction.BladeHero.Start"/>
         <On index="5" Terms="UnitConstruction.BladeHero.Finish"/>
-        <On Terms="Abil.MLLeap.SourceCastStart" Send="AnimPlay Spell Jump,Start"/>
-        <On Terms="Abil.MLLeap.SourceCastStart" Send="TimerSet 0.250000 Jump"/>
+        <On Terms="Abil.BladeHeroLeap.SourceCastStart" Send="AnimPlay Spell Jump,Start"/>
+        <On Terms="Abil.BladeHeroLeap.SourceCastStart" Send="TimerSet 0.250000 Jump"/>
         <On Terms="TimerExpired; TimerName Jump" Send="AnimPlay Spell Jump FullMatch"/>
-        <On Terms="Effect.MLLeapInitImpactSA.Start" Send="AnimPlay Spell Jump,End"/>
+        <On Terms="Effect.BladeHeroLeapImpactSA.Start" Send="AnimPlay Spell Jump,End"/>
         <On Terms="Abil.Eviscerate.SourceCastStart" Send="AnimPlay Spell Attack"/>
         <On Terms="Abil.BladeStorm.SourceCastStart" Send="AnimPlay Spell Attack"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>

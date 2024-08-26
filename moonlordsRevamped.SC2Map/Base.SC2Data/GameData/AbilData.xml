@@ -26,7 +26,7 @@
         <Range value="500"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Eviscerate"/>
         <Cost>
-            <Vital index="Energy" value="20"/>
+            <Vital index="Energy" value="15"/>
         </Cost>
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
@@ -447,16 +447,15 @@
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="MLLeap">
+    <CAbilEffectTarget id="BladeHeroLeap">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="MLLeapSwitch"/>
         <Flags index="RequireTargetVision" value="0"/>
-        <Range value="8"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="MLLeap"/>
-        <CursorEffect value="MLLeapInitImpactSA"/>
         <Cost>
             <Vital index="Energy" value="50"/>
         </Cost>
+        <Range value="8"/>
+        <CursorEffect value="BladeHeroLeapImpactSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MLLeap"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="CrystalRain">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>

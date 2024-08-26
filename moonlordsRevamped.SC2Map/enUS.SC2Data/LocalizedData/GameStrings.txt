@@ -1,4 +1,5 @@
 ﻿Abil/Name/BlackDeath=Black Death
+Abil/Name/BladeHeroLeap=Blade Hero - Leap
 Abil/Name/BladeStorm=Blade Storm
 Abil/Name/Boil=Boil
 Abil/Name/Boulder=Boulder
@@ -70,7 +71,6 @@ Abil/Name/LightningHeroFrostShock=Lightning Hero - Frost Shock
 Abil/Name/LightningHeroLightning=Lightning Hero - Lightning
 Abil/Name/LightningHeroThunderfury=Lightning Hero - Thunderfury
 Abil/Name/LightningStrikes=Lightning Strikes
-Abil/Name/MLLeap=Leap
 Abil/Name/MicroBurst=Micro Burst
 Abil/Name/MobileBeam=Mobile Beam
 Abil/Name/MusclePoison=Muscle Poison
@@ -167,7 +167,6 @@ Behavior/Name/BladeStorm=Blade Storm
 Behavior/Name/Blaze=Blaze
 Behavior/Name/Bleeding=Bleeding
 Behavior/Name/BloodFrenzy=Blood Frenzy
-Behavior/Name/BloodHeal=Blood
 Behavior/Name/BroodlingCarrier=Broodling Carrier
 Behavior/Name/Buffer=Buffer
 Behavior/Name/Burning=Burning
@@ -535,7 +534,6 @@ Behavior/Tooltip/BlackDeath4=Suffering from damage over time
 Behavior/Tooltip/BlackDeathFinal=Suffering from damage over time
 Behavior/Tooltip/Blaze=This unit is dealing damage to surrounding enemies.
 Behavior/Tooltip/BloodFrenzy=The Carnage Lord gains 10% faster attack speed for 10 seconds each time it attacks.
-Behavior/Tooltip/BloodHeal=Healing health over time.
 Behavior/Tooltip/BroodlingCarrier=Spawns Broodlings when receiving damage.
 Behavior/Tooltip/Buffer=Shield maximum increased.
 Behavior/Tooltip/Burning=The Fire Lord leaves behind a large fire when it dies.
@@ -942,10 +940,10 @@ Button/Tooltip/BeamHero=When in doubt, cover everything with laser beams.
 Button/Tooltip/BeastLord=Heavy assault beast. Has an area-damage cleave attack. When killed, can be revived.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/BlackDeath=Infects all enemies in the target area.<n/>Infection starter lasts 6 seconds, infection lasts 8 seconds.
 Button/Tooltip/BladeHero=For glory!
-Button/Tooltip/BladeStorm=Launch a missile that travels in a circular path towards the target point periodically dealing damage in a radius of <c val="FFFF80"><d ref="Effect,BladeStormSA,AreaArray[0].Radius" precision="1"/></c>.
+Button/Tooltip/BladeStorm=Launch a missile that travels in a circular path towards the target point dealing <c val="FFFF80"><d ref="Effect,BladeStormDMG,Amount*16"/></c> damage per seconds to enemies within a radius of <c val="FFFF80"><d ref="Effect,BladeStormSA,AreaArray[0].Radius" precision="1"/></c>
 Button/Tooltip/BladeStormUnit=
 Button/Tooltip/Blastwave=Instantly hits all enemy units in the target area for <c val="FFFF80"><d ref="Effect,FireHeroBlastwaveDMG,Amount"/></c> damage while slowing and stunning them.
-Button/Tooltip/Blood=Gain <c val="FFFF80">1</c> Blood and heal <c val="FFFF80"><d ref="Effect,BloodDeathHeal,VitalArray[Life].ChangeFraction*100" precision="1"/>%</c> max health when enemies affected by your abilities die. Massive units give <c val="FFFF80"><d ref="Effect,BloodMassiveABStack,Count"/></c> Blood and heroic units give <c val="FFFF80"><d ref="Effect,BloodHeroicABStack,Count"/></c> Blood.<n/><n/>When <c val="FFFF80">100</c> Blood is gained, Blood count is reset, Substitution is cast for free, and you are healed for <c val="FFFF80"><d ref="Effect,BloodResetHeal,VitalArray[Life].Change*80"/></c> health over <c val="FFFF80">10</c> seconds.
+Button/Tooltip/Blood=Gain <c val="FFFF80">1</c> Blood and heal <c val="FFFF80"><d ref="Effect,BloodDeathHeal,VitalArray[Life].Change" precision="1"/></c> health when enemies affected by your abilities die. Massive units give <c val="FFFF80"><d ref="Effect,BloodMassiveABStack,Count"/></c> Blood and heroic units give <c val="FFFF80"><d ref="Effect,BloodHeroicABStack,Count"/></c> Blood<n/><n/>When <c val="FFFF80">100</c> Blood is gained, Blood count is reset, Substitution is cast for free and maximum health is permanently increased by <c val="FFFF80"><d ref="Effect,BladeHeroBloodHPAB10,Count"/></c><n/><n/>After <c val="FFFF80">500</c> extra health the bonus will go down to <c val="FFFF80"><d ref="Effect,BladeHeroBloodHPAB5,Count"/></c>, and after <c val="FFFF80">1000</c> the bonus will go down to <c val="FFFF80"><d ref="Effect,BladeHeroBloodHPAB2,Count"/></c>
 Button/Tooltip/Boil=Deal <c val="FFFF80"><d ref="Effect,BoilDMG,Amount"/></c> damage to enemies within a radius of <c val="FFFF80"><d ref="Effect,BoilSA,AreaArray[0].Radius" precision="1"/></c> around the target area.<n/><n/>Enemies that are soaked will be applied with Scalded, which deals <c val="FFFF80"><d ref="Effect,ScaldedDMG,Amount*4"/></c> dps per stack for <c val="FFFF80"><d ref="Behavior,ScaldedBase,Duration"/></c> seconds.<n/><n/>Scalded enemies gain another stack each time they get soaked, stacking up to <c val="FFFF80"><d ref="Behavior,ScaldedStack,MaxStackCount"/></c> times.
 Button/Tooltip/Boulder=Roll a Boulder towards the target location that deals <c val="FFFF80"><d ref="Effect,BoulderDMG,Amount*16"/></c> damage per second within a radius of <c val="FFFF80"><d ref="Effect,BoulderSA,AreaArray[0].Radius" precision="1"/></c> to enemies that it passes through.
 Button/Tooltip/BoulderY=Roll a Boulder towards the target location.
@@ -998,7 +996,7 @@ Button/Tooltip/EverlastingStormU=
 Button/Tooltip/EverlastingStormUp=
 Button/Tooltip/EverlastingStormUpg=
 Button/Tooltip/EverlastingStormUpgr=
-Button/Tooltip/Eviscerate=Launch a missile towards the target point that periodically deals damage in a radius of <c val="FFFF80"><d ref="Effect,EviscerateSA,AreaArray[0].Radius" precision="2"/></c>
+Button/Tooltip/Eviscerate=Launch a missile towards the target point that deals <c val="FFFF80"><d ref="Effect,EviscerateDMG,Amount"/></c> damage within a radius of <c val="FFFF80"><d ref="Effect,EviscerateSA,AreaArray[0].Radius" precision="2"/></c> to each enemy that it passes through
 Button/Tooltip/Eviserate=
 Button/Tooltip/EvolutionLord=Generates two Spawns of Dehaka that deal 100% normal damage but have 50% life. Spawns last <d time="30"/>.
 Button/Tooltip/Expel=Deal <c val="FFFF80"><d ref="Effect,NatureHeroExpelDMG,Amount"/></c> damage to enemies within a radius of <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelRadiusBase,Amount"/></c> around your hero and slow them by <c val="FFFF80"><d ref="1-Behavior,Tangled,Modification.MoveSpeedMultiplier*100" precision="1"/>%</c> for <c val="FFFF80"><d ref="Behavior,Tangled,Duration"/></c> seconds<n/><n/>Casting <c val="FFFF80">Expel</c> adds <c val="FFFF80"><d ref="Effect,AddRenewComboPowerCP,PeriodCount" precision="1"/></c> combo power to <c val="FFFF80">Renew</c></c><n/><n/>Each combo power increases the damage area by <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelRadiusMultiplier,Amount" precision="1"/></c>, damage by <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelDamageMultiplier,Amount*100"/>%</c> and health cost by <c val="FFFF80"><d ref="Effect,NatureHeroExpelCostUpCP,PeriodCount*25"/></c> for the next <c val="FFFF80">Expel</c> cast<n/><n/>Casting <c val="FFFF80">Expel</c> consumes all stacks
@@ -1081,7 +1079,7 @@ Button/Tooltip/LightningHero=Unleash the power of lightning!
 Button/Tooltip/LightningMissile=Casts a Lightning at the target dealing 40 damage.
 Button/Tooltip/LightningStrikes=Calls down lightning strikes to damage enemies in the target area.
 Button/Tooltip/LuckHero=Using standard methods to kill zerg was just too boring.
-Button/Tooltip/MLLeap=Leap towards the the target point dealing damage and knocking back enemy units in a radius of <c val="FFFF80"><d ref="Effect,MLLeapInitImpactSA,AreaArray[0].Radius" precision="1"/></c> around the impact point.<n/><n/>Cannot traverse cliffs.
+Button/Tooltip/MLLeap=Leap towards the the target point dealing <c val="FFFF80"><d ref="Effect,MLLeapDMG,Amount"/></c> damage and knocking back enemy units in a radius of <c val="FFFF80"><d ref="Effect,MLLeapInitImpactSA,AreaArray[0].Radius" precision="1"/></c> around the impact point<n/><n/>Cannot traverse cliffs
 Button/Tooltip/MagmaArmor=When you get hit by an enemy while having a Magma Armor buff you will automatically cast a Fireball on your attacker.
 Button/Tooltip/Massive=The Earth Hero has <c val="FFFF80"><d ref="Behavior,Massive,Modification.VitalMaxFractionArray[Life]*100"/>%</c> more health/energy but loses <c val="FFFF80"><d ref="Behavior,Massive,Modification.VitalMaxFractionArray[Shields]*(-100)"/>%</c> shields<n/><n/>Passively restores <c val="FFFF80"><d ref="Effect,ReconstructMU,VitalArray[Life].ChangeFraction*100"/>%</c> of max health/energy and <c val="FFFF80"><d ref="Effect,ReconstructMU,VitalArray[Life].Change"/></c> health per second<n/><n/>Can push past other units
 Button/Tooltip/Metalisk=Heavy assault beast. Has an area-damage attack.<n/><n/><c val="ffff8a">Can attack ground units.</c>
@@ -1175,7 +1173,7 @@ Button/Tooltip/SteamWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c val
 Button/Tooltip/StormLord=
 Button/Tooltip/Strafe=Rapidly launches <c val="FFFF80"><d ref="Effect,WarpHeroStrafeDummy,ExpireDelay"/></c> missiles at random targets in range, each dealing <c val="FFFF80"><d ref="Effect,ImmortalStrafeDamage,Amount"/></c> damage.
 Button/Tooltip/SubarmorPolymerflow=Polymer is released when getting hit by melee or ranged attacks reducing damage taken by <d ref="(Behavior,Polymercrust,DamageResponse.ModifyFraction-1)*(-100)" precision="2"/>% Stacks up to 10 times.
-Button/Tooltip/Substitution=Instantly restore <c val="FFFF80"><d ref="Effect,SubstitutionMU,VitalArray[Shields].Change"/></c> shield points.
+Button/Tooltip/Substitution=Instantly restore <c val="FFFF80"><d ref="Effect,SubstitutionMU,VitalArray[Shields].Change"/></c> shield points
 Button/Tooltip/Superlisk=Heavy assault beast. Has an area-damage attack.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/SwarmLord=Siege unit that attacks while rooted or burrowed by spawning flying Locusts. Flying Locusts are faster and deal more damage, but have less life than ground Locusts.<n/><n/><c val="ffff8a">Locusts can attack ground units.</c>
 Button/Tooltip/SweepingBeam=Launch a projectile at the target point which will fire <c val="FFFF80"><d ref="(Effect,SweepingBeamRightData,ValidateMax+1)*(Effect,SweepingBeamRightOffset,PeriodCount)"/></c> beams over time across a total range of <c val="FFFF80">8</c>, perpendicular to the cast angle.
@@ -1761,7 +1759,15 @@ DocInfo/PatchNote512=  - Can now have up to 5 Holo Shields
 DocInfo/PatchNote513=  - Increased Holo Shield base hp but reduced its reward scaling
 DocInfo/PatchNote514=  - Altered Distend, Aegis, Shroud, Network, Fearless and Assassinate
 DocInfo/PatchNote515=- Blade Hero
-DocInfo/PatchNote516=  - Orbit now stacks
+DocInfo/PatchNote516=  - Changed Blood healing on kill to be a flat amount instead of a percentage
+DocInfo/PatchNote517=  - Blood absorbtion now permanently increases max health and no longer heals over time
+DocInfo/PatchNote518=  - Increased Blade Storm base duration and made Encompass less effective
+DocInfo/PatchNote519=  - Made Eviscerate deal damage once per enemy instead of continuously
+DocInfo/PatchNote520=  - Reduced the energy cost of Eviscerate
+DocInfo/PatchNote521=  - Leap now limits distance when hitting unpathable terrain instead of resetting position
+DocInfo/PatchNote522=  - Orbit now stacks
+DocInfo/PatchNote523=  - Removed one level from Fanatical
+DocInfo/PatchNote524=  - Added a new talent (Decapitate)
 DocInfo/Screenshot01=Reward points carry over to subsequent games and can be beneficial in a variety of ways.
 DocInfo/Screenshot02=Standing near a Pylon enables you to teleport to any other base.
 DocInfo/Screenshot05=Spend talent points to increase your power.
@@ -2038,7 +2044,43 @@ Effect/Name/BlackDeathSpread1SpreadSearch=BlackDeathSpread+1SpreadSearch
 Effect/Name/BlackDeathSpread2SpreadSearch=BlackDeathSpread+2SpreadSearch
 Effect/Name/BlackDeathSpreadFinalSearch=BlackDeathSpreadFinalSearch
 Effect/Name/BlackDeathTick=BlackDeathTick
+Effect/Name/BladeHeroBloodFanaticalEvisDecreaseEx1=Blade Hero - Blood Fanatical (EvisDecreaseEx1)
+Effect/Name/BladeHeroBloodFanaticalEvisDecreaseEx2=Blade Hero - Blood Fanatical (EvisDecreaseEx2)
+Effect/Name/BladeHeroBloodFanaticalEvisEndSwitch=Blade Hero - Blood Fanatical (EvisEndSwitch)
+Effect/Name/BladeHeroBloodFanaticalEvisIncreaseEx1=Blade Hero - Blood Fanatical (EvisIncreaseEx1)
+Effect/Name/BladeHeroBloodFanaticalEvisIncreaseEx2=Blade Hero - Blood Fanatical (EvisIncreaseEx2)
+Effect/Name/BladeHeroBloodFanaticalEvisStartSwitch=Blade Hero - Blood Fanatical (EvisStartSwitch)
+Effect/Name/BladeHeroBloodHPAB10=Blade Hero - Blood HP (AB10)
+Effect/Name/BladeHeroBloodHPAB2=Blade Hero - Blood HP (AB2)
+Effect/Name/BladeHeroBloodHPAB5=Blade Hero - Blood HP (AB5)
+Effect/Name/BladeHeroBloodHPSwitch=Blade Hero - Blood HP (Switch)
+Effect/Name/BladeHeroLeap=Blade Hero - Leap (Init)
+Effect/Name/BladeHeroLeapCrashDMG=Blade Hero - Leap Crash (DMG)
+Effect/Name/BladeHeroLeapCrashSA=Blade Hero - Leap Crash (SA)
+Effect/Name/BladeHeroLeapCrashSet=Blade Hero - Leap Crash (Set)
+Effect/Name/BladeHeroLeapDecapitateCU=Blade Hero - Leap Decapitate (CU)
+Effect/Name/BladeHeroLeapDecapitateCUSet=Blade Hero - Leap Decapitate (CUSet)
+Effect/Name/BladeHeroLeapDecapitateInit=Blade Hero - Leap Decapitate (Init)
+Effect/Name/BladeHeroLeapDecapitateSet=Blade Hero - Leap Decapitate (Set)
+Effect/Name/BladeHeroLeapDistanceDataDec=Blade Hero - Leap Distance (DataDec)
+Effect/Name/BladeHeroLeapDistanceDataInit=Blade Hero - Leap Distance (DataInit)
+Effect/Name/BladeHeroLeapDistanceEndSwitch=Blade Hero - Leap Distance (EndSwitch)
+Effect/Name/BladeHeroLeapDistanceOffset=Blade Hero - Leap Distance (Offset)
+Effect/Name/BladeHeroLeapDistanceOffsetBack=Blade Hero - Leap Distance (OffsetBack)
+Effect/Name/BladeHeroLeapDistanceOffsetStart=Blade Hero - Leap Distance (OffsetStart)
+Effect/Name/BladeHeroLeapDistanceSwitch=Blade Hero - Leap Distance (Switch)
+Effect/Name/BladeHeroLeapDistanceTarget=Blade Hero - Leap Distance (Target)
+Effect/Name/BladeHeroLeapImpactSA=Blade Hero - Leap (ImpactSA)
+Effect/Name/BladeHeroLeapImpactSet=Blade Hero - Leap (ImpactSet)
+Effect/Name/BladeHeroLeapKBAB=Blade Hero - Leap KB (AB)
+Effect/Name/BladeHeroLeapKBImpactSet=Blade Hero - Leap KB (ImpactSet)
+Effect/Name/BladeHeroLeapKBLM=Blade Hero - Leap KB (LM)
 Effect/Name/BladeHeroLeapKBOffset=Blade Hero - Leap KB (Offset)
+Effect/Name/BladeHeroLeapKBRB=Blade Hero - Leap KB (RB)
+Effect/Name/BladeHeroLeapLeapSet=Blade Hero - Leap (LeapSet)
+Effect/Name/BladeHeroLeapNoLeapSet=Blade Hero - Leap (NoLeapSet)
+Effect/Name/BladeHeroLeapOrder=Blade Hero - Leap (Order)
+Effect/Name/BladeHeroLeapSwitch=Blade Hero - Leap (Switch)
 Effect/Name/BladeStormDMG=Blade Storm
 Effect/Name/BladeStormDummy=Blade Storm
 Effect/Name/BladeStormLacerateAB=Blade Storm Lacerate
@@ -2070,13 +2112,13 @@ Effect/Name/BloodFanaticalLeapIncrease=Blood Fanatical
 Effect/Name/BloodFanaticalStartSet=Blood Fanatical
 Effect/Name/BloodHeroicAB=Blood Heroic
 Effect/Name/BloodHeroicABStack=Blood Heroic
+Effect/Name/BloodHeroicDeathHeal=Blood Heroic
 Effect/Name/BloodHeroicSet=Blood Heroic
 Effect/Name/BloodMassiveAB=Blood Massive
 Effect/Name/BloodMassiveABStack=Blood Massive
+Effect/Name/BloodMassiveDeathHeal=Blood Massive
 Effect/Name/BloodMassiveSet=Blood Massive
-Effect/Name/BloodResetAB=Blood Reset
 Effect/Name/BloodResetFurorAB=Blood Reset Furor
-Effect/Name/BloodResetHeal=Blood Reset
 Effect/Name/BloodResetOrbitAB=Blood Reset Orbit
 Effect/Name/BloodResetRB=Blood Reset
 Effect/Name/BloodResetSet=Blood Reset
@@ -2965,9 +3007,6 @@ Effect/Name/LavaSA=Lava
 Effect/Name/LavaSet=Lava
 Effect/Name/LavaSpoutCP=Lava Spout
 Effect/Name/LavaSpoutSA=Lava Spout
-Effect/Name/LeapCrashSet=Leap
-Effect/Name/LeapPathingCheckAB=Leap Pathing Check
-Effect/Name/LeapPathingCheckLM=Leap Pathing Check
 Effect/Name/LifeDrainDMG=Life Drain
 Effect/Name/LifeDrainForce=Life Drain
 Effect/Name/LifeDrainSet=Life Drain
@@ -3029,20 +3068,11 @@ Effect/Name/MLCorrosiveAcidAB=Corrosive Acid
 Effect/Name/MLCorrosiveAcidDMG=Corrosive Acid
 Effect/Name/MLCorrosiveAcidLM=Corrosive Acid
 Effect/Name/MLCorrosiveAcidSet=Corrosive Acid
-Effect/Name/MLLeapCrashDMG=Leap
-Effect/Name/MLLeapCrashSA=Leap
 Effect/Name/MLLeapDMG=Leap
 Effect/Name/MLLeapHeroDMG=Leap
-Effect/Name/MLLeapImpactSet=Leap
-Effect/Name/MLLeapInitImpactSA=Leap
-Effect/Name/MLLeapInitImpactSet=Leap
-Effect/Name/MLLeapInitLeapSet=Leap
-Effect/Name/MLLeapInitNoLeapSet=Leap
-Effect/Name/MLLeapKBLM=Leap
 Effect/Name/MLLeapLM=Leap
 Effect/Name/MLLeapRedirectMissile=Leap
 Effect/Name/MLLeapSpringLM=Leap Spring
-Effect/Name/MLLeapSwitch=Leap
 Effect/Name/MLLeapVigorAB=Leap Vigor
 Effect/Name/MagmaArmorAB=Magma Armor (AB)
 Effect/Name/MagmaArmorFireChannels=Magma Armor Fire Channels
@@ -4561,7 +4591,7 @@ Param/Value/0509A022=Increases the radius of your Frost Shock's area effect when
 Param/Value/050E9DAB=complete all rescue quests in 1 match <n/>on <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
 Param/Value/0517AC1C=Warmth 0/1
 Param/Value/052C2024=Spawning Pool
-Param/Value/054A252E=Blood absorption makes Evisceration, Blade Storm, and Leap cost 50% less energy for 4/8/12 seconds.<n/>Requires level 10+
+Param/Value/054A252E=Blood absorption makes Evisceration, Blade Storm, and Leap cost 50% less energy for 5/10 seconds.<n/>Requires level 10+
 Param/Value/0565430A=not enough achievements
 Param/Value/05739FDA=Warning
 Param/Value/0575CF0A=x1
@@ -4611,7 +4641,7 @@ Param/Value/0A2AA8E5=Probe Cannons targeted towards a point will be able to pier
 Param/Value/0A2EE30F=<c val="0000FF">
 Param/Value/0A64452D=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/0A68B7E5=Another Nest burned - check!<n/>Reward: +10% zealot production speed
-Param/Value/0A6A0825=Blood heals 50/100/150% more health.
+Param/Value/0A6A0825=Blood heals 33/66/100% more health
 Param/Value/0A9AC60A=Quest complete
 Param/Value/0ACACCC2=Become immune to most slow and force effects, enables you to run through other units and increases Repels damage by 20%
 Param/Value/0AF4937C=A Slime Lord has been spawned by the Mind Lord.
@@ -5098,7 +5128,7 @@ Param/Value/43C7CF19=Reduces the cost of Fire Infusion by 0/10
 Param/Value/4400E7A9=Talents
 Param/Value/4409E76F=
 Param/Value/441A1B21=Ultrabrothers
-Param/Value/441FF763=Fanatical 0/3
+Param/Value/441FF763=Fanatical 0/2
 Param/Value/44245BA1=Controlled units gain 0/3 random champion bonuses.<n/>Requires level 10+
 Param/Value/445C1ECB=NGR 0/2
 Param/Value/44778A6D=Potency 0/3
@@ -5286,7 +5316,7 @@ Param/Value/5B25B7B5=Horror Lord defeated
 Param/Value/5B34F59D=s
 Param/Value/5B393121=Reduce the cost of Timber Lance by 15 health
 Param/Value/5B4CC3F5=Reserves 0/2
-Param/Value/5B51A43E=Launch 1/2 extra Evisceration missiles towards the target point.<n/>Requires level 10+
+Param/Value/5B51A43E=Launch 1/2 extra Evisceration missiles towards the target point, but increase the energy cost by 5/10<n/>Requires level 10+
 Param/Value/5B7DE7A7=When your Shockwave hits 3 or more targets at once the Orbital Cannon will fire at that location.<n/>Requires level 10+
 Param/Value/5B98A0F2=Flood will create puddles an additive 25/50% faster
 Param/Value/5B9EA8A6=Clock 0/3
@@ -5631,6 +5661,7 @@ Param/Value/83D85F17=Quest update:
 Param/Value/83E19E13=Launch 1/2 Evisceration missiles towards the facing of your hero after casting Substitution. (Excaliber increases this amount)
 Param/Value/8411F104=Everytime you lose a Multiphase Shield charge you gain 0/5/10/15 energy.<n/>Requires level 10+
 Param/Value/84235513=Fissure 0/3
+Param/Value/842617C5=Decapitate 0/1
 Param/Value/84839C10=Increase damage bonus for non heroic targets to 50/75/100%<n/>Increase damage reduction for heroic targets to 30/35/40%
 Param/Value/84BB1F64=Annihilator v3
 Param/Value/84C3FCC1=Tsunami 0/2
@@ -6149,6 +6180,7 @@ Param/Value/C52145A0=Consolation 0/3
 Param/Value/C524F160=Hive Lord defeated
 Param/Value/C54FA91B=Zealots gain 15/30% attack speed.
 Param/Value/C5957636=Recruit down! 60 penalty seconds added to your teamscore!
+Param/Value/C59F7E08=Leap gains a 40+(Sever*20)% chance to cut affected enemies in half
 Param/Value/C5A16332= %(max)
 Param/Value/C5C40328=ChargedStrike 0/1
 Param/Value/C5D09501=Increases all damage you inflict by 3%<n/>
@@ -7073,6 +7105,7 @@ Upgrade/Name/BlackDeathRange=BlackDeathRange
 Upgrade/Name/BlackDeathRespawn=BlackDeathRespawn
 Upgrade/Name/BlackwallDarkness=BlackwallDarkness
 Upgrade/Name/BlackwallEnergy=BlackwallEnergy
+Upgrade/Name/BladeHeroDecapitate=Blade Hero - Decapitate
 Upgrade/Name/BlastRadius=BlastRadius
 Upgrade/Name/BlastZone=BlastZone
 Upgrade/Name/BlastwaveArea=BlastwaveArea

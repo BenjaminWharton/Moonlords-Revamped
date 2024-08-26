@@ -171,6 +171,8 @@
 <Effect id="DoomDetonate"/>
 <Effect id="MultishotImpactSearchArea"/>
 <Effect id="GuidedImpactSearchArea"/>
+<Effect id="BladeHeroBloodFanaticalEvisStartSwitch"/>
+<Effect id="BladeHeroBloodFanaticalEvisEndSwitch"/>
 <Model id="PingBoss"/>
 <Model id="PingObjective"/>
 <Model id="SiegeTankSiegedAttackImpact"/>

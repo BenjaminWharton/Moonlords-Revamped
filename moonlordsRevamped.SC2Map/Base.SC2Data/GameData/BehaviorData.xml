@@ -133,6 +133,24 @@
         <MaxStackCount value="7"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BladeHeroBloodHP">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <MaxStackCount value="0"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BladeHeroLeapKB">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="1.2"/>
+        <Modification>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="CannotDie" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BladeStorm">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Period value="0.0625"/>
@@ -144,15 +162,6 @@
             <DeathResponse Chance="1" Effect="BloodSet"/>
         </Modification>
         <InfoFlags index="Hidden" value="1"/>
-        <FinalEffect value="BloodDeathHeal"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="BloodHeal">
-        <InfoIcon value="Assets\Textures\btn-upgrade-protoss-fenix-immortalchampionchargeexplode.dds"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
-        <Duration value="10.1"/>
-        <Period value="0.125"/>
-        <PeriodicEffect value="BloodResetHeal"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BloodHeroic">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -160,7 +169,6 @@
             <DeathResponse Chance="1" Effect="BloodHeroicSet"/>
         </Modification>
         <InfoFlags index="Hidden" value="1"/>
-        <FinalEffect value="BloodDeathHeal"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BloodMassive">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -168,7 +176,6 @@
             <DeathResponse Chance="1" Effect="BloodMassiveSet"/>
         </Modification>
         <InfoFlags index="Hidden" value="1"/>
-        <FinalEffect value="BloodDeathHeal"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BloodStack">
         <InfoFlags index="Hidden" value="1"/>
@@ -1118,18 +1125,6 @@
         <InitialEffect value="OrbOfDestructionResoundHeightUp"/>
         <ExpireEffect value="OrbOfDestructionResoundHeightDown"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="PathingCheck">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="LeapTravelValidation"/>
-        <Duration value="1"/>
-        <Period value="0.0625"/>
-        <InitialEffect value="LeapPathingCheckLM"/>
-        <PeriodicEffect value="LeapPathingCheckLM"/>
-        <ExpireEffect value="LeapPathingCheckLM"/>
-        <Modification MoveSpeedMaximum="0.5"/>
-        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="PylonWeaponDisable">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -1773,6 +1768,8 @@
             <VitalRegenMultiplier index="Shields" value="-0.5"/>
             <VitalRegenMultiplier index="Energy" value="-0.5"/>
         </Modification>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="StormArmor">
         <InfoIcon value="Assets\Textures\hardenedwill_coop.dds"/>

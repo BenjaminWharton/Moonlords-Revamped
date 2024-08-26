@@ -11,6 +11,14 @@
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Use" Link="Eq0CountUpgradeBlackDeathRangeCompleteOnlyTechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="BladeHeroExcaliburLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="EqCountUpgradeExcaliberCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="BladeHeroExcaliburLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="EqCountUpgradeExcaliberCompleteOnly2"/>
+    </CRequirement>
     <CRequirement id="ButtonUpdater1">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Show" Link="Eq1CountBehaviorButtonUpdater1QueuedOrBetterAtUnit"/>
