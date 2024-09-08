@@ -183,6 +183,7 @@ void InitGlobals () {
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
 int gf_gainxp (fixed lp_amount);
+int gf_updatexp (fixed lp_amount);
 bool gf_xpcompare (fixed lp_xp1, int lp_xp2, fixed lp_xpmax1, int lp_xpmax2);
 void gf_xpbaranim (fixed lp_min1, int lp_min2, fixed lp_max1, int lp_max2);
 void gf_levelupanim ();
@@ -531,6 +532,23 @@ trigger gt_activateStage11;
 //--------------------------------------------------------------------------------------------------
 int gf_gainxp (fixed lp_amount) {
     // Variable Declarations
+    fixed lv_amount;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_amount = lp_amount;
+
+    // Implementation
+    while ((lv_amount > 20000.0)) {
+        gf_updatexp(20000.0);
+        lv_amount -= 20000.0;
+    }
+    gf_updatexp(lv_amount);
+    return gv_xplevel;
+}
+
+int gf_updatexp (fixed lp_amount) {
+    // Variable Declarations
     int lv_i;
 
     // Automatic Variable Declarations
@@ -548,7 +566,7 @@ int gf_gainxp (fixed lp_amount) {
         gv_xplevel += 1;
         if ((gv_xplevel > 30)) {
             gf_gainrewardbonusall((gv_xplevel-30)*FixedToInt(gv_difficulty));
-            UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (StringExternal("Param/Value/D5E8D79C") + IntToText(FixedToInt(gv_difficulty)*(gv_xplevel-30)*5) + StringExternal("Param/Value/64603020")));
+            UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (StringExternal("Param/Value/EDC92219") + IntToText(FixedToInt(gv_difficulty)*(gv_xplevel-30)*5) + StringExternal("Param/Value/7AE873DC")));
         }
 
         lv_i = 0;
@@ -566,7 +584,7 @@ int gf_gainxp (fixed lp_amount) {
         gv_talentpointsavailable[1] += 1;
         gv_talentpointsavailable[2] += 1;
         gv_talentpointsavailable[3] += 1;
-        libNtve_gf_SetDialogItemText(gv_xpbaritem[2], (StringExternal("Param/Value/D133F4D8") + IntToText(gv_xplevel)), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(gv_xpbaritem[2], (StringExternal("Param/Value/31D9F74D") + IntToText(gv_xplevel)), PlayerGroupAll());
         gv_xpmin = gv_xpmax;
         gv_xpmin2 = gv_xpmax2;
         gv_xpmax += 200+(gv_xpmax/4)+((gv_xpmax2%4)*250);
@@ -9280,20 +9298,15 @@ void gf_TalentPressedLuckHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
     lv_pg = PlayerGroupSingle(lv_pn);
 
     // Implementation
-    if ((lv_buttonnumber == 0) && (lv_buttonrow == 0) && ((TechTreeUpgradeCount(lv_pn, "Resound", c_techCountQueuedOrBetter) < 1) || (TechTreeUpgradeCount(lv_pn, "Resound2", c_techCountQueuedOrBetter) < 1))) {
-        if ((TechTreeUpgradeCount(lv_pn, "Resound", c_techCountQueuedOrBetter) < 1)) {
-            TechTreeUpgradeAddLevel(lv_pn, "Resound", 1);
-        }
-        else {
-            TechTreeUpgradeAddLevel(lv_pn, "Resound2", 1);
-        }
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Resound ")+IntToText(TechTreeUpgradeCount(lv_pn, "Resound", c_techCountCompleteOnly)+TechTreeUpgradeCount(lv_pn, "Resound2", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
+    if ((lv_buttonnumber == 0) && (lv_buttonrow == 0) && (TechTreeUpgradeCount(lv_pn, "Resound", c_techCountQueuedOrBetter) < 2)) {
+        TechTreeUpgradeAddLevel(lv_pn, "Resound", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Resound ")+IntToText(TechTreeUpgradeCount(lv_pn, "Resound", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    if ((lv_buttonnumber == 1) && (lv_buttonrow == 0) && (TechTreeUpgradeCount(lv_pn, "Snipe", c_techCountQueuedOrBetter) < 2)) {
+    if ((lv_buttonnumber == 1) && (lv_buttonrow == 0) && (TechTreeUpgradeCount(lv_pn, "Snipe", c_techCountQueuedOrBetter) < 3)) {
         TechTreeUpgradeAddLevel(lv_pn, "Snipe", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Snipe ")+IntToText(TechTreeUpgradeCount(lv_pn, "Snipe", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Snipe ")+IntToText(TechTreeUpgradeCount(lv_pn, "Snipe", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
@@ -9315,9 +9328,9 @@ void gf_TalentPressedLuckHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    if ((lv_buttonnumber == 5) && (lv_buttonrow == 0) && (gf_Currentlevel() >= 10) && (TechTreeUpgradeCount(lv_pn, "Division", c_techCountQueuedOrBetter) < 3)) {
+    if ((lv_buttonnumber == 5) && (lv_buttonrow == 0) && (gf_Currentlevel() >= 10) && (TechTreeUpgradeCount(lv_pn, "Division", c_techCountQueuedOrBetter) < 2)) {
         TechTreeUpgradeAddLevel(lv_pn, "Division", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Division ")+IntToText(TechTreeUpgradeCount(lv_pn, "Division", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Division ")+IntToText(TechTreeUpgradeCount(lv_pn, "Division", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
         gv_talentpointsavailable[lv_player] -= 1;
     }
 

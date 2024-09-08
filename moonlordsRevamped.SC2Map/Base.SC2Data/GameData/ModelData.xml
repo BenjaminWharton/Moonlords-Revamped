@@ -544,11 +544,13 @@
         <Model value="Assets\Effects\Zerg\MendBuff\MendBuff.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
-    <CModelFoliage id="OrbOfVitalityImpact">
+    <CModel id="OrbOfVitalityImpact">
         <Model value="Assets\COOP\Zeratul\Effects\Immortal_Zeratul_COOP_CannonImpact\Immortal_Zeratul_COOP_CannonImpact.m3"/>
-        <ScaleMax value="1.750000,1.750000,1.000000"/>
-        <ScaleMin value="1.750000,1.750000,1.000000"/>
-    </CModelFoliage>
+        <EditorCategories value="Race:Protoss"/>
+        <Flags index="Download" value="0"/>
+        <ScaleMax value="0.900000,0.900000,0.500000"/>
+        <ScaleMin value="0.900000,0.900000,0.500000"/>
+    </CModel>
     <CModel id="LuckHero" parent="StalkerBase">
         <Model value="Assets\Units\Protoss\Dragoon_Void\Dragoon_Void.m3"/>
         <ScaleMax value="1.000000,1.000000,1.000000"/>
@@ -563,13 +565,13 @@
     <CModel id="OrbOfVitalityStorm">
         <Model value="Assets\Effects\Protoss\PsiStorm\PsiStorm.m3"/>
         <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="0.800000,0.800000,0.800000"/>
-        <ScaleMin value="0.800000,0.800000,0.800000"/>
+        <ScaleMax value="0.400000,0.400000,0.400000"/>
+        <ScaleMin value="0.400000,0.400000,0.400000"/>
     </CModel>
     <CModel id="OrbsOfLuck">
         <Model value="Assets\Effects\Protoss\Disintegration_Missile\Disintegration_Missile.m3"/>
         <AnimSpeed value="2.000000"/>
-        <EditorCategories value="Race:Zerg"/>
+        <EditorCategories value="Race:Protoss"/>
         <ScaleMax value="0.600000,0.600000,0.600000"/>
         <ScaleMin value="0.600000,0.600000,0.600000"/>
     </CModel>

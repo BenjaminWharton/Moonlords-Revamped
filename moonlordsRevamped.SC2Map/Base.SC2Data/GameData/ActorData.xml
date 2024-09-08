@@ -143,6 +143,35 @@
         <Model value="VoidProtossAOECursorSplat"/>
         <Scale value="1.500000"/>
     </CActorSplat>
+    <CActorSplat id="LuckHeroOrbOfHavocSplat" parent="ProtossCursorSplat" abil="LaunchOrbsOfHavoc">
+        <Terms value="ValidatePlayer LuckHeroAmplifyE0"/>
+        <Model value="VoidProtossAOECursorSplat"/>
+        <Scale value="3.000000"/>
+    </CActorSplat>
+    <CActorSplat id="LuckHeroOrbOfDestructionSplat" parent="ProtossCursorSplat" abil="LaunchOrbsOfDestruction">
+        <Model value="VoidProtossAOECursorSplat"/>
+    </CActorSplat>
+    <CActorSplat id="LuckHeroOrbOfAttritionSplat" parent="ProtossCursorSplat" abil="LaunchOrbsOfAttrition">
+        <Model value="VoidProtossAOECursorSplat"/>
+        <Scale value="1.500000"/>
+    </CActorSplat>
+    <CActorSplat id="LuckHeroOrbOfVitalitySplat" parent="ProtossCursorSplat" abil="LaunchOrbsOfVitality">
+        <Terms value="ValidatePlayer LuckHeroAmplifyE0"/>
+        <Model value="VoidProtossAOECursorSplat"/>
+        <Scale value="3.000000"/>
+    </CActorSplat>
+    <CActorSimple id="LuckHeroOrbOfHavocSize">
+        <Supporter Subject="_Unit"/>
+        <On Terms="Effect.LuckHeroOrbOfHavocImpactSet.Start; At Target" Send="Create"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidateEffect DefaultDataE1" Target="_Unit" Send="SetScale 1.200000 0.500000"/>
+        <On Terms="ActorCreation; ValidateEffect DefaultDataE2" Target="_Unit" Send="SetScale 1.400000 0.500000"/>
+        <On Terms="ActorCreation; ValidateEffect DefaultDataE3" Target="_Unit" Send="SetScale 1.600000 0.500000"/>
+        <On Terms="ActorCreation; ValidateEffect DefaultDataE4" Target="_Unit" Send="SetScale 1.800000 0.500000"/>
+        <On Terms="ActorCreation; ValidateEffect DefaultDataE5" Target="_Unit" Send="SetScale 2.000000 0.500000"/>
+        <On Terms="ActorCreation; ValidateEffect DefaultDataE6" Target="_Unit" Send="SetScale 2.200000 0.500000"/>
+        <On Terms="ActorCreation; ValidateEffect DefaultDataE7" Target="_Unit" Send="SetScale 2.400000 0.500000"/>
+    </CActorSimple>
     <CActorText id="ThorNukeIcon">
         <On Terms="Behavior.DefensiveNuke.On" Send="Create"/>
         <On Terms="Behavior.DefensiveNuke.Off" Send="Destroy"/>
@@ -3453,61 +3482,28 @@
         <ImpactReattachQuery Methods=""/>
         <ShieldFlashType value="None"/>
     </CActorAction>
-    <CActorModel id="OrbOfVitality1Storm" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.OrbOfVitality1StormCP.Start; ValidatePlayer ExtractIsGT0" Send="Create"/>
-        <On Terms="Effect.OrbOfVitality1StormCP.Stop" Send="Destroy"/>
+    <CActorModel id="LuckHeroOrbOfVitalityEnervate" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.LuckHeroOrbOfVitalityEnervateCP.Start" Send="Create"/>
+        <On Terms="Effect.LuckHeroOrbOfVitalityEnervateCP.Stop" Send="Destroy"/>
         <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
+        <On Terms="ActorCreation; ValidateEffect LuckHeroNoBoundless" Send="StatusSet Normal 0"/>
+        <On Terms="ActorCreation; ValidateEffect LuckHeroHasBoundless" Send="StatusSet Boundless 0"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE1" Send="SetScale 2.300000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE2" Send="SetScale 2.600000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE3" Send="SetScale 2.900000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE4" Send="SetScale 3.200000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE5" Send="SetScale 3.500000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE6" Send="SetScale 3.800000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE7" Send="SetScale 4.100000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE1" Send="SetScale 2.600000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE2" Send="SetScale 3.200000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE3" Send="SetScale 3.800000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE4" Send="SetScale 4.400000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE5" Send="SetScale 5.000000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE6" Send="SetScale 5.600000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE7" Send="SetScale 6.200000"/>
         <Model value="OrbOfVitalityStorm"/>
-        <Scale value="1.125000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitality2Storm" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.OrbOfVitality2StormCP.Start; ValidatePlayer ExtractIsGT0" Send="Create"/>
-        <On Terms="Effect.OrbOfVitality2StormCP.Stop" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <Model value="OrbOfVitalityStorm"/>
-        <Scale value="1.250000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitality3Storm" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.OrbOfVitality3StormCP.Start; ValidatePlayer ExtractIsGT0" Send="Create"/>
-        <On Terms="Effect.OrbOfVitality3StormCP.Stop" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <Model value="OrbOfVitalityStorm"/>
-        <Scale value="1.375000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitality4Storm" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.OrbOfVitality4StormCP.Start; ValidatePlayer ExtractIsGT0" Send="Create"/>
-        <On Terms="Effect.OrbOfVitality4StormCP.Stop" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <Model value="OrbOfVitalityStorm"/>
-        <Scale value="1.500000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitality5Storm" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.OrbOfVitality5StormCP.Start; ValidatePlayer ExtractIsGT0" Send="Create"/>
-        <On Terms="Effect.OrbOfVitality5StormCP.Stop" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <Model value="OrbOfVitalityStorm"/>
-        <Scale value="1.625000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitality6Storm" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.OrbOfVitality6StormCP.Start; ValidatePlayer ExtractIsGT0" Send="Create"/>
-        <On Terms="Effect.OrbOfVitality6StormCP.Stop" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <Model value="OrbOfVitalityStorm"/>
-        <Scale value="1.750000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitality7Storm" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.OrbOfVitality7StormCP.Start; ValidatePlayer ExtractIsGT0" Send="Create"/>
-        <On Terms="Effect.OrbOfVitality7StormCP.Stop" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <Model value="OrbOfVitalityStorm"/>
-        <Scale value="1.875000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitalityImpact7" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.OrbOfVitality7StormCP.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <On Terms="ActorCreation" Send="Create OrbOfVitalityImpactSound"/>
-        <Model value="OrbOfVitalityImpact"/>
-        <Scale value="1.875000"/>
+        <Scale value="2.000000"/>
     </CActorModel>
     <CActorModel id="OverchargeOverheadModel" parent="ModelAddition">
         <On Terms="Behavior.PylonOvercharge.On" Send="Create"/>
@@ -3519,8 +3515,8 @@
     </CActorModel>
     <CActorModel id="OrbOfAttritionRecurHealthHealModel" parent="ModelAnimationStyleContinuous">
         <On Terms="ActorCreation" Send="$Birth PlayForever"/>
-        <On Terms="Effect.OrbOfVitalityRecurHealthHealer.TargetStart; At Target" Send="Create"/>
-        <On Terms="Effect.OrbOfVitalityRecurHealthHealer.TargetStop; At Target" Send="Destroy"/>
+        <On Terms="Effect.LuckHeroOrbOfVitalityRecurHealthHealer.TargetStart; At Target" Send="Create"/>
+        <On Terms="Effect.LuckHeroOrbOfVitalityRecurHealthHealer.TargetStop; At Target" Send="Destroy"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOverhead"/>
@@ -3528,63 +3524,45 @@
     </CActorModel>
     <CActorModel id="OrbOfAttritionRecurShieldHealModel" parent="ModelAnimationStyleContinuous">
         <On Terms="ActorCreation" Send="$Birth PlayForever"/>
-        <On Terms="Effect.OrbOfVitalityRecurShieldHealer.TargetStart; At Target" Send="Create"/>
-        <On Terms="Effect.OrbOfVitalityRecurShieldHealer.TargetStop; At Target" Send="Destroy"/>
+        <On Terms="Effect.LuckHeroOrbOfVitalityRecurShieldHealer.TargetStart; At Target" Send="Create"/>
+        <On Terms="Effect.LuckHeroOrbOfVitalityRecurShieldHealer.TargetStop; At Target" Send="Destroy"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOverhead"/>
         <Model value="MedicHealModel"/>
     </CActorModel>
-    <CActorModel id="OrbOfVitalityImpact1" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.OrbOfVitality1SAEnemy.Start" Send="Create"/>
+    <CActorModel id="LuckHeroOrbOfVitalityImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.LuckHeroOrbOfVitalityImpactSet.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
         <On Terms="ActorCreation" Send="Create OrbOfVitalityImpactSound"/>
+        <On Terms="ActorCreation; ValidateEffect LuckHeroNoBoundless" Send="StatusSet Normal 0"/>
+        <On Terms="ActorCreation; ValidateEffect LuckHeroHasBoundless" Send="StatusSet Boundless 1"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE1" Send="SetScale 2.300000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE2" Send="SetScale 2.600000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE3" Send="SetScale 2.900000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE4" Send="SetScale 3.200000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE5" Send="SetScale 3.500000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE6" Send="SetScale 3.800000"/>
+        <On Terms="StatusSet.*.Normal; ValidateCreationEffect DefaultDataE7" Send="SetScale 4.100000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE1" Send="SetScale 2.600000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE2" Send="SetScale 3.200000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE3" Send="SetScale 3.800000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE4" Send="SetScale 4.400000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE5" Send="SetScale 5.000000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE6" Send="SetScale 5.600000"/>
+        <On Terms="StatusSet.*.Boundless; ValidateCreationEffect DefaultDataE7" Send="SetScale 6.200000"/>
         <Model value="OrbOfVitalityImpact"/>
-        <Scale value="1.125000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitalityImpact2" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.OrbOfVitality2StormCP.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <On Terms="ActorCreation" Send="Create OrbOfVitalityImpactSound"/>
-        <Model value="OrbOfVitalityImpact"/>
-        <Scale value="1.250000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitalityImpact3" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.OrbOfVitality3StormCP.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <On Terms="ActorCreation" Send="Create OrbOfVitalityImpactSound"/>
-        <Model value="OrbOfVitalityImpact"/>
-        <Scale value="1.375000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitalityImpact4" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.OrbOfVitality4StormCP.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <On Terms="ActorCreation" Send="Create OrbOfVitalityImpactSound"/>
-        <Model value="OrbOfVitalityImpact"/>
-        <Scale value="1.500000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitalityImpact5" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.OrbOfVitality5StormCP.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <On Terms="ActorCreation" Send="Create OrbOfVitalityImpactSound"/>
-        <Model value="OrbOfVitalityImpact"/>
-        <Scale value="1.625000"/>
-    </CActorModel>
-    <CActorModel id="OrbOfVitalityImpact6" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.OrbOfVitality6StormCP.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <On Terms="ActorCreation" Send="Create OrbOfVitalityImpactSound"/>
-        <Model value="OrbOfVitalityImpact"/>
-        <Scale value="1.750000"/>
+        <Scale value="2.000000"/>
     </CActorModel>
     <CActorSound id="OrbOfVitalityImpactSound" parent="SoundOneShot">
         <Sound value="Nova_SniperRifle_AttackLaunch_Boomy"/>
     </CActorSound>
     <CActorModel id="OrbOfVitalityPervadeImpact" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.OrbOfVitalityPervadeEnemySA.Start; At Source" Send="Create"/>
+        <On Terms="Effect.LuckHeroOrbOfVitalityPervadeEnemySA.Start; At Source" Send="Create"/>
         <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
         <On Terms="ActorCreation" Send="Create OrbOfVitalityImpactSound"/>
         <Model value="OrbOfVitalityImpact"/>
+        <Scale value="2.000000"/>
     </CActorModel>
     <CActorSound id="OrbOfVitalityRecurHealSound" parent="SoundContinuous">
         <On Terms="Abil.OrbOfVitalityRecurHeal.TargetChannelStart" Send="Create"/>
@@ -3598,8 +3576,8 @@
     </CActorSound>
     <CActorBeamSimple id="OrbOfVitalityRecurHealthHealBeam" parent="BeamSimpleAnimationStyleContinuous">
         <Inherits index="Visibility" value="1"/>
-        <On Terms="Effect.OrbOfVitalityRecurHealthHealer.TargetStart" Send="Create"/>
-        <On Terms="Effect.OrbOfVitalityRecurHealthHealer.TargetStop" Send="Destroy"/>
+        <On Terms="Effect.LuckHeroOrbOfVitalityRecurHealthHealer.TargetStart" Send="Create"/>
+        <On Terms="Effect.LuckHeroOrbOfVitalityRecurHealthHealer.TargetStop" Send="Destroy"/>
         <HostForProps Subject="_Unit" Scope="Caster" Actor="Find"/>
         <Model value="MedicHealBeam"/>
         <HostLaunch Subject="_Unit" Scope="Caster" Actor="Find"/>
@@ -3609,8 +3587,11 @@
     </CActorBeamSimple>
     <CActorSimple id="OrbLaunched">
         <On Terms="Behavior.OrbLaunched.On" Send="Create"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="SetOpacity 0.000000 0.000000 Soaked"/>
-        <On Terms="Behavior.OrbLaunched.Off" Target="_Unit" Send="ClearOpacity 0.000000 Soaked"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetOpacity 0.000000 0.000000 Launched"/>
+        <On Terms="Behavior.OrbLaunched.Off" Target="_Unit" Send="ClearOpacity 0.000000 Launched"/>
+        <On Terms="Behavior.OrbLaunched.Off" Target="_Unit" Send="AnimPlay BSD Birth"/>
+        <On Terms="Behavior.OrbLaunched.Off" Target="_Unit" Send="SetScale 0.100000"/>
+        <On Terms="Behavior.OrbLaunched.Off" Target="_Unit" Send="SetScale 1.000000 0.500000"/>
         <On Terms="Behavior.OrbLaunched.Off" Send="Destroy"/>
     </CActorSimple>
     <CActorSimple id="IsDestructionOrb">
@@ -3862,12 +3843,6 @@
         <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
         <HostSiteOps Ops="SOpAttachOverhead"/>
     </CActorModel>
-    <CActorModel id="OrbOfVitalityImpact0" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.OrbOfVitality0SAEnemy.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
-        <On Terms="ActorCreation" Send="Create OrbOfVitalityImpactSound"/>
-        <Model value="OrbOfVitalityImpact"/>
-    </CActorModel>
     <CActorMissile id="OrbOfVitalityMissile" parent="WizSimpleMissile" unitName="OrbOfVitalityMissile">
         <On index="1" Terms="UnitBirth" Send="AnimBracketStart Lifetime Stand Stand"/>
         <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
@@ -3909,6 +3884,11 @@
         <On index="3" Terms="UnitRevive.LuckHero"/>
         <On index="4" Terms="UnitConstruction.LuckHero.Start"/>
         <On index="5" Terms="UnitConstruction.LuckHero.Finish"/>
+        <On Terms="Abil.LaunchOrbsOfDestruction.SourceCastStop" Send="SetTeamColor 255,0,0 255,0,0 1.000000"/>
+        <On Terms="Abil.LaunchOrbsOfHavoc.SourceCastStop" Send="SetTeamColor 255,255,0 255,255,0 1.000000"/>
+        <On Terms="Abil.LaunchOrbsOfAttrition.SourceCastStop" Send="SetTeamColor 0,0,255 0,0,255 1.000000"/>
+        <On Terms="Abil.LaunchOrbsOfVitality.SourceCastStop" Send="SetTeamColor 0,255,0 0,255,0 1.000000"/>
+        <On Terms="Abil.OrbsOfLuck.SourceCastStop" Send="SetTeamColor 255,255,255 255,255,255 1.000000"/>
         <Model value="LuckHero"/>
         <BuildModel value="DragoonWarpIn"/>
         <DeathArray index="Normal" ModelLink="LuckHeroDeath"/>
@@ -3960,8 +3940,8 @@
     </CActorMissile>
     <CActorBeamSimple id="OrbOfVitalityRecurShieldHealBeam" parent="BeamSimpleAnimationStyleContinuous">
         <Inherits index="Visibility" value="1"/>
-        <On Terms="Effect.OrbOfVitalityRecurShieldHealer.TargetStart" Send="Create"/>
-        <On Terms="Effect.OrbOfVitalityRecurShieldHealer.TargetStop" Send="Destroy"/>
+        <On Terms="Effect.LuckHeroOrbOfVitalityRecurShieldHealer.TargetStart" Send="Create"/>
+        <On Terms="Effect.LuckHeroOrbOfVitalityRecurShieldHealer.TargetStop" Send="Destroy"/>
         <HostForProps Subject="_Unit" Scope="Caster" Actor="Find"/>
         <Model value="MedicHealBeam"/>
         <HostLaunch Subject="_Unit" Scope="Caster" Actor="Find"/>
@@ -3970,61 +3950,8 @@
         <HostImpactSiteOps Ops="SOpAttachCenter"/>
     </CActorBeamSimple>
     <CActorUnit id="OrbsOfLuck" parent="GenericUnitStandard" unitName="OrbOfLuck">
-        <On index="19" Terms="ActorCreation; ScopeContains GroundLocalSelection" Send="StatusSet Selected 1"/>
-        <On index="20" Terms="SelectionLocalUpdate.*.Start" Send="StatusSet Selected 1"/>
-        <On index="21" Terms="SelectionLocalUpdate.*.Stop" Send="StatusSet Selected 0"/>
-        <On index="22" Terms="UnitBirth.*.Normal" Send="$Birth 0 0.000000"/>
-        <On index="23" Terms="UnitFidget" Send="AnimPlay Fidget Fidget"/>
-        <On index="24" Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Fidget"/>
-        <On index="25" Terms="UnitDetectedByViewer.*.On; ValidateUnit IsHallucination" Target="_HallucinationTinter" Send="Signal HallucinationTintOn"/>
-        <On index="26" Terms="UnitDetectedByViewer.*.Off; ValidateUnit IsHallucination" Target="_HallucinationTinter" Send="Signal HallucinationTintOff"/>
-        <On index="27" Terms="UnitDeathCustomize; ValidateUnit NotStructure; IsStatus InAir 1" Send="DeathCustomize AntiGravGeneric"/>
-        <On index="28" Terms="UnitDeathCustomize; ValidateUnit IsProtossUnit; IsStatus InAir 1" Target="" Send="DeathCustomize AntiGravProtoss"/>
-        <On index="29" Terms="UnitDeathCustomize; ValidateUnit IsTerranUnit; IsStatus InAir 1" Send="DeathCustomize AntiGravTerran"/>
-        <On index="30" Terms="UnitDeathCustomize; ValidateUnit IsZergUnit; IsStatus InAir 1" Target="" Send="DeathCustomize AntiGravZerg"/>
-        <On index="31" Terms="UnitDeathCustomize; ValidateUnit IsVortexed" Target="" Send="DeathCustomize Vortex"/>
-        <On index="32" Terms="UnitDeathCustomize; ValidateUnit HasForceLowDeathProtoss" Send="DeathCustomize AntiGravProtoss"/>
-        <On index="33" Terms="UnitDeathCustomize; ValidateUnit HasForceLowDeathZerg" Target="" Send="DeathCustomize AntiGravZerg"/>
-        <On index="34" Terms="UnitDeathCustomize; ValidateUnit HasForceLowDeathTerran" Send="DeathCustomize AntiGravTerran"/>
-        <On index="35" Terms="Behavior.PhoenixAntiGrav.On" Send="ModelSuddenMotionStart"/>
-        <On index="36" Terms="Behavior.PhoenixAntiGrav.Off" Send="ModelSuddenMotionStop"/>
-        <On index="37" Terms="Behavior.ForceLowDeath.On" Send="DeathCustomsEnablePhysics 0"/>
-        <On index="38" Terms="UnitTaunt.*.Start; Taunt" Target="" Send="AnimPlay Cheer Stand,Victory"/>
-        <On index="39" Terms="UnitTaunt.*.Stop; Taunt" Target="" Send="AnimClear Cheer"/>
-        <On index="40" Terms="UnitTaunt.*.Start; Taunt Dance" Send="AnimPlay Dance Stand,Dance"/>
-        <On index="41" Terms="UnitTaunt.*.Stop; Taunt Dance" Send="AnimClear Dance"/>
-        <On index="42" Terms="UnitTaunt.*.Start; Taunt Tease" Send="AnimPlay Taunt Taunt"/>
-        <On index="43" Terms="UnitTaunt.*.Stop; Taunt Tease" Send="AnimClear Taunt"/>
-        <On index="44" Terms="ActorCreation" Send="StatusSet InAir 0"/>
-        <On index="45" Terms="UnitHeightUpdate.*.Lift" Send="StatusSet InAir 1"/>
-        <On index="46" Terms="UnitHeightUpdate.*.Land" Send="StatusSet InAir 0"/>
-        <On index="47" Terms="BuildCoachHover.*.On" Send="TimerKill DelayUnhighlight"/>
-        <On index="48" Terms="BuildCoachHover.*.On" Send="SetTintColor 0,255,0 0.100000"/>
-        <On index="49" Terms="BuildCoachHover.*.Off" Send="TimerSet 0.300000 DelayUnhighlight"/>
-        <On index="50" Terms="TimerExpired; TimerName DelayUnhighlight" Send="SetTintColor 255,255,255 0.500000"/>
-        <On index="51" Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On index="52" Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
-        <On index="53" Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
-        <On index="54" Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
-        <On index="55" Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On index="56" removed="1"/>
-        <On index="57" removed="1"/>
-        <On index="58" removed="1"/>
-        <On index="59" removed="1"/>
-        <On index="60" removed="1"/>
-        <On index="61" removed="1"/>
-        <On index="62" removed="1"/>
-        <On index="63" removed="1"/>
-        <On index="64" removed="1"/>
-        <On index="65" removed="1"/>
-        <On index="66" removed="1"/>
-        <On index="67" removed="1"/>
-        <On index="68" removed="1"/>
         <Model value="OrbsOfLuck"/>
-        <BuildModel value=""/>
         <DeathArray index="Normal" ModelLink=""/>
-        <PlacementModel value=""/>
-        <HighlightTooltip value="Unit/Name/Bogus"/>
         <MinimapRenderPriority value=""/>
     </CActorUnit>
     <CActorUnit id="FortressLord" parent="Mutalisk" unitName="FortressLord">
@@ -4592,13 +4519,13 @@
     </CActorModel>
     <CActorUnit id="OrbOfHavoc" parent="GenericUnitStandard" unitName="OrbOfHavoc">
         <On index="19" Terms="ActorCreation" Send="SetTintColor 255,255,0"/>
-        <On index="20" Terms="Behavior.OrbOfHavoc1Fate.On" Send="SetScale 1.200000"/>
-        <On index="21" Terms="Behavior.OrbOfHavoc2Fate.On" Send="SetScale 1.400000"/>
-        <On index="22" Terms="Behavior.OrbOfHavoc3Fate.On" Send="SetScale 1.600000"/>
-        <On index="23" Terms="Behavior.OrbOfHavoc4Fate.On" Send="SetScale 1.800000"/>
-        <On index="24" Terms="Behavior.OrbOfHavoc5Fate.On" Send="SetScale 2.000000"/>
-        <On index="25" Terms="Behavior.OrbOfHavoc6Fate.On" Send="SetScale 2.200000"/>
-        <On index="26" Terms="Behavior.OrbOfHavoc7Fate.On" Send="SetScale 2.400000"/>
+        <On index="20" Terms="Behavior.LuckHeroHavocOrbPrecursor.On" Send="SetOpacity"/>
+        <On index="21" Terms="Behavior.LuckHeroHavocOrbPrecursor.Off" Send="SetOpacity 1.000000"/>
+        <On index="22" Terms="Behavior.OrbOfHavocFate.Destroy" Send="SetScale 0.010000 0.500000"/>
+        <On index="23" removed="1"/>
+        <On index="24" removed="1"/>
+        <On index="25" removed="1"/>
+        <On index="26" removed="1"/>
         <On index="27" removed="1"/>
         <On index="28" removed="1"/>
         <On index="29" removed="1"/>

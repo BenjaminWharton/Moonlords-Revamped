@@ -251,129 +251,6 @@
         <InfoIcon value="Assets\Textures\abilityicon_corrosivespores_square.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Deluge1">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
-        <Duration value="2"/>
-        <Period value="0.25"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffect value="OrbOfAttritionDelugeOffset2"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Deluge2">
-        <Cost>
-            <Charge Link="Behavior/Deluge1"/>
-            <Cooldown Link="Behavior/Deluge1"/>
-        </Cost>
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
-        <Duration value="3"/>
-        <Period value="0.25"/>
-        <PeriodCount value="2"/>
-        <PeriodicEffect value="OrbOfAttritionDelugeOffset2"/>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/Deluge1"/>
-                <Cooldown Link="Behavior/Deluge1"/>
-            </Cost>
-        </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Deluge3">
-        <Cost>
-            <Charge Link="Behavior/Deluge1"/>
-            <Cooldown Link="Behavior/Deluge1"/>
-        </Cost>
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
-        <Duration value="4"/>
-        <Period value="0.25"/>
-        <PeriodCount value="3"/>
-        <PeriodicEffect value="OrbOfAttritionDelugeOffset2"/>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/Deluge1"/>
-                <Cooldown Link="Behavior/Deluge1"/>
-            </Cost>
-        </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Deluge4">
-        <Cost>
-            <Charge Link="Behavior/Deluge1"/>
-            <Cooldown Link="Behavior/Deluge1"/>
-        </Cost>
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
-        <Duration value="6"/>
-        <Period value="0.25"/>
-        <PeriodCount value="4"/>
-        <PeriodicEffect value="OrbOfAttritionDelugeOffset2"/>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/Deluge1"/>
-                <Cooldown Link="Behavior/Deluge1"/>
-            </Cost>
-        </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Deluge5">
-        <Cost>
-            <Charge Link="Behavior/Deluge1"/>
-            <Cooldown Link="Behavior/Deluge1"/>
-        </Cost>
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
-        <Duration value="8"/>
-        <Period value="0.25"/>
-        <PeriodCount value="5"/>
-        <PeriodicEffect value="OrbOfAttritionDelugeOffset2"/>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/Deluge1"/>
-                <Cooldown Link="Behavior/Deluge1"/>
-            </Cost>
-        </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Deluge6">
-        <Cost>
-            <Charge Link="Behavior/Deluge1"/>
-            <Cooldown Link="Behavior/Deluge1"/>
-        </Cost>
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
-        <Duration value="10"/>
-        <Period value="0.25"/>
-        <PeriodCount value="6"/>
-        <PeriodicEffect value="OrbOfAttritionDelugeOffset2"/>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/Deluge1"/>
-                <Cooldown Link="Behavior/Deluge1"/>
-            </Cost>
-        </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Deluge7">
-        <Cost>
-            <Charge Link="Behavior/Deluge1"/>
-            <Cooldown Link="Behavior/Deluge1"/>
-        </Cost>
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
-        <Duration value="12"/>
-        <Period value="0.25"/>
-        <PeriodCount value="7"/>
-        <PeriodicEffect value="OrbOfAttritionDelugeOffset2"/>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/Deluge1"/>
-                <Cooldown Link="Behavior/Deluge1"/>
-            </Cost>
-        </DamageResponse>
-    </CBehaviorBuff>
     <CBehaviorBuff id="GiantYetiLeapStun">
         <FinalEffect value="ApplyUnitWasStunned"/>
     </CBehaviorBuff>
@@ -453,6 +330,12 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Period value="2"/>
         <PeriodicEffect value="NatureHeroHarvestSearchTarget"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="LuckHeroHavocOrbPrecursor">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Modification SightBonus="-10">
+            <BehaviorLinkDisableArray value="OrbOfHavocFate"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="ParticleHeroLeftover">
         <BehaviorFlags index="Permanent" value="1"/>
@@ -1528,189 +1411,29 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="10"/>
         <Period value="0.125"/>
-        <PeriodicEffect value="OrbOfAttritionAnomalySA"/>
+        <PeriodicEffect value="LuckHeroOrbOfAttritionAnomalySA"/>
         <FinalEffect value="OrbOfAttritionSA"/>
         <ExpireEffect value="Suicide"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrbOfHavoc6Fate">
-        <Cost>
-            <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-            <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-        </Cost>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="NotOrbLaunched"/>
-        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
-        <Duration value="5"/>
-        <Period value="1.5"/>
-        <PeriodicEffect value="OrbOfHavoc6SA"/>
-        <FinalEffect value="Suicide"/>
-        <Modification>
-            <StateFlags index="UnitAttrOnPsionic" value="1"/>
-        </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-                <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-            </Cost>
-        </DamageResponse>
-        <RefreshEffect value="OrbOfHavoc6SA"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrbOfHavoc7Fate">
-        <Cost>
-            <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-            <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-        </Cost>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="NotOrbLaunched"/>
-        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
-        <Duration value="5"/>
-        <Period value="1.5"/>
-        <RefreshEffect value="OrbOfHavoc6SA"/>
-        <PeriodicEffect value="OrbOfHavoc6SA"/>
-        <FinalEffect value="Suicide"/>
-        <Modification>
-            <StateFlags index="UnitAttrOnPsionic" value="1"/>
-        </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-                <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-            </Cost>
-        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="OrbOfVitalityRecurFate">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="15"/>
         <FinalEffect value="Suicide"/>
-        <ExpireEffect value="OrbOfVitality0ImpactSet"/>
+        <ExpireEffect value="LuckHeroOrbOfVitalityRecurSASet"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="OrbOfHavoc0Fate">
+    <CBehaviorBuff id="OrbOfHavocFate">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="NotOrbLaunched"/>
         <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
-        <Duration value="5"/>
-        <Period value="1.5"/>
-        <PeriodicEffect value="OrbOfHavoc0SA"/>
-        <FinalEffect value="Suicide"/>
+        <Duration value="0.0625">
+            <AccumulatorArray value="LuckHeroOrbOfHavocDuration"/>
+        </Duration>
+        <Period value="1.2"/>
+        <RefreshEffect value="LuckHeroOrbOfHavocSA"/>
+        <PeriodicEffect value="LuckHeroOrbOfHavocSA"/>
+        <FinalEffect value="LuckHeroOrbOfHavocSuicideDelay"/>
         <Modification>
             <StateFlags index="UnitAttrOnPsionic" value="1"/>
         </Modification>
-        <RefreshEffect value="OrbOfHavoc0SA"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrbOfHavoc1Fate">
-        <Cost>
-            <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-            <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-        </Cost>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="NotOrbLaunched"/>
-        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
-        <Duration value="5"/>
-        <Period value="1.5"/>
-        <PeriodicEffect value="OrbOfHavoc1SA"/>
-        <FinalEffect value="Suicide"/>
-        <Modification>
-            <StateFlags index="UnitAttrOnPsionic" value="1"/>
-        </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-                <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-            </Cost>
-        </DamageResponse>
-        <RefreshEffect value="OrbOfHavoc1SA"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrbOfHavoc2Fate">
-        <Cost>
-            <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-            <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-        </Cost>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="NotOrbLaunched"/>
-        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
-        <Duration value="5"/>
-        <Period value="1.5"/>
-        <PeriodicEffect value="OrbOfHavoc2SA"/>
-        <FinalEffect value="Suicide"/>
-        <Modification>
-            <StateFlags index="UnitAttrOnPsionic" value="1"/>
-        </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-                <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-            </Cost>
-        </DamageResponse>
-        <RefreshEffect value="OrbOfHavoc2SA"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrbOfHavoc3Fate">
-        <Cost>
-            <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-            <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-        </Cost>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="NotOrbLaunched"/>
-        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
-        <Duration value="5"/>
-        <Period value="1.5"/>
-        <PeriodicEffect value="OrbOfHavoc3SA"/>
-        <FinalEffect value="Suicide"/>
-        <Modification>
-            <StateFlags index="UnitAttrOnPsionic" value="1"/>
-        </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-                <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-            </Cost>
-        </DamageResponse>
-        <RefreshEffect value="OrbOfHavoc3SA"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrbOfHavoc4Fate">
-        <Cost>
-            <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-            <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-        </Cost>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="NotOrbLaunched"/>
-        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
-        <Duration value="5"/>
-        <Period value="1.5"/>
-        <PeriodicEffect value="OrbOfHavoc4SA"/>
-        <FinalEffect value="Suicide"/>
-        <Modification>
-            <StateFlags index="UnitAttrOnPsionic" value="1"/>
-        </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-                <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-            </Cost>
-        </DamageResponse>
-        <RefreshEffect value="OrbOfHavoc4SA"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrbOfHavoc5Fate">
-        <Cost>
-            <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-            <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-        </Cost>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="NotOrbLaunched"/>
-        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
-        <Duration value="5"/>
-        <Period value="1.5"/>
-        <PeriodicEffect value="OrbOfHavoc5SA"/>
-        <FinalEffect value="Suicide"/>
-        <Modification>
-            <StateFlags index="UnitAttrOnPsionic" value="1"/>
-        </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/OrbOfHavoc0Fate"/>
-                <Cooldown Link="Behavior/OrbOfHavoc0Fate"/>
-            </Cost>
-        </DamageResponse>
-        <RefreshEffect value="OrbOfHavoc5SA"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PylonOvercharge">
         <InfoFlags index="Hidden" value="1"/>
@@ -1979,7 +1702,13 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification SightBonus="-10">
             <StateFlags index="UnitAttrOnPsionic" value="1"/>
+            <BehaviorLinkDisableArray value="IsDestructionOrb"/>
+            <BehaviorLinkDisableArray value="IsHavocOrb"/>
+            <BehaviorLinkDisableArray value="IsAttritionOrb"/>
+            <BehaviorLinkDisableArray value="IsVitalityOrb"/>
+            <BehaviorLinkDisableArray value="IsNeutralOrb"/>
         </Modification>
+        <Duration value="1.5"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="VitalityOrbCounter">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>

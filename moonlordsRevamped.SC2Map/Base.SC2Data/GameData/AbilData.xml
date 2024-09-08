@@ -354,15 +354,9 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="LaunchOrbsOfHavoc">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="OrbOfHavocSwitch"/>
-        <InterruptCost>
-            <Charge Link="Abil/LaunchOrbsOfDestruction"/>
-            <Cooldown Link="Abil/LaunchOrbsOfDestruction"/>
-        </InterruptCost>
+        <Effect index="0" value="LuckHeroOrbOfHavocInit"/>
         <Range value="12"/>
         <Arc value="360"/>
-        <Marker Link="Abil/LaunchOrbsOfDestruction"/>
-        <AINotifyEffect value="LaunchOrbsOfDestruction"/>
         <IgnoreFilters value="-;Player,Ally"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="LaunchOrbsOfHavoc"/>
         <Flags index="AutoCast" value="1"/>
@@ -375,18 +369,13 @@
             <Cooldown TimeUse="0.01"/>
         </Cost>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CursorEffect value="LuckHeroOrbOfHavocUISA"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="LaunchOrbsOfAttrition">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="OrbOfAttritionSwitch"/>
-        <InterruptCost>
-            <Charge Link="Abil/LaunchOrbsOfDestruction"/>
-            <Cooldown Link="Abil/LaunchOrbsOfDestruction"/>
-        </InterruptCost>
+        <Effect index="0" value="LuckHeroOrbOfAttrition"/>
         <Range value="12"/>
         <Arc value="360"/>
-        <Marker Link="Abil/LaunchOrbsOfDestruction"/>
-        <AINotifyEffect value="LaunchOrbsOfDestruction"/>
         <IgnoreFilters value="-;Player,Ally"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="LaunchOrbsOfAttrition"/>
         <Flags index="AutoCast" value="1"/>
@@ -402,15 +391,9 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="LaunchOrbsOfVitality">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="OrbOfVitalitySwitch"/>
-        <InterruptCost>
-            <Charge Link="Abil/LaunchOrbsOfDestruction"/>
-            <Cooldown Link="Abil/LaunchOrbsOfDestruction"/>
-        </InterruptCost>
+        <Effect index="0" value="LuckHeroOrbOfVitalityInit"/>
         <Range value="12"/>
         <Arc value="360"/>
-        <Marker Link="Abil/LaunchOrbsOfDestruction"/>
-        <AINotifyEffect value="LaunchOrbsOfDestruction"/>
         <IgnoreFilters value="-;Player,Ally"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="LaunchOrbsOfVitality"/>
         <Flags index="AutoCast" value="1"/>
@@ -423,6 +406,7 @@
             <Cooldown TimeUse="0.01"/>
         </Cost>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CursorEffect value="LuckHeroOrbOfVitalityUISA"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="RapidRepairsButtonDummy">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -477,7 +461,7 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="OrbOfVitalityRecurHeal" parent="heal">
         <Name value="Abil/Name/OrbOfVitalityRecurHeal"/>
-        <Effect index="0" value="OrbOfVitalityRecurHealerSwitch"/>
+        <Effect index="0" value="LuckHeroOrbOfVitalityRecurHealSwitch"/>
         <TargetFilters index="0" value="Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
         <SmartValidatorArray index="2" removed="1"/>
         <AutoCastRange value="8"/>

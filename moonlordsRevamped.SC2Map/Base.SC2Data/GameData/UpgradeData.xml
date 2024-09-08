@@ -37,14 +37,14 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Alacrity">
-        <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc0LM,PeriodicPeriod" Value="0.062500"/>
+        <EffectArray Operation="Subtract" Reference="Effect,LuckHeroOrbOfHavocLM,PeriodicPeriod" Value="0.062500"/>
         <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc0ReturnLM,PeriodicPeriod" Value="0.062500"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc0Fate,Period" Value="0.250000"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc1Fate,Period" Value="0.250000"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc2Fate,Period" Value="0.250000"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc3Fate,Period" Value="0.250000"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc4Fate,Period" Value="0.250000"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc5Fate,Period" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavocFate,Period" Value="0.200000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc1Fate,Period" Value="0.200000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc2Fate,Period" Value="0.200000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc3Fate,Period" Value="0.200000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc4Fate,Period" Value="0.200000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc5Fate,Period" Value="0.200000"/>
         <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc1LM,PeriodicPeriod" Value="0.062500"/>
         <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc1ReturnLM,PeriodicPeriod" Value="0.062500"/>
         <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc2LM,PeriodicPeriod" Value="0.062500"/>
@@ -55,10 +55,10 @@
         <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc4ReturnLM,PeriodicPeriod" Value="0.062500"/>
         <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc5LM,PeriodicPeriod" Value="0.062500"/>
         <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc5ReturnLM,PeriodicPeriod" Value="0.062500"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc6Fate,Period" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc6Fate,Period" Value="0.200000"/>
         <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc6LM,PeriodicPeriod" Value="0.062500"/>
         <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc6ReturnLM,PeriodicPeriod" Value="0.062500"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc7Fate,Period" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,OrbOfHavoc7Fate,Period" Value="0.200000"/>
         <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc7LM,PeriodicPeriod" Value="0.062500"/>
         <EffectArray Operation="Subtract" Reference="Effect,OrbOfHavoc7ReturnLM,PeriodicPeriod" Value="0.062500"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -89,33 +89,21 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Ambit">
-        <EffectArray Reference="Abil,LaunchOrbsOfAttrition,AutoCastRange" Value="2"/>
-        <EffectArray Reference="Abil,LaunchOrbsOfAttrition,Range[0]" Value="2"/>
-        <EffectArray Reference="Abil,LaunchOrbsOfDestruction,AutoCastRange" Value="2"/>
-        <EffectArray Reference="Abil,LaunchOrbsOfDestruction,Range[0]" Value="2"/>
-        <EffectArray Reference="Abil,LaunchOrbsOfHavoc,AutoCastRange" Value="2"/>
-        <EffectArray Reference="Abil,LaunchOrbsOfHavoc,Range[0]" Value="2"/>
-        <EffectArray Reference="Abil,LaunchOrbsOfVitality,AutoCastRange" Value="2"/>
-        <EffectArray Reference="Abil,LaunchOrbsOfVitality,Range[0]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Effect,OrbOfAttritionDevianceLM,ImpactRange" Value="2"/>
+        <EffectArray Reference="Abil,LaunchOrbsOfAttrition,AutoCastRange" Value="2.5"/>
+        <EffectArray Reference="Abil,LaunchOrbsOfAttrition,Range[0]" Value="2.5"/>
+        <EffectArray Reference="Abil,LaunchOrbsOfDestruction,AutoCastRange" Value="2.5"/>
+        <EffectArray Reference="Abil,LaunchOrbsOfDestruction,Range[0]" Value="2.5"/>
+        <EffectArray Reference="Abil,LaunchOrbsOfHavoc,AutoCastRange" Value="2.5"/>
+        <EffectArray Reference="Abil,LaunchOrbsOfHavoc,Range[0]" Value="2.5"/>
+        <EffectArray Reference="Abil,LaunchOrbsOfVitality,AutoCastRange" Value="2.5"/>
+        <EffectArray Reference="Abil,LaunchOrbsOfVitality,Range[0]" Value="2.5"/>
+        <EffectArray Operation="Subtract" Reference="Effect,LuckHeroOrbOfAttritionDevianceLM,ImpactRange" Value="2.5"/>
+        <EffectArray Operation="Subtract" Reference="Effect,LuckHeroOrbOfAttritionDelugeLM,ImpactRange" Value="2.5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Amplify">
-        <EffectArray Reference="Effect,OrbOfHavoc1SA,AreaArray[0].Radius" Value="0.5"/>
-        <EffectArray Reference="Effect,OrbOfHavoc2SA,AreaArray[0].Radius" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfHavoc3SA,AreaArray[0].Radius" Value="1.5"/>
-        <EffectArray Reference="Effect,OrbOfHavoc4SA,AreaArray[0].Radius" Value="2"/>
-        <EffectArray Reference="Effect,OrbOfHavoc5SA,AreaArray[0].Radius" Value="2.5"/>
-        <EffectArray Reference="Effect,OrbOfHavoc6SA,AreaArray[0].Radius" Value="3"/>
-        <EffectArray Reference="Effect,OrbOfHavoc7SA,AreaArray[0].Radius" Value="3.5"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc1Fate,Modification.SightBonus" Value="0.5"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc2Fate,Modification.SightBonus" Value="1"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc3Fate,Modification.SightBonus" Value="1.5"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc4Fate,Modification.SightBonus" Value="2"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc5Fate,Modification.SightBonus" Value="2.5"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc6Fate,Modification.SightBonus" Value="3"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc7Fate,Modification.SightBonus" Value="3.5"/>
+        <EffectArray Reference="Accumulator,LuckHeroOrbOfHavocRadiusMultiplier,Amount" Value="0.3"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -124,7 +112,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Anomaly">
-        <EffectArray Reference="Effect,OrbOfAttritionAnomalyCU,Chance" Value="0.015"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfAttritionAnomalyCU,Chance" Value="0.02"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -187,43 +175,9 @@
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Boundless">
-        <EffectArray Reference="Effect,OrbOfVitality1AllySA,AreaArray[0].Radius" Value="0.25"/>
-        <EffectArray Reference="Effect,OrbOfVitality1SAEnemy,AreaArray[0].Radius" Value="0.25"/>
-        <EffectArray Reference="Effect,OrbOfVitality2AllySA,AreaArray[0].Radius" Value="0.5"/>
-        <EffectArray Reference="Effect,OrbOfVitality2SAEnemy,AreaArray[0].Radius" Value="0.5"/>
-        <EffectArray Reference="Effect,OrbOfVitality3AllySA,AreaArray[0].Radius" Value="0.75"/>
-        <EffectArray Reference="Effect,OrbOfVitality3SAEnemy,AreaArray[0].Radius" Value="0.75"/>
-        <EffectArray Reference="Effect,OrbOfVitality4AllySA,AreaArray[0].Radius" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfVitality4SAEnemy,AreaArray[0].Radius" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfVitality5AllySA,AreaArray[0].Radius" Value="1.25"/>
-        <EffectArray Reference="Effect,OrbOfVitality5SAEnemy,AreaArray[0].Radius" Value="1.25"/>
-        <EffectArray Reference="Effect,OrbOfVitality6AllySA,AreaArray[0].Radius" Value="1.5"/>
-        <EffectArray Reference="Effect,OrbOfVitality6SAEnemy,AreaArray[0].Radius" Value="1.5"/>
-        <EffectArray Reference="Actor,OrbOfVitalityImpact1,Scale" Value="0.250000"/>
-        <EffectArray Reference="Actor,OrbOfVitalityImpact2,Scale" Value="0.500000"/>
-        <EffectArray Reference="Actor,OrbOfVitalityImpact3,Scale" Value="0.750000"/>
-        <EffectArray Reference="Actor,OrbOfVitalityImpact4,Scale" Value="1.000000"/>
-        <EffectArray Reference="Actor,OrbOfVitalityImpact5,Scale" Value="1.250000"/>
-        <EffectArray Reference="Actor,OrbOfVitalityImpact6,Scale" Value="1.500000"/>
-        <EffectArray Reference="Effect,OrbOfVitality7AllySA,AreaArray[0].Radius" Value="1.75"/>
-        <EffectArray Reference="Effect,OrbOfVitality7SAEnemy,AreaArray[0].Radius" Value="1.75"/>
-        <EffectArray Reference="Actor,OrbOfVitalityImpact7,Scale" Value="1.750000"/>
-        <EffectArray Reference="Effect,OrbOfVitality1StormSA,AreaArray[0].Radius" Value="0.25"/>
-        <EffectArray Reference="Effect,OrbOfVitality2StormSA,AreaArray[0].Radius" Value="0.5"/>
-        <EffectArray Reference="Effect,OrbOfVitality3StormSA,AreaArray[0].Radius" Value="0.75"/>
-        <EffectArray Reference="Effect,OrbOfVitality4StormSA,AreaArray[0].Radius" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfVitality5StormSA,AreaArray[0].Radius" Value="1.25"/>
-        <EffectArray Reference="Effect,OrbOfVitality6StormSA,AreaArray[0].Radius" Value="1.5"/>
-        <EffectArray Reference="Effect,OrbOfVitality7StormSA,AreaArray[0].Radius" Value="1.75"/>
-        <EffectArray Reference="Actor,OrbOfVitality1Storm,Scale" Value="0.125000"/>
-        <EffectArray Reference="Actor,OrbOfVitality2Storm,Scale" Value="0.250000"/>
-        <EffectArray Reference="Actor,OrbOfVitality3Storm,Scale" Value="0.375000"/>
-        <EffectArray Reference="Actor,OrbOfVitality4Storm,Scale" Value="0.500000"/>
-        <EffectArray Reference="Actor,OrbOfVitality5Storm,Scale" Value="0.625000"/>
-        <EffectArray Reference="Actor,OrbOfVitality6Storm,Scale" Value="0.750000"/>
-        <EffectArray Reference="Actor,OrbOfVitality7Storm,Scale" Value="0.875000"/>
-        <EffectArray Reference="Effect,OrbOfVitalityDMG,LeechFraction[Life]" Value="0.1"/>
-        <EffectArray Reference="Effect,OrbOfVitalityStormDMG,LeechFraction[Life]" Value="0.1"/>
+        <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityRadiusMultiplier,Amount" Value="0.3"/>
+        <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityDamageMultiplier,Amount" Value="15"/>
+        <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityHealMultiplier,Amount" Value="25"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Broaden">
@@ -340,14 +294,8 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Deluge">
-        <EffectArray Reference="Behavior,Deluge1,PeriodCount" Value="1"/>
-        <EffectArray Reference="Behavior,Deluge2,PeriodCount" Value="2"/>
-        <EffectArray Reference="Behavior,Deluge3,PeriodCount" Value="3"/>
-        <EffectArray Reference="Behavior,Deluge4,PeriodCount" Value="4"/>
-        <EffectArray Reference="Behavior,Deluge5,PeriodCount" Value="5"/>
-        <EffectArray Reference="Behavior,Deluge6,PeriodCount" Value="6"/>
-        <EffectArray Reference="Behavior,Deluge7,PeriodCount" Value="7"/>
-        <EffectArray Reference="Effect,OrbOfAttritionDevianceCP,PeriodCount" Value="1"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfAttritionDevianceCP,PeriodCount" Value="1"/>
+        <EffectArray Reference="Accumulator,LuckHeroDelugeMultiplier,Amount" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -360,8 +308,8 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Deviance">
-        <EffectArray Reference="Effect,OrbOfAttritionDevianceOffset,Chance" Value="0.15"/>
-        <EffectArray Operation="Set" Reference="Effect,OrbOfAttritionDevianceCP,Chance" Value="1"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfAttritionDevianceRand,Chance" Value="0.4"/>
+        <EffectArray Operation="Set" Reference="Effect,LuckHeroOrbOfAttritionDevianceCP,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Dispatch">
@@ -370,27 +318,22 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Divination">
-        <EffectArray Reference="Unit,OrbOfAttritionAnomaly,Sight" Value="5"/>
-        <EffectArray Reference="Unit,OrbOfAttritionMissile,Sight" Value="5"/>
-        <EffectArray Reference="Unit,OrbOfDestructionMissile,Sight" Value="5"/>
-        <EffectArray Reference="Unit,OrbOfHavoc,Sight" Value="5"/>
-        <EffectArray Reference="Unit,OrbOfHavocMissile,Sight" Value="5"/>
-        <EffectArray Reference="Unit,OrbOfLuck,Sight" Value="5"/>
-        <EffectArray Reference="Unit,OrbOfVitalityMissile,Sight" Value="5"/>
-        <EffectArray Reference="Unit,OrbOfVitalityRecur,Sight" Value="5"/>
-        <EffectArray Reference="Unit,OrbOfHavocWisp,Sight" Value="5"/>
+        <EffectArray Reference="Unit,OrbOfAttritionAnomaly,Sight" Value="7"/>
+        <EffectArray Reference="Unit,OrbOfAttritionMissile,Sight" Value="7"/>
+        <EffectArray Reference="Unit,OrbOfDestructionMissile,Sight" Value="7"/>
+        <EffectArray Reference="Unit,OrbOfHavoc,Sight" Value="7"/>
+        <EffectArray Reference="Unit,OrbOfHavocMissile,Sight" Value="7"/>
+        <EffectArray Reference="Unit,OrbOfLuck,Sight" Value="7"/>
+        <EffectArray Reference="Unit,OrbOfVitalityMissile,Sight" Value="7"/>
+        <EffectArray Reference="Unit,OrbOfVitalityRecur,Sight" Value="7"/>
+        <EffectArray Reference="Unit,OrbOfHavocWisp,Sight" Value="7"/>
+        <EffectArray Operation="Subtract" Reference="Abil,OrbsOfLuck,Cost[0].Vital[Energy]" Value="14"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Division">
-        <EffectArray Reference="Effect,OrbOfDestructionDivisionOffset,PeriodCount" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfDestruction2DivisionOffset1,PeriodCount" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfDestruction3DivisionOffset1,PeriodCount" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfDestruction4DivisionOffset1,PeriodCount" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfDestruction5DivisionOffset1,PeriodCount" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfDestruction6DivisionOffset1,PeriodCount" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfDestruction7DivisionOffset1,PeriodCount" Value="1"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfDestructionDivisionOffset,PeriodCount" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Douse">
         <EffectArray Operation="Set" Reference="Effect,HealingWaveDouseSA,Chance" Value="1"/>
@@ -410,8 +353,8 @@
         <EffectArray Reference="Behavior,DynamicAlly,Modification.VitalRegenArray[Energy]" Value="0.500000"/>
         <EffectArray Reference="Behavior,DynamicAlly,Modification.VitalRegenArray[Life]" Value="0.500000"/>
         <EffectArray Reference="Behavior,DynamicAlly,Modification.VitalRegenArray[Shields]" Value="0.500000"/>
-        <EffectArray Operation="Set" Reference="Effect,OrbOfVitalityDynamicAllyAB,Chance" Value="1"/>
-        <EffectArray Operation="Set" Reference="Effect,OrbOfVitalityDynamicEnemyAB,Chance" Value="1"/>
+        <EffectArray Operation="Set" Reference="Effect,LuckHeroOrbOfVitalityDynamicABAlly,Chance" Value="1"/>
+        <EffectArray Operation="Set" Reference="Effect,LuckHeroOrbOfVitalityDynamicABEnemy,Chance" Value="1"/>
         <EffectArray Operation="Subtract" Reference="Behavior,DynamicEnemy,Modification.VitalRegenArray[Energy]" Value="0.500000"/>
         <EffectArray Operation="Subtract" Reference="Behavior,DynamicEnemy,Modification.VitalRegenArray[Life]" Value="0.500000"/>
         <EffectArray Operation="Subtract" Reference="Behavior,DynamicEnemy,Modification.VitalRegenArray[Shields]" Value="0.500000"/>
@@ -424,19 +367,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Electric">
-        <EffectArray Reference="Effect,OrbOfHavoc2SA,AreaArray[0].MaxCount" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfHavoc3SA,AreaArray[0].MaxCount" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfHavoc4SA,AreaArray[0].MaxCount" Value="2"/>
-        <EffectArray Reference="Effect,OrbOfHavoc5SA,AreaArray[0].MaxCount" Value="2"/>
-        <EffectArray Reference="Effect,OrbOfHavoc6SA,AreaArray[0].MaxCount" Value="3"/>
-        <EffectArray Reference="Effect,OrbOfHavoc7SA,AreaArray[0].MaxCount" Value="3"/>
-        <EffectArray Reference="Effect,OrbOfHavoc1BounceDMG,Amount" Value="15"/>
-        <EffectArray Reference="Effect,OrbOfHavoc2BounceDMG,Amount" Value="30"/>
-        <EffectArray Reference="Effect,OrbOfHavoc3BounceDMG,Amount" Value="45"/>
-        <EffectArray Reference="Effect,OrbOfHavoc4BounceDMG,Amount" Value="60"/>
-        <EffectArray Reference="Effect,OrbOfHavoc5BounceDMG,Amount" Value="75"/>
-        <EffectArray Reference="Effect,OrbOfHavoc6BounceDMG,Amount" Value="90"/>
-        <EffectArray Reference="Effect,OrbOfHavoc7BounceDMG,Amount" Value="105"/>
+        <EffectArray Operation="Set" Reference="Accumulator,LuckHeroOrbOfHavocElectric,MaxAccumulation" Value="7"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Empower">
@@ -536,13 +467,8 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Enervate">
-        <EffectArray Reference="Effect,OrbOfVitality1StormCP,PeriodCount" Value="3"/>
-        <EffectArray Reference="Effect,OrbOfVitality2StormCP,PeriodCount" Value="6"/>
-        <EffectArray Reference="Effect,OrbOfVitality3StormCP,PeriodCount" Value="9"/>
-        <EffectArray Reference="Effect,OrbOfVitality4StormCP,PeriodCount" Value="12"/>
-        <EffectArray Reference="Effect,OrbOfVitality5StormCP,PeriodCount" Value="15"/>
-        <EffectArray Reference="Effect,OrbOfVitality6StormCP,PeriodCount" Value="18"/>
-        <EffectArray Reference="Effect,OrbOfVitality7StormCP,PeriodCount" Value="21"/>
+        <EffectArray Reference="Accumulator,LuckHeroEnervateMultiplier,Amount" Value="4"/>
+        <EffectArray Operation="Set" Reference="Effect,LuckHeroOrbOfVitalityEnervateCP,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -603,6 +529,7 @@
     </CUpgrade>
     <CUpgrade id="Haste">
         <EffectArray Operation="Subtract" Reference="Abil,OrbsOfLuck,Cost[0].Cooldown.TimeUse" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,OrbLaunched,Duration" Value="0.500000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -778,13 +705,6 @@
         <EffectArray Operation="Set" Reference="Behavior,MobileBeam,Modification.StateFlags[Unselectable]" Value="0"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Resound2">
-        <EffectArray Reference="Effect,OrbOfDestructionResoundSuicide2,Duration" Value="3.000000"/>
-        <EffectArray Reference="Effect,OrbOfDestructionResoundSuicide3,Duration" Value="4.500000"/>
-        <EffectArray Reference="Effect,OrbOfDestructionResoundSuicide1,Duration" Value="1.500000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <LeaderAlias value="Resound"/>
-    </CUpgrade>
     <CUpgrade id="Rich">
         <EffectArray Reference="Effect,CrystalRainRichCU,Chance" Value="0.025"/>
         <EffectArray Reference="Effect,CrystalRainRichABMissile,Chance" Value="0.05"/>
@@ -849,7 +769,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Pervade">
-        <EffectArray Reference="Effect,OrbOfVitalityPervadeSearchTarget,Chance" Value="0.16"/>
+        <EffectArray Operation="Set" Reference="Effect,LuckHeroOrbOfVitalityPervadeSASet,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Providence">
@@ -876,8 +796,8 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Recur">
-        <EffectArray Reference="Effect,OrbOfVitalityRecurCU,Chance" Value="0.02"/>
-        <EffectArray Reference="Effect,OrbOfVitalityRecurInitialCU,Chance" Value="0.5"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitalityRecurCU,Chance" Value="0.03"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitalityRecurImpactCU,Chance" Value="0.5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -892,19 +812,18 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Reserves">
-        <EffectArray Reference="Behavior,OrbOfHavoc1Fate,Duration" Value="1.000000"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc2Fate,Duration" Value="2.000000"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc3Fate,Duration" Value="3.000000"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc4Fate,Duration" Value="4.000000"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc5Fate,Duration" Value="5"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc6Fate,Duration" Value="6.000000"/>
-        <EffectArray Reference="Behavior,OrbOfHavoc7Fate,Duration" Value="7.000000"/>
+        <EffectArray Reference="Accumulator,LuckHeroOrbOfHavocDurationMultiplier,Amount" Value="0.6"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Resound">
-        <EffectArray Reference="Effect,OrbOfDestructionResoundCU,Chance" Value="0.5"/>
+        <EffectArray Operation="Set" Reference="Effect,OrbOfDestructionResoundCU,Chance" Value="0.5"/>
+        <EffectArray Reference="Effect,OrbOfDestructionResoundSuicide1,Duration" Value="1.500000"/>
+        <EffectArray Reference="Effect,OrbOfDestructionResoundSuicide2,Duration" Value="3.000000"/>
+        <EffectArray Reference="Effect,OrbOfDestructionResoundSuicide3,Duration" Value="4.500000"/>
+        <EffectArray Reference="Effect,OrbOfDestructionResoundCP,PeriodCount" Value="6"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Ricochet">
         <EffectArray Reference="Effect,SplitterSplitST,AreaArray[0].Radius" Value="3"/>
@@ -958,7 +877,7 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Shielded">
-        <EffectArray Reference="Effect,OrbsOfLuckShieldedMU,VitalArray[Shields].ChangeFraction" Value="0.02"/>
+        <EffectArray Operation="Set" Reference="Effect,OrbsOfLuckShieldedMU,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Slash">
@@ -969,12 +888,10 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Snipe">
-        <EffectArray Operation="Set" Reference="Effect,OrbOfDestructionSnipeSA,Chance" Value="1"/>
-        <EffectArray Operation="Set" Reference="Effect,OrbOfDestructionMagSnipeSA,Chance" Value="1"/>
-        <EffectArray Reference="Effect,OrbOfDestructionSnipeDMG,Amount" Value="27"/>
-        <EffectArray Reference="Effect,OrbOfDestructionEradicateSnipeDMG,Amount" Value="81"/>
+        <EffectArray Reference="Effect,OrbOfDestructionSnipeDMG,Amount" Value="12"/>
+        <EffectArray Reference="Effect,OrbOfDestructionEradicateSnipeDMG,Amount" Value="36"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="2"/>
+        <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Spillover">
         <EffectArray Reference="Effect,RechargeCP,PeriodCount" Value="1"/>
@@ -1076,7 +993,7 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Wisp">
-        <EffectArray Reference="Effect,OrbOfHavocWispCU,Chance" Value="0.2"/>
+        <EffectArray Reference="Effect,OrbOfHavocWispCU,Chance" Value="0.25"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="UnitAttackSpeed">
@@ -1159,10 +1076,16 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Vanquish">
-        <EffectArray Reference="Effect,OrbOfVitalityDMG,VitalFractionCurrent[Life]" Value="0.01"/>
-        <EffectArray Reference="Effect,OrbOfVitalityHealMU,VitalArray[Life].ChangeFraction" Value="0.01"/>
-        <EffectArray Reference="Effect,OrbOfVitalityHealMU,VitalArray[Shields].ChangeFraction" Value="0.01"/>
-        <EffectArray Reference="Effect,OrbOfVitalityStormDMG,VitalFractionCurrent[Life]" Value="0.005"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality1DMG,VitalFractionCurrent[Life]" Value="0.02"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitalityEnervateDMG,VitalFractionCurrent[Life]" Value="0.005"/>
+        <EffectArray Reference="Effect,OrbOfVitalityHealMU,VitalArray[Life].ChangeFraction" Value="0.02"/>
+        <EffectArray Reference="Effect,OrbOfVitalityHealMU,VitalArray[Shields].ChangeFraction" Value="0.02"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality2DMG,VitalFractionCurrent[Life]" Value="0.04"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality3DMG,VitalFractionCurrent[Life]" Value="0.06"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality4DMG,VitalFractionCurrent[Life]" Value="0.08"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality5DMG,VitalFractionCurrent[Life]" Value="0.1"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality6DMG,VitalFractionCurrent[Life]" Value="0.12"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality7DMG,VitalFractionCurrent[Life]" Value="0.14"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>

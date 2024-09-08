@@ -139,6 +139,11 @@
     <CRequirementCountUpgrade id="CountUpgradeBlackDeathRangeCompleteOnlyTechTreeCheat">
         <Count Link="BlackDeathRange" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeBoundlessCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="Boundless" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBufferQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Buffer" State="QueuedOrBetter"/>
@@ -175,13 +180,12 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="EarthHeroBonusSkin" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeEnervateQueuedOrBetter">
+    <CRequirementCountUpgrade id="CountUpgradeEnervateCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="Enervate" State="QueuedOrBetter"/>
+        <Count Link="Enervate" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeExcaliberCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="Excaliber" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeExpansionQueuedOrBetter">
@@ -637,12 +641,10 @@
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeExcaliberCompleteOnly1">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeExcaliberCompleteOnly"/>
         <OperandArray index="1" value="1"/>
     </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeExcaliberCompleteOnly2">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeExcaliberCompleteOnly"/>
         <OperandArray index="1" value="2"/>
     </CRequirementEq>
@@ -678,8 +680,8 @@
         <OperandArray index="0" value="CountUpgradeDuplicateCompleteOnly"/>
         <OperandArray index="1" value="1"/>
     </CRequirementGT>
-    <CRequirementGT id="GTCountUpgradeEnervateQueuedOrBetter0">
-        <OperandArray index="0" value="CountUpgradeEnervateQueuedOrBetter"/>
+    <CRequirementGT id="GTCountUpgradeEnervateCompleteOnly0">
+        <OperandArray index="0" value="CountUpgradeEnervateCompleteOnly"/>
         <OperandArray index="1" value="0"/>
     </CRequirementGT>
     <CRequirementGT id="GTCountUpgradeFaultLinesCompleteOnly0">

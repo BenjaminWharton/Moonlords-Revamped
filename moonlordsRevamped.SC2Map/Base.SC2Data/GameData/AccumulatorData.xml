@@ -23,6 +23,93 @@
     <CAccumulatorBehavior id="DestructionOrbCounter">
         <Behavior value="DestructionOrbCounter"/>
     </CAccumulatorBehavior>
+    <CAccumulatorConstant id="LuckHeroDelugeMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="2"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="LuckHeroEnervateMultiplier">
+        <ApplicationRule value="Multiply"/>
+    </CAccumulatorConstant>
+    <CAccumulatorBehavior id="LuckHeroAttritionOrbCounter">
+        <Behavior value="AttritionOrbCounter"/>
+    </CAccumulatorBehavior>
+    <CAccumulatorArithmetic id="LuckHeroOrbOfAttritionRandomImpact">
+        <MinAccumulation value="0.1"/>
+        <Parameters value="0.25">
+            <AccumulatorArray value="DefaultDataMultiply"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="LuckHeroOrbOfHavocDurationBase">
+        <Amount value="5"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="LuckHeroOrbOfHavocDurationMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.8"/>
+    </CAccumulatorConstant>
+    <CAccumulatorArithmetic id="LuckHeroOrbOfHavocDuration">
+        <Parameters value="0">
+            <AccumulatorArray value="DefaultDataAdd"/>
+            <AccumulatorArray value="LuckHeroOrbOfHavocDurationMultiplier"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="LuckHeroOrbOfHavocDurationBase"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="LuckHeroOrbOfHavocElectric">
+        <MaxAccumulation value="0"/>
+        <Parameters value="0">
+            <AccumulatorArray value="DefaultDataAdd"/>
+        </Parameters>
+        <Parameters value="2"/>
+        <Operation value="Divide"/>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="LuckHeroOrbOfVitalityHeal">
+        <Parameters value="0">
+            <AccumulatorArray value="DefaultDataAdd"/>
+            <AccumulatorArray value="LuckHeroOrbOfVitalityHealMultiplier"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityHealBase"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="LuckHeroOrbOfVitalityDamageBase">
+        <Amount value="30"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="LuckHeroOrbOfVitalityHealBase">
+        <Amount value="50"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="LuckHeroOrbOfVitalityDamageMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="30"/>
+    </CAccumulatorConstant>
+    <CAccumulatorArithmetic id="LuckHeroOrbOfVitalityDamage">
+        <Parameters value="0">
+            <AccumulatorArray value="DefaultDataAdd"/>
+            <AccumulatorArray value="LuckHeroOrbOfVitalityDamageMultiplier"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityDamageBase"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="LuckHeroOrbOfVitalityHealMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="50"/>
+    </CAccumulatorConstant>
+    <CAccumulatorArithmetic id="LuckHeroOrbOfVitalityRadiusUI">
+        <Parameters value="0">
+            <AccumulatorArray value="LuckHeroVitalityOrbCounter"/>
+            <AccumulatorArray value="LuckHeroOrbOfVitalityRadiusMultiplier"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityRadiusBase"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorBehavior id="LuckHeroVitalityOrbCounter">
+        <Behavior value="VitalityOrbCounter"/>
+    </CAccumulatorBehavior>
+    <CAccumulatorBehavior id="LuckHeroHavocOrbCounter">
+        <Behavior value="HavocOrbCounter"/>
+    </CAccumulatorBehavior>
     <CAccumulatorDistance id="DistanceFromCasterUnittoTargetPoint">
         <EndLocation Value="TargetPoint"/>
     </CAccumulatorDistance>
@@ -104,8 +191,36 @@
             <AccumulatorArray value="DefaultDataMultiply"/>
         </Parameters>
     </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="LuckHeroOrbOfVitalityRadius">
+        <Parameters value="0">
+            <AccumulatorArray value="DefaultDataAdd"/>
+            <AccumulatorArray value="LuckHeroOrbOfVitalityRadiusMultiplier"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityRadiusBase"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="LuckHeroOrbOfVitalityRadiusMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.3"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="LuckHeroOrbOfVitalityRadiusBase">
+        <Amount value="2"/>
+    </CAccumulatorConstant>
+    <CAccumulatorArithmetic id="LuckHeroOrbOfHavocRadiusUI">
+        <Parameters value="0">
+            <AccumulatorArray value="LuckHeroHavocOrbCounter"/>
+            <AccumulatorArray value="LuckHeroOrbOfHavocRadiusMultiplier"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="LuckHeroOrbOfHavocRadiusBase"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
     <CAccumulatorConstant id="Multiply0">
         <ApplicationRule value="Multiply"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="LuckHeroOrbOfHavocRadiusBase">
+        <Amount value="3"/>
     </CAccumulatorConstant>
     <CAccumulatorConstant id="NatureHeroHallucinogenMultiplier">
         <ApplicationRule value="Multiply"/>
@@ -134,6 +249,15 @@
         <ApplicationRule value="Multiply"/>
         <Amount value="0.2"/>
     </CAccumulatorConstant>
+    <CAccumulatorArithmetic id="LuckHeroOrbOfHavocRadius">
+        <Parameters value="0">
+            <AccumulatorArray value="DefaultDataAdd"/>
+            <AccumulatorArray value="LuckHeroOrbOfHavocRadiusMultiplier"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="LuckHeroOrbOfHavocRadiusBase"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
     <CAccumulatorConstant id="NatureHeroToxicVaporRadiusMultiplier">
         <ApplicationRule value="Multiply"/>
         <Amount value="0.2"/>
@@ -174,6 +298,10 @@
     <CAccumulatorConstant id="NatureHeroExpelRadiusMultiplier">
         <ApplicationRule value="Multiply"/>
         <Amount value="0.5"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="LuckHeroOrbOfHavocRadiusMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.4"/>
     </CAccumulatorConstant>
     <CAccumulatorConstant id="NatureHeroUndergrowthMultiplier">
         <ApplicationRule value="Multiply"/>
@@ -219,9 +347,10 @@
         <Operation value="Multiply"/>
     </CAccumulatorArithmetic>
     <CAccumulatorArithmetic id="LuckHeroPerpetuationArith">
-        <Parameters value="1">
+        <Parameters value="0">
             <AccumulatorArray value="LuckHeroEngulfedStacks"/>
         </Parameters>
+        <Parameters value="5"/>
         <Operation value="Divide"/>
     </CAccumulatorArithmetic>
     <CAccumulatorConstant id="Multiply2">

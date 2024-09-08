@@ -107,6 +107,10 @@
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Use" Link="GTCountUpgradeDuplicateCompleteOnly1"/>
     </CRequirement>
+    <CRequirement id="LuckHeroHasBoundless">
+        <EditorCategories value="Race:Protoss"/>
+        <NodeArray index="Use" Link="CountUpgradeBoundlessCompleteOnly"/>
+    </CRequirement>
     <CRequirement id="MagmaArmorStacks">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Show" Link="LTCountBehaviorMagmaArmorQueuedOrBetterAtUnitSum4Mul2CountUpgradeMoltenFuryQueuedOrBetter"/>
@@ -447,9 +451,9 @@
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Show" Link="Eq1CountUpgradeExpansionQueuedOrBetter"/>
     </CRequirement>
-    <CRequirement id="ExtractIsGT0">
+    <CRequirement id="EnervateIsGT0">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
-        <NodeArray index="Show" Link="GTCountUpgradeEnervateQueuedOrBetter0"/>
+        <NodeArray index="Use" Link="GTCountUpgradeEnervateCompleteOnly0"/>
     </CRequirement>
     <CRequirement id="WarpgateIsLvl1">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>

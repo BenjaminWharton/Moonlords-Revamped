@@ -146,6 +146,8 @@
 <Effect id="MultiphaseShieldreplenishset"/>
 <Effect id="ZapSet"/>
 <Effect id="AnnihilatorLaserTrackingDamage"/>
+<Effect id="BladeHeroBloodFanaticalEvisStartSwitch"/>
+<Effect id="BladeHeroBloodFanaticalEvisEndSwitch"/>
 <Effect id="NatureHeroExpelCostUpMP"/>
 <Effect id="PoisonHeroHealingReagentMU"/>
 <Effect id="PoisonHeroPoisonBoltMU"/>
@@ -171,8 +173,6 @@
 <Effect id="DoomDetonate"/>
 <Effect id="MultishotImpactSearchArea"/>
 <Effect id="GuidedImpactSearchArea"/>
-<Effect id="BladeHeroBloodFanaticalEvisStartSwitch"/>
-<Effect id="BladeHeroBloodFanaticalEvisEndSwitch"/>
 <Model id="PingBoss"/>
 <Model id="PingObjective"/>
 <Model id="SiegeTankSiegedAttackImpact"/>

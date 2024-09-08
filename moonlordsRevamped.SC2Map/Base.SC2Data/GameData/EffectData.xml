@@ -223,6 +223,191 @@
             <ChangeFraction value="0.01"/>
         </VitalArray>
     </CEffectModifyUnit>
+    <CEffectSet id="LuckHeroOrbOfAttrition">
+        <ValidatorArray value="HasAnOrb"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="LuckHeroOrbOfAttritionInitData"/>
+        <EffectArray value="OrbOfAttritionSwitch"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="LuckHeroOrbOfAttritionDelugeCP">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterUnit"/>
+        <PeriodCount value="0">
+            <AccumulatorArray value="DefaultDataAdd"/>
+            <AccumulatorArray value="LuckHeroDelugeMultiplier"/>
+        </PeriodCount>
+        <PeriodicEffectArray value="LuckHeroOrbOfAttritionDelugeRand"/>
+        <PeriodicPeriodArray value="0.25"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="LuckHeroOrbOfAttritionDelugeLM">
+        <ValidatorArray index="0" value="LuckHeroOrbOfAttritionDevianceLMTargetFilters"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="OrbOfAttritionSA"/>
+        <PeriodicEffect value="LuckHeroOrbOfAttritionDevianceSet"/>
+        <PeriodicPeriod value="0.125"/>
+        <AmmoUnit value="OrbOfAttritionMissile"/>
+        <ImpactRange value="5"/>
+        <Movers Link="OrbOfAttritionDevianceMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectUserData id="LuckHeroOrbOfAttritionInitData">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="0">
+            <AccumulatorArray value="LuckHeroAttritionOrbCounter"/>
+        </Amount>
+        <Operation value="Set"/>
+    </CEffectUserData>
+    <CEffectUserData id="LuckHeroOrbOfHavocInitData">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="0">
+            <AccumulatorArray value="LuckHeroHavocOrbCounter"/>
+        </Amount>
+        <Operation value="Set"/>
+    </CEffectUserData>
+    <CEffectSet id="LuckHeroOrbOfHavocInit">
+        <ValidatorArray value="HasAnOrb"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="LuckHeroOrbOfHavocInitData"/>
+        <EffectArray value="LuckHeroOrbOfHavocCU"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="LuckHeroOrbOfHavocPrecursorRB">
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="LuckHeroHavocOrbPrecursor"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="LuckHeroOrbOfHavocSuicideDelay">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="SourceUnit"/>
+        <InitialDelay value="0.5"/>
+        <FinalEffect value="Suicide"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="LuckHeroOrbOfHavocUISA">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="LuckHeroOrbOfHavocRadiusUI"/>
+        </ExtraRadiusBonus>
+    </CEffectEnumArea>
+    <CEffectDamage id="LuckHeroOrbOfVitality2DMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
+        </Amount>
+        <VitalFractionCurrent index="Life" value="0.02"/>
+        <LeechFraction index="Life" value="0.1"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectDamage id="LuckHeroOrbOfVitality3DMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
+        </Amount>
+        <VitalFractionCurrent index="Life" value="0.03"/>
+        <LeechFraction index="Life" value="0.1"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectDamage id="LuckHeroOrbOfVitality4DMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
+        </Amount>
+        <VitalFractionCurrent index="Life" value="0.04"/>
+        <LeechFraction index="Life" value="0.1"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectDamage id="LuckHeroOrbOfVitality5DMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
+        </Amount>
+        <VitalFractionCurrent index="Life" value="0.05"/>
+        <LeechFraction index="Life" value="0.1"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectDamage id="LuckHeroOrbOfVitality6DMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
+        </Amount>
+        <VitalFractionCurrent index="Life" value="0.06"/>
+        <LeechFraction index="Life" value="0.1"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectDamage id="LuckHeroOrbOfVitality7DMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
+        </Amount>
+        <VitalFractionCurrent index="Life" value="0.07"/>
+        <LeechFraction index="Life" value="0.1"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectSwitch id="LuckHeroOrbOfVitalityDMGSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="DefaultDataE1" Effect="LuckHeroOrbOfVitality1DMG"/>
+        <CaseArray Validator="DefaultDataE2" Effect="LuckHeroOrbOfVitality2DMG"/>
+        <CaseArray Validator="DefaultDataE3" Effect="LuckHeroOrbOfVitality3DMG"/>
+        <CaseArray Validator="DefaultDataE4" Effect="LuckHeroOrbOfVitality4DMG"/>
+        <CaseArray Validator="DefaultDataE5" Effect="LuckHeroOrbOfVitality5DMG"/>
+        <CaseArray Validator="DefaultDataE6" Effect="LuckHeroOrbOfVitality6DMG"/>
+        <CaseArray Validator="DefaultDataE7" Effect="LuckHeroOrbOfVitality7DMG"/>
+        <CaseDefault value="LuckHeroOrbOfVitality0DMG"/>
+    </CEffectSwitch>
+    <CEffectUserData id="LuckHeroOrbOfVitalityData">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="0">
+            <AccumulatorArray value="LuckHeroVitalityOrbCounter"/>
+        </Amount>
+        <Operation value="Set"/>
+    </CEffectUserData>
+    <CEffectSwitch id="LuckHeroOrbOfVitalityHealSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="DefaultDataE0" Effect="LuckHeroOrbOfVitalityPervadeHealMU"/>
+        <CaseDefault value="OrbOfVitalityHealMU"/>
+    </CEffectSwitch>
+    <CEffectSet id="LuckHeroOrbOfVitalityInit">
+        <ValidatorArray value="HasAnOrb"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="LuckHeroOrbOfVitalityData"/>
+        <EffectArray value="OrbOfVitalitySwitch"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="LuckHeroOrbOfVitalityPervadeEnemySet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="LuckHeroOrbOfVitalityRecurCU"/>
+        <EffectArray value="LuckHeroOrbOfVitalityDynamicABEnemy"/>
+        <EffectArray value="LuckHeroOrbOfVitality0DMG"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="LuckHeroOrbOfVitalityRecurImpactCP">
+        <EditorCategories value="Race:Protoss"/>
+        <PeriodCount value="0">
+            <AccumulatorArray value="DefaultDataAdd"/>
+        </PeriodCount>
+        <PeriodicEffectArray value="LuckHeroOrbOfVitalityRecurImpactCU"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="LuckHeroOrbOfVitalityUISA">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityRadiusUI"/>
+        </ExtraRadiusBonus>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="LuckHeroOrbsOfLuckApplyLaunched">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="OrbLaunched"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.125"/>
+    </CEffectApplyBehavior>
     <CEffectDestroyPersistent id="NatureHeroToxicVaporSporesDP">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Effect="NatureHeroToxicVaporSporesDelay" Value="TargetPoint"/>
@@ -781,7 +966,7 @@
         <ValidatorArray value="ApplyAttritionOrbCounterABTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="ApplyAttritionOrbCounterAB"/>
-        <EffectArray value="OrbOfAttritionDevianceCP"/>
+        <EffectArray value="LuckHeroOrbOfAttritionDevianceCP"/>
     </CEffectSet>
     <CEffectApplyBehavior id="ApplyScaldedABBase">
         <ValidatorArray index="0" removed="1"/>
@@ -950,6 +1135,62 @@
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray MaxCount="1" Radius="0.5" Effect="NatureHeroToxicVaporSporesDP"/>
     </CEffectEnumArea>
+    <CEffectSet id="LuckHeroOrbOfVitalityRecurSASet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="LuckHeroOrbOfVitalityPervadeAllySA"/>
+        <EffectArray value="LuckHeroOrbOfVitalityPervadeEnemySA"/>
+        <TargetLocationType value="UnitOrPoint"/>
+    </CEffectSet>
+    <CEffectDamage id="LuckHeroOrbOfVitality0DMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityDamageBase"/>
+        </Amount>
+        <LeechFraction index="Life" value="0.1"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectSet id="LuckHeroOrbOfVitalityPervadeAllySet">
+        <ValidatorArray value="NotSpellUnit"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="LuckHeroOrbOfVitalityPervadeHealMU"/>
+        <EffectArray value="LuckHeroOrbOfVitalityDynamicABAlly"/>
+        <EffectArray value="LuckHeroOrbOfVitalityRecurCU"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="LuckHeroOrbOfVitalityPervadeHealMU">
+        <EditorCategories value="Race:Protoss"/>
+        <VitalArray index="Life">
+            <Change value="0">
+                <AccumulatorArray value="LuckHeroOrbOfVitalityHealBase"/>
+                <AccumulatorArray value="HealingMultiplier"/>
+            </Change>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="0">
+                <AccumulatorArray value="LuckHeroOrbOfVitalityHealBase"/>
+                <AccumulatorArray value="HealingMultiplier"/>
+            </Change>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectLaunchMissile id="OrbOfVitality7ReturnLM">
+        <ValidatorArray index="0" value="OrbOfDestructionReturnLMTargetFilters"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <LaunchLocation Value="TargetPoint"/>
+        <ImpactLocation Effect="OrbOfVitality7LM"/>
+        <FinishEffect value="OrbOfVitalityReturnSet"/>
+        <PeriodicEffect value="LuckHeroOrbOfVitalityPervadeSearchTarget"/>
+        <AmmoUnit value="OrbOfVitalityMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="LuckHeroOrbsOfLuckDelay">
+        <ValidatorArray value="NotNeutralOrb"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="RemoveOrbTypeSet"/>
+        <PeriodicEffectArray value="OrbsOfLuckApplyOrbTypeWildCard"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
     <CEffectCreatePersistent id="ProbeHeroGasBombLMImpact">
         <EditorCategories value="Race:Protoss"/>
         <InitialEffect value="GasBombSA"/>
@@ -984,6 +1225,15 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="ProbeHeroUpgrade"/>
     </CEffectApplyBehavior>
+    <CEffectSet id="LuckHeroRemoveOrbTypeIfNot0">
+        <ValidatorArray value="DefaultDataGT0"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="RemoveOrbTypeDestruction"/>
+        <EffectArray value="RemoveOrbTypeHavoc"/>
+        <EffectArray value="RemoveOrbTypeAttrition"/>
+        <EffectArray value="RemoveOrbTypeVitality"/>
+        <EffectArray value="RemoveOrbTypeNeutral"/>
+    </CEffectSet>
     <CEffectSet id="WaterHeroHealingWaveSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="HealingWaveHeal"/>
@@ -1076,7 +1326,7 @@
         <RevealRadius value="2.5"/>
         <RevealFlags index="Unfog" value="1"/>
     </CEffectCreatePersistent>
-    <CEffectEnumArea id="OrbOfDestruction0SearchOrbs">
+    <CEffectEnumArea id="LuckHeroOrbOfDestruction0SearchOrbs">
         <ValidatorArray value="DestructionOrbCountIs0"/>
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="CasterUnitOrPoint"/>
@@ -1515,41 +1765,13 @@
         <EffectArray value="LocustWeaponFlyingCreateUnitA"/>
         <EffectArray value="LocustWeaponFlyingCreateUnitB"/>
     </CEffectSet>
-    <CEffectRandomPointInCircle id="LuckHeroOrbOfAttrition3Random">
+    <CEffectRandomPointInCircle id="LuckHeroOrbOfAttritionRand">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Effect="OrbOfAttritionSwitch" Value="TargetPoint"/>
-        <Effect value="OrbOfAttrition3LM"/>
-        <Radius value="0.75"/>
-    </CEffectRandomPointInCircle>
-    <CEffectRandomPointInCircle id="LuckHeroOrbOfAttrition2Random">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Effect="OrbOfAttritionSwitch" Value="TargetPoint"/>
-        <Effect value="OrbOfAttrition2LM"/>
-        <Radius value="0.5"/>
-    </CEffectRandomPointInCircle>
-    <CEffectRandomPointInCircle id="LuckHeroOrbOfAttrition4Random">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Effect="OrbOfAttritionSwitch" Value="TargetPoint"/>
-        <Effect value="OrbOfAttrition4LM"/>
-        <Radius value="1"/>
-    </CEffectRandomPointInCircle>
-    <CEffectRandomPointInCircle id="LuckHeroOrbOfAttrition5Random">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Effect="OrbOfAttritionSwitch" Value="TargetPoint"/>
-        <Effect value="OrbOfAttrition5LM"/>
-        <Radius value="1.2"/>
-    </CEffectRandomPointInCircle>
-    <CEffectRandomPointInCircle id="LuckHeroOrbOfAttrition6Random">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Effect="OrbOfAttritionSwitch" Value="TargetPoint"/>
-        <Effect value="OrbOfAttrition6LM"/>
-        <Radius value="1.35"/>
-    </CEffectRandomPointInCircle>
-    <CEffectRandomPointInCircle id="LuckHeroOrbOfAttrition7Random">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Effect="OrbOfAttritionSwitch" Value="TargetPoint"/>
-        <Effect value="OrbOfAttrition7LM"/>
-        <Radius value="1.5"/>
+        <Effect value="LuckHeroOrbOfAttritionLM"/>
+        <Radius value="0">
+            <AccumulatorArray value="LuckHeroOrbOfAttritionRandomImpact"/>
+        </Radius>
     </CEffectRandomPointInCircle>
     <CEffectApplyBehavior id="LuckHeroOrbOfDestructionEradicateAB">
         <EditorCategories value="Race:Protoss"/>
@@ -1604,7 +1826,7 @@
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfAttritionAnomalyAB"/>
+        <SpawnEffect value="LuckHeroOrbOfAttritionAnomalyAB"/>
         <SpawnUnit value="OrbOfAttritionAnomaly"/>
     </CEffectCreateUnit>
     <CEffectLaunchMissile id="OrbOfDestructionReturnLM">
@@ -1614,6 +1836,7 @@
         <ImpactLocation Effect="LuckHeroOrbOfDestructionRandom"/>
         <FinishEffect value="OrbOfDestructionReturnSet"/>
         <AmmoUnit value="OrbOfDestructionMissile"/>
+        <Chance value="0"/>
     </CEffectLaunchMissile>
     <CEffectCreatePersistent id="OrbOfDestructionOffset">
         <EditorCategories value="Race:Protoss"/>
@@ -1646,9 +1869,9 @@
         <ValidatorArray value="HasAnOrb"/>
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="OrbOfDestructionData"/>
-        <EffectArray value="OrbOfDestructionSupplimentData"/>
-        <EffectArray value="OrbOfDestruction0SearchOrbs"/>
+        <EffectArray value="LuckHeroOrbOfDestruction0SearchOrbs"/>
         <EffectArray value="OrbOfDestructionSearchOrbs"/>
+        <EffectArray value="OrbOfDestructionSupplimentData"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
     <CEffectUserData id="OrbOfDestructionData">
@@ -1691,8 +1914,8 @@
     </CEffectApplyBehavior>
     <CEffectDamage id="OrbOfHavocWispDMG">
         <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="0.3"/>
-        <Amount value="30"/>
+        <ArmorReduction value="1"/>
+        <Amount value="35"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectSet id="OrbOfHavocWispCUSet">
@@ -1734,7 +1957,7 @@
         <SpawnEffect value="OrbOfHavocWispCUSet"/>
         <SpawnUnit value="OrbOfHavocWisp"/>
     </CEffectCreateUnit>
-    <CEffectCreatePersistent id="OrbOfAttritionDevianceCP">
+    <CEffectCreatePersistent id="LuckHeroOrbOfAttritionDevianceCP">
         <ValidatorArray value="NotNeutralOrb"/>
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
@@ -2292,16 +2515,15 @@
         <EffectArray value="OrbOfHavocWispDMG"/>
         <EffectArray value="LuckHeroOrbOfHavocWispDelay"/>
     </CEffectSet>
-    <CEffectCreateUnit id="OrbOfVitalityRecurInitialCU">
+    <CEffectCreateUnit id="LuckHeroOrbOfVitalityRecurImpactCU">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttritionAnomalyCU"/>
         <Chance value="0"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
         <CreateFlags index="Placement" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfVitalityRecurFate"/>
+        <SpawnEffect value="LuckHeroOrbOfVitalityRecurFate"/>
         <SpawnUnit value="OrbOfVitalityRecur"/>
     </CEffectCreateUnit>
     <CEffectCreatePersistent id="PoisonHeroBlackDeath">
@@ -3056,7 +3278,6 @@
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnit"/>
         <InitialEffect value="OrbOfDestructionResoundSuicideSet"/>
-        <PeriodCount value="12"/>
         <PeriodicValidator value="NotDead"/>
         <PeriodicEffectArray value="OrbOfDestructionResoundAB"/>
         <PeriodicEffectArray value="OrbOfDestructionResoundSet"/>
@@ -3079,21 +3300,21 @@
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="TimedSuicide"/>
         <Flags index="UseDuration" value="1"/>
-        <Duration value="1.5625"/>
+        <Duration value="0.0625"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="OrbOfDestructionResoundSuicide2">
         <ValidatorArray index="0" value="OrbOfDestructionResoundSuicide1TargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="TimedSuicide"/>
         <Flags index="UseDuration" value="1"/>
-        <Duration value="3.0625"/>
+        <Duration value="0.0625"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="OrbOfDestructionResoundSuicide3">
         <ValidatorArray index="0" value="OrbOfDestructionResoundSuicide1TargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="TimedSuicide"/>
         <Flags index="UseDuration" value="1"/>
-        <Duration value="4.5625"/>
+        <Duration value="0.0625"/>
     </CEffectApplyBehavior>
     <CEffectSet id="OrbOfDestructionResoundSuicideSet">
         <EditorCategories value="Race:Protoss"/>
@@ -4178,123 +4399,32 @@
         <EffectArray value="ResourceCollectorAB"/>
         <EffectArray value="CrystalRainShardsDMG"/>
     </CEffectSet>
-    <CEffectCreatePersistent id="OrbOfVitality1StormCP">
+    <CEffectCreatePersistent id="LuckHeroOrbOfVitalityEnervateCP">
+        <ValidatorArray value="DefaultDataGT0"/>
         <EditorCategories value="Race:Protoss"/>
-        <PeriodicEffectArray value="OrbOfVitality1StormSA"/>
+        <Chance value="0"/>
+        <PeriodCount value="0">
+            <AccumulatorArray value="DefaultDataAdd"/>
+            <AccumulatorArray value="LuckHeroEnervateMultiplier"/>
+        </PeriodCount>
+        <PeriodicEffectArray value="LuckHeroOrbOfVitalityEnervateSA"/>
         <PeriodicPeriodArray value="0.25"/>
     </CEffectCreatePersistent>
-    <CEffectEnumArea id="OrbOfVitality1StormSA">
+    <CEffectEnumArea id="LuckHeroOrbOfVitalityEnervateSA">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2.25" Effect="OrbOfVitalityStormDMG"/>
+        <AreaArray Effect="LuckHeroOrbOfVitalityEnervateDMG"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityRadius"/>
+        </ExtraRadiusBonus>
     </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality2StormSA">
+    <CEffectUserData id="LuckHeroOrbOfVitalityImpactData">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality1StormSA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2.5" Effect="OrbOfVitalityStormDMG"/>
-    </CEffectEnumArea>
-    <CEffectUserData id="OrbOfVitality2Data">
-        <EditorCategories value="Race:Protoss"/>
+        <Key value="Impact"/>
+        <SourceKey value="Impact"/>
         <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfVitality2StormCP"/>
+        <EffectSuccess value="LuckHeroOrbOfVitalityImpactSet"/>
     </CEffectUserData>
-    <CEffectEnumArea id="OrbOfVitality3StormSA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality1StormSA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2.75" Effect="OrbOfVitalityStormDMG"/>
-    </CEffectEnumArea>
-    <CEffectUserData id="OrbOfVitality3Data">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality2Data"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfVitality3StormCP"/>
-    </CEffectUserData>
-    <CEffectCreatePersistent id="OrbOfVitality2StormCP">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition2Data"/>
-        <PeriodicEffectArray value="OrbOfVitality2StormSA"/>
-        <PeriodicPeriodArray value="0.25"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="OrbOfVitality4StormSA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality1StormSA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3" Effect="OrbOfVitalityStormDMG"/>
-    </CEffectEnumArea>
-    <CEffectUserData id="OrbOfVitality4Data">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality2Data"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfVitality4StormCP"/>
-    </CEffectUserData>
-    <CEffectCreatePersistent id="OrbOfVitality3StormCP">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition2Data"/>
-        <PeriodicEffectArray value="OrbOfVitality3StormSA"/>
-        <PeriodicPeriodArray value="0.25"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="OrbOfVitality5StormSA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality1StormSA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3.25" Effect="OrbOfVitalityStormDMG"/>
-    </CEffectEnumArea>
-    <CEffectUserData id="OrbOfVitality5Data">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality2Data"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfVitality5StormCP"/>
-    </CEffectUserData>
-    <CEffectCreatePersistent id="OrbOfVitality4StormCP">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition2Data"/>
-        <PeriodicEffectArray value="OrbOfVitality4StormSA"/>
-        <PeriodicPeriodArray value="0.25"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="OrbOfVitality6StormSA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality1StormSA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3.5" Effect="OrbOfVitalityStormDMG"/>
-    </CEffectEnumArea>
-    <CEffectUserData id="OrbOfVitality6Data">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality2Data"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfVitality6StormCP"/>
-    </CEffectUserData>
-    <CEffectCreatePersistent id="OrbOfVitality5StormCP">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition2Data"/>
-        <PeriodicEffectArray value="OrbOfVitality5StormSA"/>
-        <PeriodicPeriodArray value="0.25"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="OrbOfVitality7StormSA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality1StormSA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3.75" Effect="OrbOfVitalityStormDMG"/>
-    </CEffectEnumArea>
-    <CEffectUserData id="OrbOfVitality7Data">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality2Data"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfVitality7StormCP"/>
-    </CEffectUserData>
-    <CEffectCreatePersistent id="OrbOfVitality6StormCP">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition2Data"/>
-        <PeriodicEffectArray value="OrbOfVitality6StormSA"/>
-        <PeriodicPeriodArray value="0.25"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="OrbOfVitality7StormCP">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition2Data"/>
-        <PeriodicEffectArray value="OrbOfVitality7StormSA"/>
-        <PeriodicPeriodArray value="0.25"/>
-    </CEffectCreatePersistent>
     <CEffectSwitch id="HealingStationHealSwitch">
         <ValidatorArray value="OrbOfVitalityRecurHealerSwitchTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
@@ -4333,16 +4463,17 @@
         <Random value="1"/>
         <MinCount value="1"/>
         <MaxCount value="1"/>
+        <ValidatorArray value="DefaultDataGT0"/>
     </CEffectSet>
     <CEffectSet id="OrbOfAttritionApplyOrbTypeSet">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/ApplyOrbTypeSet"/>
         <EffectArray value="ApplyOrbTypeDestruction"/>
         <EffectArray value="ApplyOrbTypeHavoc"/>
         <EffectArray value="ApplyOrbTypeVitality"/>
         <Random value="1"/>
         <MinCount value="1"/>
         <MaxCount value="1"/>
+        <ValidatorArray value="DefaultDataGT0"/>
     </CEffectSet>
     <CEffectSet id="OrbOfHavocApplyOrbTypeSet">
         <EditorCategories value="Race:Protoss"/>
@@ -4353,6 +4484,7 @@
         <Random value="1"/>
         <MinCount value="1"/>
         <MaxCount value="1"/>
+        <ValidatorArray value="DefaultDataGT0"/>
     </CEffectSet>
     <CEffectSet id="OrbOfDestructionApplyOrbTypeSet">
         <EditorCategories value="Race:Protoss"/>
@@ -4363,60 +4495,13 @@
         <Random value="1"/>
         <MinCount value="1"/>
         <MaxCount value="1"/>
+        <ValidatorArray value="DefaultDataGT0"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="OrbOfAttrition7DelugeAB">
-        <ValidatorArray index="0" value="OrbOfAttrition1DelugeABTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1DelugeAB"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="Deluge7"/>
-    </CEffectApplyBehavior>
-    <CEffectSet id="OrbOfAttrition7ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1ImpactSet"/>
-        <EffectArray value="OrbOfAttrition7DelugeAB"/>
-        <EffectArray value="OrbOfAttritionSA"/>
-        <TargetLocationType value="Point"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfAttrition7LM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Effect="LuckHeroOrbOfAttrition7Random" Value="TargetUnit"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfAttritionLaunchSet"/>
-        <ImpactEffect value="OrbOfAttrition7ImpactSet"/>
-        <FinishEffect value="OrbOfAttrition7ReturnLM"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfAttrition7ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="LuckHeroOrbOfAttrition7Random"/>
-        <FinishEffect value="OrbOfAttritionReturnSet"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfAttrition7SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Robotic,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="LuckHeroOrbOfAttrition7Random"/>
-    </CEffectEnumArea>
-    <CEffectApplyBehavior id="OrbOfHavoc7ApplyFate">
-        <ValidatorArray index="0" value="OrbOfHavoc0ApplyFateTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0ApplyFate"/>
-        <Behavior value="OrbOfHavoc7Fate"/>
-    </CEffectApplyBehavior>
     <CEffectDamage id="OrbOfHavoc7BounceDMG">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
-        <ArmorReduction value="1.35"/>
-        <Amount value="135"/>
+        <ArmorReduction value="1"/>
+        <Amount value="280"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="OrbOfHavoc7BounceDelay">
@@ -4437,133 +4522,13 @@
         </TargetSorts>
         <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc6BounceDelay"/>
     </CEffectEnumArea>
-    <CEffectCreateUnit id="OrbOfHavoc7CU">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CU"/>
-        <WhichLocation Value="TargetPoint"/>
-        <CreateFlags index="Placement" value="0"/>
-        <CreateFlags index="ProvideFood" value="0"/>
-        <CreateFlags index="TechComplete" value="0"/>
-        <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfHavoc7CUSet"/>
-        <SpawnUnit value="OrbOfHavoc"/>
-    </CEffectCreateUnit>
-    <CEffectSet id="OrbOfHavoc7CUSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CUSet"/>
-        <EffectArray value="OrbOfHavoc7ApplyFate"/>
-        <EffectArray value="OrbOfHavocApplyLaunched"/>
-        <EffectArray value="OrbOfHavoc7SearchOrbs"/>
-    </CEffectSet>
-    <CEffectUserData id="OrbOfHavoc7Data">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc2Data"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfHavoc7ImpactSet"/>
-    </CEffectUserData>
-    <CEffectSet id="OrbOfHavoc7ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc1ImpactSet"/>
-        <EffectArray value="OrbOfHavoc7ApplyFate"/>
-        <EffectArray value="RemoveOrbLaunchedRB"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfHavoc7LM">
-        <ValidatorArray index="0" removed="1"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfHavoc7CUSet"/>
-        <LaunchEffect value="OrbOfHavocLaunchSet"/>
-        <ImpactEffect value="OrbOfHavoc7Data"/>
-        <FinishEffect value="OrbOfHavoc7ReturnLM"/>
-        <PeriodicEffect value="LuckHeroOrbOfHavocTransitSet"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfHavoc7ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionReturnLM"/>
-        <LaunchLocation Value="SourcePoint"/>
-        <ImpactLocation Effect="OrbOfHavoc7LM"/>
-        <FinishEffect value="OrbOfHavocReturnSet"/>
-        <PeriodicEffect value="OrbOfHavocWispCU"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfHavoc7SA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0SA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc7BounceDelay"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfHavoc7SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Mechanical,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray Radius="5" Effect="OrbOfHavoc7LM"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality7AllySA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="3.75" Effect="OrbOfVitalityHealSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="OrbOfVitality7ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0ImpactSet"/>
-        <EffectArray value="OrbOfVitality7AllySA"/>
-        <EffectArray value="OrbOfVitality7SAEnemy"/>
-        <EffectArray value="OrbOfVitality7Data"/>
-        <EffectArray value="OrbOfVitalityRecurInitialCU"/>
-        <TargetLocationType value="UnitOrPoint"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfVitality7LM">
-        <ValidatorArray index="0" value="OrbOfDestructionLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfVitalitySwitch" Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfVitalityLaunchSet"/>
-        <ImpactEffect value="OrbOfVitality7ImpactSet"/>
-        <FinishEffect value="OrbOfVitality7ReturnLM"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfVitality7ReturnLM">
-        <ValidatorArray index="0" value="OrbOfDestructionReturnLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="OrbOfVitality7LM"/>
-        <FinishEffect value="OrbOfVitalityReturnSet"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfVitality7SAEnemy">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3.75" Effect="OrbOfVitalityImpactSet"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality7SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Light,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="OrbOfVitality7LM"/>
-    </CEffectEnumArea>
-    <CEffectDamage id="OrbOfVitalityStormDMG">
+    <CEffectDamage id="LuckHeroOrbOfVitalityEnervateDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="0.1"/>
         <Amount value="10"/>
+        <VitalFractionCurrent index="Life" value="0.05"/>
         <LeechFraction index="Life" value="0.1"/>
         <Death value="Disintegrate"/>
-        <VitalFractionCurrent index="Life" value="0.05"/>
     </CEffectDamage>
     <CEffectSet id="OrbsOfLuckApplyOrbType">
         <EditorCategories value="Race:Protoss"/>
@@ -4905,262 +4870,34 @@
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="OrbLaunched"/>
     </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="OrbOfAttrition2DelugeAB">
-        <ValidatorArray index="0" value="OrbOfAttrition1DelugeABTargetFilters"/>
+    <CEffectLaunchMissile id="LuckHeroOrbOfAttritionLM">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1DelugeAB"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="Deluge2"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="OrbOfAttrition3DelugeAB">
-        <ValidatorArray index="0" value="OrbOfAttrition1DelugeABTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1DelugeAB"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="Deluge3"/>
-    </CEffectApplyBehavior>
-    <CEffectSet id="OrbOfAttrition2ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1ImpactSet"/>
-        <EffectArray value="OrbOfAttrition2DelugeAB"/>
-        <EffectArray value="OrbOfAttritionSA"/>
-        <TargetLocationType value="Point"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfAttrition1LM">
-        <ValidatorArray index="0" value="OrbOfDestructionLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionLM"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfAttritionSwitch" Value="TargetPoint"/>
+        <LaunchLocation Effect="LuckHeroOrbOfAttritionRand" Value="TargetUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
         <ImpactOffset value="0,0,0.75"/>
         <LaunchEffect value="OrbOfAttritionLaunchSet"/>
-        <ImpactEffect value="OrbOfAttrition1ImpactSet"/>
+        <ImpactEffect value="LuckHeroOrbOfAttritionImpactSet"/>
         <FinishEffect value="OrbOfAttrition1ReturnLM"/>
         <PeriodicEffect value="OrbOfAttritionTravelSet"/>
         <PeriodicPeriod value="0.125"/>
         <AmmoUnit value="OrbOfAttritionMissile"/>
     </CEffectLaunchMissile>
-    <CEffectApplyBehavior id="OrbOfAttrition4DelugeAB">
-        <ValidatorArray index="0" value="OrbOfAttrition1DelugeABTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1DelugeAB"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="Deluge4"/>
-    </CEffectApplyBehavior>
-    <CEffectSet id="OrbOfAttrition3ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1ImpactSet"/>
-        <EffectArray value="OrbOfAttrition3DelugeAB"/>
-        <EffectArray value="OrbOfAttritionSA"/>
-        <TargetLocationType value="Point"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfAttrition2LM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Effect="LuckHeroOrbOfAttrition2Random" Value="TargetUnit"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfAttritionLaunchSet"/>
-        <ImpactEffect value="OrbOfAttrition2ImpactSet"/>
-        <FinishEffect value="OrbOfAttrition2ReturnLM"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfAttrition1ReturnLM">
-        <ValidatorArray index="0" value="OrbOfDestructionReturnLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionReturnLM"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="OrbOfAttrition1LM"/>
-        <FinishEffect value="OrbOfAttritionReturnSet"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectApplyBehavior id="OrbOfAttrition5DelugeAB">
-        <ValidatorArray index="0" value="OrbOfAttrition1DelugeABTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1DelugeAB"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="Deluge5"/>
-    </CEffectApplyBehavior>
-    <CEffectSet id="OrbOfAttrition4ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1ImpactSet"/>
-        <EffectArray value="OrbOfAttrition4DelugeAB"/>
-        <EffectArray value="OrbOfAttritionSA"/>
-        <TargetLocationType value="Point"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfAttrition3LM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Effect="LuckHeroOrbOfAttrition3Random" Value="TargetUnit"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfAttritionLaunchSet"/>
-        <ImpactEffect value="OrbOfAttrition3ImpactSet"/>
-        <FinishEffect value="OrbOfAttrition3ReturnLM"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfAttrition2ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="LuckHeroOrbOfAttrition2Random"/>
-        <FinishEffect value="OrbOfAttritionReturnSet"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfAttrition1SearchOrbs">
+    <CEffectEnumArea id="LuckHeroOrbOfAttritionSearchOrbs">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
         <ImpactLocation Value="CasterUnitOrPoint"/>
         <SearchFilters value="Robotic,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="OrbOfAttrition1LM"/>
-    </CEffectEnumArea>
-    <CEffectApplyBehavior id="OrbOfAttrition1DelugeAB">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="Deluge1"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="OrbOfAttrition6DelugeAB">
-        <ValidatorArray index="0" value="OrbOfAttrition1DelugeABTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1DelugeAB"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="Deluge6"/>
-    </CEffectApplyBehavior>
-    <CEffectSet id="OrbOfAttrition5ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1ImpactSet"/>
-        <EffectArray value="OrbOfAttrition5DelugeAB"/>
-        <EffectArray value="OrbOfAttritionSA"/>
-        <TargetLocationType value="Point"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfAttrition4LM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Effect="LuckHeroOrbOfAttrition4Random" Value="TargetUnit"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfAttritionLaunchSet"/>
-        <ImpactEffect value="OrbOfAttrition4ImpactSet"/>
-        <FinishEffect value="OrbOfAttrition4ReturnLM"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfAttrition3ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="LuckHeroOrbOfAttrition3Random"/>
-        <FinishEffect value="OrbOfAttritionReturnSet"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfAttrition2SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Robotic,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="LuckHeroOrbOfAttrition2Random"/>
-    </CEffectEnumArea>
-    <CEffectSet id="OrbOfAttrition6ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttrition1ImpactSet"/>
-        <EffectArray value="OrbOfAttrition6DelugeAB"/>
-        <EffectArray value="OrbOfAttritionSA"/>
-        <TargetLocationType value="Point"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfAttrition5LM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Effect="LuckHeroOrbOfAttrition5Random" Value="TargetUnit"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfAttritionLaunchSet"/>
-        <ImpactEffect value="OrbOfAttrition5ImpactSet"/>
-        <FinishEffect value="OrbOfAttrition5ReturnLM"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfAttrition4ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="LuckHeroOrbOfAttrition4Random"/>
-        <FinishEffect value="OrbOfAttritionReturnSet"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfAttrition3SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Robotic,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="LuckHeroOrbOfAttrition3Random"/>
-    </CEffectEnumArea>
-    <CEffectLaunchMissile id="OrbOfAttrition6LM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Effect="LuckHeroOrbOfAttrition6Random" Value="TargetUnit"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfAttritionLaunchSet"/>
-        <ImpactEffect value="OrbOfAttrition6ImpactSet"/>
-        <FinishEffect value="OrbOfAttrition6ReturnLM"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfAttrition5ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="LuckHeroOrbOfAttrition5Random"/>
-        <FinishEffect value="OrbOfAttritionReturnSet"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfAttrition4SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Robotic,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="LuckHeroOrbOfAttrition4Random"/>
-    </CEffectEnumArea>
-    <CEffectLaunchMissile id="OrbOfAttrition6ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="LuckHeroOrbOfAttrition6Random"/>
-        <FinishEffect value="OrbOfAttritionReturnSet"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfAttrition5SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Robotic,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="LuckHeroOrbOfAttrition5Random"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfAttrition6SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Robotic,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="LuckHeroOrbOfAttrition6Random"/>
+        <AreaArray Radius="5" Effect="LuckHeroOrbOfAttritionRand"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="OrbOfAttritionAB">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="Attrition"/>
     </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="OrbOfAttritionAnomalyAB">
+    <CEffectApplyBehavior id="LuckHeroOrbOfAttritionAnomalyAB">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="OrbOfAttritionAnomalyFate"/>
     </CEffectApplyBehavior>
-    <CEffectCreateUnit id="OrbOfAttritionAnomalyCU">
+    <CEffectCreateUnit id="LuckHeroOrbOfAttritionAnomalyCU">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
         <WhichLocation Value="SourceUnitOrPoint"/>
@@ -5168,49 +4905,22 @@
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfAttritionAnomalyAB"/>
+        <SpawnEffect value="LuckHeroOrbOfAttritionAnomalyAB"/>
         <SpawnUnit value="OrbOfAttritionAnomaly"/>
     </CEffectCreateUnit>
-    <CEffectUserData id="OrbOfHavoc2Data">
-        <EditorCategories value="Race:Protoss"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfHavoc2ImpactSet"/>
-    </CEffectUserData>
-    <CEffectUserData id="OrbOfHavoc3Data">
+    <CEffectUserData id="LuckHeroOrbOfHavocImpactData">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc2Data"/>
+        <Key value="Impact"/>
+        <SourceKey value="Impact"/>
         <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfHavoc3ImpactSet"/>
+        <EffectSuccess value="LuckHeroOrbOfHavocImpactSet"/>
     </CEffectUserData>
-    <CEffectUserData id="OrbOfHavoc4Data">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc2Data"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfHavoc4ImpactSet"/>
-    </CEffectUserData>
-    <CEffectUserData id="OrbOfHavoc5Data">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc2Data"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfHavoc5ImpactSet"/>
-    </CEffectUserData>
-    <CEffectUserData id="OrbOfHavoc6Data">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc2Data"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="OrbOfHavoc6ImpactSet"/>
-    </CEffectUserData>
-    <CEffectApplyBehavior id="OrbOfHavoc6ApplyFate">
-        <ValidatorArray index="0" value="OrbOfHavoc0ApplyFateTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0ApplyFate"/>
-        <Behavior value="OrbOfHavoc6Fate"/>
-    </CEffectApplyBehavior>
     <CEffectDamage id="OrbOfHavoc6BounceDMG">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
-        <ArmorReduction value="1.2"/>
-        <Amount value="120"/>
+        <ArmorReduction value="1"/>
+        <Amount value="245"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="OrbOfHavoc6BounceDelay">
@@ -5230,71 +4940,6 @@
             <SortArray value="TSRandom"/>
         </TargetSorts>
         <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc5BounceDelay"/>
-    </CEffectEnumArea>
-    <CEffectCreateUnit id="OrbOfHavoc6CU">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CU"/>
-        <WhichLocation Value="TargetPoint"/>
-        <CreateFlags index="Placement" value="0"/>
-        <CreateFlags index="ProvideFood" value="0"/>
-        <CreateFlags index="TechComplete" value="0"/>
-        <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfHavoc6CUSet"/>
-        <SpawnUnit value="OrbOfHavoc"/>
-    </CEffectCreateUnit>
-    <CEffectSet id="OrbOfHavoc6CUSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CUSet"/>
-        <EffectArray value="OrbOfHavoc6ApplyFate"/>
-        <EffectArray value="OrbOfHavocApplyLaunched"/>
-        <EffectArray value="OrbOfHavoc6SearchOrbs"/>
-    </CEffectSet>
-    <CEffectSet id="OrbOfHavoc6ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc1ImpactSet"/>
-        <EffectArray value="OrbOfHavoc6ApplyFate"/>
-        <EffectArray value="RemoveOrbLaunchedRB"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfHavoc6LM">
-        <ValidatorArray index="0" removed="1"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfHavoc6CUSet"/>
-        <LaunchEffect value="OrbOfHavocLaunchSet"/>
-        <ImpactEffect value="OrbOfHavoc6Data"/>
-        <FinishEffect value="OrbOfHavoc6ReturnLM"/>
-        <PeriodicEffect value="LuckHeroOrbOfHavocTransitSet"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfHavoc6ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionReturnLM"/>
-        <LaunchLocation Value="SourcePoint"/>
-        <ImpactLocation Effect="OrbOfHavoc6LM"/>
-        <FinishEffect value="OrbOfHavocReturnSet"/>
-        <PeriodicEffect value="OrbOfHavocWispCU"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfHavoc6SA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0SA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc6BounceDelay"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfHavoc6SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Mechanical,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray Radius="5" Effect="OrbOfHavoc6LM"/>
     </CEffectEnumArea>
     <CEffectSet id="OrbsOfLuckApplyOrbTypeWildCard">
         <EditorCategories value="Race:Protoss"/>
@@ -5345,455 +4990,150 @@
     <CEffectModifyUnit id="OrbsOfLuckShieldedMU">
         <EditorCategories value="Race:Protoss"/>
         <ImpactUnit Value="Caster"/>
+        <Chance value="0"/>
+        <VitalArray index="Shields">
+            <Change value="50">
+                <AccumulatorArray value="HealingMultiplier"/>
+            </Change>
+            <ChangeFraction value="0.01"/>
+        </VitalArray>
     </CEffectModifyUnit>
-    <CEffectEnumArea id="OrbOfVitality1AllySA">
+    <CEffectSet id="LuckHeroOrbOfVitalityImpactSet">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="2.25" Effect="OrbOfVitalityHealSet"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality2AllySA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="2.5" Effect="OrbOfVitalityHealSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="OrbOfVitality1ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0ImpactSet"/>
-        <EffectArray value="OrbOfVitality1AllySA"/>
-        <EffectArray value="OrbOfVitality1SAEnemy"/>
-        <EffectArray value="OrbOfVitality1StormCP"/>
-        <EffectArray value="OrbOfVitalityRecurInitialCU"/>
+        <EffectArray value="LuckHeroOrbOfVitalityAllySA"/>
+        <EffectArray value="LuckHeroOrbOfVitalityEnemySA"/>
+        <EffectArray value="LuckHeroOrbOfVitalityEnervateCP"/>
+        <EffectArray value="LuckHeroOrbOfVitalityRecurImpactCP"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
-    <CEffectEnumArea id="OrbOfVitality3AllySA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="2.75" Effect="OrbOfVitalityHealSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="OrbOfVitality2ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0ImpactSet"/>
-        <EffectArray value="OrbOfVitality2AllySA"/>
-        <EffectArray value="OrbOfVitality2SAEnemy"/>
-        <EffectArray value="OrbOfVitality2Data"/>
-        <EffectArray value="OrbOfVitalityRecurInitialCU"/>
-        <TargetLocationType value="UnitOrPoint"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfVitality1LM">
-        <ValidatorArray index="0" value="OrbOfDestructionLMTargetFilters"/>
+    <CEffectLaunchMissile id="LuckHeroOrbOfVitalityLM">
         <EditorCategories value="Race:Protoss"/>
         <LaunchLocation Value="TargetUnit"/>
         <ImpactLocation Effect="OrbOfVitalitySwitch" Value="TargetPoint"/>
         <ImpactOffset value="0,0,0.75"/>
         <LaunchEffect value="OrbOfVitalityLaunchSet"/>
-        <ImpactEffect value="OrbOfVitality1ImpactSet"/>
-        <FinishEffect value="OrbOfVitality1ReturnLM"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
+        <ImpactEffect value="LuckHeroOrbOfVitalityImpactData"/>
+        <PeriodicEffect value="LuckHeroOrbOfVitalityPervadeSASet"/>
         <AmmoUnit value="OrbOfVitalityMissile"/>
+        <PeriodicPeriod value="0.375"/>
     </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfVitality4AllySA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="3" Effect="OrbOfVitalityHealSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="OrbOfVitality3ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0ImpactSet"/>
-        <EffectArray value="OrbOfVitality3AllySA"/>
-        <EffectArray value="OrbOfVitality3SAEnemy"/>
-        <EffectArray value="OrbOfVitality3Data"/>
-        <EffectArray value="OrbOfVitalityRecurInitialCU"/>
-        <TargetLocationType value="UnitOrPoint"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfVitality2LM">
-        <ValidatorArray index="0" value="OrbOfDestructionLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfVitalitySwitch" Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfVitalityLaunchSet"/>
-        <ImpactEffect value="OrbOfVitality2ImpactSet"/>
-        <FinishEffect value="OrbOfVitality2ReturnLM"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfVitality1ReturnLM">
-        <ValidatorArray index="0" value="OrbOfDestructionReturnLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="OrbOfVitality1LM"/>
-        <FinishEffect value="OrbOfVitalityReturnSet"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfVitality5AllySA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="3.25" Effect="OrbOfVitalityHealSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="OrbOfVitality4ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0ImpactSet"/>
-        <EffectArray value="OrbOfVitality4AllySA"/>
-        <EffectArray value="OrbOfVitality4SAEnemy"/>
-        <EffectArray value="OrbOfVitality4Data"/>
-        <EffectArray value="OrbOfVitalityRecurInitialCU"/>
-        <TargetLocationType value="UnitOrPoint"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfVitality3LM">
-        <ValidatorArray index="0" value="OrbOfDestructionLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfVitalitySwitch" Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfVitalityLaunchSet"/>
-        <ImpactEffect value="OrbOfVitality3ImpactSet"/>
-        <FinishEffect value="OrbOfVitality3ReturnLM"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfVitality2ReturnLM">
-        <ValidatorArray index="0" value="OrbOfDestructionReturnLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="OrbOfVitality2LM"/>
-        <FinishEffect value="OrbOfVitalityReturnSet"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfVitality1SAEnemy">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2.25" Effect="OrbOfVitalityImpactSet"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality6AllySA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="3.5" Effect="OrbOfVitalityHealSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="OrbOfVitality5ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0ImpactSet"/>
-        <EffectArray value="OrbOfVitality5AllySA"/>
-        <EffectArray value="OrbOfVitality5SAEnemy"/>
-        <EffectArray value="OrbOfVitality5Data"/>
-        <EffectArray value="OrbOfVitalityRecurInitialCU"/>
-        <TargetLocationType value="UnitOrPoint"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfVitality4LM">
-        <ValidatorArray index="0" value="OrbOfDestructionLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfVitalitySwitch" Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfVitalityLaunchSet"/>
-        <ImpactEffect value="OrbOfVitality4ImpactSet"/>
-        <FinishEffect value="OrbOfVitality4ReturnLM"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfVitality3ReturnLM">
-        <ValidatorArray index="0" value="OrbOfDestructionReturnLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="OrbOfVitality3LM"/>
-        <FinishEffect value="OrbOfVitalityReturnSet"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfVitality2SAEnemy">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2.5" Effect="OrbOfVitalityImpactSet"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality1SearchOrbs">
+    <CEffectEnumArea id="LuckHeroOrbOfVitalitySearchOrbs">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
         <ImpactLocation Value="CasterUnitOrPoint"/>
         <SearchFilters value="Light,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="OrbOfVitality1LM"/>
+        <AreaArray Radius="5" Effect="LuckHeroOrbOfVitalityLM"/>
     </CEffectEnumArea>
-    <CEffectSet id="OrbOfVitality6ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0ImpactSet"/>
-        <EffectArray value="OrbOfVitality6AllySA"/>
-        <EffectArray value="OrbOfVitality6SAEnemy"/>
-        <EffectArray value="OrbOfVitality6Data"/>
-        <EffectArray value="OrbOfVitalityRecurInitialCU"/>
-        <TargetLocationType value="UnitOrPoint"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfVitality5LM">
-        <ValidatorArray index="0" value="OrbOfDestructionLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfVitalitySwitch" Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfVitalityLaunchSet"/>
-        <ImpactEffect value="OrbOfVitality5ImpactSet"/>
-        <FinishEffect value="OrbOfVitality5ReturnLM"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfVitality4ReturnLM">
-        <ValidatorArray index="0" value="OrbOfDestructionReturnLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="OrbOfVitality4LM"/>
-        <FinishEffect value="OrbOfVitalityReturnSet"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfVitality3SAEnemy">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2.75" Effect="OrbOfVitalityImpactSet"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality2SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Light,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="OrbOfVitality2LM"/>
-    </CEffectEnumArea>
-    <CEffectLaunchMissile id="OrbOfVitality6LM">
-        <ValidatorArray index="0" value="OrbOfDestructionLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfVitalitySwitch" Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfVitalityLaunchSet"/>
-        <ImpactEffect value="OrbOfVitality6ImpactSet"/>
-        <FinishEffect value="OrbOfVitality6ReturnLM"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfVitality5ReturnLM">
-        <ValidatorArray index="0" value="OrbOfDestructionReturnLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="OrbOfVitality5LM"/>
-        <FinishEffect value="OrbOfVitalityReturnSet"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfVitality4SAEnemy">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3" Effect="OrbOfVitalityImpactSet"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality3SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Light,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="OrbOfVitality3LM"/>
-    </CEffectEnumArea>
-    <CEffectLaunchMissile id="OrbOfVitality6ReturnLM">
-        <ValidatorArray index="0" value="OrbOfDestructionReturnLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="OrbOfVitality6LM"/>
-        <FinishEffect value="OrbOfVitalityReturnSet"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfVitality5SAEnemy">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3.25" Effect="OrbOfVitalityImpactSet"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality4SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Light,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="OrbOfVitality4LM"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality6SAEnemy">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3.5" Effect="OrbOfVitalityImpactSet"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality5SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Light,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="OrbOfVitality5LM"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitality6SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Light,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="OrbOfVitality6LM"/>
-    </CEffectEnumArea>
-    <CEffectApplyBehavior id="OrbOfVitalityDynamicEnemyAB">
+    <CEffectApplyBehavior id="LuckHeroOrbOfVitalityDynamicABEnemy">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
         <Behavior value="DynamicEnemy"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="OrbOfVitalityImpactSet">
+    <CEffectSet id="LuckHeroOrbOfVitalityEnemySet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="OrbOfVitalityRecurCU"/>
-        <EffectArray value="OrbOfVitalityDynamicEnemyAB"/>
-        <EffectArray value="OrbOfVitalityDMG"/>
+        <EffectArray value="LuckHeroOrbOfVitalityRecurCU"/>
+        <EffectArray value="LuckHeroOrbOfVitalityDynamicABEnemy"/>
+        <EffectArray value="LuckHeroOrbOfVitalityDMGSwitch"/>
     </CEffectSet>
-    <CEffectEnumArea id="OrbOfVitalityPervadeAllySA">
+    <CEffectEnumArea id="LuckHeroOrbOfVitalityPervadeAllySA">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitalityPervadeSearchTarget"/>
-        <ImpactLocation Effect="OrbOfVitalityPervadeSearchTarget" Value="SourceUnit"/>
-        <SearchFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="2" Effect="OrbOfVitalityHealSet"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitalityPervadeSearchTarget">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
         <ImpactLocation Value="SourceUnit"/>
-        <SearchFilters value="-;Player,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray MaxCount="1" Radius="0.5" Effect="OrbOfVitalityPervadeSet"/>
+        <SearchFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="2" Effect="LuckHeroOrbOfVitalityPervadeAllySet"/>
     </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfVitalityPervadeEnemySA">
+    <CEffectEnumArea id="LuckHeroOrbOfVitalityPervadeEnemySA">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitalityPervadeSearchTarget"/>
-        <ImpactLocation Effect="OrbOfVitalityPervadeSearchTarget" Value="SourceUnit"/>
+        <ImpactLocation Value="SourceUnit"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2" Effect="OrbOfVitalityImpactSet"/>
+        <AreaArray Radius="2" Effect="LuckHeroOrbOfVitalityPervadeEnemySet"/>
     </CEffectEnumArea>
-    <CEffectSet id="OrbOfVitalityPervadeSet">
+    <CEffectSet id="LuckHeroOrbOfVitalityPervadeSASet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="OrbOfVitalityPervadeAllySA"/>
-        <EffectArray value="OrbOfVitalityPervadeEnemySA"/>
-        <ValidatorArray value="NotSpellUnit"/>
+        <EffectArray value="LuckHeroOrbOfVitalityPervadeAllySA"/>
+        <EffectArray value="LuckHeroOrbOfVitalityPervadeEnemySA"/>
+        <Chance value="0"/>
     </CEffectSet>
-    <CEffectSwitch id="OrbOfVitalityRecurHealerSwitch">
+    <CEffectSwitch id="LuckHeroOrbOfVitalityRecurHealSwitch">
         <ValidatorArray value="OrbOfVitalityRecurHealerSwitchTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
-        <CaseArray Validator="MissingHealth" Effect="OrbOfVitalityRecurHealthHealer"/>
-        <CaseArray Validator="ShieldsNotFull" Effect="OrbOfVitalityRecurShieldHealer"/>
+        <CaseArray Validator="MissingHealth" Effect="LuckHeroOrbOfVitalityRecurHealthHealer"/>
+        <CaseArray Validator="ShieldsNotFull" Effect="LuckHeroOrbOfVitalityRecurShieldHealer"/>
     </CEffectSwitch>
-    <CEffectCreateHealer id="OrbOfVitalityRecurShieldHealer">
+    <CEffectCreateHealer id="LuckHeroOrbOfVitalityRecurShieldHealer">
         <ValidatorArray value="NotWarpingIn"/>
         <ValidatorArray value="HiddenCompareAB"/>
         <ValidatorArray value="HiddenCompareBA"/>
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality"/>
         <DrainVital value="Energy"/>
         <DrainVitalCostFactor value="0.33"/>
         <RechargeVital value="Shields"/>
-        <RechargeVitalRate value="9">
+        <RechargeVitalRate value="12">
             <AccumulatorArray value="HealingMultiplier"/>
         </RechargeVitalRate>
     </CEffectCreateHealer>
-    <CEffectCreateUnit id="OrbOfVitalityRecurCU">
+    <CEffectCreateUnit id="LuckHeroOrbOfVitalityRecurCU">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfAttritionAnomalyCU"/>
         <Chance value="0"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
         <CreateFlags index="Placement" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfVitalityRecurFate"/>
+        <SpawnEffect value="LuckHeroOrbOfVitalityRecurFate"/>
         <SpawnUnit value="OrbOfVitalityRecur"/>
     </CEffectCreateUnit>
-    <CEffectEnumArea id="OrbOfAttritionAnomalySA">
+    <CEffectEnumArea id="LuckHeroOrbOfAttritionAnomalySA">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="0.75" Effect="Suicide"/>
         <MinCount value="1"/>
         <MaxCount value="1"/>
     </CEffectEnumArea>
-    <CEffectLaunchMissile id="OrbOfAttritionDevianceLM">
+    <CEffectLaunchMissile id="LuckHeroOrbOfAttritionDevianceLM">
         <EditorCategories value="Race:Protoss"/>
         <LaunchLocation Value="SourceUnitOrPoint"/>
         <ImpactLocation Value="TargetPoint"/>
-        <PeriodicEffect value="OrbOfAttritionDevianceSet"/>
+        <ImpactEffect value="OrbOfAttritionSA"/>
+        <PeriodicEffect value="LuckHeroOrbOfAttritionDevianceSet"/>
         <PeriodicPeriod value="0.125"/>
         <AmmoUnit value="OrbOfAttritionMissile"/>
+        <ImpactRange value="5"/>
         <Movers Link="OrbOfAttritionDevianceMissile"/>
-        <ImpactEffect value="OrbOfAttritionSA"/>
-        <ImpactRange value="4"/>
     </CEffectLaunchMissile>
-    <CEffectCreatePersistent id="OrbOfAttritionDevianceOffset">
+    <CEffectRandomPointInCircle id="LuckHeroOrbOfAttritionDevianceRand">
         <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="SourceUnitOrPoint"/>
-        <Flags index="RandomOffset" value="1"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="OrbOfAttritionDevianceLM"/>
-        <PeriodicOffsetArray value="0,16,0"/>
-        <PeriodicOffsetArray value="6,14.8,0"/>
-        <PeriodicOffsetArray value="11.3,11.3,0"/>
-        <PeriodicOffsetArray value="14.8,6,0"/>
-        <PeriodicOffsetArray value="16,0,0"/>
-        <PeriodicOffsetArray value="14.8,-6,0"/>
-        <PeriodicOffsetArray value="11.3,-11.3,0"/>
-        <PeriodicOffsetArray value="6,-14.8,0"/>
-        <PeriodicOffsetArray value="0,-16,0"/>
-        <PeriodicOffsetArray value="-6,-14.8,0"/>
-        <PeriodicOffsetArray value="-11.3,-11.3,0"/>
-        <PeriodicOffsetArray value="-14.8,-6,0"/>
-        <PeriodicOffsetArray value="-16,0,0"/>
-        <PeriodicOffsetArray value="-14.8,6,0"/>
-        <PeriodicOffsetArray value="-11.3,11.3,0"/>
-        <PeriodicOffsetArray value="-6,14.8,0"/>
         <Chance value="0"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="OrbOfAttritionDelugeOffset2">
+        <WhichLocation Value="SourceUnitOrPoint"/>
+        <Effect value="LuckHeroOrbOfAttritionDevianceLM"/>
+        <Radius value="17"/>
+        <RestrictToCircumference value="1"/>
+    </CEffectRandomPointInCircle>
+    <CEffectRandomPointInCircle id="LuckHeroOrbOfAttritionDelugeRand">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfAttritionDevianceOffset"/>
-        <WhichLocation Value="SourceUnitOrPoint"/>
-        <Flags index="RandomOffset" value="1"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="OrbOfAttritionDevianceLM"/>
-        <PeriodicOffsetArray value="0,16,0"/>
-        <PeriodicOffsetArray value="6,14.8,0"/>
-        <PeriodicOffsetArray value="11.3,11.3,0"/>
-        <PeriodicOffsetArray value="14.8,6,0"/>
-        <PeriodicOffsetArray value="16,0,0"/>
-        <PeriodicOffsetArray value="14.8,-6,0"/>
-        <PeriodicOffsetArray value="11.3,-11.3,0"/>
-        <PeriodicOffsetArray value="6,-14.8,0"/>
-        <PeriodicOffsetArray value="0,-16,0"/>
-        <PeriodicOffsetArray value="-6,-14.8,0"/>
-        <PeriodicOffsetArray value="-11.3,-11.3,0"/>
-        <PeriodicOffsetArray value="-14.8,-6,0"/>
-        <PeriodicOffsetArray value="-16,0,0"/>
-        <PeriodicOffsetArray value="-14.8,6,0"/>
-        <PeriodicOffsetArray value="-11.3,11.3,0"/>
-        <PeriodicOffsetArray value="-6,14.8,0"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="OrbOfAttritionDevianceSA">
+        <Effect value="LuckHeroOrbOfAttritionDelugeLM"/>
+        <Radius value="17"/>
+        <RestrictToCircumference value="1"/>
+    </CEffectRandomPointInCircle>
+    <CEffectEnumArea id="LuckHeroOrbOfAttritionDevianceSA">
         <EditorCategories value="Race:Protoss"/>
-        <AreaArray Radius="0.5" Effect="Impact"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.5" Effect="Impact"/>
     </CEffectEnumArea>
-    <CEffectCreatePersistent id="OrbOfAttritionDevianceSet">
+    <CEffectCreatePersistent id="LuckHeroOrbOfAttritionDevianceSet">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="SourceUnitOrPoint"/>
         <PeriodCount value="2"/>
-        <PeriodicEffectArray value="OrbOfAttritionDevianceSA"/>
-        <PeriodicEffectArray value="OrbOfAttritionAnomalyCU"/>
+        <PeriodicEffectArray value="LuckHeroOrbOfAttritionDevianceSA"/>
+        <PeriodicEffectArray value="LuckHeroOrbOfAttritionAnomalyCU"/>
     </CEffectCreatePersistent>
-    <CEffectApplyBehavior id="OrbOfAttritionEngulfAB">
+    <CEffectApplyBehavior id="LuckHeroOrbOfAttritionEngulfAB">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="Engulfed"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="OrbOfAttrition1ImpactSet">
+    <CEffectSet id="LuckHeroOrbOfAttritionImpactSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="OrbOfAttrition1DelugeAB"/>
+        <EffectArray value="LuckHeroOrbOfAttritionDelugeCP"/>
         <EffectArray value="OrbOfAttritionSA"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
@@ -5802,7 +5142,7 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="OrbOfAttritionAB"/>
         <EffectArray value="OrbOfAttritionDMG"/>
-        <EffectArray value="OrbOfAttritionEngulfAB"/>
+        <EffectArray value="LuckHeroOrbOfAttritionEngulfAB"/>
     </CEffectSet>
     <CEffectEnumArea id="OrbOfAttritionSA">
         <EditorCategories value="Race:Protoss"/>
@@ -5811,30 +5151,23 @@
     </CEffectEnumArea>
     <CEffectDamage id="OrbOfAttritionDMG">
         <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="0.5"/>
-        <Amount value="20">
+        <ArmorReduction value="1"/>
+        <Amount value="30">
             <AccumulatorArray value="LuckHeroEngulfDamageArith"/>
         </Amount>
     </CEffectDamage>
     <CEffectSwitch id="OrbOfAttritionSwitch">
         <EditorCategories value="Race:Protoss"/>
         <CaseArray Validator="AttritionOrbCountIs0" Effect="OrbOfAttrition0SearchOrbs"/>
-        <CaseArray Validator="AttritionOrbCountIs1" Effect="OrbOfAttrition1SearchOrbs"/>
-        <CaseArray Validator="AttritionOrbCountIs2" Effect="OrbOfAttrition2SearchOrbs"/>
-        <CaseArray Validator="AttritionOrbCountIs3" Effect="OrbOfAttrition3SearchOrbs"/>
-        <CaseArray Validator="AttritionOrbCountIs4" Effect="OrbOfAttrition4SearchOrbs"/>
-        <CaseArray Validator="AttritionOrbCountIs5" Effect="OrbOfAttrition5SearchOrbs"/>
-        <CaseArray Validator="AttritionOrbCountIs6" Effect="OrbOfAttrition6SearchOrbs"/>
-        <CaseArray Validator="AttritionOrbCountIs7" Effect="OrbOfAttrition7SearchOrbs"/>
         <TargetLocationType value="Point"/>
-        <ValidatorArray value="HasAnOrb"/>
+        <CaseDefault value="LuckHeroOrbOfAttritionSearchOrbs"/>
     </CEffectSwitch>
     <CEffectCreatePersistent id="OrbOfAttritionTravelSet">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="SourceUnitOrPoint"/>
         <PeriodCount value="2"/>
-        <PeriodicEffectArray value="OrbOfAttritionDevianceOffset"/>
-        <PeriodicEffectArray value="OrbOfAttritionAnomalyCU"/>
+        <PeriodicEffectArray value="LuckHeroOrbOfAttritionDevianceRand"/>
+        <PeriodicEffectArray value="LuckHeroOrbOfAttritionAnomalyCU"/>
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="OrbOfDestructionCP">
         <EditorCategories value="Race:Protoss"/>
@@ -5877,18 +5210,18 @@
     </CEffectSet>
     <CEffectEnumArea id="OrbOfDestructionMagSnipeSA">
         <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <TargetSorts>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
         <AreaArray MaxCount="1" Radius="2" Effect="OrbOfDestructionSnipeDMGSet"/>
     </CEffectEnumArea>
-    <CEffectCreatePersistent id="OrbOfDestructionDivisionOffset">
+    <CEffectCreatePersistent id="LuckHeroOrbOfDestructionDivisionOffset">
         <EditorCategories value="Race:Protoss"/>
         <OffsetVectorStartLocation Value="SourcePoint"/>
         <OffsetFacingFallback Value="SourcePoint"/>
         <Flags index="RandomOffset" value="1"/>
+        <PeriodCount value="1"/>
         <PeriodicEffectArray value="OrbOfDestructionCP"/>
         <PeriodicOffsetArray value="0,1,0"/>
         <PeriodicOffsetArray value="-1,0,0"/>
@@ -5908,7 +5241,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
         <ArmorReduction value="1"/>
-        <Amount value="72"/>
+        <Amount value="120"/>
         <Death value="Disintegrate"/>
         <DamageModifierSource Value="Caster"/>
     </CEffectDamage>
@@ -5917,6 +5250,7 @@
         <Chance value="0"/>
         <ArmorReduction value="1"/>
         <DamageModifierSource Value="Caster"/>
+        <Amount value="72"/>
     </CEffectDamage>
     <CEffectSet id="OrbOfDestructionImpactSet">
         <EditorCategories value="Race:Protoss"/>
@@ -5941,7 +5275,6 @@
     </CEffectSet>
     <CEffectEnumArea id="OrbOfDestructionSnipeSA">
         <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <TargetSorts>
             <SortArray value="TSLifeLargestFirst"/>
@@ -5959,6 +5292,7 @@
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="0.5"/>
         <DamageModifierSource Value="Caster"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectSet id="OrbOfDestructionSnipeDMGSet">
         <EditorCategories value="Race:Protoss"/>
@@ -5967,8 +5301,9 @@
     </CEffectSet>
     <CEffectSet id="OrbOfDestructionLaunchSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="RemoveOrbTypeSet"/>
+        <EffectArray value="LuckHeroRemoveOrbTypeIfNot0"/>
         <EffectArray value="ApplyOrbLaunchedAB"/>
+        <EffectArray value="OrbOfDestructionApplyOrbTypeSet"/>
         <EffectArray value="OrbsOfLuckShieldedMU"/>
         <EffectArray value="OrbOfDestructionSupplimentChance"/>
         <EffectArray value="LuckHeroOrbOfDestructionEradicateCP"/>
@@ -5976,7 +5311,7 @@
     <CEffectDamage id="OrbOfDestructionDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="0.5"/>
-        <Amount value="36"/>
+        <Amount value="40"/>
         <Death value="Disintegrate"/>
         <DamageModifierSource Value="Caster"/>
     </CEffectDamage>
@@ -5989,7 +5324,7 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="OrbOfDestructionSet"/>
         <EffectArray value="OrbOfDestructionCP"/>
-        <EffectArray value="OrbOfDestructionDivisionOffset"/>
+        <EffectArray value="LuckHeroOrbOfDestructionDivisionOffset"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
     <CEffectEnumArea id="OrbOfDestructionMagImpactSA">
@@ -6009,45 +5344,22 @@
         <Chance value="0"/>
         <EffectArray value="OrbOfDestructionSet"/>
         <TargetLocationType value="UnitOrPoint"/>
+        <ValidatorArray value="NotOrbLaunched"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="OrbOfHavoc0ApplyFate">
+    <CEffectApplyBehavior id="LuckHeroOrbOfHavocFate">
         <EditorCategories value="Race:Protoss"/>
-        <Behavior value="OrbOfHavoc0Fate"/>
+        <Behavior value="OrbOfHavocFate"/>
     </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="OrbOfHavoc1ApplyFate">
-        <ValidatorArray index="0" value="OrbOfHavoc0ApplyFateTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0ApplyFate"/>
-        <Behavior value="OrbOfHavoc1Fate"/>
-    </CEffectApplyBehavior>
-    <CEffectCreateUnit id="OrbOfHavoc0CU">
+    <CEffectCreateUnit id="LuckHeroOrbOfHavocCU">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetPoint"/>
         <CreateFlags index="Placement" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfHavoc0CUSet"/>
+        <SpawnEffect value="LuckHeroOrbOfHavocCUSet"/>
         <SpawnUnit value="OrbOfHavoc"/>
     </CEffectCreateUnit>
-    <CEffectApplyBehavior id="OrbOfHavoc2ApplyFate">
-        <ValidatorArray index="0" value="OrbOfHavoc0ApplyFateTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0ApplyFate"/>
-        <Behavior value="OrbOfHavoc2Fate"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="OrbOfHavoc4ApplyFate">
-        <ValidatorArray index="0" value="OrbOfHavoc0ApplyFateTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0ApplyFate"/>
-        <Behavior value="OrbOfHavoc4Fate"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="OrbOfHavoc5ApplyFate">
-        <ValidatorArray index="0" value="OrbOfHavoc0ApplyFateTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0ApplyFate"/>
-        <Behavior value="OrbOfHavoc5Fate"/>
-    </CEffectApplyBehavior>
     <CEffectCreatePersistent id="OrbOfHavoc4BounceDelay">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDelay"/>
@@ -6084,128 +5396,11 @@
         </TargetSorts>
         <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc4BounceDelay"/>
     </CEffectEnumArea>
-    <CEffectCreateUnit id="OrbOfHavoc4CU">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CU"/>
-        <WhichLocation Value="TargetPoint"/>
-        <CreateFlags index="Placement" value="0"/>
-        <CreateFlags index="ProvideFood" value="0"/>
-        <CreateFlags index="TechComplete" value="0"/>
-        <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfHavoc4CUSet"/>
-        <SpawnUnit value="OrbOfHavoc"/>
-    </CEffectCreateUnit>
-    <CEffectCreateUnit id="OrbOfHavoc5CU">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CU"/>
-        <WhichLocation Value="TargetPoint"/>
-        <CreateFlags index="Placement" value="0"/>
-        <CreateFlags index="ProvideFood" value="0"/>
-        <CreateFlags index="TechComplete" value="0"/>
-        <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfHavoc5CUSet"/>
-        <SpawnUnit value="OrbOfHavoc"/>
-    </CEffectCreateUnit>
-    <CEffectSet id="OrbOfHavoc4CUSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CUSet"/>
-        <EffectArray value="OrbOfHavoc4ApplyFate"/>
-        <EffectArray value="OrbOfHavocApplyLaunched"/>
-        <EffectArray value="OrbOfHavoc4SearchOrbs"/>
-    </CEffectSet>
-    <CEffectSet id="OrbOfHavoc5CUSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CUSet"/>
-        <EffectArray value="OrbOfHavoc5ApplyFate"/>
-        <EffectArray value="OrbOfHavocApplyLaunched"/>
-        <EffectArray value="OrbOfHavoc5SearchOrbs"/>
-    </CEffectSet>
-    <CEffectSet id="OrbOfHavoc4ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc1ImpactSet"/>
-        <EffectArray value="OrbOfHavoc4ApplyFate"/>
-        <EffectArray value="RemoveOrbLaunchedRB"/>
-    </CEffectSet>
-    <CEffectSet id="OrbOfHavoc5ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc1ImpactSet"/>
-        <EffectArray value="OrbOfHavoc5ApplyFate"/>
-        <EffectArray value="RemoveOrbLaunchedRB"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfHavoc4LM">
-        <ValidatorArray index="0" removed="1"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfHavoc4CUSet"/>
-        <LaunchEffect value="OrbOfHavocLaunchSet"/>
-        <ImpactEffect value="OrbOfHavoc4Data"/>
-        <FinishEffect value="OrbOfHavoc4ReturnLM"/>
-        <PeriodicEffect value="LuckHeroOrbOfHavocTransitSet"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfHavoc5LM">
-        <ValidatorArray index="0" removed="1"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfHavoc5CUSet"/>
-        <LaunchEffect value="OrbOfHavocLaunchSet"/>
-        <ImpactEffect value="OrbOfHavoc5Data"/>
-        <FinishEffect value="OrbOfHavoc5ReturnLM"/>
-        <PeriodicEffect value="LuckHeroOrbOfHavocTransitSet"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfHavoc4ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionReturnLM"/>
-        <LaunchLocation Value="SourcePoint"/>
-        <ImpactLocation Effect="OrbOfHavoc4LM"/>
-        <FinishEffect value="OrbOfHavocReturnSet"/>
-        <PeriodicEffect value="OrbOfHavocWispCU"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfHavoc5ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionReturnLM"/>
-        <LaunchLocation Value="SourcePoint"/>
-        <ImpactLocation Effect="OrbOfHavoc5LM"/>
-        <FinishEffect value="OrbOfHavocReturnSet"/>
-        <PeriodicEffect value="OrbOfHavocWispCU"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfHavoc4SA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0SA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc4BounceDelay"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfHavoc3SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Mechanical,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray Radius="5" Effect="OrbOfHavoc3LM"/>
-    </CEffectEnumArea>
-    <CEffectApplyBehavior id="OrbOfHavoc3ApplyFate">
-        <ValidatorArray index="0" value="OrbOfHavoc0ApplyFateTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0ApplyFate"/>
-        <Behavior value="OrbOfHavoc3Fate"/>
-    </CEffectApplyBehavior>
     <CEffectDamage id="OrbOfHavoc2BounceDMG">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
-        <ArmorReduction value="0.6"/>
-        <Amount value="60"/>
+        <ArmorReduction value="1"/>
+        <Amount value="105"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="OrbOfHavoc3BounceDelay">
@@ -6226,66 +5421,11 @@
         </TargetSorts>
         <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc2BounceDelay"/>
     </CEffectEnumArea>
-    <CEffectCreateUnit id="OrbOfHavoc3CU">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CU"/>
-        <WhichLocation Value="TargetPoint"/>
-        <CreateFlags index="Placement" value="0"/>
-        <CreateFlags index="ProvideFood" value="0"/>
-        <CreateFlags index="TechComplete" value="0"/>
-        <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfHavoc3CUSet"/>
-        <SpawnUnit value="OrbOfHavoc"/>
-    </CEffectCreateUnit>
-    <CEffectSet id="OrbOfHavoc3CUSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CUSet"/>
-        <EffectArray value="OrbOfHavoc3ApplyFate"/>
-        <EffectArray value="OrbOfHavocApplyLaunched"/>
-        <EffectArray value="OrbOfHavoc3SearchOrbs"/>
-    </CEffectSet>
-    <CEffectSet id="OrbOfHavoc3ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc1ImpactSet"/>
-        <EffectArray value="OrbOfHavoc3ApplyFate"/>
-        <EffectArray value="RemoveOrbLaunchedRB"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfHavoc3LM">
-        <ValidatorArray index="0" removed="1"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfHavoc3CUSet"/>
-        <LaunchEffect value="OrbOfHavocLaunchSet"/>
-        <ImpactEffect value="OrbOfHavoc3Data"/>
-        <FinishEffect value="OrbOfHavoc3ReturnLM"/>
-        <PeriodicEffect value="LuckHeroOrbOfHavocTransitSet"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfHavoc3ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionReturnLM"/>
-        <LaunchLocation Value="SourcePoint"/>
-        <ImpactLocation Effect="OrbOfHavoc3LM"/>
-        <FinishEffect value="OrbOfHavocReturnSet"/>
-        <PeriodicEffect value="OrbOfHavocWispCU"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfHavoc3SA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0SA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc3BounceDelay"/>
-    </CEffectEnumArea>
     <CEffectDamage id="OrbOfHavoc3BounceDMG">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
-        <ArmorReduction value="0.75"/>
-        <Amount value="75"/>
+        <ArmorReduction value="1"/>
+        <Amount value="140"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="OrbOfHavoc2BounceDelay">
@@ -6306,132 +5446,31 @@
         </TargetSorts>
         <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc1BounceDelay"/>
     </CEffectEnumArea>
-    <CEffectCreateUnit id="OrbOfHavoc1CU">
+    <CEffectSet id="LuckHeroOrbOfHavocCUSet">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CU"/>
-        <WhichLocation Value="TargetPoint"/>
-        <CreateFlags index="Placement" value="0"/>
-        <CreateFlags index="ProvideFood" value="0"/>
-        <CreateFlags index="TechComplete" value="0"/>
-        <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfHavoc1CUSet"/>
-        <SpawnUnit value="OrbOfHavoc"/>
-    </CEffectCreateUnit>
-    <CEffectSet id="OrbOfHavoc0CUSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="OrbOfHavoc0ApplyFate"/>
-        <EffectArray value="OrbOfHavocApplyLaunched"/>
+        <EffectArray value="LuckHeroOrbOfHavocFate"/>
+        <EffectArray value="LuckHeroOrbOfHavocPrecursorAB"/>
         <EffectArray value="OrbOfHavoc0SearchOrbs"/>
+        <EffectArray value="LuckHeroOrbOfHavocSearchOrbs"/>
     </CEffectSet>
-    <CEffectCreateUnit id="OrbOfHavoc2CU">
+    <CEffectSet id="LuckHeroOrbOfHavocImpactSet">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CU"/>
-        <WhichLocation Value="TargetPoint"/>
-        <CreateFlags index="Placement" value="0"/>
-        <CreateFlags index="ProvideFood" value="0"/>
-        <CreateFlags index="TechComplete" value="0"/>
-        <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="OrbOfHavoc2CUSet"/>
-        <SpawnUnit value="OrbOfHavoc"/>
-    </CEffectCreateUnit>
-    <CEffectSet id="OrbOfHavoc1CUSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CUSet"/>
-        <EffectArray value="OrbOfHavoc1ApplyFate"/>
-        <EffectArray value="OrbOfHavocApplyLaunched"/>
-        <EffectArray value="OrbOfHavoc1SearchOrbs"/>
+        <EffectArray value="LuckHeroOrbOfHavocFate"/>
+        <EffectArray value="LuckHeroOrbOfHavocPrecursorRB"/>
     </CEffectSet>
-    <CEffectSet id="OrbOfHavoc0ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="OrbOfHavoc0ApplyFate"/>
-        <EffectArray value="RemoveOrbLaunchedRB"/>
-    </CEffectSet>
-    <CEffectSet id="OrbOfHavoc2CUSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0CUSet"/>
-        <EffectArray value="OrbOfHavoc2ApplyFate"/>
-        <EffectArray value="OrbOfHavocApplyLaunched"/>
-        <EffectArray value="OrbOfHavoc2SearchOrbs"/>
-    </CEffectSet>
-    <CEffectSet id="OrbOfHavoc1ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="OrbOfHavoc1ApplyFate"/>
-        <EffectArray value="RemoveOrbLaunchedRB"/>
-    </CEffectSet>
-    <CEffectSet id="OrbOfHavoc2ImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc1ImpactSet"/>
-        <EffectArray value="OrbOfHavoc2ApplyFate"/>
-        <EffectArray value="RemoveOrbLaunchedRB"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfHavoc1LM">
-        <ValidatorArray index="0" removed="1"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfHavoc1CUSet"/>
-        <LaunchEffect value="OrbOfHavocLaunchSet"/>
-        <ImpactEffect value="OrbOfHavoc1ImpactSet"/>
-        <FinishEffect value="OrbOfHavoc1ReturnLM"/>
-        <PeriodicEffect value="LuckHeroOrbOfHavocTransitSet"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfHavoc2LM">
-        <ValidatorArray index="0" removed="1"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfHavoc2CUSet"/>
-        <LaunchEffect value="OrbOfHavocLaunchSet"/>
-        <ImpactEffect value="OrbOfHavoc2Data"/>
-        <FinishEffect value="OrbOfHavoc2ReturnLM"/>
-        <PeriodicEffect value="LuckHeroOrbOfHavocTransitSet"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfHavoc1ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionReturnLM"/>
-        <LaunchLocation Value="SourcePoint"/>
-        <ImpactLocation Effect="OrbOfHavoc1LM"/>
-        <FinishEffect value="OrbOfHavocReturnSet"/>
-        <PeriodicEffect value="OrbOfHavocWispCU"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfHavoc0SA">
+    <CEffectEnumArea id="LuckHeroOrbOfHavocSA">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavocDMG"/>
+        <AreaArray Effect="OrbOfHavocSwitch"/>
+        <MaxCount value="1">
+            <AccumulatorArray value="LuckHeroOrbOfHavocElectric"/>
+        </MaxCount>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="LuckHeroOrbOfHavocRadius"/>
+        </ExtraRadiusBonus>
     </CEffectEnumArea>
-    <CEffectLaunchMissile id="OrbOfHavoc2ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionReturnLM"/>
-        <LaunchLocation Value="SourcePoint"/>
-        <ImpactLocation Effect="OrbOfHavoc2LM"/>
-        <FinishEffect value="OrbOfHavocReturnSet"/>
-        <PeriodicEffect value="OrbOfHavocWispCU"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfHavoc1SA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0SA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc1BounceDelay"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfHavoc2SA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0SA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc2BounceDelay"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfHavoc1SearchOrbs">
+    <CEffectEnumArea id="LuckHeroOrbOfHavocSearchOrbs">
+        <ValidatorArray value="DefaultDataGT0"/>
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
         <ImpactLocation Value="CasterUnitOrPoint"/>
@@ -6439,64 +5478,25 @@
         <TargetSorts>
             <SortArray value="TSRandom"/>
         </TargetSorts>
-        <AreaArray Radius="5" Effect="OrbOfHavoc1LM"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfHavoc2SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Mechanical,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray Radius="5" Effect="OrbOfHavoc2LM"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfHavoc5SA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfHavoc0SA"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray MaxCount="1" Radius="3" Effect="OrbOfHavoc5BounceDelay"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="OrbOfHavoc4SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Mechanical,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray Radius="5" Effect="OrbOfHavoc4LM"/>
+        <AreaArray Radius="5" Effect="LuckHeroOrbOfHavocLM"/>
     </CEffectEnumArea>
     <CEffectDamage id="OrbOfHavoc4BounceDMG">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
-        <ArmorReduction value="0.9"/>
-        <Amount value="90"/>
+        <ArmorReduction value="1"/>
+        <Amount value="175"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
-    <CEffectEnumArea id="OrbOfHavoc5SearchOrbs">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
-        <ImpactLocation Value="CasterUnitOrPoint"/>
-        <SearchFilters value="Mechanical,Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray Radius="5" Effect="OrbOfHavoc5LM"/>
-    </CEffectEnumArea>
     <CEffectDamage id="OrbOfHavoc5BounceDMG">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
-        <ArmorReduction value="1.05"/>
-        <Amount value="105"/>
+        <ArmorReduction value="1"/>
+        <Amount value="210"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
-    <CEffectApplyBehavior id="OrbOfHavocApplyLaunched">
+    <CEffectApplyBehavior id="LuckHeroOrbOfHavocPrecursorAB">
         <EditorCategories value="Race:Protoss"/>
-        <Behavior value="OrbLaunched"/>
+        <Behavior value="LuckHeroHavocOrbPrecursor"/>
     </CEffectApplyBehavior>
     <CEffectCreatePersistent id="OrbOfHavoc1BounceDelay">
         <EditorCategories value="Race:Protoss"/>
@@ -6516,61 +5516,46 @@
     </CEffectEnumArea>
     <CEffectDamage id="OrbOfHavoc1BounceDMG">
         <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="0.45"/>
-        <Amount value="45"/>
+        <ArmorReduction value="1"/>
+        <Amount value="70"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectDamage id="OrbOfHavocDMG">
         <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="0.3"/>
-        <Amount value="30"/>
+        <ArmorReduction value="1"/>
+        <Amount value="35"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectSwitch id="OrbOfHavocSwitch">
         <EditorCategories value="Race:Protoss"/>
-        <CaseArray Validator="HavocOrbCountIs0" Effect="OrbOfHavoc0CU"/>
-        <CaseArray Validator="HavocOrbCountIs1" Effect="OrbOfHavoc1CU"/>
-        <CaseArray Validator="HavocOrbCountIs2" Effect="OrbOfHavoc2CU"/>
-        <CaseArray Validator="HavocOrbCountIs3" Effect="OrbOfHavoc3CU"/>
-        <CaseArray Validator="HavocOrbCountIs4" Effect="OrbOfHavoc4CU"/>
-        <CaseArray Validator="HavocOrbCountIs5" Effect="OrbOfHavoc5CU"/>
-        <CaseArray Validator="HavocOrbCountIs6" Effect="OrbOfHavoc6CU"/>
-        <CaseArray Validator="HavocOrbCountIs7" Effect="OrbOfHavoc7CU"/>
-        <TargetLocationType value="Point"/>
-        <ValidatorArray value="HasAnOrb"/>
+        <CaseArray Validator="DefaultDataE1" Effect="OrbOfHavoc1BounceDelay"/>
+        <CaseArray Validator="DefaultDataE2" Effect="OrbOfHavoc2BounceDelay"/>
+        <CaseArray Validator="DefaultDataE3" Effect="OrbOfHavoc3BounceDelay"/>
+        <CaseArray Validator="DefaultDataE4" Effect="OrbOfHavoc4BounceDelay"/>
+        <CaseArray Validator="DefaultDataE5" Effect="OrbOfHavoc5BounceDelay"/>
+        <CaseArray Validator="DefaultDataE6" Effect="OrbOfHavoc6BounceDelay"/>
+        <CaseArray Validator="DefaultDataE7" Effect="OrbOfHavoc7BounceDelay"/>
+        <CaseDefault value="OrbOfHavocDMG"/>
     </CEffectSwitch>
-    <CEffectSet id="OrbOfVitality0ImpactSet">
+    <CEffectEnumArea id="LuckHeroOrbOfVitalityAllySA">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="OrbOfVitality0AllySA"/>
-        <EffectArray value="OrbOfVitality0SAEnemy"/>
-        <TargetLocationType value="UnitOrPoint"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfVitality0LM">
-        <ValidatorArray index="0" value="OrbOfDestructionLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfVitalitySwitch" Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfVitalityLaunchSet"/>
-        <ImpactEffect value="OrbOfVitality0ImpactSet"/>
-        <FinishEffect value="OrbOfVitality0ReturnLM"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="OrbOfVitality0AllySA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfVitality0SAEnemy"/>
         <SearchFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="2" Effect="OrbOfVitalityHealSet"/>
+        <AreaArray Effect="LuckHeroOrbOfVitalityAllySet"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityRadius"/>
+        </ExtraRadiusBonus>
     </CEffectEnumArea>
-    <CEffectDamage id="OrbOfVitalityDMG">
+    <CEffectDamage id="LuckHeroOrbOfVitality1DMG">
         <EditorCategories value="Race:Protoss"/>
-        <Amount value="15"/>
-        <Death value="Disintegrate"/>
-        <ArmorReduction value="0.15"/>
+        <ArmorReduction value="1"/>
+        <Amount value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
+        </Amount>
+        <VitalFractionCurrent index="Life" value="0.01"/>
         <LeechFraction index="Life" value="0.1"/>
+        <Death value="Disintegrate"/>
     </CEffectDamage>
-    <CEffectApplyBehavior id="OrbOfVitalityDynamicAllyAB">
+    <CEffectApplyBehavior id="LuckHeroOrbOfVitalityDynamicABAlly">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
         <Behavior value="DynamicAlly"/>
@@ -6578,44 +5563,42 @@
     <CEffectModifyUnit id="OrbOfVitalityHealMU">
         <EditorCategories value="Race:Protoss"/>
         <VitalArray index="Life">
-            <Change value="20">
+            <Change value="0">
+                <AccumulatorArray value="LuckHeroOrbOfVitalityHeal"/>
                 <AccumulatorArray value="HealingMultiplier"/>
             </Change>
-            <ChangeFraction value="0.01"/>
+            <ChangeFraction value="0.01">
+                <AccumulatorArray value="DefaultDataMultiply"/>
+            </ChangeFraction>
         </VitalArray>
         <VitalArray index="Shields">
-            <Change value="20">
+            <Change value="0">
+                <AccumulatorArray value="LuckHeroOrbOfVitalityHeal"/>
                 <AccumulatorArray value="HealingMultiplier"/>
             </Change>
-            <ChangeFraction value="0.01"/>
+            <ChangeFraction value="0.01">
+                <AccumulatorArray value="DefaultDataMultiply"/>
+            </ChangeFraction>
         </VitalArray>
-        <Cost/>
     </CEffectModifyUnit>
-    <CEffectSet id="OrbOfVitalityHealSet">
+    <CEffectSet id="LuckHeroOrbOfVitalityAllySet">
         <ValidatorArray value="NotSpellUnit"/>
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="OrbOfVitalityHealMU"/>
-        <EffectArray value="OrbOfVitalityDynamicAllyAB"/>
-        <EffectArray value="OrbOfVitalityRecurCU"/>
+        <EffectArray value="LuckHeroOrbOfVitalityHealSwitch"/>
+        <EffectArray value="LuckHeroOrbOfVitalityDynamicABAlly"/>
+        <EffectArray value="LuckHeroOrbOfVitalityRecurCU"/>
     </CEffectSet>
     <CEffectSet id="OrbOfVitalityLaunchSet">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfDestructionLaunchSet"/>
-        <EffectArray value="RemoveOrbTypeSet"/>
+        <EffectArray value="LuckHeroRemoveOrbTypeIfNot0"/>
         <EffectArray value="ApplyOrbLaunchedAB"/>
+        <EffectArray value="OrbOfVitalityApplyOrbTypeSet"/>
         <EffectArray value="OrbsOfLuckShieldedMU"/>
     </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfVitality0ReturnLM">
-        <ValidatorArray index="0" value="OrbOfDestructionReturnLMTargetFilters"/>
+    <CEffectApplyBehavior id="LuckHeroOrbOfVitalityRecurFate">
         <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="OrbOfVitality0LM"/>
-        <FinishEffect value="OrbOfVitalityReturnSet"/>
-        <AmmoUnit value="OrbOfVitalityMissile"/>
-        <PeriodicEffect value="OrbOfVitalityPervadeSearchTarget"/>
-    </CEffectLaunchMissile>
-    <CEffectApplyBehavior id="OrbOfVitalityRecurFate">
-        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="OrbOfVitalityRecurFate"/>
     </CEffectApplyBehavior>
     <CEffectSet id="OrbOfVitalityReturnSet">
         <EditorCategories value="Race:Protoss"/>
@@ -6625,70 +5608,39 @@
     </CEffectSet>
     <CEffectEnumArea id="OrbOfVitality0SearchOrbs">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionSearchOrbs"/>
         <ImpactLocation Value="CasterUnitOrPoint"/>
         <SearchFilters value="Invulnerable;Ally,Neutral,Enemy,Psionic,Structure,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray MaxCount="1" Radius="5" Effect="OrbOfVitality0LM"/>
+        <AreaArray MaxCount="1" Radius="5" Effect="LuckHeroOrbOfVitalityLM"/>
         <TargetSorts>
             <SortArray value="TSRandom"/>
         </TargetSorts>
     </CEffectEnumArea>
-    <CEffectLaunchMissile id="OrbOfHavoc0LM">
+    <CEffectLaunchMissile id="LuckHeroOrbOfHavocLM">
         <ValidatorArray index="0" removed="1"/>
         <EditorCategories value="Race:Protoss"/>
         <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfHavoc0CUSet"/>
+        <ImpactLocation Effect="LuckHeroOrbOfHavocCUSet"/>
         <LaunchEffect value="OrbOfHavocLaunchSet"/>
-        <ImpactEffect value="OrbOfHavoc0ImpactSet"/>
+        <ImpactEffect value="LuckHeroOrbOfHavocImpactData"/>
         <FinishEffect value="OrbOfHavoc0ReturnLM"/>
         <PeriodicEffect value="LuckHeroOrbOfHavocTransitSet"/>
         <PeriodicPeriod value="0.375"/>
         <AmmoUnit value="OrbOfHavocMissile"/>
     </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="OrbOfAttrition0LM">
-        <ValidatorArray index="0" value="OrbOfDestructionLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionLM"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="OrbOfAttritionSwitch" Value="TargetPoint"/>
-        <ImpactOffset value="0,0,0.75"/>
-        <LaunchEffect value="OrbOfAttritionLaunchSet"/>
-        <ImpactEffect value="OrbOfAttritionSA"/>
-        <FinishEffect value="OrbOfAttrition0ReturnLM"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
     <CEffectSet id="OrbOfHavocLaunchSet">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfDestructionLaunchSet"/>
-        <EffectArray value="RemoveOrbTypeSet"/>
+        <EffectArray value="LuckHeroRemoveOrbTypeIfNot0"/>
         <EffectArray value="ApplyOrbLaunchedAB"/>
+        <EffectArray value="OrbOfHavocApplyOrbTypeSet"/>
         <EffectArray value="OrbsOfLuckShieldedMU"/>
     </CEffectSet>
     <CEffectSet id="OrbOfAttritionLaunchSet">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionLaunchSet"/>
-        <EffectArray value="RemoveOrbTypeSet"/>
+        <EffectArray value="LuckHeroRemoveOrbTypeIfNot0"/>
         <EffectArray value="ApplyOrbLaunchedAB"/>
-        <EffectArray value="OrbsOfLuckShieldedMU"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="OrbOfAttrition0ReturnLM">
-        <ValidatorArray index="0" value="OrbOfDestructionReturnLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionReturnLM"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="OrbOfAttrition0LM"/>
-        <FinishEffect value="OrbOfAttritionReturnSet"/>
-        <PeriodicEffect value="OrbOfAttritionTravelSet"/>
-        <PeriodicPeriod value="0.125"/>
-        <AmmoUnit value="OrbOfAttritionMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectSet id="OrbOfAttritionReturnSet">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionReturnSet"/>
         <EffectArray value="OrbOfAttritionApplyOrbTypeSet"/>
-        <EffectArray value="RemoveOrbLaunchedRB"/>
+        <EffectArray value="OrbsOfLuckShieldedMU"/>
     </CEffectSet>
     <CEffectEnumArea id="OrbOfAttrition0SearchOrbs">
         <EditorCategories value="Race:Protoss"/>
@@ -6698,30 +5650,26 @@
         <TargetSorts>
             <SortArray value="TSRandom"/>
         </TargetSorts>
-        <AreaArray MaxCount="1" Radius="5" Effect="OrbOfAttrition0LM"/>
+        <AreaArray MaxCount="1" Radius="5" Effect="LuckHeroOrbOfAttritionRand"/>
     </CEffectEnumArea>
     <CEffectSet id="OrbOfDestructionDMGSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="OrbOfDestructionDMG"/>
         <EffectArray value="OrbOfDestructionEradicateDMG"/>
     </CEffectSet>
-    <CEffectEnumArea id="OrbOfVitality0SAEnemy">
+    <CEffectEnumArea id="LuckHeroOrbOfVitalityEnemySA">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2" Effect="OrbOfVitalityImpactSet"/>
+        <AreaArray Effect="LuckHeroOrbOfVitalityEnemySet"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityRadius"/>
+        </ExtraRadiusBonus>
     </CEffectEnumArea>
     <CEffectSwitch id="OrbOfVitalitySwitch">
-        <ValidatorArray value="HasAnOrb"/>
         <EditorCategories value="Race:Protoss"/>
         <CaseArray Validator="VitalityOrbCountIs0" Effect="OrbOfVitality0SearchOrbs"/>
-        <CaseArray Validator="VitalityOrbCountIs1" Effect="OrbOfVitality1SearchOrbs"/>
-        <CaseArray Validator="VitalityOrbCountIs2" Effect="OrbOfVitality2SearchOrbs"/>
-        <CaseArray Validator="VitalityOrbCountIs3" Effect="OrbOfVitality3SearchOrbs"/>
-        <CaseArray Validator="VitalityOrbCountIs4" Effect="OrbOfVitality4SearchOrbs"/>
-        <CaseArray Validator="VitalityOrbCountIs5" Effect="OrbOfVitality5SearchOrbs"/>
-        <CaseArray Validator="VitalityOrbCountIs6" Effect="OrbOfVitality6SearchOrbs"/>
-        <CaseArray Validator="VitalityOrbCountIs7" Effect="OrbOfVitality7SearchOrbs"/>
         <TargetLocationType value="Point"/>
+        <CaseDefault value="LuckHeroOrbOfVitalitySearchOrbs"/>
     </CEffectSwitch>
     <CEffectSet id="OrbsOfLuckWildCardApplySet">
         <EditorCategories value="Race:Protoss"/>
@@ -6994,16 +5942,6 @@
         <EditorCategories value="Race:Protoss"/>
         <BehaviorLink value="OrbLaunched"/>
     </CEffectRemoveBehavior>
-    <CEffectLaunchMissile id="OrbOfHavoc0ReturnLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/OrbOfDestructionReturnLM"/>
-        <LaunchLocation Value="SourcePoint"/>
-        <ImpactLocation Effect="OrbOfHavoc0LM"/>
-        <FinishEffect value="OrbOfHavocReturnSet"/>
-        <PeriodicEffect value="OrbOfHavocWispCU"/>
-        <PeriodicPeriod value="0.375"/>
-        <AmmoUnit value="OrbOfHavocMissile"/>
-    </CEffectLaunchMissile>
     <CEffectSet id="OrbOfDestructionReturnSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="OrbOfDestructionApplyOrbTypeSet"/>
@@ -7210,6 +6148,8 @@
     </CEffectDamage>
     <CEffectSet id="FungalDischargeInit">
         <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="FungalDischargeOffset"/>
+        <EffectArray value="FungalDischargeOffset"/>
         <EffectArray value="FungalDischargeOffset"/>
         <EffectArray value="FungalDischargeOffset"/>
         <EffectArray value="FungalDischargeOffset"/>
@@ -7639,23 +6579,21 @@
         <TargetSorts>
             <SortArray value="TSRandom"/>
         </TargetSorts>
-        <AreaArray MaxCount="1" Radius="5" Effect="OrbOfHavoc0LM"/>
+        <AreaArray MaxCount="1" Radius="5" Effect="LuckHeroOrbOfHavocLM"/>
+        <ValidatorArray value="DefaultDataE0"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="OrbsOfLuckSearchOrbs">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="CasterUnitOrPoint"/>
         <SearchFilters value="Invulnerable;Ally,Neutral,Enemy,Psionic,Heroic,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="OrbsOfLuckSet"/>
+        <AreaArray Radius="5" Effect="LuckHeroOrbsOfLuckSet"/>
     </CEffectEnumArea>
-    <CEffectCreatePersistent id="OrbsOfLuckSet">
+    <CEffectSet id="LuckHeroOrbsOfLuckSet">
         <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="TargetUnitOrPoint"/>
-        <PeriodCount value="2"/>
-        <PeriodicEffectArray value="RemoveOrbTypeSet"/>
-        <PeriodicEffectArray value="OrbsOfLuckApplyOrbTypeWildCard"/>
-        <PeriodicPeriodArray value="0.0625"/>
-        <ValidatorArray value="NotNeutralOrb"/>
-    </CEffectCreatePersistent>
+        <EffectArray value="OrbsOfLuckShieldedMU"/>
+        <EffectArray value="LuckHeroOrbsOfLuckApplyLaunched"/>
+        <EffectArray value="LuckHeroOrbsOfLuckDelay"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="PartingGift">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="SourceUnitOrPoint"/>
@@ -7911,7 +6849,6 @@
         <Count value="1"/>
     </CEffectRemoveBehavior>
     <CEffectSet id="RemoveOrbTypeSet">
-        <ValidatorArray value="RemoveOrbTypeSetTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="RemoveOrbTypeDestruction"/>
         <EffectArray value="RemoveOrbTypeHavoc"/>
@@ -18150,14 +17087,14 @@
         <PeriodicEffectArray value="SlimeAttackInit"/>
         <Flags index="RandomEffect" value="1"/>
     </CEffectCreatePersistent>
-    <CEffectCreateHealer id="OrbOfVitalityRecurHealthHealer">
+    <CEffectCreateHealer id="LuckHeroOrbOfVitalityRecurHealthHealer">
         <ValidatorArray value="NotWarpingIn"/>
         <ValidatorArray value="HiddenCompareAB"/>
         <ValidatorArray value="HiddenCompareBA"/>
         <EditorCategories value="Race:Protoss"/>
         <DrainVital value="Energy"/>
         <DrainVitalCostFactor value="0.33"/>
-        <RechargeVitalRate value="9">
+        <RechargeVitalRate value="12">
             <AccumulatorArray value="HealingMultiplier"/>
         </RechargeVitalRate>
     </CEffectCreateHealer>

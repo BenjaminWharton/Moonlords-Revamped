@@ -82,6 +82,10 @@
     <CValidatorEffectTreeUserData id="DefaultDataE0">
         <Key value="Default"/>
     </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGT0">
+        <Compare value="GT"/>
+        <Key value="Default"/>
+    </CValidatorEffectTreeUserData>
     <CValidatorEffectTreeUserData id="DefaultDataE0OrNull">
         <CheckExistence value="0"/>
         <Key value="Default"/>
@@ -204,6 +208,13 @@
         <CombineArray value="IsHeroic"/>
         <CombineArray value="IsStructure"/>
     </CValidatorCombine>
+    <CValidatorPlayerRequirement id="LuckHeroHasBoundless">
+        <Find value="1"/>
+        <Value value="LuckHeroHasBoundless"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="LuckHeroNoBoundless">
+        <Value value="LuckHeroHasBoundless"/>
+    </CValidatorPlayerRequirement>
     <CValidatorCombine id="NatureHeroCanHarvest">
         <CombineArray value="NatureHeroIsHealthFruit"/>
         <CombineArray value="NatureHeroIsEnergyFruit"/>
@@ -1836,9 +1847,9 @@
         <Find value="1"/>
         <Value value="ExpansionIsLvl1"/>
     </CValidatorPlayerRequirement>
-    <CValidatorPlayerRequirement id="ExtractIsGT0">
+    <CValidatorPlayerRequirement id="EnervateIsGT0">
         <Find value="1"/>
-        <Value value="ExtractIsGT0"/>
+        <Value value="EnervateIsGT0"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="WarpgateIsLvl1">
         <Find value="1"/>
