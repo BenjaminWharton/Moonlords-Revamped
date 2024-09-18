@@ -362,6 +362,11 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
+    <CUpgrade id="ElementalHeroPermanence">
+        <EffectArray Reference="Accumulator,ElementalHeroPermanenceMultiplier,Amount" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
     <CUpgrade id="Fiery">
         <EffectArray Operation="Set" Reference="Effect,EarthHeroLavaMoltenSA,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -1226,7 +1231,7 @@
     <CUpgrade id="Blight"/>
     <CUpgrade id="BluntForce">
         <EffectArray Operation="Subtract" Reference="Effect,EruptionEarthDMG,ArmorReduction" Value="0.5"/>
-        <EffectArray Operation="Subtract" Reference="Effect,SandstormEarthDMG,ArmorReduction" Value="0.1"/>
+        <EffectArray Operation="Subtract" Reference="Effect,SandstormEarthDMG,ArmorReduction" Value="0.25"/>
         <EffectArray Operation="Subtract" Reference="Effect,EarthquakeDMG,ArmorReduction" Value="0.5"/>
         <EffectArray Reference="Effect,EarthquakeDMG,AttributeFactor[Heroic]" Value="1.5"/>
         <EffectArray Reference="Effect,EruptionEarthDMG,AttributeFactor[Heroic]" Value="1.5"/>
@@ -1250,6 +1255,19 @@
         <EffectArray Reference="Effect,TectonicHellfireDMG,AttributeFactor[Heroic]" Value="1.5"/>
         <EffectArray Operation="Subtract" Reference="Effect,TectonicHellfireDMG,ArmorReduction" Value="0.25"/>
         <EffectArray Reference="Effect,InfuseEarthDMG,AttributeFactor[Heroic]" Value="1.5"/>
+        <EffectArray Reference="Effect,DeflectionDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Reference="Effect,EarthquakeDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Reference="Effect,EruptionEarthDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Operation="Set" Reference="Effect,HellfireBonfireApocDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Operation="Set" Reference="Effect,HellfireQuakeDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Operation="Set" Reference="Effect,HellfireQuakeEruptionDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Reference="Effect,HellfireQuakeEruptionExterminateDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Reference="Effect,HellfireQuakeExterminateDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Reference="Effect,IncinerateHellfireDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Reference="Effect,InfuseEarthDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Operation="Set" Reference="Effect,SandstormEarthDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Reference="Effect,TectonicFuryDMG,AttributeFactor[Structure]" Value="1.5"/>
+        <EffectArray Reference="Effect,TectonicHellfireDMG,AttributeFactor[Structure]" Value="1.5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -1396,16 +1414,13 @@
     </CUpgrade>
     <CUpgrade id="Endure">
         <EffectArray Reference="Effect,EruptionEarthOffset1,PeriodCount" Value="24"/>
-        <EffectArray Reference="Effect,SandstormEarthCP,PeriodCount" Value="10"/>
-        <EffectArray Reference="Effect,EarthquakeCP,PeriodCount" Value="1"/>
-        <EffectArray Operation="Set" Reference="Button,Earthquake,Tooltip" Value="Button/Tooltip/EarthquakeEndure"/>
+        <EffectArray Reference="Effect,SandstormEarthCP,PeriodCount" Value="12"/>
+        <EffectArray Reference="Effect,EarthquakeCP,PeriodCount" Value="2"/>
         <EffectArray Reference="Effect,QuicksandEarthCP,PeriodCount" Value="15"/>
-        <EffectArray Reference="Effect,EverlastingStormCP,PeriodCount" Value="2"/>
-        <EffectArray Reference="Effect,HellfireQuakeCP,PeriodCount" Value="1"/>
-        <EffectArray Reference="Effect,EverlastingStormSandstormCP,PeriodCount" Value="20"/>
+        <EffectArray Reference="Effect,EverlastingStormCP,PeriodCount" Value="1"/>
+        <EffectArray Reference="Effect,HellfireQuakeCP,PeriodCount" Value="2"/>
+        <EffectArray Reference="Effect,EverlastingStormSandstormCP,PeriodCount" Value="12"/>
         <EffectArray Reference="Effect,HellfireQuakeEruptionOffset1,PeriodCount" Value="24"/>
-        <EffectArray Operation="Set" Reference="Button,EverlastingStorm,Tooltip" Value="Button/Tooltip/EverlastingStormEndure"/>
-        <EffectArray Operation="Set" Reference="Button,HellfireQuake,Tooltip" Value="Button/Tooltip/HellfireQuakeEndure"/>
         <EffectArray Reference="Effect,HellfireBonfireCP,PeriodCount" Value="30"/>
         <EffectArray Reference="Effect,HellfireApocalypseCP,PeriodCount" Value="16"/>
         <EffectArray Reference="Behavior,HellfireEruptionExterminate,Duration" Value="10.000000"/>
@@ -1499,9 +1514,9 @@
     <CUpgrade id="Immortality">
         <EffectArray Reference="Effect,EternalLifeImmortalityMU,VitalArray[Shields].ChangeFraction" Value="0.25"/>
         <EffectArray Reference="Effect,EternalLifeImmortalityMU,VitalArray[Life].ChangeFraction" Value="0.25"/>
-        <EffectArray Reference="Actor,EternalThunderstormCloud,Scale" Value="0.500000"/>
-        <EffectArray Reference="Actor,EternalThunderstorm,Scale" Value="0.500000"/>
-        <EffectArray Reference="Effect,EternalThunderstormSA,AreaArray[0].Radius" Value="1"/>
+        <EffectArray Reference="Actor,EternalThunderstormCloud,Scale" Value="0.750000"/>
+        <EffectArray Reference="Actor,EternalThunderstorm,Scale" Value="0.750000"/>
+        <EffectArray Reference="Effect,EternalThunderstormSA,AreaArray[0].Radius" Value="1.5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -3035,12 +3050,12 @@
         <EffectArray Reference="Effect,EruptionFireDMG,Amount" Value="25"/>
         <EffectArray Reference="Effect,EruptionExterminateDMG,Amount" Value="0.625"/>
         <EffectArray Reference="Effect,SteamFireDMG,Amount" Value="2.5"/>
-        <EffectArray Reference="Effect,SteamFireExterminateDMG,Amount" Value="0.625"/>
+        <EffectArray Reference="Effect,SteamFireExterminateDMG,Amount" Value="1.75"/>
         <EffectArray Reference="Effect,IcefireBlastDMG,Amount" Value="30"/>
         <EffectArray Reference="Effect,IcefireBlastExterminateDMG,Amount" Value="0.75"/>
         <EffectArray Reference="Effect,IcefireApocalypseDMG,Amount" Value="2"/>
-        <EffectArray Reference="Effect,HellfireQuakeDMG,Amount" Value="30"/>
-        <EffectArray Reference="Effect,HellfireQuakeExterminateDMG,Amount" Value="0.75"/>
+        <EffectArray Reference="Effect,HellfireQuakeDMG,Amount" Value="25"/>
+        <EffectArray Reference="Effect,HellfireQuakeExterminateDMG,Amount" Value="0.625"/>
         <EffectArray Reference="Effect,HellfireQuakeEruptionDMG,Amount" Value="25"/>
         <EffectArray Reference="Effect,HellfireQuakeEruptionExterminateDMG,Amount" Value="0.625"/>
         <EffectArray Reference="Effect,IcefireBlastFrostfireDMG,Amount" Value="3"/>
@@ -3055,10 +3070,10 @@
         <EffectArray Reference="Behavior,ReleaseFire,Modification.DamageTotalMultiplier[Splash]" Value="0.05"/>
         <EffectArray Reference="Effect,InfuseFireDMG,Amount" Value="10"/>
         <EffectArray Reference="Effect,InfuseFireExterminateDMG,Amount" Value="0.25"/>
-        <EffectArray Reference="Effect,SteamFireInitDMG,Amount" Value="15"/>
+        <EffectArray Reference="Effect,SteamFireInitDMG,Amount" Value="20"/>
         <EffectArray Reference="Effect,IcefireSteamDMG,Amount" Value="2.5"/>
-        <EffectArray Reference="Effect,IcefireSteamInitDMG,Amount" Value="15"/>
-        <EffectArray Reference="Effect,IcefireSteamExterminateDMG,Amount" Value="0.625"/>
+        <EffectArray Reference="Effect,IcefireSteamInitDMG,Amount" Value="20"/>
+        <EffectArray Reference="Effect,IcefireSteamExterminateDMG,Amount" Value="1.75"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -3277,11 +3292,11 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Tartarus">
-        <EffectArray Operation="Subtract" Reference="Effect,HellfireQuakeTartarusMU,VitalArray[Life].ChangeFraction" Value="0.03"/>
-        <EffectArray Reference="Effect,HellfireQuakeDMG,Amount" Value="30"/>
+        <EffectArray Operation="Subtract" Reference="Effect,HellfireQuakeTartarusMU,VitalArray[Life].ChangeFraction" Value="0.015"/>
+        <EffectArray Reference="Effect,HellfireQuakeDMG,Amount" Value="25"/>
         <EffectArray Reference="Effect,HellfireQuakeEruptionDMG,Amount" Value="25"/>
         <EffectArray Reference="Effect,HellfireQuakeEruptionExterminateDMG,Amount" Value="0.625"/>
-        <EffectArray Reference="Effect,HellfireQuakeExterminateDMG,Amount" Value="0.75"/>
+        <EffectArray Reference="Effect,HellfireQuakeExterminateDMG,Amount" Value="0.625"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>

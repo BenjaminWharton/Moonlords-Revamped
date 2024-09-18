@@ -5273,6 +5273,7 @@
         <EnergyRegenRate value="5"/>
         <BehaviorArray Link="scienceapplier"/>
         <Attributes index="Heroic" value="1"/>
+        <Height value="1"/>
     </CUnit>
     <CUnit id="SwarmHostSplitA">
         <LifeStart value="1200"/>

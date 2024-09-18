@@ -134,6 +134,17 @@
         <Height value="7.000000"/>
         <Width value="1.000000"/>
     </CActorQuad>
+    <CActorAction id="ElementalHeroSteamFireAttack" parent="GenericAttack" effectAttack="SteamFireDMG" effectImpact="">
+        <On index="1" Terms="Effect.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
+        <On index="2" Terms="Effect.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <ImpactMap index="None" Model="Exterminate"/>
+    </CActorAction>
+    <CActorAction id="ElementalHeroSteamWaterAttack" parent="GenericAttack" effectAttack="SteamWaterDMG" effectImpact="">
+        <On index="1" Terms="Effect.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
+        <On index="2" Terms="Effect.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <ImpactMap index="None" Model="Exterminate"/>
+        <ImpactModel value="ExterminateIcefireModel"/>
+    </CActorAction>
     <CActorSplat id="IllusionHeroDistortionSplat" parent="ProtossCursorSplat">
         <On index="0" Terms="Abil.Cursor" Send="Create"/>
         <On index="1" Terms="ActorCreation" Send="Create CursorRegionNoVis"/>
@@ -2017,9 +2028,7 @@
     <CActorAction id="IcefireSteamAttack" parent="GenericAttack" effectAttack="IcefireSteamDMG" effectImpact="">
         <On index="1" Terms="Effect.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
         <On index="2" Terms="Effect.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
-        <LaunchAssets Model="ExterminateEruptionAttackLaunch" Sound="ExterminateEruptionAttackLaunch"/>
         <Beam value="ExterminateEruptionAttackBeam"/>
-        <Missile value="ExterminateEruptionAttackMissile"/>
         <ImpactMap index="None" Model="Exterminate" Sound="ExterminateEruptionAttackImpact" ModelReaction="ExterminateEruptionAttackImpactReaction"/>
         <ImpactMap index="Shield" Sound="ExterminateEruptionAttackImpactShield" ModelReaction="ExterminateEruptionAttackImpactReactionShield"/>
         <ImpactModel value="ExterminateIcefireModel"/>

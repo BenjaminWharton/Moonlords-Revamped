@@ -6,7 +6,7 @@
         <ImpactLocation Value="TargetPoint"/>
         <Flags index="Kill" value="1"/>
         <AreaArray Radius="1.5" Fraction="1"/>
-        <RevealerParams DetectFilters="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
     <CEffectModifyPlayer id="BladeHeroBloodFanaticalEvisDecreaseEx2">
         <EditorCategories value="Race:Protoss"/>
@@ -3406,20 +3406,20 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/SteamExterminateAB"/>
         <ArmorReduction value="0.06"/>
-        <Amount value="4.875"/>
+        <Amount value="5.25"/>
         <Death value="Fire"/>
     </CEffectDamage>
     <CEffectDamage id="SteamFireInitDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="0.5"/>
-        <Amount value="45"/>
+        <Amount value="60"/>
         <Death value="Fire"/>
     </CEffectDamage>
     <CEffectDamage id="IcefireSteamInitDMG">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/SteamFireInitDMG"/>
         <ArmorReduction value="0.5"/>
-        <Amount value="45"/>
+        <Amount value="60"/>
         <Death value="Fire"/>
     </CEffectDamage>
     <CEffectEnumArea id="IcefireSteamSA">
@@ -3427,7 +3427,7 @@
         <Marker Link="Effect/SteamFireSA"/>
         <ImpactLocation Value="TargetPoint"/>
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2" Effect="IcefireSteamSet"/>
+        <AreaArray Radius="2.5" Effect="IcefireSteamSet"/>
         <Chance value="0"/>
     </CEffectEnumArea>
     <CEffectSet id="IcefireSteamSet">
@@ -3444,7 +3444,7 @@
     <CEffectDamage id="SteamWaterInitDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="0.5"/>
-        <Amount value="30"/>
+        <Amount value="40"/>
     </CEffectDamage>
     <CEffectSet id="SteamWaterSet">
         <EditorCategories value="Race:Protoss"/>
@@ -7418,7 +7418,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/ApplyIcefireCooldown"/>
         <ImpactUnit Value="Caster"/>
-        <Cost Abil="QuicksandEarth,Execute" CooldownOperation="Set" CooldownTimeUse="6"/>
+        <Cost Abil="QuicksandEarth,Execute" CooldownOperation="Set" CooldownTimeUse="8"/>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="ApplySiphonCooldownMU">
         <EditorCategories value="Race:Protoss"/>
@@ -7430,7 +7430,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/ApplyIcefireCooldown"/>
         <ImpactUnit Value="Caster"/>
-        <Cost Abil="QuicksandWater,Execute" CooldownTimeUse="6"/>
+        <Cost Abil="QuicksandWater,Execute" CooldownTimeUse="8"/>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="ApplyEternalLifeCooldown">
         <EditorCategories value="Race:Protoss"/>
@@ -7478,13 +7478,13 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/ApplyIcefireCooldown"/>
         <ImpactUnit Value="Caster"/>
-        <Cost Abil="HellfireQuake,Execute" CooldownTimeUse="6"/>
+        <Cost Abil="HellfireQuake,Execute" CooldownTimeUse="5"/>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="ApplyEarthquakeCooldown">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/ApplyIcefireCooldown"/>
         <ImpactUnit Value="Caster"/>
-        <Cost Abil="Earthquake,Execute" CooldownTimeUse="6"/>
+        <Cost Abil="Earthquake,Execute" CooldownTimeUse="5"/>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="ApplyFirestormFireCooldownMU">
         <EditorCategories value="Race:Protoss"/>
@@ -7758,9 +7758,12 @@
         <InitialEffect value="EarthquakeCastSet"/>
         <PeriodicEffectArray value="EarthquakeSA"/>
         <PeriodicPeriodArray value="0"/>
-        <PeriodicPeriodArray value="1"/>
-        <PeriodicPeriodArray value="1"/>
-        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="0.75"/>
+        <PeriodicPeriodArray value="0.75"/>
+        <PeriodicPeriodArray value="0.75"/>
+        <PeriodicPeriodArray value="0.75"/>
+        <PeriodicPeriodArray value="0.75"/>
+        <PeriodCount value="2"/>
     </CEffectCreatePersistent>
     <CEffectSet id="EarthquakeCastSet">
         <EditorCategories value="Race:Protoss"/>
@@ -7774,7 +7777,7 @@
     <CEffectDamage id="EarthquakeDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="1"/>
-        <Amount value="60"/>
+        <Amount value="50"/>
     </CEffectDamage>
     <CEffectCreateUnit id="EarthquakeKBCU">
         <ValidatorArray value="NotHeroicAndNotStructure"/>
@@ -8102,14 +8105,19 @@
     <CEffectCreatePersistent id="EverlastingStormCP">
         <EditorCategories value="Race:Protoss"/>
         <InitialEffect value="EverlastingStormCastSet"/>
-        <PeriodCount value="2"/>
+        <PeriodCount value="1">
+            <AccumulatorArray value="ElementalHeroPermanenceMultiplier"/>
+        </PeriodCount>
         <PeriodicEffectArray value="EverlastingStormSA"/>
-        <PeriodicEffectArray value="EverlastingStormSpeedSA"/>
         <PeriodicPeriodArray value="0"/>
-        <PeriodicPeriodArray value="0"/>
-        <PeriodicPeriodArray value="1"/>
-        <PeriodicPeriodArray value="0"/>
-        <PeriodicPeriodArray value="1"/>
+        <PeriodicPeriodArray value="2"/>
+        <PeriodicPeriodArray value="2"/>
+        <PeriodicPeriodArray value="2"/>
+        <PeriodicPeriodArray value="2"/>
+        <PeriodicPeriodArray value="2"/>
+        <PeriodicPeriodArray value="2"/>
+        <PeriodicPeriodArray value="2"/>
+        <PeriodicPeriodArray value="2"/>
     </CEffectCreatePersistent>
     <CEffectSet id="EverlastingStormCastSet">
         <EditorCategories value="Race:Protoss"/>
@@ -8138,10 +8146,10 @@
     <CEffectCreatePersistent id="EverlastingStormSandstormCP">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
-        <PeriodCount value="20"/>
-        <PeriodicEffectArray value="EverlastingStormSpeedSA"/>
+        <PeriodCount value="12">
+            <AccumulatorArray value="ElementalHeroPermanenceMultiplier"/>
+        </PeriodCount>
         <PeriodicEffectArray value="EverlastingStormSandstormSA"/>
-        <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0.5"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="EverlastingStormSandstormSA">
@@ -8237,7 +8245,7 @@
     <CEffectDamage id="HellfireQuakeExterminateDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="0.04"/>
-        <Amount value="2.25"/>
+        <Amount value="1.875"/>
         <Death value="Fire"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="FirestormExterminateAB">
@@ -8376,11 +8384,14 @@
     <CEffectCreatePersistent id="HellfireQuakeCP">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="CasterUnit"/>
-        <PeriodCount value="1"/>
+        <PeriodCount value="2"/>
         <PeriodicEffectArray value="HellfireQuakeSA"/>
         <PeriodicPeriodArray value="0"/>
-        <PeriodicPeriodArray value="1"/>
-        <PeriodicPeriodArray value="1"/>
+        <PeriodicPeriodArray value="0.75"/>
+        <PeriodicPeriodArray value="0.75"/>
+        <PeriodicPeriodArray value="0.75"/>
+        <PeriodicPeriodArray value="0.75"/>
+        <PeriodicPeriodArray value="0.75"/>
     </CEffectCreatePersistent>
     <CEffectSet id="HellfireQuakeCastSet">
         <EditorCategories value="Race:Protoss"/>
@@ -8396,7 +8407,7 @@
     <CEffectDamage id="HellfireQuakeDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="1.5"/>
-        <Amount value="90"/>
+        <Amount value="75"/>
         <Death value="Fire"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="HellfireQuakeDMGDelay">
@@ -9477,14 +9488,14 @@
     <CEffectCreatePersistent id="SandstormWindCP">
         <EditorCategories value="Race:Protoss"/>
         <InitialEffect value="SandstormWindCastSet"/>
-        <PeriodCount value="10"/>
+        <PeriodCount value="12"/>
         <PeriodicEffectArray value="SandstormWindSA"/>
         <PeriodicPeriodArray value="0.5"/>
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="SandstormEarthCP">
         <EditorCategories value="Race:Protoss"/>
         <InitialEffect value="SandstormEarthCastSet"/>
-        <PeriodCount value="10"/>
+        <PeriodCount value="12"/>
         <PeriodicEffectArray value="SandstormEarthSA"/>
         <PeriodicPeriodArray value="0.5"/>
     </CEffectCreatePersistent>
@@ -9497,13 +9508,13 @@
     </CEffectSet>
     <CEffectDamage id="SandstormWindDMG">
         <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="0.2"/>
-        <Amount value="12"/>
+        <ArmorReduction value="0.5"/>
+        <Amount value="17.5"/>
     </CEffectDamage>
     <CEffectDamage id="SandstormEarthDMG">
         <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="0.2"/>
-        <Amount value="12"/>
+        <ArmorReduction value="0.5"/>
+        <Amount value="17.5"/>
     </CEffectDamage>
     <CEffectEnumArea id="SandstormEarthSA">
         <EditorCategories value="Race:Protoss"/>
@@ -9685,7 +9696,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/SteamExterminateAB"/>
         <ArmorReduction value="0.06"/>
-        <Amount value="4.875"/>
+        <Amount value="5.25"/>
         <Death value="Fire"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="SteamFireAB">
@@ -9696,7 +9707,7 @@
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="TargetPoint"/>
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2" Effect="SteamFireSet"/>
+        <AreaArray Radius="2.5" Effect="SteamFireSet"/>
         <RevealerParams Duration="0.5">
             <RevealFlags index="Unfog" value="1"/>
         </RevealerParams>
@@ -9787,7 +9798,7 @@
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="TargetPoint"/>
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2" Effect="SteamWaterSet"/>
+        <AreaArray Radius="2.5" Effect="SteamWaterSet"/>
         <RevealerParams Duration="0.5">
             <RevealFlags index="Unfog" value="1"/>
         </RevealerParams>
@@ -15632,6 +15643,9 @@
         <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="0.5" Effect="GravitySliversDMG"/>
         <SearchFlags index="OffsetAreaByAngle" value="0"/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
     </CEffectEnumArea>
     <CEffectSet id="GravitySliversSet">
         <ValidatorArray value="GravitySliversSetTargetFilters"/>

@@ -969,23 +969,23 @@ Button/Tooltip/Doom=Banes the target with impending doom, causing damage over ti
 Button/Tooltip/DoomLord=Powerful psionic attacker.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c><n/><c val="FFE303">Detector</c>
 Button/Tooltip/DreadLord=Massive assault beast that dwarfs even the Ultralisk in size and strength. <n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/EarthHero=Seismic activity detected!
-Button/Tooltip/Earthquake=Infusion: <c val="804040">Earth</c><n/>Release: <c val="804040">Earth</c><n/><n/>Creates <c val="FFFF80">1</c> Earthquake around your hero per second for <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount"/></c> second dealing damage and knocking back enemy units in a radius of <c val="FFFF80">5</c>
+Button/Tooltip/Earthquake=Infusion: <c val="804040">Earth</c><n/>Release: <c val="804040">Earth</c><n/><n/>Create <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount"/></c> Earthquakes around your hero over <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount*0.75" precision="2"/></c> seconds, each dealing <c val="FFFF80"><d ref="Effect,EarthquakeDMG,Amount"/></c> damage and knocking back enemy units in a radius of <c val="FFFF80">5</c>
 Button/Tooltip/EarthquakeE=
 Button/Tooltip/EarthquakeEn=
 Button/Tooltip/EarthquakeEnd=
 Button/Tooltip/EarthquakeEndu=
 Button/Tooltip/EarthquakeEndur=
-Button/Tooltip/EarthquakeEndure=Creates <c val="FFFF80">1</c> Earthquake around your hero per second for <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount"/></c> seconds dealing damage and knocking back enemy units in a radius of <c val="FFFF80">4</c>
+Button/Tooltip/EarthquakeEndure=
 Button/Tooltip/ElementalHero=Very complicated.
-Button/Tooltip/ElementalHeroSiphon=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Leech health and shields from up to <c val="FFFF80"><d ref="Effect,SiphonSA,AreaArray[0].MaxCount"/></c> enemies in a radius of <c val="FFFF80">5</c> for <c val="FFFF80">5</c> seconds.
+Button/Tooltip/ElementalHeroSiphon=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,SiphonDMG,Amount*4"/></c> damage per second to <c val="FFFF80"><d ref="Effect,SiphonSA,AreaArray[0].MaxCount"/></c> enemies within a radius of <c val="FFFF80">5</c> for <c val="FFFF80">5</c> seconds and receive health/shields for all damage dealt
 Button/Tooltip/ElementalStacks=Stores elemental releases which can be used to apply a second infusion bonus to certain abilities.<n/><n/><c val="FFFF80">3 </c><c val="FF8000">Fire</c> + <c val="FFFF80">3</c> <c val="0080FF">Water</c> = <c val="0080FF">Icefire</c> <c val="FF8000">Blast</c><n/><c val="FFFF80">3</c> <c val="FFFFFF">Wind</c> + <c val="FFFF80">3</c> <c val="804040">Earth</c> = <c val="804040">Everlasting</c> <c val="FFFFFF">Storm</c><n/><c val="FFFF80">3</c> <c val="804040">Earth</c> + <c val="FFFF80">3</c> <c val="FF8000">Fire</c> = <c val="FF8000">Hellfire</c> <c val="804040">Quake</c><n/><c val="FFFF80">3</c> <c val="0080FF">Water</c> + <c val="FFFF80">3</c> <c val="FFFFFF">Wind</c> = <c val="FFFFFF">Eternal</c> <c val="0080FF">Life</c>
 Button/Tooltip/ElementalStacks2=Stores elemental releases which can be used to apply a second infusion bonus to certain abilities.<n/><n/><c val="FFFF80">3 </c><c val="FF8000">Fire</c> + <c val="FFFF80">3</c> <c val="0080FF">Water</c> = <c val="0080FF">Icefire</c> <c val="FF8000">Blast</c><n/><c val="FFFF80">3</c> <c val="FFFFFF">Wind</c> + <c val="FFFF80">3</c> <c val="804040">Earth</c> = <c val="804040">Everlasting</c> <c val="FFFFFF">Storm</c><n/><c val="FFFF80">3</c> <c val="804040">Earth</c> + <c val="FFFF80">3</c> <c val="FF8000">Fire</c> = <c val="FF8000">Hellfire</c> <c val="804040">Quake</c><n/><c val="FFFF80">3</c> <c val="0080FF">Water</c> + <c val="FFFF80">3</c> <c val="FFFFFF">Wind</c> = <c val="FFFFFF">Eternal</c> <c val="0080FF">Life</c>
 Button/Tooltip/EmergencyRecall=Warps the targeted unit to the sentry
-Button/Tooltip/EruptionEarth=Infusion: <c val="804040">Earth</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Deal damage in a radius of <c val="FFFF80">2</c> and launch <c val="FFFF80"><d ref="Effect,EruptionEarthOffset1,PeriodCount"/></c> rocks from the ground over <c val="FFFF80"><d ref="Effect,EruptionEarthOffset1,PeriodCount*Effect,EruptionEarthOffset1,PeriodicPeriodArray[0]" precision="2"/></c> seconds dealing damage to surrounding enemies.
-Button/Tooltip/EruptionFire=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="804040">Earth</c><n/><n/>Deal damage in a radius of <c val="FFFF80">2</c> and launch <c val="FFFF80"><d ref="Effect,EruptionFireOffset1,PeriodCount"/></c> flaming rocks from the ground over <c val="FFFF80"><d ref="Effect,EruptionFireOffset1,PeriodCount*Effect,EruptionFireOffset1,PeriodicPeriodArray[0]" precision="2"/></c> seconds dealing damage to surrounding enemies.
-Button/Tooltip/EternalLife=Infusion: <c val="0080FF">Water</c> + <c val="FFFFFF">Wind</c><n/><n/>Leech health and shields from up to <c val="FFFF80"><d ref="Effect,SiphonSA,AreaArray[0].MaxCount"/></c> enemies in a radius of <c val="FFFF80"><d ref="Effect,EternalLifeSA,AreaArray[0].Radius" precision="1"/></c> for <c val="FFFF80">5</c> seconds.
-Button/Tooltip/EverlastingStorm=Infusion: <c val="FFFFFF">Wind</c> + <c val="804040">Earth</c><n/><n/>Pulls enemy units in a radius of <c val="FFFF80"><d ref="Effect,EverlastingStormSA,AreaArray[0].Radius" precision="1"/></c> towards the target location <c val="FFFF80"><d ref="Effect,EverlastingStormCP,PeriodCount/2"/></c> time.
-Button/Tooltip/EverlastingStormEndure=Infusion: <c val="FFFFFF">Wind</c> + <c val="804040">Earth</c><n/><n/>Pulls enemy units in a radius of <c val="FFFF80"><d ref="Effect,EverlastingStormSA,AreaArray[0].Radius" precision="1"/></c> towards the target location <c val="FFFF80"><d ref="Effect,EverlastingStormCP,PeriodCount/2"/></c> times.
+Button/Tooltip/EruptionEarth=Infusion: <c val="804040">Earth</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,EruptionEarthDMG,Amount"/></c> damage in a radius of <c val="FFFF80">2</c> and launch <c val="FFFF80"><d ref="Effect,EruptionEarthOffset1,PeriodCount"/></c> rocks from the ground over <c val="FFFF80"><d ref="Effect,EruptionEarthOffset1,PeriodCount*Effect,EruptionEarthOffset1,PeriodicPeriodArray[0]" precision="2"/></c> seconds dealing <c val="FFFF80"><d ref="Effect,EruptionEarthDMG,Amount"/></c> damage to surrounding enemies.
+Button/Tooltip/EruptionFire=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="804040">Earth</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,EruptionFireDMG,Amount"/></c> damage in a radius of <c val="FFFF80">2</c> and launch <c val="FFFF80"><d ref="Effect,EruptionFireOffset1,PeriodCount"/></c> flaming rocks from the ground over <c val="FFFF80"><d ref="Effect,EruptionFireOffset1,PeriodCount*Effect,EruptionFireOffset1,PeriodicPeriodArray[0]" precision="2"/></c> seconds dealing <c val="FFFF80"><d ref="Effect,EruptionFireDMG,Amount"/></c> damage to surrounding enemies.
+Button/Tooltip/EternalLife=Infusion: <c val="0080FF">Water</c> + <c val="FFFFFF">Wind</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,SiphonDMG,Amount*4"/></c> damage per second to <c val="FFFF80"><d ref="Effect,EternalLifeSA,AreaArray[0].MaxCount"/></c> enemies within a radius of <c val="FFFF80"><d ref="Effect,EternalLifeSA,AreaArray[0].Radius" precision="1"/></c> for <c val="FFFF80">5</c> seconds and receive health/shields for all damage dealt
+Button/Tooltip/EverlastingStorm=Infusion: <c val="FFFFFF">Wind</c> + <c val="804040">Earth</c><n/><n/>Pulls enemy units in a radius of <c val="FFFF80"><d ref="Effect,EverlastingStormSA,AreaArray[0].Radius" precision="1"/></c> towards the target location <c val="FFFF80"><d ref="Effect,EverlastingStormCP,PeriodCount*Accumulator,ElementalHeroPermanenceMultiplier,Amount"/></c> time(s)
+Button/Tooltip/EverlastingStormEndure=
 Button/Tooltip/EverlastingStormU=
 Button/Tooltip/EverlastingStormUp=
 Button/Tooltip/EverlastingStormUpg=
@@ -997,14 +997,14 @@ Button/Tooltip/Expel=Deal <c val="FFFF80"><d ref="Effect,NatureHeroExpelDMG,Amou
 Button/Tooltip/Exploder=<c val="0080FF">Deal damage in the target area and apply  the explode debuff causing effected enemies to explode on death.</c>
 Button/Tooltip/ExtinctionLord=
 Button/Tooltip/ExtinctionOrb=
-Button/Tooltip/FireBlast=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Send a Fireball towards the target location dealing damage in a radius of <c val="FFFF80">2</c>
+Button/Tooltip/FireBlast=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Send a Fireball towards the target location dealing <c val="FFFF80"><d ref="Effect,FireBlastDMG,Amount"/></c> damage in a radius of <c val="FFFF80">2</c>
 Button/Tooltip/FireHero=Death and destruction!
 Button/Tooltip/FireInfusion=Fire Infusion restores health after burning away the old cells.<n/>But because 'fire is hot' you will take some damage before the healing starts.
 Button/Tooltip/FireLord=Ranged artillery. Can use Corrosive Bile.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/Fireball=Launches a Fireball dealing <c val="FFFF80">40</c> damage to all enemy units close to the impact location
 Button/Tooltip/Firespewer=Infestation specialist. Can move while burrowed. Can use the Infested Terran, Fungal Growth, and Neural Parasite abilities.
-Button/Tooltip/Firestorm=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="FFFFFF">Wind</c><n/><n/>Deal damage in an arc of <c val="FFFF80">60</c> degrees within a range of <c val="FFFF80">7</c>
-Button/Tooltip/FirestormWind=Infusion: <c val="FFFFFF">Wind</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Deal damage in an arc of <c val="FFFF80">60</c> degrees within a range of <c val="FFFF80"><d ref="Effect,FirestormWindSA,AreaArray[0].Radius" precision="1"/>
+Button/Tooltip/Firestorm=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="FFFFFF">Wind</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,FirestormFireDMG,Amount"/></c> damage in an arc of <c val="FFFF80">60</c> degrees within a range of <c val="FFFF80">7</c>
+Button/Tooltip/FirestormWind=Infusion: <c val="FFFFFF">Wind</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,FirestormWindDMG,Amount"/></c> damage in an arc of <c val="FFFF80">60</c> degrees within a range of <c val="FFFF80"><d ref="Effect,FirestormWindSA,AreaArray[0].Radius" precision="1"/>
 Button/Tooltip/FleshLord=
 Button/Tooltip/Flood=Leave behind a puddle of water every <c val="FFFF80"><d ref="Behavior,Flood,Period" precision="1"/></c> seconds.<n/><n/>Puddles last for <c val="FFFF80"><d ref="Behavior,WaterHeroPuddleFate,Duration" precision="1"/></c> seconds and will periodically soak enemies within a radius of <c val="FFFF80"><d ref="Effect,PuddleSA,AreaArray[0].Radius" precision="1"/></c>
 Button/Tooltip/Fortify=Buffs all allies within a radius of <c val="FFFF80"><d ref="Effect,FortifySA,AreaArray[0].Radius"/></c><n/><n/>If target is heroic, armor is increased by <c val="FFFF80"><d ref="Behavior,FortifyHero,Modification.LifeArmorBonus"/></c>, damage reduction is increased by <c val="FFFF80"><d ref="(1-Behavior,FortifyHero,DamageResponse.ModifyFraction)*100" precision="1"/>%</c>, and all regeneration is increased by <c val="FFFF80"><d ref="Behavior,FortifyHero,Modification.VitalRegenArray[Energy]*100"/>%</c>.<n/><n/>If target is non heroic, vitals are increased by <c val="FFFF80"><d ref="Behavior,Fortify,Modification.VitalMaxFractionArray[Life]*100"/>%</c>, damage is increased by <c val="FFFF80"><d ref="Behavior,Fortify,Modification.UnifiedDamageDealtFraction[Melee]*100"/>%</c>, and attack speed is increased by <c val="FFFF80"><d ref="Behavior,Fortify,Modification.AttackSpeedMultiplier*100-100" precision="1"/>%</c><n/><n/>Is permanent for structures, but lasts <c val="FFFF80">30</c> seconds for units
@@ -1029,8 +1029,8 @@ Button/Tooltip/HealingReagent=Inject yourself with a Healing Reagent restoring l
 Button/Tooltip/HealingStation=Create a Healing Station at the target location which will heal <c val="FFFF80"><d ref="Effect,HealingStationHealHealthHealer,RechargeVitalRate"/></c> health or shields per second to one unit in a radius of <c val="FFFF80"><d ref="Abil,HealingStationHeal,Range[0]"/></c> for <c val="FFFF80"><d ref="Behavior,ProbeHeroHealingStationFate,Duration"/></c> seconds.
 Button/Tooltip/HealingStationShell=Take reduced damage from the next damage instance
 Button/Tooltip/HealingWave=Instantly heal <c val="FFFF80"><d ref="Effect,HealingWaveHeal,VitalArray[Shields].Change*2" precision="1"/></c> health and shields to self, and heal allies in a radius of <c val="FFFF80"><d ref="Effect,HealingWaveSA,AreaArray[0].Radius" precision="2"/></c> for half of that amount.
-Button/Tooltip/HellfireQuake=Infusion: <c val="804040">Earth</c> + <c val="FF8000">Fire</c><n/><n/>Creates <c val="FFFF80">1</c> Earthquake around your hero per second for <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount"/></c> second dealing damage and knocking back enemy units in a radius of <c val="FFFF80">5</c>
-Button/Tooltip/HellfireQuakeEndure=Infusion: <c val="804040">Earth</c> + <c val="FF8000">Fire</c><n/><n/>Creates <c val="FFFF80">1</c> Earthquake around your hero per second for <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount"/></c> seconds dealing damage and knocking back enemy units in a radius of <c val="FFFF80">4</c>
+Button/Tooltip/HellfireQuake=Infusion: <c val="804040">Earth</c> + <c val="FF8000">Fire</c><n/><n/>Create <c val="FFFF80"><d ref="Effect,HellfireQuakeCP,PeriodCount"/></c> Earthquakes around your hero over <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount*0.75" precision="2"/></c> seconds, each dealing <c val="FFFF80"><d ref="Effect,HellfireQuakeDMG,Amount"/></c> damage and knocking back enemy units in a radius of <c val="FFFF80">5</c>
+Button/Tooltip/HellfireQuakeEndure=
 Button/Tooltip/HiveLord=Support unit. Can use Spawn Creep Tumor and Rapid Transfusion.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/HoloShield=Creates a Holo Shield at the target location rendering allied units and structures in a radius of <c val="FFFF80">2</c> invulnerable to damage for <c val="FFFF80">10</c> seconds.<n/><n/>Holo Shields have <c val="FFFF80">500</c> hp + <c val="FFFF80">30</c>  per maximum hp reward point.<n/><n/>Current maximum is <c val="FFFF80"><d ref="Unit,HoloShieldUnit,LifeMax" precision="3"/></c>.
 Button/Tooltip/HoloShieldUnit=Summons a Tornado lasting <d ref="Behavior,Tornado,Duration" precision="1"/> seconds.
@@ -1040,12 +1040,12 @@ Button/Tooltip/HorrorLord=
 Button/Tooltip/HorrorZealot=Changelings cannot attack. When a Changeling first encounters an enemy unit, it will match that unit's color and change into a Zealot, Marine, or Zergling, depending on the enemy race. Dies after <d time="150"/>.
 Button/Tooltip/HorrorZergling=Changelings cannot attack. When a Changeling first encounters an enemy unit, it will match that unit's color and change into a Zealot, Marine, or Zergling, depending on the enemy race. Dies after <d time="150"/>.
 Button/Tooltip/Hurricane=Summon a devastating blast of wind that travels up to a distance of <c val="FFFF80"><d ref="Effect,AirHeroHurricaneDMGDummy,ArmorReduction"/></c> and deals <c val="FFFF80"><d ref="Effect,AirHeroHurricaneDMG,Amount"/></c> damage to enemies within a width of <c val="FFFF80"><d ref="Effect,HurricaneSA,AreaArray[0].RectangleWidth"/></c><n/><n/>Lifted enemies and Tornado debris in its path will be picked up and pulled along with it.<n/><n/>Hurricane deals <c val="FFFF80"><d ref="Effect,AirHeroHurricaneDMG,AttributeFactor[Heroic]*100"/>%</c> additional damage to enemies that cannot be lifted.<n/><n/>Micro Bursts affected by Hurricane will be able to impact on lifted enemies.
-Button/Tooltip/IcefireBlast=Infusion: <c val="FF8000">Fire</c> + <c val="0080FF">Water</c><n/><n/>Send a Fireball towards the target location dealing damage in a radius of <c val="FFFF80">2</c>
+Button/Tooltip/IcefireBlast=Infusion: <c val="FF8000">Fire</c> + <c val="0080FF">Water</c><n/><n/>Send a Fireball towards the target location dealing <c val="FFFF80"><d ref="Effect,IcefireBlastDMG,Amount"/></c> damage in a radius of <c val="FFFF80">2</c>
 Button/Tooltip/IllusionHero=This isn't real.
 Button/Tooltip/ImpendingDoom=Summons a Tornado lasting <d ref="Behavior,Tornado,Duration" precision="1"/> seconds.
 Button/Tooltip/InfectionLord=Infested Terrans do moderate damage.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
 Button/Tooltip/Inferno=Releasing bursts of fierce flames in front of you.<n/><c val="FFFF80">40</c> Damage with every burst of flame.
-Button/Tooltip/InfuseEarth=Deal damage in a radius of <c val="FFFF80"><d ref="Effect,InfuseEarthSA,AreaArray[0].Radius"/></c> and become infused with the element of <c val="804040">Earth</c> causing your next ability cast to have the following bonuses.<n/><n/>Affected enemies are stunned for <c val="FFFF80"><d ref="Behavior,Concussed,Duration"/></c> second.<n/><n/>Caster takes <c val="FFFF80"><d ref="(Behavior,Bastion,DamageResponse.ModifyFraction*(-1)+1)*100"/>%</c> reduced damage for <c val="FFFF80"><d ref="Behavior,Bastion,Duration*Effect,BastionSet,Chance"/></c> seconds.<n/><n/>Gain <c val="FFFF80"><d ref="Behavior,BastionArmor,Modification.LifeArmorBonus"/></c> more health and shield armor for <c val="FFFF80"><d ref="Effect,BastionSet,Chance*15"/></c> seconds.<n/><n/></c></c>Deal <c val="FFFF80"><d ref="Effect,EarthquakeDMG,AttributeFactor[Heroic]*100"/>%</c> more damage to heroic enemies.<n/><n/>Pierce <c val="FFFF80"><d ref="1-(Effect,EarthquakeDMG,ArmorReduction)*100"/>%</c> armor.<n/><n/>Duration increased by <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount-1*100"/>%</c>.
+Button/Tooltip/InfuseEarth=Deal <c val="FFFF80"><d ref="Effect,InfuseEarthDMG,Amount"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,InfuseEarthSA,AreaArray[0].Radius"/></c> and become infused with the element of <c val="804040">Earth</c> causing your next ability cast to have the following bonuses.<n/><n/>Affected enemies are stunned for <c val="FFFF80"><d ref="Behavior,Concussed,Duration"/></c> second.<n/><n/>Caster takes <c val="FFFF80"><d ref="(Behavior,Bastion,DamageResponse.ModifyFraction*(-1)+1)*100"/>%</c> reduced damage for <c val="FFFF80"><d ref="Behavior,Bastion,Duration*Effect,BastionSet,Chance"/></c> seconds.<n/><n/>Gain <c val="FFFF80"><d ref="Behavior,BastionArmor,Modification.LifeArmorBonus"/></c> more health and shield armor for <c val="FFFF80"><d ref="Effect,BastionSet,Chance*15"/></c> seconds.<n/><n/></c></c>Deal <c val="FFFF80"><d ref="Effect,EarthquakeDMG,AttributeFactor[Heroic]*100"/>%</c> more damage to heroic enemies.<n/><n/>Pierce <c val="FFFF80"><d ref="1-(Effect,EarthquakeDMG,ArmorReduction)*100"/>%</c> armor.<n/><n/>Duration increased by <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount-2*50"/>%</c>.
 Button/Tooltip/InfuseEarthE=
 Button/Tooltip/InfuseEarthEn=
 Button/Tooltip/InfuseEarthEnd=
@@ -1058,9 +1058,9 @@ Button/Tooltip/InfuseEarthEndure<c =
 Button/Tooltip/InfuseEarthEndure<c v=
 Button/Tooltip/InfuseEarthEndure<c va=
 Button/Tooltip/InfuseEarthEndure<c val="804040">Earth</c>=
-Button/Tooltip/InfuseFire=Deal damage in a radius of <c val="FFFF80"><d ref="Effect,InfuseFireSA,AreaArray[0].Radius"/></c> and become infused with the element of<c val="FF8000"> Fire</c> causing your next ability cast to have the following bonuses.<n/><n/><c val="FFFF80"><d ref="((Effect,FireBlastDMG,Amount-60)/60)*100" precision="1"/>%</c> increased damage.<n/><n/><c val="FFFF80"><d ref="Effect,FireBlastExterminateAB,Count*50"/>%</c> additional damage over <c val="FFFF80">10</c> seconds.<n/><n/><c val="FFFF80"><d ref="Effect,BlazeAB,Chance*100"/>%</c> chance to gain a flame aura for <c val="FFFF80">10</c> seconds.<n/><n/><c val="FFFF80"><d ref="Effect,BonfireCP,Chance*100"/>%</c> chance to create a ground fire at the casters position.<n/><n/><c val="FFFF80"><d ref="Effect,ApocalypseCP,Chance*100"/>%</c> chance to create ground fires under affected enemies.
-Button/Tooltip/InfuseWater=Deal damage in a radius of <c val="FFFF80"><d ref="Effect,InfuseWaterSA,AreaArray[0].Radius"/></c> and  become infused with the element of <c val="0080FF">Water </c>causing your next casted ability to have the following bonuses.<n/><n/>Instantly heals the caster for <c val="FFFF80"><d ref="Effect,RefreshMU,VitalArray[Life].Change"/></c> health and shields.<n/><n/><c val="FFFF80"><d ref="100-Abil,ElementalHeroSiphon,Cost[0].Vital[Energy]"/>%</c> reduced energy cost.<n/><n/>When enemy units are damaged or receive negative effects the caster is healed for <c val="FFFF80"><d ref="Effect,DivertMU,VitalArray[Life].Change"/></c> health/shields and <c val="FFFF80"><d ref="Effect,DivertMU,VitalArray[Energy].Change"/></c> energy.
-Button/Tooltip/InfuseWind=Deal damage in a radius of <c val="FFFF80"><d ref="Effect,InfuseWindSA,AreaArray[0].Radius"/></c> and become infused with the element of <c val="FFFFFF">Wind</c> causing your next ability cast to have the following bonuses.<n/><n/><c val="FFFF80"><d ref="(10-Abil,Windstorm,Cost[0].Cooldown.TimeUse)*10" precision="1"/>%</c> shorter cooldown.<n/><n/>Affected enemies take <c val="FFFF80"><d ref="(Behavior,Critical,DamageResponse.ModifyFraction-1)*100" precision="1"/>%</c> increased damage from the next damage instance.<n/><n/>Affected enemies are slowed by <c val="FFFF80"><d ref="Behavior,Zephyr,Modification.MoveSpeedMultiplier*(-1)+1)*100"/>%</c> for <c val="FFFF80"><d ref="Effect,ApplyZephyrAB,Count*10"/></c> seconds.<n/><n/>Affected enemies deal <c val="FFFF80"><d ref="Behavior,Dizzy,Modification.DamageDealtFraction[Melee]*(-100)*Effect,ApplyDizzyAB,Chance" precision="1"/>%</c> less damage for <c val="FFFF80"><d ref="Behavior,Dizzy,Duration*Effect,ApplyDizzyAB,Chance" precision="1"/></c> seconds.<n/><n/></c></c><c val="FFFF80"><d ref="(Effect,WindstormSA,AreaArray[0].Radius-3)/3)*100"/>%</c> increased radius.
+Button/Tooltip/InfuseFire=Deal <c val="FFFF80"><d ref="Effect,InfuseFireDMG,Amount"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,InfuseFireSA,AreaArray[0].Radius"/></c> and become infused with the element of<c val="FF8000"> Fire</c> causing your next ability cast to have the following bonuses.<n/><n/><c val="FFFF80"><d ref="((Effect,FireBlastDMG,Amount-60)/60)*100" precision="1"/>%</c> increased damage.<n/><n/><c val="FFFF80"><d ref="Effect,FireBlastExterminateAB,Count*50"/>%</c> additional damage over <c val="FFFF80">10</c> seconds.<n/><n/><c val="FFFF80"><d ref="Effect,BlazeAB,Chance*100"/>%</c> chance to gain a flame aura for <c val="FFFF80">10</c> seconds.<n/><n/><c val="FFFF80"><d ref="Effect,BonfireCP,Chance*100"/>%</c> chance to create a ground fire at the casters position.<n/><n/><c val="FFFF80"><d ref="Effect,ApocalypseCP,Chance*100"/>%</c> chance to create ground fires under affected enemies.
+Button/Tooltip/InfuseWater=Deal <c val="FFFF80"><d ref="Effect,InfuseWaterDMG,Amount"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,InfuseWaterSA,AreaArray[0].Radius"/></c> and  become infused with the element of <c val="0080FF">Water </c>causing your next casted ability to have the following bonuses.<n/><n/>Instantly heals the caster for <c val="FFFF80"><d ref="Effect,RefreshMU,VitalArray[Life].Change"/></c> health and shields.<n/><n/><c val="FFFF80"><d ref="100-Abil,ElementalHeroSiphon,Cost[0].Vital[Energy]"/>%</c> reduced energy cost.<n/><n/>When enemy units are damaged or receive negative effects the caster is healed for <c val="FFFF80"><d ref="Effect,DivertMU,VitalArray[Life].Change"/></c> health/shields and <c val="FFFF80"><d ref="Effect,DivertMU,VitalArray[Energy].Change"/></c> energy.
+Button/Tooltip/InfuseWind=Deal <c val="FFFF80"><d ref="Effect,InfuseWindDMG,Amount"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,InfuseWindSA,AreaArray[0].Radius"/></c> and become infused with the element of <c val="FFFFFF">Wind</c> causing your next ability cast to have the following bonuses.<n/><n/><c val="FFFF80"><d ref="(10-Abil,Windstorm,Cost[0].Cooldown.TimeUse)*10" precision="1"/>%</c> shorter cooldown.<n/><n/>Affected enemies take <c val="FFFF80"><d ref="(Behavior,Critical,DamageResponse.ModifyFraction-1)*100" precision="1"/>%</c> increased damage from the next damage instance.<n/><n/>Affected enemies are slowed by <c val="FFFF80"><d ref="Behavior,Zephyr,Modification.MoveSpeedMultiplier*(-1)+1)*100"/>%</c> for <c val="FFFF80"><d ref="Effect,ApplyZephyrAB,Count*10"/></c> seconds.<n/><n/>Affected enemies deal <c val="FFFF80"><d ref="Behavior,Dizzy,Modification.DamageDealtFraction[Melee]*(-100)*Effect,ApplyDizzyAB,Chance" precision="1"/>%</c> less damage for <c val="FFFF80"><d ref="Behavior,Dizzy,Duration*Effect,ApplyDizzyAB,Chance" precision="1"/></c> seconds.<n/><n/></c></c><c val="FFFF80"><d ref="(Effect,WindstormSA,AreaArray[0].Radius-3)/3)*100"/>%</c> increased radius.
 Button/Tooltip/LaunchOrbsOfAttrition=Launch all Attrition Orbs at the targeted point, each dealing <c val="FFFF80"><d ref="Effect,OrbOfAttritionDMG,Amount"/></c> damage in a radius of <c val="FFFF80">1.5</c> and slowing effected units attack and movement speeds by <c val="FFFF80">50%</c><n/><n/>After casting, an additional <c val="FFFF80">(Orbs used^2)*<d ref="Accumulator,LuckHeroDelugeMultiplier,Amount"/></c> Attrition Orbs will launch from your hero traveling in a random direction and impacting when it finds an enemy unit<n/>
 Button/Tooltip/LaunchOrbsOfDestruction=Launch all Destruction Orbs at the targeted point, each dealing <c val="FFFF80"><d ref="Effect,OrbOfDestructionDMG,Amount"/></c> damage in a radius of <c val="FFFF80">1</c> and dealing <c val="FFFF80"><d ref="Effect,OrbOfDestructionSnipeDMG,Amount/Effect,OrbOfDestructionDMG,Amount*100"/>%</c> extra damage to the enemy with the highest health in its radius<n/><n/>If cast with at least <c val="FFFF80">1</c> Orb power then each Destruction Orb will split in <c val="FFFF80"><d ref="1 + (Effect,LuckHeroOrbOfDestructionDivisionOffset,PeriodCount)"/></c> and then bounce <c val="FFFF80">1</c> time per Orb used, each traveling further from the original impact point<n/>
 Button/Tooltip/LaunchOrbsOfHavoc=Launch all Havoc Orbs at the targeted point and create a stationary Havoc Orb that will deal <c val="FFFF80"><d ref="Effect,OrbOfHavocDMG,Amount"/></c> damage an to enemy unit in a radius of <c val="FFFF80">3</c> every <c val="FFFF80"><d ref="Behavior,OrbOfHavocFate,Period" precision="1"/></c> second(s)<n/><n/>Each Orb used increases the damage dealt by <c val="FFFF80"><d ref="((Effect,OrbOfHavoc1BounceDMG,Amount - Effect,OrbOfHavocDMG,Amount)/Effect,OrbOfHavocDMG,Amount)*100" precision="1"/>%</c>, range by <c val="FFFF80"><d ref="Accumulator,LuckHeroOrbOfHavocRadiusMultiplier,Amount" precision="2"/></c>, duration by <c val="FFFF80"><d ref="Accumulator,LuckHeroOrbOfHavocDurationMultiplier,Amount" precision="2"/></c> seconds and causes each attack to bounce <c val="FFFF80">1</c> additional time in a radius of <c val="FFFF80"><d ref="Effect,OrbOfHavoc1BounceSA,AreaArray[0].Radius"/></c> (each bounce deals less damage)<n/>
@@ -1128,8 +1128,8 @@ Button/Tooltip/ProtossAlliesHighTemplar=Potent psionic master. Can use Feedback 
 Button/Tooltip/ProtossAlliesImmortal=Assault strider. Can use Barrier to absorb damage.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/ProtossAlliesTeleport=Teleport to the target psi-field.
 Button/Tooltip/PylonOvercharge=Gives the the Pylon a temporary weapon.
-Button/Tooltip/QuicksandEarth=Infusion: <c val="804040">Earth</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Creates Quicksand at the target point which will slow enemy units movement and attack speed in a radius of <c val="FFFF80">3</c> by <c val="FFFF80">50%</c>, lasting  for <c val="FFFF80"><d ref="Effect,QuicksandEarthCP,PeriodCount*Effect,QuicksandEarthCP,PeriodicPeriodArray[0]" precision="1"/></c> seconds.<n/><n/>Non heroic and non massive units will sink into the sand and die.
-Button/Tooltip/QuicksandWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="804040">Earth</c><n/><n/>Creates Quicksand at the target point which will slow enemy units movement and attack speed in a radius of <c val="FFFF80">3</c> by <c val="FFFF80">50%</c>, lasting  for <c val="FFFF80"><d ref="Effect,QuicksandWaterCP,PeriodCount*Effect,QuicksandWaterCP,PeriodicPeriodArray[0]" precision="1"/></c> seconds.<n/><n/>Non heroic and non massive units will sink into the sand and die.
+Button/Tooltip/QuicksandEarth=Infusion: <c val="804040">Earth</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Creates Quicksand at the target point which will slow enemy units movement and attack speed in a radius of <c val="FFFF80">3</c> by <c val="FFFF80">50%</c>, lasting for <c val="FFFF80"><d ref="Effect,QuicksandEarthCP,PeriodCount*Effect,QuicksandEarthCP,PeriodicPeriodArray[0]" precision="1"/></c> seconds.<n/><n/>Non heroic and non massive units will sink into the sand and die.
+Button/Tooltip/QuicksandWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="804040">Earth</c><n/><n/>Creates Quicksand at the target point which will slow enemy units movement and attack speed in a radius of <c val="FFFF80">3</c> by <c val="FFFF80">50%</c>, lasting for <c val="FFFF80"><d ref="Effect,QuicksandWaterCP,PeriodCount*Effect,QuicksandWaterCP,PeriodicPeriodArray[0]" precision="1"/></c> seconds.<n/><n/>Non heroic and non massive units will sink into the sand and die.
 Button/Tooltip/RapidRepairs=The Beam Hero regenerates health and shields very quickly. Taking at least <c val="FFFF80">30</c> damage from a single damage instance will cancel this effect for <c val="FFFF80"><d ref="Behavior,RapidRepairsDisable,Duration" precision = "1"/></c> seconds.<n/><n/>Additionally, the Beam Hero has <c val="FFFF80">100%</c> armor penetration.
 Button/Tooltip/Recharge=<c val="0080FF">Restore <c val="FFFFFF"><d ref="Effect,RechargeAddEnergy,VitalArray[Energy].Change"/></c> energy to your drones.</c>
 Button/Tooltip/Recombulator=Recombulates up to <c val="FFFF80"><d ref="Effect,RecombulatorSearch,MaxCount"/></c> enemy units in a radius of <c val="FFFF80"><d ref="Effect,RecombulatorSearch,AreaArray[0].Radius" precision="1"/></c>, dealing <c val="FFFF80"><d ref="Effect,RecombulatorDamage,Amount"/></c> damage to each primary target and <c val="FFFF80"><d ref="Effect,RecombulatorDamage,Amount*0.25"/></c> damage in a radius of <c val="FFFF80">1</c>.<n/><n/>Each unit hit will launch a Recombulatorfeedback charge towards you. <n/>It takes <c val="FFFF80"><d ref="Effect,RecombulatorEnergy,VitalArray[Energy].Change*(-1)" precision="1"/></c> energy to annihilate a Recombulatorfeedback safely - if you dont have enough energy you will take <c val="FFFF80"><d ref="Effect,RecombulatorDamage2,Amount" precision="1"/></c> damage.<n/><n/>Casting Recombulator will create <c val="FFFF80"><d ref="Effect,RecombulatorMatrixCP,PeriodCount"/></c> Twilight Cannon missile(s) that will rotate around your hero for <c val="FFFF80"><d ref="Behavior,TwilightHeroMatrixFate,Duration"/></c> seconds
@@ -1141,8 +1141,8 @@ Button/Tooltip/ResourcePickup=
 Button/Tooltip/RichResourcePickup=
 Button/Tooltip/RotatingBeam=Create <c val="FFFF80"><d ref="Effect,RotatingBeamCP,PeriodCount" precision="2"/></c> Beams with a length of <c val="FFFF80">2</c> that rotate around the target point dealing damage to enemies that they come in contact with.<n/><n/>Lasts for <c val="FFFF80"><d ref="Effect,RotatingBeamLifetime,ExpireDelay"/></c> seconds.
 Button/Tooltip/RotatingBeamUnit=
-Button/Tooltip/SandstormEarth=Infusion: <c val="804040">Earth</c><n/>Release: <c val="FFFFFF">Wind</c><n/><n/>Periodically deals damage in a radius of <c val="FFFF80"><d ref="Effect,SandstormWindSA,AreaArray[0].Radius" precision="2"/></c> around the target point lasting for <c val="FFFF80"><d  ref="Effect,SandstormEarthCP,PeriodCount*Effect,SandstormEarthCP,PeriodicPeriodArray[0]"/></c> seconds<n/><n/>Enemies under the effects of Sandstorm are blinded reducing their attack range to melee.
-Button/Tooltip/SandstormWind=Infusion: <c val="FFFFFF">Wind</c><n/>Release: <c val="804040">Earth</c><n/><n/>Periodically deals damage in a radius of <c val="FFFF80"><d ref="Effect,SandstormWindSA,AreaArray[0].Radius" precision="2"/></c> around the target point lasting for <c val="FFFF80"><d  ref="Effect,SandstormWindCP,PeriodCount*Effect,SandstormWindCP,PeriodicPeriodArray[0]"/></c> seconds<n/><n/>Enemies under the effects of Sandstorm are blinded reducing their attack range to melee.
+Button/Tooltip/SandstormEarth=Infusion: <c val="804040">Earth</c><n/>Release: <c val="FFFFFF">Wind</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,SandstormEarthDMG,Amount*2"/></c> damage per second in a radius of <c val="FFFF80"><d ref="Effect,SandstormEarthSA,AreaArray[0].Radius" precision="2"/></c> around the target point, lasting for <c val="FFFF80"><d  ref="Effect,SandstormEarthCP,PeriodCount*Effect,SandstormEarthCP,PeriodicPeriodArray[0]"/></c> seconds<n/><n/>Enemies under the effects of Sandstorm are blinded, reducing their attack range to melee
+Button/Tooltip/SandstormWind=Infusion: <c val="FFFFFF">Wind</c><n/>Release: <c val="804040">Earth</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,SandstormWindDMG,Amount*2"/></c> damage per second in a radius of <c val="FFFF80"><d ref="Effect,SandstormWindSA,AreaArray[0].Radius" precision="2"/></c> around the target point, lasting for <c val="FFFF80"><d  ref="Effect,SandstormWindCP,PeriodCount*Effect,SandstormWindCP,PeriodicPeriodArray[0]"/></c> seconds<n/><n/>Enemies under the effects of Sandstorm are blinded, reducing their attack range to melee
 Button/Tooltip/SerpentLord=
 Button/Tooltip/ShadowCrashMissile=Launches a Poisonbolt at the target location dealing 30 damage on impact and poisoning the targets for 11% of the initial damage per second over 3 seconds.
 Button/Tooltip/ShadowHero=Become one with the darkness...
@@ -1162,8 +1162,8 @@ Button/Tooltip/SplitterY=<c val="0080FF">Launches a missile that can split and d
 Button/Tooltip/SporeLord=Long-range anti-ground flyer. <n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/StaticShield=Attackers get hit by 'Static' stunning them for 4 seconds.<n/>Has limited charges but restores charges over time.
 Button/Tooltip/Stealth=Become invisible for <c val="FFFF80"><d ref="Behavior,Stealth,Duration" precision="1"/></c> seconds after receiving damage<n/><n/><c val="FFFF80"><d ref="Abil,IllusionHeroStealth,Cost[0].Charge.TimeUse"/></c> second cooldown
-Button/Tooltip/Steam=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Boils the insides of enemies in a radius of <c val="FFFF80">2</c> around the target point dealing damage to affected enemies, and then additional damage over <c val="FFFF80">10</c> seconds. Units that die while under the effects of Steam have a <c val="FFFF80">15%</c> to cause another Steam explosion.
-Button/Tooltip/SteamWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Boils the insides of enemies in a radius of <c val="FFFF80">2</c> around the target point dealing damage to affected enemies, and then additional damage over <c val="FFFF80">10</c> seconds. Units that die while under the effects of Steam have a <c val="FFFF80"><d ref="Effect,SteamWaterExplodeDelay,Chance*100"precision="1"/>%</c> to cause another Steam explosion.
+Button/Tooltip/Steam=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Boils the insides of enemies in a radius of <c val="FFFF80"><d ref="Effect,SteamFireSA,AreaArray[0].Radius" precision="1"/></c> around the target point dealing <c val="FFFF80"><d ref="Effect,SteamFireInitDMG,Amount"/></c> damage to affected enemies, and then an additional <c val="FFFF80"><d ref="Effect,SteamFireDMG,Amount*20"/></c> damage over <c val="FFFF80">10</c> seconds. Units that die while under the effects of Steam have a <c val="FFFF80">15%</c> to cause another Steam explosion.
+Button/Tooltip/SteamWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Boils the insides of enemies in a radius of <c val="FFFF80"><d ref="Effect,SteamWaterSA,AreaArray[0].Radius" precision="1"/></c> around the target point dealing <c val="FFFF80"><d ref="Effect,SteamWaterInitDMG,Amount"/></c> damage to affected enemies, and then an additional <c val="FFFF80"><d ref="Effect,SteamWaterDMG,Amount*20"/></c> damage over <c val="FFFF80">10</c> seconds. Units that die while under the effects of Steam have a <c val="FFFF80"><d ref="Effect,SteamWaterExplodeDelay,Chance*100"precision="1"/>%</c> to cause another Steam explosion.
 Button/Tooltip/StormLord=
 Button/Tooltip/Strafe=Rapidly launches <c val="FFFF80"><d ref="Effect,WarpHeroStrafeDummy,ExpireDelay"/></c> missiles at random targets in range, each dealing <c val="FFFF80"><d ref="Effect,ImmortalStrafeDamage,Amount"/></c> damage.
 Button/Tooltip/SubarmorPolymerflow=Polymer is released when getting hit by melee or ranged attacks reducing damage taken by <d ref="(Behavior,Polymercrust,DamageResponse.ModifyFraction-1)*(-100)" precision="2"/>% Stacks up to 10 times.
@@ -1176,8 +1176,8 @@ Button/Tooltip/ThorV3=Heavy assault mech.<n/><n/><c val="#ColorAttackInfo">Can a
 Button/Tooltip/ThornLord=Assault unit. Regenerates life quickly when burrowed. Can morph into a Ravager.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/ThunderLord=Powerful psionic attacker.<n/><n/><c val="ffff8a">Can attack ground and air units.</c><n/><n/><c val="FFE303">Detector, Regenerative</c>
 Button/Tooltip/Thunderfury=All enemy units in the target area suffer <c val="FFFF80"><d ref="Effect,LightningHeroThunderfuryDMG,Amount"/></c>  damage and get knocked back.
-Button/Tooltip/ThunderstormWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="FFFFFF">Wind</c><n/><n/>Create a Thunderstorm at your hero which will travel up to <c val="FFFF80">12</c> range towards the target point dealing damage in a radius of <c val="FFFF80"><d ref="Effect,ThunderstormWaterSA,AreaArray[0].Radius"/></c> each second.<n/><n/>Each damage instance can chain to <c val="FFFF80"><d ref="Effect,ThunderstormWaterChainSearchTarget,AreaArray[0].MaxCount"/></c> additional unit in a radius of <c val="FFFF80">3</c>.
-Button/Tooltip/ThunderstormWind=Infusion: <c val="FFFFFF">Wind</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Create a Thunderstorm at your hero which will travel up to <c val="FFFF80">12</c> range towards the target point dealing damage in a radius of <c val="FFFF80"><d ref="Effect,ThunderstormWindSA,AreaArray[0].Radius"/></c> each second.<n/><n/>Each damage instance can chain to <c val="FFFF80">1</c> additional unit in a radius of <c val="FFFF80">3</c>.
+Button/Tooltip/ThunderstormWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="FFFFFF">Wind</c><n/><n/>Create a Thunderstorm at your hero which will travel up to <c val="FFFF80">12</c> range towards the target point dealing <c val="FFFF80"><d ref="Effect,ThunderstormWaterDMG,Amount"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,ThunderstormWaterSA,AreaArray[0].Radius"/></c> each second<n/><n/>Each damage instance can chain to <c val="FFFF80"><d ref="Effect,ThunderstormWaterChainSearchTarget,AreaArray[0].MaxCount"/></c> additional unit in a radius of <c val="FFFF80">3</c>
+Button/Tooltip/ThunderstormWind=Infusion: <c val="FFFFFF">Wind</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Create a Thunderstorm at your hero which will travel up to <c val="FFFF80">12</c> range towards the target point dealing <c val="FFFF80"><d ref="Effect,ThunderstormWindDMG,Amount"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,ThunderstormWindSA,AreaArray[0].Radius"/></c> each second<n/><n/>Each damage instance can chain to <c val="FFFF80">1</c> additional unit in a radius of <c val="FFFF80">3</c>
 Button/Tooltip/TimberLance=Fire a a sharp spike of wood that deals <c val="FFFF80"><d ref="Effect,TimberLanceDMG,Amount"/></c> damage to the first enemy it hits<n/><n/>Firing a <c val="FFFF80">Timber Lance</c> adds <c val="FFFF80">1</c> combo power to <c val="FFFF80">Toxic Vapor </c><n/>
 Button/Tooltip/TimeHero=Erase your enemies from existence!
 Button/Tooltip/TimeHeroChronofield=All enemies and projectiles within a radius of <c val="FFFF80"><d ref="Effect,TImeHeroChronofieldSA,AreaArray[2].Radius"/></c> have their timescale reduced by <c val="FFFF80"><d ref="(1-(Behavior,TimeHeroChronofield3,Modification.TimeScale))*100"/>%</c> - <c val="FFFF80"><d ref="(1-(Behavior,TimeHeroChronofield1,Modification.TimeScale))*100"/>%</c> depending on distance
@@ -1777,6 +1777,16 @@ DocInfo/PatchNote536=  - Removed one level from Division and added one level to 
 DocInfo/PatchNote537=  - Vanquish now only applies to the primary impact and only if you cast with at least 1 Orb Power
 DocInfo/PatchNote538=  - Buffed Anomaly, Deviance, Enervate, Vanquish, Ambit, Shielded and Divination
 DocInfo/PatchNote539=  - Altered Pervade and Haste
+DocInfo/PatchNote540=- General
+DocInfo/PatchNote541=  - Laser Targeting will no longer glitch out vs the Earth Hero
+DocInfo/PatchNote542=  - Lowered the visual height of Science Vessels
+DocInfo/PatchNote543=
+DocInfo/PatchNote544=- Elemental Hero
+DocInfo/PatchNote545=  - Increased the radius of Steam
+DocInfo/PatchNote546=  - Earthquake triggeres more times but deals less damage
+DocInfo/PatchNote547=  - Slightly increased the duration of Sandstorm
+DocInfo/PatchNote548=  - Removed Speedstorm and replaced with Permanence
+DocInfo/PatchNote549=  - Blunt Force now affects structures
 DocInfo/Screenshot01=Reward points carry over to subsequent games and can be beneficial in a variety of ways.
 DocInfo/Screenshot02=Standing near a Pylon enables you to teleport to any other base.
 DocInfo/Screenshot05=Spend talent points to increase your power.
@@ -4474,7 +4484,6 @@ Param/Value/0565430A=not enough achievements
 Param/Value/05739FDA=Warning
 Param/Value/0575CF0A=x1
 Param/Value/05A82FB5=Mobile Nydusworm
-Param/Value/05CAB118=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/05E1AAD1=A Rock Lord has been spawned by the Mind Lord.
 Param/Value/06057DEF=normal win in less than 
 Param/Value/06590F36=Monsoon 0/1
@@ -4517,7 +4526,6 @@ Param/Value/0A20B321=A Fire Lord has been spawned by the Mind Lord.
 Param/Value/0A20FB7B=all in
 Param/Value/0A2AA8E5=Probe Cannons targeted towards a point will be able to pierce through 1/2 enemies. Probe Cannons  targeted on a unit will cause their host to take 15/30% reduced damage and gain 1/2 regeneration of all types.
 Param/Value/0A2EE30F=<c val="0000FF">
-Param/Value/0A64452D=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/0A68B7E5=Another Nest burned - check!<n/>Reward: +10% zealot production speed
 Param/Value/0A6A0825=Blood heals 33/66/100% more health
 Param/Value/0A9AC60A=Quest complete
@@ -4525,7 +4533,6 @@ Param/Value/0ACACCC2=Become immune to most slow and force effects, enables you t
 Param/Value/0AF4937C=A Slime Lord has been spawned by the Mind Lord.
 Param/Value/0B69CFE1=Lvl: 0
 Param/Value/0B6FF37F=Boulders or Chinks passing through Lava Fields will become Fiery Boulders which deal double damage
-Param/Value/0B8307B0=0
 Param/Value/0BBFDE25=Discovered all forgotten reward piles - 100 bonus reward points for everyone!
 Param/Value/0BD33E27=Player handles: 
 Param/Value/0C0881DD=shows the achievement of the next player
@@ -4558,7 +4565,6 @@ Param/Value/0DDD9C5B=Offense
 Param/Value/0DEF721C=An ancient stone guardian who has risen from the earth to purge the zerg infestation.<n/><n/>To enable this hero you have to earn 125 achievements.
 Param/Value/0E21D8E9=
 Param/Value/0E2AB7A6=A master of the skies who can race across the battlefield with unequaled speed and agility.<n/><n/>To enable this hero you have to earn 150 achievements.
-Param/Value/0E36B10A=0
 Param/Value/0E455E52=Units that have been tricked into attacking their allies have 20/40% chance to release a Discharge when the effect wears off or is reapplied
 Param/Value/0E578662=Corruption 0/3
 Param/Value/0E935B71=Rapid Repairs also increases energy regeneration by 25/50%
@@ -4598,10 +4604,10 @@ Param/Value/1261DFA2=<c val="FFFF00">Exterminate the
 Param/Value/1272789B=Quest complete: 
 Param/Value/1278E4C7=Unit Movement Speed +
 Param/Value/127ACF1A=The Terrans think that the Thor design is a dead end but they will come back with a new design soon <n/>+50k xp  +"magneto technology" (knockback immunity) +
-Param/Value/128B43AC=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
+Param/Value/128B43AC=
 Param/Value/129C919B=A Sky Lord has been spawned by the Mind Lord.
 Param/Value/12A963C2=Heatwave 0/3
-Param/Value/12BCA3B1=Eternal Life instantly heals 25/50% maximum health and shields, and also increases the radius of Eternal Thunderstorm (created by the Bonus talent) by 50/100%
+Param/Value/12BCA3B1=Eternal Life instantly heals 25/50% maximum health and shields, and also increases the radius of Eternal Thunderstorm (created by the Bonus talent) by an additive 75/150%
 Param/Value/13390CCD=An Evolution Lord has been spawned by the Mind Lord.
 Param/Value/134342C8=win the game without completing a Thor quest<n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
 Param/Value/1364B498=Stealth gains 1/2/3 additional max charges and the Illusion hero will deal 25/50/75% more damage while Stealthed
@@ -4647,7 +4653,6 @@ Param/Value/173A977F=Optronics 0/1
 Param/Value/174C5C8B=You gain 0/0.33/0.66/1 Energy and Health when dealing damage with Mutation
 Param/Value/176FAD20=A Swarm Lord has been spawned by the Mind Lord.
 Param/Value/1775B878=Unlocks Wrath, which uses energy stored in 'Static Shield' charges to deal a large amount of area damage around targets hit with Thunderfury. Each talent point increases the damage per used shield charge by 0/75/150%.
-Param/Value/177CDF8F=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/1798E1C8=Moon Lord
 Param/Value/17AF96DC=Zealots explode on death
 Param/Value/17B805D4=well done: the terrans will have to tinker some more before their creations are a match for you!<n/>+5 upgrades +10k xp<n/>+"mutagen" (50% less fireballs from Zerg units)
@@ -4656,11 +4661,12 @@ Param/Value/1818F638=Complete every overlord madness stage in challenge mode in 
 Param/Value/1832D43F=Upgrades 
 Param/Value/1870FA03=Multishot turns 0/4/8/12% of the inflicted damage into energy.
 Param/Value/187FA4DE=Zealots and anointed units gain a lesser Guardian Shield.
-Param/Value/188EA72E=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/1893EEF2=</c>
 Param/Value/1902E3DD=Warning
 Param/Value/191C3202=Expose 0/1
+Param/Value/1930CC9A=
 Param/Value/195901F2=Gateway
+Param/Value/19ACBF51=
 Param/Value/19C24839=Increases Thunderfury and Wrath's damage verses Massive  Heroic and Mechanical enemies by 0/33/66/100%
 Param/Value/1A0322EB=Havoc Orb lightning strikes are 33/66/100% more frequent.
 Param/Value/1A155140=Ripple 0/1
@@ -4717,6 +4723,7 @@ Param/Value/203F432C=Enables your hero to generate a Power Field - requires 250 
 Param/Value/204C49B4=Captain Planet
 Param/Value/206C1E21=While Energytap is active you gain 2/4 Dark Energy per second.<n/>Requires level 10+
 Param/Value/206CE6C6=Warning
+Param/Value/206EA15C=<n/>
 Param/Value/20855923=m:
 Param/Value/209E7AA5=Poison Clouds last 5/6/7/8 seconds.
 Param/Value/20F31A02=Hidden Shrine
@@ -4739,7 +4746,6 @@ Param/Value/22E58118=Fire Mastery 0/2
 Param/Value/22F715CC=Gandalf
 Param/Value/230E4E22=Shroud 0/3
 Param/Value/234C3BAA=While it stands it will provide you with experience.
-Param/Value/234E40BF=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/2360C938=Preheat 0/1
 Param/Value/238F12DE=For the team
 Param/Value/239F8B65=Paradox 0/2
@@ -4760,7 +4766,6 @@ Param/Value/25469DC3=Warning
 Param/Value/256270A5=Units that are doused or on fire will attack and move at 80/60/40% of their original speed
 Param/Value/25CAA66F=Destroy 
 Param/Value/25E82CAF=Enables the Terminator buff - requires 150 achievement points<n/>Grants you a 1% chance on every attack to gain the Terminator buff<n/>
-Param/Value/262A8CEA=0
 Param/Value/2631BDB5=Quest complete: 
 Param/Value/26365F1C=Vampirism 0/2
 Param/Value/2645DB60=Shadow Lord
@@ -4784,7 +4789,7 @@ Param/Value/29B0BD79=reach forge upgrade level <c val="FF0000">40</c>,<c val="FF
 Param/Value/29CF5B18=Grants the Moon Lord buff  - requires 300 achievement points<n/>Which gives +500 maximum health and shield points, +5 all regeneration, +25 maximum energy, +0.5 movement speed, and +30% damage<n/>
 Param/Value/29D294DD=Debris 0/2
 Param/Value/2A0D9DA4=Warning
-Param/Value/2A21F3C0=Increase Hellfire Quakes damage by an additional 50/100% (stacks additively with Scorch) and also deal 3/6% of targets maximum health as bonus damage. (is unaffected by damage bonuses but ignores all damage reduction and armor)
+Param/Value/2A21F3C0=Increase Hellfire Quakes damage by an additional 50/100% (stacks additively with Scorch) and also deal 1.5/3% of targets maximum health as bonus damage. (is unaffected by damage bonuses but ignores all damage reduction and armor)
 Param/Value/2A3C3954=A Horde Lord has been spawned by the Mind Lord.
 Param/Value/2A81BAFC=Doubleganger 0/3
 Param/Value/2A8FC3B8=Long Range Surveillance System increases the range of your Recombulator by 0/33/66%, increases the maximum amount of enemies that it can target by 0/1/2 and reduces the energy cost of absorbing a Recombulatorfeedback by 0/1/2
@@ -4824,7 +4829,7 @@ Param/Value/2DBE8AD5=Increase slow effect by an additive 12.5/25%
 Param/Value/2DD49043=While it stands it will provide you with experience.
 Param/Value/2DE17238=IceBurn 0/1
 Param/Value/2E086315=An Acid Lord has spawned.
-Param/Value/2E32E7D1=Makes all Earth infused abilities deal 150/300% more damage to heroic enemies and ignore 50/100% armor
+Param/Value/2E32E7D1=Makes all Earth infused abilities deal 150/300% more damage to heroic/structure and ignore 50/100% armor
 Param/Value/2E673205=Quest complete: 
 Param/Value/2E95A014=When an infected unit dies a new mutation of Black Death starts ... <n/>Requires at least level 10.
 Param/Value/2EFE81CC=Volatile Energy 0/3
@@ -4839,7 +4844,6 @@ Param/Value/2FBA72D3=Polymer residue left behind increases your armor by 0/2.5/5
 Param/Value/2FCBD172=Increase Micro Burst damage by 33/66%
 Param/Value/2FF06B94=Drench 0/2
 Param/Value/2FF3910D=Amplitude 0/3
-Param/Value/30390C42=0
 Param/Value/303B61DD=win <c val="FF0000">250</c>,<c val="FF8000">200</c>,<c val="FFFF00">150</c>,<c val="00FF00">100</c>,<c val="0000FF">50</c> games
 Param/Value/3041EF86=Healing Wave will grant additional shield healing over 10 seconds equal to 50% of base amount<n/>Requires level 10+
 Param/Value/304A3046=Orbit 0/2
@@ -4950,7 +4954,6 @@ Param/Value/3DF31D5C=Cycle 0/3
 Param/Value/3E1134CD=Increases speed and maximum range of your Fireballs by 0/25/50%
 Param/Value/3E22DCCC=The Probe Hero and 1/2 allies in a radius of 8 gain a Probe Cannon every 16/8 seconds.<n/><n/>Additionally, level 1 enables Sentry's and High Templars to spawn when 100 minerals are gained, and level 2 enables Archons and Immortals
 Param/Value/3E3E5DE9=Launch 1/2 Water Blasts at surrounding enemies each time Flood drops a puddle.(is not triggered by Ocean)
-Param/Value/3E4EA804=0
 Param/Value/3E717803=StaticEnergy 0/1
 Param/Value/3EAE0508=HydroBlast 0/2
 Param/Value/3EC4871D=Increase base Health Shield and Energy regeneration by 3/6
@@ -4965,6 +4968,7 @@ Param/Value/3F14BD87= (max)
 Param/Value/3F1C4838=Overload 0/2
 Param/Value/3F248363=A Corrosion Lord has spawned.
 Param/Value/3F7C4EC3= / 3  <n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
+Param/Value/3F8A5CE6=<n/>
 Param/Value/3F999B07=Casting Leap will also cast Blade Storm for free.<n/>Requires level 10+
 Param/Value/4045A2F3=Warning:
 Param/Value/406431EB=Gravity
@@ -4994,7 +4998,6 @@ Param/Value/421220F9=Shatter 0/3
 Param/Value/4215893B= - 
 Param/Value/421EA90A=Water infused abilities now reset the ability cooldown of their counterpart, and will also no longer receive a cooldown when their counterpart is casted.
 Param/Value/4257EC1D=Reduces the energycost of strafe by 3/6/9.
-Param/Value/42669463=0
 Param/Value/42834869=Causes the Splitter to split 1/2/3  times on impact.
 Param/Value/42C3D68B=He is said to have come from the fiery depths of hell itself.
 Param/Value/4336845F=Recycle 0/1
@@ -5021,10 +5024,10 @@ Param/Value/455EA921=Havoc Orb lightning strikes will gain 0.3/0.6 increased ran
 Param/Value/455FD6EE=Dampeners 0/3
 Param/Value/4562227B=Supply 0/2
 Param/Value/45671E85=NYI
-Param/Value/457D19CD=0
 Param/Value/4597945C=<c val="808000">Massacre<n/>
 Param/Value/45C00D6E=Development 0/1
 Param/Value/45C7A602=Warning
+Param/Value/45E9D342=Normal: 
 Param/Value/45F556B3=Structure Health Armor +1
 Param/Value/45FCF806=Terran Bosses
 Param/Value/4641122F=Jagged 0/3
@@ -5038,7 +5041,6 @@ Param/Value/477462AB=Timber Lance and Splinters deal 50/100/150% of original dam
 Param/Value/4781410C=Indecisive
 Param/Value/478D296C=Queen
 Param/Value/47A571BE=Explosives 0/1
-Param/Value/47D696E6=0
 Param/Value/4805FC05=Twilight Cannon always launches 2 projectiles<n/>Requires level 10+
 Param/Value/4812422E=Quest complete
 Param/Value/48408195=Rotating Beams can grow up to a radius of 2.75/3.5 over time
@@ -5140,7 +5142,6 @@ Param/Value/55B0D56F= Zerg structures to reduce the amount of incoming units.
 Param/Value/55F4DE7D=Causes enemies who have been affected by both Wind and Water infused abilities to get shocked.(both Imbue and Saturate enable this to trigger)<n/><n/>Applies Wind on hit effects to affected enemies.
 Param/Value/5638C496=Confidence
 Param/Value/563DBFEC=Mineral pickups or Rich Mineral pickups nearby a Crystal impact will be drawn towards the caster
-Param/Value/56576E2D=0
 Param/Value/56615F0F=Casting any ability has a 0/15/30% chance to cast Strafe.<n/>Requires level 10+
 Param/Value/5685C8D4=Death's Embrace 0/3
 Param/Value/568F8508= bonus reward points.
@@ -5169,7 +5170,6 @@ Param/Value/586AD693=Gaining a stack of Static Charge has a 0/25/50% chance to t
 Param/Value/58931A47=Magic 0/2
 Param/Value/5896FB3A=Targets hit by Thunderfury have a 0/25/50% chance to trigger a Lightning.<n/>Requires at least level 10
 Param/Value/5911490E=Investments into future developments lower your current timewave cost by 40%
-Param/Value/5924C65F=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/594CD4DA=Air
 Param/Value/596F7BF3=Overwhelming 0/3
 Param/Value/5975CDFD=Initial Leap impact radius increased by 25/50%
@@ -5180,12 +5180,10 @@ Param/Value/59C7E3E4=Your Timerift ability reverses the timestream of your unit 
 Param/Value/59D9600B=Every point invested increases experience gained by your team by 2%, and increases Forge research speed by 1%<n/>
 Param/Value/5A219639=Undergrowth 0/2
 Param/Value/5A2830AB=Increases the healing done per Energy used by 0/50/100/150%
-Param/Value/5A2E0AB7=0
 Param/Value/5A586A2F=Targets hit with Altered Timeline will live and fade 0/20/40% faster.
 Param/Value/5A755C13=Den denied!
 Param/Value/5A876367=Too Easy
 Param/Value/5A8EEF4F=Inner Fire 0/3
-Param/Value/5ABBE646=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/5ACD6A25=PartingGift 0/2
 Param/Value/5AD23FCA=How to get reward points?<n/>Play the game!<n/>For every 5 minutes you play you will gain 1 reward point on Easy. <n/>For every 5 minutes you play you will gain 2 reward points on Normal.<n/>For every 5 minutes you play you will gain 3 reward points on Hard<n/>For every 5 minutes you play you will gain 4 reward points on Insane.<n/>For every 5 minutes you play you will gain 5 reward points on Legendary.<n/><n/>You gain 1-5 points for every upgrade you gain if all upgrades are maxed<n/>You gain 1-5 points for every boss you kill<n/>You get bonus points for defeating the Terran quests<n/>You get bonus points for winning the game (classic mode)<n/><n/>How to spend reward points?<n/>Press the reward button on the right side to open/close the dialog.<n/>Now pick a reward (price is listed above each category) - You can pick rewards more than once if you have enough points!<n/>
 Param/Value/5AD3EC00=Squall 0/3
@@ -5278,13 +5276,11 @@ Param/Value/64CE9F45=Enemies that die while under the effects of Attrition have 
 Param/Value/65088249=Talents
 Param/Value/650A4B70=
 Param/Value/650D534A=Quest complete
-Param/Value/652B2BB3=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/652CD63F=Blastdesign 0/2
 Param/Value/6540B233=Launching or re-rolling any Orb will heal 50 +1% maximum shields.
 Param/Value/65A0C651=Hallucination 0/3
 Param/Value/65A495C2=Our sensors just located a new form of Ultralisk - a Metalisk ... 
 Param/Value/65B41180=Evolution complete in:
-Param/Value/65B4A8FC=0
 Param/Value/65D82054=Guardian
 Param/Value/65EDE840=Exterminate the 
 Param/Value/65FB8F4F=
@@ -5348,6 +5344,7 @@ Param/Value/6E2799FD=A Beast Lord has spawned.
 Param/Value/6E51544F=Amplify 0/2
 Param/Value/6E618220=s
 Param/Value/6E760386=Our sensors just located a new form of Ultralisk - a Torrasque...
+Param/Value/6E763748=Talents: 
 Param/Value/6EA495D8=Encompass 0/2
 Param/Value/6EB1214E=Fire 2/4 additional shots, but increase the energy cost by 5/10.<n/>Requires level 10+
 Param/Value/6EC03A61=0
@@ -5356,6 +5353,7 @@ Param/Value/6F5EB831=Potential 0/5
 Param/Value/6F7CB044=Warning
 Param/Value/6F7DFC70=When you have minerals: you have unused talent points.<n/>When you have vespene gas: you have unused reward points.
 Param/Value/6F95BF89=Fertilizer 0/2
+Param/Value/6F9CCE39=Hard: 
 Param/Value/6FA630A8=Reward: +1 Zealot Damage
 Param/Value/6FB37C80=Purge 0/1
 Param/Value/6FBD2F6E=Equip 0/2
@@ -5398,7 +5396,6 @@ Param/Value/73885120=Shadow Energy builds up to 100 - then it is released and fi
 Param/Value/738C8712=Muck 0/3
 Param/Value/73F09363=kill <c val="FF0000">50k</c>,<c val="FF8000">25k</c>,<c val="FFFF00">10k,</c><c val="00FF00">5k</c>,<c val="0000FF">1k</c> enemies in one match
 Param/Value/740A002F=
-Param/Value/747C1F9E=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/74A0D967=Increases Shields & Health by 50.<n/>
 Param/Value/74B5ECFA=Burning Sky 0/1
 Param/Value/74BB645A=Adrenaline 0/3
@@ -5443,7 +5440,6 @@ Param/Value/789EAFA6=Warning
 Param/Value/78AB9383=Illusion
 Param/Value/78C1E000=Your rewards had to be reset (don't forget to pick new rewards) - sorry for the inconvenience
 Param/Value/78C69062=Talents
-Param/Value/78C74BD1=0
 Param/Value/7909DC34=kill 500 enemies without getting hit once <n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
 Param/Value/79260BF7=Poison
 Param/Value/794BDD85=Reduces damage taken by 0/15/30/45%
@@ -5504,7 +5500,6 @@ Param/Value/7FE4322F=Increase the damage of Gravity Shot and Portals by 33/66/10
 Param/Value/7FEC00AD=Warning
 Param/Value/7FF392D6=The Terrans wont give up and come back with a better design soon enough<n/>+20k xp  +10 photon cannon damage +
 Param/Value/803A9CCD=Retarget 0/2
-Param/Value/803E5E6A=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/805B2EEC=Sky 0/2
 Param/Value/8062E9A8=Conservation 0/3
 Param/Value/80A1EF7B=Fire 50/100/150% more beams
@@ -5522,7 +5517,6 @@ Param/Value/81EA15F6=Furor 0/2
 Param/Value/823C19AB=Suffering 0/2
 Param/Value/8249828B=Champion
 Param/Value/8272EBC9=Any damage effect that disables Rapid Repairs will deal 80% reduced damage.
-Param/Value/827D2D6A=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/82A2BD58=Never give up - Never Surrender <n/>even after falling back  <c val="FF0000">7</c>,<c val="FF8000">6</c>,<c val="FFFF00">5</c>,<c val="00FF00">4</c>,<c val="0000FF">3</c>. stages
 Param/Value/82A33864=Nightstorm grows larger over time.
 Param/Value/82B4D4A6=defeat the Annihilator while you are in stage 6 <n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
@@ -5533,7 +5527,6 @@ Param/Value/82FFD9B4= has despawned.
 Param/Value/832802A9=Torrasque Rage
 Param/Value/832EDA26=Increase evasion chance by 10/20/30%
 Param/Value/834DDDB6=New Quest: 
-Param/Value/83699D24=0
 Param/Value/8382E0A6=Boundless 0/1
 Param/Value/83840A18=Twilight
 Param/Value/83D85F17=Quest update:
@@ -5576,7 +5569,6 @@ Param/Value/88ED77E7= (max)
 Param/Value/890100DF=You gain 0/0.125/0.25 Energy for every point of Dark Energy you generate
 Param/Value/890CBA77= reward points gained!
 Param/Value/891E939D=Every enemy that dies near the Gravity Hero will restore health.<n/><n/>Also makes Consume apply a debuff that will reduce the enemies armor by 1 +0.5 for each talent used on Consume, stacking 10 times and lasting for 90 seconds.<n/>Requires level 10+
-Param/Value/8949E6EF=0
 Param/Value/8963429D=Trickery will target another enemy nearby the initial location of the cast every 5 seconds, up to 1/2/3 times<n/>Requires level 10+
 Param/Value/896E451A=Units and structures in Holo Shield get healed for 2/4/6% of maximum life shield and energy each second. (non stackable)
 Param/Value/89808E44=Evil Present 0/3
@@ -5603,7 +5595,6 @@ Param/Value/8C962852=Increases damage by 0/50/100/150%
 Param/Value/8CB09BA4=Quest failed
 Param/Value/8CC43A82=The polymer released on getting attacked provides a structure for your shieldgrid. Restores 0/3/6/9 Shieldpower on getting hit.
 Param/Value/8D0082BB=A once fallen warrior who has returned to the battlefield in order to exact his revenge.<n/><n/>To enable this hero you have to complete the training at least once on any difficulty.
-Param/Value/8D34A921=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/8D3D5AF9=New Quest: 
 Param/Value/8D4D5F55=Assassinate 0/3
 Param/Value/8D62E032=Overcharge Range +
@@ -5620,7 +5611,6 @@ Param/Value/8E5D914E=Firespewer
 Param/Value/8E791D03=Chemistry 0/3
 Param/Value/8EB60E75=A Demon Lord has been spawned by the Mind Lord.
 Param/Value/8EE1A198=Fearless 0/1
-Param/Value/8EEA89DA=0
 Param/Value/8F0BAE1E=Feast 0/1
 Param/Value/8F18BDB2=A Primal Lord has spawned.
 Param/Value/8F1BAEEC=Wisp 0/1
@@ -5689,6 +5679,7 @@ Param/Value/963B54CC=quests
 Param/Value/966FFE7F=Preservation 0/1
 Param/Value/96712222=Be below 100% energy at least once every 10 seconds for <c val="FF0000">25</c>,<c val="FF8000">20</c>,<c val="FFFF00">15</c>,<c val="00FF00">10</c>,<c val="0000FF">5</c> minutes.
 Param/Value/967F4166=Defeat the ThorV2 to gain +10 photon cannon damage
+Param/Value/96831289=Easy: 
 Param/Value/968BE583=flawless ThorV3
 Param/Value/96B7BED8=Regen 
 Param/Value/96B8A408=Increase the radius that Trickery can trick units by 2 and the amount of units that get tricked by 50%
@@ -5719,7 +5710,6 @@ Param/Value/9A29DC98=Increases Shields & Health by 50.
 Param/Value/9A5D1CAF=Evolution complete in:
 Param/Value/9A919B72=
 Param/Value/9AA07E9B=Power Field
-Param/Value/9AC76E16=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/9ACDAB8D=Evolution
 Param/Value/9AE8E06D=Our scout has died, we may never know what his findings were.
 Param/Value/9AE93B1C=Dark Channels 0/2
@@ -5754,7 +5744,6 @@ Param/Value/9E3A48EA=Dodgeball
 Param/Value/9E5E8C79=Deviance 0/1
 Param/Value/9EA7A505=<c val="FFFF00">
 Param/Value/9ECD154F=Ocean 0/2
-Param/Value/9F07BE69=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/9F0BA244=When a mutated unit dies the mutation will try to find a new host unit.<n/>Requires level 10+
 Param/Value/9F1E7F21=A Thunder Lord has been spawned by the Mind Lord.
 Param/Value/9F28D274=Warp Rift 0/2
@@ -5825,7 +5814,6 @@ Param/Value/A701B31D=Shielded 0/1
 Param/Value/A707556F=Destroy 
 Param/Value/A755B909=Short 0/1
 Param/Value/A76D17B2=When absorbing the Recombulatorfeedback this nifty technology allows you to reflect the charge towards the closest enemy unit 0/1/2 times.<n/>Hitting another unit with the reflection will create another feedback but who cares about feedbackloops when the cost to absorb a charge is reduced by an additional 0/3/6 energy.<n/>Requires level 10+
-Param/Value/A76D59A8=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/A7D58431=Removes the inital energy cost of Energytap
 Param/Value/A7DC7CBB=Pull enemies towards your hero 1/2/3 times after Gravity Dash has finished and leave behind gravity storms that deal damage over time.<n/>Requires level 10+
 Param/Value/A858D232=Deflection 0/1
@@ -5833,6 +5821,7 @@ Param/Value/A88B3D1E=Overseer down
 Param/Value/A898FBFB=Shadowcrashes casted by Dark Energy now provide new Dark Energy<n/>Requires level 10+
 Param/Value/A8A6DA28=Chain React 0/1
 Param/Value/A8D6F766=Increase the duration of Lifted by 33/66% and cause Micro Bursts to deal 25/50% more damage against heroic enemies
+Param/Value/A8E6F964=
 Param/Value/A8EBBE11=Unit Energy Starting Amount +5
 Param/Value/A932C800=Havoc Orbs can target 1 additional enemy per 2 Orbs used<n/>Requires level 10+
 Param/Value/A967A7D1=Ration 0/1
@@ -5881,7 +5870,6 @@ Param/Value/ADA8273F=Arc 0/1
 Param/Value/ADCCFA40=Normal
 Param/Value/ADE3C4B7=Evolution averted +1 talent
 Param/Value/AE2D6404=Plasma Torpedoes are charged for 1/2/3 hits. But will launch 0/1/2 less Torpedoes per cast<n/>Requires level 10+
-Param/Value/AE4EE13A=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/AE776B2D=Adds 2/4 more lines to Upheaval, but increases the energy cost by 10/20<n/>Requires level 10+
 Param/Value/AE7873AB=Capacity 0/4
 Param/Value/AEA1AB0E=Warpgate 0/3
@@ -5897,7 +5885,6 @@ Param/Value/AFD32E92=Plague 0/3
 Param/Value/AFFE00F6=Enemies in the radius of Healing Wave get Soaked, if they were already Soaked then they get Frozen
 Param/Value/B0462E12=Shrapnel 0/2
 Param/Value/B0C07E64=Unit Movement Speed +0.1
-Param/Value/B0E1FCEA=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/B1312508=Upgrades
 Param/Value/B132AE11=While you are near a pylon you gain for every level:<n/>0.5e/s increased energy regeneration<n/>5 max energy<n/>3% damage<n/>
 Param/Value/B1501B78=Burning Blood 1/1
@@ -5942,7 +5929,6 @@ Param/Value/B7A7A361=You gain 0/5/10 Energy for every enemy hit with your Blastw
 Param/Value/B7AAC0A1=Structure Health Armor +
 Param/Value/B7BC57FF=Blast Zone 0/2
 Param/Value/B7DDE037=Storm 0/1
-Param/Value/B7DFA9E8=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/B7EFFB55=Increase the chance for enemies to drop fruit by 33/66% and increase the range of auto harvest by 3/6
 Param/Value/B7FBC9F2=Rematerialize 0/1
 Param/Value/B81DAA4F=Warp
@@ -5955,7 +5941,7 @@ Param/Value/B87B968C=not enough achievements
 Param/Value/B8A70F22=Enables the Particle Hero. Enjoy!
 Param/Value/B8E409BC=Pool drained!<n/>Reward: +100% bonus xp from killing Zerglings!
 Param/Value/B972D9F4=Tremor 0/3
-Param/Value/B9951CCF=Enemy units in the area of everlasting storm take 100/200% increased damage from the next 5 damage instances. (must deal at least 40 damage)<n/><n/>Allied units and heroes in the area of Everlasting Storm have their cooldown speed increased by 15/30% and their attack speed increased by 50/100% for 30/60 seconds.
+Param/Value/B9951CCF=Increase the duration of Everlasting Storm by a multiplicative 100/200% (scales with Endure)
 Param/Value/B9ED1468= - destroy it!
 Param/Value/BA0659A9=Your Plasma Torpedo impacts have a 0/20/40% chance to release enough energy to generate a Multiphase Shield charge.
 Param/Value/BA069895=An Evolution Lord has spawned.
@@ -5994,7 +5980,6 @@ Param/Value/BD7373E9=+hp&shields
 Param/Value/BD90A4E2=Poison
 Param/Value/BDB04A9D=You have not enabled this hero.
 Param/Value/BE28CAF6=Enemies hit by a Crystal Rain impact will be stunned for 1 second, massive and heroic units are immune to the stun but will take 50% more damage instead<n/><n/>This bonus is doubled for Rich Crystal Rain impacts
-Param/Value/BE5672C0=0
 Param/Value/BE5A2369=
 Param/Value/BE5DB8B4=Talents
 Param/Value/BEAD5BDA=A Demon Lord has spawned.
@@ -6033,7 +6018,6 @@ Param/Value/C23288B1=Increases the energy regeneration of yourself and all heroe
 Param/Value/C26E8759=Structure Attack Speed +3%
 Param/Value/C280396E=That Firespewer choked on a fireball - well done!
 Param/Value/C2B34C67=Quicken 0/2
-Param/Value/C2B9085C=0
 Param/Value/C2CEB928=Mirrors 0/3
 Param/Value/C2EECB0E=Firestarter 0/1
 Param/Value/C2F5BBB5=Evolution averted +1 talent
@@ -6206,7 +6190,6 @@ Param/Value/D740F3AD=GForce 0/3
 Param/Value/D76C94F8=Every Water Blast has a 25/50% to become an Ice Blast, which will freeze its primary target
 Param/Value/D7A86EEE=Unit Energy Regeneration +0.05
 Param/Value/D7AB4A0E=
-Param/Value/D7D846CA=0
 Param/Value/D82A909F=Hidden Archives
 Param/Value/D8532154=h:
 Param/Value/D875C7D6=Allied units or structures in the initial cast area of Exploder will explode on death. (only positive talents apply)
@@ -6252,10 +6235,11 @@ Param/Value/DC9800D9=Increase the size of Gravity Shot by 30/60/90%
 Param/Value/DCA6CC87=The terran engineers are in shock - guess they didnt acknowledge your skill until now  <n/>+75k xp  + Improved production speed for allies + 
 Param/Value/DCFA5963=The terrans are back! They offer an upgrade for our photon cannons as a reward if you can defeat their improved Thor!
 Param/Value/DCFDAF57=Dark Art 0/3
-Param/Value/DD21052A=SpeedStorm 0/2
+Param/Value/DD21052A=Permanence 0/2
 Param/Value/DD4C0A27=Warlord
 Param/Value/DD58C6F7=Salvo 0/3
 Param/Value/DD75D850=Stay in stage 11 for  <c val="FF0000">30</c>,<c val="FF8000">21</c>,<c val="FFFF00">14</c>,<c val="00FF00">9</c>,<c val="0000FF">6</c> minutes on difficulty insane or legendary.
+Param/Value/DD8DA9DC=<n/>
 Param/Value/DDBFE132=Increases the scanrange for your guided missiles by 0/1/2/3.
 Param/Value/DDCA232B=Massacre
 Param/Value/DDDD2A4A=Warning
@@ -6366,9 +6350,9 @@ Param/Value/E9773BF3=Lacerate 0/2
 Param/Value/E978340B=Buffer 0/2
 Param/Value/E9BACD06=Doom Lord
 Param/Value/E9EEF264=Superlisk? Who names a creature Superlisk... we should talk to the General about replacing the guy in charge of naming zergs!
+Param/Value/EA24032D=Legendary: 
 Param/Value/EA60AEFA=A Primal Lord has been spawned by the Mind Lord.
 Param/Value/EA670AD3=Plasma Torpedo launches 0/1/2/3 additional missiles.
-Param/Value/EA9553D3=<s val="BossBarTitleProtoss"><c val="FFFFFF">Talents</c></s>
 Param/Value/EA9D914F=Torrasque down and somehow you're still alive ... you might be more than just lucky .. .keep it up<n/>Reward: Zealots regenerate 1 health per second.
 Param/Value/EAD2524D=Battery 0/3
 Param/Value/EAE26FE9=Breach 0/2
@@ -6407,6 +6391,7 @@ Param/Value/EEC7E80C=Increase Explosion area by 50/100% (Not cast area)
 Param/Value/EEC91C83=Talents
 Param/Value/EECDF6FF=Complete every time quest stage in less than 5 minutes in challenge mode<n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
 Param/Value/EEE82DAD=Seer 0/1
+Param/Value/EEF0A9B1=<n/>
 Param/Value/EEF9F1FD=Gateway 0/2
 Param/Value/EF43D2E1=Mass 0/3
 Param/Value/EF43D47F=You have not enabled this hero.
@@ -6432,7 +6417,6 @@ Param/Value/F1745D29=Release 0/1
 Param/Value/F1788BEA=Tempo 0/3
 Param/Value/F191AD81=Increases max energy by 5.<n/>
 Param/Value/F198C6C6=Enables the Inspiration aura - requires 200 achievement points<n/>Grants non heroic allies near your hero +30% time scale and damage reduction<n/>
-Param/Value/F19A8F6D=0
 Param/Value/F1DA0916=When an enemy that has been affected by any Water Infused ability or effect  is hit hit by a Fire Infused ability or effect, then that unit will launch a mini Fire Blast in a random direction on death. (cannot occur more than 100 times in a single ability cast)
 Param/Value/F1DE0F45=The damage area for each Rotating Beam is increased by 50/100%
 Param/Value/F2BEC8D4=
@@ -6466,6 +6450,7 @@ Param/Value/F6189354=restoring rewards for
 Param/Value/F62C5D5F=Impact 0/2
 Param/Value/F637C7BA=Eradicate 0/1
 Param/Value/F63A316B=Increase passive health/energy restoration by 1/2/3% maximum health/energy and improve flat health restoration by 5/10/15 per second
+Param/Value/F63A4AD5=Insane: 
 Param/Value/F63AC73C=Training Complete
 Param/Value/F65816A0=We have detected a 
 Param/Value/F68878E7=Casting Warpout increases your movement speed by 25% and allows you to pass through enemy units while cloaked
@@ -6545,7 +6530,6 @@ Param/Value/FF461587=Quest complete:
 Param/Value/FF4A3C65=Next: 500
 Param/Value/FF4F486E=Kingslayer
 Param/Value/FF6F1C52=Increases the energy regeneration of everyone close to your hero by 0.25 per second<n/><n/><n/>Idea by Stegenheimer
-Param/Value/FF78E543=0
 Param/Value/FF9519A7=Chrono Wave
 Param/Value/FFEC81D3=Warning
 Param/Value/FFF15752=Win with <c val="FF0000">15</c>,<c val="FF8000">12</c>,<c val="FFFF00">9</c>,<c val="00FF00">6</c>,<c val="0000FF">3</c> different heroes on difficulty hard or higher.
@@ -7084,6 +7068,7 @@ Upgrade/Name/Echo=Echo
 Upgrade/Name/Effective=Effective
 Upgrade/Name/Efficient=Efficient
 Upgrade/Name/Electric=Electric
+Upgrade/Name/ElementalHeroPermanence=Elemental Hero - Permanence
 Upgrade/Name/Elevate=Elevate
 Upgrade/Name/Emergence=Emergence
 Upgrade/Name/Empower=Empower

@@ -132,7 +132,7 @@
         <Effect index="0" value="EarthquakeCP"/>
         <Cost>
             <Vital index="Energy" value="40"/>
-            <Cooldown TimeUse="6"/>
+            <Cooldown TimeUse="5"/>
         </Cost>
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Earthquake" Requirements="IsEarthInfusedAndNot3EarthStacksOr3FireStacks"/>
@@ -241,7 +241,7 @@
         <Cost>
             <Vital index="Energy" value="40"/>
             <Charge Link="Abil/Earthquake"/>
-            <Cooldown Link="Abil/Earthquake" TimeUse="6"/>
+            <Cooldown Link="Abil/Earthquake" TimeUse="5"/>
         </Cost>
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="HellfireQuake" Requirements="IsEarthInfusedAndHas3EarthStacksAnd3FireStacks"/>
@@ -645,7 +645,7 @@
         <Cost>
             <Vital index="Energy" value="40"/>
             <Charge Link="Abil/EruptionFire"/>
-            <Cooldown Link="Abil/EruptionFire" TimeUse="6"/>
+            <Cooldown Link="Abil/EruptionFire" TimeUse="8"/>
         </Cost>
         <InterruptCost>
             <Charge Link="Abil/EruptionFire"/>
@@ -708,7 +708,7 @@
     <CAbilEffectTarget id="FirestormFire">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="FirestormFireCastSet"/>
-        <Range value="12"/>
+        <Range value="500"/>
         <Arc value="360"/>
         <CursorEffect value="FirestormFireSA"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="FirestormFire" Requirements="IsFireInfused"/>
@@ -731,7 +731,7 @@
             <Charge Link="Abil/FirestormFire"/>
             <Cooldown Link="Abil/FirestormFire"/>
         </InterruptCost>
-        <Range value="14"/>
+        <Range value="500"/>
         <Arc value="360"/>
         <Marker Link="Abil/FirestormFire"/>
         <CursorEffect value="FirestormWindSA"/>
@@ -781,7 +781,7 @@
         <Cost>
             <Vital index="Energy" value="40"/>
             <Charge Link="Abil/EruptionFire"/>
-            <Cooldown Link="Abil/EruptionFire" TimeUse="6"/>
+            <Cooldown Link="Abil/EruptionFire" TimeUse="8"/>
         </Cost>
         <InterruptCost>
             <Charge Link="Abil/EruptionFire"/>
@@ -1585,7 +1585,7 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="ThunderstormWindOffset"/>
         <Flags index="RequireTargetVision" value="0"/>
-        <Range value="12"/>
+        <Range value="500"/>
         <Arc value="360"/>
         <IgnoreFilters value="-;Player,Ally,Neutral,Enemy"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="ThunderstormWind" Requirements="IsWindInfused"/>
@@ -1607,7 +1607,7 @@
             <Charge Link="Abil/ThunderstormWind"/>
             <Cooldown Link="Abil/ThunderstormWind"/>
         </InterruptCost>
-        <Range value="12"/>
+        <Range value="500"/>
         <Arc value="360"/>
         <Marker Link="Abil/ThunderstormWind"/>
         <AINotifyEffect value="ThunderstormWind"/>

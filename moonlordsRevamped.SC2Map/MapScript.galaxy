@@ -251,12 +251,13 @@ void gf_laForge (unit lp_forge);
 bool gf_isMod (string lp_playerhandle);
 void gf_chatcommandstickselect (int lp_pnum);
 void gf_showstatwindow (int lp_player);
+text gf_GetTalentPointsTextForPlayer (int lp_player);
 void gf_initTalentDialogs ();
 void gf_DialogHideAll (int lp_player);
 void gf_talentfreeupdater ();
 void gf_TalentPressedFire (int lp_p, int lp_br, int lp_bn, int lp_hv);
-void gf_TalentPressedPoison (int lp_p, int lp_br, int lp_bn, int lp_hv);
 void gf_TalentPressedLightning (int lp_p, int lp_br, int lp_bn, int lp_hv);
+void gf_TalentPressedPoison (int lp_p, int lp_br, int lp_bn, int lp_hv);
 void gf_TalentPressedShadow (int lp_p, int lp_br, int lp_bn, int lp_hv);
 void gf_TalentPressedWarp (int lp_p, int lp_br, int lp_bn, int lp_hv);
 void gf_TalentPressedParticle (int lp_p, int lp_br, int lp_bn, int lp_hv);
@@ -1944,7 +1945,7 @@ bool auto_gf_thorboss4_TriggerFunc (bool testConds, bool runActions) {
                     lv_i -= 1;
                 }
                 else {
-                    if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)), 1.5), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMassive) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAll) < 1)) {
+                    if ((UnitGroupCount(UnitGroupAlliance(UnitGetOwner(lv_u1), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)), 1.5), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAll) < 1)) {
                         UnitCreateEffectPoint(lv_u1, "AnnihilatorLaserTrackingDamage", UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)));
                         UnitRemove(UnitGroupUnit(lv_defenders, lv_i));
                         UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
@@ -2128,7 +2129,7 @@ bool auto_gf_thorboss5_TriggerFunc (bool testConds, bool runActions) {
                     lv_i -= 1;
                 }
                 else {
-                    if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)), 1.5), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMassive) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAll) < 1)) {
+                    if ((UnitGroupCount(UnitGroupAlliance(UnitGetOwner(lv_u1), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)), 1.5), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAll) < 1)) {
                         UnitCreateEffectPoint(lv_u1, "AnnihilatorLaserTrackingDamage", UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)));
                         UnitRemove(UnitGroupUnit(lv_defenders, lv_i));
                         UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
@@ -2303,7 +2304,7 @@ bool auto_gf_thorboss6_TriggerFunc (bool testConds, bool runActions) {
                     lv_i -= 1;
                 }
                 else {
-                    if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)), 1.5), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMassive) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAll) < 1)) {
+                    if ((UnitGroupCount(UnitGroupAlliance(UnitGetOwner(lv_u1), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)), 1.5), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAll) < 1)) {
                         UnitCreateEffectPoint(lv_u1, "AnnihilatorLaserTrackingDamage", UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)));
                         UnitRemove(UnitGroupUnit(lv_defenders, lv_i));
                         UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
@@ -5267,6 +5268,12 @@ bool auto_gf_showstatwindow_TriggerFunc (bool testConds, bool runActions) {
     return true;
 }
 
+text gf_GetTalentPointsTextForPlayer (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    return (StringExternal("Param/Value/6E763748") + IntToText(gv_talentpointsavailable[(lp_player - 1)]));
+}
+
 void gf_initTalentDialogs () {
     // Variable Declarations
     int lv_i;
@@ -5279,8 +5286,8 @@ void gf_initTalentDialogs () {
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\credits_2017_charbattlezone.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     gv_talentsdialog[0] = DialogLastCreated();
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/128B43AC"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/47D696E6"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/5B1BBF1D"), StringExternal("Param/Value/DC2189EC"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5337,8 +5344,8 @@ void gf_initTalentDialogs () {
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_void_loading_taldarim01.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     gv_talentsdialog[lv_i] = DialogLastCreated();
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/827D2D6A"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/0E36B10A"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/2AEF4227"), StringExternal("Param/Value/5243AFCB"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5397,8 +5404,8 @@ void gf_initTalentDialogs () {
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\evolutionbg.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     gv_talentsdialog[lv_i] = DialogLastCreated();
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/234E40BF"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/56576E2D"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/F41FBF74"), StringExternal("Param/Value/E5A81C74"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5451,8 +5458,8 @@ void gf_initTalentDialogs () {
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\loading-zeratul01.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     gv_talentsdialog[lv_i] = DialogLastCreated();
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/EA9553D3"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/262A8CEA"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/493C3B41"), StringExternal("Param/Value/247D3C88"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5509,8 +5516,8 @@ void gf_initTalentDialogs () {
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_void_loading_aiur01.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     gv_talentsdialog[lv_i] = DialogLastCreated();
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/803E5E6A"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/30390C42"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/DDBFE132"), StringExternal("Param/Value/6687F07B"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5561,8 +5568,8 @@ void gf_initTalentDialogs () {
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_void_loading_epilogue03.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     gv_talentsdialog[lv_i] = DialogLastCreated();
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/B0E1FCEA"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/65B4A8FC"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/79B5746F"), StringExternal("Param/Value/5B9EA8A6"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5619,8 +5626,8 @@ void gf_initTalentDialogs () {
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\starbackground.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     gv_talentsdialog[lv_i] = DialogLastCreated();
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/652B2BB3"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/F19A8F6D"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/8C962852"), StringExternal("Param/Value/AB4FF831"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5677,8 +5684,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\loading-ulnar.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/05CAB118"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/457D19CD"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/5103D92B"), StringExternal("Param/Value/06C0DF41"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5731,8 +5738,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\sc2_ui_coop_detail_background_artanis.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/177CDF8F"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/D7D846CA"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/032D8A20"), StringExternal("Param/Value/D9B10B9B"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5789,8 +5796,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\sm_pt05_marsaraskypano.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/188EA72E"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/8949E6EF"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/75F427D9"), StringExternal("Param/Value/EF43D2E1"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5843,8 +5850,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\korhalskybox_korhacloudbg_diffuse.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/B7DFA9E8"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/C2B9085C"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/BADB7DC9"), StringExternal("Param/Value/7713B1C8"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5899,8 +5906,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_commandertraiticon_alarak.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/9AC76E16"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/BE5672C0"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/DC9800D9"), StringExternal("Param/Value/26E36CF3"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -5947,8 +5954,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_homepanel_commander_artanis.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/8D34A921"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/42669463"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/42834869"), StringExternal("Param/Value/63518F6C"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -6015,8 +6022,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_hots_loading_missionselect_zzerus01.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/A76D59A8"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/5A2E0AB7"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/477462AB"), StringExternal("Param/Value/EC34521F"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -6074,8 +6081,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\mrjack_zerusbg_matte.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/AE4EE13A"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/78C74BD1"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/BB2412A2"), StringExternal("Param/Value/3377E9B2"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -6143,8 +6150,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_void_loading_prologue01.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/5924C65F"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/3E4EA804"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/EF4F09A1"), StringExternal("Param/Value/33FD154E"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -6200,8 +6207,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_void_loading_shakuras01.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/9F07BE69"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/0B8307B0"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/959C04D9"), StringExternal("Param/Value/0CD93A3A"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -6269,8 +6276,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_void_loading_purifier01.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/747C1F9E"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/83699D24"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/2D5D26F9"), StringExternal("Param/Value/DD58C6F7"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -6330,8 +6337,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_void_loading_purifier03.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/5ABBE646"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/FF78E543"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/C647C19A"), StringExternal("Param/Value/92E35784"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -6385,8 +6392,8 @@ void gf_initTalentDialogs () {
     gv_talentsdialog[lv_i] = DialogLastCreated();
     libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1125, 450, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_hots_loading_missionselect_zhybrid03.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTop, 45, 37, StringExternal("Param/Value/0A64452D"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 655, 45, StringExternal("Param/Value/8EEA89DA"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
     gv_talentsdialogbuttons[8][0][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 25, 100, StringExternal("Param/Value/C97BC8E3"), StringExternal("Param/Value/0D2E071D"), "");
     gv_talentsdialogbuttons[0][0][lv_i] = DialogControlLastCreated();
@@ -6511,7 +6518,7 @@ bool auto_gf_talentfreeupdater_TriggerFunc (bool testConds, bool runActions) {
             if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
                 lv_j = 0;
                 while ((lv_j < 20)) {
-                    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][lv_j], IntToText(gv_talentpointsavailable[lv_i-1]), lv_pgs[lv_i]);
+                    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][lv_j], gf_GetTalentPointsTextForPlayer(lv_i), lv_pgs[lv_i]);
                     lv_j += 1;
                 }
             }
@@ -6700,172 +6707,7 @@ void gf_TalentPressedFire (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][0], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
-}
-
-void gf_TalentPressedPoison (int lp_p, int lp_br, int lp_bn, int lp_hv) {
-    // Variable Declarations
-    int lv_player;
-    int lv_buttonrow;
-    int lv_buttonnumber;
-    int lv_heroversion;
-    int lv_pn;
-    playergroup lv_pg;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_player = lp_p;
-    lv_buttonrow = lp_br;
-    lv_buttonnumber = lp_bn;
-    lv_heroversion = lp_hv;
-    lv_pn = lp_p+1;
-    lv_pg = PlayerGroupSingle(lv_pn);
-
-    // Implementation
-    if ((lv_buttonnumber == 0) && (lv_buttonrow == 0) && (UnitGetCustomValue(gv_hero[lv_player], 0) < 2.0)) {
-        TechTreeUpgradeAddLevel(lv_pn, "Splatter", 1);
-        UnitSetCustomValue(gv_hero[lv_player], 0, (UnitGetCustomValue(gv_hero[lv_player], 0) + 0.25));
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Splatter ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 0)-1.5)*4,c_fixedPrecisionAny)+StringToText("/2"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 1) && (lv_buttonrow == 0) && (UnitGetCustomValue(gv_hero[lv_player], 1) < 6.0)) {
-        TechTreeUpgradeAddLevel(lv_pn, "PoisonboltButtonDummyDuration", 1);
-        UnitSetCustomValue(gv_hero[lv_player], 1, (UnitGetCustomValue(gv_hero[lv_player], 1) + 1.0));
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Stability ")+FixedToText(UnitGetCustomValue(gv_hero[lv_player], 1)-3,c_fixedPrecisionAny)+StringToText("/3"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 2) && (lv_buttonrow == 0) && (UnitGetCustomValue(gv_hero[lv_player], 2) < 25.0)) {
-        TechTreeUpgradeAddLevel(lv_pn, "PoisonboltButtonDummyDMG", 1);
-        UnitSetCustomValue(gv_hero[lv_player], 2, (UnitGetCustomValue(gv_hero[lv_player], 2) + 5.0));
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Chemistry ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 2)-10)/5,c_fixedPrecisionAny)+StringToText("/3"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 3) && (lv_buttonrow == 0) && (TechTreeUpgradeCount(lv_pn, "PoisonboltPlague", c_techCountCompleteOnly) < 3)) {
-        TechTreeUpgradeAddLevel(lv_pn, "PoisonboltPlague", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Plague ")+IntToText(TechTreeUpgradeCount(lv_pn, "PoisonboltPlague", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 5) && (lv_buttonrow == 0) && (UnitGetCustomValue(gv_hero[lv_player], 3) < 1.0) && (gf_Currentlevel() >= 10)) {
-        UnitSetCustomValue(gv_hero[lv_player], 3, (UnitGetCustomValue(gv_hero[lv_player], 3) + 1.0));
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Deadly Fumes ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 3)-0),c_fixedPrecisionAny)+StringToText("/1"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 0) && (lv_buttonrow == 1) && (UnitGetCustomValue(gv_hero[lv_player], 5) < 1.0)) {
-        UnitSetCustomValue(gv_hero[lv_player], 5, (UnitGetCustomValue(gv_hero[lv_player], 5) + 0.25));
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Stable Isotope ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 5)-0.5)*4,c_fixedPrecisionAny)+StringToText("/2"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 1) && (lv_buttonrow == 1) && (UnitGetCustomValue(gv_hero[lv_player], 6) < 3.5)) {
-        UnitSetCustomValue(gv_hero[lv_player], 6, (UnitGetCustomValue(gv_hero[lv_player], 6) + 0.5));
-        TechTreeUpgradeAddLevel(lv_pn, "Transmission", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Transmission ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 6)-2)*2,c_fixedPrecisionAny)+StringToText("/3"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 2) && (lv_buttonrow == 1) && (TechTreeUpgradeCount(lv_pn, "Blight", c_techCountCompleteOnly) < 1)) {
-        TechTreeUpgradeAddLevel(lv_pn, "Blight", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Blight ")+IntToText(TechTreeUpgradeCount(lv_pn, "Blight", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 3) && (lv_buttonrow == 1) && (TechTreeUpgradeCount(lv_pn, "Corruption", c_techCountCompleteOnly) < 3)) {
-        TechTreeUpgradeAddLevel(lv_pn, "Corruption", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Corruption ")+IntToText(TechTreeUpgradeCount(lv_pn, "Corruption", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 5) && (lv_buttonrow == 1) && (UnitGetCustomValue(gv_hero[lv_player], 7) < 1.0) && (gf_Currentlevel() >= 10)) {
-        UnitSetCustomValue(gv_hero[lv_player], 7, (UnitGetCustomValue(gv_hero[lv_player], 7) + 1.0));
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Tox Trigger ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 7)),c_fixedPrecisionAny)+StringToText("/1"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 0) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathRange", c_techCountCompleteOnly) < 2)) {
-        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathRange", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Transfer ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathRange", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 1) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathDamage", c_techCountCompleteOnly) < 3)) {
-        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathDamage", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Pain ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathDamage", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 2) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathHosts", c_techCountCompleteOnly) < 2)) {
-        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathHosts", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Suffering ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathHosts", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 3) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathEnergy", c_techCountCompleteOnly) < 3)) {
-        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathEnergy", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Schadenfreude ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathEnergy", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 4) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathKillEnergy", c_techCountCompleteOnly) < 2)) {
-        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathKillEnergy", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Killingspree ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathKillEnergy", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 5) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathRespawn", c_techCountCompleteOnly) < 1) && (gf_Currentlevel() >= 10)) {
-        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathRespawn", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Epidemic ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathRespawn", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 0) && (lv_buttonrow == 3) && (TechTreeUpgradeCount(lv_pn, "PoisonHeroMysterymix", c_techCountCompleteOnly) < 2)) {
-        TechTreeUpgradeAddLevel(lv_pn, "PoisonHeroMysterymix", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Mysterymix ")+IntToText(TechTreeUpgradeCount(lv_pn, "PoisonHeroMysterymix", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 1) && (lv_buttonrow == 3) && (UnitGetCustomValue(gv_hero[lv_player], 16) < 3.0)) {
-        UnitSetCustomValue(gv_hero[lv_player], 16, (UnitGetCustomValue(gv_hero[lv_player], 16) + 1.0));
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Repugnant ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player],16)),c_fixedPrecisionAny)+StringToText("/3"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 5) && (lv_buttonrow == 3) && (TechTreeUpgradeCount(lv_pn, "Virulent", c_techCountQueuedOrBetter) < 1) && (gf_Currentlevel() >= 10)) {
-        TechTreeUpgradeAddLevel(lv_pn, "Virulent", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Virulent ")+IntToText(TechTreeUpgradeCount(lv_pn, "Virulent", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 0) && (lv_buttonrow == 4) && (UnitGetCustomValue(gv_hero[lv_player], 20) < 5.0)) {
-        TechTreeUpgradeAddLevel(lv_pn, "Containment", 1);
-        UnitSetCustomValue(gv_hero[lv_player], 20, (UnitGetCustomValue(gv_hero[lv_player], 20) + 1.0));
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Containment ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player],20)-3),c_fixedPrecisionAny)+StringToText("/2"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 1) && (lv_buttonrow == 4) && (TechTreeUpgradeCount(lv_pn, "PoisonBubbleDamage", c_techCountQueuedOrBetter) < 2)) {
-        TechTreeUpgradeAddLevel(lv_pn, "PoisonBubbleDamage", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Ventilation ")+IntToText(TechTreeUpgradeCount(lv_pn, "PoisonBubbleDamage", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 2) && (lv_buttonrow == 4) && (TechTreeUpgradeCount(lv_pn, "PoisonBubbleDuration", c_techCountQueuedOrBetter) < 3)) {
-        TechTreeUpgradeAddLevel(lv_pn, "PoisonBubbleDuration", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Consolation ")+IntToText(TechTreeUpgradeCount(lv_pn, "PoisonBubbleDuration", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 5) && (lv_buttonrow == 4) && (TechTreeUpgradeCount(lv_pn, "Diseased", c_techCountQueuedOrBetter) < 2) && (gf_Currentlevel() >= 10)) {
-        TechTreeUpgradeAddLevel(lv_pn, "Diseased", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Diseased ")+IntToText(TechTreeUpgradeCount(lv_pn, "Diseased", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][2], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][0], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedLightning (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -7045,7 +6887,172 @@ void gf_TalentPressedLightning (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][1], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][1], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
+}
+
+void gf_TalentPressedPoison (int lp_p, int lp_br, int lp_bn, int lp_hv) {
+    // Variable Declarations
+    int lv_player;
+    int lv_buttonrow;
+    int lv_buttonnumber;
+    int lv_heroversion;
+    int lv_pn;
+    playergroup lv_pg;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_player = lp_p;
+    lv_buttonrow = lp_br;
+    lv_buttonnumber = lp_bn;
+    lv_heroversion = lp_hv;
+    lv_pn = lp_p+1;
+    lv_pg = PlayerGroupSingle(lv_pn);
+
+    // Implementation
+    if ((lv_buttonnumber == 0) && (lv_buttonrow == 0) && (UnitGetCustomValue(gv_hero[lv_player], 0) < 2.0)) {
+        TechTreeUpgradeAddLevel(lv_pn, "Splatter", 1);
+        UnitSetCustomValue(gv_hero[lv_player], 0, (UnitGetCustomValue(gv_hero[lv_player], 0) + 0.25));
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Splatter ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 0)-1.5)*4,c_fixedPrecisionAny)+StringToText("/2"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 1) && (lv_buttonrow == 0) && (UnitGetCustomValue(gv_hero[lv_player], 1) < 6.0)) {
+        TechTreeUpgradeAddLevel(lv_pn, "PoisonboltButtonDummyDuration", 1);
+        UnitSetCustomValue(gv_hero[lv_player], 1, (UnitGetCustomValue(gv_hero[lv_player], 1) + 1.0));
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Stability ")+FixedToText(UnitGetCustomValue(gv_hero[lv_player], 1)-3,c_fixedPrecisionAny)+StringToText("/3"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 2) && (lv_buttonrow == 0) && (UnitGetCustomValue(gv_hero[lv_player], 2) < 25.0)) {
+        TechTreeUpgradeAddLevel(lv_pn, "PoisonboltButtonDummyDMG", 1);
+        UnitSetCustomValue(gv_hero[lv_player], 2, (UnitGetCustomValue(gv_hero[lv_player], 2) + 5.0));
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Chemistry ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 2)-10)/5,c_fixedPrecisionAny)+StringToText("/3"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 3) && (lv_buttonrow == 0) && (TechTreeUpgradeCount(lv_pn, "PoisonboltPlague", c_techCountCompleteOnly) < 3)) {
+        TechTreeUpgradeAddLevel(lv_pn, "PoisonboltPlague", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Plague ")+IntToText(TechTreeUpgradeCount(lv_pn, "PoisonboltPlague", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 5) && (lv_buttonrow == 0) && (UnitGetCustomValue(gv_hero[lv_player], 3) < 1.0) && (gf_Currentlevel() >= 10)) {
+        UnitSetCustomValue(gv_hero[lv_player], 3, (UnitGetCustomValue(gv_hero[lv_player], 3) + 1.0));
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Deadly Fumes ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 3)-0),c_fixedPrecisionAny)+StringToText("/1"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 0) && (lv_buttonrow == 1) && (UnitGetCustomValue(gv_hero[lv_player], 5) < 1.0)) {
+        UnitSetCustomValue(gv_hero[lv_player], 5, (UnitGetCustomValue(gv_hero[lv_player], 5) + 0.25));
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Stable Isotope ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 5)-0.5)*4,c_fixedPrecisionAny)+StringToText("/2"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 1) && (lv_buttonrow == 1) && (UnitGetCustomValue(gv_hero[lv_player], 6) < 3.5)) {
+        UnitSetCustomValue(gv_hero[lv_player], 6, (UnitGetCustomValue(gv_hero[lv_player], 6) + 0.5));
+        TechTreeUpgradeAddLevel(lv_pn, "Transmission", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Transmission ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 6)-2)*2,c_fixedPrecisionAny)+StringToText("/3"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 2) && (lv_buttonrow == 1) && (TechTreeUpgradeCount(lv_pn, "Blight", c_techCountCompleteOnly) < 1)) {
+        TechTreeUpgradeAddLevel(lv_pn, "Blight", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Blight ")+IntToText(TechTreeUpgradeCount(lv_pn, "Blight", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 3) && (lv_buttonrow == 1) && (TechTreeUpgradeCount(lv_pn, "Corruption", c_techCountCompleteOnly) < 3)) {
+        TechTreeUpgradeAddLevel(lv_pn, "Corruption", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Corruption ")+IntToText(TechTreeUpgradeCount(lv_pn, "Corruption", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 5) && (lv_buttonrow == 1) && (UnitGetCustomValue(gv_hero[lv_player], 7) < 1.0) && (gf_Currentlevel() >= 10)) {
+        UnitSetCustomValue(gv_hero[lv_player], 7, (UnitGetCustomValue(gv_hero[lv_player], 7) + 1.0));
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Tox Trigger ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player], 7)),c_fixedPrecisionAny)+StringToText("/1"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 0) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathRange", c_techCountCompleteOnly) < 2)) {
+        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathRange", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Transfer ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathRange", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 1) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathDamage", c_techCountCompleteOnly) < 3)) {
+        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathDamage", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Pain ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathDamage", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 2) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathHosts", c_techCountCompleteOnly) < 2)) {
+        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathHosts", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Suffering ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathHosts", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 3) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathEnergy", c_techCountCompleteOnly) < 3)) {
+        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathEnergy", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Schadenfreude ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathEnergy", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 4) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathKillEnergy", c_techCountCompleteOnly) < 2)) {
+        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathKillEnergy", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Killingspree ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathKillEnergy", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 5) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "BlackDeathRespawn", c_techCountCompleteOnly) < 1) && (gf_Currentlevel() >= 10)) {
+        TechTreeUpgradeAddLevel(lv_pn, "BlackDeathRespawn", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Epidemic ")+IntToText(TechTreeUpgradeCount(lv_pn, "BlackDeathRespawn", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 0) && (lv_buttonrow == 3) && (TechTreeUpgradeCount(lv_pn, "PoisonHeroMysterymix", c_techCountCompleteOnly) < 2)) {
+        TechTreeUpgradeAddLevel(lv_pn, "PoisonHeroMysterymix", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Mysterymix ")+IntToText(TechTreeUpgradeCount(lv_pn, "PoisonHeroMysterymix", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 1) && (lv_buttonrow == 3) && (UnitGetCustomValue(gv_hero[lv_player], 16) < 3.0)) {
+        UnitSetCustomValue(gv_hero[lv_player], 16, (UnitGetCustomValue(gv_hero[lv_player], 16) + 1.0));
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Repugnant ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player],16)),c_fixedPrecisionAny)+StringToText("/3"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 5) && (lv_buttonrow == 3) && (TechTreeUpgradeCount(lv_pn, "Virulent", c_techCountQueuedOrBetter) < 1) && (gf_Currentlevel() >= 10)) {
+        TechTreeUpgradeAddLevel(lv_pn, "Virulent", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Virulent ")+IntToText(TechTreeUpgradeCount(lv_pn, "Virulent", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 0) && (lv_buttonrow == 4) && (UnitGetCustomValue(gv_hero[lv_player], 20) < 5.0)) {
+        TechTreeUpgradeAddLevel(lv_pn, "Containment", 1);
+        UnitSetCustomValue(gv_hero[lv_player], 20, (UnitGetCustomValue(gv_hero[lv_player], 20) + 1.0));
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Containment ")+FixedToText((UnitGetCustomValue(gv_hero[lv_player],20)-3),c_fixedPrecisionAny)+StringToText("/2"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 1) && (lv_buttonrow == 4) && (TechTreeUpgradeCount(lv_pn, "PoisonBubbleDamage", c_techCountQueuedOrBetter) < 2)) {
+        TechTreeUpgradeAddLevel(lv_pn, "PoisonBubbleDamage", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Ventilation ")+IntToText(TechTreeUpgradeCount(lv_pn, "PoisonBubbleDamage", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 2) && (lv_buttonrow == 4) && (TechTreeUpgradeCount(lv_pn, "PoisonBubbleDuration", c_techCountQueuedOrBetter) < 3)) {
+        TechTreeUpgradeAddLevel(lv_pn, "PoisonBubbleDuration", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Consolation ")+IntToText(TechTreeUpgradeCount(lv_pn, "PoisonBubbleDuration", c_techCountCompleteOnly))+StringToText("/3"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 5) && (lv_buttonrow == 4) && (TechTreeUpgradeCount(lv_pn, "Diseased", c_techCountQueuedOrBetter) < 2) && (gf_Currentlevel() >= 10)) {
+        TechTreeUpgradeAddLevel(lv_pn, "Diseased", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Diseased ")+IntToText(TechTreeUpgradeCount(lv_pn, "Diseased", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][2], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedShadow (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -7218,7 +7225,7 @@ void gf_TalentPressedShadow (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][3], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][3], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedWarp (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -7372,7 +7379,7 @@ void gf_TalentPressedWarp (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][4], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][4], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedParticle (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -7544,7 +7551,7 @@ void gf_TalentPressedParticle (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][5], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][5], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedTwilight (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -7721,7 +7728,7 @@ void gf_TalentPressedTwilight (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][6], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][6], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedTime (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -7881,7 +7888,7 @@ void gf_TalentPressedTime (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][7], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][7], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedWaterHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -8053,7 +8060,7 @@ void gf_TalentPressedWaterHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][8], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][8], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedEarthHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -8219,7 +8226,7 @@ void gf_TalentPressedEarthHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][9], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][9], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedAirHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -8385,7 +8392,7 @@ void gf_TalentPressedAirHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][10], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][10], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedGravityHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -8527,7 +8534,7 @@ void gf_TalentPressedGravityHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][11], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][11], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedGatewayHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -8729,7 +8736,7 @@ void gf_TalentPressedGatewayHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][12], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][12], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedNatureHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -8908,7 +8915,7 @@ void gf_TalentPressedNatureHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][13], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][13], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedElementalHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -9080,9 +9087,9 @@ void gf_TalentPressedElementalHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    if ((lv_buttonnumber == 1) && (lv_buttonrow == 4) && (TechTreeUpgradeCount(lv_pn, "SpeedStorm", c_techCountQueuedOrBetter) < 2)) {
-        TechTreeUpgradeAddLevel(lv_pn, "SpeedStorm", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("SpeedStorm ")+IntToText(TechTreeUpgradeCount(lv_pn, "SpeedStorm", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
+    if ((lv_buttonnumber == 1) && (lv_buttonrow == 4) && (TechTreeUpgradeCount(lv_pn, "ElementalHeroPermanence", c_techCountQueuedOrBetter) < 2)) {
+        TechTreeUpgradeAddLevel(lv_pn, "ElementalHeroPermanence", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Permanence ")+IntToText(TechTreeUpgradeCount(lv_pn, "ElementalHeroPermanence", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
@@ -9110,7 +9117,7 @@ void gf_TalentPressedElementalHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][14], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][14], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedIllusionHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -9276,7 +9283,7 @@ void gf_TalentPressedIllusionHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][15], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][15], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedLuckHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -9478,7 +9485,7 @@ void gf_TalentPressedLuckHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][15], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][16], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedProbeHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -9661,7 +9668,7 @@ void gf_TalentPressedProbeHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][15], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][17], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedBladeHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -9827,7 +9834,7 @@ void gf_TalentPressedBladeHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][15], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][18], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_TalentPressedBeamHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
@@ -10009,7 +10016,7 @@ void gf_TalentPressedBeamHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][15], IntToText(gv_talentpointsavailable[lv_player]), PlayerGroupSingle(lv_pn));
+    libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][19], gf_GetTalentPointsTextForPlayer(lv_pn), PlayerGroupSingle(lv_pn));
 }
 
 void gf_disguiseunit (unit lp_unit, int lp_player) {
@@ -21602,7 +21609,7 @@ bool gt_initstatwindow_Func (bool testConds, bool runActions) {
     int lv_j;
     int lv_p;
     int[21] lv_labels;
-    string lv_tstring;
+    text lv_tstring;
 
     // Automatic Variable Declarations
     int autoCF7721DF_val;
@@ -21611,7 +21618,6 @@ bool gt_initstatwindow_Func (bool testConds, bool runActions) {
     for (init_i = 0; init_i <= 20; init_i += 1) {
         lv_labels[init_i] = c_invalidDialogControlId;
     }
-    lv_tstring = "";
 
     // Actions
     if (!runActions) {
@@ -21678,27 +21684,26 @@ bool gt_initstatwindow_Func (bool testConds, bool runActions) {
                     while ((lv_j > 0)) {
                         autoCF7721DF_val = lv_j;
                         if (autoCF7721DF_val == 5) {
-                            lv_tstring = (lv_tstring + "<n/>" + "Legendary: " + IntToString(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")));
+                            lv_tstring = (lv_tstring + StringExternal("Param/Value/EA24032D") + IntToText(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")) + StringExternal("Param/Value/206EA15C"));
                         }
                         else if (autoCF7721DF_val == 4) {
-                            lv_tstring = (lv_tstring + "<n/>" + "Insane: " + IntToString(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")));
+                            lv_tstring = (lv_tstring + StringExternal("Param/Value/F63A4AD5") + IntToText(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")) + StringExternal("Param/Value/3F8A5CE6"));
                         }
                         else if (autoCF7721DF_val == 3) {
-                            lv_tstring = (lv_tstring + "<n/>" + "Hard: " + IntToString(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")));
+                            lv_tstring = (lv_tstring + StringExternal("Param/Value/6F9CCE39") + IntToText(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")) + StringExternal("Param/Value/EEF0A9B1"));
                         }
                         else if (autoCF7721DF_val == 2) {
-                            lv_tstring = (lv_tstring + "<n/>" + "Normal: " + IntToString(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")));
+                            lv_tstring = (lv_tstring + StringExternal("Param/Value/45E9D342") + IntToText(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")) + StringExternal("Param/Value/DD8DA9DC"));
                         }
                         else if (autoCF7721DF_val == 1) {
-                            lv_tstring = (lv_tstring + "<n/>" + "Easy: " + IntToString(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")));
+                            lv_tstring = (lv_tstring + StringExternal("Param/Value/96831289") + IntToText(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")) + StringToText(""));
                         }
                         else {
                         }
                         lv_j -= 1;
                     }
-                    lv_tstring = StringSub(lv_tstring, 5, StringLength(lv_tstring));
-                    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), StringToText(lv_tstring), PlayerGroupAll());
-                    lv_tstring = "";
+                    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), lv_tstring, PlayerGroupAll());
+                    lv_tstring = StringToText("");
                     lv_j = 0;
                 }
 
@@ -21764,7 +21769,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][0], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][0], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[0], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21775,7 +21780,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][1], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][1], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[1], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21786,7 +21791,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][2], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][2], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[2], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21797,7 +21802,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][3], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][3], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[3], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21808,7 +21813,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][4], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][4], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[4], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21819,7 +21824,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][5], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][5], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[5], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21830,7 +21835,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][6], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][6], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[6], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21841,7 +21846,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][7], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][7], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[7], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21852,7 +21857,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][8], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][8], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[8], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21863,7 +21868,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][9], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][9], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[9], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21874,7 +21879,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][10], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][10], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[10], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21885,7 +21890,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][11], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][11], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[11], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21896,7 +21901,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][12], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][12], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[12], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21907,7 +21912,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][13], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][13], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[13], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21918,7 +21923,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][14], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][14], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[14], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21929,7 +21934,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][15], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][15], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[15], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21940,7 +21945,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][16], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][16], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[16], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21951,7 +21956,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][17], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][17], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[17], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21962,7 +21967,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][18], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][18], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[18], PlayerGroupSingle(lv_tpc), true);
         }
     }
@@ -21973,7 +21978,7 @@ bool gt_ShowTalents_Func (bool testConds, bool runActions) {
         }
         else {
             gf_DialogHideAll(lv_tpc);
-            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][19], IntToText(gv_talentpointsavailable[lv_tp]), PlayerGroupSingle(lv_tpc));
+            libNtve_gf_SetDialogItemText(gv_talentsdialogbuttons[8][0][19], gf_GetTalentPointsTextForPlayer(lv_tpc), PlayerGroupSingle(lv_tpc));
             DialogSetVisible(gv_talentsdialog[19], PlayerGroupSingle(lv_tpc), true);
         }
     }

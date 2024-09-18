@@ -975,8 +975,8 @@
         <InfoIcon value="Assets\SteamEx13.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <MaxStackCount value="10000"/>
-        <Duration value="10"/>
-        <Period value="0.49"/>
+        <Duration value="10.1"/>
+        <Period value="0.5"/>
         <PeriodicEffect value="SteamFireDMGSet"/>
         <Modification>
             <DeathResponse Chance="1" Effect="SteamFireExplodeDelay"/>

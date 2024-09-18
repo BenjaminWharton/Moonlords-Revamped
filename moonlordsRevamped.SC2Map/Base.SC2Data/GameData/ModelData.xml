@@ -1442,15 +1442,11 @@
         <SelectionRadius value="0.900000"/>
         <ShadowRadius value="0.900000"/>
     </CModel>
-    <CModel id="Steam">
-        <Model value="Assets\Effects\Protoss\Immortal_Collection_Purifier_DamageExplosion\Immortal_Collection_Purifier_DamageExplosion.m3"/>
-        <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="0.750000,0.750000,0.750000"/>
-        <ScaleMin value="0.750000,0.750000,0.750000"/>
-    </CModel>
     <CModel id="SteamExplode">
         <Model value="Assets\Effects\Protoss\Dragoon_Purifier_Coop_AirBomb_Charged\Dragoon_Purifier_Coop_AirBomb_Charged.m3"/>
         <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
     </CModel>
     <CModel id="StormArmor">
         <Model value="Assets\Effects\Neutral\HardenedWill_Shield\HardenedWill_Shield.m3"/>
