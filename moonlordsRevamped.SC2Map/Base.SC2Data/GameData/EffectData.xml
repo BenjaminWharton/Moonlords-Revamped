@@ -16161,7 +16161,7 @@
         <ValidatorArray value="NotHallucination"/>
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Source"/>
-        <Behavior value="GuardianShellInvulnrable"/>
+        <Behavior value="GuardianShellInvulnerable"/>
     </CEffectApplyBehavior>
     <CEffectSet id="Shrapnel">
         <EditorCategories value="Race:Protoss"/>

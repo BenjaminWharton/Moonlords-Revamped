@@ -3767,6 +3767,7 @@
         <InfoIcon value="Assets\Textures\btn-ability-zerg-parasiticinvasion.dds"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Player Value="Caster"/>
+        <RemoveValidatorArray value="CasterNotDead"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Plagued">
         <InfoIcon value="Assets\Textures\btn-ability-zerg-plague.dds"/>
@@ -4021,7 +4022,7 @@
         <ExpireEffect value="RestlessExpire"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Retarget">
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Duration value="2"/>
         <InitialEffect value="RetargetSA"/>
     </CBehaviorBuff>
@@ -4033,12 +4034,12 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
-    <CBehaviorBuff id="GuardianShellInvulnrable">
+    <CBehaviorBuff id="GuardianShellInvulnerable">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\btn-ability-spearofadun-guardianshell.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Duration value="5"/>
-        <ExpireEffect value="SOAHeroicShieldWeaknessApply"/>
+        <ExpireEffect value="GatewayHeroApplyRecentlyProtected"/>
         <Modification>
             <StateFlags index="Invulnerable" value="1"/>
         </Modification>
@@ -4057,7 +4058,7 @@
         <Alignment value="Positive"/>
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-shield-protoss-plasmashields.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <RemoveValidatorArray value="NotHaveHeroicShieldCleanUp"/>
         <DamageResponse Fatal="1" Handled="ShieldInvulnerableApply" ModifyFraction="0">
             <Chance value="1"/>

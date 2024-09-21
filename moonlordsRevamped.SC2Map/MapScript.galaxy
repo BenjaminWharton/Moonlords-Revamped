@@ -3278,112 +3278,115 @@ void gf_heropickdialogANDtalentsANDupgradesbuttons () {
     libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 250, 500, StringExternal("Param/Value/14EEFE37"), StringExternal("Param/Value/195901F2"), "");
     gv_zheropickdialogbuttons[12] = DialogControlLastCreated();
     while ((lv_i < 5)) {
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_bankgetint(gv_zbanks[lv_i], "1", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[4], Color(0,0,0), PlayerGroupSingle(lv_i));
+        if ((PlayerStatus(lv_i) == c_playerStatusActive) && (PlayerHandle(lv_i) != "")) {
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_bankgetint(gv_zbanks[lv_i], "1", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[4], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
+
             }
 
-        }
-
-        if ((gf_bankgetint(gv_zbanks[lv_i], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)) {
-            libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[5], Color(0,0,0), PlayerGroupSingle(lv_i));
-        }
-
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_bankgetint(gv_zbanks[lv_i], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[7], Color(0,0,0), PlayerGroupSingle(lv_i));
+            if ((gf_bankgetint(gv_zbanks[lv_i], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)) {
+                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[5], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_bankgetint(gv_zbanks[lv_i], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[7], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
 
-        if ((gf_bankgetint(gv_zbanks[lv_i], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)) {
-            libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[6], Color(0,0,0), PlayerGroupSingle(lv_i));
-        }
-
-        if ((gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)) {
-            libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[3], Color(0,0,0), PlayerGroupSingle(lv_i));
-        }
-
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_achievementpointsum(lv_i) < 100)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[8], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
-
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_achievementpointsum(lv_i) < 125)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[9], Color(0,0,0), PlayerGroupSingle(lv_i));
+            if ((gf_bankgetint(gv_zbanks[lv_i], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)) {
+                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[6], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
-
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_achievementpointsum(lv_i) < 150)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[10], Color(0,0,0), PlayerGroupSingle(lv_i));
+            if ((gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)) {
+                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[3], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_achievementpointsum(lv_i) < 100)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[8], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
 
-        if ((gv_zbanks[lv_i] != null)) {
-            if (((gf_achievementpointsum(lv_i) < 300) || ((gf_bankgetint(gv_zbanks[lv_i], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)))) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[11], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_achievementpointsum(lv_i) < 125)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[9], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
 
-        if ((gv_zbanks[lv_i] != null)) {
-            if (((gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0) || (gf_achievementpointsum(lv_i) < 350))) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[12], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_achievementpointsum(lv_i) < 150)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[10], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
 
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_achievementpointsum(lv_i) < 175)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[13], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
+            if ((gv_zbanks[lv_i] != null)) {
+                if (((gf_achievementpointsum(lv_i) < 300) || ((gf_bankgetint(gv_zbanks[lv_i], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0)))) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[11], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
 
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_achievementpointsum(lv_i) < 275)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[14], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
+            if ((gv_zbanks[lv_i] != null)) {
+                if (((gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns") == 0) || (gf_achievementpointsum(lv_i) < 350))) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[12], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
 
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_achievementpointsum(lv_i) < 200)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[15], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_achievementpointsum(lv_i) < 175)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[13], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
 
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_achievementpointsum(lv_i) < 250)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[16], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_achievementpointsum(lv_i) < 275)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[14], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
 
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_achievementpointsum(lv_i) < 50)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[17], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_achievementpointsum(lv_i) < 200)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[15], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
 
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_achievementpointsum(lv_i) < 225)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[18], Color(0,0,0), PlayerGroupSingle(lv_i));
             }
 
-        }
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_achievementpointsum(lv_i) < 250)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[16], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
 
-        if ((gv_zbanks[lv_i] != null)) {
-            if ((gf_achievementpointsum(lv_i) < 75)) {
-                libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[19], Color(0,0,0), PlayerGroupSingle(lv_i));
+            }
+
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_achievementpointsum(lv_i) < 50)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[17], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
+
+            }
+
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_achievementpointsum(lv_i) < 225)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[18], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
+
+            }
+
+            if ((gv_zbanks[lv_i] != null)) {
+                if ((gf_achievementpointsum(lv_i) < 75)) {
+                    libNtve_gf_SetDialogItemColor(gv_zheropickdialogbuttons[19], Color(0,0,0), PlayerGroupSingle(lv_i));
+                }
+
             }
 
         }
@@ -19673,89 +19676,92 @@ bool gt_pickhero_Func (bool testConds, bool runActions) {
         lv_spawnpoint = Point(239.0, 8.0);
     }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[4]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "1", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/62E2BE6C"));
-        return true;
-    }
+    if ((PlayerHandle(EventPlayer()) != "")) {
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[4]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "1", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/62E2BE6C"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[5]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/536DA636"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[5]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/536DA636"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[7]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/59B13B34"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[7]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/59B13B34"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[6]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/AF510837"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[6]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/AF510837"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[3]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/AC6CC410"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[3]) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/AC6CC410"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[8]) && (gf_achievementpointsum(EventPlayer()) < 100)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/08B8E897"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[8]) && (gf_achievementpointsum(EventPlayer()) < 100)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/08B8E897"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[9]) && (gf_achievementpointsum(EventPlayer()) < 125)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/10947E28"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[9]) && (gf_achievementpointsum(EventPlayer()) < 125)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/10947E28"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[10]) && (gf_achievementpointsum(EventPlayer()) < 150)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/74FEE002"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[10]) && (gf_achievementpointsum(EventPlayer()) < 150)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/74FEE002"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[11]) && ((gf_achievementpointsum(EventPlayer()) < 300) || ((gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)))) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/280D5965"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[11]) && ((gf_achievementpointsum(EventPlayer()) < 300) || ((gf_bankgetint(gv_zbanks[EventPlayer()], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0)))) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/280D5965"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[12]) && ((gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0) || (gf_achievementpointsum(EventPlayer()) < 350))) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/A5DC3960"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[12]) && ((gf_bankgetint(gv_zbanks[EventPlayer()], "5", "completeruns") == 0) || (gf_achievementpointsum(EventPlayer()) < 350))) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/A5DC3960"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[13]) && (gf_achievementpointsum(EventPlayer()) < 175)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/1E87993F"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[13]) && (gf_achievementpointsum(EventPlayer()) < 175)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/1E87993F"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[14]) && (gf_achievementpointsum(EventPlayer()) < 275)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/C95EDE74"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[14]) && (gf_achievementpointsum(EventPlayer()) < 275)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/C95EDE74"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[15]) && (gf_achievementpointsum(EventPlayer()) < 200)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/FDC6A25A"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[15]) && (gf_achievementpointsum(EventPlayer()) < 200)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/FDC6A25A"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[16]) && (gf_achievementpointsum(EventPlayer()) < 250)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/BDB04A9D"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[16]) && (gf_achievementpointsum(EventPlayer()) < 250)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/BDB04A9D"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[17]) && (gf_achievementpointsum(EventPlayer()) < 50)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/6CD79BE3"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[17]) && (gf_achievementpointsum(EventPlayer()) < 50)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/6CD79BE3"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[18]) && (gf_achievementpointsum(EventPlayer()) < 225)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/8834EE6F"));
-        return true;
-    }
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[18]) && (gf_achievementpointsum(EventPlayer()) < 225)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/8834EE6F"));
+            return true;
+        }
 
-    if ((EventDialogControl() == gv_zheropickdialogbuttons[19]) && (gf_achievementpointsum(EventPlayer()) < 75)) {
-        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/EF43D47F"));
-        return true;
+        if ((EventDialogControl() == gv_zheropickdialogbuttons[19]) && (gf_achievementpointsum(EventPlayer()) < 75)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/EF43D47F"));
+            return true;
+        }
+
     }
 
     DialogSetVisible(DialogControlGetDialog(EventDialogControl()), PlayerGroupSingle(EventPlayer()), false);
