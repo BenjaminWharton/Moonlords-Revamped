@@ -17062,14 +17062,8 @@ void gf_winachievementcheck () {
             else if (autoC79705A0_val == "EarthHero") {
                 lv_heroesplayed |= 1<<9;
             }
-            else if (autoC79705A0_val == "Phoenix") {
+            else if (autoC79705A0_val == "AirHero") {
                 lv_heroesplayed |= 1<<10;
-            }
-            else if (autoC79705A0_val == "AlarakChampion") {
-                lv_heroesplayed |= 1<<11;
-            }
-            else if (autoC79705A0_val == "ArtanisVoid") {
-                lv_heroesplayed |= 1<<12;
             }
             else if (autoC79705A0_val == "NatureHero") {
                 lv_heroesplayed |= 1<<13;
@@ -17091,6 +17085,12 @@ void gf_winachievementcheck () {
             }
             else if (autoC79705A0_val == "BeamHero") {
                 lv_heroesplayed |= 1<<19;
+            }
+            else if (autoC79705A0_val == "GravityHero") {
+                lv_heroesplayed |= 1<<11;
+            }
+            else if (autoC79705A0_val == "GatewayHero") {
+                lv_heroesplayed |= 1<<12;
             }
             else {
             }
