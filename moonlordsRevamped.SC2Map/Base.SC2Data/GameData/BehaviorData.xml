@@ -652,13 +652,6 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="0.25"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="FindDrones">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="2.1"/>
-        <Period value="1"/>
-        <InitialEffect value="FindDronesSA"/>
-        <PeriodicEffect value="FindDronesSA"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="FireHeroBlastwaveStun">
         <Alignment value="Negative"/>
         <InfoFlags index="Hidden" value="1"/>

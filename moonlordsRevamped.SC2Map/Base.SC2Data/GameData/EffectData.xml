@@ -3108,11 +3108,6 @@
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="TeleportBackToCaster"/>
     </CEffectApplyBehavior>
-    <CEffectEnumArea id="FindDronesSA">
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="Invulnerable;Ally,Neutral,Enemy,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="500" Effect="FindDronesAB"/>
-    </CEffectEnumArea>
     <CEffectSet id="ForwardBeamBoreSet">
         <ValidatorArray value="ForwardBeamBoreSetTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>

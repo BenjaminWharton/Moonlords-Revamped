@@ -993,6 +993,7 @@
         </InfoArray>
         <ExternalAngle value="135"/>
         <MaxCount value="1"/>
+        <EffectArray index="Create" value="FindDronesAB"/>
     </CAbilArmMagazine>
     <CAbilArmMagazine id="DroneHangerHealer">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -1011,6 +1012,7 @@
         </InfoArray>
         <ExternalAngle value="270"/>
         <MaxCount value="1"/>
+        <EffectArray index="Create" value="FindDronesAB"/>
     </CAbilArmMagazine>
     <CAbilArmMagazine id="DroneHangerDestroyer">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -1036,6 +1038,7 @@
         <ExternalAngle value="225"/>
         <MaxCount value="1"/>
         <Flags index="AutoCreate" value="1"/>
+        <EffectArray index="Create" value="FindDronesAB"/>
     </CAbilArmMagazine>
     <CAbilEffectTarget id="DropBeam">
         <AbilSetId value="Graviton"/>
@@ -1539,6 +1542,7 @@
         </InfoArray>
         <ExternalAngle value="90"/>
         <MaxCount value="1"/>
+        <EffectArray index="Create" value="FindDronesAB"/>
     </CAbilArmMagazine>
     <CAbilAugment id="ShadowCharge">
         <Cost>
