@@ -143,6 +143,11 @@
         <Compare value="LT"/>
         <Range value="14"/>
     </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="DistanceFromCasterLT25">
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <Compare value="LT"/>
+        <Range value="25"/>
+    </CValidatorLocationCompareRange>
     <CValidatorLocationCompareRange id="DistanceLessThan10Source">
         <WhichLocation Value="TargetUnit"/>
         <Compare value="LT"/>

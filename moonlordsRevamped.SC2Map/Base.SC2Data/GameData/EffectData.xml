@@ -192,6 +192,53 @@
         <EditorCategories value="Race:Protoss"/>
         <KineticLink value="FollowCaster"/>
     </CEffectRemoveKinetic>
+    <CEffectCreatePersistent id="ZergLordGlaiveAttackCP">
+        <EditorCategories value="Race:Zerg"/>
+        <Flags index="RandomOffset" value="1"/>
+        <PeriodCount value="5"/>
+        <PeriodicEffectArray value="GlaiveAttackLM"/>
+        <PeriodicOffsetArray value="0,8,0"/>
+        <PeriodicOffsetArray value="2,7.7,0"/>
+        <PeriodicOffsetArray value="4,6.9,0"/>
+        <PeriodicOffsetArray value="6,5.2,0"/>
+        <PeriodicOffsetArray value="8,0,0"/>
+        <PeriodicOffsetArray value="6,-5.2,0"/>
+        <PeriodicOffsetArray value="4,-6.9,0"/>
+        <PeriodicOffsetArray value="2,-7.7,0"/>
+        <PeriodicOffsetArray value="0,-8,0"/>
+        <PeriodicOffsetArray value="-2,7.7,0"/>
+        <PeriodicOffsetArray value="-4,-6.9,0"/>
+        <PeriodicOffsetArray value="-6,-5.2,0"/>
+        <PeriodicOffsetArray value="-8,0,0"/>
+        <PeriodicOffsetArray value="-6,5.2,0"/>
+        <PeriodicOffsetArray value="-4,6.9,0"/>
+        <PeriodicOffsetArray value="-2,7.7,0"/>
+        <PeriodicOffsetArray value="0,6,0"/>
+        <PeriodicOffsetArray value="2,5.6,0"/>
+        <PeriodicOffsetArray value="4,4.4,0"/>
+        <PeriodicOffsetArray value="6,0,0"/>
+        <PeriodicOffsetArray value="4,-4.4,0"/>
+        <PeriodicOffsetArray value="2,-5.6,0"/>
+        <PeriodicOffsetArray value="0,-6,0"/>
+        <PeriodicOffsetArray value="-2,-5.6,0"/>
+        <PeriodicOffsetArray value="-4,-4.4,0"/>
+        <PeriodicOffsetArray value="-6,0,0"/>
+        <PeriodicOffsetArray value="-4,4.4,0"/>
+        <PeriodicOffsetArray value="-2,5.6,0"/>
+        <PeriodicOffsetArray value="0,4,0"/>
+        <PeriodicOffsetArray value="2,3.4,0"/>
+        <PeriodicOffsetArray value="4,0,0"/>
+        <PeriodicOffsetArray value="2,-3.4,0"/>
+        <PeriodicOffsetArray value="0,-4,0"/>
+        <PeriodicOffsetArray value="-2,-3.4,0"/>
+        <PeriodicOffsetArray value="-4,0,0"/>
+        <PeriodicOffsetArray value="-2,3.4,0"/>
+        <PeriodicOffsetArray value="0,2,0"/>
+        <PeriodicOffsetArray value="2,0,0"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicOffsetArray value="-2,0,0"/>
+        <PeriodicPeriodArray value="0.3"/>
+    </CEffectCreatePersistent>
     <CEffectCreatePersistent id="IllusionHeroDistortionRedirectOffset">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="SourceUnit"/>
@@ -11190,6 +11237,7 @@
         <ImpactLocation Value="TargetPoint"/>
         <ImpactEffect value="ExplosiveAttackDelay"/>
         <AmmoUnit value="ExplosiveAttackMissile"/>
+        <ValidatorArray index="0" value="DistanceFromCasterLT25"/>
     </CEffectLaunchMissile>
     <CEffectEnumArea id="ExplosiveAttackSA">
         <EditorCategories value="Race:Zerg"/>
@@ -11253,6 +11301,7 @@
         <ImpactLocation Value="TargetPoint"/>
         <ImpactEffect value="FireballAttackImpactSet"/>
         <AmmoUnit value="FireballAttackMissile"/>
+        <ValidatorArray index="0" value="DistanceFromCasterLT25"/>
     </CEffectLaunchMissile>
     <CEffectCreatePersistent id="FireballAttackOffset">
         <EditorCategories value="Race:Zerg"/>
@@ -11368,6 +11417,7 @@
         <ImpactOffset value="0,0,-4"/>
         <ImpactEffect value="FungalAttackImpactCP"/>
         <AmmoUnit value="FungalAttackMissileBig"/>
+        <ValidatorArray index="0" value="DistanceFromCasterLT25"/>
     </CEffectLaunchMissile>
     <CEffectLaunchMissile id="FungalAttackLMSmall">
         <EditorCategories value="Race:Zerg"/>
@@ -11414,52 +11464,10 @@
         <PeriodicEffectArray value="GlaiveAttackForce"/>
         <PeriodicPeriodArray value="0.1"/>
     </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="GlaiveAttackInit">
+    <CEffectCreatePersistent id="ZergLordGlaiveAttackInit">
         <EditorCategories value="Race:Zerg"/>
         <Flags index="RandomOffset" value="1"/>
-        <PeriodCount value="5"/>
-        <PeriodicEffectArray value="GlaiveAttackLM"/>
-        <PeriodicOffsetArray value="0,8,0"/>
-        <PeriodicOffsetArray value="2,7.7,0"/>
-        <PeriodicOffsetArray value="4,6.9,0"/>
-        <PeriodicOffsetArray value="6,5.2,0"/>
-        <PeriodicOffsetArray value="8,0,0"/>
-        <PeriodicOffsetArray value="6,-5.2,0"/>
-        <PeriodicOffsetArray value="4,-6.9,0"/>
-        <PeriodicOffsetArray value="2,-7.7,0"/>
-        <PeriodicOffsetArray value="0,-8,0"/>
-        <PeriodicOffsetArray value="-2,7.7,0"/>
-        <PeriodicOffsetArray value="-4,-6.9,0"/>
-        <PeriodicOffsetArray value="-6,-5.2,0"/>
-        <PeriodicOffsetArray value="-8,0,0"/>
-        <PeriodicOffsetArray value="-6,5.2,0"/>
-        <PeriodicOffsetArray value="-4,6.9,0"/>
-        <PeriodicOffsetArray value="-2,7.7,0"/>
-        <PeriodicOffsetArray value="0,6,0"/>
-        <PeriodicOffsetArray value="2,5.6,0"/>
-        <PeriodicOffsetArray value="4,4.4,0"/>
-        <PeriodicOffsetArray value="6,0,0"/>
-        <PeriodicOffsetArray value="4,-4.4,0"/>
-        <PeriodicOffsetArray value="2,-5.6,0"/>
-        <PeriodicOffsetArray value="0,-6,0"/>
-        <PeriodicOffsetArray value="-2,-5.6,0"/>
-        <PeriodicOffsetArray value="-4,-4.4,0"/>
-        <PeriodicOffsetArray value="-6,0,0"/>
-        <PeriodicOffsetArray value="-4,4.4,0"/>
-        <PeriodicOffsetArray value="-2,5.6,0"/>
-        <PeriodicOffsetArray value="0,4,0"/>
-        <PeriodicOffsetArray value="2,3.4,0"/>
-        <PeriodicOffsetArray value="4,0,0"/>
-        <PeriodicOffsetArray value="2,-3.4,0"/>
-        <PeriodicOffsetArray value="0,-4,0"/>
-        <PeriodicOffsetArray value="-2,-3.4,0"/>
-        <PeriodicOffsetArray value="-4,0,0"/>
-        <PeriodicOffsetArray value="-2,3.4,0"/>
-        <PeriodicOffsetArray value="0,2,0"/>
-        <PeriodicOffsetArray value="2,0,0"/>
-        <PeriodicOffsetArray value="0,-2,0"/>
-        <PeriodicOffsetArray value="-2,0,0"/>
-        <PeriodicPeriodArray value="0.3"/>
+        <InitialEffect value="ZergLordGlaiveAttackCP"/>
     </CEffectCreatePersistent>
     <CEffectLaunchMissile id="GlaiveAttackLM">
         <EditorCategories value="Race:Zerg"/>
@@ -11469,6 +11477,7 @@
         <AmmoUnit value="GlaiveAttackMissile"/>
         <ImpactRange value="0.1"/>
         <Movers Link="SporeAttackMissileBig"/>
+        <ValidatorArray index="0" value="DistanceFromCasterLT25"/>
     </CEffectLaunchMissile>
     <CEffectCreatePersistent id="GlaiveAttackOffset">
         <EditorCategories value="Race:Zerg"/>
@@ -13452,6 +13461,7 @@
         <ImpactEffect value="SlimeAttackCP"/>
         <AmmoUnit value="SlimeAttackMissile"/>
         <DeathType value="Unknown"/>
+        <ValidatorArray index="0" value="DistanceFromCasterLT25"/>
     </CEffectLaunchMissile>
     <CEffectEnumArea id="SlimeAttackSA">
         <EditorCategories value="Race:Zerg"/>
@@ -13960,6 +13970,7 @@
         <ImpactLocation Value="TargetPoint"/>
         <ImpactEffect value="SporeAttackBigImpactSet"/>
         <AmmoUnit value="SporeAttackMissileBig"/>
+        <ValidatorArray index="0" value="DistanceFromCasterLT25"/>
     </CEffectLaunchMissile>
     <CEffectLaunchMissile id="SporeAttackMedLM">
         <EditorCategories value="Race:Zerg"/>
@@ -14525,7 +14536,7 @@
     </CEffectDamage>
     <CEffectDamage id="ZergLordAttackDummyDamage">
         <EditorCategories value="Race:Zerg"/>
-        <Amount value="1"/>
+        <Amount value="100"/>
     </CEffectDamage>
     <CEffectDamage id="ThornRainDMG">
         <EditorCategories value="Race:Zerg"/>
@@ -17088,7 +17099,7 @@
         <PeriodicEffectArray value="ExplosiveAttackInit"/>
         <PeriodicEffectArray value="FungalAttackInit"/>
         <PeriodicEffectArray value="ChaserAttackInit"/>
-        <PeriodicEffectArray value="GlaiveAttackInit"/>
+        <PeriodicEffectArray value="ZergLordGlaiveAttackInit"/>
         <PeriodicEffectArray value="SpawnAttackInit"/>
         <PeriodicEffectArray value="SporeAttackInit"/>
         <PeriodicEffectArray value="FireballAttackInit"/>
