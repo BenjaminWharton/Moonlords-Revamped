@@ -145,6 +145,41 @@
         <ImpactMap index="None" Model="Exterminate"/>
         <ImpactModel value="ExterminateIcefireModel"/>
     </CActorAction>
+    <CActorModel id="GatewayHeroBarrier" parent="ModelAddition">
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.Barrier.On" Send="Create"/>
+        <On Terms="Behavior.Barrier.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor {0,128,255 3.000000}"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorBeamSimple id="GatewayHeroExploderChainReactBeam" parent="BeamSimpleAnimationStyleOneShot">
+        <On Terms="Effect.GatewayHeroExploderExplodeDebuffSwitch.Start" Send="Create"/>
+        <HostLaunchSiteOps Ops="SOpSourceUnit SOpAttachOverhead" HoldPosition="1"/>
+        <HostImpactSiteOps Ops="SOpTargetUnit SOpAttachOverhead"/>
+    </CActorBeamSimple>
+    <CActorModel id="GatewayHeroExplosive" parent="ModelAddition">
+        <On Terms="Behavior.GatewayHeroExplosive.On" Send="Create"/>
+        <On Terms="Behavior.GatewayHeroExplosive.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+    </CActorModel>
+    <CActorModel id="GatewayHeroExplosiveAlly" parent="ModelAddition">
+        <On Terms="Behavior.Retribution.On" Send="Create"/>
+        <On Terms="Behavior.Retribution.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.Revenge.On" Send="Create"/>
+        <On Terms="Behavior.Revenge.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+    </CActorModel>
+    <CActorAction id="GatewayHeroSplitterRetargetAttack" parent="GenericAttack" effectImpact="GatewayHeroSplitterDMG" effectLaunch="RetargetLM">
+        <LaunchAssets Sound="GatewayHeroSplitter_Launch"/>
+        <ImpactMap index="None" Sound="GatewayHeroSplitter_Impact"/>
+    </CActorAction>
+    <CActorAction id="GatewayHeroSplitterShrapnelAttack" parent="GenericAttack" effectImpact="GatewayHeroSplitterDMG" effectLaunch="GatewayHeroDeflectorDroneShrapnelLM">
+        <LaunchAssets Sound="GatewayHeroSplitter_Launch"/>
+        <ImpactMap index="None" Sound="GatewayHeroSplitter_Impact"/>
+    </CActorAction>
+    <CActorSite id="GatewayHeroSplitterSite"/>
+    <CActorSite id="GatewayHeroSplitterSplitSite"/>
     <CActorSplat id="IllusionHeroDistortionSplat" parent="ProtossCursorSplat">
         <On index="0" Terms="Abil.Cursor" Send="Create"/>
         <On index="1" Terms="ActorCreation" Send="Create CursorRegionNoVis"/>
@@ -183,6 +218,32 @@
         <On Terms="ActorCreation; ValidateEffect DefaultDataE6" Target="_Unit" Send="SetScale 2.200000 0.500000"/>
         <On Terms="ActorCreation; ValidateEffect DefaultDataE7" Target="_Unit" Send="SetScale 2.400000 0.500000"/>
     </CActorSimple>
+    <CActorBeamSimple id="GatewayHeroDeflectorDroneBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.GatewayHeroDeflectorDroneDMG.Start; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.125000 Die"/>
+        <On Terms="TimerExpired; TimerName Die" Send="Destroy"/>
+        <HostLaunchSiteOps Ops="SOpSourceUnit SOpAttachCenter"/>
+        <HostImpactSiteOps Ops="SOpTargetUnit SOpAttachCenter" HoldPosition="1"/>
+    </CActorBeamSimple>
+    <CActorSound id="GatewayHeroDeflectorDrone_Impact" parent="SoundOneShot">
+        <On Terms="Effect.GatewayHeroDeflectorDroneDMG.Start; At Source" Send="Create"/>
+        <Host Subject="PointDefenseDrone"/>
+        <Sound value="Raven_PointDefenseDroneAttackLaunch"/>
+    </CActorSound>
+    <CActorAction id="SplitterSplitAttack" parent="GenericAttack" effectImpact="GatewayHeroSplitterSplitDMG" effectLaunch="SplitterSplitLM">
+        <LaunchRequest Subject="GatewayHeroSplitterSite"/>
+        <LaunchAssets Sound="GatewayHeroSplitter_Launch"/>
+        <Missile value="SplitterMissile"/>
+        <ImpactSite value="GatewayHeroSplitterSplitSite"/>
+        <ImpactMap index="None" Sound="GatewayHeroSplitter_Impact"/>
+        <ActionFlags index="ImpactForceSite" value="1"/>
+    </CActorAction>
+    <CActorAction id="SplitterSplitSplitAttack" parent="GenericAttack" effectImpact="GatewayHeroSplitterSplitDMG" effectLaunch="SplitterSplitSplitLM">
+        <LaunchRequest Subject="GatewayHeroSplitterSplitSite"/>
+        <LaunchAssets Sound="GatewayHeroSplitter_Launch"/>
+        <Missile value="SplitterMissile"/>
+        <ImpactMap index="None" Sound="GatewayHeroSplitter_Impact"/>
+    </CActorAction>
     <CActorText id="ThorNukeIcon">
         <On Terms="Behavior.DefensiveNuke.On" Send="Create"/>
         <On Terms="Behavior.DefensiveNuke.Off" Send="Destroy"/>
@@ -702,9 +763,9 @@
         <Height value="12.000000"/>
         <Width value="2.020000"/>
     </CActorQuad>
-    <CActorQuad id="GatewayHeroSplitterQuad" parent="GuideVisualQuadDown" abil="Splitter">
+    <CActorQuad id="GatewayHeroSplitterQuad" parent="GuideVisualQuadDown" abil="PsiSplitter">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="Abil.Splitter.Cursor" Send="Create"/>
+        <On index="0" Terms="Abil.PsiSplitter.Cursor" Send="Create"/>
         <On index="4" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
@@ -1378,11 +1439,11 @@
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Zealot_Land"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Templar_LandSweetener"/>
-        <On Terms="Abil.Splitter.SourceCastStart; ModelName ArtanisVoid" Send="AnimPlay BSD Attack,Superior"/>
-        <On Terms="Abil.Exploder.SourceCastStart" Send="AnimPlay BSD Spell,D"/>
+        <On Terms="Abil.PsiSplitter.SourceCastStart; ModelName ArtanisVoid" Send="AnimPlay BSD Attack,Superior"/>
+        <On Terms="Abil.ExplosiveVirus.SourceCastStart" Send="AnimPlay BSD Spell,D"/>
         <On Terms="Abil.Reinforce.SourceCastStart" Send="AnimPlay BSD Spell,B"/>
         <On Terms="Abil.Recharge.SourceCastStart" Send="AnimPlay BSD Spell,C"/>
-        <On Terms="Abil.Splitter.SourceCastStart; ModelName VulcanChampion" Send="AnimPlay BSD Spell,A"/>
+        <On Terms="Abil.PsiSplitter.SourceCastStart; ModelName VulcanChampion" Send="AnimPlay BSD Spell,A"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimPlay BSD Walk"/>
         <On Terms="UnitMovementUpdate.*.Stand; AnimPlaying BSD Walk" Send="AnimClear BSD"/>
         <AnimBlendTime value="0.150000"/>
@@ -7260,6 +7321,63 @@
         <StatusBarFlags index="Workers" value="0"/>
         <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
+    <CActorUnit id="GatewayHeroZealot" parent="GenericUnitStandard" unitName="GatewayHeroZealot">
+        <Aliases value="_UnitSmall"/>
+        <Macros value="ChargingAnim"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <On Terms="Behavior.Charging.On" Send="ModelSuddenMotionStart"/>
+        <On Terms="Behavior.Charging.Off" Send="ModelSuddenMotionStop"/>
+        <On Terms="Behavior.Hallucination.On" Send="Create HallucinationBirthSoundSmall"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsHallucination" Send="DeathCustomize Hallucination"/>
+        <On Terms="Behavior.VoidZealotWhirlwind.On" Send="HostSiteOpsSet ::Host ZealotWhirlwindRotator"/>
+        <On Terms="Effect.VoidZealotWhirlwindSearch.Start" Send="AnimPlay Attack Attack,03"/>
+        <On Terms="Behavior.VoidZealotWhirlwind.Off" Send="HostSiteOpsSet ::Host"/>
+        <On Terms="Behavior.VoidZealotWhirlwind.Off" Send="AnimClear Attack"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Zealot_Land"/>
+        <On Terms="Upgrade.CinematicMode.Add; ValidateUnit CasterHasVoidZealotWhirlwind" Send="HostSiteOpsSet ::Host"/>
+        <On Terms="Upgrade.CinematicMode.Remove; ValidateUnit CasterHasVoidZealotWhirlwind" Send="HostSiteOpsSet ::Host ZealotWhirlwindRotator"/>
+        <On Terms="Signal.*.SOATargetingOn; ValidateUnit CasterHasVoidZealotWhirlwind" Send="HostSiteOpsSet ::Host"/>
+        <On Terms="Signal.*.SOATargetingOff; ValidateUnit CasterHasVoidZealotWhirlwind" Send="HostSiteOpsSet ::Host ZealotWhirlwindRotator"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="ZealotAiurWarpIn"/>
+        <DeathArray index="Normal" ModelLink="ZealotAiurDeath" SoundLink="Zealot_DeathFX"/>
+        <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathSmall" Name="Hallucination"/>
+        <PlacementModel value="ZealotAiurPlacement"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <PortraitModel value="ZealotAiurPortrait"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.600000"/>
+            <RangeDown value="0.600000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMedium"/>
+        </TerrainSquibs>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <BarOffset value="45"/>
+        <BarWidth value="42"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-zealotelite.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-zealot-aiur.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <SoundArray index="Birth" value="Zealot_Birth"/>
+        <SoundArray index="Ready" value="Zealot_Ready"/>
+        <SoundArray index="Help" value="Zealot_Help"/>
+        <SoundArray index="What" value="ZealotVoid_What"/>
+        <SoundArray index="Yes" value="Zealot_Yes"/>
+        <SoundArray index="Attack" value="Zealot_Attack"/>
+        <SoundArray index="Pissed" value="Zealot_Pissed"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-zealot-aiur.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-aiur.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-aiur-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-aiur-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-aiur-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
     <CActorAction id="ZealotSlashAttack" parent="GenericAttack" effectAttack="ZealotSlashDMG">
         <EditorCategories value=""/>
         <ImpactSiteOps Ops="SOpCasterPoint"/>
@@ -9539,11 +9657,6 @@
         <On Terms="ActorCreation" Send="SetTintColor 0,255,255"/>
         <Model value="ZealotAiurDeath"/>
     </CActorModel>
-    <CActorSound id="ExploderImpactSound" parent="SoundOneShot">
-        <EditorCategories value=""/>
-        <On Terms="Effect.ExploderExplodeSA.Start" Send="Create"/>
-        <Sound value="Immortal_AttackImpact"/>
-    </CActorSound>
     <CActorSound id="RechargeSound" parent="SoundOneShot">
         <On Terms="Abil.Recharge.SourceCastStart" Send="Create"/>
         <Sound value="Obelisk_ArgusLinkImpact"/>
@@ -9567,13 +9680,10 @@
         <Sound value="Zeratul_Blink"/>
     </CActorSound>
     <CActorModel id="DestroyerDroneEnergyRestore" parent="ModelAnimationStyleOneShot">
-        <On Terms="Abil.DestroyerDroneSplitter.SourceCastStart" Send="Create"/>
+        <On Terms="Effect.GatewayHeroSplitterDestroyerMU.Start" Send="Create"/>
+        <On Terms="Effect.GatewayHeroExploderDestroyerMU.Start" Send="Create"/>
+        <On Terms="Effect.GatewayHeroReinforceDestroyerMU.Start" Send="Create"/>
         <Model value="FeedbackLaunch"/>
-    </CActorModel>
-    <CActorModel id="DestroyerDroneEnergyRestoreImpact" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.DestoyerDroneEnergyRestoreModifyUnit.Start" Send="Create"/>
-        <Model value="FeedbackImpact"/>
-        <Scale value="0.400000"/>
     </CActorModel>
     <CActorSound id="GravityShotSound" parent="SoundOneShot">
         <On Terms="Effect.GravityShotCP.Start" Send="Create"/>
@@ -9775,16 +9885,17 @@
         </WireframeShield>
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorUnit>
-    <CActorModel id="ExploderImpactModel" parent="ModelAnimationStyleOneShot">
+    <CActorModel id="ExploderImpact" parent="ModelAnimationStyleOneShot">
         <EditorCategories value=""/>
         <On Terms="Effect.ExploderSA.Impact" Send="Create"/>
-        <Model value="ExploderImpact"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,255,255"/>
     </CActorModel>
     <CActorModel id="ExploderExplodeImpact" parent="ModelAnimationStyleOneShot">
         <EditorCategories value=""/>
         <On Terms="Effect.ExploderExplodeSA.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,255,255"/>
         <Model value="ExploderImpact"/>
-        <Scale value="0.600000"/>
+        <Scale value="0.800000"/>
     </CActorModel>
     <CActorModel id="GravityDashForce" parent="ModelAnimationStyleContinuous">
         <Flags index="SuppressSaveLoad" value="1"/>
@@ -9876,7 +9987,7 @@
         </WireframeShield>
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorUnit>
-    <CActorSplat id="ExploderSplat" parent="ProtossCursorSplat" abil="Exploder">
+    <CActorSplat id="ExploderSplat" parent="ProtossCursorSplat" abil="ExplosiveVirus">
         <Model value="VoidProtossAOECursorSplat"/>
     </CActorSplat>
     <CActorBeamSimple id="HealBeam" parent="BeamSimpleAnimationStyleContinuous">
@@ -10025,15 +10136,9 @@
         <On Terms="Effect.PurgeSA.Impact" Send="Create"/>
         <Model value="EnergyNovaShockwave"/>
     </CActorModel>
-    <CActorSound id="SplitterImpactSound" parent="SoundOneShot">
-        <EditorCategories value=""/>
-        <On Terms="Effect.SplitterDMG.Start" Send="Create"/>
-        <Sound value="ArtanisMeleeVoid_AttackLaunch"/>
-    </CActorSound>
-    <CActorSound id="ExploderCastSound" parent="SoundOneShot">
-        <EditorCategories value=""/>
+    <CActorSound id="GatewayHeroExploder_Impact" parent="SoundOneShot">
         <On Terms="Effect.ExploderSA.Start" Send="Create"/>
-        <Sound value="Immortal_AttackImpact"/>
+        <On Terms="Effect.ExploderExplodeSA.Start" Send="Create"/>
     </CActorSound>
     <CActorSound id="ReinforceSound" parent="SoundOneShot">
         <On Terms="Abil.Reinforce.SourceCastStart" Send="Create"/>
@@ -10189,11 +10294,14 @@
         <On Terms="Effect.RechargeAddEnergy.Start" Send="Create"/>
         <On Terms="Effect.RechargeAllyAddEnergy.Start" Send="Create"/>
     </CActorModel>
-    <CActorAction id="SplitterAttack" parent="GenericAttack" effectImpact="SplitterDMG" effectLaunch="SplitterLM">
+    <CActorAction id="SplitterAttack" parent="GenericAttack" effectImpact="GatewayHeroSplitterDMG" effectLaunch="SplitterLM">
         <LaunchAttachQuery Methods="Target 0"/>
         <ContainerAttachQuery Methods="Center 0"/>
         <Missile value="SplitterMissile"/>
-        <ImpactMap index="None" Model="HighTemplarWeapon" Sound="Karass_AttackImpact"/>
+        <ImpactMap index="None" Model="HighTemplarWeapon" Sound="GatewayHeroSplitter_Impact"/>
+        <LaunchAssets Sound="GatewayHeroSplitter_Launch"/>
+        <ImpactSite value="GatewayHeroSplitterSite"/>
+        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpMoveUpBy1"/>
     </CActorAction>
     <CActorSplat id="Thunderfury" parent="CursorSplat" abil="LightningHeroThunderfury">
         <Model value="VoidProtossAOECursorSplat"/>

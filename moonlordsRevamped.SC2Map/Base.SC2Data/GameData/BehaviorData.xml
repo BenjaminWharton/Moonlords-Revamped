@@ -92,12 +92,6 @@
         <FinalEffect value="AirHeroHurricaneLiftedEndSet"/>
         <Modification MoveSpeedMinimum="10"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Anoint">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Period value="15"/>
-        <PeriodicEffect value="AnointSA"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="Anointed">
         <InfoIcon value="Assets\Textures\btn-upgrade-protoss-fenix-arbiterchampiondetectionresearch.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -251,6 +245,48 @@
         <InfoIcon value="Assets\Textures\abilityicon_corrosivespores_square.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GatewayHeroAnoint">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Period value="20"/>
+        <PeriodicEffect value="AnointSA"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GatewayHeroDeflectorDronePointDefense">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="GatewayHeroDeflectorDroneSA"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GatewayHeroDisableHealerDrone">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="GatewayHeroCasterHasEquipDeflector"/>
+        <Modification>
+            <ModifyFlags index="DisableWeapons" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GatewayHeroDisableDeflectorDrone">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="GatewayHeroCasterHasEquipHealer"/>
+        <Modification>
+            <ModifyFlags index="DisableWeapons" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+            <BehaviorLinkDisableArray value="GatewayHeroDeflectorDronePointDefense"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorUnitTracker id="GatewayHeroZealotTracker">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <MaxTrackedUnits value="4"/>
+        <UnitAddedAtMaxRule value="ReplaceOldest"/>
+        <ReplacedEffect value="ReinforceAB"/>
+    </CBehaviorUnitTracker>
     <CBehaviorBuff id="GiantYetiLeapStun">
         <FinalEffect value="ApplyUnitWasStunned"/>
     </CBehaviorBuff>
@@ -633,10 +669,10 @@
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-ability-dehaka-morearmordamage.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="100"/>
+        <MaxStackCount value="50"/>
         <Duration value="60"/>
         <Modification>
-            <LifeArmorBonus value="-0.25"/>
+            <LifeArmorBonus value="-0.5"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="Fanatical">
@@ -871,7 +907,6 @@
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-shield-protoss-plasmashields.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
-        <RemoveValidatorArray value="NotHaveHeroicShieldCleanUp"/>
         <DamageResponse Fatal="1" Handled="GatewayHeroApplyGuardianShell" ModifyFraction="0">
             <Chance value="1"/>
         </DamageResponse>
@@ -1147,10 +1182,13 @@
         </Cost>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-recallondeath.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
-        <FinalEffect value="ExploderExplodeDelay"/>
         <DamageResponse Handled="ExploderUnstableCP">
             <Chance value="1"/>
         </DamageResponse>
+        <Duration value="60"/>
+        <Modification>
+            <DeathResponse Chance="1" Effect="ExploderExplodeDelay"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="ExtinctionOrbDMG">
         <InfoFlags index="Hidden" value="1"/>
@@ -1670,6 +1708,16 @@
         <ExpireEffect value="Suicide"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="UnitAttackSpeedBuff">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GatewayHeroEquipHealerDrone">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GatewayHeroEquipDeflectorDrone">
+        <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
     </CBehaviorBuff>
@@ -2821,7 +2869,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Barrier">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="0.5"/>
+        <Duration value="5"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BiogenicShield">
@@ -3188,13 +3236,17 @@
             <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Exploder">
+    <CBehaviorBuff id="GatewayHeroExplosive">
         <InfoIcon value="Assets\Textures\btn-upgrade-protoss-fenix-immortalchampionchargeexplode.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
-        <FinalEffect value="ExploderExplodeDelay"/>
         <DamageResponse Handled="ExploderUnstableCP">
             <Chance value="1"/>
         </DamageResponse>
+        <Duration value="60"/>
+        <Modification>
+            <ModifyFlags index="Reveal" value="1"/>
+            <DeathResponse Chance="1" Effect="ExploderExplodeDelay"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="Fireballeoltimerbackup">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -4017,15 +4069,16 @@
     <CBehaviorBuff id="Retarget">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Duration value="2"/>
-        <InitialEffect value="RetargetSA"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Revenge">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <FinalEffect value="ExploderExplodeSA"/>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-recallondeath.dds"/>
         <DamageResponse Handled="ExploderUnstableCP">
             <Chance value="1"/>
         </DamageResponse>
+        <Modification>
+            <DeathResponse Chance="1" Effect="ExploderExplodeDelay"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="GuardianShellInvulnerable">
         <Alignment value="Positive"/>
@@ -4036,13 +4089,13 @@
         <Modification>
             <StateFlags index="Invulnerable" value="1"/>
         </Modification>
+        <InitialEffect value="GatewayHeroWarpinMU"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GuardianShellZealot">
         <Alignment value="Positive"/>
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-shield-protoss-plasmashields.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
-        <RemoveValidatorArray value="NotHaveHeroicShieldCleanUp"/>
         <DamageResponse Fatal="1" Handled="ShieldInvulnerableApply" ModifyFraction="0">
             <Chance value="1"/>
         </DamageResponse>
@@ -5170,13 +5223,6 @@
             <BehaviorLinkDisableArray value="WarpDrone"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="WarpRiftTimedLife">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisplayDuration index="Self" value="1"/>
-        <DisplayDuration index="Ally" value="1"/>
-        <Duration value="5"/>
-        <ExpireEffect value="ReinforceKillZealot"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="Warpout">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\ui_chatbaricons_battlenet.dds"/>
@@ -5344,7 +5390,7 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
-        <Duration value="30"/>
+        <Duration value="10"/>
         <DurationRandomMax value="0.5"/>
         <ExpireEffect value="ReinforceKillZealot"/>
         <Modification>

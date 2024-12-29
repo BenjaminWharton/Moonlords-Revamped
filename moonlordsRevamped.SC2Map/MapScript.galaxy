@@ -5990,11 +5990,11 @@ void gf_initTalentDialogs () {
     gv_talentsdialogbuttons[1][2][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 475, 200, StringExternal("Param/Value/B376F26B"), StringExternal("Param/Value/7DB186C3"), "");
     gv_talentsdialogbuttons[2][2][lv_i] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 475, 250, StringExternal("Param/Value/17AF96DC"), StringExternal("Param/Value/FE304D17"), "");
+    libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 475, 250, StringExternal("Param/Value/2D41C80C"), StringExternal("Param/Value/DE7F358D"), "");
     gv_talentsdialogbuttons[3][2][lv_i] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 475, 300, StringExternal("Param/Value/2D41C80C"), StringExternal("Param/Value/DE7F358D"), "");
+    libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 475, 300, StringExternal("Param/Value/4D74B5CD"), StringExternal("Param/Value/8BB25627"), "");
     gv_talentsdialogbuttons[4][2][lv_i] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 475, 350, StringExternal("Param/Value/4D74B5CD"), StringExternal("Param/Value/8BB25627"), "");
+    libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 475, 350, StringExternal("Param/Value/17AF96DC"), StringExternal("Param/Value/FE304D17"), "");
     gv_talentsdialogbuttons[5][2][lv_i] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(gv_talentsdialog[lv_i], 225, 50, c_anchorTopLeft, 700, 100, StringExternal("Param/Value/BEB0F6D6"), StringExternal("Param/Value/6B710BF8"), "");
     gv_talentsdialogbuttons[0][3][lv_i] = DialogControlLastCreated();
@@ -8565,9 +8565,9 @@ void gf_TalentPressedGatewayHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    if ((lv_buttonnumber == 1) && (lv_buttonrow == 0) && (TechTreeUpgradeCount(lv_pn, "WarpRift", c_techCountQueuedOrBetter) < 2)) {
-        TechTreeUpgradeAddLevel(lv_pn, "WarpRift", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Warp Rift ")+IntToText(TechTreeUpgradeCount(lv_pn, "WarpRift", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
+    if ((lv_buttonnumber == 1) && (lv_buttonrow == 0) && (TechTreeUpgradeCount(lv_pn, "Strike", c_techCountQueuedOrBetter) < 2)) {
+        TechTreeUpgradeAddLevel(lv_pn, "Strike", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Strike ")+IntToText(TechTreeUpgradeCount(lv_pn, "Strike", c_techCountCompleteOnly))+StringToText("/2"), lv_pg);
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
@@ -8649,21 +8649,21 @@ void gf_TalentPressedGatewayHero (int lp_p, int lp_br, int lp_bn, int lp_hv) {
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    if ((lv_buttonnumber == 3) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "Revenge", c_techCountQueuedOrBetter) < 1)) {
-        TechTreeUpgradeAddLevel(lv_pn, "Revenge", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Revenge ")+IntToText(TechTreeUpgradeCount(lv_pn, "Revenge", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
-        gv_talentpointsavailable[lv_player] -= 1;
-    }
-
-    if ((lv_buttonnumber == 4) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "Rend", c_techCountQueuedOrBetter) < 1)) {
+    if ((lv_buttonnumber == 3) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "Rend", c_techCountQueuedOrBetter) < 1)) {
         TechTreeUpgradeAddLevel(lv_pn, "Rend", 1);
         libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Rend ")+IntToText(TechTreeUpgradeCount(lv_pn, "Rend", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
         gv_talentpointsavailable[lv_player] -= 1;
     }
 
-    if ((lv_buttonnumber == 5) && (lv_buttonrow == 2) && (gf_Currentlevel() >= 10) && (TechTreeUpgradeCount(lv_pn, "Injection", c_techCountQueuedOrBetter) < 1)) {
-        TechTreeUpgradeAddLevel(lv_pn, "Injection", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Injection ")+IntToText(TechTreeUpgradeCount(lv_pn, "Injection", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
+    if ((lv_buttonnumber == 4) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "Longevity", c_techCountQueuedOrBetter) < 1)) {
+        TechTreeUpgradeAddLevel(lv_pn, "Longevity", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Longevity ")+IntToText(TechTreeUpgradeCount(lv_pn, "Longevity", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
+        gv_talentpointsavailable[lv_player] -= 1;
+    }
+
+    if ((lv_buttonnumber == 5) && (lv_buttonrow == 2) && (TechTreeUpgradeCount(lv_pn, "Revenge", c_techCountQueuedOrBetter) < 1) && (gf_Currentlevel() >= 10)) {
+        TechTreeUpgradeAddLevel(lv_pn, "Revenge", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), StringToText("Revenge ")+IntToText(TechTreeUpgradeCount(lv_pn, "Revenge", c_techCountCompleteOnly))+StringToText("/1"), lv_pg);
         gv_talentpointsavailable[lv_player] -= 1;
     }
 

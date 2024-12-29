@@ -172,6 +172,32 @@
         <Pitch value="-2.000000,-2.000000"/>
         <Volume value="3.000000,3.000000"/>
     </CSound>
+    <CSound id="GatewayHeroExploder_Impact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_04a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_06a.wav" FacialGroup=""/>
+        <Pitch value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="GatewayHeroSplitter_Launch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_AttackLaunch0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_AttackLaunch1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_AttackLaunch2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_AttackLaunch3.wav" FacialGroup=""/>
+        <Pitch value="4.000000,4.000000"/>
+    </CSound>
+    <CSound id="GatewayHeroSplitter_Impact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_AttackImpact0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_AttackImpact1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_AttackImpact2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_AttackImpact3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_AttackImpact4.wav" FacialGroup=""/>
+        <Pitch value="4.000000,4.000000"/>
+    </CSound>
     <CSound id="GravityShotSound" parent="Spell">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Alarak_E_DeathCharge_01.wav" FacialGroup=""/>

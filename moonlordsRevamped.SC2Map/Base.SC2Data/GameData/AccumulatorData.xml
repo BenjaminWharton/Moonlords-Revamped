@@ -27,6 +27,40 @@
         <ApplicationRule value="Multiply"/>
         <Amount value="1"/>
     </CAccumulatorConstant>
+    <CAccumulatorVitals id="EnergyCurrentSource">
+        <Ratio value="1"/>
+        <VitalType value="Energy"/>
+        <UnitSource Value="Source"/>
+        <ModificationType value="PerUnit"/>
+    </CAccumulatorVitals>
+    <CAccumulatorVitals id="EnergyMaxSource">
+        <Ratio value="1"/>
+        <VitalType value="Energy"/>
+        <UnitSource Value="Source"/>
+        <ModificationType value="PerUnitMaxVital"/>
+    </CAccumulatorVitals>
+    <CAccumulatorConstant id="GatewayHeroDeflectorDronePDCost">
+        <Amount value="15"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="GatewayHeroDestroyerReinforceCostBase">
+        <Amount value="40"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="GatewayHeroDestroyerCostFactor">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="1"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="GatewayHeroDestroyerSplitterCost">
+        <Amount value="25"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="GatewayHeroDestroyerExploderCost">
+        <Amount value="50"/>
+    </CAccumulatorConstant>
+    <CAccumulatorArithmetic id="GatewayHeroDestroyerReinforceCost">
+        <Parameters value="0">
+            <AccumulatorArray value="GatewayHeroDestroyerReinforceCostBase"/>
+            <AccumulatorArray value="GatewayHeroDestroyerCostFactor"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
     <CAccumulatorConstant id="LuckHeroDelugeMultiplier">
         <ApplicationRule value="Multiply"/>
         <Amount value="2"/>
@@ -225,6 +259,10 @@
     </CAccumulatorConstant>
     <CAccumulatorConstant id="LuckHeroOrbOfHavocRadiusBase">
         <Amount value="3"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="MultiplyNeg1">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="-1"/>
     </CAccumulatorConstant>
     <CAccumulatorConstant id="NatureHeroHallucinogenMultiplier">
         <ApplicationRule value="Multiply"/>

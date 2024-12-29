@@ -925,26 +925,6 @@
             <Flags index="AllowSelfCast" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
-    <CAbilEffectTarget id="DestroyerDroneSplitter">
-        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
-        <Effect index="0" value="DestroyerDroneSet"/>
-        <Flags index="AllowMovement" value="1"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
-        <Flags index="RequireTargetVision" value="0"/>
-        <Cost>
-            <Vital index="Energy" value="50"/>
-            <VitalFraction index="Energy" value="2"/>
-            <Cooldown TimeUse="1"/>
-        </Cost>
-        <TargetFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="10"/>
-        <AutoCastFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AutoCastRange value="10"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Splitter">
-            <Flags index="AllowSelfCast" value="1"/>
-        </CmdButtonArray>
-    </CAbilEffectTarget>
     <CAbilEffectInstant id="Discharge">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="DischargeSet"/>
@@ -993,7 +973,7 @@
         </InfoArray>
         <ExternalAngle value="135"/>
         <MaxCount value="1"/>
-        <EffectArray index="Create" value="FindDronesAB"/>
+        <EffectArray index="Create" value="GatewayHeroDroneHangerDeflectorSet"/>
     </CAbilArmMagazine>
     <CAbilArmMagazine id="DroneHangerHealer">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -1012,7 +992,7 @@
         </InfoArray>
         <ExternalAngle value="270"/>
         <MaxCount value="1"/>
-        <EffectArray index="Create" value="FindDronesAB"/>
+        <EffectArray index="Create" value="GatewayHeroDroneHangerHealerSet"/>
     </CAbilArmMagazine>
     <CAbilArmMagazine id="DroneHangerDestroyer">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -1038,7 +1018,7 @@
         <ExternalAngle value="225"/>
         <MaxCount value="1"/>
         <Flags index="AutoCreate" value="1"/>
-        <EffectArray index="Create" value="FindDronesAB"/>
+        <EffectArray index="Create" value="GatewayHeroDroneHangerHealerSet"/>
     </CAbilArmMagazine>
     <CAbilEffectTarget id="DropBeam">
         <AbilSetId value="Graviton"/>
@@ -1085,21 +1065,20 @@
         <AutoCastValidatorArray value="NotWarpingIn"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="EmergencyRecall" PreemptLevel="1"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="Exploder">
+    <CAbilEffectTarget id="ExplosiveVirus">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="ExploderSA"/>
-        <Range value="10"/>
-        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <CursorEffect value="ExploderSA"/>
-        <AINotifyEffect value="ExploderSA"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Exploder"/>
-        <Cost>
-            <Vital index="Energy" value="60"/>
-        </Cost>
+        <Effect index="0" value="GatewayHeroExploder"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+        </Cost>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CursorEffect value="ExploderSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ExplosiveVirus"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="ExplosiveVolley">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -1458,7 +1437,7 @@
         <AutoCastFilters value="-;Ally,Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Hidden"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Recharge"/>
         <Cost>
-            <Vital index="Energy" value="75"/>
+            <Vital index="Energy" value="50"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="TwilightHeroRecombulator">
@@ -1513,12 +1492,12 @@
         <TechPlayer value="Owner"/>
         <OrderArray index="0" Model="Assets\UI\Cursors\WayPointConfirm_Void\WayPointConfirm_Void.m3"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="ReinforceSpawnZealot"/>
+        <Effect index="0" value="GatewayHeroReinforce"/>
         <Range value="10"/>
         <AINotifyEffect value="ReinforceSpawnZealot"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Reinforce"/>
         <Cost>
-            <Vital index="Energy" value="100"/>
+            <Vital index="Energy" value="40"/>
         </Cost>
     </CAbilEffectTarget>
     <CAbilArmMagazine id="DroneHangerDeflector">
@@ -1542,7 +1521,7 @@
         </InfoArray>
         <ExternalAngle value="90"/>
         <MaxCount value="1"/>
-        <EffectArray index="Create" value="FindDronesAB"/>
+        <EffectArray index="Create" value="GatewayHeroDroneHangerDeflectorSet"/>
     </CAbilArmMagazine>
     <CAbilAugment id="ShadowCharge">
         <Cost>
@@ -1550,22 +1529,22 @@
         </Cost>
         <CmdButtonArray index="Execute" Requirements="HaveCharge"/>
     </CAbilAugment>
-    <CAbilEffectTarget id="Splitter">
+    <CAbilEffectTarget id="PsiSplitter">
         <OrderArray index="0" DisplayType="Legacy"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="SplitterOffsetCP"/>
-        <Range value="12"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Splitter"/>
+        <Effect index="0" value="GatewayHeroSplitter"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="LineMovement" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
-            <Vital index="Energy" value="30"/>
+            <Vital index="Energy" value="25"/>
         </Cost>
+        <Range value="500"/>
         <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PsiSplitter"/>
     </CAbilEffectTarget>
     <CAbilAugment id="EssenceCharge" parent="Charge">
         <Name value="Abil/Name/EssenceCharge"/>
@@ -1777,12 +1756,11 @@
         <AutoCastRange value="10"/>
         <CmdButtonArray index="Execute" Requirements=""/>
         <TargetSorts>
-            <SortArray index="0" value="TSShieldsFraction"/>
-            <SortArray index="1" value="TSDistance"/>
-            <SortArray index="2" removed="1"/>
+            <SortArray index="0" value="TSAllianceControl"/>
         </TargetSorts>
         <AutoCastValidatorArray index="1" value="CasterHasEnergy"/>
         <AutoCastValidatorArray index="2" value="MissingHealthOrShields"/>
+        <AutoCastValidatorArray value="NoZealotTimedLife"/>
     </CAbilEffectTarget>
     <CAbilWarpTrain id="WarpInReinforcements">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -2169,7 +2147,7 @@
                 <CountStart value="2"/>
                 <CountUse value="1"/>
                 <Link value="Abil/PsiStorm"/>
-                <TimeUse value="3"/>
+                <TimeUse value="4"/>
             </Charge>
             <Cooldown Link="Abil/PsiStorm"/>
         </Cost>
@@ -2178,7 +2156,6 @@
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE10"/>
         <CastOutroTime value="0.25"/>
-        <Marker Link="Abil/PsiStorm"/>
         <CursorEffect value="FireHeroBlastwaveSA"/>
         <AINotifyEffect value="PsiStorm"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Blastwave"/>

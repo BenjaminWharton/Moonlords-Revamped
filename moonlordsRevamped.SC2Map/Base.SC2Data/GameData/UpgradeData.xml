@@ -603,24 +603,24 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="RewardArmor">
-        <EffectArray Reference="Unit,ZealotAiur,ShieldArmor" Value="0.5"/>
-        <EffectArray Reference="Unit,ZealotAiur,LifeArmor" Value="0.5"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,ShieldArmor" Value="0.5"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,LifeArmor" Value="0.5"/>
         <EffectArray Reference="Unit,HoloShieldUnit,LifeArmor" Value="0.5"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,LifeArmor" Value="0.5"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldArmor" Value="0.5"/>
         <MaxLevel value="100"/>
     </CUpgrade>
     <CUpgrade id="RewardArmor2">
-        <EffectArray Reference="Unit,ZealotAiur,ShieldArmor" Value="50"/>
-        <EffectArray Reference="Unit,ZealotAiur,LifeArmor" Value="50"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,ShieldArmor" Value="50"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,LifeArmor" Value="50"/>
         <EffectArray Reference="Unit,HoloShieldUnit,LifeArmor" Value="50"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,LifeArmor" Value="50"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldArmor" Value="50"/>
         <MaxLevel value="100"/>
     </CUpgrade>
     <CUpgrade id="RewardRegen">
-        <EffectArray Reference="Unit,ZealotAiur,ShieldRegenRate" Value="1.000000"/>
-        <EffectArray Reference="Unit,ZealotAiur,LifeRegenRate" Value="0.500000"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,ShieldRegenRate" Value="1.000000"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,LifeRegenRate" Value="0.500000"/>
         <EffectArray Reference="Unit,HoloShieldUnit,LifeRegenRate" Value="0.500000"/>
         <EffectArray Reference="Accumulator,HealingMultiplier,Amount" Value="0.02"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,LifeRegenRate" Value="0.5"/>
@@ -628,8 +628,8 @@
         <MaxLevel value="100"/>
     </CUpgrade>
     <CUpgrade id="RewardRegen2">
-        <EffectArray Reference="Unit,ZealotAiur,ShieldRegenRate" Value="100.000000"/>
-        <EffectArray Reference="Unit,ZealotAiur,LifeRegenRate" Value="50.000000"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,ShieldRegenRate" Value="100.000000"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,LifeRegenRate" Value="50.000000"/>
         <EffectArray Reference="Unit,HoloShieldUnit,LifeRegenRate" Value="50.000000"/>
         <EffectArray Reference="Accumulator,HealingMultiplier,Amount" Value="2"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,LifeRegenRate" Value="50"/>
@@ -831,8 +831,8 @@
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Ricochet">
-        <EffectArray Reference="Effect,SplitterSplitST,AreaArray[0].Radius" Value="3"/>
-        <EffectArray Reference="Effect,SplitterSplitSplitST,AreaArray[0].Radius" Value="3"/>
+        <EffectArray Reference="Effect,GatewayHeroSplitterSplitSearchTarget,AreaArray[0].Radius" Value="3"/>
+        <EffectArray Reference="Effect,GatewayHeroSplitterSplitSplitSearchTarget,AreaArray[0].Radius" Value="3"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Ripple">
@@ -1589,6 +1589,7 @@
         <EffectArray Operation="Subtract" Reference="Behavior,Barrier,Modification.DamageTakenFraction[Ranged]" Value="0.25"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Barrier,Modification.DamageTakenFraction[Spell]" Value="0.25"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Barrier,Modification.DamageTakenFraction[Splash]" Value="0.25"/>
+        <EffectArray Operation="Set" Reference="Effect,BarrierAB,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -1598,12 +1599,16 @@
     </CUpgrade>
     <CUpgrade id="BlastRadius">
         <EffectArray Reference="Actor,ExploderExplodeImpact,Scale" Value="0.200000"/>
-        <EffectArray Reference="Effect,ChainReactSA,AreaArray[0].Radius" Value="0.5"/>
+        <EffectArray Reference="Effect,ExploderExplodeSA,AreaArray[0].Radius" Value="0.3"/>
+        <EffectArray Reference="Effect,ExploderSA,AreaArray[0].Radius" Value="0.4"/>
+        <EffectArray Reference="Actor,ExploderImpact,Scale" Value="0.250000"/>
+        <EffectArray Reference="Effect,GatewayHeroExploderDebuffSA,AreaArray[0].MaxCount" Value="1"/>
+        <EffectArray Reference="Effect,GatewayHeroExploderDebuffSA,AreaArray[0].Radius" Value="0.4"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="BlastZone">
-        <EffectArray Reference="Effect,ExploderDMG,Amount" Value="15"/>
+        <EffectArray Reference="Effect,ExploderDMG,Amount" Value="10"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -1618,7 +1623,7 @@
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="ChainReact">
-        <EffectArray Reference="Effect,ChainReact,Chance" Value="0.5"/>
+        <EffectArray Operation="Set" Reference="Effect,GatewayHeroExploderExplodeDebuffSA,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="ChargeTalent">
@@ -1759,11 +1764,13 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Efficient">
-        <EffectArray Operation="Subtract" Reference="Abil,DestroyerDroneSplitter,Cost[0].Vital[Energy]" Value="10"/>
         <EffectArray Operation="Subtract" Reference="Effect,HealerDroneHealthHeal,DrainVitalCostFactor" Value="0.04"/>
         <EffectArray Operation="Subtract" Reference="Effect,HealerDroneShieldHeal,DrainVitalCostFactor" Value="0.04"/>
         <EffectArray Operation="Subtract" Reference="Abil,DefensiveMatrix,Cost[0].Vital[Energy]" Value="6"/>
-        <EffectArray Reference="Effect,PointDefenseLaserEnergy,VitalArray[Energy].Change" Value="3"/>
+        <EffectArray Operation="Subtract" Reference="Accumulator,GatewayHeroDeflectorDronePDCost,Amount" Value="3"/>
+        <EffectArray Operation="Subtract" Reference="Accumulator,GatewayHeroDestroyerCostFactor,Amount" Value="0.2"/>
+        <EffectArray Operation="Subtract" Reference="Accumulator,GatewayHeroDestroyerExploderCost,Amount" Value="10"/>
+        <EffectArray Operation="Subtract" Reference="Accumulator,GatewayHeroDestroyerSplitterCost,Amount" Value="5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -2319,7 +2326,7 @@
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Fragments">
-        <EffectArray Reference="Effect,SplitterSplitSplitCPSearchTarget,PeriodCount" Value="2"/>
+        <EffectArray Reference="Effect,GatewayHeroSplitterSplitSplitSearchTarget,AreaArray[0].MaxCount" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -2353,9 +2360,9 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="Injection">
-        <EffectArray Reference="Effect,InjectionSet,Chance" Value="0.2"/>
-        <EffectArray Operation="Set" Reference="Effect,ExploderUnstableInjectionChance,Chance" Value="1"/>
+    <CUpgrade id="Longevity">
+        <EffectArray Reference="Behavior,ReinforceTimedLife,Duration" Value="5.000000"/>
+        <EffectArray Reference="Behavior,GatewayHeroZealotTracker,MaxTrackedUnits" Value="2"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Leach">
@@ -2626,7 +2633,7 @@
         <EffectArray Reference="Effect,OrbitalCannonDematerialize,Chance[0]" Value="0.08"/>
     </CUpgrade>
     <CUpgrade id="Permeate">
-        <EffectArray Reference="Behavior,Exploder,DamageResponse.ModifyFraction" Value="0.25"/>
+        <EffectArray Reference="Behavior,GatewayHeroExplosive,DamageResponse.ModifyFraction" Value="0.25"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -2958,7 +2965,7 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Retarget">
-        <EffectArray Reference="Effect,Retarget,Chance" Value="0.075"/>
+        <EffectArray Reference="Effect,Retarget,Chance" Value="0.1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -2993,8 +3000,8 @@
         <EffectArrayTemplate Reference="Unit,^ParamId^,EnergyRegenRate" Value="50"/>
     </CUpgrade>
     <CUpgrade id="RewardShieldHP2">
-        <EffectArray Reference="Unit,ZealotAiur,LifeMax" Value="1000"/>
-        <EffectArray Reference="Unit,ZealotAiur,ShieldsMax" Value="1000"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,LifeMax" Value="1000"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,ShieldsMax" Value="1000"/>
         <EffectArray Reference="Behavior,DefensiveMatrix,Modification.VitalMaxArray[Shields]" Value="1500"/>
         <EffectArray Reference="Unit,HoloShieldUnit,LifeMax" Value="3000"/>
         <MaxLevel value="100"/>
@@ -3004,7 +3011,7 @@
         <EffectArrayTemplate Reference="Unit,^ParamId^,LifeStart" Value="5000"/>
     </CUpgrade>
     <CUpgrade id="RewardSpeed">
-        <EffectArray Reference="Unit,ZealotAiur,Speed" Value="0.062500"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,Speed" Value="0.062500"/>
         <EffectArray Reference="Unit,DeflectorDrone,Speed" Value="0.062500"/>
         <EffectArray Reference="Unit,HealerDrone,Speed" Value="0.062500"/>
         <EffectArray Reference="Unit,ShielderDrone,Speed" Value="0.062500"/>
@@ -3014,8 +3021,8 @@
         <EffectArrayTemplate Reference="Unit,^ParamId^,Speed" Value="0.0625"/>
     </CUpgrade>
     <CUpgrade id="RewardShieldHP">
-        <EffectArray Reference="Unit,ZealotAiur,LifeMax" Value="10"/>
-        <EffectArray Reference="Unit,ZealotAiur,ShieldsMax" Value="10"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,LifeMax" Value="10"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,ShieldsMax" Value="10"/>
         <EffectArray Reference="Behavior,DefensiveMatrix,Modification.VitalMaxArray[Shields]" Value="15"/>
         <EffectArray Reference="Unit,HoloShieldUnit,LifeMax" Value="30"/>
         <MaxLevel value="100"/>
@@ -3027,7 +3034,7 @@
     <CUpgrade id="RewardSpeed2">
         <EffectArray Reference="Unit,DeflectorDrone,Speed" Value="6.250000"/>
         <EffectArray Reference="Unit,HealerDrone,Speed" Value="6.250000"/>
-        <EffectArray Reference="Unit,ZealotAiur,Speed" Value="6.250000"/>
+        <EffectArray Reference="Unit,GatewayHeroZealot,Speed" Value="6.250000"/>
         <EffectArray Reference="Unit,ShielderDrone,Speed" Value="6.250000"/>
         <EffectArray Reference="Unit,DestroyerDrone,Speed" Value="6.250000"/>
         <EffectArray Reference="Accumulator,TimeHeroTimewaveDelayConst,Amount" Value="6.25"/>
@@ -3242,7 +3249,7 @@
         <EffectArray Reference="Effect,ShockwaveInitLink,Chance[0]" Value="1"/>
     </CUpgrade>
     <CUpgrade id="Shrapnel">
-        <EffectArray Reference="Effect,Shrapnel,Chance" Value="0.05"/>
+        <EffectArray Reference="Effect,GatewayHeroDeflectorDroneShrapnel,Chance" Value="0.08"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -3255,7 +3262,7 @@
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Split">
-        <EffectArray Reference="Effect,SplitterSplitCPSearchTarget,PeriodCount" Value="1"/>
+        <EffectArray Reference="Effect,GatewayHeroSplitterSplitSearchTarget,AreaArray[0].MaxCount" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -3460,13 +3467,16 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="WarpIn">
-        <EffectArray Operation="Set" Reference="Effect,WarpInSpawnZealot,Chance" Value="1"/>
-        <EffectArray Reference="Effect,WarpInSpawnZealot,SpawnCount" Value="5"/>
+        <EffectArray Operation="Set" Reference="Effect,GatewayHeroWarpInSet,Chance" Value="1"/>
+        <EffectArray Reference="Effect,GatewayHeroWarpInCU,SpawnCount" Value="5"/>
+        <EffectArray Reference="Effect,GatewayHeroWarpinMU,VitalArray[Energy].ChangeFraction" Value="0.5"/>
+        <EffectArray Reference="Effect,GatewayHeroWarpinMU,VitalArray[Life].ChangeFraction" Value="0.25"/>
+        <EffectArray Reference="Effect,GatewayHeroWarpinMU,VitalArray[Shields].ChangeFraction" Value="0.25"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="WarpRift">
-        <EffectArray Reference="Effect,WarpRift,Chance" Value="0.01"/>
+    <CUpgrade id="Strike">
+        <EffectArray Reference="Effect,GatewayHeroSplitterDMG,Amount" Value="60"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -3592,6 +3602,9 @@
     </CUpgrade>
     <CUpgrade id="Warpgate">
         <EffectArray Reference="Effect,ReinforceSpawnZealot,SpawnCount" Value="1"/>
+        <EffectArray Reference="Abil,Reinforce,Cost[0].Vital[Energy]" Value="20"/>
+        <EffectArray Reference="Behavior,GatewayHeroZealotTracker,MaxTrackedUnits" Value="2"/>
+        <EffectArray Reference="Accumulator,GatewayHeroDestroyerReinforceCostBase,Amount" Value="20"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -3648,7 +3661,6 @@
     </CUpgrade>
     <CUpgrade id="RewardDamage2">
         <EffectArray Reference="Effect,ZealotAiurWeapon,Amount" Value="100"/>
-        <EffectArray Reference="Effect,DebrisDMG,Amount" Value="150"/>
         <EffectArray Reference="Effect,ZealotAttackRendDMG,Amount" Value="5"/>
         <EffectArray Reference="Effect,OrbOfHavocWispDMG,Amount" Value="75"/>
         <EditorCategories value="Race:Protoss"/>
@@ -3658,7 +3670,6 @@
     <CUpgrade id="RewardDamage">
         <ScoreValue value="WeaponTechnologyCount"/>
         <EffectArray Reference="Effect,ZealotAiurWeapon,Amount" Value="1"/>
-        <EffectArray Reference="Effect,DebrisDMG,Amount" Value="1.5"/>
         <EffectArray Reference="Effect,ZealotAttackRendDMG,Amount" Value="0.05"/>
         <EffectArray Reference="Effect,OrbOfHavocWispDMG,Amount" Value="0.75"/>
         <EditorCategories value="Race:Protoss"/>

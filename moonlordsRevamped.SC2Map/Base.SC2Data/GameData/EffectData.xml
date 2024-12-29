@@ -184,6 +184,82 @@
         <EffectArray value="MLLeapHeroDMG"/>
         <EffectArray value="ApplyUnitWasStunned"/>
     </CEffectSet>
+    <CEffectDamage id="GatewayHeroDeflectorDroneDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <Visibility value="Visible"/>
+        <Flags index="Kill" value="1"/>
+    </CEffectDamage>
+    <CEffectUserData id="GatewayHeroDeflectorDroneData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Energy"/>
+        <Amount value="0">
+            <AccumulatorArray value="EnergyCurrentSource"/>
+        </Amount>
+        <SourceKey value="Energy"/>
+        <Operation value="Set"/>
+        <ValidateMax value="0">
+            <AccumulatorArray value="GatewayHeroDeflectorDronePDCost"/>
+        </ValidateMax>
+        <EffectFailure value="GatewayHeroDeflectorDroneSet"/>
+    </CEffectUserData>
+    <CEffectModifyUnit id="GatewayHeroDeflectorDroneMU">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Energy">
+            <Change value="0">
+                <AccumulatorArray value="GatewayHeroDeflectorDronePDCost"/>
+                <AccumulatorArray value="MultiplyNeg1"/>
+            </Change>
+        </VitalArray>
+        <FacingLocation Value="TargetUnit"/>
+        <FacingType value="LookAt"/>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="GatewayHeroDeflectorDroneSA">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="Missile;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="6" Effect="GatewayHeroDeflectorDroneData"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GatewayHeroDeflectorDroneSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GatewayHeroDeflectorDroneMU"/>
+        <EffectArray value="GatewayHeroDeflectorDroneShrapnel"/>
+        <EffectArray value="GatewayHeroDeflectorDroneDMG"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GatewayHeroDroneHangerDeflectorPDAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GatewayHeroDeflectorDronePointDefense"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GatewayHeroDroneHangerHealerAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GatewayHeroDisableHealerDrone"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GatewayHeroDroneHangerDeflectorAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GatewayHeroDisableDeflectorDrone"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="GatewayHeroDroneHangerHealerSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GatewayHeroDroneHangerHealerAB"/>
+        <EffectArray value="FindDronesAB"/>
+    </CEffectSet>
+    <CEffectSet id="GatewayHeroDroneHangerDeflectorSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GatewayHeroDroneHangerDeflectorPDAB"/>
+        <EffectArray value="GatewayHeroDroneHangerDeflectorAB"/>
+        <EffectArray value="FindDronesAB"/>
+    </CEffectSet>
+    <CEffectEnumArea id="GatewayHeroExploderDebuffSA">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Neutral,Missile,Stasis,Dead,Hidden"/>
+        <TargetSorts>
+            <SortArray value="Enemy"/>
+        </TargetSorts>
+        <AreaArray MaxCount="3" Radius="2" Effect="GatewayHeroExploderDebuffSet"/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
     <CEffectApplyKinetic id="FollowCasterAK">
         <EditorCategories value="Race:Protoss"/>
         <Kinetic value="FollowCaster"/>
@@ -192,6 +268,304 @@
         <EditorCategories value="Race:Protoss"/>
         <KineticLink value="FollowCaster"/>
     </CEffectRemoveKinetic>
+    <CEffectSet id="GatewayHeroExploder">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GatewayHeroExploderDebuffSA"/>
+        <EffectArray value="ExploderSA"/>
+        <EffectArray value="GatewayHeroExploderDestroyerFind"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="GatewayHeroExploderDebuffSet">
+        <ValidatorArray value="NoExplosive"/>
+        <ValidatorArray value="NoRetribution"/>
+        <ValidatorArray value="NoRevenge"/>
+        <ValidatorArray value="NotSpellUnit"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="ExploderApplyBehavior"/>
+        <EffectArray value="ExploderAllyAB"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="GatewayHeroReinforceDestroyerMU">
+        <EditorCategories value="Race:Protoss"/>
+        <VitalArray index="Energy">
+            <Change value="0">
+                <AccumulatorArray value="GatewayHeroDestroyerReinforceCost"/>
+                <AccumulatorArray value="MultiplyNeg1"/>
+            </Change>
+        </VitalArray>
+        <FacingLocation Effect="GatewayHeroReinforce" Value="TargetPoint"/>
+        <FacingType value="LookAt"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="GatewayHeroReinforceDestroyerSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GatewayHeroReinforceDestroyerMU"/>
+        <EffectArray value="GatewayHeroReinforceDestroyerTarget"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="GatewayHeroReinforceDestroyerTarget">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Effect="GatewayHeroReinforce"/>
+        <InitialEffect value="ReinforceSpawnZealot"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="GatewayHeroReinforce">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="ReinforceSpawnZealot"/>
+        <EffectArray value="GatewayHeroReinforceDestroyerFind"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectUserData id="GatewayHeroReinforceDestroyerData">
+        <ValidatorArray value="GatewayHeroIsDestroyerDrone"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Energy"/>
+        <Amount value="0">
+            <AccumulatorArray value="EnergyCurrentTarget"/>
+        </Amount>
+        <SourceKey value="Energy"/>
+        <Operation value="Set"/>
+        <ValidateMax value="0">
+            <AccumulatorArray value="GatewayHeroDestroyerReinforceCost"/>
+        </ValidateMax>
+        <EffectFailure value="GatewayHeroReinforceDestroyerSet"/>
+    </CEffectUserData>
+    <CEffectCreatePersistent id="GatewayHeroExploderDestroyerDelay">
+        <EditorCategories value="Race:Protoss"/>
+        <InitialDelay value="0.25"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="GatewayHeroExploderDebuffSA"/>
+        <PeriodicEffectArray value="ExploderSA"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="GatewayHeroReinforceDestroyerFind">
+        <ValidatorArray value="ExpansionIsLvl1"/>
+        <ValidatorArray value="GatewayHeroCasterHasEquipHealer"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="CasterUnitOrPoint"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Stasis,Dead,Hidden"/>
+        <AreaArray MaxCount="1" Radius="6" Effect="GatewayHeroReinforceDestroyerData"/>
+    </CEffectEnumArea>
+    <!--The Initial Offset prevents things from breaking if the ability is casted on the same point multiple times in a row-->
+    <CEffectCreatePersistent id="GatewayHeroExploderDestroyerTarget">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Effect="GatewayHeroExploder"/>
+        <InitialEffect value="GatewayHeroExploderDestroyerDelay"/>
+        <InitialOffset value="0,0.1,0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="GatewayHeroExploderExplodeDebuffSA">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Neutral,Missile,Stasis,Dead,Hidden"/>
+        <TargetSorts>
+            <SortArray value="Enemy"/>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="5" Effect="GatewayHeroExploderExplodeDebuffSwitch"/>
+        <Chance value="0"/>
+    </CEffectEnumArea>
+    <CEffectSwitch id="GatewayHeroExploderExplodeDebuffSwitch">
+        <ValidatorArray value="NoExplosive"/>
+        <ValidatorArray value="NoRetribution"/>
+        <ValidatorArray value="NoRevenge"/>
+        <ValidatorArray value="NotSpellUnit"/>
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="TargetIsEnemy" Effect="ExploderApplyBehavior"/>
+        <CaseArray Validator="GatewayHeroIsAllyAndRetributionIsLearned" Effect="ExploderAllyAB"/>
+    </CEffectSwitch>
+    <CEffectSet id="GatewayHeroGatewayCUSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="ReinforceAB"/>
+        <EffectArray value="RevengeSet"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GatewayHeroRechargeEquipABHealer">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GatewayHeroEquipHealerDrone"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GatewayHeroRechargeEquipABDeflector">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GatewayHeroEquipDeflectorDrone"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="GatewayHeroRechargeEquipRBHealer">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="GatewayHeroEquipHealerDrone"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="GatewayHeroRechargeEquipRBDeflector">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="GatewayHeroEquipDeflectorDrone"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="GatewayHeroRechargeEquipSetDeflector">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GatewayHeroRechargeEquipRBHealer"/>
+        <EffectArray value="GatewayHeroRechargeEquipABDeflector"/>
+    </CEffectSet>
+    <CEffectSet id="GatewayHeroRechargeEquipSetHealer">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GatewayHeroRechargeEquipRBDeflector"/>
+        <EffectArray value="GatewayHeroRechargeEquipABHealer"/>
+    </CEffectSet>
+    <CEffectSwitch id="GatewayHeroRechargeEquipSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="GatewayHeroCasterHasEquipHealer" Effect="GatewayHeroRechargeEquipSetDeflector"/>
+        <CaseDefault value="GatewayHeroRechargeEquipSetHealer"/>
+    </CEffectSwitch>
+    <CEffectAddTrackedUnit id="GatewayHeroReinforceATU">
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="GatewayHeroZealotTracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectSet id="GatewayHeroSplitter">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GatewayHeroSplitterOffset"/>
+        <EffectArray value="GatewayHeroSplitterDestroyerFind"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectUserData id="GatewayHeroSplitterDestroyerData">
+        <ValidatorArray value="GatewayHeroIsDestroyerDrone"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Energy"/>
+        <Amount value="0">
+            <AccumulatorArray value="EnergyCurrentTarget"/>
+        </Amount>
+        <SourceKey value="Energy"/>
+        <Operation value="Set"/>
+        <ValidateMax value="0">
+            <AccumulatorArray value="GatewayHeroDestroyerSplitterCost"/>
+        </ValidateMax>
+        <EffectFailure value="GatewayHeroSplitterDestroyerSet"/>
+    </CEffectUserData>
+    <CEffectUserData id="GatewayHeroExploderDestroyerData">
+        <ValidatorArray value="GatewayHeroIsDestroyerDrone"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Energy"/>
+        <Amount value="0">
+            <AccumulatorArray value="EnergyCurrentTarget"/>
+        </Amount>
+        <SourceKey value="Energy"/>
+        <Operation value="Set"/>
+        <ValidateMax value="0">
+            <AccumulatorArray value="GatewayHeroDestroyerExploderCost"/>
+        </ValidateMax>
+        <EffectFailure value="GatewayHeroExploderDestroyerSet"/>
+    </CEffectUserData>
+    <CEffectModifyUnit id="GatewayHeroSplitterDestroyerFacing">
+        <EditorCategories value="Race:Protoss"/>
+        <FacingLocation Effect="GatewayHeroSplitter" Value="TargetPoint"/>
+        <FacingType value="LookAt"/>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="GatewayHeroSplitterDestroyerFind">
+        <ValidatorArray value="ExpansionIsLvl1"/>
+        <ValidatorArray value="GatewayHeroCasterHasEquipHealer"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="CasterUnitOrPoint"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Stasis,Dead,Hidden"/>
+        <AreaArray MaxCount="1" Radius="6" Effect="GatewayHeroSplitterDestroyerData"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="GatewayHeroExploderDestroyerFind">
+        <ValidatorArray value="ExpansionIsLvl1"/>
+        <ValidatorArray value="GatewayHeroCasterHasEquipHealer"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="CasterUnitOrPoint"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Stasis,Dead,Hidden"/>
+        <AreaArray MaxCount="1" Radius="6" Effect="GatewayHeroExploderDestroyerData"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="GatewayHeroSplitterDestroyerMU">
+        <EditorCategories value="Race:Protoss"/>
+        <VitalArray index="Energy">
+            <Change value="0">
+                <AccumulatorArray value="GatewayHeroDestroyerSplitterCost"/>
+                <AccumulatorArray value="MultiplyNeg1"/>
+            </Change>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="GatewayHeroExploderDestroyerMU">
+        <EditorCategories value="Race:Protoss"/>
+        <VitalArray index="Energy">
+            <Change value="0">
+                <AccumulatorArray value="GatewayHeroDestroyerExploderCost"/>
+                <AccumulatorArray value="MultiplyNeg1"/>
+            </Change>
+        </VitalArray>
+        <FacingLocation Effect="GatewayHeroExploder" Value="TargetPoint"/>
+        <FacingType value="LookAt"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="GatewayHeroSplitterDestroyerSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GatewayHeroSplitterDestroyerMU"/>
+        <EffectArray value="GatewayHeroSplitterDestroyerFacing"/>
+        <EffectArray value="GatewayHeroSplitterDestroyerOffset"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="GatewayHeroSplitterDestroyerOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <OffsetVectorStartLocation Value="TargetUnit"/>
+        <OffsetVectorEndLocation Value="TargetUnit"/>
+        <OffsetFacingFallback Value="TargetUnit"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GatewayHeroSplitterDestroyerLM"/>
+        <PeriodicOffsetArray value="0,-12,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="GatewayHeroExploderDestroyerSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GatewayHeroExploderDestroyerMU"/>
+        <EffectArray value="GatewayHeroExploderDestroyerTarget"/>
+    </CEffectSet>
+    <CEffectRedirectMissile id="GatewayHeroSplitterRedirect">
+        <EditorCategories value="Race:Protoss"/>
+        <OwningPlayer Value="Caster"/>
+        <WhichUnit Value="Source"/>
+        <ImpactLocation Value="TargetUnitOrPoint"/>
+        <ImpactFilters value="-;Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectRedirectMissile>
+    <CEffectDamage id="GatewayHeroSplitterSplitDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <ArmorReduction value="1"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="60"/>
+        <MinCount value="1"/>
+        <MaxCount value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="GatewayHeroWarpInSet">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <EffectArray value="GatewayHeroWarpInCU"/>
+        <EffectArray value="GatewayHeroWarpinMU"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="GatewayHeroWarpinMU">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectModifyUnit>
+    <CEffectLaunchMissile id="GatewayHeroSplitterDestroyerLM">
+        <EditorCategories value="Race:Protoss"/>
+        <LaunchLocation Effect="GatewayHeroSplitterDestroyerSet" Value="TargetUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="GatewayHeroSplitterImpactSet"/>
+        <SearchEffect value="GatewayHeroSplitterSearchTarget"/>
+        <SearchFlags index="DynamicSearchArea" value="1"/>
+        <AmmoUnit value="SplitterMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectModifyUnit id="GatewayHeroDeflectorDroneRemove">
+        <EditorCategories value="Race:Terran"/>
+        <Marker Link="Weapon/PointDefenseLaser">
+            <MatchFlags index="Link" value="1"/>
+        </Marker>
+        <ModifyFlags index="Hide" value="1"/>
+        <ModifyFlags index="NullifyMissile" value="1"/>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="GatewayHeroDeflectorDroneShrapnelSearchTarget">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="12" Effect="GatewayHeroDeflectorDroneShrapnelLM"/>
+    </CEffectEnumArea>
+    <CEffectLaunchMissile id="GatewayHeroDeflectorDroneShrapnelLM">
+        <ValidatorArray index="0" value="RetargetLMTargetFilters"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="GatewayHeroSplitterImpactSet"/>
+        <AmmoUnit value="SplitterMissile"/>
+    </CEffectLaunchMissile>
     <CEffectCreatePersistent id="ZergLordGlaiveAttackCP">
         <EditorCategories value="Race:Zerg"/>
         <Flags index="RandomOffset" value="1"/>
@@ -4042,7 +4416,7 @@
         <Behavior value="HavocOrbCounter"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="ExploderAllyAB">
-        <ValidatorArray index="0" value="TargetIsAlly"/>
+        <ValidatorArray index="0" value="TargetIsAllyorPlayer"/>
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
         <Behavior value="Retribution"/>
@@ -4059,12 +4433,6 @@
         <WhichLocation Value="SourcePoint"/>
         <InitialEffect value="ExploderExplodeDelay"/>
         <FinalEffect value="ExploderUnstableAB"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="ExploderUnstableInjectionChance">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <WhichLocation Value="SourcePoint"/>
-        <InitialEffect value="ExploderUnstableCP"/>
     </CEffectCreatePersistent>
     <CEffectApplyBehavior id="ExposeAB">
         <EditorCategories value="Race:Protoss"/>
@@ -11915,6 +12283,7 @@
     <CEffectApplyBehavior id="BarrierAB">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="Barrier"/>
+        <Chance value="0"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BlackDeath2Apply">
         <ValidatorArray index="0" value="BlackDeathValidator"/>
@@ -13103,11 +13472,6 @@
         <SearchFilters value="Light,Biological,Massive,Heroic;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="30" Effect="PlaguedLM"/>
     </CEffectEnumArea>
-    <CEffectModifyUnit id="PointDefenseLaserEnergy">
-        <VitalArray index="Energy">
-            <Change value="-15"/>
-        </VitalArray>
-    </CEffectModifyUnit>
     <CEffectApplyBehavior id="PressureABSource">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Source"/>
@@ -14520,7 +14884,6 @@
     </CEffectDamage>
     <CEffectSet id="ZealotAttackSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="InjectionSet"/>
         <EffectArray value="ZealotAttackRendAB"/>
         <EffectArray value="ZealotAiurWeapon"/>
     </CEffectSet>
@@ -14999,17 +15362,6 @@
         <EffectArray value="HotPoolCP"/>
         <EffectArray value="WaterHeroBoilDMGDelay"/>
     </CEffectSet>
-    <CEffectSet id="ChainReact">
-        <ValidatorArray value="ChainReactTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <EffectArray value="ChainReactSA"/>
-    </CEffectSet>
-    <CEffectEnumArea id="ChainReactSA">
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1" Effect="ExploderApplyBehavior"/>
-    </CEffectEnumArea>
     <CEffectSet id="ChampionDeath">
         <EditorCategories value=""/>
     </CEffectSet>
@@ -15052,24 +15404,6 @@
             <ChangeFraction value="0"/>
         </VitalArray>
     </CEffectModifyUnit>
-    <CEffectModifyUnit id="DestoyerDroneEnergyRestoreModifyUnit">
-        <EditorCategories value="Race:Protoss"/>
-        <VitalArray index="Energy">
-            <ChangeFraction value="0.05"/>
-        </VitalArray>
-    </CEffectModifyUnit>
-    <CEffectEnumArea id="DestroyerDroneEnergyRestoreSearch">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="CasterUnit"/>
-        <ImpactLocation Value="CasterUnit"/>
-        <SearchFilters value="Heroic;Ally,Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="10" Effect="DestoyerDroneEnergyRestoreModifyUnit"/>
-    </CEffectEnumArea>
-    <CEffectSet id="DestroyerDroneSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="SplitterLM"/>
-        <EffectArray value="DestroyerDroneEnergyRestoreSearch"/>
-    </CEffectSet>
     <CEffectDamage id="DisintegrateTarget">
         <EditorCategories value=""/>
         <ImpactLocation Value="TargetUnit"/>
@@ -15102,11 +15436,6 @@
         <ArmorReduction value="1"/>
         <VitalFractionMax index="Life" value="0.4"/>
     </CEffectDamage>
-    <CEffectCreatePersistent id="EploderDelay">
-        <EditorCategories value="Race:Protoss"/>
-        <ExpireDelay value="0.3"/>
-        <ExpireEffect value="Exploder"/>
-    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="ExcessAB">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Source"/>
@@ -15241,7 +15570,7 @@
     </CEffectSet>
     <CEffectApplyBehavior id="ExploderApplyBehavior">
         <EditorCategories value="Race:Protoss"/>
-        <Behavior value="Exploder"/>
+        <Behavior value="GatewayHeroExplosive"/>
         <ValidatorArray index="0" value="TargetIsEnemy"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="ExploderDMG">
@@ -15254,38 +15583,28 @@
         <EditorCategories value="Race:Protoss"/>
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="ExploderExplodeSA"/>
-        <PeriodicPeriodArray value="0.4"/>
+        <PeriodicPeriodArray value="0.4375"/>
         <PeriodicPeriodArray value="0.5"/>
-        <PeriodicPeriodArray value="0.6"/>
+        <PeriodicPeriodArray value="0.5625"/>
+        <InitialEffect value="GatewayHeroExploderExplodeDebuffSA"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="ExploderExplodeSA">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1" Effect="ExploderExplodeSet"/>
+        <AreaArray Radius="1.5" Effect="ExploderDMG"/>
         <RevealerParams Duration="0.5">
             <RevealFlags index="Unfog" value="1"/>
         </RevealerParams>
     </CEffectEnumArea>
-    <CEffectSet id="ExploderExplodeSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ChainReact"/>
-        <EffectArray value="ExploderDMG"/>
-    </CEffectSet>
     <CEffectEnumArea id="ExploderSA">
         <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2" Effect="ExploderSet"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="ExploderDMG"/>
         <ImpactLocation Value="TargetPoint"/>
         <RevealerParams Duration="0.5">
             <RevealFlags index="Unfog" value="1"/>
         </RevealerParams>
     </CEffectEnumArea>
-    <CEffectSet id="ExploderSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ExploderAllyAB"/>
-        <EffectArray value="ExploderApplyBehavior"/>
-        <EffectArray value="ExploderDMG"/>
-    </CEffectSet>
     <CEffectApplyBehavior id="ApplyCold">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="Cold"/>
@@ -15404,11 +15723,10 @@
         <EffectArray value="FrostshockDamage"/>
     </CEffectSet>
     <CEffectCreateUnit id="Gateway">
-        <ValidatorArray value="GatewayTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
-        <SpawnEffect value="ReinforceSet"/>
-        <SpawnUnit value="ZealotAiur"/>
+        <SpawnEffect value="GatewayHeroGatewayCUSet"/>
+        <SpawnUnit value="GatewayHeroZealot"/>
     </CEffectCreateUnit>
     <CEffectCreatePersistent id="GravitonBeam5">
         <ValidatorArray value="NoGravitonBeamInProgress"/>
@@ -15730,12 +16048,6 @@
     <CEffectLaunchMissile id="ImpalerTentacleLM">
         <ImpactEffect value="SpineCrawlerImpactSet"/>
     </CEffectLaunchMissile>
-    <CEffectSet id="InjectionSet">
-        <ValidatorArray value="InjectionSetTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <EffectArray value="ExploderApplyBehavior"/>
-    </CEffectSet>
     <CEffectSet id="Lifeline">
         <ValidatorArray value="LifelineTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
@@ -15872,9 +16184,6 @@
     <CEffectDamage id="OmegaliskU">
         <Amount value="40"/>
     </CEffectDamage>
-    <CEffectSet id="PointDefenseLaserInitialSet">
-        <EffectArray value="Shrapnel"/>
-    </CEffectSet>
     <CEffectEnumArea id="PoisonBoltMissileSearch">
         <EditorCategories value=""/>
         <SearchFilters value="Missile;Self,Ally,Neutral,Enemy,Item,Dead,Hidden"/>
@@ -15969,9 +16278,8 @@
         <Chance value="0"/>
     </CEffectEnumArea>
     <CEffectSet id="PurgeWarpInSet">
-        <ValidatorArray value="PurgeWarpInSetTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="WarpInSpawnZealot"/>
+        <EffectArray value="GatewayHeroWarpInSet"/>
         <EffectArray value="PurgeSA"/>
     </CEffectSet>
     <CEffectModifyUnit id="RechargeAddEnergy">
@@ -15987,6 +16295,7 @@
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="RechargeSA"/>
         <PeriodicEffectArray value="RechargeAllySA"/>
+        <InitialEffect value="GatewayHeroRechargeEquipSwitch"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="RechargeSA">
         <ValidatorArray value="RechargeSATargetFilters"/>
@@ -15996,15 +16305,14 @@
     </CEffectEnumArea>
     <CEffectSet id="ReinforceSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ReinforceAB"/>
+        <EffectArray value="GatewayHeroReinforceATU"/>
         <EffectArray value="RevengeSet"/>
     </CEffectSet>
     <CEffectCreateUnit id="ReinforceSpawnZealot">
-        <ValidatorArray value="ReinforceTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetPoint"/>
         <SpawnEffect value="ReinforceSet"/>
-        <SpawnUnit value="ZealotAiur"/>
+        <SpawnUnit value="GatewayHeroZealot"/>
     </CEffectCreateUnit>
     <CEffectEnumArea id="RelentlessSA">
         <ValidatorArray value="RelentlessTargetFilters"/>
@@ -16088,7 +16396,6 @@
         <Behavior value="Restless"/>
     </CEffectApplyBehavior>
     <CEffectSet id="Retarget">
-        <ValidatorArray value="RetargetSetTargetFilters"/>
         <ValidatorArray value="SplitterHitExploderDebuff"/>
         <ValidatorArray value="NoRetarget"/>
         <EditorCategories value="Race:Protoss"/>
@@ -16102,28 +16409,24 @@
     </CEffectApplyBehavior>
     <CEffectLaunchMissile id="RetargetLM">
         <EditorCategories value="Race:Protoss"/>
-        <ImpactEffect value="SplitterIS"/>
+        <ImpactEffect value="GatewayHeroSplitterImpactSet"/>
         <AmmoUnit value="SplitterMissile"/>
+        <LaunchLocation Value="CasterUnit"/>
     </CEffectLaunchMissile>
     <CEffectEnumArea id="RetargetSA">
-        <ValidatorArray value="RetargetSATargetFilters"/>
-        <EditorCategories value=""/>
-        <LaunchLocation Value="CasterUnit"/>
-        <SearchFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray MaxCount="1" Radius="10" Effect="RetargetLM"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="RetargetTeagetCaster">
-        <ValidatorArray value="RetargetTeagetCasterTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="Heroic;Ally,Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray MaxCount="1" Radius="250" Effect="RetargetSA"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="12" Effect="RetargetLM"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="RevengeAB">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="Revenge"/>
     </CEffectApplyBehavior>
     <CEffectSet id="RevengeSet">
-        <ValidatorArray value="RevengeSetTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
         <EffectArray value="RevengeAB"/>
@@ -16169,10 +16472,10 @@
         <WhichUnit Value="Source"/>
         <Behavior value="GuardianShellInvulnerable"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="Shrapnel">
+    <CEffectSet id="GatewayHeroDeflectorDroneShrapnel">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
-        <EffectArray value="SplitterSplitCPSearchTarget"/>
+        <EffectArray value="GatewayHeroDeflectorDroneShrapnelSearchTarget"/>
     </CEffectSet>
     <CEffectDamage id="ShredDMG">
         <EditorCategories value="Race:Protoss"/>
@@ -16204,46 +16507,47 @@
         <EffectArray value="ImpalerTentacleU"/>
         <EffectArray value="Cripple"/>
     </CEffectSet>
-    <CEffectDamage id="SplitterDMG">
-        <EditorCategories value=""/>
+    <CEffectDamage id="GatewayHeroSplitterDMG">
+        <EditorCategories value="Race:Protoss"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
         <ImpactLocation Value="TargetUnit"/>
         <ArmorReduction value="1"/>
         <Flags index="Notification" value="1"/>
-        <Amount value="50"/>
+        <Amount value="60"/>
         <MinCount value="1"/>
         <MaxCount value="1"/>
     </CEffectDamage>
-    <CEffectSet id="SplitterIS">
+    <CEffectSet id="GatewayHeroSplitterImpactSet">
         <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GatewayHeroSplitterRedirect"/>
         <EffectArray value="ExposeAB"/>
-        <EffectArray value="WarpRift"/>
-        <EffectArray value="SplitterDMG"/>
-        <EffectArray value="SplitterSplitCPSearchTarget"/>
+        <EffectArray value="GatewayHeroSplitterDMG"/>
+        <EffectArray value="GatewayHeroSplitterSplitSearchTarget"/>
         <EffectArray value="Retarget"/>
         <EffectArray value="Suicide"/>
+        <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
     <CEffectLaunchMissile id="SplitterLM">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="TargetUnitOrPoint"/>
         <AmmoUnit value="SplitterMissile"/>
-        <PeriodicEffect value="SplitterST"/>
-        <ImpactEffect value="SplitterSplitCPSearchTarget"/>
+        <ImpactEffect value="GatewayHeroSplitterImpactSet"/>
+        <SearchEffect value="GatewayHeroSplitterSearchTarget"/>
+        <SearchFlags index="DynamicSearchArea" value="1"/>
     </CEffectLaunchMissile>
-    <CEffectCreatePersistent id="SplitterOffsetCP">
+    <CEffectCreatePersistent id="GatewayHeroSplitterOffset">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="CasterPoint"/>
-        <ExpireDelay value="0.1"/>
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="SplitterLM"/>
         <PeriodicOffsetArray value="0,-12,0"/>
     </CEffectCreatePersistent>
-    <CEffectEnumArea id="SplitterST">
+    <CEffectEnumArea id="GatewayHeroSplitterSearchTarget">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="SourceUnitOrPoint"/>
         <SearchFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray MaxCount="1" Radius="0.6" Effect="SplitterIS"/>
+        <AreaArray MaxCount="1" RectangleWidth="1" Effect="GatewayHeroSplitterImpactSet"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="SurgeAB">
         <EditorCategories value=""/>
@@ -16599,44 +16903,31 @@
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="2" Effect="VolatileVolleyDMG"/>
     </CEffectEnumArea>
-    <CEffectCreateUnit id="WarpRift">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <SpawnEffect value="WarpRiftSet"/>
-        <SpawnUnit value="ZealotAiur"/>
-    </CEffectCreateUnit>
     <CEffectSet id="SplitterSplitSplitIS">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="ExposeAB"/>
-        <EffectArray value="WarpRift"/>
-        <EffectArray value="SplitterDMG"/>
+        <EffectArray value="GatewayHeroSplitterSplitDMG"/>
         <EffectArray value="Retarget"/>
     </CEffectSet>
     <CEffectLaunchMissile id="SplitterSplitLM">
         <EditorCategories value="Race:Protoss"/>
-        <ImpactEffect value="SplitterSplitIS"/>
+        <ImpactEffect value="GatewayHeroSplitterSplitImpactSet"/>
         <AmmoUnit value="SplitterMissile"/>
     </CEffectLaunchMissile>
-    <CEffectEnumArea id="SplitterSplitST">
+    <CEffectEnumArea id="GatewayHeroSplitterSplitSearchTarget">
         <EditorCategories value="Race:Protoss"/>
-        <ExcludeArray Value="Source"/>
+        <ExcludeArray Value="Target"/>
         <SearchFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray MaxCount="1" Radius="3" Effect="SplitterSplitLM"/>
+        <AreaArray MaxCount="2" Radius="3" Effect="SplitterSplitLM"/>
         <TargetSorts>
             <SortArray value="TSRandom"/>
         </TargetSorts>
     </CEffectEnumArea>
-    <CEffectCreatePersistent id="SplitterSplitSplitCPSearchTarget">
-        <EditorCategories value="Race:Protoss"/>
-        <PeriodicEffectArray value="SplitterSplitSplitST"/>
-        <PeriodicPeriodArray value="0.125"/>
-    </CEffectCreatePersistent>
-    <CEffectSet id="SplitterSplitIS">
+    <CEffectSet id="GatewayHeroSplitterSplitImpactSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="ExposeAB"/>
-        <EffectArray value="WarpRift"/>
-        <EffectArray value="SplitterDMG"/>
-        <EffectArray value="SplitterSplitSplitCPSearchTarget"/>
+        <EffectArray value="GatewayHeroSplitterSplitDMG"/>
+        <EffectArray value="GatewayHeroSplitterSplitSplitSearchTarget"/>
         <EffectArray value="Retarget"/>
     </CEffectSet>
     <CEffectLaunchMissile id="SplitterSplitSplitLM">
@@ -16645,8 +16936,9 @@
         <Flags index="Retarget" value="1"/>
         <AmmoUnit value="SplitterMissile"/>
     </CEffectLaunchMissile>
-    <CEffectEnumArea id="SplitterSplitSplitST">
+    <CEffectEnumArea id="GatewayHeroSplitterSplitSplitSearchTarget">
         <EditorCategories value="Race:Protoss"/>
+        <ExcludeArray Value="Target"/>
         <SearchFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray MaxCount="1" Radius="3" Effect="SplitterSplitSplitLM"/>
         <TargetSorts>
@@ -16928,12 +17220,6 @@
         <EditorCategories value=""/>
         <EffectArray value="TimewaveAltertimeLink"/>
     </CEffectSet>
-    <CEffectCreatePersistent id="SplitterSplitCPSearchTarget">
-        <EditorCategories value="Race:Protoss"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="SplitterSplitST"/>
-        <PeriodicPeriodArray value="0.125"/>
-    </CEffectCreatePersistent>
     <CEffectCreateHealer id="VoidSentryShieldRepair">
         <DrainVitalCostFactor value="0.2"/>
         <RechargeVitalRate value="100"/>
@@ -16978,21 +17264,11 @@
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="ReinforceTimedLife"/>
     </CEffectApplyBehavior>
-    <CEffectCreateUnit id="WarpInSpawnZealot">
+    <CEffectCreateUnit id="GatewayHeroWarpInCU">
         <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <SpawnEffect value="ReinforceSet"/>
-        <SpawnUnit value="ZealotAiur"/>
+        <SpawnEffect value="GatewayHeroGatewayCUSet"/>
+        <SpawnUnit value="GatewayHeroZealot"/>
     </CEffectCreateUnit>
-    <CEffectApplyBehavior id="WarpRiftApplyTimedLife">
-        <EditorCategories value="Race:Protoss"/>
-        <Behavior value="WarpRiftTimedLife"/>
-    </CEffectApplyBehavior>
-    <CEffectSet id="WarpRiftSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="WarpRiftApplyTimedLife"/>
-        <EffectArray value="RevengeSet"/>
-    </CEffectSet>
     <CEffectApplyBehavior id="ApplySoaked">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="Soaked"/>

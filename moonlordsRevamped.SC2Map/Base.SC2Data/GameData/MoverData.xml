@@ -143,7 +143,7 @@
         <MotionPhases index="0">
             <Driver value="Guidance"/>
             <Acceleration value="3200"/>
-            <MaxSpeed value="25"/>
+            <MaxSpeed value="22"/>
             <ClearanceAcceleration value="75"/>
             <Outro value="-1"/>
             <ThrowBandYaw value="-360,-360,-360,-360"/>

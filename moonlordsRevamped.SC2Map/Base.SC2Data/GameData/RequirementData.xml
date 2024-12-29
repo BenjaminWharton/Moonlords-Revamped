@@ -95,9 +95,31 @@
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Show" Link="Eq2CountUpgradeFirewallQueuedOrBetter"/>
     </CRequirement>
+    <CRequirement id="GatewayHeroDestroyerDrone">
+        <EditorCategories value="Race:Protoss"/>
+        <NodeArray index="Use" Link="CountBehaviorGatewayHeroEquipHealerDroneQueuedOrBetterAtUnit500177299"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradeExpansionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="GatewayHeroShielderDrone">
+        <EditorCategories value="Race:Protoss"/>
+        <NodeArray index="Use" Link="CountBehaviorGatewayHeroEquipDeflectorDroneQueuedOrBetterAtUnit500177299"/>
+        <NodeArray index="Show" Link="Eq1CountUpgradeExpansionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="GatewayHeroHealerDrone">
+        <EditorCategories value="Race:Protoss"/>
+        <NodeArray index="Use" Link="CountBehaviorGatewayHeroEquipHealerDroneQueuedOrBetterAtUnit500177299"/>
+    </CRequirement>
+    <CRequirement id="GatewayHeroDeflectorDrone">
+        <EditorCategories value="Race:Protoss"/>
+        <NodeArray index="Use" Link="CountBehaviorGatewayHeroEquipDeflectorDroneQueuedOrBetterAtUnit500177299"/>
+    </CRequirement>
     <CRequirement id="GatewayHeroNoRecentlyProtected">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Show" Link="NotCountBehaviorGatewayHeroRecentlyProtectedQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HaveRetribution">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="And1CountUpgradeRetributionQueuedOrBetter"/>
     </CRequirement>
     <CRequirement id="IllusionHeroDuplicateGT0">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>

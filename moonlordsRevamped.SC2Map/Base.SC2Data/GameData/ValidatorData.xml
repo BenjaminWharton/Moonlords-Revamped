@@ -202,6 +202,23 @@
         <Find value="1"/>
         <Value value="ExpelCombo10"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="GatewayHeroCasterHasEquipHealer">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="GatewayHeroEquipHealerDrone"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="GatewayHeroCasterHasEquipDeflector">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="GatewayHeroEquipDeflectorDrone"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="GatewayHeroHaveRetribution">
+        <Find value="1"/>
+        <Value value="HaveRetribution"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorUnitType id="GatewayHeroIsDestroyerDrone">
+        <Value value="DestroyerDrone"/>
+    </CValidatorUnitType>
     <CValidatorPlayerRequirement id="IllusionHeroDuplicateGT1">
         <Find value="1"/>
         <Value value="IllusionHeroDuplicateGT1"/>
@@ -209,6 +226,11 @@
     <CValidatorUnitCompareBehaviorCount id="IllusionHeroNotWasTricked">
         <Behavior value="WasTricked"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="GatewayHeroIsAllyAndRetributionIsLearned">
+        <Type value="And"/>
+        <CombineArray value="TargetIsAllyorPlayer"/>
+        <CombineArray value="GatewayHeroHaveRetribution"/>
+    </CValidatorCombine>
     <CValidatorCombine id="IsHeroicorStructure">
         <CombineArray value="IsHeroic"/>
         <CombineArray value="IsStructure"/>
@@ -366,8 +388,20 @@
     <CValidatorPlayerRequirement id="NatureHeroNoCultivate">
         <Value value="NatureHeroHasCultivate"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="NoZealotTimedLife">
+        <Behavior value="ReinforceTimedLife"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoRevenge">
+        <Behavior value="Revenge"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoRetribution">
+        <Behavior value="Retribution"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoQuicksandHeight">
         <Behavior value="QuicksandHeight"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoExplosive">
+        <Behavior value="GatewayHeroExplosive"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitFilters id="NotMissile">
         <Filters value="-;Missile"/>
@@ -1427,12 +1461,9 @@
         <Vital value="Shields"/>
     </CValidatorUnitCompareVital>
     <CValidatorUnitCompareBehaviorCount id="SplitterHitExploderDebuff">
-        <Value value="1"/>
-        <Behavior value="Exploder"/>
+        <Behavior value="GatewayHeroExplosive"/>
+        <Compare value="GT"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorPlayerRequirement id="SplitterSplitTalentLevel1Complete">
-        <Value value="ExpansionUpgraded"/>
-    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="SplitterTarget">
         <Compare value="NE"/>
         <Behavior value="SplitterDMG"/>

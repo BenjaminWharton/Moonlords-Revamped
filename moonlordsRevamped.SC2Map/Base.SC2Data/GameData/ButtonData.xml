@@ -121,9 +121,10 @@
         <Hotkey value="Button/Hotkey/InfuseWind"/>
         <HotkeyAlias value="InfuseWind"/>
     </CButton>
-    <CButton id="Exploder">
-        <Icon value="Assets\Textures\btn-ability-protoss-recallondeath.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-protoss-recallondeath.dds"/>
+    <CButton id="ExplosiveVirus">
+        <Icon value="Assets\Exploder.dds"/>
+        <AlertTooltip value="Button/Tooltip/Exploder"/>
+        <AlertIcon value="Assets\Exploder.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="FireBlast">
@@ -416,7 +417,7 @@
         <Icon value="Assets\Textures\btn-ability-protoss-whirlwind.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
-    <CButton id="Splitter">
+    <CButton id="PsiSplitter">
         <Icon value="Assets\Textures\btn-ability-protoss-purify.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>

@@ -383,8 +383,8 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="Warpable"/>
         <AbilArray Link="ProgressRally"/>
-        <AbilArray Link="Splitter"/>
-        <AbilArray Link="Exploder"/>
+        <AbilArray Link="PsiSplitter"/>
+        <AbilArray Link="ExplosiveVirus"/>
         <AbilArray Link="Reinforce"/>
         <AbilArray Link="DroneHangerDeflector"/>
         <AbilArray Link="DroneHangerHealer"/>
@@ -394,7 +394,9 @@
         <AbilArray Link="que5Passive"/>
         <BehaviorArray Link="GatewayHeroGuardianShellBase"/>
         <BehaviorArray Link="Gateway"/>
-        <BehaviorArray Link="Anoint"/>
+        <BehaviorArray Link="GatewayHeroAnoint"/>
+        <BehaviorArray Link="GatewayHeroZealotTracker"/>
+        <BehaviorArray Link="GatewayHeroEquipHealerDrone"/>
         <BehaviorArray Link="FullHeal"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -402,16 +404,16 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="Splitter" Type="AbilCmd" AbilCmd="Splitter,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="Exploder" Type="AbilCmd" AbilCmd="Exploder,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="PsiSplitter" Type="AbilCmd" AbilCmd="PsiSplitter,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ExplosiveVirus" Type="AbilCmd" AbilCmd="ExplosiveVirus,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="Reinforce" Type="AbilCmd" AbilCmd="Reinforce,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="Recharge" Type="AbilCmd" AbilCmd="Recharge,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="GuardianShell" Type="Passive" Requirements="GatewayHeroNoRecentlyProtected" Row="2" Column="4"/>
             <LayoutButtons Face="GuardianShell" Type="Passive" Behavior="GatewayHeroRecentlyProtected" Row="2" Column="4"/>
-            <LayoutButtons Face="HealerDrone" Type="Passive" Row="1" Column="1"/>
-            <LayoutButtons Face="DeflectorDrone" Type="Passive" Row="1" Column="2"/>
-            <LayoutButtons Face="Shielder" Type="Passive" Requirements="ExpansionIsLvl1" Row="1" Column="3"/>
-            <LayoutButtons Face="DestroyerDrone" Type="Passive" Requirements="ExpansionIsLvl1" Row="1" Column="4"/>
+            <LayoutButtons Face="DeflectorDrone" Type="Passive" Requirements="GatewayHeroDeflectorDrone" Row="1" Column="1"/>
+            <LayoutButtons Face="HealerDrone" Type="Passive" Requirements="GatewayHeroHealerDrone" Row="1" Column="2"/>
+            <LayoutButtons Face="Shielder" Type="Passive" Requirements="GatewayHeroShielderDrone" Row="1" Column="3"/>
+            <LayoutButtons Face="DestroyerDrone" Type="Passive" Requirements="GatewayHeroDestroyerDrone" Row="1" Column="4"/>
             <LayoutButtons Face="ChatCommands" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
         <InnerRadius value="0.5"/>
@@ -876,7 +878,7 @@
     <CUnit id="SplitterMissile" parent="MISSILE">
         <Race value="Prot"/>
         <Mover value="MothershipCoreWeaponWeapon2"/>
-        <Sight value="1"/>
+        <Sight value="1.5"/>
         <Height value="0.75"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
@@ -1171,6 +1173,7 @@
         <Sight value="2"/>
         <Height value="0.75"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+        <FlagArray index="Invulnerable" value="0"/>
     </CUnit>
     <CUnit id="OrbOfHavocMissile" parent="WizSimpleMissile" abil="">
         <Race value="Terr"/>
@@ -1333,6 +1336,7 @@
         <Collide index="Locust" value="0"/>
         <AbilArray Link="HorrorZerglingLeap"/>
         <BehaviorArray index="0" Link="HorrorZerglingFate"/>
+        <BehaviorArray Link="SpellUnit"/>
         <CardLayouts index="0">
             <LayoutButtons index="6" Face="HotSRaptorCharge" Type="AbilCmd" AbilCmd="HorrorZerglingLeap,Execute"/>
         </CardLayouts>
@@ -1407,6 +1411,7 @@
         <Sight value="2"/>
         <Height value="0.75"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+        <FlagArray index="Invulnerable" value="0"/>
     </CUnit>
     <CUnit id="ChaosOrbMissileGreen" parent="WizSimpleMissile" abil="">
         <Race value="Terr"/>
@@ -2818,6 +2823,7 @@
         </CardLayouts>
         <Radius value="1.5"/>
         <SeparationRadius value="0"/>
+        <BehaviorArray Link="SpellUnit"/>
     </CUnit>
     <CUnit id="FireBlastMissile" parent="MISSILE">
         <Race value="Prot"/>
@@ -2888,6 +2894,90 @@
         <Radius value="1.375"/>
         <SeparationRadius value="1.375"/>
         <MinimapRadius value="0"/>
+    </CUnit>
+    <CUnit id="GatewayHeroZealot">
+        <DeathRevealRadius value="3"/>
+        <ReviveType value="Zealot"/>
+        <Race value="Prot"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossArmor"/>
+        <ShieldsStart value="150"/>
+        <ShieldsMax value="150"/>
+        <ShieldRegenDelay value="5"/>
+        <ShieldRegenRate value="10"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Speed value="2.5"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <Sight value="9"/>
+        <CostCategory value="Army"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="20"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="ProgressRally"/>
+        <AbilArray Link="Warpable"/>
+        <AbilArray Link="ShadowCharge"/>
+        <BehaviorArray Link="ZealotRespawnDeath"/>
+        <BehaviorArray Link="ApplyLifeline"/>
+        <BehaviorArray Link="FullHeal"/>
+        <WeaponArray Link="SolariteReaper"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
+            <LayoutButtons Face="VoidZealotShadowCharge" Type="AbilCmd" AbilCmd="ShadowCharge,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ZealotAttack" Type="AbilCmd" AbilCmd="attack,Execute" Row="1" Column="4"/>
+        </CardLayouts>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="100"/>
+        <ScoreKill value="100"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="5"/>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <TacticalAI value="Zealot"/>
+        <GlossaryCategory value="Unit/Category/ProtossUnits"/>
+        <GlossaryPriority value="20"/>
+        <GlossaryStrongArray value="Marauder"/>
+        <GlossaryStrongArray value="Zergling"/>
+        <GlossaryStrongArray value="Immortal"/>
+        <GlossaryWeakArray value="Hellion"/>
+        <GlossaryWeakArray value="Roach"/>
+        <GlossaryWeakArray value="Colossus"/>
+        <HotkeyCategory value="Unit/Category/ProtossStory"/>
+        <AIEvaluateAlias value="Zealot"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="20"/>
+            <ChanceArray index="Idle" value="70"/>
+            <ChanceArray index="Turn" value="10"/>
+        </Fidget>
+        <ReviveInfoBase>
+            <Charge Link="Zealot/Revive"/>
+            <Cooldown Link="Zealot/Revive"/>
+        </ReviveInfoBase>
     </CUnit>
     <CUnit id="ZergLord">
         <DeathRevealRadius value="3"/>
@@ -3651,6 +3741,7 @@
     <CUnit id="WaveMissile" parent="MISSILE">
         <Race value="Zerg"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+        <FlagArray index="Invulnerable" value="1"/>
     </CUnit>
     <CUnit id="OceanLord">
         <DeathRevealRadius value="3"/>
@@ -4786,7 +4877,6 @@
         <AbilArray Link="move"/>
         <AbilArray Link="Warpable"/>
         <AbilArray Link="attack"/>
-        <AbilArray Link="DestroyerDroneSplitter"/>
         <BehaviorArray Link="AbilityTargetExclusionBehavior"/>
         <BehaviorArray Link="DroneHide"/>
         <BehaviorArray Link="FullHeal"/>
@@ -4797,7 +4887,6 @@
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="0" Column="4"/>
-            <LayoutButtons Face="Splitter" Type="AbilCmd" AbilCmd="DestroyerDroneSplitter,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
         </CardLayouts>
         <ScoreResult value="BuildOrder"/>
@@ -5253,7 +5342,6 @@
         <BehaviorArray Link="AbilityTargetExclusionBehavior"/>
         <BehaviorArray Link="FullHeal"/>
         <BehaviorArray Link="SpellUnit"/>
-        <WeaponArray Link="PointDefenseLaser" Turret="PointDefenseDrone"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -7447,29 +7535,6 @@
         <RankDisplay value="Never"/>
         <TauntDuration index="Cheer" value="5"/>
         <TauntDuration index="Dance" value="5"/>
-    </CUnit>
-    <!-- Zealot, whirlwind -->
-    <CUnit id="ZealotAiur">
-        <LifeStart value="150"/>
-        <LifeMax value="150"/>
-        <LifeArmor value="0"/>
-        <ShieldsStart value="150"/>
-        <ShieldsMax value="150"/>
-        <ShieldRegenDelay value="0"/>
-        <ShieldRegenRate value="0"/>
-        <Speed value="2.5"/>
-        <Food value="0"/>
-        <CostResource index="Minerals" value="0"/>
-        <AbilArray index="3" Link="ProgressRally"/>
-        <AbilArray index="4" Link="Warpable"/>
-        <AbilArray index="5" Link="ShadowCharge"/>
-        <AbilArray index="6" removed="1"/>
-        <CardLayouts index="0">
-            <LayoutButtons index="6" Face="VoidZealotShadowCharge" AbilCmd="ShadowCharge,Execute"/>
-            <LayoutButtons index="7" Face="ZealotAttack" AbilCmd="attack,Execute" Row="1" Column="4"/>
-        </CardLayouts>
-        <BehaviorArray index="1" Link="ApplyLifeline"/>
-        <BehaviorArray Link="FullHeal"/>
     </CUnit>
     <CUnit id="Zergling">
         <Food value="0"/>

@@ -8,6 +8,10 @@
         <OperandArray value="1"/>
         <OperandArray value="CountUpgradeLandslideQueuedOrBetter"/>
     </CRequirementAnd>
+    <CRequirementAnd id="And1CountUpgradeRetributionQueuedOrBetter">
+        <OperandArray value="1"/>
+        <OperandArray value="CountUpgradeRetributionQueuedOrBetter"/>
+    </CRequirementAnd>
     <CRequirementAnd id="And3CountBehaviorWindStackQueuedOrBetterAtUnit">
         <OperandArray value="3"/>
         <OperandArray value="CountBehaviorWindStackQueuedOrBetterAtUnit"/>
@@ -86,6 +90,14 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="FireStack" State="QueuedOrBetterAtUnit"/>
     </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorGatewayHeroEquipDeflectorDroneQueuedOrBetterAtUnit500177299">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GatewayHeroEquipDeflectorDrone" State="QueuedOrBetterAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorGatewayHeroEquipHealerDroneQueuedOrBetterAtUnit500177299">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GatewayHeroEquipHealerDrone" State="QueuedOrBetterAtUnit"/>
+    </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorGatewayHeroRecentlyProtectedQueuedOrBetterAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="GatewayHeroRecentlyProtected" State="QueuedOrBetterAtUnit"/>
@@ -141,7 +153,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBoundlessCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="Boundless" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBufferQueuedOrBetter">
@@ -234,6 +245,10 @@
     <CRequirementCountUpgrade id="CountUpgradeReservoirCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Reservoir" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeRetributionQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Retribution" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeSJHyperionHangerCheckCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>

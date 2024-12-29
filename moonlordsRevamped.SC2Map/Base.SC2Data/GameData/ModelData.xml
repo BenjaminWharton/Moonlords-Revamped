@@ -71,7 +71,7 @@
         <Lighting value="VulcanChampion"/>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraHigh05"/>
-        <Radius value="0.400000"/>
+        <Radius value="0.625000"/>
         <ScaleMax value="0.800000,0.800000,0.800000"/>
         <ScaleMin value="0.800000,0.800000,0.800000"/>
         <SelectionRadius value="0.625000"/>
@@ -86,8 +86,32 @@
         <SelectionRadius value="0.333200"/>
         <ShadowRadius value="0.333200"/>
     </CModel>
+    <CModel id="GatewayHeroBarrier">
+        <Model value="Assets\Effects\Protoss\Zeratul_VoidArmor_Impact\Zeratul_VoidArmor_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="GatewayHeroExploderChainReactBeam">
+        <Model value="Assets\Effects\Terran\Liberator_GroundCannon\Liberator_GroundCannon.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="GatewayHeroExplosive">
+        <Model value="Assets\UI\BriefingUnitSelectRed\BriefingUnitSelectRed.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.330000,0.330000,0.330000"/>
+        <ScaleMin value="0.330000,0.330000,0.330000"/>
+    </CModel>
+    <CModel id="GatewayHeroExplosiveAlly">
+        <Model value="Assets\UI\BriefingUnitSelect\BriefingUnitSelect.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.330000,0.330000,0.330000"/>
+        <ScaleMin value="0.330000,0.330000,0.330000"/>
+    </CModel>
     <CModel id="NatureHeroHarvestBeam">
         <Model value="Assets\Effects\Zerg\Dehaka_Coop_Consume\Dehaka_Coop_Consume.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="GatewayHeroDeflectorDroneBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\TargetingDroneBeam\TargetingDroneBeam.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
     <CModel id="RecombulatorMissileOld">
@@ -411,10 +435,10 @@
         <ScaleMin value="3.750000,3.750000,3.750000"/>
     </CModel>
     <CModel id="ExploderImpact">
-        <Model value="Assets\Effects\Zerg\HybridPlasmaMissileImpact\HybridPlasmaMissileImpact.m3"/>
+        <Model value="Assets\Effects\Protoss\Zealot_Nerazim_PhaseChargeStun_Impact\Zealot_Nerazim_PhaseChargeStun_Impact.m3"/>
         <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="0.800000,0.800000,0.800000"/>
-        <ScaleMin value="0.800000,0.800000,0.800000"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
     </CModel>
     <CModel id="ForwardBeamBeam">
         <Model value="Assets\Effects\Protoss\MothershipPhotonBeam\MothershipPhotonBeam.m3"/>
@@ -1506,8 +1530,9 @@
     </CModel>
     <CModel id="ArtanisVoid">
         <ScaleMax value="0.800000,0.800000,0.800000"/>
-        <ScaleMin value="0.800000,0.800000,0.750000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
         <ShadowRadius value="0.800000"/>
+        <Radius value="0.750000"/>
     </CModel>
     <CModel id="AscendantSacrificeImpactModel">
         <Model value="Assets\Effects\Protoss\Alarak_COOP_Sacrifice_Impact\Alarak_COOP_Sacrifice_Impact.m3"/>
@@ -2131,6 +2156,45 @@
         <ShadowRadius value="0.416500"/>
         <SquibTypeDefault value="Metal"/>
         <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+    </CModel>
+    <CModel id="GatewayHeroZealot">
+        <Model value="Assets\Units\Protoss\Zealot_Aiur\Zealot_Aiur.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Zealot_SwarmAnims\Zealot_SwarmAnims.m3a"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="ZealotAiur_AttackSweetener"/>
+            <Type value="Sound"/>
+            <Time value="0.018000"/>
+            <Payload value="ZealotAiur_AttackSweetener"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,03"/>
+            <Name value="ZealotAiur_AttackSweetener"/>
+            <Type value="Sound"/>
+            <Time value="0.012000"/>
+            <Payload value="ZealotAiur_AttackSweetener"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,04"/>
+            <Name value="ZealotAiur_AttackSweetener"/>
+            <Type value="Sound"/>
+            <Time value="0.012000"/>
+            <Payload value="ZealotAiur_AttackSweetener"/>
+        </Events>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraMid05"/>
+        <Radius value="0.375000"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionRadius value="0.416500"/>
+        <ShadowRadius value="0.416500"/>
+        <SquibTypeDefault value="Metal"/>
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <TextureDeclares Prefix="zealot_">
+            <Adaptions TriggerOnSubstring="_Diffuse" Slot="main"/>
+        </TextureDeclares>
         <UnitGlossaryCamera value="Star2CameraMid05"/>
     </CModel>
     <CModel id="ZergLord" parent="Unit" Race="Zerg">

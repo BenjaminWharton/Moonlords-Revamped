@@ -8,7 +8,6 @@ Abil/Name/ChampionLightning=ChampionLightning
 Abil/Name/ConsumeGravityHero=Consume
 Abil/Name/CrystalRain=Crystal Rain
 Abil/Name/Dematerialize=Dematerialize
-Abil/Name/DestroyerDroneSplitter=Destroyer Drone
 Abil/Name/Discharge=Discharge
 Abil/Name/Distortion=Distortion
 Abil/Name/Doom=Doom
@@ -27,7 +26,7 @@ Abil/Name/EssenceCharge=Essence Charge
 Abil/Name/EternalLife=Eternal Life
 Abil/Name/EverlastingStorm=Everlasting Storm
 Abil/Name/Eviscerate=Eviscerate
-Abil/Name/Exploder=Exploder
+Abil/Name/ExplosiveVirus=Explosive Virus
 Abil/Name/ExplosiveVolley=Explosive Volley
 Abil/Name/FireBlast=Fire Blast
 Abil/Name/FireHeroBlastwave=Fire Hero - Blastwave
@@ -88,6 +87,7 @@ Abil/Name/Poisonbolt=Poisonbolt
 Abil/Name/PowerDrain=Power Drain
 Abil/Name/ProbeCannon=Probe Cannon
 Abil/Name/Projection=Projection
+Abil/Name/PsiSplitter=Psi Splitter
 Abil/Name/PsionicStorm=Psionic Storm
 Abil/Name/PylonOvercharge=Overcharge
 Abil/Name/QuicksandEarth=Quicksand
@@ -106,7 +106,6 @@ Abil/Name/ShadowHeroShadowcrash=Shadow Hero - Shadowcrash
 Abil/Name/ShadowHeroShadowplay=Shadow Hero - Shadowplay
 Abil/Name/Shockwave=Shockwave
 Abil/Name/Slash=Slash
-Abil/Name/Splitter=Splitter
 Abil/Name/SteamFire=Steam
 Abil/Name/SteamWater=Steam
 Abil/Name/Substitution=Substitution
@@ -236,7 +235,6 @@ Behavior/Name/EvilPresent=Evil Present
 Behavior/Name/Excess=Excess
 Behavior/Name/ExcessGravSliv=ExcessGravSliv
 Behavior/Name/Exhaustion=Exhaustion
-Behavior/Name/Exploder=Exploder
 Behavior/Name/Expose=Expose
 Behavior/Name/Fanatical=Fanatical
 Behavior/Name/FateBase=Fate
@@ -267,6 +265,7 @@ Behavior/Name/Gandalfcheck=Gandalfcheck
 Behavior/Name/GasBombLeakageFate=Gas Bomb Leakage Fate
 Behavior/Name/GasFire=Gas Fire
 Behavior/Name/GasFireStack=Gas Fire Stack
+Behavior/Name/GatewayHeroExplosive=Explosive
 Behavior/Name/GatewayHeroGuardianShell=Guardian Shell
 Behavior/Name/GlaiveAttack=Glaive Attack
 Behavior/Name/GlaiveBarrage=Glaive Barrage
@@ -497,7 +496,6 @@ Behavior/Name/Volatile=Volatile
 Behavior/Name/VolatileSporesUI=Volatile Spores
 Behavior/Name/WallofDarkness=Wall of Darkness
 Behavior/Name/WarpDrone=Warp Drone
-Behavior/Name/WarpRiftTimedLife=WarpRiftTimedLife
 Behavior/Name/Warpout=Warpout
 Behavior/Name/WaterHeroIceBlast=Water Hero - Ice Blast
 Behavior/Name/WaterHeroPuddleFate=Water Hero - Puddle Fate
@@ -517,7 +515,6 @@ Behavior/Tooltip/Absorb=Increased energy regeneration
 Behavior/Tooltip/Absorber=Damage taken is converted into health
 Behavior/Tooltip/AlteredTime=Fading out of existance.
 Behavior/Tooltip/AlteredTimeHaste=Warped time.
-Behavior/Tooltip/Anointed=This unit has been anointed with great power.
 Behavior/Tooltip/ArdentDefender=Ardent Defender<n/>'This defense will not fall'
 Behavior/Tooltip/Attrition=Slowed
 Behavior/Tooltip/Bastion=Taking reduced damage.
@@ -580,7 +577,6 @@ Behavior/Tooltip/EssenceCharging=This Zealot is charging, allowing it to quickly
 Behavior/Tooltip/EssenceCollector=The Evolution Lord unit grows stronger with each kill.
 Behavior/Tooltip/EvilPresent=Increases damage taken
 Behavior/Tooltip/Exhaustion=Deals less damage to the Lightning Hero
-Behavior/Tooltip/Exploder=This unit will explode on death.
 Behavior/Tooltip/Expose=This unit has reduced armor.
 Behavior/Tooltip/Fanatical=Reduced ability costs.
 Behavior/Tooltip/FateBase=Takes 90% reduced damage while a hero is not within 8 range of it.
@@ -601,6 +597,7 @@ Behavior/Tooltip/FrozenHeroic=Frozen
 Behavior/Tooltip/Furor=Movement speed and health/shield regeneration increased.
 Behavior/Tooltip/GasFire=This unit is dealing damage to self and nearby units.
 Behavior/Tooltip/GasFireStack=This unit is dealing damage to self and nearby units.
+Behavior/Tooltip/GatewayHeroExplosive=This unit will explode on death.
 Behavior/Tooltip/GatewayHeroGuardianShell=This unit is immune to damage.
 Behavior/Tooltip/GlaiveBarrage=Is holding additional Glaives which will be launched at nearby units on the Adepts next attack.
 Behavior/Tooltip/Guardian=Increased energy, energy regeneration and damage while near a pylon.
@@ -802,7 +799,7 @@ Button/Name/EternalLife=<c val="FFFFFF">Eternal</c> <c val="0080FF">Life</c>
 Button/Name/EverlastingStorm=<c val="804040">Everlasting</c> <c val="FFFFFF">Storm</c>
 Button/Name/Eviscerate=Eviscerate
 Button/Name/Expel=Expel
-Button/Name/Exploder=<c val="FFFFFF">Exploder</c>
+Button/Name/ExplosiveVirus=<c val="FFFFFF">Explosive Virus</c>
 Button/Name/ExplosiveVolley=Explosive Volley
 Button/Name/FireBlast=<c val="FF8000">Fire Blast</c>
 Button/Name/FireInfusion=Fire Infusion
@@ -871,6 +868,7 @@ Button/Name/PowerPlating=Power Plating
 Button/Name/ProbeCannon=Probe Cannon
 Button/Name/Projection=Projection
 Button/Name/ProtossAlliesTeleport=Teleport
+Button/Name/PsiSplitter=<c val="FFFFFF">Psi Splitter</c>
 Button/Name/PylonOvercharge=Pylon Overcharge
 Button/Name/PylonOverchargge=Pylon Overcharge
 Button/Name/QuicksandEarth=<c val="804040">Quicksand</c>
@@ -892,7 +890,6 @@ Button/Name/Shielder=<c val="FFFFFF">Shielder</c>
 Button/Name/ShielderDrone=<c val="FFFFFF">Shielder</c>
 Button/Name/Shockwave=Shockwave
 Button/Name/Slash=Slash
-Button/Name/Splitter=<c val="FFFFFF">Splitter</c>
 Button/Name/StaticShield=Static Shield
 Button/Name/Stealth=Stealth
 Button/Name/SteamFire=<c val="FF8000">Steam</c>
@@ -954,11 +951,11 @@ Button/Tooltip/CorruptionLord=Anti-air flyer. Can use Caustic Spray. Can morph i
 Button/Tooltip/CrystalRain=Launch <c val="FFFF80"><d ref="Effect,CrystalRainInit,PeriodCount + Effect,CrystalRainSeismOffset,PeriodCount"/></c> Crystals at the target location over <c val="FFFF80"><d ref="Effect,CrystalRainInit,PeriodCount*0.5"/></c> second(s), each dealing <c val="FFFF80"><d ref="Effect,CrystalRainDMG,Amount" precision="2"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,CrystalRainSA,AreaArray[0].Radius" precision="2"/></c>.
 Button/Tooltip/DeathLord=Monstrous creature made from both Protoss and Zerg DNA. Capable of powerful attacks.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c><n/><c val="FFE303">Detector</c>
 Button/Tooltip/Decoy=Assault strider. Can use Barrier to absorb damage.<n/><n/><c val="ffff8a">Can attack ground units.</c>
-Button/Tooltip/DeflectorDrone=<c val="FF0000">Destroys enemy projectiles at the cost of <c val="FFFFFF"><d ref="Effect,PointDefenseLaserEnergy,VitalArray[Energy].Change*(-1)"/></c> <c val="FF00FF">energy</c> per shot.<n/><n/><c val="FF00FF">Energy</c> maximum is <c val="FF00FF">300</c>(+<c val="FF00FF">10</c> for every <c val="FF00FF">energy</c> maximum reward)<n/>Current maximum is <c val="FF00FF"><d ref="Unit,DeflectorDrone,EnergyMax"/></c></c>
+Button/Tooltip/DeflectorDrone=<c val="FF0000">Destroys enemy projectiles at the cost of <c val="FFFFFF"><d ref="Accumulator,GatewayHeroDeflectorDronePDCost,Amount"/></c> <c val="FF00FF">energy</c> per shot.<n/><n/><c val="FF00FF">Energy</c> maximum is <c val="FF00FF">300</c>(+<c val="FF00FF">10</c> for every <c val="FF00FF">energy</c> maximum reward)<n/>Current maximum is <c val="FF00FF"><d ref="Unit,DeflectorDrone,EnergyMax"/></c></c>
 Button/Tooltip/Dematerialize=Converting matter of the target unit into energy over time. <n/>This energy is tranfered back to you and used to restore your shields and hitpoints.
 Button/Tooltip/Demolisher=Assault strider. Can use Barrier to absorb damage.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/DemonLord=Fast melee creature. Can morph into a Baneling.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
-Button/Tooltip/DestroyerDrone=<c val="FFFF00">Launches a splitter at enemies every second at the cost of <c val="FFFFFF"><d ref="Abil,DestroyerDroneSplitter,Cost[0].Vital[Energy]"/></c> <c val="FF00FF">energy</c> .(Splitter talents apply)<n/>In addition it restores <c val="FF00FF">5%</c> maximum <c val="FF00FF">energy</c> to your hero each time it fires.<n/><n/>Energy maximum is <c val="FF00FF">300</c>(+<c val="FF00FF">10</c> for every <c val="FF00FF">energy</c> maximum reward)<n/>Current maximum is <c val="FF00FF"><d ref="Unit,DestroyerDrone,EnergyMax"/></c></c>
+Button/Tooltip/DestroyerDrone=<c val="FFFF00">Duplicates all offensive spells cast by the Gateway Hero at <c val="FFFFFF"><d ref="Accumulator,GatewayHeroDestroyerReinforceCostFactor,Amount*100"/>%</c> of their energy cost<n/><n/>Energy maximum is <c val="FF00FF">300</c>(+<c val="FF00FF">10</c> for every <c val="FF00FF">energy</c> maximum reward)<n/>Current maximum is <c val="FF00FF"><d ref="Unit,DestroyerDrone,EnergyMax"/></c></c>
 Button/Tooltip/Dexterity=Has a <c val="FFFF80"><d ref="Behavior,Evasion,DamageResponse.Chance*100"/>%</c> chance to evade damage.<n/><n/>Can cast abilities while moving.
 Button/Tooltip/Discharge=
 Button/Tooltip/Disintegrate=Kills a unit under your control allowing you to use shadowplay on a new target.
@@ -993,7 +990,8 @@ Button/Tooltip/Eviscerate=Launch a missile towards the target point that deals <
 Button/Tooltip/Eviserate=
 Button/Tooltip/EvolutionLord=Generates two Spawns of Dehaka that deal 100% normal damage but have 50% life. Spawns last <d time="30"/>.
 Button/Tooltip/Expel=Deal <c val="FFFF80"><d ref="Effect,NatureHeroExpelDMG,Amount"/></c> damage to enemies within a radius of <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelRadiusBase,Amount"/></c> around your hero and slow them by <c val="FFFF80"><d ref="1-Behavior,Tangled,Modification.MoveSpeedMultiplier*100" precision="1"/>%</c> for <c val="FFFF80"><d ref="Behavior,Tangled,Duration"/></c> seconds<n/><n/>Casting <c val="FFFF80">Expel</c> adds <c val="FFFF80"><d ref="Effect,AddRenewComboPowerCP,PeriodCount" precision="1"/></c> combo power to <c val="FFFF80">Renew</c></c><n/><n/>Each combo power increases the damage area by <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelRadiusMultiplier,Amount" precision="1"/></c>, damage by <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelDamageMultiplier,Amount*100"/>%</c> and health cost by <c val="FFFF80"><d ref="Effect,NatureHeroExpelCostUpCP,PeriodCount*25"/></c> for the next <c val="FFFF80">Expel</c> cast<n/><n/>Casting <c val="FFFF80">Expel</c> consumes all stacks
-Button/Tooltip/Exploder=<c val="0080FF">Deal damage in the target area and apply  the explode debuff causing effected enemies to explode on death.</c>
+Button/Tooltip/Exploder=<c val="0080FF">Deal <c val="FFFFFF"><d ref="Effect,ExploderDMG,Amount"/></c> damage to all enemies within a radius of <c val="FFFFFF"><d ref="Effect,ExploderSA,AreaArray[0].Radius" precision="1"/></c> in the target area and infect <c val="FFFFFF"><d ref="Effect,GatewayHeroExploderDebuffSA,AreaArray[0].MaxCount"/></c> units with the explosive debuff for <c val="FFFFFF"><d ref="Behavior,GatewayHeroExplosive,Duration"/></c> seconds<n/><n/>Explosive units are revealed and will explode on death, dealing <c val="FFFFFF"><d ref="Effect,ExploderDMG,Amount"/></c> damage in a radius of <c val="FFFFFF"><d ref="Effect,ExploderExplodeSA,AreaArray[0].Radius" precision="1"/></c></c>
+Button/Tooltip/ExplosiveVirus=<c val="0080FF">Deal <c val="FFFFFF"><d ref="Effect,ExploderDMG,Amount"/></c> damage to all enemies within a radius of <c val="FFFFFF"><d ref="Effect,ExploderSA,AreaArray[0].Radius" precision="1"/></c> in the target area and apply the explosive debuff to <c val="FFFFFF"><d ref="Effect,GatewayHeroExploderDebuffSA,AreaArray[0].MaxCount"/></c> of them for <c val="FFFFFF"><d ref="Behavior,GatewayHeroExplosive,Duration"/></c> seconds<n/><n/>Explosive units are revealed and will explode on death, dealing <c val="FFFFFF"><d ref="Effect,ExploderDMG,Amount"/></c> damage in a radius of <c val="FFFFFF"><d ref="Effect,ExploderExplodeSA,AreaArray[0].Radius" precision="1"/></c></c>
 Button/Tooltip/ExtinctionLord=
 Button/Tooltip/ExtinctionOrb=
 Button/Tooltip/FireBlast=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Send a Fireball towards the target location dealing <c val="FFFF80"><d ref="Effect,FireBlastDMG,Amount"/></c> damage in a radius of <c val="FFFF80">2</c>
@@ -1013,6 +1011,7 @@ Button/Tooltip/Freeze=Apply enemies in a radius of <c val="FFFF80"><d ref="Effec
 Button/Tooltip/Frostshock=Instantly shocks the target with frost, causing 25 damage and slowing movement speed by 50% lasting 8 seconds.<n/>If the target is already under the effect of Frost Shock the target will be completely frozen for 4 seconds and your Frost Shock will hit all enemy units close to your target.
 Button/Tooltip/GasBomb=Launch a container of concentrated gas at the target point which will douse enemies in a radius of <c val="FFFF80"><d ref="Effect,GasBombSA,AreaArray[0].Radius" precision="2"/></c> and then ignite them for <c val="FFFF80">5</c> seconds.<n/><n/>Ignited enemies deal <c val="FFFF80"><d ref="Effect,GasBombFireDMG,Amount*2"/></c> dps per stack in a radius <c val="FFFF80">0.5</c> larger than their unit radius.<n/><n/>If an ignited enemy is doused again, then another stack of Gas Fire is added, up to <c val="FFFF80">50</c> stacks.
 Button/Tooltip/GatewayHero=Behold the might of the Protoss!
+Button/Tooltip/GatewayHeroZealot=Aiur Faction<n/>Powerful melee warrior. Has Charge and Whirlwind abilities.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/GlaiveAttackUnit=Summons a Tornado lasting <d ref="Behavior,Tornado,Duration" precision="1"/> seconds.
 Button/Tooltip/GlaiveBarrage=Stores <c val="FFFF80">1</c> extra Glaive which will be launched to nearby enemies on the Adepts next attack.<n/></c><n/>Can hold up to <c val="FFFF80">10</c>
 Button/Tooltip/GravityDash=Charge towards the target location dealing damage and sucking in enemies.
@@ -1020,7 +1019,7 @@ Button/Tooltip/GravityHero=Crush your enemies into dust!
 Button/Tooltip/GravityShot=Creates a gravity orb 12 range away from the hero which returns to the location it was casted from while pulling enemy units with it.
 Button/Tooltip/GravityShotY=Creates a gravity orb 12 range away from the hero which returns to the location it was casted from while pulling enemy units with it.
 Button/Tooltip/GravitySlivers=Fires concentrated gravity beams dealing damage in an area.
-Button/Tooltip/GuardianShell=<c val="0080FF">Become invulnerable for <c val="FFFFFF">5</c> seconds after taking fatal damage.(<c val="FFFFFF"><d ref="Behavior,SOAHeroicShieldWeakness,Duration"/></c> Second CD)</c>
+Button/Tooltip/GuardianShell=<c val="0080FF">Become invulnerable for <c val="FFFFFF"><d ref="Behavior,GatewayHeroGuardianShell,Duration"/></c> seconds after taking fatal damage.(<c val="FFFFFF"><d ref="Behavior,GatewayHeroRecentlyProtected,Duration"/></c> Second CD)</c>
 Button/Tooltip/GuidedMissile=Fires a guided missile that will search, target and hit a target close to its path dealing <c val="FFFF80"><d ref="Effect,ImmortalGuideddamage,Amount"/></c> damage.
 Button/Tooltip/HealerDrone=<c val="0000FF">Heals allied units and structures at the cost of <c val="FFFFFF"><d ref="Effect,HealerDroneShieldHeal,DrainVitalCostFactor*50"/></c><c val="FF00FF"> energy</c> per <c val="FFFFFF">50 </c> <c val="008000">health</c>/<c val="0080FF">shields</c> restored.<n/><n/><c val="FF00FF">Energy</c> maximum is <c val="FF00FF">300</c>(+<c val="FF00FF">10</c> for every <c val="FF00FF">energy</c> maximum reward)<n/>Current maximum is <c val="FF00FF"><d ref="Unit,HealerDrone,EnergyMax"/></c></c>
 Button/Tooltip/HealingBlast=Fires a projectile that heals the targeted ally on impact.
@@ -1126,13 +1125,14 @@ Button/Tooltip/ProjectionUnit=Summons a Tornado lasting <d ref="Behavior,Tornado
 Button/Tooltip/ProtossAlliesHighTemplar=Potent psionic master. Can use Feedback and Psionic Storm. Can merge into an Archon.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/ProtossAlliesImmortal=Assault strider. Can use Barrier to absorb damage.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/ProtossAlliesTeleport=Teleport to the target psi-field.
+Button/Tooltip/PsiSplitter=<c val="0080FF">Launches a missile that deals <c val="FFFFFF"><d ref="Effect,GatewayHeroSplitterDMG,Amount"/></c> damage to the first enemy it comes in contact with, and then splits and target <c val="FFFFFF"><d ref="Effect,GatewayHeroSplitterSplitSearchTarget,AreaArray[0].MaxCount"/></c> more random units within a radius of <c val="FFFFFF"><d ref="Effect,GatewayHeroSplitterSplitSearchTarget,AreaArray[0].Radius"/></c>, dealing <c val="FFFFFF"><d ref="Effect,GatewayHeroSplitterSplitDMG,Amount"/></c> damage. Each split will then split again targeting <c val="FFFFFF"><d ref="Effect,GatewayHeroSplitterSplitSplitSearchTarget,AreaArray[0].MaxCount"/></c> random unit(s) in the same radius.</c>
 Button/Tooltip/PylonOvercharge=Gives the the Pylon a temporary weapon.
 Button/Tooltip/QuicksandEarth=Infusion: <c val="804040">Earth</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Creates Quicksand at the target point which will slow enemy units movement and attack speed in a radius of <c val="FFFF80">3</c> by <c val="FFFF80">50%</c>, lasting for <c val="FFFF80"><d ref="Effect,QuicksandEarthCP,PeriodCount*Effect,QuicksandEarthCP,PeriodicPeriodArray[0]" precision="1"/></c> seconds.<n/><n/>Non heroic and non massive units will sink into the sand and die.
 Button/Tooltip/QuicksandWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="804040">Earth</c><n/><n/>Creates Quicksand at the target point which will slow enemy units movement and attack speed in a radius of <c val="FFFF80">3</c> by <c val="FFFF80">50%</c>, lasting for <c val="FFFF80"><d ref="Effect,QuicksandWaterCP,PeriodCount*Effect,QuicksandWaterCP,PeriodicPeriodArray[0]" precision="1"/></c> seconds.<n/><n/>Non heroic and non massive units will sink into the sand and die.
 Button/Tooltip/RapidRepairs=The Beam Hero regenerates health and shields very quickly. Taking at least <c val="FFFF80">30</c> damage from a single damage instance will cancel this effect for <c val="FFFF80"><d ref="Behavior,RapidRepairsDisable,Duration" precision = "1"/></c> seconds.<n/><n/>Additionally, the Beam Hero has <c val="FFFF80">100%</c> armor penetration.
-Button/Tooltip/Recharge=<c val="0080FF">Restore <c val="FFFFFF"><d ref="Effect,RechargeAddEnergy,VitalArray[Energy].Change"/></c> energy to your drones.</c>
+Button/Tooltip/Recharge=<c val="0080FF">Restore <c val="FFFFFF"><d ref="Effect,RechargeAddEnergy,VitalArray[Energy].Change"/></c> energy to your drones and toggle which drones are currently active</c>
 Button/Tooltip/Recombulator=Recombulates up to <c val="FFFF80"><d ref="Effect,RecombulatorSearch,MaxCount"/></c> enemy units in a radius of <c val="FFFF80"><d ref="Effect,RecombulatorSearch,AreaArray[0].Radius" precision="1"/></c>, dealing <c val="FFFF80"><d ref="Effect,RecombulatorDamage,Amount"/></c> damage to each primary target and <c val="FFFF80"><d ref="Effect,RecombulatorDamage,Amount*0.25"/></c> damage in a radius of <c val="FFFF80">1</c>.<n/><n/>Each unit hit will launch a Recombulatorfeedback charge towards you. <n/>It takes <c val="FFFF80"><d ref="Effect,RecombulatorEnergy,VitalArray[Energy].Change*(-1)" precision="1"/></c> energy to annihilate a Recombulatorfeedback safely - if you dont have enough energy you will take <c val="FFFF80"><d ref="Effect,RecombulatorDamage2,Amount" precision="1"/></c> damage.<n/><n/>Casting Recombulator will create <c val="FFFF80"><d ref="Effect,RecombulatorMatrixCP,PeriodCount"/></c> Twilight Cannon missile(s) that will rotate around your hero for <c val="FFFF80"><d ref="Behavior,TwilightHeroMatrixFate,Duration"/></c> seconds
-Button/Tooltip/Reinforce=<c val="0080FF">Spawn <c val="FFFFFF"><d ref="Effect,ReinforceSpawnZealot,SpawnCount"/></c> Zealot<n/><n/>(Zealots gain <c val="FFFFFF">10</c> <c val="008000">health</c>/<c val="0000FF">shield</c>, <c val="FFFFFF">0.5</c> <c val="00FF80">regen</c>, <c val="FFFFFF">0.5</c> <c val="808080">armor</c>, and <c val="FFFFFF"> 0.0625</c> <c val="FFFF00">move speed</c> per reward bonus.)</c>
+Button/Tooltip/Reinforce=<c val="0080FF">Spawn <c val="FFFFFF"><d ref="Effect,ReinforceSpawnZealot,SpawnCount"/></c> Zealot(s) at the target point<n/><n/>Can have up to <c val="FFFFFF"><d ref="Behavior,GatewayHeroZealotTracker,MaxTrackedUnits"/></c> permanent Zealots at a time. If your Zealot count gets above this then the excess Zealots will warp out after <c val="FFFFFF"><d ref="Behavior,ReinforceTimedLife,Duration"/></c> seconds<n/><n/>(Zealots gain <c val="FFFFFF">10</c> <c val="008000">health</c>/<c val="0000FF">shield</c>, <c val="FFFFFF">0.5</c> <c val="00FF80">regen</c>, <c val="FFFFFF">0.5</c> <c val="808080">armor</c>, and <c val="FFFFFF"> 0.0625</c> <c val="FFFF00">move speed</c> per reward bonus.)
 Button/Tooltip/Renew=Heals <c val="FFFF80"><d ref="Effect,RenewHealMU,VitalArray[Life].Change*20" precision="1"/></c> health over <c val="FFFF80">10</c> seconds and slows movement speed by <c val="FFFF80"><d ref="(Behavior,RenewHealSlow,Modification.MoveSpeedMultiplier-1)*(-100)" precision="1"/>%<n/></c><n/>Each combo power heals <c val="FFFF80"><d ref="Effect,RenewComboHealMU,VitalArray[Life].ChangeFraction*500" precision="0"/>%</c> + <c val="FFFF80"><d ref="Effect,RenewComboFlatHealMU,VitalArray[Life].Change*5"/> </c> hp over <c val="FFFF80">10</c> seconds<n/><n/>Casting <c val="FFFF80">Renew</c> consumes all stacks.<n/>
 Button/Tooltip/Repel=Knock back and damage enemy units that get too close.<n/><n/>Additionally the Gravity hero deals 50% more damage vs Armored targets and 100% more damage vs Massive and Heroic targets.
 Button/Tooltip/ResourceCollector=Every unit killed after having been affected by any Probe Hero spell has a <c val="FFFF80"><d ref="Effect,ResourcesCU,Chance*100"/>%</c> chance to drop a mineral pickup worth <c val="FFFF80">1</c> resource.<n/><n/>Once <c val="FFFF80">100</c> resources have been gained the Probe Hero will gain <c val="FFFF80"><d ref="Behavior,ProbeHeroUpgrade,Modification.VitalMaxArray[Shields]"/></c> increased maximum health/shields, <c val="FFFF80"><d ref="Behavior,ProbeHeroUpgrade,Modification.VitalMaxArray[Energy]"/></c> maximum energy, and <c val="FFFF80"><d ref="Effect,SpawnArmyCP,PeriodCount"/></c> random units get spawned for your Protoss Allies at their nearest structure.
@@ -1156,7 +1156,6 @@ Button/Tooltip/Slash=Deal damage to enemies in a radius of <c val="FFFF80">1.5</
 Button/Tooltip/SlimeLord=Assault unit. Regenerates life quickly while burrowed. Attacks debilitate the target, slowing its attack and movement speeds.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/SpineDefense=Anti-ground defensive structure. <n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/SpireAttackMissile=Casts a Lightning at the target dealing 40 damage.
-Button/Tooltip/Splitter=<c val="0080FF">Launches a missile that damages the first enemy it comes in contact with, and then splits and impacts <c val="FFFF80"><d ref="Effect,SplitterSplitCPSearchTarget,PeriodCount"/></c> additional time(s) on a random unit in a radius of <c val="FFFF80"><d ref="Effect,SplitterSplitST,AreaArray[0].Radius"/></c>, each split will then impact <c val="FFFF80"><d ref="Effect,SplitterSplitSplitCPSearchTarget,PeriodCount"/></c> additional times on random units in the same radius.</c> 
 Button/Tooltip/SplitterY=<c val="0080FF">Launches a missile that can split and damage multiple enemies.</c>
 Button/Tooltip/SporeLord=Long-range anti-ground flyer. <n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/StaticShield=Attackers get hit by 'Static' stunning them for 4 seconds.<n/>Has limited charges but restores charges over time.
@@ -1785,10 +1784,27 @@ DocInfo/PatchNote545=  - Fixed Zerg Lord attacks being able to travel all the wa
 DocInfo/PatchNote546=
 DocInfo/PatchNote547=- Elemental Hero
 DocInfo/PatchNote548=  - Increased the radius of Steam
-DocInfo/PatchNote549=  - Earthquake triggeres more times but deals less damage
+DocInfo/PatchNote549=  - Earthquake triggers more times but deals less damage
 DocInfo/PatchNote550=  - Slightly increased the duration of Sandstorm
 DocInfo/PatchNote551=  - Removed Speedstorm and replaced with Permanence
 DocInfo/PatchNote552=  - Blunt Force now affects structures
+DocInfo/PatchNote553=- Gateway Hero
+DocInfo/PatchNote554=  - Fixed Zealots being spawned without reward bonuses
+DocInfo/PatchNote555=  - Various visual changes
+DocInfo/PatchNote556=  - Changed Destroyer Drone ability
+DocInfo/PatchNote557=  - Only a limited number of Drones may be active at a time
+DocInfo/PatchNote558=  - Recharge now toggles which drones are active
+DocInfo/PatchNote559=  - Reduced the energy cost of all abilities
+DocInfo/PatchNote560=  - Exploder now applies its debuff to a limited number of targets
+DocInfo/PatchNote561=  - Zealots no longer have timed life when summoned but are now capped
+DocInfo/PatchNote562=  - Zealots summoned when at the cap will be given timed life
+DocInfo/PatchNote563=  - Warpgate now increases the energy cost of Reinforce and the zealot cap
+DocInfo/PatchNote564=  - Splitter can no longer hit a unit more than once in the same split
+DocInfo/PatchNote565=  - Removed "Warp Rift" and replaced with "Strike"
+DocInfo/PatchNote566=  - Removed "Injection" and replaced with "Longevity"
+DocInfo/PatchNote567=  - Altered Blast Radius, Chain React and Warp In
+DocInfo/PatchNote568=  - Nerfed Blast Zone, Fragments and Annoint
+DocInfo/PatchNote569=  - Buffed Retarget, Barrier and Shrapnel
 DocInfo/Screenshot01=Reward points carry over to subsequent games and can be beneficial in a variety of ways.
 DocInfo/Screenshot02=Standing near a Pylon enables you to teleport to any other base.
 DocInfo/Screenshot05=Spend talent points to increase your power.
@@ -2184,8 +2200,6 @@ Effect/Name/CarnageSpinesDMG=Carnage Spines
 Effect/Name/CarnageSpinesLM=Carnage Spines
 Effect/Name/CarnageSpinesOffsets=Carnage Spines
 Effect/Name/CarnageSpinesSA=Carnage Spines
-Effect/Name/ChainReact=Chain React
-Effect/Name/ChainReactSA=Chain React
 Effect/Name/ChampionDeath=ChampionDeath
 Effect/Name/ChampionLightningDamage=ChampionLightningDamage
 Effect/Name/ChampionLightningDestroyPersistent=ChampionLightningDestroyPersistent
@@ -2309,9 +2323,6 @@ Effect/Name/DematerializeRegenerateEOL=DematerializeRegenerateEOL
 Effect/Name/DematerializeSet=DematerializeSet
 Effect/Name/DemolishDMG=Demolish
 Effect/Name/DemonClawsDMG=Demon Claws
-Effect/Name/DestoyerDroneEnergyRestoreModifyUnit=Destoyer Drone Energy Restore
-Effect/Name/DestroyerDroneEnergyRestoreSearch=Destroyer Drone Energy Restore
-Effect/Name/DestroyerDroneSet=Destroyer Drone
 Effect/Name/DeviantSmashDMG=Deviant Smash
 Effect/Name/DischargeAutocastSearchTarget=Discharge
 Effect/Name/DischargeDMG=Discharge
@@ -2386,7 +2397,6 @@ Effect/Name/ElementalHeroInfuseEarthSet=Elemental Hero - Infuse Earth (Set)
 Effect/Name/EmergencyRecallHeal=Emergency Recall
 Effect/Name/EmergencyRecallSet=Emergency Recall
 Effect/Name/EmergencyRecallTP=Emergency Recall
-Effect/Name/EploderDelay=Eploder
 Effect/Name/EquipAB=Equip
 Effect/Name/EquipSA=Equip (SA)
 Effect/Name/EquipSet=Equip (Set)
@@ -2488,12 +2498,9 @@ Effect/Name/ExploderApplyBehavior=Exploder
 Effect/Name/ExploderDMG=Exploder
 Effect/Name/ExploderExplodeDelay=Exploder Explode
 Effect/Name/ExploderExplodeSA=Exploder Explode
-Effect/Name/ExploderExplodeSet=Exploder Explode
 Effect/Name/ExploderSA=Exploder
-Effect/Name/ExploderSet=Exploder
 Effect/Name/ExploderUnstableAB=Exploder Unstable
 Effect/Name/ExploderUnstableCP=Exploder Unstable
-Effect/Name/ExploderUnstableInjectionChance=Exploder Unstable
 Effect/Name/ExplosiveAttackDelay=Explosive Attack
 Effect/Name/ExplosiveAttackInit=Explosive Attack
 Effect/Name/ExplosiveAttackLM=Explosive Attack
@@ -2719,7 +2726,67 @@ Effect/Name/GasPickupTextDummy=Gas Pickup Text Dummy
 Effect/Name/Gateway=Gateway
 Effect/Name/GatewayHeroApplyGuardianShell=Gateway Hero - Apply Guardian Shell
 Effect/Name/GatewayHeroApplyRecentlyProtected=Gateway Hero - Apply Recently Protected
+Effect/Name/GatewayHeroDeflectorDroneDMG=Gateway Hero - Deflector Drone (DMG)
+Effect/Name/GatewayHeroDeflectorDroneData=Gateway Hero - Deflector Drone (Data)
+Effect/Name/GatewayHeroDeflectorDroneMU=Gateway Hero - Deflector Drone (MU)
+Effect/Name/GatewayHeroDeflectorDroneRemove=Gateway Hero - Deflector Drone (Remove)
+Effect/Name/GatewayHeroDeflectorDroneSA=Gateway Hero - Deflector Drone (SA)
+Effect/Name/GatewayHeroDeflectorDroneSet=Gateway Hero - Deflector Drone (Set)
+Effect/Name/GatewayHeroDeflectorDroneShrapnel=Gateway Hero - Deflector Drone Shrapnel
+Effect/Name/GatewayHeroDeflectorDroneShrapnelLM=Gateway Hero - Deflector Drone Shrapnel (LM)
+Effect/Name/GatewayHeroDeflectorDroneShrapnelSearchTarget=Gateway Hero - Deflector Drone Shrapnel (SearchTarget)
+Effect/Name/GatewayHeroDroneHangerDeflectorAB=Gateway Hero - Drone Hanger Deflector (AB)
+Effect/Name/GatewayHeroDroneHangerDeflectorPDAB=Gateway Hero - Drone Hanger Deflector PD (AB)
+Effect/Name/GatewayHeroDroneHangerDeflectorSet=Gateway Hero - Drone Hanger Deflector (Set)
+Effect/Name/GatewayHeroDroneHangerHealerAB=Gateway Hero - Drone Hanger Healer (AB)
+Effect/Name/GatewayHeroDroneHangerHealerSet=Gateway Hero - Drone Hanger Healer (Set)
+Effect/Name/GatewayHeroExploder=Gateway Hero - Exploder (Init)
+Effect/Name/GatewayHeroExploderDebuffSA=Gateway Hero - Exploder Debuff (SA)
+Effect/Name/GatewayHeroExploderDebuffSet=Gateway Hero - Exploder Debuff (Set)
+Effect/Name/GatewayHeroExploderDestroyerData=Gateway Hero - Exploder Destroyer (Data)
+Effect/Name/GatewayHeroExploderDestroyerDelay=Gateway Hero - Exploder Destroyer (Delay)
+Effect/Name/GatewayHeroExploderDestroyerFind=Gateway Hero - Exploder Destroyer (Find)
+Effect/Name/GatewayHeroExploderDestroyerMU=Gateway Hero - Exploder Destroyer (MU)
+Effect/Name/GatewayHeroExploderDestroyerSet=Gateway Hero - Exploder Destroyer (Set)
+Effect/Name/GatewayHeroExploderDestroyerTarget=Gateway Hero - Exploder Destroyer (Target)
+Effect/Name/GatewayHeroExploderExplodeDebuffSA=Gateway Hero - Exploder Explode Debuff (SA)
+Effect/Name/GatewayHeroExploderExplodeDebuffSwitch=Gateway Hero - Exploder Explode Debuff (Switch)
+Effect/Name/GatewayHeroGatewayCUSet=Gateway Hero - Gateway (CUSet)
 Effect/Name/GatewayHeroGuardianShellCDMU=Gateway Hero - Guardian Shell CD (MU)
+Effect/Name/GatewayHeroRechargeEquipABDeflector=Gateway Hero - Recharge Equip (ABDeflector)
+Effect/Name/GatewayHeroRechargeEquipABHealer=Gateway Hero - Recharge Equip (ABHealer)
+Effect/Name/GatewayHeroRechargeEquipRBDeflector=Gateway Hero - Recharge Equip (RBDeflector)
+Effect/Name/GatewayHeroRechargeEquipRBHealer=Gateway Hero - Recharge Equip (RBHealer)
+Effect/Name/GatewayHeroRechargeEquipSetDeflector=Gateway Hero - Recharge Equip (SetDeflector)
+Effect/Name/GatewayHeroRechargeEquipSetHealer=Gateway Hero - Recharge Equip (SetHealer)
+Effect/Name/GatewayHeroRechargeEquipSwitch=Gateway Hero - Recharge Equip (Switch)
+Effect/Name/GatewayHeroReinforce=Gateway Hero - Reinforce (Init)
+Effect/Name/GatewayHeroReinforceATU=Gateway Hero - Reinforce (ATU)
+Effect/Name/GatewayHeroReinforceDestroyerData=Gateway Hero - Reinforce Destroyer (Data)
+Effect/Name/GatewayHeroReinforceDestroyerFind=Gateway Hero - Reinforce Destroyer (Find)
+Effect/Name/GatewayHeroReinforceDestroyerMU=Gateway Hero - Reinforce Destroyer (MU)
+Effect/Name/GatewayHeroReinforceDestroyerSet=Gateway Hero - Reinforce Destroyer (Set)
+Effect/Name/GatewayHeroReinforceDestroyerTarget=Gateway Hero - Reinforce Destroyer (Target)
+Effect/Name/GatewayHeroSplitter=Gateway Hero - Splitter (Init)
+Effect/Name/GatewayHeroSplitterDMG=Gateway Hero - Splitter (DMG)
+Effect/Name/GatewayHeroSplitterDestroyerData=Gateway Hero - Splitter Destroyer (Data)
+Effect/Name/GatewayHeroSplitterDestroyerFacing=Gateway Hero - Splitter Destroyer (Facing)
+Effect/Name/GatewayHeroSplitterDestroyerFind=Gateway Hero - Splitter Destroyer (Find)
+Effect/Name/GatewayHeroSplitterDestroyerLM=Gateway Hero - Splitter Destroyer (LM)
+Effect/Name/GatewayHeroSplitterDestroyerMU=Gateway Hero - Splitter Destroyer (MU)
+Effect/Name/GatewayHeroSplitterDestroyerOffset=Gateway Hero - Splitter Destroyer (Offset)
+Effect/Name/GatewayHeroSplitterDestroyerSet=Gateway Hero - Splitter Destroyer (Set)
+Effect/Name/GatewayHeroSplitterImpactSet=Gateway Hero - Splitter (ImpactSet)
+Effect/Name/GatewayHeroSplitterOffset=Gateway Hero - Splitter (Offset)
+Effect/Name/GatewayHeroSplitterRedirect=Gateway Hero - Splitter (Redirect)
+Effect/Name/GatewayHeroSplitterSearchTarget=Gateway Hero - Splitter (SearchTarget)
+Effect/Name/GatewayHeroSplitterSplitDMG=Gateway Hero - Splitter Split (DMG)
+Effect/Name/GatewayHeroSplitterSplitImpactSet=Gateway Hero - Splitter Split (ImpactSet)
+Effect/Name/GatewayHeroSplitterSplitSearchTarget=Gateway Hero - Splitter Split (SearchTarget)
+Effect/Name/GatewayHeroSplitterSplitSplitSearchTarget=Gateway Hero - Splitter Split Split (SearchTarget)
+Effect/Name/GatewayHeroWarpInCU=Gateway Hero - WarpIn (CU)
+Effect/Name/GatewayHeroWarpInSet=Gateway Hero - WarpIn (Set)
+Effect/Name/GatewayHeroWarpinMU=Gateway Hero - Warpin (MU)
 Effect/Name/GlaiveAttackAB=Glaive Attack
 Effect/Name/GlaiveAttackCU=Glaive Attack
 Effect/Name/GlaiveAttackDMG=Glaive Attack
@@ -2995,7 +3062,6 @@ Effect/Name/InfuseWindSA=Infuse Wind
 Effect/Name/InfuseWindSet=Infuse Wind
 Effect/Name/InitOrbTypeSA=Init Orb Type
 Effect/Name/InitOrbTypeSet=Init Orb Type
-Effect/Name/InjectionSet=Injection
 Effect/Name/InspirationAB=Inspiration (AB)
 Effect/Name/InspirationSA=Inspiration (SA)
 Effect/Name/InundateAB=Inundate
@@ -3794,7 +3860,6 @@ Effect/Name/Retarget=Retarget
 Effect/Name/RetargetAB=Retarget
 Effect/Name/RetargetLM=Retarget
 Effect/Name/RetargetSA=Retarget
-Effect/Name/RetargetTeagetCaster=Retarget
 Effect/Name/RevengeAB=RevengeAB
 Effect/Name/RevengeSet=RevengeSet
 Effect/Name/RewardEnergyAuraAB=RewardEnergyAuraAB
@@ -3898,7 +3963,6 @@ Effect/Name/ShockwaveSearch=ShockwaveSearch
 Effect/Name/ShockwaveSet=ShockwaveSet
 Effect/Name/ShockwaveSuicide=ShockwaveSuicide
 Effect/Name/Shockwaved=Shockwaved
-Effect/Name/Shrapnel=Shrapnel
 Effect/Name/ShredDMG=Shred
 Effect/Name/SiphonCP=Siphon
 Effect/Name/SiphonCastSet=Siphon
@@ -3995,19 +4059,10 @@ Effect/Name/SplinterOffset=Splinter
 Effect/Name/SplinterSA=Splinter
 Effect/Name/SplinterSearchTarget=Splinter
 Effect/Name/SplinterTargetSet=Splinter
-Effect/Name/SplitterDMG=Splitter
-Effect/Name/SplitterIS=Splitter
 Effect/Name/SplitterLM=Splitter
-Effect/Name/SplitterOffsetCP=Splitter
-Effect/Name/SplitterST=Splitter
-Effect/Name/SplitterSplitCPSearchTarget=Splitter Split
-Effect/Name/SplitterSplitIS=Splitter Split
 Effect/Name/SplitterSplitLM=Splitter Split
-Effect/Name/SplitterSplitST=Splitter Split
-Effect/Name/SplitterSplitSplitCPSearchTarget=Splitter Split Split
 Effect/Name/SplitterSplitSplitIS=Splitter Split Split
 Effect/Name/SplitterSplitSplitLM=Splitter Split Split
-Effect/Name/SplitterSplitSplitST=Splitter Split Split
 Effect/Name/SporeAttackBigDMG=Spore Attack Big
 Effect/Name/SporeAttackBigImpactSet=Spore Attack Big
 Effect/Name/SporeAttackBigLM=Spore Attack Big
@@ -4340,10 +4395,6 @@ Effect/Name/WarpHeroDecoySet=Warp Hero - Decoy (Set)
 Effect/Name/WarpHeroMultishotDummy=Warp Hero - Multishot Dummy
 Effect/Name/WarpHeroStrafeDummy=Warp Hero - Strafe Dummy
 Effect/Name/WarpHeroWarpDroneCD=Warp Hero - Warp Drone CD
-Effect/Name/WarpInSpawnZealot=WarpIn
-Effect/Name/WarpRift=WarpRift
-Effect/Name/WarpRiftApplyTimedLife=WarpRiftApplyTimedLife
-Effect/Name/WarpRiftSet=WarpRiftSet
 Effect/Name/WarpoutAB=Warpout
 Effect/Name/WarpoutNightwarpDMG=Warpout Nightwarp
 Effect/Name/WarpoutNightwarpSA=Warpout Nightwarp
@@ -4638,7 +4689,7 @@ Param/Value/15AD30F3=Increases Warpout heal by 0/50/100/150%.
 Param/Value/15BC4656=Another Nest burned - check!<n/>Reward: +10% zealot production speed
 Param/Value/15D91924=Gain <c val="FF0000">50k</c>,<c val="FF8000">32k</c>,<c val="FFFF00">18k</c>,<c val="00FF00">8k</c>,<c val="0000FF">2k</c> experience from shrines and temples in one match on difficulty level hard, insane or legendary.
 Param/Value/15DCAA11=Hydralisk Den destroyed
-Param/Value/15DD52BC=The Deflector Drone Gains 5/10% chance to create a Splitter when attacking missiles.
+Param/Value/15DD52BC=The Deflector Drone Gains 8/16% chance to create a Splitter when attacking missiles.
 Param/Value/15EA5EB7=kill an overseer in the first 10 seconds after it spawns on <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
 Param/Value/15F17AD6=Zortrium 0/3
 Param/Value/16552A4E=Seed 0/1
@@ -4656,7 +4707,7 @@ Param/Value/174C5C8B=You gain 0/0.33/0.66/1 Energy and Health when dealing damag
 Param/Value/176FAD20=A Swarm Lord has been spawned by the Mind Lord.
 Param/Value/1775B878=Unlocks Wrath, which uses energy stored in 'Static Shield' charges to deal a large amount of area damage around targets hit with Thunderfury. Each talent point increases the damage per used shield charge by 0/75/150%.
 Param/Value/1798E1C8=Moon Lord
-Param/Value/17AF96DC=Zealots explode on death
+Param/Value/17AF96DC=Zealots will spawn with the explosive status<n/>Requires level 10+
 Param/Value/17B805D4=well done: the terrans will have to tinker some more before their creations are a match for you!<n/>+5 upgrades +10k xp<n/>+"mutagen" (50% less fireballs from Zerg units)
 Param/Value/17C016C5=
 Param/Value/1818F638=Complete every overlord madness stage in challenge mode in under 5 minutes <n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
@@ -4783,7 +4834,7 @@ Param/Value/27DF76F9=Special:
 Param/Value/280D5965=You have not enabled this hero.
 Param/Value/284EEA17=+250k xp + "Vengeance Protocol" (Allied units explode on death) + 
 Param/Value/28763A8F=Increase the duration of Mobile Beam by 2/4/6 seconds
-Param/Value/2877424A=Gives Splitter impacts a 1/2% chance to spawn a Zealot that lasts for 5 seconds.
+Param/Value/2877424A=Psi Splitter deals 100/200% more damage to its primary target
 Param/Value/28DF4B12=Annihilator v3 destroyed
 Param/Value/296B41C8=When a Scalded unit dies it has a 5+(5*CurrentScaldedStacks)% chance to trigger Boil
 Param/Value/296B5437=Blaze 0/1
@@ -4809,7 +4860,7 @@ Param/Value/2B6B575F=Talents!
 Param/Value/2B707DE2=An Oblivion Lord has spawned.
 Param/Value/2BE6C3D7= Zerg structures to reduce the amount of incoming units.
 Param/Value/2BEB1819=reward points.
-Param/Value/2C0CD457=Gives you access to the Shielder Drone and the Destroyer Drone.<n/>Requires level 10+
+Param/Value/2C0CD457=Gives you access to the Shielder Drone and the Destroyer Drone<n/>Requires level 10+
 Param/Value/2C5FBF8B=Annihilator v2
 Param/Value/2C62435E=The terran engineers are furious - the next version of the Annihilator will be the final challenge <n/>+50k xp  -50% warp-in time for the allied troops +
 Param/Value/2C81C18B=Thor V3
@@ -4864,9 +4915,9 @@ Param/Value/320888C1=Barrage 0/1
 Param/Value/320A8772=Increase the movement speed of Mobile Beam by 25/50/75%
 Param/Value/321BCDA1=Refresh 0/2
 Param/Value/3228FFA4=Complete a 'Protect Scout' stage in Challenge mode with the Scout having 100% health&100% shield <n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
-Param/Value/324CE664=Enemies with the explode debuff will take 25/50% more damage.
+Param/Value/324CE664=Enemies with the explosive status will take 25/50% more damage.
 Param/Value/325A21B0=Unit Attack Speed +3%
-Param/Value/32B4AC8D=Hitting a unit with Splitter while it has the explode debuff gives a 7.5/15% chance to launch another Splitter.(cannot trigger on the same unit more than once every 2 seconds)
+Param/Value/32B4AC8D=Hitting a unit with Psi Splitter while it has the explode debuff gives a 10/20% chance to launch another Psi Splitter at a random enemy(cannot trigger on the same unit more than once every 2 seconds)
 Param/Value/32BE8DD9=% minerals for next level
 Param/Value/332C142B=The Terrans wont give up and come back with a better design soon enough<n/>+20k xp  +10 photon cannon damage +
 Param/Value/33350108=Reward: +1 Zealot Damage
@@ -4921,7 +4972,7 @@ Param/Value/39906CCE=Warning
 Param/Value/39A13E9E=zerg rush kekeke
 Param/Value/39A1998A=Max Energy +5
 Param/Value/39AC7510=Structure Shield Armor +
-Param/Value/39D510BB=Spawn 5/10 Zealots when Guardian Shell activates on your hero
+Param/Value/39D510BB=Spawn 5/10 temporary Zealots when Guardian Shell activates on your hero and restore 25/50% of maximum health/shields and 50/100% maximum energy
 Param/Value/3A18F233=Controlled units generate 0/2 Dark Energy every second that they are alive and also give 0/30 dark energy when they die.<n/><n/>Casting Shadowplay on a heroic target or structure will instantly give 0/30 Dark Energy
 Param/Value/3A2DD070=Every point invested increases experience gained by your team by 2%, and increases Forge research speed by 1%<n/>
 Param/Value/3A3DCD2B=A strange being who possesses the ability to alter time itself.<n/><n/>To enable this hero you have to complete the game on hard or higher
@@ -4965,7 +5016,7 @@ Param/Value/3ECC875B=Gives Gravity Shot a 2/4/6% chance to leave behind a portal
 Param/Value/3ED85744= kills 
 Param/Value/3EF6D328=
 Param/Value/3F02BDF2=upgrades???
-Param/Value/3F0848DF=Anoint a non heroic allied unit every 15 seconds and greatly increase its power. (infinite range)
+Param/Value/3F0848DF=Anoint a non heroic allied unit every 20 seconds and greatly increase its power. (infinite range)
 Param/Value/3F14BD87= (max)
 Param/Value/3F1C4838=Overload 0/2
 Param/Value/3F248363=A Corrosion Lord has spawned.
@@ -5000,7 +5051,7 @@ Param/Value/421220F9=Shatter 0/3
 Param/Value/4215893B= - 
 Param/Value/421EA90A=Water infused abilities now reset the ability cooldown of their counterpart, and will also no longer receive a cooldown when their counterpart is casted.
 Param/Value/4257EC1D=Reduces the energycost of strafe by 3/6/9.
-Param/Value/42834869=Causes the Splitter to split 1/2/3  times on impact.
+Param/Value/42834869=Allows Psi Splitter to split to 1/2/3 more targets on impact
 Param/Value/42C3D68B=He is said to have come from the fiery depths of hell itself.
 Param/Value/4336845F=Recycle 0/1
 Param/Value/434EB361=Structure Health Regeneration +1
@@ -5058,7 +5109,7 @@ Param/Value/497E856F=Flurry 0/2
 Param/Value/49C7792D=Boss down
 Param/Value/49CA1D72=New Quest: 
 Param/Value/49FABEF9=Your Decoys copy the first 0/1/2/3 offensive abilities you cast after creating the Decoy.<n/>Only works while you are in range of the decoy.<n/>Requires level 10+
-Param/Value/4A05A01A=Units damaged by exploded units will have a 50% chance to also explode on death.<n/>Requires level 10+
+Param/Value/4A05A01A=Whenever an explosion triggers, the Explosive status will spread to 1 random unit within a radius of 5<n/>Requires level 10+
 Param/Value/4A2A2ADE=Evolution averted in less than 60 seconds! +1 upgrade
 Param/Value/4A54E83E=next
 Param/Value/4A6E7323=Bypass 0/3
@@ -5078,7 +5129,7 @@ Param/Value/4CF8C0B7=Scope 0/2
 Param/Value/4D1981B6=Reward: +1 Zealot Damage
 Param/Value/4D56A6F2=Quest update:
 Param/Value/4D5D003F=Each stack of Subarmor Polymerflow increases all regeneration by 2.5/5%
-Param/Value/4D74B5CD=Gives Zealot attacks a 20% chance to apply the explode debuff.<n/><n/>Additionally, Zealots and allied units who will explode on death can  trigger "Unstable"<n/>Requires level 10+
+Param/Value/4D74B5CD=Increase the duration of Zealots timed life by 50% and increase max amount by 2
 Param/Value/4DAB4A5C=Casting Healing wave causes the next cast of Freeze or Boil to cost no energy.
 Param/Value/4DBC18F3=Increase the radius of boil by 33/66/100%
 Param/Value/4DDC9510=XP 
@@ -5177,7 +5228,7 @@ Param/Value/596F7BF3=Overwhelming 0/3
 Param/Value/5975CDFD=Initial Leap impact radius increased by 25/50%
 Param/Value/59AF59E8=Increases the impact area of your Fireballs by 0/33/66/100%<n/><n/>Additionally your Meteors impact area is increased by 0/10/20/30%
 Param/Value/59B13B34=You have not enabled this hero.
-Param/Value/59BD684F=Each Splitter impact reduces the targets armor by 0.25 for 60 seconds, stacking up to 100 times.
+Param/Value/59BD684F=Each Psi Splitter impact reduces the targets armor by 0.5 for 60 seconds, stacking up to 50 times.
 Param/Value/59C7E3E4=Your Timerift ability reverses the timestream of your unit restoring 0/50/100/150 more health and shields
 Param/Value/59D9600B=Every point invested increases experience gained by your team by 2%, and increases Forge research speed by 1%<n/>
 Param/Value/5A219639=Undergrowth 0/2
@@ -5222,7 +5273,7 @@ Param/Value/5DC52D8C=A Storm Lord has spawned.
 Param/Value/5DC54F7A=Den destroyed - good job!<n/>Reward: +1 Zealot armor
 Param/Value/5DC85F44=Unstable 0/1
 Param/Value/5DD7B7EF=Your team's task is to complete all main quests while not allowing a pylon to fall.
-Param/Value/5DED4FD5=Spawn 1/2/3 more zealots.
+Param/Value/5DED4FD5=Spawn 1/2/3 more zealots and increase max zealot count by 2/4/6, but increase the energy cost by 20/40/60
 Param/Value/5DFF1246=Cultivate 0/1
 Param/Value/5E767A19=Increase the amount of extra Orbs launched from your hero after casting Launch Attrition Orbs by ((Orbs used)^2)*1/2<n/>Requires level 10+
 Param/Value/5E7AB7E7=Increase the radius of Mobile Beam by 25/50%
@@ -5305,7 +5356,7 @@ Param/Value/680060BD= defeated
 Param/Value/68202C1A=Spillover 0/1
 Param/Value/683F28DE=/
 Param/Value/68B0E17A=Spare 0/2
-Param/Value/68FB3B6A=Each split will split 2/4 times.<n/>Requires level 10+
+Param/Value/68FB3B6A=Each split will split to 1/2 more enemies<n/>Requires level 10+
 Param/Value/692B57A6=Dealing damage or applying negative effects with Water Infused abilities restores 4/8 health/shields and 1/2 energy.
 Param/Value/69980C5F=Chaos Lord defeated
 Param/Value/69D79F8C=Structure Attack Speed +
@@ -5588,7 +5639,7 @@ Param/Value/8B5C9874=Increases your runspeed by a small amount
 Param/Value/8B6E4EE4=A Mind Lord has spawned.
 Param/Value/8B7D74CC=There appears to be a mutated Spore Crawler on the hill to the east.<n/>Destroy it to enable charge for the zealot troops.
 Param/Value/8BAC1174=Warning
-Param/Value/8BB25627=Injection 0/1
+Param/Value/8BB25627=Longevity 0/1
 Param/Value/8C0D5DA6=Champion 
 Param/Value/8C170944=Tartarus 0/2
 Param/Value/8C504F1C=Increase attack speed for non heroic targets to 30/45/60%<n/>Increase regeneration for heroic targets to 30/40/50%
@@ -5748,7 +5799,7 @@ Param/Value/9EA7A505=<c val="FFFF00">
 Param/Value/9ECD154F=Ocean 0/2
 Param/Value/9F0BA244=When a mutated unit dies the mutation will try to find a new host unit.<n/>Requires level 10+
 Param/Value/9F1E7F21=A Thunder Lord has been spawned by the Mind Lord.
-Param/Value/9F28D274=Warp Rift 0/2
+Param/Value/9F28D274=Strike 0/2
 Param/Value/9F2FBB30=Luck
 Param/Value/9F319E4F=<c val="FF0000">
 Param/Value/9F56ABE8=Dilation 0/1
@@ -5915,7 +5966,7 @@ Param/Value/B4A57393=Targets hit by Shockwave will suffer 0/5/10% bonus damage f
 Param/Value/B4B2712D=Allied Scout
 Param/Value/B4FAE89B=Destroy the ultimative Battlebot - The Odin
 Param/Value/B50474CB=You gain 0/15/30% of the damage dealt with inferno as hp&shields.
-Param/Value/B50E433E=Increase Explosion damage by 50/100%
+Param/Value/B50E433E=Increase Explosion damage by 33/66%
 Param/Value/B584F900=Secret Service
 Param/Value/B5C94C83=Your guided missiles will continue after hitting 0/1/2/3 targets!
 Param/Value/B5C9F759=
@@ -5923,7 +5974,7 @@ Param/Value/B5E4024D=Warning
 Param/Value/B6392194=Wielder of darkness and bringer of doom.<n/><n/>To enable this hero you have to complete the game on legendary
 Param/Value/B685A792=Your Frost Shocks are applied twice.<n/>Requires at least level 10
 Param/Value/B68A55A9=Storm Lord defeated
-Param/Value/B6B3F0BD=The Healer Drone's heal ability will also give 25/50% damage reduction.
+Param/Value/B6B3F0BD=The Healer Drone's heal ability will also give 25/50% damage reduction for 5 seconds
 Param/Value/B72B2E01=Flux 0/1
 Param/Value/B734012C=Intersection 0/1
 Param/Value/B77455BE=Each warped out ally gives you 1 stack of Redistribute, allowing you to cast Warpout on yourself or other allied heroes/structures and heal them.<n/><n/>Each time you cast it on a heroic/structure 1 stack will be used. Can have up to 10 stacks.
@@ -6097,7 +6148,7 @@ Param/Value/CB7C00E5=Leap movement speed increased by 35%, and cast range increa
 Param/Value/CB849323=Defeat each Thor in less than 3 minutes in 1 match.<n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
 Param/Value/CBB48F8B=Using Renew adds 1 combo power to every ability
 Param/Value/CBC568E5=Warning
-Param/Value/CBED99F1=Spawn a Zealot every 10/5 seconds.
+Param/Value/CBED99F1=Spawn a temporary Zealot every 10/5 seconds.
 Param/Value/CC239C98=Cauterize 0/3
 Param/Value/CC4A03C3=Odin
 Param/Value/CC564F95=Kill <c val="FF0000">500</c>,<c val="FF8000">400</c>,<c val="FFFF00">300</c>,<c val="00FF00">200</c>,<c val="0000FF">100</c> champions in 1 match<n/><c val="808000">In death they are all equally ugly</c>
@@ -6194,7 +6245,7 @@ Param/Value/D7A86EEE=Unit Energy Regeneration +0.05
 Param/Value/D7AB4A0E=
 Param/Value/D82A909F=Hidden Archives
 Param/Value/D8532154=h:
-Param/Value/D875C7D6=Allied units or structures in the initial cast area of Exploder will explode on death. (only positive talents apply)
+Param/Value/D875C7D6=Allows allies to become explosive (Permeate does not apply to allies)
 Param/Value/D88137C1=A Parasite Lord has been spawned by the Mind Lord.
 Param/Value/D88DF10C=Havoc Orb launches will periodically (Alacrity improves this) leave behind Havoc Wisps which will follow your hero and strike nearby enemies with lightning<n/><n/>Self destructs once it has attacked 2 times or after 20 seconds have passed
 Param/Value/D8AECE0C=hard win in less than 
@@ -6389,7 +6440,7 @@ Param/Value/EE842F1E=complete each evolution quest in less than 60 seconds in 1 
 Param/Value/EEB66AD3=Armor 
 Param/Value/EEBE97FF=We have detected an evolution chamber on that hill.<n/>You should destroy it before it can complete its research.
 Param/Value/EEC1E8E7=Root 1 enemy to the ground per combo power, disabling their weapon and movement, and causing them to take 25/50% more damage for 3/6 seconds.
-Param/Value/EEC7E80C=Increase Explosion area by 50/100% (Not cast area)
+Param/Value/EEC7E80C=Increase Explosion area by 20/40% and increase the amount units applied with the explosive status by 1/2
 Param/Value/EEC91C83=Talents
 Param/Value/EECDF6FF=Complete every time quest stage in less than 5 minutes in challenge mode<n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
 Param/Value/EEE82DAD=Seer 0/1
@@ -6402,7 +6453,7 @@ Param/Value/EF515270=Flatten 0/3
 Param/Value/EF7738FE=Lvl 1
 Param/Value/EFA7F3D8=Gain 15/30/45% damage reduction and 15/30/45% bonus damage for 5 seconds after casting Leap.
 Param/Value/EFB97EEC=Mirage 0/1
-Param/Value/EFC432FB=When a unit with the explode debuff takes damage, it has a 10% chance to instantly create an explosion at its position.(cannot trigger on the same unit more than once every 2 seconds)
+Param/Value/EFC432FB=When a unit with the explosive status takes damage, it has a 10% chance to instantly create an explosion at its position.(cannot trigger on the same unit more than once every 2 seconds)
 Param/Value/EFC52CE6=Durable 0/2
 Param/Value/EFD2F873=Swell 0/2
 Param/Value/F00CA99D=Providence 0/3
@@ -6537,6 +6588,8 @@ Param/Value/FFEC81D3=Warning
 Param/Value/FFF15752=Win with <c val="FF0000">15</c>,<c val="FF8000">12</c>,<c val="FFFF00">9</c>,<c val="00FF00">6</c>,<c val="0000FF">3</c> different heroes on difficulty hard or higher.
 PoisonCloudChargeText=<d ref="$BehaviorStackCount:PoisonCloud$"/>
 Renew/ChargeText=<d ref="$BehaviorStackCount:RenewComboCount$"/>
+RequirementNode/Tooltip/CountBehaviorGatewayHeroEquipDeflectorDroneQueuedOrBetterAtUnit500177299=Drone must be active
+RequirementNode/Tooltip/CountBehaviorGatewayHeroEquipHealerDroneQueuedOrBetterAtUnit500177299=Drone must be active
 RequirementNode/Tooltip/CountUpgradeMultishotFlamesCompleteOnly1346870113TechTreeCheat=Research Multishot Flames
 RequirementNode/Tooltip/GT106576107SumMulCountUpgradeShadowplayLimitCompleteOnly24CountBehaviorShadowplayStackQueuedOrBetterAtUnit=Too many mind controlled units
 StaticShieldChargeCount=<d ref="$BehaviorStackCount:StaticArmor$"/>
@@ -6549,7 +6602,6 @@ Uni=
 Unit=
 Unit/Category/DeathLordUnits=Hybrid
 Unit/Category/HeroUnits=Heroes
-Unit/Category/ProtossUnits=Protoss
 Unit/LifeArmorName/DeathLordArmor=Void Carapace
 Unit/LifeArmorName/ZergDreadLordArmor=Zerg Chitinous Plating
 Unit/Name/AcidLord=Acid Lord
@@ -6627,6 +6679,7 @@ Unit/Name/FungalDischargeMissile=Fungal Discharge Missile
 Unit/Name/FungalGrowthMissile=Boulder
 Unit/Name/GasBombMissile=Gas Bomb Missile
 Unit/Name/GatewayHero=Gateway
+Unit/Name/GatewayHeroZealot=Zealot
 Unit/Name/GlaiveAttackMissile=Glaive Attack Missile
 Unit/Name/GlaiveAttackUnit=Glaive Attack Unit
 Unit/Name/GlaiveMissile=Glaive Missile
@@ -7170,7 +7223,6 @@ Upgrade/Name/Impact=Impact
 Upgrade/Name/Incinerate=Incinerate
 Upgrade/Name/InfernoDebuff=InfernoDebuff
 Upgrade/Name/InfernoLeech=InfernoLeech
-Upgrade/Name/Injection=Injection
 Upgrade/Name/Intersection=Intersection
 Upgrade/Name/Inundate=Inundate
 Upgrade/Name/Jackpot=Jackpot
@@ -7203,6 +7255,7 @@ Upgrade/Name/Limitless=Limitless
 Upgrade/Name/Link=Link
 Upgrade/Name/Link2=Link 2
 Upgrade/Name/Liquidate=Liquidate
+Upgrade/Name/Longevity=Longevity
 Upgrade/Name/MLStasis=Stasis
 Upgrade/Name/MagmaArmorFireChannels=MagmaArmorFireChannels
 Upgrade/Name/Magnetism=Magnetism
@@ -7396,6 +7449,7 @@ Upgrade/Name/StrafeExplosives=StrafeExplosives
 Upgrade/Name/StrafeVirtuosity=StrafeVirtuosity
 Upgrade/Name/Stretch=Stretch
 Upgrade/Name/Stretch2=Stretch 2
+Upgrade/Name/Strike=Strike
 Upgrade/Name/StructureArmor=StructureArmor
 Upgrade/Name/StructureAttackSpeed=StructureAttackSpeed
 Upgrade/Name/StructureHealthRegeneration=Structure Health Regeneration
@@ -7475,7 +7529,6 @@ Upgrade/Name/Warmth=Warmth
 Upgrade/Name/WarpDrone=WarpDrone
 Upgrade/Name/WarpHeroDurable=Warp Hero - Durable
 Upgrade/Name/WarpIn=WarpIn
-Upgrade/Name/WarpRift=WarpRift
 Upgrade/Name/Warpgate=Warpgate
 Upgrade/Name/WarpoutCheap=WarpoutCheap
 Upgrade/Name/WarpoutHeal=WarpoutHeal
