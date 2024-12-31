@@ -1527,9 +1527,6 @@
         <PortraitActor value="AlarakEx2Portrait"/>
         <PortraitModel value="AlarakEx2Portrait"/>
         <WalkAnimMoveSpeed value="2.9492"/>
-        <AbilSoundArray AbilCmd="AlarakPsiOrb,Execute" Sound="Swarm_Silent"/>
-        <AbilSoundArray AbilCmd="AlarakMindBlast,Execute" Sound="Swarm_Silent"/>
-        <AbilSoundArray AbilCmd="GravityDash,Execute" Sound="AlarakPsionicOrbAttack"/>
         <CustomUnitStatusFrame value="CustomHeroStatusFrame/StatusFrameTemplate"/>
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-protoss-alarak.dds"/>

@@ -3978,6 +3978,8 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="90"/>
         <Modification LifeArmorMultiplier="0.5" ShieldArmorMultiplier="0.5"/>
+        <InfoIcon value="Assets\Textures\microtransactions_coop.dds"/>
+        <DisplayDuration index="Ally" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="OverdriveRegen">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -4895,10 +4897,6 @@
         <PeriodicEffect value="ThorScienceSeekerCreate"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TimedSuicideNOSHOW">
-        <Cost>
-            <Charge Link="Behavior/TimedSuicide"/>
-            <Cooldown Link="Behavior/TimedSuicide"/>
-        </Cost>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
@@ -5169,29 +5167,11 @@
         <FinalEffect value="Suicide"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TimedSuicideBaneling">
-        <Cost>
-            <Charge Link="Behavior/TimedSuicide"/>
-            <Cooldown Link="Behavior/TimedSuicide"/>
-        </Cost>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
         <Duration value="5"/>
         <FinalEffect value="Suicide"/>
-        <Modification>
-            <DeathResponse>
-                <Cost>
-                    <Charge Link="Behavior/TimedSuicide"/>
-                    <Cooldown Link="Behavior/TimedSuicide"/>
-                </Cost>
-            </DeathResponse>
-        </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/TimedSuicide"/>
-                <Cooldown Link="Behavior/TimedSuicide"/>
-            </Cost>
-        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="TwilightCannonEnergy">
         <Alignment value="Negative"/>

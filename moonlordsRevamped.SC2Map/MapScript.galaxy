@@ -104,6 +104,7 @@ int gv_champion;
 unit gv_demolisher;
 unitgroup gv_alliedUnitsOnMap;
 int gv_challengeStage;
+int gv_hardcore;
 int gv_rewardDialog;
 int[27] gv_rewardButtons;
 int[5] gv_rewardSpendMultiplier;
@@ -1278,7 +1279,7 @@ bool auto_gf_thorboss1_TriggerFunc (bool testConds, bool runActions) {
     PingSetUnit(PingLastCreated(), lv_u1);
     lv_ping1 = PingLastCreated();
     TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/8D3D5AF9"), StringExternal("Param/Value/1EE362E0"), 0.0, c_transmissionDurationAdd, false);
-    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, Point(233.0, 114.0));
+    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, lv_point);
     UnitGroupAddUnitGroup(lv_targetdrones, UnitLastCreatedGroup());
     while ((UnitIsAlive(lv_u1) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
         VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
@@ -1332,7 +1333,7 @@ bool auto_gf_thorboss1_TriggerFunc (bool testConds, bool runActions) {
             }
             else {
                 if (((lv_targettimer[lv_i] == 0) || (lv_targets[lv_i] == null) || (UnitIsAlive(lv_targets[lv_i]) == false))) {
-                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(Point(233.0, 114.0), 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
+                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
                     if ((lv_targets[lv_i] != null)) {
                         lv_targettimer[lv_i] = 160;
                     }
@@ -1483,7 +1484,7 @@ bool auto_gf_thorboss2_TriggerFunc (bool testConds, bool runActions) {
     PingSetUnit(PingLastCreated(), lv_u1);
     lv_ping1 = PingLastCreated();
     TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/D451896B"), StringExternal("Param/Value/DCFA5963"), 0.0, c_transmissionDurationAdd, false);
-    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, Point(233.0, 114.0));
+    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, lv_point);
     UnitGroupAddUnitGroup(lv_targetdrones, UnitLastCreatedGroup());
     while ((UnitIsAlive(lv_u1) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
         VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
@@ -1537,7 +1538,7 @@ bool auto_gf_thorboss2_TriggerFunc (bool testConds, bool runActions) {
             }
             else {
                 if (((lv_targettimer[lv_i] == 0) || (lv_targets[lv_i] == null) || (UnitIsAlive(lv_targets[lv_i]) == false))) {
-                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(Point(233.0, 114.0), 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
+                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
                     if ((lv_targets[lv_i] != null)) {
                         lv_targettimer[lv_i] = 160;
                     }
@@ -1683,7 +1684,7 @@ bool auto_gf_thorboss3_TriggerFunc (bool testConds, bool runActions) {
     PingSetUnit(PingLastCreated(), lv_u1);
     lv_ping1 = PingLastCreated();
     TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/49CA1D72"), StringExternal("Param/Value/88900A70"), 0.0, c_transmissionDurationAdd, false);
-    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, Point(233.0, 114.0));
+    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, lv_point);
     UnitGroupAddUnitGroup(lv_targetdrones, UnitLastCreatedGroup());
     while ((UnitIsAlive(lv_u1) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
         VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
@@ -1738,7 +1739,7 @@ bool auto_gf_thorboss3_TriggerFunc (bool testConds, bool runActions) {
             }
             else {
                 if (((lv_targettimer[lv_i] == 0) || (lv_targets[lv_i] == null) || (UnitIsAlive(lv_targets[lv_i]) == false))) {
-                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(Point(233.0, 114.0), 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
+                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
                     if ((lv_targets[lv_i] != null)) {
                         lv_targettimer[lv_i] = 160;
                     }
@@ -2415,7 +2416,7 @@ bool auto_gf_thorboss7_TriggerFunc (bool testConds, bool runActions) {
     PingSetUnit(PingLastCreated(), lv_u1);
     lv_ping1 = PingLastCreated();
     TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/CC4A03C3"), StringExternal("Param/Value/CEB4D599"), 0.0, c_transmissionDurationAdd, false);
-    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, Point(233.0, 114.0));
+    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, lv_point);
     UnitGroupAddUnitGroup(lv_targetdrones, UnitLastCreatedGroup());
     TimerStart(lv_dematimer, 60.0, false, c_timeGame);
     gf_BansheeDropBeam(lv_u1, 10-gv_difficulty);
@@ -2473,7 +2474,7 @@ bool auto_gf_thorboss7_TriggerFunc (bool testConds, bool runActions) {
             }
             else {
                 if (((lv_targettimer[lv_i] == 0) || (lv_targets[lv_i] == null) || (UnitIsAlive(lv_targets[lv_i]) == false))) {
-                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(Point(233.0, 114.0), 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
+                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
                     if ((lv_targets[lv_i] != null)) {
                         lv_targettimer[lv_i] = 160;
                     }
@@ -12967,6 +12968,7 @@ void gf_challengemode () {
     // Implementation
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "Pylon", c_unitCreateIgnorePlacement, 5, lv_point);
     lv_pylon = UnitLastCreated();
+    libNtve_gf_SetUpgradeLevelForPlayer(5, "ChallengePylonBuff", (FixedToInt(gv_difficulty) * 2));
     gf_challengemodearmy(lv_pylon);
     if ((gv_difficulty < 3.0)) {
         UnitBehaviorAdd(lv_pylon, "EasyDefense", lv_pylon, 3-FixedToInt(gv_difficulty));
@@ -12986,6 +12988,12 @@ void gf_challengemode () {
     while ((gv_challengeStage <= 40) && (UnitIsAlive(lv_pylon) == true)) {
         Wait(3.0, c_timeGame);
         TextTagSetText(lv_tt, IntToText(gv_challengeStage));
+        if ((gv_demolisher == null) && (gv_challengeStage >= 3)) {
+            UnitCreate(1, "Demolisher", 0, 5, Point(59.0, 46.0), 270.0);
+            gv_demolisher = UnitLastCreated();
+            gf_challengemodearmyAI(UnitGroupUnit(UnitGroup("Pylon", 5, RegionCircle(Point(59.0, 47.0), 3.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1), libNtve_gf_ConvertUnitToUnitGroup(gv_demolisher));
+        }
+
         if ((ModI(gv_challengeStage, 5) == 0) && (gv_challengeStage >= 10) && (gv_challengeStage < 40)) {
             if ((gv_challengeStage == 10)) {
                 if ((gv_difficulty >= 4.0)) {
@@ -13733,28 +13741,34 @@ bool auto_gf_challengemoderebuild_TriggerFunc (bool testConds, bool runActions) 
     unit lv_pylon;
     int lv_i;
     unit lv_probe;
-    point[4] lv_cannonspots;
+    point[7] lv_cannonspots;
 
     // Automatic Variable Declarations
     // Variable Initialization
     lv_pylon = lp_pylon;
 
     // Implementation
-    lv_cannonspots[1]=Point(59,49);
-    lv_cannonspots[2]=Point(61,45);
-    lv_cannonspots[3]=Point(57,45);
+    lv_cannonspots[1]=Point(57,49);
+    lv_cannonspots[2]=Point(59,50);
+    lv_cannonspots[3]=Point(61,49);
+    lv_cannonspots[4]=Point(61,45);
+    lv_cannonspots[5]=Point(59,44);
+    lv_cannonspots[6]=Point(57,45);
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "Probe", c_unitCreateIgnorePlacement, 5, Point(59.0, 47.0));
     lv_probe = UnitLastCreated();
     libNtve_gf_MakeUnitInvulnerable(lv_probe, true);
     while ((UnitIsAlive(lv_pylon) == true)) {
         lv_i = 0;
-        while ((UnitHasBehavior(lv_pylon, "NoFunds") == false) && (lv_i < 3)) {
-            lv_i += 1;
-            if ((UnitGroupCount(UnitGroup("PhotonCannon", 5, RegionCircle(lv_cannonspots[lv_i], 1.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1)) {
-                UnitIssueOrder(lv_probe, OrderTargetingPoint(AbilityCommand("ProtossBuild", 7), lv_cannonspots[lv_i]), c_orderQueueAddToEnd);
-            }
+        if ((UnitOrderCount(lv_probe) == 0)) {
+            while ((UnitHasBehavior(lv_pylon, "NoFunds") == false) && (lv_i < 6)) {
+                lv_i += 1;
+                if ((UnitGroupCount(UnitGroup("PhotonCannon", 5, RegionCircle(lv_cannonspots[lv_i], 1.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1)) {
+                    UnitIssueOrder(lv_probe, OrderTargetingPoint(AbilityCommand("ProtossBuild", 7), lv_cannonspots[lv_i]), c_orderQueueAddToEnd);
+                }
 
+            }
         }
+
         Wait(1.0, c_timeGame);
     }
     UnitKill(lv_probe);
@@ -17779,6 +17793,10 @@ bool gt_OptionalRampZbase2_Func (bool testConds, bool runActions) {
         if (!((UnitGetOwner(EventUnit()) < 6))) {
             return false;
         }
+
+        if (!((gv_mode < 1))) {
+            return false;
+        }
     }
 
     // Actions
@@ -17843,6 +17861,10 @@ bool gt_SporeCrawler_Func (bool testConds, bool runActions) {
         if (!((UnitGetOwner(EventUnit()) < 6))) {
             return false;
         }
+
+        if (!((gv_mode < 1))) {
+            return false;
+        }
     }
 
     // Actions
@@ -17891,6 +17913,10 @@ bool gt_Extrahatch_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitGetOwner(EventUnit()) < 6))) {
+            return false;
+        }
+
+        if (!((gv_mode < 1))) {
             return false;
         }
     }
@@ -17947,6 +17973,10 @@ bool gt_ExtraLair_Func (bool testConds, bool runActions) {
         if (!((UnitGetOwner(EventUnit()) < 6))) {
             return false;
         }
+
+        if (!((gv_mode < 1))) {
+            return false;
+        }
     }
 
     // Actions
@@ -18000,6 +18030,10 @@ bool gt_optionalGreaterSpire1_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitGetOwner(EventUnit()) < 6))) {
+            return false;
+        }
+
+        if (!((gv_mode < 1))) {
             return false;
         }
     }
@@ -18097,6 +18131,13 @@ bool gt_evolutionquest2_Func (bool testConds, bool runActions) {
     lv_quest = c_invalidObjectiveId;
     lv_ping = c_invalidPingId;
 
+    // Conditions
+    if (testConds) {
+        if (!((gv_mode < 1))) {
+            return false;
+        }
+    }
+
     // Actions
     if (!runActions) {
         return true;
@@ -18181,6 +18222,13 @@ bool gt_evolutionquest3_Func (bool testConds, bool runActions) {
     lv_quest = c_invalidObjectiveId;
     lv_ping = c_invalidPingId;
 
+    // Conditions
+    if (testConds) {
+        if (!((gv_mode < 1))) {
+            return false;
+        }
+    }
+
     // Actions
     if (!runActions) {
         return true;
@@ -18253,6 +18301,10 @@ bool gt_zbase51_Func (bool testConds, bool runActions) {
         if (!((UnitGetOwner(EventUnit()) < 6))) {
             return false;
         }
+
+        if (!((gv_mode < 1))) {
+            return false;
+        }
     }
 
     // Actions
@@ -18291,6 +18343,13 @@ bool gt_Ultrabros_Func (bool testConds, bool runActions) {
     lv_ping1 = c_invalidPingId;
     lv_ping2 = c_invalidPingId;
     lv_objective = c_invalidObjectiveId;
+
+    // Conditions
+    if (testConds) {
+        if (!((gv_mode < 1))) {
+            return false;
+        }
+    }
 
     // Actions
     if (!runActions) {
@@ -18398,6 +18457,10 @@ bool gt_zbase11_Func (bool testConds, bool runActions) {
         if (!((UnitGetOwner(EventUnit()) < 6))) {
             return false;
         }
+
+        if (!((gv_mode < 1))) {
+            return false;
+        }
     }
 
     // Actions
@@ -18441,6 +18504,10 @@ bool gt_zbase112_Func (bool testConds, bool runActions) {
         }
 
         if (!((gv_stage < 12))) {
+            return false;
+        }
+
+        if (!((gv_mode < 1))) {
             return false;
         }
     }
@@ -18494,6 +18561,10 @@ bool gt_EnragedMetalisk_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
+            return false;
+        }
+
+        if (!((gv_mode < 1))) {
             return false;
         }
     }
@@ -18573,6 +18644,10 @@ bool gt_Queen_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
+            return false;
+        }
+
+        if (!((gv_mode < 1))) {
             return false;
         }
     }
@@ -18663,6 +18738,10 @@ bool gt_EscortRecruit_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
+            return false;
+        }
+
+        if (!((gv_mode < 1))) {
             return false;
         }
     }
@@ -18859,6 +18938,10 @@ bool gt_EscortRecruit3_Func (bool testConds, bool runActions) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
             return false;
         }
+
+        if (!((gv_mode < 1))) {
+            return false;
+        }
     }
 
     // Actions
@@ -18959,6 +19042,10 @@ bool gt_SpawningPool_Func (bool testConds, bool runActions) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
             return false;
         }
+
+        if (!((gv_mode < 1))) {
+            return false;
+        }
     }
 
     // Actions
@@ -19005,6 +19092,10 @@ bool gt_optionalpool5_Func (bool testConds, bool runActions) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
             return false;
         }
+
+        if (!((gv_mode < 1))) {
+            return false;
+        }
     }
 
     // Actions
@@ -19039,6 +19130,10 @@ bool gt_MoonLordBeacon_Func (bool testConds, bool runActions) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
             return false;
         }
+
+        if (!((gv_mode < 1))) {
+            return false;
+        }
     }
 
     // Actions
@@ -19069,6 +19164,10 @@ bool gt_MoonLordBeacon3_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
+            return false;
+        }
+
+        if (!((gv_mode < 1))) {
             return false;
         }
     }
@@ -19103,6 +19202,10 @@ bool gt_MoonLordBeacon2_Func (bool testConds, bool runActions) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
             return false;
         }
+
+        if (!((gv_mode < 1))) {
+            return false;
+        }
     }
 
     // Actions
@@ -19133,6 +19236,10 @@ bool gt_MoonLordBeacon4_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
+            return false;
+        }
+
+        if (!((gv_mode < 1))) {
             return false;
         }
     }
@@ -19179,6 +19286,10 @@ bool gt_optionalpool4_Func (bool testConds, bool runActions) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
             return false;
         }
+
+        if (!((gv_mode < 1))) {
+            return false;
+        }
     }
 
     // Actions
@@ -19223,6 +19334,10 @@ bool gt_NydusWorm_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
+            return false;
+        }
+
+        if (!((gv_mode < 1))) {
             return false;
         }
     }
@@ -19341,6 +19456,10 @@ bool gt_NydusWorm2_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitGetOwner(EventUnit()) < 5))) {
+            return false;
+        }
+
+        if (!((gv_mode < 1))) {
             return false;
         }
     }
@@ -22347,7 +22466,14 @@ bool gt_PlayerLeaves_Func (bool testConds, bool runActions) {
             gv_demolisher = UnitLastCreated();
             gf_ProtossAttackAI(libNtve_gf_ConvertUnitToUnitGroup(gv_demolisher));
         }
+        else {
+            if ((gv_challengeStage > 3)) {
+                UnitCreate(1, "Demolisher", 0, 5, Point(59.0, 46.0), 270.0);
+                gv_demolisher = UnitLastCreated();
+                gf_challengemodearmyAI(UnitGroupUnit(UnitGroup("Pylon", 5, RegionCircle(Point(59.0, 47.0), 3.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1), libNtve_gf_ConvertUnitToUnitGroup(gv_demolisher));
+            }
 
+        }
     }
 
     return true;
@@ -24081,11 +24207,24 @@ bool gt_Incapacitation_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if ((UnitHasBehavior2(EventUnit(), "IncapacitatedDemolisher") == true)) {
-        UnitSetPosition(EventUnit(), Point(242.3, 11.0), false);
+    if ((gv_mode == 0)) {
+        if ((UnitHasBehavior2(EventUnit(), "IncapacitatedDemolisher") == true)) {
+            libNtve_gf_ShowHideUnit(EventUnit(), false);
+            UnitSetPosition(EventUnit(), Point(242.3, 11.0), false);
+        }
+        else {
+            libNtve_gf_ShowHideUnit(EventUnit(), true);
+            UnitIssueOrder(EventUnit(), OrderTargetingPoint(AbilityCommand("Teleport", 0), RegionRandomPoint(RegionCircle(UnitGetPosition(gf_getpylonofstage()), 3.0))), c_orderQueueReplace);
+        }
     }
     else {
-        UnitIssueOrder(EventUnit(), OrderTargetingPoint(AbilityCommand("Teleport", 0), RegionRandomPoint(RegionCircle(UnitGetPosition(gf_getpylonofstage()), 3.0))), c_orderQueueReplace);
+        if ((UnitHasBehavior2(EventUnit(), "IncapacitatedDemolisher") == true)) {
+            libNtve_gf_ShowHideUnit(EventUnit(), false);
+            UnitSetPosition(EventUnit(), Point(59.0, 46.0), false);
+        }
+        else {
+            libNtve_gf_ShowHideUnit(EventUnit(), true);
+        }
     }
     return true;
 }
@@ -24104,7 +24243,7 @@ bool gt_Upgrades_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((gv_zmaxstage > 1))) {
+        if (!((gv_demolisher != null))) {
             return false;
         }
     }

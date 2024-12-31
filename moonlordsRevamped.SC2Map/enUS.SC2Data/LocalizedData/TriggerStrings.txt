@@ -1852,6 +1852,7 @@ Variable/Name/B4B050AE=ping
 Variable/Name/B4D6A00D=z2
 Variable/Name/B50DDEA4=initstage
 Variable/Name/B581C5C4=tstring
+Variable/Name/B5A1506F=Hardcore
 Variable/Name/B5FA4902=base
 Variable/Name/B6005742=pg
 Variable/Name/B790101E=buttonrow

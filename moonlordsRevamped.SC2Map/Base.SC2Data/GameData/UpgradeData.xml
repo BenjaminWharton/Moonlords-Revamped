@@ -226,6 +226,18 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
+    <CUpgrade id="ChallengePylonBuff">
+        <EffectArray Reference="Unit,Pylon,LifeMax" Value="100"/>
+        <EffectArray Reference="Unit,Pylon,LifeStart" Value="100"/>
+        <EffectArray Reference="Unit,Pylon,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,Pylon,ShieldsMax" Value="200"/>
+        <EffectArray Reference="Unit,Pylon,ShieldsStart" Value="200"/>
+        <EffectArray Reference="Unit,Pylon,ShieldRegenRate" Value="10.000000"/>
+        <EffectArray Reference="Unit,Pylon,ShieldArmor" Value="1"/>
+        <EffectArray Reference="Unit,Pylon,LifeRegenRate" Value="1.000000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <MaxLevel value="10"/>
+    </CUpgrade>
     <CUpgrade id="ChampionModeZergDefenseBuff">
         <EffectArray Reference="Unit,SpineCrawler,LifeRegenRate" Value="1.000000"/>
         <EffectArray Reference="Unit,SpineCrawler,LifeMax" Value="200"/>
@@ -2504,6 +2516,14 @@
         <EffectArray Reference="Effect,ZealotSlashDMG,Amount" Value="0.25"/>
         <EffectArray Reference="Effect,ParticleDestroyerDMG,Amount" Value="1.5"/>
         <EffectArray Reference="Effect,PylonOverchargeDMG,Amount" Value="1"/>
+        <EffectArray Reference="Unit,PhotonCannon,ShieldsStart" Value="15"/>
+        <EffectArray Reference="Unit,PhotonCannon,ShieldsMax" Value="15"/>
+        <EffectArray Reference="Unit,PhotonCannon,LifeMax" Value="15"/>
+        <EffectArray Reference="Unit,PhotonCannon,LifeStart" Value="15"/>
+        <EffectArray Reference="Unit,Pylon,ShieldsStart" Value="50"/>
+        <EffectArray Reference="Unit,Pylon,ShieldsMax" Value="50"/>
+        <EffectArray Reference="Unit,Pylon,LifeMax" Value="25"/>
+        <EffectArray Reference="Unit,Pylon,LifeStart" Value="25"/>
         <MaxLevel value="100"/>
     </CUpgrade>
     <CUpgrade id="FrostshockIceage">
@@ -3727,6 +3747,7 @@
         <EffectArray Reference="Unit,Zealot,ShieldArmor" Value="1"/>
         <EffectArray Operation="Subtract" Reference="Weapon,PhotonCannon,Period[0]" Value="0.150000"/>
         <EffectArray Reference="Unit,PhotonCannon,ShieldsMax[0]" Value="100"/>
+        <EffectArray Reference="Unit,PhotonCannon,ShieldsStart" Value="100"/>
         <AffectedUnitArray value="Zealot"/>
         <AffectedUnitArray value="PhotonCannon"/>
         <AffectedUnitArray value="Demolisher"/>

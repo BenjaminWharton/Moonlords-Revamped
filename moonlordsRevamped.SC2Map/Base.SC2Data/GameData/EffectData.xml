@@ -16548,6 +16548,7 @@
         <ImpactLocation Value="SourceUnitOrPoint"/>
         <SearchFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray MaxCount="1" RectangleWidth="1" Effect="GatewayHeroSplitterImpactSet"/>
+        <AreaRelativeOffset value="0,0.5"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="SurgeAB">
         <EditorCategories value=""/>

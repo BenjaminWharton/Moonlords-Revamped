@@ -878,7 +878,7 @@
     <CUnit id="SplitterMissile" parent="MISSILE">
         <Race value="Prot"/>
         <Mover value="MothershipCoreWeaponWeapon2"/>
-        <Sight value="1.5"/>
+        <Sight value="2"/>
         <Height value="0.75"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
@@ -6426,6 +6426,7 @@
         <BehaviorArray index="0" Link="WarpgateTimescaleBuff"/>
         <BehaviorArray index="1" Link="PowerSource"/>
         <FlagArray index="Invulnerable" value="1"/>
+        <Footprint value="Footprint3x3ExtraContour"/>
     </CUnit>
     <!--fireguy-->
     <CUnit id="FireHero">
@@ -6483,8 +6484,8 @@
         <BehaviorArray Link="MagmaArmorBase"/>
         <BehaviorArray Link="Thermal"/>
         <BehaviorArray Link="Hades"/>
-        <BehaviorArray Link="FullHeal"/>
         <BehaviorArray Link="FireHeroFuel"/>
+        <BehaviorArray Link="FullHeal"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -6803,6 +6804,7 @@
         <BehaviorArray Link="StructureAttackSpeed"/>
         <ShieldRegenDelay value="5"/>
         <ShieldRegenRate value="5"/>
+        <Footprint value="Footprint2x2ExtraContour"/>
     </CUnit>
     <CUnit id="PlasmaTorpedo">
         <DeathRevealRadius value="1"/>
@@ -7023,7 +7025,7 @@
         <ShieldsStart value="1000"/>
         <ShieldsMax value="1000"/>
         <ShieldRegenDelay value="5"/>
-        <ShieldRegenRate value="5"/>
+        <ShieldRegenRate value="10"/>
         <AbilArray index="1" Link="MassRecall"/>
         <AbilArray index="2" Link="PylonOvercharge"/>
         <AbilArray Link="attack"/>
@@ -7047,6 +7049,7 @@
         <BehaviorArray Link="PylonOverchargeDMGBuff"/>
         <Sight value="13"/>
         <VisionHeight value="4"/>
+        <Footprint value="Footprint2x2ExtraContour"/>
     </CUnit>
     <CUnit id="Queen">
         <LifeStart value="275"/>
@@ -7431,6 +7434,7 @@
             <LayoutButtons Face="Immortal" Type="AbilCmd" AbilCmd="WarpGateTrain,Train9" Row="1" Column="3"/>
         </CardLayouts>
         <BehaviorArray Link="WarpgateTimescaleBuff"/>
+        <Footprint value="Footprint3x3ExtraContour"/>
     </CUnit>
     <CUnit id="Zealot">
         <BehaviorArray index="1" Link="Vengeance"/>
