@@ -3527,7 +3527,6 @@
         <EditorCategories value="ObjectFamily:Campaign,ObjectType:Projectile"/>
     </CUnit>
     <CUnit id="RockLord">
-        <Description value="Button/Tooltip/PrimalTownHall"/>
         <DeathRevealRadius value="3"/>
         <Facing value="319.9987"/>
         <Race value="Zerg"/>

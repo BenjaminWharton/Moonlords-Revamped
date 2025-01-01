@@ -814,6 +814,7 @@ Button/Name/Frostshock=Frost Shock
 Button/Name/GasBomb=Gas Bomb
 Button/Name/GlaiveBarrage=Glaive Barrage
 Button/Name/GravityDash=Gravity Dash
+Button/Name/GravityHeroPolarity=Gravity Hero - Polarity
 Button/Name/GravityShot=Gravity Shot
 Button/Name/GravitySlivers=Gravity Slivers
 Button/Name/GuardianShell=<c val="FFFFFF">Guardian Shell</c>
@@ -917,7 +918,7 @@ Button/Name/Warpout=Warpout
 Button/Name/WaterBlast=Water Blast
 Button/Name/Windstorm=<c val="FFFFFF">Windstorm</c>
 Button/Name/ZealotAttack=Zealot Attack
-Button/Tooltip/AcidLord=Suicide unit. Does damage over a small area on death. <n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/AcidLord=The Acid Lord explodes when it dies.
 Button/Tooltip/AirHero=Your enemies will be blown away.
 Button/Tooltip/AirHeroHurricaneUnit=
 Button/Tooltip/AirHeroMicroBurstUnit=
@@ -927,7 +928,7 @@ Button/Tooltip/AnnihilatorV2=Heavy assault mech.<n/><n/><c val="#ColorAttackInfo
 Button/Tooltip/AnnihilatorV3=Heavy assault mech.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/Bane=The target mutates for <c val="FFFF80">15</c> seconds and will take damage when you deal damage to any unit within <c val="FFFF80"><d ref="Effect,AlterTimeSearchMutation,AreaArray[0].Radius" precision="1"/></c> range of it.
 Button/Tooltip/BeamHero=When in doubt, cover everything with laser beams.
-Button/Tooltip/BeastLord=Heavy assault beast. Has an area-damage cleave attack. When killed, can be revived.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/BeastLord=Improves attack and movement speed for all zerg units in a large area by 50%
 Button/Tooltip/BlackDeath=Infects all enemies in the target area.<n/>Infection starter lasts 6 seconds, infection lasts 8 seconds.
 Button/Tooltip/BladeHero=For glory!
 Button/Tooltip/BladeStorm=Launch a missile that travels in a circular path towards the target point dealing <c val="FFFF80"><d ref="Effect,BladeStormDMG,Amount*16"/></c> damage per seconds to enemies within a radius of <c val="FFFF80"><d ref="Effect,BladeStormSA,AreaArray[0].Radius" precision="1"/></c>
@@ -937,24 +938,25 @@ Button/Tooltip/Blood=Gain <c val="FFFF80">1</c> Blood and heal <c val="FFFF80"><
 Button/Tooltip/Boil=Deal <c val="FFFF80"><d ref="Effect,BoilDMG,Amount"/></c> damage to enemies within a radius of <c val="FFFF80"><d ref="Effect,BoilSA,AreaArray[0].Radius" precision="1"/></c> around the target area.<n/><n/>Enemies that are soaked will be applied with Scalded, which deals <c val="FFFF80"><d ref="Effect,ScaldedDMG,Amount*4"/></c> dps per stack for <c val="FFFF80"><d ref="Behavior,ScaldedBase,Duration"/></c> seconds.<n/><n/>Scalded enemies gain another stack each time they get soaked, stacking up to <c val="FFFF80"><d ref="Behavior,ScaldedStack,MaxStackCount"/></c> times.
 Button/Tooltip/Boulder=Roll a Boulder towards the target location that deals <c val="FFFF80"><d ref="Effect,BoulderDMG,Amount*16"/></c> damage per second within a radius of <c val="FFFF80"><d ref="Effect,BoulderSA,AreaArray[0].Radius" precision="1"/></c> to enemies that it passes through.
 Button/Tooltip/BoulderY=Roll a Boulder towards the target location.
+Button/Tooltip/BroodLord=Launches Broodlings as its basic attack, and in addition units killed by the Brood Lord will spawn 2 Broodlings.
 Button/Tooltip/CancelInfusion=Cancels your elemental infusion.
-Button/Tooltip/CarnageLord=Ranged attacker. Can morph into a Lurker.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/CarnageLord=The Carnage Lord gains 10% faster attack speed for 10 seconds each time it attacks.
 Button/Tooltip/ChampionOverlord=Increases supply. Supply allows you to create more units.<n/><n/><c val="ffff8a">Cannot attack.</c>
-Button/Tooltip/ChaosLord=A powerful behemoth birthed from the Void.
+Button/Tooltip/ChaosLord=Red Orbs will launch themselves at enemies in a range of 12 dealing damage on impact and creating 5 smaller orbs which will travel outward from the impact point.<n/><n/>Purple Orbs turn missiles that touch them into smaller purple orbs which target a random point dealing damage on impact.<n/><n/>Each Green Orb gives the Chaos Lord 20% damage reduction, and knocks back any units that get too close.
 Button/Tooltip/ChaosOrbGreen=
 Button/Tooltip/ChaosOrbPurple=Summons a Tornado lasting <d ref="Behavior,Tornado,Duration" precision="1"/> seconds.
 Button/Tooltip/ChaosOrbRed=
 Button/Tooltip/ChatCommands=-ps Prevents deselecting your hero<n/><n/>-showstats Opens the stats dialogue<n/><n/>-xpfactor Displays current exp multiplier<n/><n/>-gt Displays current gametime
 Button/Tooltip/ConsumeGravityHero=Deals damage to a single target and returns <d ref="Effect,ConsumeDMG,LeechFraction[Life]*100"/>% of damage dealt as health/shields.
-Button/Tooltip/CorrosionLord=
-Button/Tooltip/CorruptionLord=Anti-air flyer. Can use Caustic Spray. Can morph into a Brood Lord.<n/><n/><c val="#ColorAttackInfo">Can attack air units.</c>
+Button/Tooltip/CorrosionLord=The Corrosion Lord's attacks reduce the armor and shield armor of its target by 3 for 30 seconds, stacks infinitely
+Button/Tooltip/CorruptionLord=The Corruption Lord's missiles will continue to launch themselves at enemies in range up to 3 times.
 Button/Tooltip/CrystalRain=Launch <c val="FFFF80"><d ref="Effect,CrystalRainInit,PeriodCount + Effect,CrystalRainSeismOffset,PeriodCount"/></c> Crystals at the target location over <c val="FFFF80"><d ref="Effect,CrystalRainInit,PeriodCount*0.5"/></c> second(s), each dealing <c val="FFFF80"><d ref="Effect,CrystalRainDMG,Amount" precision="2"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,CrystalRainSA,AreaArray[0].Radius" precision="2"/></c>.
-Button/Tooltip/DeathLord=Monstrous creature made from both Protoss and Zerg DNA. Capable of powerful attacks.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c><n/><c val="FFE303">Detector</c>
+Button/Tooltip/DeathLord=Any unit that dares attack the Death Lord becomes cursed.
 Button/Tooltip/Decoy=Assault strider. Can use Barrier to absorb damage.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/DeflectorDrone=<c val="FF0000">Destroys enemy projectiles at the cost of <c val="FFFFFF"><d ref="Accumulator,GatewayHeroDeflectorDronePDCost,Amount"/></c> <c val="FF00FF">energy</c> per shot.<n/><n/><c val="FF00FF">Energy</c> maximum is <c val="FF00FF">300</c>(+<c val="FF00FF">10</c> for every <c val="FF00FF">energy</c> maximum reward)<n/>Current maximum is <c val="FF00FF"><d ref="Unit,DeflectorDrone,EnergyMax"/></c></c>
 Button/Tooltip/Dematerialize=Converting matter of the target unit into energy over time. <n/>This energy is tranfered back to you and used to restore your shields and hitpoints.
 Button/Tooltip/Demolisher=Assault strider. Can use Barrier to absorb damage.<n/><n/><c val="ffff8a">Can attack ground units.</c>
-Button/Tooltip/DemonLord=Fast melee creature. Can morph into a Baneling.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
+Button/Tooltip/DemonLord=The Demon Lord gains improved attack speed, movement speed, health regeneration, and armor the closer he is to being dead.
 Button/Tooltip/DestroyerDrone=<c val="FFFF00">Duplicates all offensive spells cast by the Gateway Hero at <c val="FFFFFF"><d ref="Accumulator,GatewayHeroDestroyerCostFactor,Amount*100"/>%</c> of their energy cost<n/><n/>Energy maximum is <c val="FF00FF">300</c>(+<c val="FF00FF">10</c> for every <c val="FF00FF">energy</c> maximum reward)<n/>Current maximum is <c val="FF00FF"><d ref="Unit,DestroyerDrone,EnergyMax"/></c></c>
 Button/Tooltip/Dexterity=Has a <c val="FFFF80"><d ref="Behavior,Evasion,DamageResponse.Chance*100"/>%</c> chance to evade damage.<n/><n/>Can cast abilities while moving.
 Button/Tooltip/Discharge=
@@ -962,8 +964,8 @@ Button/Tooltip/Disintegrate=Kills a unit under your control allowing you to use 
 Button/Tooltip/Disintegrator=Powerful battle strider. Can walk up and down cliffs. Attacks incinerate multiple enemies at once.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/Distortion=Fire <c val="FFFF80"><d ref="Effect,DistortionOffset,PeriodCount" precision="3"/></c> Distortion(s) towards the target direction that travel up to a distance of <c val="FFFF80">6</c> dealing <c val="FFFF80"><d ref="Effect,DistortionDMG,Amount"/></c> damage and pulling enemy units along with them<n/><n/>Each Distortion will trigger Discharge when it expires, which deals <c val="FFFF80"><d ref="Effect,DistortionDischargeDMG,Amount"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,DistortionDischargeSA,AreaArray[0].Radius" precision="1"/></c><n/><n/>Every <c val="FFFF80"><d ref="Behavior,IllusionHeroOverload,MaxStackCount" precision="1"/></c> Distortion hits against the same target will trigger Overload, which deals <c val="FFFF80"><d ref="Effect,IllusionHeroDistortionOverloadDMG,Amount" precision="1"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,IllusionHeroDistortionOverloadSA,AreaArray[0].Radius" precision="1"/></c>
 Button/Tooltip/Doom=Banes the target with impending doom, causing damage over time. When a Doomed unit dies all damage dealt to this unit by Doom will be released causing damage to all nearby units.
-Button/Tooltip/DoomLord=Powerful psionic attacker.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c><n/><c val="FFE303">Detector</c>
-Button/Tooltip/DreadLord=Massive assault beast that dwarfs even the Ultralisk in size and strength. <n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/DoomLord=Sends a doom that cannot be stopped until The Doom Lord is destroyed.
+Button/Tooltip/DreadLord=Protoss units in a huge radius are filled with dread, causing them to take 25% more damage, deal 25% less damage, and move 25% slower.
 Button/Tooltip/EarthHero=Seismic activity detected!
 Button/Tooltip/Earthquake=Infusion: <c val="804040">Earth</c><n/>Release: <c val="804040">Earth</c><n/><n/>Create <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount"/></c> Earthquakes around your hero over <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount*0.75" precision="2"/></c> seconds, each dealing <c val="FFFF80"><d ref="Effect,EarthquakeDMG,Amount"/></c> damage and knocking back enemy units in a radius of <c val="FFFF80">5</c>
 Button/Tooltip/EarthquakeE=
@@ -988,24 +990,24 @@ Button/Tooltip/EverlastingStormUpg=
 Button/Tooltip/EverlastingStormUpgr=
 Button/Tooltip/Eviscerate=Launch a missile towards the target point that deals <c val="FFFF80"><d ref="Effect,EviscerateDMG,Amount"/></c> damage within a radius of <c val="FFFF80"><d ref="Effect,EviscerateSA,AreaArray[0].Radius" precision="2"/></c> to each enemy that it passes through
 Button/Tooltip/Eviserate=
-Button/Tooltip/EvolutionLord=Generates two Spawns of Dehaka that deal 100% normal damage but have 50% life. Spawns last <d time="30"/>.
+Button/Tooltip/EvolutionLord=The Evolution Lord unit grows stronger with each kill.
 Button/Tooltip/Expel=Deal <c val="FFFF80"><d ref="Effect,NatureHeroExpelDMG,Amount"/></c> damage to enemies within a radius of <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelRadiusBase,Amount"/></c> around your hero and slow them by <c val="FFFF80"><d ref="1-Behavior,Tangled,Modification.MoveSpeedMultiplier*100" precision="1"/>%</c> for <c val="FFFF80"><d ref="Behavior,Tangled,Duration"/></c> seconds<n/><n/>Casting <c val="FFFF80">Expel</c> adds <c val="FFFF80"><d ref="Effect,AddRenewComboPowerCP,PeriodCount" precision="1"/></c> combo power to <c val="FFFF80">Renew</c></c><n/><n/>Each combo power increases the damage area by <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelRadiusMultiplier,Amount" precision="1"/></c>, damage by <c val="FFFF80"><d ref="Accumulator,NatureHeroExpelDamageMultiplier,Amount*100"/>%</c> and health cost by <c val="FFFF80"><d ref="Effect,NatureHeroExpelCostUpCP,PeriodCount*25"/></c> for the next <c val="FFFF80">Expel</c> cast<n/><n/>Casting <c val="FFFF80">Expel</c> consumes all stacks
 Button/Tooltip/Exploder=<c val="0080FF">Deal <c val="FFFFFF"><d ref="Effect,ExploderDMG,Amount"/></c> damage to all enemies within a radius of <c val="FFFFFF"><d ref="Effect,ExploderSA,AreaArray[0].Radius" precision="1"/></c> in the target area and infect <c val="FFFFFF"><d ref="Effect,GatewayHeroExploderDebuffSA,AreaArray[0].MaxCount"/></c> units with the explosive debuff for <c val="FFFFFF"><d ref="Behavior,GatewayHeroExplosive,Duration"/></c> seconds<n/><n/>Explosive units are revealed and will explode on death, dealing <c val="FFFFFF"><d ref="Effect,ExploderDMG,Amount"/></c> damage in a radius of <c val="FFFFFF"><d ref="Effect,ExploderExplodeSA,AreaArray[0].Radius" precision="1"/></c></c>
 Button/Tooltip/ExplosiveVirus=<c val="0080FF">Deal <c val="FFFFFF"><d ref="Effect,ExploderDMG,Amount"/></c> damage to all enemies within a radius of <c val="FFFFFF"><d ref="Effect,ExploderSA,AreaArray[0].Radius" precision="1"/></c> in the target area and apply the explosive debuff to <c val="FFFFFF"><d ref="Effect,GatewayHeroExploderDebuffSA,AreaArray[0].MaxCount"/></c> of them for <c val="FFFFFF"><d ref="Behavior,GatewayHeroExplosive,Duration"/></c> seconds<n/><n/>Explosive units are revealed and will explode on death, dealing <c val="FFFFFF"><d ref="Effect,ExploderDMG,Amount"/></c> damage in a radius of <c val="FFFFFF"><d ref="Effect,ExploderExplodeSA,AreaArray[0].Radius" precision="1"/></c></c>
-Button/Tooltip/ExtinctionLord=
+Button/Tooltip/ExtinctionLord=Takes 90% reduced damage while a hero is not within 8 range of it.
 Button/Tooltip/ExtinctionOrb=
 Button/Tooltip/FireBlast=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Send a Fireball towards the target location dealing <c val="FFFF80"><d ref="Effect,FireBlastDMG,Amount"/></c> damage in a radius of <c val="FFFF80">2</c>
 Button/Tooltip/FireHero=Death and destruction!
 Button/Tooltip/FireInfusion=Fire Infusion restores health after burning away the old cells.<n/>But because 'fire is hot' you will take some damage before the healing starts.
-Button/Tooltip/FireLord=Ranged artillery. Can use Corrosive Bile.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/FireLord=The Fire Lord leaves behind a large fire when it dies.
 Button/Tooltip/Fireball=Launches a Fireball dealing <c val="FFFF80">40</c> damage to all enemy units close to the impact location
 Button/Tooltip/Firespewer=Infestation specialist. Can move while burrowed. Can use the Infested Terran, Fungal Growth, and Neural Parasite abilities.
 Button/Tooltip/Firestorm=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="FFFFFF">Wind</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,FirestormFireDMG,Amount"/></c> damage in an arc of <c val="FFFF80">60</c> degrees within a range of <c val="FFFF80">7</c>
 Button/Tooltip/FirestormWind=Infusion: <c val="FFFFFF">Wind</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,FirestormWindDMG,Amount"/></c> damage in an arc of <c val="FFFF80">60</c> degrees within a range of <c val="FFFF80"><d ref="Effect,FirestormWindSA,AreaArray[0].Radius" precision="1"/>
-Button/Tooltip/FleshLord=
+Button/Tooltip/FleshLord=Rapidly discharges projectiles by either rolling or lobbing
 Button/Tooltip/Flood=Leave behind a puddle of water every <c val="FFFF80"><d ref="Behavior,Flood,Period" precision="1"/></c> seconds.<n/><n/>Puddles last for <c val="FFFF80"><d ref="Behavior,WaterHeroPuddleFate,Duration" precision="1"/></c> seconds and will periodically soak enemies within a radius of <c val="FFFF80"><d ref="Effect,PuddleSA,AreaArray[0].Radius" precision="1"/></c>
 Button/Tooltip/Fortify=Buffs all allies within a radius of <c val="FFFF80"><d ref="Effect,FortifySA,AreaArray[0].Radius"/></c><n/><n/>If target is heroic, armor is increased by <c val="FFFF80"><d ref="Behavior,FortifyHero,Modification.LifeArmorBonus"/></c>, damage reduction is increased by <c val="FFFF80"><d ref="(1-Behavior,FortifyHero,DamageResponse.ModifyFraction)*100" precision="1"/>%</c>, and all regeneration is increased by <c val="FFFF80"><d ref="Behavior,FortifyHero,Modification.VitalRegenArray[Energy]*100"/>%</c>.<n/><n/>If target is non heroic, vitals are increased by <c val="FFFF80"><d ref="Behavior,Fortify,Modification.VitalMaxFractionArray[Life]*100"/>%</c>, damage is increased by <c val="FFFF80"><d ref="Behavior,Fortify,Modification.UnifiedDamageDealtFraction[Melee]*100"/>%</c>, and attack speed is increased by <c val="FFFF80"><d ref="Behavior,Fortify,Modification.AttackSpeedMultiplier*100-100" precision="1"/>%</c><n/><n/>Is permanent for structures, but lasts <c val="FFFF80">30</c> seconds for units
-Button/Tooltip/FortressLord=
+Button/Tooltip/FortressLord=Hugely increased armor, however it is decreased by 1 every time damage is received.
 Button/Tooltip/ForwardBeam=Sends a laser towards the target point which travels up to a distance of <c val="FFFF80">12</c> dealing damage to enemies that touch it.<n/><n/>Lasts for <c val="FFFF80"><d ref="Effect,ForwardBeamLifetime,PeriodCount*Effect,ForwardBeamLifetime,PeriodicPeriodArray[0]" precision="2"/></c> seconds.
 Button/Tooltip/Freeze=Apply enemies in a radius of <c val="FFFF80"><d ref="Effect,FreezeSA,AreaArray[0].Radius" precision="1"/></c> around the target area with Cold, which makes affected enemies move and attack at <c val="FFFF80"><d ref="Behavior,Cold,Modification.MoveSpeedMultiplier*100" precision="1"/>%</c> of their original speed.<n/><n/>Soaked enemies will be Frozen for <c val="FFFF80">10</c> seconds or until damage is taken.<n/><n/>Freezing an enemy will restore <c val="FFFF80"><d ref="Effect,WaterHeroFreezeHealMU,VitalArray[Shields].Change"/></c> shields to the caster<n/><n/>Frozen units that receive damage will shatter, and take <c val="FFFF80"><d ref="Effect,ShatterDMG,Amount"/></c> damage.
 Button/Tooltip/Frostshock=Instantly shocks the target with frost, causing 25 damage and slowing movement speed by 50% lasting 8 seconds.<n/>If the target is already under the effect of Frost Shock the target will be completely frozen for 4 seconds and your Frost Shock will hit all enemy units close to your target.
@@ -1029,19 +1031,19 @@ Button/Tooltip/HealingStationShell=Take reduced damage from the next damage inst
 Button/Tooltip/HealingWave=Instantly heal <c val="FFFF80"><d ref="Effect,HealingWaveHeal,VitalArray[Shields].Change*2" precision="1"/></c> health and shields to self, and heal allies in a radius of <c val="FFFF80"><d ref="Effect,HealingWaveSA,AreaArray[0].Radius" precision="2"/></c> for half of that amount.
 Button/Tooltip/HellfireQuake=Infusion: <c val="804040">Earth</c> + <c val="FF8000">Fire</c><n/><n/>Create <c val="FFFF80"><d ref="Effect,HellfireQuakeCP,PeriodCount"/></c> Earthquakes around your hero over <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount*0.75" precision="2"/></c> seconds, each dealing <c val="FFFF80"><d ref="Effect,HellfireQuakeDMG,Amount"/></c> damage and knocking back enemy units in a radius of <c val="FFFF80">5</c>
 Button/Tooltip/HellfireQuakeEndure=
-Button/Tooltip/HiveLord=Support unit. Can use Spawn Creep Tumor and Rapid Transfusion.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/HiveLord=Overlords circle the Hive Lord dropping units when they receive damage.
 Button/Tooltip/HoloShield=Creates a Holo Shield at the target location rendering allied units and structures in a radius of <c val="FFFF80">2</c> invulnerable to damage for <c val="FFFF80">10</c> seconds.<n/><n/>Holo Shields have <c val="FFFF80">500</c> hp + <c val="FFFF80">30</c>  per maximum hp reward point.<n/><n/>Current maximum is <c val="FFFF80"><d ref="Unit,HoloShieldUnit,LifeMax" precision="3"/></c>.
 Button/Tooltip/HoloShieldUnit=Summons a Tornado lasting <d ref="Behavior,Tornado,Duration" precision="1"/> seconds.
-Button/Tooltip/HordeLord=
+Button/Tooltip/HordeLord=Spawns Broodlings when receiving damage.
 Button/Tooltip/HorrorIllusion=Changelings cannot attack. When a Changeling first encounters an enemy unit, it will match that unit's color and change into a Zealot, Marine, or Zergling, depending on the enemy race. Dies after <d time="150"/>.
-Button/Tooltip/HorrorLord=
+Button/Tooltip/HorrorLord=The Horror Lord masks its presence and uses 3 types of random attacks, while also creating illusions to distract you
 Button/Tooltip/HorrorZealot=Changelings cannot attack. When a Changeling first encounters an enemy unit, it will match that unit's color and change into a Zealot, Marine, or Zergling, depending on the enemy race. Dies after <d time="150"/>.
 Button/Tooltip/HorrorZergling=Changelings cannot attack. When a Changeling first encounters an enemy unit, it will match that unit's color and change into a Zealot, Marine, or Zergling, depending on the enemy race. Dies after <d time="150"/>.
 Button/Tooltip/Hurricane=Summon a devastating blast of wind that travels up to a distance of <c val="FFFF80"><d ref="Effect,AirHeroHurricaneDMGDummy,ArmorReduction"/></c> and deals <c val="FFFF80"><d ref="Effect,AirHeroHurricaneDMG,Amount"/></c> damage to enemies within a width of <c val="FFFF80"><d ref="Effect,HurricaneSA,AreaArray[0].RectangleWidth"/></c><n/><n/>Lifted enemies and Tornado debris in its path will be picked up and pulled along with it.<n/><n/>Hurricane deals <c val="FFFF80"><d ref="Effect,AirHeroHurricaneDMG,AttributeFactor[Heroic]*100"/>%</c> additional damage to enemies that cannot be lifted.<n/><n/>Micro Bursts affected by Hurricane will be able to impact on lifted enemies.
 Button/Tooltip/IcefireBlast=Infusion: <c val="FF8000">Fire</c> + <c val="0080FF">Water</c><n/><n/>Send a Fireball towards the target location dealing <c val="FFFF80"><d ref="Effect,IcefireBlastDMG,Amount"/></c> damage in a radius of <c val="FFFF80">2</c>
 Button/Tooltip/IllusionHero=This isn't real.
 Button/Tooltip/ImpendingDoom=Summons a Tornado lasting <d ref="Behavior,Tornado,Duration" precision="1"/> seconds.
-Button/Tooltip/InfectionLord=Infested Terrans do moderate damage.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
+Button/Tooltip/InfectionLord=Infects all protoss units is a radius of 20. Infected units are slowed and take additional damage over time time from any damage effect.
 Button/Tooltip/Inferno=Releasing bursts of fierce flames in front of you.<n/><c val="FFFF80">40</c> Damage with every burst of flame.
 Button/Tooltip/InfuseEarth=Deal <c val="FFFF80"><d ref="Effect,InfuseEarthDMG,Amount"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,InfuseEarthSA,AreaArray[0].Radius"/></c> and become infused with the element of <c val="804040">Earth</c> causing your next ability cast to have the following bonuses.<n/><n/>Affected enemies are stunned for <c val="FFFF80"><d ref="Behavior,Concussed,Duration"/></c> second.<n/><n/>Caster takes <c val="FFFF80"><d ref="(Behavior,Bastion,DamageResponse.ModifyFraction*(-1)+1)*100"/>%</c> reduced damage for <c val="FFFF80"><d ref="Behavior,Bastion,Duration*Effect,BastionSet,Chance"/></c> seconds.<n/><n/>Gain <c val="FFFF80"><d ref="Behavior,BastionArmor,Modification.LifeArmorBonus"/></c> more health and shield armor for <c val="FFFF80"><d ref="Effect,BastionSet,Chance*15"/></c> seconds.<n/><n/></c></c>Deal <c val="FFFF80"><d ref="Effect,EarthquakeDMG,AttributeFactor[Heroic]*100"/>%</c> more damage to heroic enemies.<n/><n/>Pierce <c val="FFFF80"><d ref="1-(Effect,EarthquakeDMG,ArmorReduction)*100"/>%</c> armor.<n/><n/>Duration increased by <c val="FFFF80"><d ref="Effect,EarthquakeCP,PeriodCount-2*50"/>%</c>.
 Button/Tooltip/InfuseEarthE=
@@ -1078,13 +1080,13 @@ Button/Tooltip/Metalisk=Heavy assault beast. Has an area-damage attack.<n/><n/><
 Button/Tooltip/MetaliskCavern=Contains upgrades for Ultralisks.<n/><n/><c val="ffff8a">Enables:</c><n/>- Ultralisks from Larvae
 Button/Tooltip/MicroBurst=Fires <c val="FFFF80"><d ref="Effect,AirHeroMicroBurstOffset,PeriodCount"/></c> small bursts of concentrated air dealing <c val="FFFF80"><d ref="Effect,AirHeroMicroBurstDMG,Amount"/></c> damage to a single target and lifting <c val="FFFF80"><d ref="Effect,AirHeroMicroBurstElevateSA,AreaArray[0].MaxCount"/></c> nearby enemy unit(s).<n/></c><n/>Lifted units are stunned for <c val="FFFF80"><d ref="Behavior,Lifted,Duration"/></c> seconds, take <c val="FFFF80"><d ref="Effect,AirHeroMicroBurstLiftedDMG,Amount"/></c> damage per second, and allow Micro Bursts to pass under them.
 Button/Tooltip/MicroBurstY=Fires small bursts of concentrated air damaging a single target and lifting <d ref="Effect,ElevateSA,AreaArray[0].MaxCount"/> nearby enemy unit.<n/><n/>Lifted units are stunned and take damage over time, and also allows Micro Bursts to pass through them
-Button/Tooltip/MindLord=
+Button/Tooltip/MindLord=Boosts the movement speed of all lesser bosses on the map, and additionally spawns one boss every 30 seconds.
 Button/Tooltip/MobileBeam=Creates a Beam at the target point that periodically deals damage in a radius of <c val="FFFF80"><d ref="Effect,MobileBeamSA,AreaArray[0].Radius" precision="2"/></c>.<n/><n/>Mobile Beam has a movement speed of <c val="FFFF80"><d ref="Unit,MobileBeam,Speed" precision="2"/></c> and will chase nearby enemies.<n/><n/>Lasts for <c val="FFFF80"><d ref="Effect,MobileBeamLifetime,ExpireDelay"/></c> seconds.
 Button/Tooltip/MobileNydusworm=Uprooted anti-ground defensive structure. Can move when uprooted, but cannot attack. Must plant itself in creep to attack.
 Button/Tooltip/MultiphaseShield=Reduces damage taken from attacks that deal more than 40 damage while the shields are up.
 Button/Tooltip/Multishot=Launches <c val="FFFF80"><d ref="Effect,WarpHeroMultishotDummy,ExpireDelay"/></c> missiles in the target direction, each dealing <c val="FFFF80"><d ref="Effect,ImmortalMultiShotDamage,Amount"/></c> damage.<n/><n/>Missiles will spread out more if your target point is closer to your current location.
 Button/Tooltip/MusclePoison=Infects all enemy units in the target region slowing their movement and attackspeed also inflicts 25 damage.<n/>Effect gets weaker over time.
-Button/Tooltip/MutationLord=Aberrations are durable units that deal heavy damage.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
+Button/Tooltip/MutationLord=Mutates a random zerg in a large radius every second increasing health by 100% damage by 100% and attack speed by 50%
 Button/Tooltip/NatureHero=For there to be life... there must also be death.
 Button/Tooltip/NatureHeroFruitCombo=
 Button/Tooltip/NatureHeroFruitDMG=
@@ -1094,8 +1096,8 @@ Button/Tooltip/NatureHeroFruitHP=
 Button/Tooltip/NatureHeroFruitSpeed=
 Button/Tooltip/NatureHeroHarvest=Any enemy that has been damaged by the Nature Hero will gain a chance to drop various types of helpful fruit on death, which can buff self or allies when picked up<n/><n/>The Nature Hero can pull one fruit towards itself from a distance of <c val="FFFF80"><d ref="Effect,NatureHeroHarvestSearchTarget,AreaArray[0].Radius"/></c> every <c val="FFFF80"><d ref="Behavior,NatureHeroHarvest,Period" precision="1"/></c> second(s)
 Button/Tooltip/Nightstorm=Summons a storm dealing <c val="FFFF80"><d ref="Effect,NightstormDMG,Amount*2"/></c> damage per second for <c val="FFFF80"><d ref="Effect,NightstormCP,PeriodCount/2"precision="1"/></c> seconds within a radius of <c val="FFFF80"><d ref="Effect,NightstormSA,AreaArray[0].Radius"precision="1"/></c> in the target area.
-Button/Tooltip/OblivionLord=
-Button/Tooltip/OceanLord=Powerful psionic flyer.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/OblivionLord=The Oblivion Lord has an 80% chance to take a maximum of 10 damage.
+Button/Tooltip/OceanLord=Heals 5000 health to all zerg units in a large radius every 15 seconds.
 Button/Tooltip/Odin2=Heavy assault mech.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/OrbOfAttritionAnomaly=
 Button/Tooltip/OrbOfDestructionResound=
@@ -1106,10 +1108,11 @@ Button/Tooltip/OrbOfVitalityRecur=
 Button/Tooltip/OrbitalCannon=Orders the Orbital Cannon to fire at the given target. Dealing <c val="FFFF80"><d ref="Effect,OrbitalCannonDamage,Amount"/></c> damage to all enemies within.
 Button/Tooltip/OrbsOfLuck=Randomizes your Orb types on use<n/><n/>Once an Orb has been launched it will respawn after <c val="FFFF80"><d ref="Behavior,OrbLaunched,Duration" precision="1"/></c> seconds and turn into a different Orb<n/><n/>Attempting to launch an Orb color with 0 of its type will convert 1 random Orb and launch it, but it will have 0 Orb power
 Button/Tooltip/Overdrive=Increases movement speed by <c val="FFFF80"><d ref="(Behavior,OverdriveSpeed,Modification.MoveSpeedBonus*8)" precision="1"/></c> which slowly returns to normal over time, and increase health/shield regeneration by a stackable <c val="FFFF80"><d ref="Behavior,OverdriveRegen,Modification.VitalRegenMultiplier[Life]*100" precision="1"/>%</c><n/><n/>Lasts for <c val="FFFF80"><d ref="Behavior,OverdriveSpeed,Duration"/></c> seconds.
-Button/Tooltip/ParasiteLord=
+Button/Tooltip/ParasiteLord=The Parasite Lord takes control of 1 nearby unit every 1.5 seconds.
 Button/Tooltip/ParticleDestroyer=Deals high damage to a single target.
 Button/Tooltip/ParticleHero=Disintegrate your enemies!
 Button/Tooltip/PickupGasProtoss100Text=<s val="Kicker_Gas">+<d ref="Effect,GasPickupTextDummy,Amount"/> </s><IMG path="Assets\Textures\icon-gas-protoss.dds" height="28" width="28"/>
+Button/Tooltip/PlagueLord=Attacks apply plague. Each time a plagued unit dies the Plague Lord is healed for 1% heath.
 Button/Tooltip/PlasmaTorpedo=Launch <c val="FFFF80"><d ref="Effect,ParticleHeroPlasmaTorpedo,ExpireDelay"/></c> Plasma Torpedoes that will spiral outward dealing  <c val="FFFF80"><d ref="Effect,PlasmaTorpedoDamage,Amount"/> </c>damage to enemy units in their path.
 Button/Tooltip/PoisonCloud=Allows you to produce and store poisonous gas which will be released in form of a cloud when you get hit by an attack
 Button/Tooltip/PoisonHero=Inflicts unimaginable pain.
@@ -1117,7 +1120,8 @@ Button/Tooltip/Poisonbolt=Launches a Poisonbolt at the target location dealing <
 Button/Tooltip/PowerDrain=Power Drain restores health and shields equal to <c val="FFFF80"><d ref="Behavior,PowerDrain,Modification.VitalDamageLeechArray[Life].KindArray[Spell]*100"/>%</c> of damage dealt.<n/><n/>Lasts for <c val="FFFF80"><d ref="Behavior,PowerDrain,Duration"/></c> seconds.
 Button/Tooltip/PowerPlating=Transfers power from propulsion to armor when you are attacked
 Button/Tooltip/PreserverBase=
-Button/Tooltip/PrimalLord=
+Button/Tooltip/PrimalLord=Periodically eats nearby zerg units to heal itself.
+Button/Tooltip/PrimalTownHall=
 Button/Tooltip/ProbeCannon=Creates a Probe Cannon at the casters location which fires <c val="FFFF80"><d ref="(Effect,ProbeCannonCP,PeriodCount+1)*Effect,ProbeCannonOffset,PeriodCount"/></c> projectiles towards the target point over <c val="FFFF80"><d ref="Effect,ProbeCannonCP,PeriodCount*Effect,ProbeCannonCP,PeriodicPeriodArray[0]" precision="2"/></c> seconds, each dealing <c val="FFFF80"><d ref="Effect,ProbeCannonDMG,Amount"/></c> damage.<n/><n/>If self or ally was targeted then a Probe Cannon becomes attached to them and will fire at enemies in a range of <c val="FFFF80">8</c> every second for <c val="FFFF80"><d ref="Behavior,ProbeCannon,Duration"/></c> seconds.
 Button/Tooltip/ProbeHero=Collect, Create, Destroy.
 Button/Tooltip/Projection=Project an image of yourself towards the target point and teleport to it after it reaches its destination, or after <c val="FFFF80"><d ref="Behavior,ProjectionFate,Duration" precision="3"/></c> second(s) have passed.
@@ -1138,41 +1142,42 @@ Button/Tooltip/Repel=Knock back and damage enemy units that get too close.<n/><n
 Button/Tooltip/ResourceCollector=Every unit killed after having been affected by any Probe Hero spell has a <c val="FFFF80"><d ref="Effect,ResourcesCU,Chance*100"/>%</c> chance to drop a mineral pickup worth <c val="FFFF80">1</c> resource.<n/><n/>Once <c val="FFFF80">100</c> resources have been gained the Probe Hero will gain <c val="FFFF80"><d ref="Behavior,ProbeHeroUpgrade,Modification.VitalMaxArray[Shields]"/></c> increased maximum health/shields, <c val="FFFF80"><d ref="Behavior,ProbeHeroUpgrade,Modification.VitalMaxArray[Energy]"/></c> maximum energy, and <c val="FFFF80"><d ref="Effect,SpawnArmyCP,PeriodCount"/></c> random units get spawned for your Protoss Allies at their nearest structure.
 Button/Tooltip/ResourcePickup=
 Button/Tooltip/RichResourcePickup=
+Button/Tooltip/RockLord=The Rock Lord unit has 50% chance to take no damage.
 Button/Tooltip/RotatingBeam=Create <c val="FFFF80"><d ref="Effect,RotatingBeamCP,PeriodCount" precision="2"/></c> Beams with a length of <c val="FFFF80">2</c> that rotate around the target point dealing damage to enemies that they come in contact with.<n/><n/>Lasts for <c val="FFFF80"><d ref="Effect,RotatingBeamLifetime,ExpireDelay"/></c> seconds.
 Button/Tooltip/RotatingBeamUnit=
 Button/Tooltip/SandstormEarth=Infusion: <c val="804040">Earth</c><n/>Release: <c val="FFFFFF">Wind</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,SandstormEarthDMG,Amount*2"/></c> damage per second in a radius of <c val="FFFF80"><d ref="Effect,SandstormEarthSA,AreaArray[0].Radius" precision="2"/></c> around the target point, lasting for <c val="FFFF80"><d  ref="Effect,SandstormEarthCP,PeriodCount*Effect,SandstormEarthCP,PeriodicPeriodArray[0]"/></c> seconds<n/><n/>Enemies under the effects of Sandstorm are blinded, reducing their attack range to melee
 Button/Tooltip/SandstormWind=Infusion: <c val="FFFFFF">Wind</c><n/>Release: <c val="804040">Earth</c><n/><n/>Deal <c val="FFFF80"><d ref="Effect,SandstormWindDMG,Amount*2"/></c> damage per second in a radius of <c val="FFFF80"><d ref="Effect,SandstormWindSA,AreaArray[0].Radius" precision="2"/></c> around the target point, lasting for <c val="FFFF80"><d  ref="Effect,SandstormWindCP,PeriodCount*Effect,SandstormWindCP,PeriodicPeriodArray[0]"/></c> seconds<n/><n/>Enemies under the effects of Sandstorm are blinded, reducing their attack range to melee
-Button/Tooltip/SerpentLord=
+Button/Tooltip/SerpentLord=Has 25% life steal and pulls its target towards itself.
 Button/Tooltip/ShadowCrashMissile=Launches a Poisonbolt at the target location dealing 30 damage on impact and poisoning the targets for 11% of the initial damage per second over 3 seconds.
 Button/Tooltip/ShadowHero=Become one with the darkness...
-Button/Tooltip/ShadowLord=Anti-ground ambusher. Has a spine attack that damages all enemy units in its line of fire.<n/><n/><c val="ffff8a">Can attack ground units.<n/>Must burrow to attack.</c>
+Button/Tooltip/ShadowLord=The Shadow Lord cannot be seen
 Button/Tooltip/Shadowcontrol=You gain control of the target enemy unit. Can control up to <c val="FFFF80"><d ref="Effect,ShadowplayDummyEffectTarget,Duration + 4"/></c> units at once. Controlled units will release a Doom explosion when killed<n/><n/>Casting on heroic/structure enemies will reveal them and cause them to lose <c val="FFFF80"><d ref="Behavior,ShadowplayHeroic,Modification.LifeArmorBonus*(-1)"/></c> armor and take <c val="FFFF80"><d ref="(Behavior,ShadowplayHeroic,DamageResponse.ModifyFraction-1)*100"/>%</c> more damage for <c val="FFFF80"><d ref="Behavior,ShadowplayHeroic,Duration"/></c> seconds
 Button/Tooltip/Shadowcrash=Fires a shadow missile at a target, dealing <c val="FFFF80">40</c> damage to all enemies near the impact point and pulling them to the center of the crash.
 Button/Tooltip/Shielder=<c val="00FF00"><c val="0080FF">Shields</c> allied units and structures for <c val="FFFFFF">15</c> seconds at the cost of <c val="FFFFFF"><d ref="Abil,DefensiveMatrix,Cost[0].Vital[Energy]"/></c> <c val="FF00FF">energy</c>.<n/><n/><c val="0080FF">Shield</c> strength is <c val="0080FF">500</c>(+<c val="0080FF">15</c> per Maximum <c val="008000">health</c>/<c val="0080FF">shield</c> reward)<n/>Current <c val="0080FF">shield</c> strength is <c val="0080FF"><d ref="Behavior,DefensiveMatrix,Modification.VitalMaxArray[Shields]"/></c><n/><n/><c val="FF00FF">Energy</c> maximum is <c val="FF00FF">300</c>(+<c val="FF00FF">10</c> for every <c val="FF00FF">energy</c> maximum reward)<n/>Current maximum is <c val="FF00FF"><d ref="Unit,ShielderDrone,EnergyMax"/></c></c>
 Button/Tooltip/Shockwave=Sends out a Shockwave towards the target point dealing <c val="FFFF80"><d ref="Effect,ShockwaveDamage,Amount"/></c> damage to all enemy units in it's path
-Button/Tooltip/SiegeLord=Ranged unit. Shoots large globs of acid at long range.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
-Button/Tooltip/SkyLord=Air unit. Bounces its shot to strike multiple targets.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/SiegeLord=The Siege Lord has greatly increased weapon range, but less accuracy.
+Button/Tooltip/SkyLord=Each time the Sky Lord receives damage it gains increased attack speed for 5 seconds.
 Button/Tooltip/Slash=Deal damage to enemies in a radius of <c val="FFFF80">1.5</c>
-Button/Tooltip/SlimeLord=Assault unit. Regenerates life quickly while burrowed. Attacks debilitate the target, slowing its attack and movement speeds.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/SlimeLord=Dealing damage to the Slime Lord will apply 1 stack of slime to the caster.
 Button/Tooltip/SpineDefense=Anti-ground defensive structure. <n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/SpireAttackMissile=Casts a Lightning at the target dealing 40 damage.
 Button/Tooltip/SplitterY=<c val="0080FF">Launches a missile that can split and damage multiple enemies.</c>
-Button/Tooltip/SporeLord=Long-range anti-ground flyer. <n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/SporeLord=Attacks From the Spore Lord deal no damage but will cover the affected unit in volatile spores which will explode if it receives damage or another stack of spores is applied.
 Button/Tooltip/StaticShield=Attackers get hit by 'Static' stunning them for 4 seconds.<n/>Has limited charges but restores charges over time.
 Button/Tooltip/Stealth=Become invisible for <c val="FFFF80"><d ref="Behavior,Stealth,Duration" precision="1"/></c> seconds after receiving damage<n/><n/><c val="FFFF80"><d ref="Abil,IllusionHeroStealth,Cost[0].Charge.TimeUse"/></c> second cooldown
 Button/Tooltip/Steam=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Boils the insides of enemies in a radius of <c val="FFFF80"><d ref="Effect,SteamFireSA,AreaArray[0].Radius" precision="1"/></c> around the target point dealing <c val="FFFF80"><d ref="Effect,SteamFireInitDMG,Amount"/></c> damage to affected enemies, and then an additional <c val="FFFF80"><d ref="Effect,SteamFireDMG,Amount*20"/></c> damage over <c val="FFFF80">10</c> seconds. Units that die while under the effects of Steam have a <c val="FFFF80">15%</c> to cause another Steam explosion.
 Button/Tooltip/SteamWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Boils the insides of enemies in a radius of <c val="FFFF80"><d ref="Effect,SteamWaterSA,AreaArray[0].Radius" precision="1"/></c> around the target point dealing <c val="FFFF80"><d ref="Effect,SteamWaterInitDMG,Amount"/></c> damage to affected enemies, and then an additional <c val="FFFF80"><d ref="Effect,SteamWaterDMG,Amount*20"/></c> damage over <c val="FFFF80">10</c> seconds. Units that die while under the effects of Steam have a <c val="FFFF80"><d ref="Effect,SteamWaterExplodeDelay,Chance*100"precision="1"/>%</c> to cause another Steam explosion.
-Button/Tooltip/StormLord=
+Button/Tooltip/StormLord=Gives zerg units 40% damage reduction in a range of 8, gains 5% damage reduction and loses 2% damage for every zerg unit in the same radius.
 Button/Tooltip/Strafe=Rapidly launches <c val="FFFF80"><d ref="Effect,WarpHeroStrafeDummy,ExpireDelay"/></c> missiles at random targets in range, each dealing <c val="FFFF80"><d ref="Effect,ImmortalStrafeDamage,Amount"/></c> damage.
 Button/Tooltip/SubarmorPolymerflow=Polymer is released when getting hit by melee or ranged attacks reducing damage taken by <d ref="(Behavior,Polymercrust,DamageResponse.ModifyFraction-1)*(-100)" precision="2"/>% Stacks up to 10 times.
 Button/Tooltip/Substitution=Instantly restore <c val="FFFF80"><d ref="Effect,SubstitutionMU,VitalArray[Shields].Change"/></c> shield points
 Button/Tooltip/Superlisk=Heavy assault beast. Has an area-damage attack.<n/><n/><c val="ffff8a">Can attack ground units.</c>
-Button/Tooltip/SwarmLord=Siege unit that attacks while rooted or burrowed by spawning flying Locusts. Flying Locusts are faster and deal more damage, but have less life than ground Locusts.<n/><n/><c val="ffff8a">Locusts can attack ground units.</c>
+Button/Tooltip/SwarmLord=The Swarm Lord has a 25% chance to spawn a pair of minions for every unit in a radius of 5 every 2.5 seconds, and will incubate eggs on any unit that it attacks
 Button/Tooltip/SweepingBeam=Launch a projectile at the target point which will fire <c val="FFFF80"><d ref="(Effect,SweepingBeamRightData,ValidateMax+1)*(Effect,SweepingBeamRightOffset,PeriodCount)"/></c> beams over time across a total range of <c val="FFFF80">8</c>, perpendicular to the cast angle.
 Button/Tooltip/ThorV2=Heavy assault mech.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/ThorV3=Heavy assault mech.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
-Button/Tooltip/ThornLord=Assault unit. Regenerates life quickly when burrowed. Can morph into a Ravager.<n/><n/><c val="ffff8a">Can attack ground units.</c>
-Button/Tooltip/ThunderLord=Powerful psionic attacker.<n/><n/><c val="ffff8a">Can attack ground and air units.</c><n/><n/><c val="FFE303">Detector, Regenerative</c>
+Button/Tooltip/ThornLord=Each time the Thorn Lord takes damage, it launches a thorn to random location.
+Button/Tooltip/ThunderLord=The Thunder Lord deals greatly increased damage to Shields.
 Button/Tooltip/Thunderfury=All enemy units in the target area suffer <c val="FFFF80"><d ref="Effect,LightningHeroThunderfuryDMG,Amount"/></c>  damage and get knocked back.
 Button/Tooltip/ThunderstormWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="FFFFFF">Wind</c><n/><n/>Create a Thunderstorm at your hero which will travel up to <c val="FFFF80">12</c> range towards the target point dealing <c val="FFFF80"><d ref="Effect,ThunderstormWaterDMG,Amount"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,ThunderstormWaterSA,AreaArray[0].Radius"/></c> each second<n/><n/>Each damage instance can chain to <c val="FFFF80"><d ref="Effect,ThunderstormWaterChainSearchTarget,AreaArray[0].MaxCount"/></c> additional unit in a radius of <c val="FFFF80">3</c>
 Button/Tooltip/ThunderstormWind=Infusion: <c val="FFFFFF">Wind</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Create a Thunderstorm at your hero which will travel up to <c val="FFFF80">12</c> range towards the target point dealing <c val="FFFF80"><d ref="Effect,ThunderstormWindDMG,Amount"/></c> damage in a radius of <c val="FFFF80"><d ref="Effect,ThunderstormWindSA,AreaArray[0].Radius"/></c> each second<n/><n/>Each damage instance can chain to <c val="FFFF80">1</c> additional unit in a radius of <c val="FFFF80">3</c>
@@ -1188,10 +1193,10 @@ Button/Tooltip/Trickery=Root the target unit in place and trick up to <c val="FF
 Button/Tooltip/TwilightHero=Night falls... and so will your enemies.
 Button/Tooltip/TwilightHeroMatrix=
 Button/Tooltip/TwistCannon=Launches a destructive missile towards the target direction, dealing <c val="FFFF80"><d ref="Effect,TwilightCannonDamage,Amount"/></c> damage to the first enemy in comes in contact with.
-Button/Tooltip/TyrantLord=
+Button/Tooltip/TyrantLord=The Tyrant Lord gains 1 armor for 3 seconds each time it receives damage.
 Button/Tooltip/Ultralisk2=Heavy assault beast. Has an area-damage attack.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/Upheaval=Summon <c val="FFFF80"><d ref="Effect,UpheavalOffsets,PeriodCount"/></c> lines of spikes from the ground that travel up to a distance of <c val="FFFF80"><d ref="12-Effect,UpheavalLM,ImpactRange"/></c>. Each spike deals <c val="FFFF80"><d ref="Effect,UpheavalDMG,Amount"/></c> damage in a radius of<c val="FFFF80"> <d ref="Effect,UpheavalSA,AreaArray[0].Radius"/></c>
-Button/Tooltip/VoidLord=Powerful psionic attacker.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c><n/><c val="FFE303">Detector</c>
+Button/Tooltip/VoidLord=The Void Lord has 20% chance to gain 70% damage reduction for 1 second after receiving damage
 Button/Tooltip/WallofDarkness=Receiving damage generates Dark Energy<n/><n/>When Dark Energy reaches 100, the Shadow Hero will release 10 Shadowcrashes at surrounding enemies
 Button/Tooltip/WarpHero=Somehow he never runs out of ammo.
 Button/Tooltip/Warpout=Warps out a friendly target unit and uses its parts and energy to reconstruct your hero healing for <c val="FFFF80"><d ref="Effect,TwilightHeroWarpoutHeal,VitalArray[Life].Change"/></c> life/shields, and also cloaks you for up to <c val="FFFF80"><d ref="Behavior,Warpout,Duration"/></c> seconds or until the next ability cast.
@@ -1202,7 +1207,7 @@ Button/Tooltip/WaterHeroPuddleUnitLarge=
 Button/Tooltip/WaterHeroPuddleUnitMed=
 Button/Tooltip/Windstorm=Infusion: <c val="FFFFFF">Wind</c><n/>Release: <c val="FFFFFF">Wind</c><n/><n/>Pulls enemy units in a radius of <c val="FFFF80"><d ref="Effect,WindstormSA,AreaArray[0].Radius" precision="1"/></c> towards the target location.
 Button/Tooltip/WingedHorror=Assault unit. Regenerates life quickly when burrowed.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
-Button/Tooltip/ZergLord=Colossal Zerg flyer. Can unleash multiple devastating attacks. <n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c><n/>
+Button/Tooltip/ZergLord=The Zerg Lord has <c val="FFFF80"><d ref="Unit,ZergLord,LifeArmor"/></c> armor and damage reduction.
 DataCollection/Name/AirHero=Air Hero
 DataCollection/Name/BeamHero=Beam Hero
 DataCollection/Name/BladeHero=Blade Hero
@@ -4649,6 +4654,7 @@ Param/Value/10A43668=Transformer 0/2
 Param/Value/10C9E3D3=Flow 0/2
 Param/Value/10CB8678=Chat Commands
 Param/Value/10F4EACA=not enough achievements
+Param/Value/110E9F92=
 Param/Value/11342A36=NYI
 Param/Value/1147AB79=Split 0/1
 Param/Value/11724A3E=Each enemy touched by your Projection restores 1/2 energy and 15/30 health/shields to the caster.
@@ -5526,7 +5532,6 @@ Param/Value/7B40E047=Boss down
 Param/Value/7B5FB3FD=Reward: +1 Zealot Damage
 Param/Value/7BB2EAC0=Aegis 0/3
 Param/Value/7BE1A687="Split 1/3"
-Param/Value/7C00D0BB=
 Param/Value/7C14E7F5=flawless Thor
 Param/Value/7C189EE8=Gravity
 Param/Value/7C348810=Typhoon 0/3

@@ -1538,6 +1538,7 @@ Variable/Name/700BD666=direction
 Variable/Name/70394083=player
 Variable/Name/7065059E=tw
 Variable/Name/709FCBD4=ping1
+Variable/Name/7146A7F5=TotalRewards
 Variable/Name/71508185=t
 Variable/Name/716C0D10=cannoncheck
 Variable/Name/717C40C5=Earth3

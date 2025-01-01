@@ -46,6 +46,10 @@
         <Icon value="Assets\Textures\btn-ability-protoss-gatewayservitordrone-red.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
+    <CButton id="GravityHeroPolarity">
+        <Icon value="Assets\Polarity.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
     <CButton id="TimeHeroChronofield">
         <Icon value="Assets\Chronofield.dds"/>
         <EditorCategories value="Race:Protoss"/>

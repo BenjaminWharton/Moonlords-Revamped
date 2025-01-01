@@ -66,6 +66,7 @@ int[20][6][20] gv_talentsdialogbuttons;
 int gv_stage;
 int[6] gv_rewardUnspend;
 int[6] gv_rewardaccumulated;
+int[6] gv_totalRewards;
 int[6][21] gv_rewardUsed;
 int gv_zachievementDialog;
 int[101] gv_zachievementObjects;
@@ -104,7 +105,7 @@ int gv_champion;
 unit gv_demolisher;
 unitgroup gv_alliedUnitsOnMap;
 int gv_challengeStage;
-int gv_hardcore;
+bool gv_hardcore;
 int gv_rewardDialog;
 int[27] gv_rewardButtons;
 int[5] gv_rewardSpendMultiplier;
@@ -358,7 +359,7 @@ int gf_challengeOverseermadness (int lp_cstage);
 void gf_Overseer (point lp_spawn, point lp_loc1, point lp_loc2, point lp_loc3, point lp_loc4, point lp_loc5);
 bool gf_targetspecial (unit lp_target);
 string gf_getPortrait (string lp_boss);
-string gf_getText (string lp_boss);
+text gf_getText (string lp_boss);
 unit gf_getpylonofstage ();
 unit gf_getpylonofprevstage ();
 unit gf_getcurrentzergbase ();
@@ -10264,7 +10265,10 @@ void gf_rewardreset (int lp_pnum) {
 
     // Implementation
     while ((lv_i < 15)) {
-        gf_bankaddtoint(gv_zbanks[lp_pnum], IntToString(lv_i), "rewards", (gv_rewardUsed[lp_pnum][lv_i] * -1));
+        if ((gv_hardcore == false)) {
+            gf_bankaddtoint(gv_zbanks[lp_pnum], IntToString(lv_i), "rewards", (gv_rewardUsed[lp_pnum][lv_i] * -1));
+        }
+
         gv_rewardUsed[lp_pnum][lv_i] = 0;
         gf_rewardnewtooltip(lp_pnum, lv_i);
         lv_i += 1;
@@ -10385,12 +10389,18 @@ void gf_rewardbuy (int lp_pnum, int lp_typ) {
     // Implementation
     if ((lp_typ <= 4) && (gf_rewardgetprice(lp_pnum, 0) <= gv_rewardUnspend[lp_pnum])) {
         gv_rewardUnspend[lp_pnum] -= gf_rewardgetprice(lp_pnum, 0);
-        gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 0) * -1));
+        if ((gv_hardcore == false)) {
+            gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 0) * -1));
+        }
+
     }
     else {
         if ((lp_typ <= 9) && (gf_rewardgetprice(lp_pnum, 5) <= gv_rewardUnspend[lp_pnum])) {
             gv_rewardUnspend[lp_pnum] -= gf_rewardgetprice(lp_pnum, 5);
-            gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 5) * -1));
+            if ((gv_hardcore == false)) {
+                gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 5) * -1));
+            }
+
         }
         else {
             if ((lp_typ > 9)) {
@@ -10402,7 +10412,10 @@ void gf_rewardbuy (int lp_pnum, int lp_typ) {
                     if ((lp_typ == 13) && (gf_rewardgetprice(lp_pnum, 10) <= gv_rewardUnspend[lp_pnum])) {
                         if ((gf_achievementpointsum(lp_pnum) >= 100)) {
                             gv_rewardUnspend[lp_pnum] -= gf_rewardgetprice(lp_pnum, 10);
-                            gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 10) * -1));
+                            if ((gv_hardcore == false)) {
+                                gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 10) * -1));
+                            }
+
                         }
                         else {
                             UIDisplayMessage(PlayerGroupSingle(lp_pnum), c_messageAreaSubtitle, StringExternal("Param/Value/0565430A"));
@@ -10413,7 +10426,10 @@ void gf_rewardbuy (int lp_pnum, int lp_typ) {
                         if ((lp_typ == 14) && (gf_rewardgetprice(lp_pnum, 10) <= gv_rewardUnspend[lp_pnum])) {
                             if ((gf_achievementpointsum(lp_pnum) >= 150)) {
                                 gv_rewardUnspend[lp_pnum] -= gf_rewardgetprice(lp_pnum, 10);
-                                gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 10) * -1));
+                                if ((gv_hardcore == false)) {
+                                    gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 10) * -1));
+                                }
+
                             }
                             else {
                                 UIDisplayMessage(PlayerGroupSingle(lp_pnum), c_messageAreaSubtitle, StringExternal("Param/Value/10F4EACA"));
@@ -10424,7 +10440,10 @@ void gf_rewardbuy (int lp_pnum, int lp_typ) {
                             if ((lp_typ == 10) && (gf_rewardgetprice(lp_pnum, 10) <= gv_rewardUnspend[lp_pnum])) {
                                 if ((gf_achievementpointsum(lp_pnum) >= 200)) {
                                     gv_rewardUnspend[lp_pnum] -= gf_rewardgetprice(lp_pnum, 10);
-                                    gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 10) * -1));
+                                    if ((gv_hardcore == false)) {
+                                        gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 10) * -1));
+                                    }
+
                                 }
                                 else {
                                     UIDisplayMessage(PlayerGroupSingle(lp_pnum), c_messageAreaSubtitle, StringExternal("Param/Value/0C14677A"));
@@ -10435,7 +10454,10 @@ void gf_rewardbuy (int lp_pnum, int lp_typ) {
                                 if ((lp_typ == 11) && (gf_rewardgetprice(lp_pnum, 10) <= gv_rewardUnspend[lp_pnum])) {
                                     if ((gf_achievementpointsum(lp_pnum) >= 250)) {
                                         gv_rewardUnspend[lp_pnum] -= gf_rewardgetprice(lp_pnum, 10);
-                                        gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 10) * -1));
+                                        if ((gv_hardcore == false)) {
+                                            gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 10) * -1));
+                                        }
+
                                     }
                                     else {
                                         UIDisplayMessage(PlayerGroupSingle(lp_pnum), c_messageAreaSubtitle, StringExternal("Param/Value/B87B968C"));
@@ -10446,7 +10468,10 @@ void gf_rewardbuy (int lp_pnum, int lp_typ) {
                                     if ((lp_typ == 12) && (gf_rewardgetprice(lp_pnum, 10) <= gv_rewardUnspend[lp_pnum])) {
                                         if ((gf_achievementpointsum(lp_pnum) >= 300)) {
                                             gv_rewardUnspend[lp_pnum] -= gf_rewardgetprice(lp_pnum, 10);
-                                            gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 10) * -1));
+                                            if ((gv_hardcore == false)) {
+                                                gf_bankaddtoint(gv_zbanks[lp_pnum], "unspend", "rewards", (gf_rewardgetprice(lp_pnum, 10) * -1));
+                                            }
+
                                         }
                                         else {
                                             UIDisplayMessage(PlayerGroupSingle(lp_pnum), c_messageAreaSubtitle, StringExternal("Param/Value/9C011591"));
@@ -10468,7 +10493,10 @@ void gf_rewardbuy (int lp_pnum, int lp_typ) {
             }
         }
     }
-    gf_bankaddtoint(gv_zbanks[lp_pnum], IntToString(lp_typ), "rewards", 1);
+    if ((gv_hardcore == false)) {
+        gf_bankaddtoint(gv_zbanks[lp_pnum], IntToString(lp_typ), "rewards", 1);
+    }
+
     gv_rewardUsed[lp_pnum][lp_typ] += 1;
     gf_rewardadd(lp_typ, 1, lp_pnum, false);
     gf_rewardnewpoints(lp_pnum, 0);
@@ -10545,7 +10573,10 @@ void gf_rewardaddall (int lp_pnum, bool lp_respawn) {
 
     // Implementation
     while ((lv_i < 15)) {
-        gf_rewardadd(lv_i, gv_rewardUsed[lp_pnum][lv_i], lp_pnum, lp_respawn);
+        if ((gv_hardcore == false)) {
+            gf_rewardadd(lv_i, gv_rewardUsed[lp_pnum][lv_i], lp_pnum, lp_respawn);
+        }
+
         lv_i += 1;
     }
 }
@@ -10731,9 +10762,9 @@ void gf_rewardgainpoints (int lp_pnum, int lp_amount, int lp_difficulty) {
     if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
         gv_zacmRewardsThisMatch[lp_pnum] += lv_total;
         gf_achievementPossiblyGainedSolo(63, gv_zacmRewardsThisMatch[lp_pnum], lp_pnum);
-        if (((lv_total < 0) || (gv_rewardaccumulated[lv_i] < gv_rEWARDCAP))) {
-            if ((lv_total > 0) && ((gv_rewardaccumulated[lv_i] + lv_total) > gv_rEWARDCAP)) {
-                lv_total = (gv_rEWARDCAP - gv_rewardaccumulated[lv_i]);
+        if (((lv_total < 0) || (gv_totalRewards[lv_i] < gv_rEWARDCAP))) {
+            if ((lv_total > 0) && ((gv_totalRewards[lv_i] + lv_total) > gv_rEWARDCAP)) {
+                lv_total = (gv_rEWARDCAP - gv_totalRewards[lv_i]);
             }
 
             lv_modulo = ModI(lv_total, lp_difficulty);
@@ -10744,8 +10775,14 @@ void gf_rewardgainpoints (int lp_pnum, int lp_amount, int lp_difficulty) {
             gf_rewardnewpoints(lv_i, lv_total);
             gf_rewardcollectachievement(lv_i);
             gf_banksetc(lp_pnum, gv_zbanks[lv_i]);
+            gv_totalRewards[lp_pnum] += lv_total;
         }
+        else {
+            if ((gv_hardcore == true)) {
+                gf_rewardnewpoints(lv_i, lv_total);
+            }
 
+        }
     }
 
 }
@@ -10948,26 +10985,30 @@ void gf_loadvalues (bank lp_bank, int lp_pnum) {
         UIDisplayMessage(PlayerGroupSingle(lp_pnum), c_messageAreaSubtitle, StringExternal("Param/Value/6BCD9D14"));
         BankValueSetFromString(lp_bank, "acm", "a", gf_bankacmfillwith0(lv_tempstring));
         BankSave(lp_bank);
-        gv_rewardUnspend[lp_pnum] = gf_bankgetint(lp_bank, "unspend", "rewards");
-        gv_rewardaccumulated[lp_pnum] = gf_bankgetint(lp_bank, "all", "rewards");
-        while ((lv_i < 15)) {
-            gv_rewardUsed[lp_pnum][lv_i] = gf_bankgetint(lp_bank, IntToString(lv_i), "rewards");
-            lv_i += 1;
-        }
-        if ((gf_bankgetint(lp_bank, "98", "version") < 1) && (gf_bankgetint(lp_bank, "all", "rewards") > 0)) {
-            gf_rewardreset(lp_pnum);
-            gf_bankaddtoint(lp_bank, "98", "version", 1);
-            if ((gv_rewardaccumulated[lp_pnum] >= 1)) {
-                UIDisplayMessage(PlayerGroupSingle(lp_pnum), c_messageAreaSubtitle, StringExternal("Param/Value/78C1E000"));
+        gv_totalRewards[lp_pnum] = gf_bankgetint(lp_bank, "all", "rewards");
+        if ((gv_hardcore == false)) {
+            while ((lv_i < 15)) {
+                gv_rewardUnspend[lp_pnum] = gf_bankgetint(lp_bank, "unspend", "rewards");
+                gv_rewardaccumulated[lp_pnum] = gf_bankgetint(lp_bank, "all", "rewards");
+                gv_rewardUsed[lp_pnum][lv_i] = gf_bankgetint(lp_bank, IntToString(lv_i), "rewards");
+                lv_i += 1;
             }
-
-        }
-        else {
-            if ((gf_bankgetint(lp_bank, "98", "version") < 1)) {
+            if ((gf_bankgetint(lp_bank, "98", "version") < 1) && (gf_bankgetint(lp_bank, "all", "rewards") > 0)) {
+                gf_rewardreset(lp_pnum);
                 gf_bankaddtoint(lp_bank, "98", "version", 1);
-            }
+                if ((gv_rewardaccumulated[lp_pnum] >= 1)) {
+                    UIDisplayMessage(PlayerGroupSingle(lp_pnum), c_messageAreaSubtitle, StringExternal("Param/Value/78C1E000"));
+                }
 
+            }
+            else {
+                if ((gf_bankgetint(lp_bank, "98", "version") < 1)) {
+                    gf_bankaddtoint(lp_bank, "98", "version", 1);
+                }
+
+            }
         }
+
     }
     else {
         BankSectionRemove(lp_bank, "completeruns");
@@ -14110,137 +14151,137 @@ string gf_getPortrait (string lp_boss) {
     }
 }
 
-string gf_getText (string lp_boss) {
+text gf_getText (string lp_boss) {
     // Automatic Variable Declarations
-    string auto8EF05D74_val;
+    string auto6C8089D9_val;
 
     // Implementation
-    auto8EF05D74_val = lp_boss;
-    if (auto8EF05D74_val == "ZergLord") {
-        return "The Zerg Lord has <c val=\"FFFF80\"><d ref=\"Unit,ZergLord,LifeArmor\"/></c> armor and damage reduction.";
+    auto6C8089D9_val = lp_boss;
+    if (auto6C8089D9_val == "ZergLord") {
+        return StringExternal("Button/Tooltip/ZergLord");
     }
-    else if (auto8EF05D74_val == "MindLord") {
-        return "Boosts the movement speed of all lesser bosses on the map, and additionally spawns one boss every 30 seconds.";
+    else if (auto6C8089D9_val == "MindLord") {
+        return StringExternal("Button/Tooltip/MindLord");
     }
-    else if (auto8EF05D74_val == "HorrorLord") {
-        return "The Horror Lord masks its presence and uses 3 types of random attacks, while also creating illusions to distract you";
+    else if (auto6C8089D9_val == "HorrorLord") {
+        return StringExternal("Button/Tooltip/HorrorLord");
     }
-    else if (auto8EF05D74_val == "ExtinctionLord") {
-        return "Takes 90% reduced damage while a hero is not within 8 range of it.";
+    else if (auto6C8089D9_val == "ExtinctionLord") {
+        return StringExternal("Button/Tooltip/ExtinctionLord");
     }
-    else if (auto8EF05D74_val == "StormLord") {
-        return "Gives zerg units 40% damage reduction in a range of 8, gains 5% damage reduction and loses 2% damage for every zerg unit in the same radius.";
+    else if (auto6C8089D9_val == "StormLord") {
+        return StringExternal("Button/Tooltip/StormLord");
     }
-    else if (auto8EF05D74_val == "ChaosLord") {
-        return "Red Orbs will launch themselves at enemies in a range of 12 dealing damage on impact and creating 5 smaller orbs which will travel outward from the impact point.<n/><n/>Purple Orbs turn missiles that touch them into smaller purple orbs which target a random point dealing damage on impact.<n/><n/>Each Green Orb gives the Chaos Lord 20% damage reduction, and knocks back any units that get too close.";
+    else if (auto6C8089D9_val == "ChaosLord") {
+        return StringExternal("Button/Tooltip/ChaosLord");
     }
-    else if (auto8EF05D74_val == "ShadowLord") {
-        return "The Shadow Lord cannot be seen";
+    else if (auto6C8089D9_val == "ShadowLord") {
+        return StringExternal("Button/Tooltip/ShadowLord");
     }
-    else if (auto8EF05D74_val == "FleshLord") {
-        return "Rapidly discharges projectiles by either rolling or lobbing";
+    else if (auto6C8089D9_val == "FleshLord") {
+        return StringExternal("Button/Tooltip/FleshLord");
     }
-    else if (auto8EF05D74_val == "PrimalLord") {
-        return "Periodically eats nearby zerg units to heal itself.";
+    else if (auto6C8089D9_val == "PrimalLord") {
+        return StringExternal("Button/Tooltip/PrimalLord");
     }
-    else if (auto8EF05D74_val == "TyrantLord") {
-        return "The Tyrant Lord gains 1 armor for 3 seconds each time it receives damage.";
+    else if (auto6C8089D9_val == "TyrantLord") {
+        return StringExternal("Button/Tooltip/TyrantLord");
     }
-    else if (auto8EF05D74_val == "SporeLord") {
-        return "Attacks From the Spore Lord deal no damage but will cover the affected unit in volatile spores which will explode if it receives damage or another stack of spores is applied.";
+    else if (auto6C8089D9_val == "SporeLord") {
+        return StringExternal("Button/Tooltip/SporeLord");
     }
-    else if (auto8EF05D74_val == "SiegeLord") {
-        return "The Siege Lord has greatly increased weapon range, but less accuracy.";
+    else if (auto6C8089D9_val == "SiegeLord") {
+        return StringExternal("Button/Tooltip/SiegeLord");
     }
-    else if (auto8EF05D74_val == "FortressLord") {
-        return "Hugely increased armor, however it is decreased by 1 every time damage is received.";
+    else if (auto6C8089D9_val == "FortressLord") {
+        return StringExternal("Button/Tooltip/FortressLord");
     }
-    else if (auto8EF05D74_val == "CorrosionLord") {
-        return "The Corrosion Lord's attacks reduce the armor and shield armor of its target by 3 for 30 seconds, stacks infinitely";
+    else if (auto6C8089D9_val == "CorrosionLord") {
+        return StringExternal("Button/Tooltip/CorrosionLord");
     }
-    else if (auto8EF05D74_val == "SerpentLord") {
-        return "Has 25% life steal and pulls its target towards itself.";
+    else if (auto6C8089D9_val == "SerpentLord") {
+        return StringExternal("Button/Tooltip/SerpentLord");
     }
-    else if (auto8EF05D74_val == "CorruptionLord") {
-        return "The Corruption Lord's missiles will continue to launch themselves at enemies in range up to 3 times.";
+    else if (auto6C8089D9_val == "CorruptionLord") {
+        return StringExternal("Button/Tooltip/CorruptionLord");
     }
-    else if (auto8EF05D74_val == "InfectionLord") {
-        return "Infects all protoss units is a radius of 20. Infected units are slowed and take additional damage over time time from any damage effect.";
+    else if (auto6C8089D9_val == "InfectionLord") {
+        return StringExternal("Button/Tooltip/InfectionLord");
     }
-    else if (auto8EF05D74_val == "HiveLord") {
-        return "Overlords circle the Hive Lord dropping units when they receive damage.";
+    else if (auto6C8089D9_val == "HiveLord") {
+        return StringExternal("Button/Tooltip/HiveLord");
     }
-    else if (auto8EF05D74_val == "MutationLord") {
-        return "Mutates a random zerg in a large radius every second increasing health by 100% damage by 100% and attack speed by 50%";
+    else if (auto6C8089D9_val == "MutationLord") {
+        return StringExternal("Button/Tooltip/MutationLord");
     }
-    else if (auto8EF05D74_val == "DreadLord") {
-        return "Protoss units in a huge radius are filled with dread, causing them to take 25% more damage, deal 25% less damage, and move 25% slower.";
+    else if (auto6C8089D9_val == "DreadLord") {
+        return StringExternal("Button/Tooltip/DreadLord");
     }
-    else if (auto8EF05D74_val == "DoomLord") {
-        return "Sends a doom that cannot be stopped until The Doom Lord is destroyed.";
+    else if (auto6C8089D9_val == "DoomLord") {
+        return StringExternal("Button/Tooltip/DoomLord");
     }
-    else if (auto8EF05D74_val == "OblivionLord") {
-        return "The Oblivion Lord has an 80% chance to take a maximum of 10 damage.";
+    else if (auto6C8089D9_val == "OblivionLord") {
+        return StringExternal("Button/Tooltip/OblivionLord");
     }
-    else if (auto8EF05D74_val == "VoidLord") {
-        return "The Void Lord has 20% chance to gain 70% damage reduction for 1 second after receiving damage";
+    else if (auto6C8089D9_val == "VoidLord") {
+        return StringExternal("Button/Tooltip/VoidLord");
     }
-    else if (auto8EF05D74_val == "CarnageLord") {
-        return "The Carnage Lord gains 10% faster attack speed for 10 seconds each time it attacks.";
+    else if (auto6C8089D9_val == "CarnageLord") {
+        return StringExternal("Button/Tooltip/CarnageLord");
     }
-    else if (auto8EF05D74_val == "ParasiteLord") {
-        return "The Parasite Lord takes control of 1 nearby unit every 1.5 seconds.";
+    else if (auto6C8089D9_val == "ParasiteLord") {
+        return StringExternal("Button/Tooltip/ParasiteLord");
     }
-    else if (auto8EF05D74_val == "DemonLord") {
-        return "The Demon Lord gains improved attack speed, movement speed, health regeneration, and armor the closer he is to being dead.";
+    else if (auto6C8089D9_val == "DemonLord") {
+        return StringExternal("Button/Tooltip/DemonLord");
     }
-    else if (auto8EF05D74_val == "DeathLord") {
-        return "Any unit that dares attack the Death Lord becomes cursed.";
+    else if (auto6C8089D9_val == "DeathLord") {
+        return StringExternal("Button/Tooltip/DeathLord");
     }
-    else if (auto8EF05D74_val == "HordeLord") {
-        return "Spawns Broodlings when receiving damage.";
+    else if (auto6C8089D9_val == "HordeLord") {
+        return StringExternal("Button/Tooltip/HordeLord");
     }
-    else if (auto8EF05D74_val == "SkyLord") {
-        return "Each time the Sky Lord receives damage it gains increased attack speed for 5 seconds.";
+    else if (auto6C8089D9_val == "SkyLord") {
+        return StringExternal("Button/Tooltip/SkyLord");
     }
-    else if (auto8EF05D74_val == "BroodLord") {
-        return "Launches Broodlings as its basic attack, and in addition units killed by the Brood Lord will spawn 2 Broodlings.";
+    else if (auto6C8089D9_val == "BroodLord") {
+        return StringExternal("Button/Tooltip/BroodLord");
     }
-    else if (auto8EF05D74_val == "BeastLord") {
-        return "Improves attack and movement speed for all zerg units in a large area by 50%";
+    else if (auto6C8089D9_val == "BeastLord") {
+        return StringExternal("Button/Tooltip/BeastLord");
     }
-    else if (auto8EF05D74_val == "RockLord") {
-        return "The Rock Lord unit has 50% chance to take no damage.";
+    else if (auto6C8089D9_val == "RockLord") {
+        return StringExternal("Button/Tooltip/RockLord");
     }
-    else if (auto8EF05D74_val == "EvolutionLord") {
-        return "The Evolution Lord unit grows stronger with each kill.";
+    else if (auto6C8089D9_val == "EvolutionLord") {
+        return StringExternal("Button/Tooltip/EvolutionLord");
     }
-    else if (auto8EF05D74_val == "SlimeLord") {
-        return "Dealing damage to the Slime Lord will apply 1 stack of slime to the caster.";
+    else if (auto6C8089D9_val == "SlimeLord") {
+        return StringExternal("Button/Tooltip/SlimeLord");
     }
-    else if (auto8EF05D74_val == "PlagueLord") {
-        return "Each time a plagued unit dies the Plague Lord is healed for 1% heath.";
+    else if (auto6C8089D9_val == "PlagueLord") {
+        return StringExternal("Button/Tooltip/PlagueLord");
     }
-    else if (auto8EF05D74_val == "OceanLord") {
-        return "Heals 5000 health to all zerg units in a large radius every 15 seconds.";
+    else if (auto6C8089D9_val == "OceanLord") {
+        return StringExternal("Button/Tooltip/OceanLord");
     }
-    else if (auto8EF05D74_val == "AcidLord") {
-        return "The Acid Lord explodes when it dies.";
+    else if (auto6C8089D9_val == "AcidLord") {
+        return StringExternal("Button/Tooltip/AcidLord");
     }
-    else if (auto8EF05D74_val == "ThunderLord") {
-        return "The Thunder Lord deals greatly increased damage to Shields.";
+    else if (auto6C8089D9_val == "ThunderLord") {
+        return StringExternal("Button/Tooltip/ThunderLord");
     }
-    else if (auto8EF05D74_val == "SwarmLord") {
-        return "The Swarm Lord has a 25% chance to spawn a pair of minions for every unit in a radius of 5 every 2.5 seconds, and will incubate eggs on any unit that it attacks";
+    else if (auto6C8089D9_val == "SwarmLord") {
+        return StringExternal("Button/Tooltip/SwarmLord");
     }
-    else if (auto8EF05D74_val == "FireLord") {
-        return "The Fire Lord leaves behind a large fire when it dies.";
+    else if (auto6C8089D9_val == "FireLord") {
+        return StringExternal("Button/Tooltip/FireLord");
     }
-    else if (auto8EF05D74_val == "ThornLord") {
-        return "Each time the Thorn Lord takes damage, it launches a thorn to random location.";
+    else if (auto6C8089D9_val == "ThornLord") {
+        return StringExternal("Button/Tooltip/ThornLord");
     }
     else {
-        return "";
+        return StringToText("");
     }
 }
 
@@ -14627,7 +14668,7 @@ bool auto_gf_SpawnBoss_TriggerFunc (bool testConds, bool runActions) {
         if ((gv_mode == 0)) {
             libNtve_gf_DisplayBossBar(1, gf_getPortrait(lp_unit), lv_bossname, 0, PlayerGroupAll());
             libNtve_gf_SetBossBarBoss(1, lv_boss, true);
-            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(lp_unit)), PlayerGroupAll());
+            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(lp_unit), PlayerGroupAll());
             gv_currentBoss = lv_boss;
         }
 
@@ -14650,7 +14691,7 @@ bool auto_gf_SpawnBoss_TriggerFunc (bool testConds, bool runActions) {
                     gv_currentBoss = lv_nextboss;
                     libNtve_gf_DisplayBossBar(1, gf_getPortrait(UnitGetType(lv_nextboss)), UnitTypeGetName(UnitGetType(lv_nextboss)), 0, PlayerGroupAll());
                     libNtve_gf_SetBossBarBoss(1, lv_nextboss, true);
-                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_nextboss))), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_nextboss)), PlayerGroupAll());
                 }
 
             }
@@ -14923,7 +14964,7 @@ bool auto_gf_DoomLord13_TriggerFunc (bool testConds, bool runActions) {
         if ((gv_mode == 0)) {
             libNtve_gf_DisplayBossBar(1, "Assets\\Textures\\leviathanportrait_static.dds", StringExternal("Param/Value/728CD2EF"), 0, PlayerGroupAll());
             libNtve_gf_SetBossBarBoss(1, lv_boss, true);
-            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_boss))), PlayerGroupAll());
+            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_boss)), PlayerGroupAll());
             gv_currentBoss = lv_boss;
         }
 
@@ -15015,7 +15056,7 @@ bool auto_gf_DoomLord19_TriggerFunc (bool testConds, bool runActions) {
         if ((gv_mode == 0)) {
             libNtve_gf_DisplayBossBar(1, "Assets\\Textures\\spotterportrait_static.dds", StringExternal("Param/Value/FE10A07D"), 0, PlayerGroupAll());
             libNtve_gf_SetBossBarBoss(1, lv_boss, true);
-            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_boss))), PlayerGroupAll());
+            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_boss)), PlayerGroupAll());
             gv_currentBoss = lv_boss;
         }
 
@@ -15045,7 +15086,7 @@ bool auto_gf_DoomLord19_TriggerFunc (bool testConds, bool runActions) {
                     gv_currentBoss = lv_nextboss;
                     libNtve_gf_DisplayBossBar(1, gf_getPortrait(UnitGetType(lv_nextboss)), UnitTypeGetName(UnitGetType(lv_nextboss)), 0, PlayerGroupAll());
                     libNtve_gf_SetBossBarBoss(1, lv_nextboss, true);
-                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_nextboss))), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_nextboss)), PlayerGroupAll());
                 }
 
             }
@@ -15258,7 +15299,7 @@ bool auto_gf_DoomLord9_TriggerFunc (bool testConds, bool runActions) {
         if ((gv_mode == 0)) {
             libNtve_gf_DisplayBossBar(1, "Assets\\Textures\\changelingportrait_static.dds", StringExternal("Param/Value/24D7D97B"), 0, PlayerGroupAll());
             libNtve_gf_SetBossBarBoss(1, lv_boss, true);
-            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_boss))), PlayerGroupAll());
+            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_boss)), PlayerGroupAll());
             gv_currentBoss = lv_boss;
         }
 
@@ -15291,7 +15332,7 @@ bool auto_gf_DoomLord9_TriggerFunc (bool testConds, bool runActions) {
                     gv_currentBoss = lv_nextboss;
                     libNtve_gf_DisplayBossBar(1, gf_getPortrait(UnitGetType(lv_nextboss)), UnitTypeGetName(UnitGetType(lv_nextboss)), 0, PlayerGroupAll());
                     libNtve_gf_SetBossBarBoss(1, lv_nextboss, true);
-                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_nextboss))), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_nextboss)), PlayerGroupAll());
                 }
 
             }
@@ -15377,7 +15418,7 @@ bool auto_gf_ExtinctionLord_TriggerFunc (bool testConds, bool runActions) {
         if ((gv_mode == 0)) {
             libNtve_gf_DisplayBossBar(1, "Assets\\Textures\\narudportraitex2_static.dds", StringExternal("Param/Value/8F59279B"), 0, PlayerGroupAll());
             libNtve_gf_SetBossBarBoss(1, lv_boss, true);
-            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_boss))), PlayerGroupAll());
+            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_boss)), PlayerGroupAll());
             gv_currentBoss = lv_boss;
         }
 
@@ -15400,7 +15441,7 @@ bool auto_gf_ExtinctionLord_TriggerFunc (bool testConds, bool runActions) {
                     gv_currentBoss = lv_nextboss;
                     libNtve_gf_DisplayBossBar(1, gf_getPortrait(UnitGetType(lv_nextboss)), UnitTypeGetName(UnitGetType(lv_nextboss)), 0, PlayerGroupAll());
                     libNtve_gf_SetBossBarBoss(1, lv_nextboss, true);
-                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_nextboss))), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_nextboss)), PlayerGroupAll());
                 }
 
             }
@@ -15484,7 +15525,7 @@ bool auto_gf_DoomLord8_TriggerFunc (bool testConds, bool runActions) {
         if ((gv_mode == 0)) {
             libNtve_gf_DisplayBossBar(1, "Assets\\Textures\\voidthrasherportrait_static.dds", StringExternal("Param/Value/3EC68D11"), 0, PlayerGroupAll());
             libNtve_gf_SetBossBarBoss(1, lv_boss, true);
-            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_boss))), PlayerGroupAll());
+            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_boss)), PlayerGroupAll());
             gv_currentBoss = lv_boss;
         }
 
@@ -15507,7 +15548,7 @@ bool auto_gf_DoomLord8_TriggerFunc (bool testConds, bool runActions) {
                     gv_currentBoss = lv_nextboss;
                     libNtve_gf_DisplayBossBar(1, gf_getPortrait(UnitGetType(lv_nextboss)), UnitTypeGetName(UnitGetType(lv_nextboss)), 0, PlayerGroupAll());
                     libNtve_gf_SetBossBarBoss(1, lv_nextboss, true);
-                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_nextboss))), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_nextboss)), PlayerGroupAll());
                 }
 
             }
@@ -15674,7 +15715,7 @@ bool auto_gf_DoomLord_TriggerFunc (bool testConds, bool runActions) {
         if ((gv_mode == 0)) {
             libNtve_gf_DisplayBossBar(1, "Assets\\Textures\\hybrid_protossadvanced_experimented_portrait_static.dds", StringExternal("Param/Value/E9BACD06"), 0, PlayerGroupAll());
             libNtve_gf_SetBossBarBoss(1, lv_boss, true);
-            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_boss))), PlayerGroupAll());
+            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_boss)), PlayerGroupAll());
             gv_currentBoss = lv_boss;
         }
 
@@ -15698,7 +15739,7 @@ bool auto_gf_DoomLord_TriggerFunc (bool testConds, bool runActions) {
                     gv_currentBoss = lv_nextboss;
                     libNtve_gf_DisplayBossBar(1, gf_getPortrait(UnitGetType(lv_nextboss)), UnitTypeGetName(UnitGetType(lv_nextboss)), 0, PlayerGroupAll());
                     libNtve_gf_SetBossBarBoss(1, lv_nextboss, true);
-                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_nextboss))), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_nextboss)), PlayerGroupAll());
                 }
 
             }
@@ -15785,7 +15826,7 @@ bool auto_gf_DoomLord7_TriggerFunc (bool testConds, bool runActions) {
         if ((gv_mode == 0)) {
             libNtve_gf_DisplayBossBar(1, "Assets\\Textures\\lurker_primal_collection_portrait_static.dds", StringExternal("Param/Value/2645DB60"), 0, PlayerGroupAll());
             libNtve_gf_SetBossBarBoss(1, lv_boss, true);
-            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_boss))), PlayerGroupAll());
+            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_boss)), PlayerGroupAll());
             gv_currentBoss = lv_boss;
         }
 
@@ -15818,7 +15859,7 @@ bool auto_gf_DoomLord7_TriggerFunc (bool testConds, bool runActions) {
                     gv_currentBoss = lv_nextboss;
                     libNtve_gf_DisplayBossBar(1, gf_getPortrait(UnitGetType(lv_nextboss)), UnitTypeGetName(UnitGetType(lv_nextboss)), 0, PlayerGroupAll());
                     libNtve_gf_SetBossBarBoss(1, lv_nextboss, true);
-                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_nextboss))), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_nextboss)), PlayerGroupAll());
                 }
 
             }
@@ -15900,7 +15941,7 @@ bool auto_gf_DoomLord4_TriggerFunc (bool testConds, bool runActions) {
         if ((gv_mode == 0)) {
             libNtve_gf_DisplayBossBar(1, "Assets\\Textures\\queen_webby_collection_portrait_static.dds", StringExternal("Param/Value/0FBE29D6"), 0, PlayerGroupAll());
             libNtve_gf_SetBossBarBoss(1, lv_boss, true);
-            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_boss))), PlayerGroupAll());
+            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_boss)), PlayerGroupAll());
             gv_currentBoss = lv_boss;
         }
 
@@ -15935,7 +15976,7 @@ bool auto_gf_DoomLord4_TriggerFunc (bool testConds, bool runActions) {
                     gv_currentBoss = lv_nextboss;
                     libNtve_gf_DisplayBossBar(1, gf_getPortrait(UnitGetType(lv_nextboss)), UnitTypeGetName(UnitGetType(lv_nextboss)), 0, PlayerGroupAll());
                     libNtve_gf_SetBossBarBoss(1, lv_nextboss, true);
-                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_nextboss))), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_nextboss)), PlayerGroupAll());
                 }
 
             }
@@ -16020,7 +16061,7 @@ bool auto_gf_DemonLord_TriggerFunc (bool testConds, bool runActions) {
         if ((gv_mode == 0)) {
             libNtve_gf_DisplayBossBar(1, "Assets\\Textures\\zergling_webby_collection_portrait_static.dds", StringExternal("Param/Value/C82554CC"), 0, PlayerGroupAll());
             libNtve_gf_SetBossBarBoss(1, lv_boss, true);
-            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_boss))), PlayerGroupAll());
+            libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_boss)), PlayerGroupAll());
             gv_currentBoss = lv_boss;
         }
 
@@ -16050,7 +16091,7 @@ bool auto_gf_DemonLord_TriggerFunc (bool testConds, bool runActions) {
                     gv_currentBoss = lv_nextboss;
                     libNtve_gf_DisplayBossBar(1, gf_getPortrait(UnitGetType(lv_nextboss)), UnitTypeGetName(UnitGetType(lv_nextboss)), 0, PlayerGroupAll());
                     libNtve_gf_SetBossBarBoss(1, lv_nextboss, true);
-                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, StringToText(gf_getText(UnitGetType(lv_nextboss))), PlayerGroupAll());
+                    libNtve_gf_SetDialogItemTooltip(gv_bossTooltipDialogItem, gf_getText(UnitGetType(lv_nextboss)), PlayerGroupAll());
                 }
 
             }
@@ -19593,7 +19634,7 @@ bool gt_init_Func (bool testConds, bool runActions) {
         gf_rewarddialoginit();
         while ((lv_i < 4)) {
             lv_i += 1;
-            if ((PlayerStatus(lv_i) == c_playerStatusActive) && (gv_rewardaccumulated[lv_i] < 1)) {
+            if ((PlayerStatus(lv_i) == c_playerStatusActive) && (gv_totalRewards[lv_i] < 1)) {
                 UIDisplayMessage(PlayerGroupSingle(lv_i), c_messageAreaSubtitle, StringExternal("Param/Value/765E66C1"));
                 gf_rewardgainpoints(lv_i, 20, 5);
                 gf_introfornewb(lv_i);
@@ -19601,6 +19642,10 @@ bool gt_init_Func (bool testConds, bool runActions) {
             else {
                 if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
                     gf_showstatwindow(lv_i);
+                    if ((gv_hardcore == true)) {
+                        gf_rewardnewpoints(lv_i, 100);
+                    }
+
                 }
 
             }
@@ -19618,7 +19663,7 @@ bool gt_init_Func (bool testConds, bool runActions) {
         gf_rewarddialoginit();
         while ((lv_i < 4)) {
             lv_i += 1;
-            if ((PlayerStatus(lv_i) == c_playerStatusActive) && (gv_rewardaccumulated[lv_i] < 1)) {
+            if ((PlayerStatus(lv_i) == c_playerStatusActive) && (gv_totalRewards[lv_i] < 1)) {
                 UIDisplayMessage(PlayerGroupSingle(lv_i), c_messageAreaSubtitle, StringExternal("Param/Value/79CD0A63"));
                 gf_rewardgainpoints(lv_i, 20, 5);
                 gf_introfornewb(lv_i);
@@ -19626,6 +19671,10 @@ bool gt_init_Func (bool testConds, bool runActions) {
             else {
                 if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
                     gf_showstatwindow(lv_i);
+                    if ((gv_hardcore == true)) {
+                        gf_rewardnewpoints(lv_i, 100);
+                    }
+
                 }
 
             }
