@@ -220,7 +220,7 @@ Behavior/Name/DynamicAlly=Динамика
 Behavior/Name/DynamicEnemy=Динамика
 Behavior/Name/EarthInfused=Питание землёй
 Behavior/Name/Easy=Легко
-Behavior/Name/EasyDefense=EasyDefense
+Behavior/Name/EasyDefense=Защита на лёгкой сложности
 Behavior/Name/EmpoweringRoar=Усиливающий рёв
 Behavior/Name/EnergyFruit=Энергия фрукта
 Behavior/Name/Energytap=Энергетический выстрел
@@ -955,7 +955,7 @@ Button/Tooltip/DeflectorDrone=<c val="FF0000">Уничтожает вражес�
 Button/Tooltip/Dematerialize=Периодически преобразует материю целевой единицы в энергию.<n/>Эта энергия передаётся обратно вам и используется для восстановления ваших щитов и здоровья.
 Button/Tooltip/Demolisher=Штурмовой шагающий робот. Может создавать барьер, поглощающий урон.<n/><n/><c val="ffff8a">Атакует только наземные цели.</c>
 Button/Tooltip/DemonLord=Быстрая единица ближнего боя. Может мутировать в гиблинга.<n/><n/><c val="FFFF8A">Атакует только наземные цели.</c>
-Button/Tooltip/DestroyerDrone=<c val="FFFF00">Копирует все атакующие способности, применённые героем, на <c val="FFFFFF"><d ref="Accumulator,GatewayHeroDestroyerReinforceCostFactor,Amount*100"/>%</c> от затраченной энергии.<n/><n/>Максимальный запас <c val="FF00FF">энергии</c>: <c val="FF00FF">300</c> ед. (+<c val="FF00FF">10</c> ед. за каждую награду максимального запаса <c val="FF00FF">энергии</c>).<n/>Текущий максимальный запас: <c val="FF00FF"><d ref="Unit,DestroyerDrone,EnergyMax"/></c></c> ед.
+Button/Tooltip/DestroyerDrone=<c val="FFFF00">Копирует все атакующие способности, применённые героем, на <c val="FFFFFF"><d ref="Accumulator,GatewayHeroDestroyerCostFactor,Amount*100"/>%</c> от затраченной энергии.<n/><n/>Максимальный запас <c val="FF00FF">энергии</c>: <c val="FF00FF">300</c> ед. (+<c val="FF00FF">10</c> ед. за каждую награду максимального запаса <c val="FF00FF">энергии</c>).<n/>Текущий максимальный запас: <c val="FF00FF"><d ref="Unit,DestroyerDrone,EnergyMax"/></c></c> ед.
 Button/Tooltip/Dexterity=Имеет <c val="FFFF80"><d ref="Behavior,Evasion,DamageResponse.Chance*100"/>%</c> шанс уклониться от урона.<n/><n/>Может применять способности во время передвижения.
 Button/Tooltip/Discharge=
 Button/Tooltip/Disintegrate=Убивает единицу под вашим контролем, позволяя вам использовать способность «Игра теней» на новую цель.
@@ -1803,8 +1803,16 @@ DocInfo/PatchNote564=  - Splitter can no longer hit a unit more than once in the
 DocInfo/PatchNote565=  - Removed "Warp Rift" and replaced with "Strike"
 DocInfo/PatchNote566=  - Removed "Injection" and replaced with "Longevity"
 DocInfo/PatchNote567=  - Altered Blast Radius, Chain React and Warp In
-DocInfo/PatchNote568=  - Nerfed Blast Zone, Fragments and Annoint
+DocInfo/PatchNote568=  - Nerfed Blast Zone, Fragments and Anoint
 DocInfo/PatchNote569=  - Buffed Retarget, Barrier and Shrapnel
+DocInfo/PatchNote570=- General
+DocInfo/PatchNote571=  - Fixed certain region activated events from Explore mode being triggered in Challenge mode
+DocInfo/PatchNote572=  - Fixed Thor targeting dots in Challenge mode
+DocInfo/PatchNote573=  - Fixed Cannons not starting with full shields on higher difficulties
+DocInfo/PatchNote574=  - Added more Cannons and increased Pylon hitpoints in Challenge mode
+DocInfo/PatchNote575=  - Pylon and Cannon hitpoints now scale with forge upgrades
+DocInfo/PatchNote576=  - Made structures easier to path around
+DocInfo/PatchNote577=  - The Demolisher can now spawn in solo Challenge mode (stage 3+)
 DocInfo/Screenshot01=Наградные очки переносятся в последующие игры и могут быть полезны различными способами.
 DocInfo/Screenshot02=Находясь рядом с пилоном, вы можете телепортироваться на любую другую базу.
 DocInfo/Screenshot05=Тратьте очки талантов, чтобы увеличить свою силу.
@@ -4450,7 +4458,6 @@ Effect/Name/ZergLordGlaiveAttackInit=Zerg Lord - Glaive Attack (Init)
 Effect/Name/applyScience=applyScience
 Effect/Name/easydefenserestore=easydefenserestore
 Effect/Name/searchapplyscience=searchapplyscience
-Effect/Name/testuniteffect=test unit effect
 Effect/Name/thorapplyselfnukecd=thorapplyselfnukecd
 Effect/Name/thorapplyselfnukecd2=thorapplyselfnukecd2
 Effect/Name/thorimpact=thorimpact
@@ -7053,6 +7060,7 @@ Upgrade/Name/Cataclysm=Cataclysm
 Upgrade/Name/Cauterize=Cauterize
 Upgrade/Name/Celerity=Celerity
 Upgrade/Name/ChainReact=ChainReact
+Upgrade/Name/ChallengePylonBuff=ChallengePylonBuff
 Upgrade/Name/ChampionModeBossBuff=Champion Mode Boss Buff
 Upgrade/Name/ChampionModeZergDefenseBuff=ChampionModeZergDefenseBuff
 Upgrade/Name/ChargeTalent=Charge
