@@ -17395,9 +17395,6 @@
             <AccumulatorArray value="HealingMultiplier"/>
         </RechargeVitalRate>
     </CEffectCreateHealer>
-    <CEffectModifyUnit id="testuniteffect">
-        <EditorCategories value=""/>
-    </CEffectModifyUnit>
     <CEffectApplyBehavior id="thornuked">
         <ValidatorArray index="0" value="ThorRewardMagneto"/>
         <ValidatorArray value="Unstoppable"/>

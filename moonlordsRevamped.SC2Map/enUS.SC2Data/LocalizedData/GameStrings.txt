@@ -955,7 +955,7 @@ Button/Tooltip/DeflectorDrone=<c val="FF0000">Destroys enemy projectiles at the 
 Button/Tooltip/Dematerialize=Converting matter of the target unit into energy over time. <n/>This energy is tranfered back to you and used to restore your shields and hitpoints.
 Button/Tooltip/Demolisher=Assault strider. Can use Barrier to absorb damage.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/DemonLord=Fast melee creature. Can morph into a Baneling.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
-Button/Tooltip/DestroyerDrone=<c val="FFFF00">Duplicates all offensive spells cast by the Gateway Hero at <c val="FFFFFF"><d ref="Accumulator,GatewayHeroDestroyerReinforceCostFactor,Amount*100"/>%</c> of their energy cost<n/><n/>Energy maximum is <c val="FF00FF">300</c>(+<c val="FF00FF">10</c> for every <c val="FF00FF">energy</c> maximum reward)<n/>Current maximum is <c val="FF00FF"><d ref="Unit,DestroyerDrone,EnergyMax"/></c></c>
+Button/Tooltip/DestroyerDrone=<c val="FFFF00">Duplicates all offensive spells cast by the Gateway Hero at <c val="FFFFFF"><d ref="Accumulator,GatewayHeroDestroyerCostFactor,Amount*100"/>%</c> of their energy cost<n/><n/>Energy maximum is <c val="FF00FF">300</c>(+<c val="FF00FF">10</c> for every <c val="FF00FF">energy</c> maximum reward)<n/>Current maximum is <c val="FF00FF"><d ref="Unit,DestroyerDrone,EnergyMax"/></c></c>
 Button/Tooltip/Dexterity=Has a <c val="FFFF80"><d ref="Behavior,Evasion,DamageResponse.Chance*100"/>%</c> chance to evade damage.<n/><n/>Can cast abilities while moving.
 Button/Tooltip/Discharge=
 Button/Tooltip/Disintegrate=Kills a unit under your control allowing you to use shadowplay on a new target.
@@ -4458,7 +4458,6 @@ Effect/Name/ZergLordGlaiveAttackInit=Zerg Lord - Glaive Attack (Init)
 Effect/Name/applyScience=applyScience
 Effect/Name/easydefenserestore=easydefenserestore
 Effect/Name/searchapplyscience=searchapplyscience
-Effect/Name/testuniteffect=test unit effect
 Effect/Name/thorapplyselfnukecd=thorapplyselfnukecd
 Effect/Name/thorapplyselfnukecd2=thorapplyselfnukecd2
 Effect/Name/thorimpact=thorimpact
