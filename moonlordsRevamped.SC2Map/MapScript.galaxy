@@ -6461,6 +6461,9 @@ void gf_rewarddialoginit () {
     int lv_i;
 
     // Automatic Variable Declarations
+    const int auto107F9BE9_ae = gv_pLAYERCOUNT;
+    int auto107F9BE9_var;
+
     // Variable Initialization
     lv_i = 1;
 
@@ -6490,42 +6493,42 @@ void gf_rewarddialoginit () {
     gv_rewardButtons[24] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 100, 50, c_anchorTopLeft, 25, 50, StringExternal("Param/Value/FEC9A4E2"), StringExternal("Param/Value/5450D77D"), "");
     gv_rewardButtons[20] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 150, (StringExternal("Param/Value/F191AD81") + gf_rewardlevel(lv_i, 0)), StringExternal("Param/Value/39A1998A"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 150, StringToText(""), StringExternal("Param/Value/39A1998A"), "");
     gv_rewardButtons[0] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 250, (StringExternal("Param/Value/11BB55A7") + gf_rewardlevel(lv_i, 1)), StringExternal("Param/Value/FC655953"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 250, StringToText(""), StringExternal("Param/Value/FC655953"), "");
     gv_rewardButtons[1] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 350, (StringExternal("Param/Value/2AB49A49") + gf_rewardlevel(lv_i, 2)), StringExternal("Param/Value/57BF81D0"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 350, StringToText(""), StringExternal("Param/Value/57BF81D0"), "");
     gv_rewardButtons[2] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 450, (StringExternal("Param/Value/C23288B1") + gf_rewardlevel(lv_i, 3)), StringExternal("Param/Value/1CE1A394"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 450, StringToText(""), StringExternal("Param/Value/1CE1A394"), "");
     gv_rewardButtons[3] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 550, (StringExternal("Param/Value/B132AE11") + gf_rewardlevel(lv_i, 4)), StringExternal("Param/Value/65D82054"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 550, StringToText(""), StringExternal("Param/Value/65D82054"), "");
     gv_rewardButtons[4] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 150, (StringExternal("Param/Value/74A0D967") + gf_rewardlevel(lv_i, 5)), StringExternal("Param/Value/BD7373E9"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 150, StringToText(""), StringExternal("Param/Value/BD7373E9"), "");
     gv_rewardButtons[5] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 250, (StringExternal("Param/Value/C90ACA57") + gf_rewardlevel(lv_i, 6)), StringExternal("Param/Value/FD3C1C07"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 250, StringToText(""), StringExternal("Param/Value/FD3C1C07"), "");
     gv_rewardButtons[6] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 350, (StringExternal("Param/Value/40EC832C") + gf_rewardlevel(lv_i, 7)), StringExternal("Param/Value/FD12CDCA"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 350, StringToText(""), StringExternal("Param/Value/FD12CDCA"), "");
     gv_rewardButtons[7] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 450, (StringExternal("Param/Value/F8B783B3") + gf_rewardlevel(lv_i, 8)), StringExternal("Param/Value/DF404208"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 450, StringToText(""), StringExternal("Param/Value/DF404208"), "");
     gv_rewardButtons[8] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 550, (StringExternal("Param/Value/3A2DD070") + gf_rewardlevel(lv_i, 9)), StringExternal("Param/Value/BCC3E58F"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 550, StringToText(""), StringExternal("Param/Value/BCC3E58F"), "");
     gv_rewardButtons[9] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 150, (StringExternal("Param/Value/D236D2B3") + gf_rewardlevel(lv_i, 13)), StringExternal("Param/Value/FF9519A7"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 150, StringToText(""), StringExternal("Param/Value/FF9519A7"), "");
     gv_rewardButtons[13] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 250, (StringExternal("Param/Value/25E82CAF") + gf_rewardlevel(lv_i, 14)), StringExternal("Param/Value/664C4266"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 250, StringToText(""), StringExternal("Param/Value/664C4266"), "");
     gv_rewardButtons[14] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 350, (StringExternal("Param/Value/6ECC106D") + gf_rewardlevel(lv_i, 10)), StringExternal("Param/Value/A5E3BF0A"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 350, StringToText(""), StringExternal("Param/Value/A5E3BF0A"), "");
     gv_rewardButtons[10] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 450, (StringExternal("Param/Value/203F432C") + gf_rewardlevel(lv_i, 11)), StringExternal("Param/Value/9AA07E9B"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 450, StringToText(""), StringExternal("Param/Value/9AA07E9B"), "");
     gv_rewardButtons[11] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 550, (StringExternal("Param/Value/05065707") + gf_rewardlevel(lv_i, 12)), StringExternal("Param/Value/1798E1C8"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 550, StringToText(""), StringExternal("Param/Value/1798E1C8"), "");
     gv_rewardButtons[12] = DialogControlLastCreated();
     lv_i = 0;
     while ((lv_i < 15)) {
-        gf_rewardnewtooltip(1, lv_i);
-        gf_rewardnewtooltip(2, lv_i);
-        gf_rewardnewtooltip(3, lv_i);
-        gf_rewardnewtooltip(4, lv_i);
+        auto107F9BE9_var = 1;
+        for ( ; auto107F9BE9_var <= auto107F9BE9_ae; auto107F9BE9_var += 1 ) {
+            gf_rewardnewtooltip(auto107F9BE9_var, lv_i);
+        }
         lv_i += 1;
     }
     gf_rewardtimer();
