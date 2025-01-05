@@ -155,12 +155,12 @@ int[gv_pLAYERCOUNT + 1] gv_talentpointsavailable;
 gs_TalentDialog[gv_pLAYERCOUNT + 1] gv_talentDialogs;
 gs_Talent[11][6][gv_pLAYERCOUNT + 1] gv_talents;
 int gv_rewardDialog;
-int[27] gv_rewardButtons;
-int[5] gv_rewardSpendMultiplier;
-int[6] gv_rewardUnspend;
-int[6] gv_rewardaccumulated;
-int[6] gv_totalRewards;
-int[6][21] gv_rewardUsed;
+int[26] gv_rewardButtons;
+int[gv_pLAYERCOUNT + 1] gv_rewardSpendMultiplier;
+int[gv_pLAYERCOUNT + 1] gv_rewardUnspend;
+int[gv_pLAYERCOUNT + 1] gv_rewardaccumulated;
+int[gv_pLAYERCOUNT + 1] gv_totalRewards;
+int[gv_pLAYERCOUNT + 1][21] gv_rewardUsed;
 bank[6] gv_zbanks;
 unit gv_demolisher;
 int gv_bossTooltipDialog;
@@ -225,10 +225,10 @@ void InitGlobals () {
         }
     }
     gv_rewardDialog = c_invalidDialogId;
-    for (init_i = 0; init_i <= 26; init_i += 1) {
+    for (init_i = 0; init_i <= 25; init_i += 1) {
         gv_rewardButtons[init_i] = c_invalidDialogControlId;
     }
-    for (init_i = 0; init_i <= 4; init_i += 1) {
+    for (init_i = 0; init_i <= gv_pLAYERCOUNT; init_i += 1) {
         gv_rewardSpendMultiplier[init_i] = 1;
     }
     gv_bossTooltipDialog = c_invalidDialogId;
@@ -349,11 +349,12 @@ void gf_TalentPressedLuck (int lp_row, int lp_column, int lp_player);
 void gf_TalentDialogElemental (int lp_player);
 void gf_TalentDialogGravity (int lp_player);
 void gf_TalentDialogGateway (int lp_player);
-void gf_rewarddialoginit ();
-void gf_disguiseunit (unit lp_unit, int lp_player);
-void gf_undisguiseunit (unit lp_unit);
 text gf_getrewardinfo (int lp_player);
 text gf_getrewardtext (int lp_rewardnum);
+void gf_UpdateRewardCostTitle (int lp_player);
+void gf_CreateRewardDialog ();
+void gf_disguiseunit (unit lp_unit, int lp_player);
+void gf_undisguiseunit (unit lp_unit);
 void gf_rewardreset (int lp_pnum);
 void gf_rewardadd (int lp_typ, int lp_amount, int lp_pnum, bool lp_respawn);
 void gf_rewardbuy (int lp_pnum, int lp_typ);
@@ -5352,7 +5353,7 @@ bool auto_gf_showstatwindow_TriggerFunc (bool testConds, bool runActions) {
 text gf_GetTalentPointsTextForPlayer (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
-    return (StringExternal("Param/Value/6E763748") + IntToText(gv_talentpointsavailable[lp_player]));
+    return (StringExternal("Param/Value/6E763748") + StringExternal("Param/Value/92F66CEA") + IntToText(gv_talentpointsavailable[lp_player]) + StringExternal("Param/Value/F1C90ED0"));
 }
 
 text gf_GetTalentName (text lp_name, string lp_upgrade, int lp_player) {
@@ -5422,7 +5423,7 @@ void gf_CreateTalentDialog (int lp_player, string lp_background, int lp_heroNum)
     gv_talentDialogs[lp_player].lv_dialog = DialogLastCreated();
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
     libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 500, 75, c_anchorTop, 0, 37, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPoints", PlayerGroupAll());
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "TalentPointsLarge", PlayerGroupAll());
     gv_talents[8][0][lp_player].lv_dialogItem = DialogControlLastCreated();
 }
 
@@ -6456,7 +6457,73 @@ void gf_TalentDialogGateway (int lp_player) {
     gf_CreateTalent(5, 4, lp_player, StringExternal("Param/Value/5C5F4C85"), StringExternal("Param/Value/7ED62D18"), "Purge", 10);
 }
 
-void gf_rewarddialoginit () {
+text gf_getrewardinfo (int lp_player) {
+    // Variable Declarations
+    int lv_i;
+    text lv_returntext;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    while ((lv_i < 10)) {
+        lv_returntext = (lv_returntext + gf_getrewardtext(lv_i) + IntToText(gv_rewardUsed[lp_player][lv_i]) + StringExternal("Param/Value/41A12106"));
+        lv_i = lv_i+1;
+    }
+    return lv_returntext;
+}
+
+text gf_getrewardtext (int lp_rewardnum) {
+    // Automatic Variable Declarations
+    int auto2B5D42FE_val;
+
+    // Implementation
+    auto2B5D42FE_val = lp_rewardnum;
+    if (auto2B5D42FE_val == 0) {
+        return StringExternal("Param/Value/CE8E434B");
+    }
+    else if (auto2B5D42FE_val == 1) {
+        return StringExternal("Param/Value/4B56640A");
+    }
+    else if (auto2B5D42FE_val == 2) {
+        return StringExternal("Param/Value/E9075C7C");
+    }
+    else if (auto2B5D42FE_val == 3) {
+        return StringExternal("Param/Value/81479B87");
+    }
+    else if (auto2B5D42FE_val == 4) {
+        return StringExternal("Param/Value/5C87DA11");
+    }
+    else if (auto2B5D42FE_val == 5) {
+        return StringExternal("Param/Value/86AA1265");
+    }
+    else if (auto2B5D42FE_val == 6) {
+        return StringExternal("Param/Value/96B7BED8");
+    }
+    else if (auto2B5D42FE_val == 7) {
+        return StringExternal("Param/Value/7EF15383");
+    }
+    else if (auto2B5D42FE_val == 8) {
+        return StringExternal("Param/Value/EEB66AD3");
+    }
+    else if (auto2B5D42FE_val == 9) {
+        return StringExternal("Param/Value/E4C713FB");
+    }
+    else {
+        return StringExternal("Param/Value/4DDC9510");
+    }
+}
+
+void gf_UpdateRewardCostTitle (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogSetTitle(gv_rewardDialog, (StringExternal("Param/Value/CAD17280") + StringExternal("Param/Value/D3CF7300") + StringExternal("Param/Value/C0E1B35F") + IntToText(gv_rewardUnspend[lp_player]) + StringExternal("Param/Value/29025801")));
+    libNtve_gf_SetDialogItemText(gv_rewardButtons[21], (StringExternal("Param/Value/7DC75C3A") + IntToText(gf_rewardgetprice(lp_player, 0))), PlayerGroupSingle(lp_player));
+    libNtve_gf_SetDialogItemText(gv_rewardButtons[22], (StringExternal("Param/Value/E00A74B8") + IntToText(gf_rewardgetprice(lp_player, 5))), PlayerGroupSingle(lp_player));
+    libNtve_gf_SetDialogItemText(gv_rewardButtons[23], (StringExternal("Param/Value/1A36928A") + IntToText(gf_rewardgetprice(lp_player, 10))), PlayerGroupSingle(lp_player));
+}
+
+void gf_CreateRewardDialog () {
     // Variable Declarations
     int lv_i;
 
@@ -6465,63 +6532,58 @@ void gf_rewarddialoginit () {
     int auto107F9BE9_var;
 
     // Variable Initialization
-    lv_i = 1;
 
     // Implementation
-    DialogCreate(800, 650, c_anchorCenter, 0, 0, true);
+    DialogCreate(760, 550, c_anchorCenter, 0, 0, true);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
     gv_rewardDialog = DialogLastCreated();
     DialogSetTitle(gv_rewardDialog, StringExternal("Param/Value/491F7E6D"));
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 100, StringExternal("Param/Value/0DDD9C5B"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 125, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
     gv_rewardButtons[21] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 100, StringExternal("Param/Value/8E5AD805"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 125, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
     gv_rewardButtons[22] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 100, StringExternal("Param/Value/73149654"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 125, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
     gv_rewardButtons[23] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 60, 50, c_anchorTopRight, 45, 80, StringToText(""), StringExternal("Param/Value/0575CF0A"), "");
-    gv_rewardButtons[25] = DialogControlLastCreated();
-    while ((lv_i <= 4)) {
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 60, 50, c_anchorTopRight, 50, 50, StringToText(""), StringExternal("Param/Value/0575CF0A"), "");
+    gv_rewardButtons[24] = DialogControlLastCreated();
+    while ((lv_i < gv_pLAYERCOUNT)) {
+        lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
-            libNtve_gf_SetDialogItemText(gv_rewardButtons[21], (StringExternal("Param/Value/770818D5") + IntToText(gf_rewardgetprice(lv_i, 0))), PlayerGroupSingle(lv_i));
-            libNtve_gf_SetDialogItemText(gv_rewardButtons[22], (StringExternal("Param/Value/5522F939") + IntToText(gf_rewardgetprice(lv_i, 5))), PlayerGroupSingle(lv_i));
-            libNtve_gf_SetDialogItemText(gv_rewardButtons[23], (StringExternal("Param/Value/C8D39A72") + IntToText(gf_rewardgetprice(lv_i, 10))), PlayerGroupSingle(lv_i));
+            gf_UpdateRewardCostTitle(lv_i);
         }
 
-        lv_i += 1;
     }
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 630, 47, StringExternal("Param/Value/6EC03A61"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    gv_rewardButtons[24] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 100, 50, c_anchorTopLeft, 25, 50, StringExternal("Param/Value/FEC9A4E2"), StringExternal("Param/Value/5450D77D"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 100, 50, c_anchorTopLeft, 50, 50, StringExternal("Param/Value/FEC9A4E2"), StringExternal("Param/Value/5450D77D"), "");
     gv_rewardButtons[20] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 150, StringToText(""), StringExternal("Param/Value/39A1998A"), "");
     gv_rewardButtons[0] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 250, StringToText(""), StringExternal("Param/Value/FC655953"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 225, StringToText(""), StringExternal("Param/Value/FC655953"), "");
     gv_rewardButtons[1] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 350, StringToText(""), StringExternal("Param/Value/57BF81D0"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 300, StringToText(""), StringExternal("Param/Value/57BF81D0"), "");
     gv_rewardButtons[2] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 450, StringToText(""), StringExternal("Param/Value/1CE1A394"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 375, StringToText(""), StringExternal("Param/Value/1CE1A394"), "");
     gv_rewardButtons[3] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 550, StringToText(""), StringExternal("Param/Value/65D82054"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 450, StringToText(""), StringExternal("Param/Value/65D82054"), "");
     gv_rewardButtons[4] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 150, StringToText(""), StringExternal("Param/Value/BD7373E9"), "");
     gv_rewardButtons[5] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 250, StringToText(""), StringExternal("Param/Value/FD3C1C07"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 225, StringToText(""), StringExternal("Param/Value/FD3C1C07"), "");
     gv_rewardButtons[6] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 350, StringToText(""), StringExternal("Param/Value/FD12CDCA"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 300, StringToText(""), StringExternal("Param/Value/FD12CDCA"), "");
     gv_rewardButtons[7] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 450, StringToText(""), StringExternal("Param/Value/DF404208"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 375, StringToText(""), StringExternal("Param/Value/DF404208"), "");
     gv_rewardButtons[8] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 550, StringToText(""), StringExternal("Param/Value/BCC3E58F"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 450, StringToText(""), StringExternal("Param/Value/BCC3E58F"), "");
     gv_rewardButtons[9] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 150, StringToText(""), StringExternal("Param/Value/FF9519A7"), "");
     gv_rewardButtons[13] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 250, StringToText(""), StringExternal("Param/Value/664C4266"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 225, StringToText(""), StringExternal("Param/Value/664C4266"), "");
     gv_rewardButtons[14] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 350, StringToText(""), StringExternal("Param/Value/A5E3BF0A"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 300, StringToText(""), StringExternal("Param/Value/A5E3BF0A"), "");
     gv_rewardButtons[10] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 450, StringToText(""), StringExternal("Param/Value/9AA07E9B"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 375, StringToText(""), StringExternal("Param/Value/9AA07E9B"), "");
     gv_rewardButtons[11] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 550, StringToText(""), StringExternal("Param/Value/1798E1C8"), "");
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 450, StringToText(""), StringExternal("Param/Value/1798E1C8"), "");
     gv_rewardButtons[12] = DialogControlLastCreated();
     lv_i = 0;
     while ((lv_i < 15)) {
@@ -6708,63 +6770,6 @@ void gf_undisguiseunit (unit lp_unit) {
 
 }
 
-text gf_getrewardinfo (int lp_player) {
-    // Variable Declarations
-    int lv_i;
-    text lv_returntext;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-
-    // Implementation
-    while ((lv_i < 10)) {
-        lv_returntext = (lv_returntext + gf_getrewardtext(lv_i) + IntToText(gv_rewardUsed[lp_player][lv_i]) + StringExternal("Param/Value/41A12106"));
-        lv_i = lv_i+1;
-    }
-    return lv_returntext;
-}
-
-text gf_getrewardtext (int lp_rewardnum) {
-    // Automatic Variable Declarations
-    int auto2B5D42FE_val;
-
-    // Implementation
-    auto2B5D42FE_val = lp_rewardnum;
-    if (auto2B5D42FE_val == 0) {
-        return StringExternal("Param/Value/CE8E434B");
-    }
-    else if (auto2B5D42FE_val == 1) {
-        return StringExternal("Param/Value/4B56640A");
-    }
-    else if (auto2B5D42FE_val == 2) {
-        return StringExternal("Param/Value/E9075C7C");
-    }
-    else if (auto2B5D42FE_val == 3) {
-        return StringExternal("Param/Value/81479B87");
-    }
-    else if (auto2B5D42FE_val == 4) {
-        return StringExternal("Param/Value/5C87DA11");
-    }
-    else if (auto2B5D42FE_val == 5) {
-        return StringExternal("Param/Value/86AA1265");
-    }
-    else if (auto2B5D42FE_val == 6) {
-        return StringExternal("Param/Value/96B7BED8");
-    }
-    else if (auto2B5D42FE_val == 7) {
-        return StringExternal("Param/Value/7EF15383");
-    }
-    else if (auto2B5D42FE_val == 8) {
-        return StringExternal("Param/Value/EEB66AD3");
-    }
-    else if (auto2B5D42FE_val == 9) {
-        return StringExternal("Param/Value/E4C713FB");
-    }
-    else {
-        return StringExternal("Param/Value/4DDC9510");
-    }
-}
-
 void gf_rewardreset (int lp_pnum) {
     // Variable Declarations
     int lv_i;
@@ -6812,10 +6817,7 @@ void gf_rewardreset (int lp_pnum) {
     BankValueSetFromInt(gv_zbanks[lp_pnum], "rewards", "unspend", gv_rewardaccumulated[lp_pnum]);
     gv_rewardUnspend[lp_pnum] = gv_rewardaccumulated[lp_pnum];
     BankSave(gv_zbanks[lp_pnum]);
-    libNtve_gf_SetDialogItemText(gv_rewardButtons[21], (StringExternal("Param/Value/E86D3610") + IntToText(gf_rewardgetprice(lp_pnum, 0))), PlayerGroupSingle(lp_pnum));
-    libNtve_gf_SetDialogItemText(gv_rewardButtons[22], (StringExternal("Param/Value/C88DE233") + IntToText(gf_rewardgetprice(lp_pnum, 5))), PlayerGroupSingle(lp_pnum));
-    libNtve_gf_SetDialogItemText(gv_rewardButtons[23], (StringExternal("Param/Value/27DF76F9") + IntToText(gf_rewardgetprice(lp_pnum, 10))), PlayerGroupSingle(lp_pnum));
-    libNtve_gf_SetDialogItemText(gv_rewardButtons[24], IntToText(gv_rewardUnspend[lp_pnum]), PlayerGroupSingle(lp_pnum));
+    gf_UpdateRewardCostTitle(lp_pnum);
 }
 
 void gf_rewardadd (int lp_typ, int lp_amount, int lp_pnum, bool lp_respawn) {
@@ -7142,10 +7144,7 @@ void gf_rewardnewpoints (int lp_pnum, int lp_amount) {
     // Implementation
     gv_rewardaccumulated[lp_pnum] += lp_amount;
     gv_rewardUnspend[lp_pnum] += lp_amount;
-    libNtve_gf_SetDialogItemText(gv_rewardButtons[24], IntToText(gv_rewardUnspend[lp_pnum]), PlayerGroupSingle(lp_pnum));
-    libNtve_gf_SetDialogItemText(gv_rewardButtons[21], (StringExternal("Param/Value/7DC75C3A") + IntToText(gf_rewardgetprice(lp_pnum, 0))), PlayerGroupSingle(lp_pnum));
-    libNtve_gf_SetDialogItemText(gv_rewardButtons[22], (StringExternal("Param/Value/E00A74B8") + IntToText(gf_rewardgetprice(lp_pnum, 5))), PlayerGroupSingle(lp_pnum));
-    libNtve_gf_SetDialogItemText(gv_rewardButtons[23], (StringExternal("Param/Value/1A36928A") + IntToText(gf_rewardgetprice(lp_pnum, 10))), PlayerGroupSingle(lp_pnum));
+    gf_UpdateRewardCostTitle(lp_pnum);
 }
 
 text gf_rewardlevel (int lp_pnum, int lp_rnum) {
@@ -14175,7 +14174,7 @@ bool gt_init_Func (bool testConds, bool runActions) {
     gf_initAchievementdialog();
     gf_initupgradedialog();
     gf_initteleportdialog();
-    gf_rewarddialoginit();
+    gf_CreateRewardDialog();
     gf_inittips();
     gf_initdisplaytalentsetcasMinerals();
     while ((lv_i < gv_pLAYERCOUNT)) {
@@ -18343,10 +18342,10 @@ bool gt_RewardButtonPressed_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    while ((lv_i < 26)) {
+    while ((lv_i < 25)) {
         if ((EventDialogControl() == gv_rewardButtons[lv_i])) {
             lv_buttonnumber = lv_i;
-            lv_i = 26;
+            lv_i = 25;
         }
 
         lv_i += 1;
@@ -18370,14 +18369,14 @@ bool gt_RewardButtonPressed_Func (bool testConds, bool runActions) {
             gf_rewardreset(lv_pnum);
         }
 
-        if ((lv_buttonnumber == 25)) {
+        if ((lv_buttonnumber == 24)) {
             if ((gv_rewardSpendMultiplier[lv_pnum] == 1)) {
                 gv_rewardSpendMultiplier[lv_pnum] = 10;
-                libNtve_gf_SetDialogItemText(gv_rewardButtons[25], StringExternal("Param/Value/00F162F5"), PlayerGroupSingle(lv_pnum));
+                libNtve_gf_SetDialogItemText(gv_rewardButtons[24], StringExternal("Param/Value/00F162F5"), PlayerGroupSingle(lv_pnum));
             }
             else {
                 gv_rewardSpendMultiplier[lv_pnum] = 1;
-                libNtve_gf_SetDialogItemText(gv_rewardButtons[25], StringExternal("Param/Value/7F267D1C"), PlayerGroupSingle(lv_pnum));
+                libNtve_gf_SetDialogItemText(gv_rewardButtons[24], StringExternal("Param/Value/7F267D1C"), PlayerGroupSingle(lv_pnum));
             }
         }
 
@@ -18413,8 +18412,8 @@ bool gt_RewardDialogOpenClose_Func (bool testConds, bool runActions) {
     }
     else {
         gf_DialogHideAll(EventPlayer());
+        gf_UpdateRewardCostTitle(EventPlayer());
         DialogSetVisible(gv_rewardDialog, PlayerGroupSingle(EventPlayer()), true);
-        libNtve_gf_SetDialogItemText(gv_rewardButtons[24], IntToText(gv_rewardUnspend[EventPlayer()]), PlayerGroupSingle(EventPlayer()));
     }
     return true;
 }
