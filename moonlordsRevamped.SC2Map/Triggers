@@ -168778,8 +168778,7 @@
     </Element>
     <Element Type="Param" Id="8900C8B2">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
-        <Value>4</Value>
-        <ValueType Type="int"/>
+        <Variable Type="Variable" Id="70B5B0D3"/>
     </Element>
     <Element Type="FunctionDef" Id="0177CCB2">
         <FlagAction/>

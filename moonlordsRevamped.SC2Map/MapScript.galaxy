@@ -7231,7 +7231,7 @@ void gf_gainrewardbonusall (int lp_amount) {
     // Variable Initialization
 
     // Implementation
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
             gf_rewardgainpoints(lv_i, lp_amount, 5);
