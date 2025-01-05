@@ -312,6 +312,11 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Hardcore">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="NatureHeroFruitExplodeFate">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -632,7 +637,7 @@
     <CBehaviorBuff id="Equip">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Period value="16"/>
+        <Period value="24"/>
         <PeriodicEffect value="EquipSet"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Eradicate">
@@ -878,6 +883,7 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Period value="0.5"/>
         <PeriodicEffect value="RewardEnergyAuraSearch"/>
+        <TimeScaleSource Value="Global"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="RewardEnergyAuraCDS">
         <InfoFlags index="Hidden" value="1"/>
@@ -885,8 +891,13 @@
         <MaxStackCount value="0"/>
         <Duration value="0.5"/>
         <Modification>
+            <RateMultiplierArray index="Charge" value="1.01"/>
             <RateMultiplierArray index="Cooldown" value="1.01"/>
         </Modification>
+        <TimeScaleSource Value="Global"/>
+        <DamageResponse ModifyFraction="0.99">
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="RichCrystalRainMissile">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -1723,7 +1734,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="UnstableCD">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="2"/>
+        <Duration value="5"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Vigor">
@@ -2985,6 +2996,7 @@
             <Chance value="1"/>
         </DamageResponse>
         <BehaviorFlags index="Permanent" value="1"/>
+        <Requirements value="ShadowHeroHasCloakofFear"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Cold">
         <InfoIcon value="Assets\Textures\btn-ability-terran-slow.dds"/>
@@ -3191,6 +3203,7 @@
     <CBehaviorBuff id="Easy">
         <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="EasyDefense">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -4275,6 +4288,7 @@
     <CBehaviorBuff id="Insane">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="HealingReagent">
         <InfoIcon value="Assets\Textures\btn-ability-zerg-dehaka-ultralisk-healingadaptation.dds"/>
@@ -4305,6 +4319,7 @@
     <CBehaviorBuff id="Legendary">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="LightningEnchanted2">
         <InfoIcon value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
@@ -4462,6 +4477,7 @@
     <CBehaviorBuff id="Normal">
         <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="HasteAura">
         <Alignment value="Positive"/>
@@ -4685,6 +4701,7 @@
     <CBehaviorBuff id="Hard">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="OrbitalCannonIgnite">
         <InfoIcon value="Assets\Textures\btn-ability-terran-yamatogun-color.dds"/>
@@ -4840,6 +4857,7 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <MaxStackCount value="0"/>
         <InfoFlags index="Hidden" value="1"/>
+        <TimeScaleSource Value="Global"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="thornukedforce">
         <Alignment value="Negative"/>

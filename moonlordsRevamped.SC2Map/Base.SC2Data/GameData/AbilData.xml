@@ -2329,4 +2329,7 @@
         <AINotifyEffect value="Windstorm"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="EverlastingStorm" Requirements="IsWindInfusedAndHas3WindStacksAnd3EarthStacks"/>
     </CAbilEffectTarget>
+    <CAbilAttack id="attack">
+        <SupportedFilters value="-;Self,Ally,Outer"/>
+    </CAbilAttack>
 </Catalog>

@@ -4856,6 +4856,7 @@
         <Collide index="Flying" value="1"/>
         <Attributes index="Light" value="1"/>
         <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Heroic" value="1"/>
         <LifeStart value="10000"/>
         <LifeMax value="10000"/>
         <LifeArmor value="5000"/>
@@ -5212,6 +5213,7 @@
         <Collide index="Flying" value="1"/>
         <Attributes index="Light" value="1"/>
         <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Heroic" value="1"/>
         <LifeStart value="10000"/>
         <LifeMax value="10000"/>
         <LifeArmor value="5000"/>
@@ -5269,6 +5271,7 @@
         <Collide index="Flying" value="1"/>
         <Attributes index="Light" value="1"/>
         <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Heroic" value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/ProtossPlating"/>
         <EnergyStart value="150"/>
         <EnergyMax value="300"/>
@@ -5318,6 +5321,7 @@
         <Collide index="Flying" value="1"/>
         <Attributes index="Light" value="1"/>
         <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Heroic" value="1"/>
         <LifeStart value="10000"/>
         <LifeMax value="10000"/>
         <LifeArmor value="5000"/>
@@ -6241,6 +6245,7 @@
         <AbilArray Link="ShadowHeroDisintegrate"/>
         <BehaviorArray Link="WallofDarkness"/>
         <BehaviorArray Link="ShadowHeroPenumbra"/>
+        <BehaviorArray Link="CloakofFear"/>
         <BehaviorArray Link="FullHeal"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>

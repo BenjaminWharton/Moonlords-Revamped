@@ -64,28 +64,40 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="AltertimeDMG">
+    <CUpgrade id="BeamHeroLink">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroStretch">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="TimeHeroVanish">
         <EffectArray Reference="Effect,AlteredTimeDMG,Amount[0]" Value="8"/>
         <EffectArray Reference="Effect,AlterTimeMutationDmg,Amount[0]" Value="4"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="AltertimeACIGNORE">
+    <CUpgrade id="TimeHeroInevitable">
         <EffectArray Operation="Set" Reference="Effect,AlteredTimeDMG,ArmorReduction[0]" Value="0"/>
-        <MaxLevel value="3"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="AltertimeLeech">
+    <CUpgrade id="TimeHeroConservation">
         <EffectArray Reference="Effect,AlteredTimeDMG,LeechFraction[Shields]" Value="0.05"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="AltertimeRange">
+    <CUpgrade id="TimeHeroExpansion">
         <EffectArray Reference="Effect,AlterTimeSearch,AreaArray[0].Radius[0]" Value="0.5"/>
         <EffectArray Reference="Actor,AlteredTimelineImpact,Scale" Value="0.250000"/>
         <EffectArray Reference="Actor,AlteredTimelineImpact2,Scale" Value="0.200000"/>
         <EffectArray Reference="Actor,AlteredTimelineImpact3,Scale" Value="0.125000"/>
         <EffectArray Reference="Actor,AlteredTimelineImpact4,Scale" Value="0.250000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="AltertimeHaste">
+    <CUpgrade id="TimeHeroQuicken">
         <EffectArray Reference="Effect,AlterTimeApply2,Count[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Ambit">
@@ -192,13 +204,13 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="BurningBlood">
+    <CUpgrade id="FireHeroBurningBlood">
         <EffectArray Operation="Set" Reference="Effect,FireInfusionMoltenFuryCP,Chance" Value="1"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="BurningSoul">
+    <CUpgrade id="FireHeroBurningSoul">
         <EffectArray Reference="Effect,FireInfusionPeriodic,PeriodCount" Value="1"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Bypass">
@@ -210,15 +222,15 @@
         <EffectArray Operation="Set" Reference="Effect,HealingStationCannonAB,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Cataclysm">
+    <CUpgrade id="FireHeroCataclysm">
+        <EffectArray Reference="Effect,InfernoCataclysmCP,PeriodCount" Value="2"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
-        <EffectArray Reference="Effect,InfernoCataclysmCP,PeriodCount" Value="2"/>
     </CUpgrade>
-    <CUpgrade id="Cauterize">
+    <CUpgrade id="FireHeroCauterize">
         <EffectArray Reference="Effect,FireInfusionHealthMU,VitalArray[Life].Change" Value="6.25"/>
         <EffectArray Reference="Effect,FireInfusionShieldMU,VitalArray[Shields].Change" Value="3.25"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Celerity">
@@ -253,14 +265,14 @@
         <EffectArray Reference="Effect,SporeCrawlerU,AttributeBonus[Biological]" Value="20"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Youfailed,Modification.RangedWeaponRange" Value="-3"/>
     </CUpgrade>
-    <CUpgrade id="Clouded">
+    <CUpgrade id="ShadowHeroClouded">
         <EffectArray Operation="Subtract" Reference="Behavior,Doom,Modification.DamageTotalMultiplier[Melee]" Value="0.3"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Doom,Modification.DamageTotalMultiplier[Ranged]" Value="0.3"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Doom,Modification.DamageTotalMultiplier[Spell]" Value="0.3"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Doom,Modification.DamageTotalMultiplier[Splash]" Value="0.3"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Condemnation">
+    <CUpgrade id="ShadowHeroCondemnation">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Constant">
@@ -268,7 +280,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="Containment">
+    <CUpgrade id="PoisonHeroContainment">
         <EffectArray Reference="Behavior,PoisonCloud,Modification.DamageTotalMultiplier[Melee]" Value="0.05"/>
         <EffectArray Reference="Behavior,PoisonCloud,Modification.DamageTotalMultiplier[NoProc]" Value="0.05"/>
         <EffectArray Reference="Behavior,PoisonCloud,Modification.DamageTotalMultiplier[Ranged]" Value="0.05"/>
@@ -295,7 +307,7 @@
         <EffectArray Operation="Set" Reference="Effect,ForwardBeamCrossAnchorLM,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Darkness">
+    <CUpgrade id="ShadowHeroDarkness">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Deceit">
@@ -407,21 +419,21 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Firestarter">
+    <CUpgrade id="FireHeroFirestarter">
         <EffectArray Operation="Subtract" Reference="Behavior,MagmaArmorBase,Period" Value="4.000000"/>
         <EffectArray Reference="Effect,FireInfusionMoltenFuryCP,PeriodCount" Value="1"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Fuel">
+    <CUpgrade id="FireHeroFuel">
         <EffectArray Operation="Set" Reference="Effect,FireHeroFuelData,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="GasPickupTextDummy">
         <EffectArray Reference="Effect,GasPickupTextDummy,Amount" Value="50"/>
     </CUpgrade>
-    <CUpgrade id="Hellfire">
+    <CUpgrade id="FireHeroHellfire">
         <EffectArray Reference="Effect,InfernoData,ValidateMax" Value="1"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Hew">
@@ -431,6 +443,22 @@
     <CUpgrade id="IllusionHeroMirage">
         <EffectArray Operation="Set" Reference="Effect,IllusionHeroStealthMirageSearchTarget,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="LightningHeroCapacity">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="4"/>
+    </CUpgrade>
+    <CUpgrade id="LightningHeroChain">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="LightningHeroConductor">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="LightningHeroOverload">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="LightningHeroExhaustion">
         <EffectArray Operation="Set" Reference="Effect,LightningHeroExhaustionAB,Chance" Value="1"/>
@@ -445,37 +473,36 @@
         <EffectArray Operation="Subtract" Reference="Unit,LightningHero,ShieldRegenDelay" Value="4.000000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
+    <CUpgrade id="LightningHeroSupercharge">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="LightningHeroVolatileEnergy">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
     <CUpgrade id="Misdirection">
         <EffectArray Operation="Set" Reference="Effect,IllusionHeroProjectionStealthCooldown,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Link">
+    <CUpgrade id="BeamHeroLink1">
         <EffectArray Operation="Subtract" Reference="Effect,RotatingBeamCP,Chance" Value="1"/>
         <EffectArray Reference="Effect,RotatingBeamLink1CP,Chance" Value="1"/>
         <EffectArray Reference="Effect,RotatingBeamCP,PeriodCount" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Link2">
+    <CUpgrade id="BeamHeroLink2">
         <EffectArray Reference="Effect,RotatingBeamCP,Chance" Value="1"/>
         <EffectArray Operation="Subtract" Reference="Effect,RotatingBeamLink1CP,Chance" Value="1"/>
         <EffectArray Reference="Effect,RotatingBeamCP,PeriodCount" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <LeaderAlias value="Link"/>
+        <LeaderAlias value="BeamHeroLink1"/>
     </CUpgrade>
-    <CUpgrade id="Equip1">
-        <EffectArray Operation="Set" Reference="Effect,SpawnArmyEquip1Set,Chance" Value="0"/>
-        <EffectArray Operation="Set" Reference="Effect,SpawnArmyEquip2Set,Chance" Value="1"/>
+    <CUpgrade id="ProbeHeroEquip">
         <EffectArray Operation="Set" Reference="Effect,EquipAB,Chance" Value="1"/>
         <EffectArray Reference="Effect,EquipSA,AreaArray[0].MaxCount" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Equip2">
-        <EffectArray Operation="Set" Reference="Effect,SpawnArmyEquip3Set,Chance" Value="1"/>
-        <EffectArray Operation="Set" Reference="Effect,SpawnArmyEquip2Set,Chance" Value="0"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Equip,Period" Value="8.000000"/>
-        <EffectArray Reference="Effect,EquipSA,AreaArray[0].MaxCount" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <LeaderAlias value="Equip1"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Eradicate">
         <EffectArray Operation="Set" Reference="Effect,OrbOfDestructionEradicateDMG,Chance" Value="0.1"/>
@@ -489,7 +516,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Excaliber">
+    <CUpgrade id="BladeHeroExcalibur">
         <EffectArray Reference="Effect,EviscerateCP,PeriodCount" Value="1"/>
         <EffectArray Reference="Effect,SubstitutionFrenzyCP,PeriodCount" Value="1"/>
         <EffectArray Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="5"/>
@@ -512,17 +539,17 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Focus">
+    <CUpgrade id="WarpHeroFocus">
+        <EffectArray Reference="Effect,WarpHeroMultishotDummy,ExpireDelay" Value="1.000000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
-        <EffectArray Reference="Effect,WarpHeroMultishotDummy,ExpireDelay" Value="1.000000"/>
     </CUpgrade>
     <CUpgrade id="Frenzy">
         <EffectArray Reference="Effect,SubstitutionFrenzyOffset,PeriodCount" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="FrostFury">
+    <CUpgrade id="LightningHeroFrostFury">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Furor">
@@ -569,8 +596,8 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="MoltenFury">
-        <EditorCategories value="Race:Protoss"/>
+    <CUpgrade id="FireHeroMoltenFury">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Monsoon">
@@ -591,6 +618,14 @@
     <CUpgrade id="ParticleHeroSafeguard">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
+    <CUpgrade id="PoisonHeroChemistry">
+        <EffectArray Reference="Effect,PoisonboltButtonDummy,PeriodCount" Value="11"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="PoisonHeroDeadlyFumes">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
     <CUpgrade id="PoisonHeroMysterymix">
         <EffectArray Reference="Effect,PoisonHeroPoisonBoltMU,VitalArray[Shields].Change" Value="7.5"/>
         <EffectArray Reference="Effect,PoisonHeroPoisonBoltMU,VitalArray[Life].Change" Value="7.5"/>
@@ -602,6 +637,22 @@
         <EffectArray Reference="Effect,PoisonHeroHealingReagentMU,VitalArray[Shields].Change" Value="25"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="PoisonHeroRepugnant">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="PoisonHeroStability">
+        <EffectArray Reference="Effect,PoisonboltButtonDummy,InitialDelay" Value="1.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="PoisonHeroStableIsotope">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="PoisonHeroToxTrigger">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Pulverize">
         <EffectArray Reference="Effect,CrystalRainDMG,AttributeBonus[Heroic]" Value="0.5"/>
@@ -778,7 +829,8 @@
         <EffectArray Operation="Set" Reference="Effect,ProbeHeroGasBombOutbreakDelay,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="PartingGift">
+    <CUpgrade id="WarpHeroPartingGift">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Perpetuation">
@@ -840,7 +892,7 @@
         <EffectArray Reference="Effect,OrbOfDestructionResoundSuicide3,Duration" Value="4.500000"/>
         <EffectArray Reference="Effect,OrbOfDestructionResoundCP,PeriodCount" Value="6"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Ricochet">
         <EffectArray Reference="Effect,GatewayHeroSplitterSplitSearchTarget,AreaArray[0].Radius" Value="3"/>
@@ -914,7 +966,7 @@
         <EffectArray Reference="Effect,RechargeCP,PeriodCount" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Splatter">
+    <CUpgrade id="PoisonHeroSplatter">
         <EffectArray Reference="Actor,Poisonbolt,Scale" Value="0.150000"/>
         <EffectArray Reference="Effect,PoisonboltButtonDummy,ExpireDelay" Value="5.000000"/>
         <EffectArray Reference="Actor,PoisonboltDeath,Scale" Value="0.150000"/>
@@ -928,19 +980,19 @@
         <EffectArray Reference="Abil,BladeHeroLeap,Range[0]" Value="2"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="StaticEnergy">
+    <CUpgrade id="LightningHeroStaticEnergy">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Stretch">
+    <CUpgrade id="BeamHeroStretch1">
         <EffectArray Operation="Set" Reference="Effect,RotatingBeamForceCP,PeriodicOffsetArray[0]" Value="1.000000,-0.188000,0.000000"/>
         <EffectArray Reference="Unit,RotatingBeamUnit,Speed" Value="0.500000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Stretch2">
+    <CUpgrade id="BeamHeroStretch2">
         <EffectArray Operation="Set" Reference="Effect,RotatingBeamForceCP,PeriodicOffsetArray[0]" Value="1.000000,-0.146000,0.000000"/>
         <EffectArray Reference="Unit,RotatingBeamUnit,Speed" Value="0.500000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <LeaderAlias value="Stretch"/>
+        <LeaderAlias value="BeamHeroStretch1"/>
     </CUpgrade>
     <CUpgrade id="Supplement">
         <EffectArray Operation="Set" Reference="Effect,OrbOfDestructionSupplimentChance,Chance" Value="1"/>
@@ -959,7 +1011,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Thunderclap">
+    <CUpgrade id="LightningHeroThunderclap">
         <EffectArray Reference="Effect,LightningHeroThunderfuryWrathDMG,AttributeFactor[Heroic]" Value="0.33"/>
         <EffectArray Reference="Effect,LightningHeroThunderfuryWrathDMG,AttributeFactor[Massive]" Value="0.33"/>
         <EffectArray Reference="Effect,LightningHeroThunderfuryDMG,AttributeFactor[Heroic]" Value="0.33"/>
@@ -1089,7 +1141,7 @@
         <LeaderAlias value=""/>
     </CUpgrade>
     <CUpgrade id="Unstable">
-        <EffectArray Reference="Effect,ExploderUnstableCP,Chance" Value="0.1"/>
+        <EffectArray Reference="Effect,ExploderUnstableCP,Chance" Value="0.15"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Vanquish">
@@ -1129,7 +1181,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="Virulent">
+    <CUpgrade id="PoisonHeroVirulent">
         <EffectArray Operation="Set" Reference="Effect,ApplyVirulent,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
@@ -1187,8 +1239,9 @@
         <EffectArray Reference="Effect,HellfireApocalypseCP,Chance" Value="0.5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Armageddon">
+    <CUpgrade id="FireHeroArmageddon">
         <EffectArray Operation="Set" Reference="Effect,InfernoArmageddonSwitch,Chance[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Assassinate">
         <EffectArray Reference="Abil,IllusionHeroStealth,Cost[0].Charge.CountMax" Value="1"/>
@@ -1199,7 +1252,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="Assault">
+    <CUpgrade id="WarpHeroAssault">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -1240,7 +1293,9 @@
         <EffectArray Operation="Set" Reference="Effect,IcefireBonfireCP,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Blight"/>
+    <CUpgrade id="PoisonHeroBlight">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
     <CUpgrade id="BluntForce">
         <EffectArray Operation="Subtract" Reference="Effect,EruptionEarthDMG,ArmorReduction" Value="0.5"/>
         <EffectArray Operation="Subtract" Reference="Effect,SandstormEarthDMG,ArmorReduction" Value="0.25"/>
@@ -1337,9 +1392,10 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Corruption">
+    <CUpgrade id="PoisonHeroCorruption">
         <EffectArray Operation="Subtract" Reference="Behavior,PoisonHeroCorruption,Modification.LifeArmorBonus" Value="1"/>
         <EffectArray Operation="Set" Reference="Effect,ApplyCorruptionAB,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Critical">
@@ -1362,8 +1418,9 @@
         <EffectArray Operation="Set" Reference="Effect,DeflectionApplicationSet,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Dilation">
+    <CUpgrade id="TwilightHeroDilation">
         <EffectArray Reference="Effect,PsiStormSearch,AreaArray[0].RadiusBonus" Value="0.05"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="IllusionHeroDetonate">
         <ScoreValue value="MiscTechnologyCount"/>
@@ -1385,11 +1442,12 @@
         <EffectArray Reference="Actor,IllusionHeroDistortionQuadL2,Width" Value="0.300000"/>
         <EffectArray Reference="Actor,IllusionHeroDistortionQuadR,Width" Value="0.300000"/>
         <EffectArray Reference="Actor,IllusionHeroDistortionQuadR2,Width" Value="0.300000"/>
-        <EffectArray Operation="Set" Reference="Effect,DistortionDMG,Amount" Value="10"/>
+        <EffectArray Reference="Effect,DistortionDMG,Amount" Value="10"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Distribute">
+    <CUpgrade id="TwilightHeroRedistribute">
         <EffectArray Operation="Set" Reference="Effect,TwilightHeroWarpoutDistributeAB,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Divert">
         <EffectArray Operation="Set" Reference="Effect,DivertMU,Chance" Value="1"/>
@@ -1561,17 +1619,6 @@
         <EffectArray Operation="Subtract" Reference="Unit,IllusionHero,ShieldRegenDelay" Value="3.000000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="PoisonboltButtonDummyDMG">
-        <EffectArray Reference="Effect,PoisonboltButtonDummy,PeriodCount" Value="11"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="PoisonboltButtonDummyDuration">
-        <EffectArray Reference="Effect,PoisonboltButtonDummy,InitialDelay" Value="1.000000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-        <LeaderAlias value="PoisonboltButtonDummyDMG"/>
-    </CUpgrade>
     <CUpgrade id="Quicken">
         <EffectArray Reference="Behavior,RenewHealSlow,Modification.MoveSpeedMultiplier" Value="0.05"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -1605,17 +1652,18 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="BlackDeathEnergy">
+    <CUpgrade id="PoisonHeroSchadenfreud">
         <EffectArray Reference="Effect,BlackDeathEnergy,VitalArray[Energy].Change[0]" Value="0.25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="BlastRadius">
-        <EffectArray Reference="Actor,ExploderExplodeImpact,Scale" Value="0.200000"/>
+        <EffectArray Reference="Actor,ExploderExplodeImpact,Scale" Value="0.125000"/>
         <EffectArray Reference="Effect,ExploderExplodeSA,AreaArray[0].Radius" Value="0.3"/>
-        <EffectArray Reference="Effect,ExploderSA,AreaArray[0].Radius" Value="0.4"/>
+        <EffectArray Reference="Effect,ExploderSA,AreaArray[0].Radius" Value="0.6"/>
         <EffectArray Reference="Actor,ExploderImpact,Scale" Value="0.250000"/>
         <EffectArray Reference="Effect,GatewayHeroExploderDebuffSA,AreaArray[0].MaxCount" Value="1"/>
-        <EffectArray Reference="Effect,GatewayHeroExploderDebuffSA,AreaArray[0].Radius" Value="0.4"/>
+        <EffectArray Reference="Effect,GatewayHeroExploderDebuffSA,AreaArray[0].Radius" Value="0.6"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -1698,7 +1746,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Cycle">
+    <CUpgrade id="TwilightHeroCycle">
         <EffectArray Reference="Effect,CycleLM,Chance" Value="0.05"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
@@ -1798,68 +1846,81 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="EnergyTapMagic">
+    <CUpgrade id="ShadowHeroMagic">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="BlackDeathHosts">
-        <MaxLevel value="2"/>
+    <CUpgrade id="PoisonHeroSuffering">
         <EffectArray Reference="Effect,BlackDeathPersistent2,Chance[0]" Value="0.1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="BlackDeathDamage">
+    <CUpgrade id="PoisonHeroPain">
         <EffectArray Reference="Effect,BlackDeathDamage,Amount[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="BlackDeathKillEnergy">
+    <CUpgrade id="PoisonHeroKillingspree">
         <EffectArray Reference="Effect,BlackDeathEnergyKill,VitalArray[Energy].Change[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="BlackDeathRespawn">
+    <CUpgrade id="PoisonHeroEpidemic">
         <EffectArray Operation="Set" Reference="Effect,BlackDeathPersistent3,Chance[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="BlackDeathRange">
-        <MaxLevel value="2"/>
+    <CUpgrade id="PoisonHeroTransfer">
         <EffectArray Reference="Effect,BlackDeathSpreadFinalSearch,AreaArray[0].Radius[0]" Value="0.5"/>
         <EffectArray Reference="Effect,BlackDeathSpread2SpreadSearch,AreaArray[0].Radius[0]" Value="0.5"/>
         <EffectArray Reference="Effect,BlackDeathSpread1SpreadSearch,AreaArray[0].Radius[0]" Value="0.5"/>
         <EffectArray Reference="Actor,BlackDeath,Scale" Value="0.500000"/>
-    </CUpgrade>
-    <CUpgrade id="BlackwallEnergy">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="BlackwallDarkness">
-        <MaxLevel value="3"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,CloakofFear,DamageResponse.ModifyFraction" Value="0.15"/>
+    <CUpgrade id="ShadowHeroDarkChannels">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="BlastwaveArea">
+    <CUpgrade id="ShadowHeroCloakofFear">
+        <EffectArray Operation="Subtract" Reference="Behavior,CloakofFear,DamageResponse.ModifyFraction" Value="0.15"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="FireHeroImpact">
         <EffectArray Reference="Effect,FireHeroBlastwaveSA,AreaArray[0].Radius[0]" Value="0.75"/>
         <EffectArray Reference="Effect,FireHeroBlastwaveChainSA,AreaArray[0].Radius[0]" Value="0.75"/>
         <EffectArray Reference="Actor,BlastwaveImpact,Scale" Value="0.300000"/>
         <EffectArray Reference="Actor,BlastwaveFlames,Scale" Value="0.300000,0.300000,0.150000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="BlastwaveSlow">
+    <CUpgrade id="FireHeroPowerblast">
         <EffectArray Reference="Behavior,FireHeroBlastwaveSlow,Duration" Value="2.000000"/>
         <EffectArray Reference="Behavior,FireHeroBlastwaveStun,Duration" Value="0.500000"/>
         <EffectArray Reference="Effect,FireHeroBlastwaveDMG,AttributeFactor[Massive]" Value="1"/>
         <EffectArray Reference="Effect,FireHeroBlastwaveDMG,AttributeFactor[Heroic]" Value="1"/>
         <EffectArray Reference="Effect,FireHeroBlastwaveDMG,AttributeFactor[Structure]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="BlastwaveEnergy">
+    <CUpgrade id="FireHeroBlastdesign">
         <EffectArray Reference="Effect,FireHeroBlastwaveMU,VitalArray[Energy].Change[0]" Value="5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="BlastwaveChain">
+    <CUpgrade id="FireHeroPyroblast">
         <EffectArray Reference="Effect,FireHeroBlastwaveChainDelay,Chance" Value="0.05"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="BossBanelingThrowMoreDamage">
         <EffectArray Reference="Effect,BossBanelingThrowBehavior2,Count[0]" Value="1"/>
         <MaxLevel value="4"/>
     </CUpgrade>
-    <CUpgrade id="ChargedStrikeTalent">
+    <CUpgrade id="LightningHeroChargedStrike">
         <EffectArray Reference="Effect,LightningHeroThunderfuryDMG,Amount[0]" Value="10"/>
         <EffectArray Operation="Subtract" Reference="Abil,LightningHeroThunderfury,Cost[0].Vital[Energy]" Value="10"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="ChitinousPlating">
         <EffectArray Reference="Unit,Metalisk,LifeArmor[0]" Value="2"/>
@@ -1867,14 +1928,16 @@
         <EffectArray Reference="Unit,Ultralisk2,LifeArmor[0]" Value="2"/>
         <EffectArray Reference="Unit,Ultralisk2,LifeArmorLevel[0]" Value="2"/>
     </CUpgrade>
-    <CUpgrade id="DecoyEndure">
+    <CUpgrade id="WarpHeroHallucination">
         <EffectArray Reference="Effect,HallucinatonDecoyBonus,Count[0]" Value="1"/>
         <EffectArray Reference="Accumulator,WarpHeroDecoyLimit,Amount" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="WarpHero"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="DecoyCheap">
+    <CUpgrade id="WarpHeroNull">
         <EffectArray Operation="Subtract" Reference="Abil,WarpHeroDecoy,Cost[0].Vital[Energy]" Value="25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="WarpHero"/>
     </CUpgrade>
     <CUpgrade id="TimeHeroTempo">
@@ -1898,17 +1961,19 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="DematerializeCheap">
+    <CUpgrade id="ParticleHeroOptronics">
         <EffectArray Operation="Subtract" Reference="Behavior,Dematerialize,Modification.ShieldArmorBonus" Value="5"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Dematerialize,Modification.LifeArmorBonus" Value="5"/>
         <EffectArray Reference="Behavior,Rematerialize,Modification.LifeArmorBonus" Value="5"/>
         <EffectArray Reference="Behavior,Rematerialize,Modification.ShieldArmorBonus" Value="5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="DematerializeEOL">
+    <CUpgrade id="ParticleHeroDischarge">
         <EffectArray Reference="Accumulator,ParticleHeroDischargeMultiplier,Amount" Value="0.25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="DematerializeImp">
+    <CUpgrade id="ParticleHeroNanoLasers">
         <EffectArray Reference="Effect,DematerializeDamage,Amount[0]" Value="1.5"/>
         <EffectArray Reference="Effect,DematerializeRegenerate,VitalArray[Shields].Change[0]" Value="5"/>
         <EffectArray Reference="Effect,DematerializeRegenerate,VitalArray[Life].Change[0]" Value="5"/>
@@ -1924,6 +1989,7 @@
         <EffectArray Reference="Effect,ParticleHeroOverhealEOLAB,Count" Value="10"/>
         <EffectArray Reference="Effect,ParticleHeroOverhealRematAB,Count" Value="1"/>
         <EffectArray Reference="Effect,ParticleHeroOverhealRematEOLAB,Count" Value="10"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="DifficultyBuildingHP" parent="ZergGroundArmors">
@@ -1987,23 +2053,29 @@
         <AffectedUnitArray index="16" removed="1"/>
         <MaxLevel value="5"/>
     </CUpgrade>
-    <CUpgrade id="DoomEnergy">
-        <MaxLevel value="3"/>
+    <CUpgrade id="ShadowHeroShadowfury">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Doppelganger">
+    <CUpgrade id="WarpHeroDoubleganger">
         <EffectArray Reference="Effect,Doubleganger,Count[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="EnergyTapFree">
+    <CUpgrade id="ShadowHeroDevelopment">
         <EffectArray Operation="Subtract" Reference="Abil,ShadowHeroEnergytap,Cost[0].Vital[Energy]" Value="25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="EnergytapBonusHeal">
+    <CUpgrade id="ShadowHeroSmoke">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="DoomDamage">
+    <CUpgrade id="ShadowHeroDeathsEmbrace">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="EnergytapLowEnergy">
+    <CUpgrade id="ShadowHeroMirrors">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Amplitude">
@@ -2014,8 +2086,9 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="Entropy">
+    <CUpgrade id="ShadowHeroEntropy">
         <EffectArray Reference="Effect,ShadowplayApplyEntropy,Count[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Evasion">
@@ -2108,7 +2181,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Hades">
+    <CUpgrade id="FireHeroHades">
         <EffectArray Operation="Set" Reference="Effect,HadesAB,Chance" Value="1"/>
         <EffectArray Operation="Set" Reference="Effect,HadesSA,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -2176,8 +2249,9 @@
         <AffectedUnitArray value="Zealot"/>
         <LeaderAlias value="KillHatchOn"/>
     </CUpgrade>
-    <CUpgrade id="KineticBuffer">
+    <CUpgrade id="TwilightHeroKineticBuffer">
         <EffectArray Operation="Subtract" Reference="Behavior,Polymercrust,DamageResponse.ModifyFraction" Value="0.01"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="LVL15">
@@ -2285,7 +2359,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="Midnight">
+    <CUpgrade id="ShadowHeroMidnight">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -2294,7 +2368,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Nightwarp">
+    <CUpgrade id="TwilightHeroNightwarp">
         <EffectArray Operation="Set" Reference="Effect,WarpoutNightwarpSA,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
@@ -2308,11 +2382,12 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Diseased">
+    <CUpgrade id="PoisonHeroDiseased">
         <EffectArray Reference="Effect,Diseased,Chance" Value="0.1"/>
         <EffectArray Reference="Effect,Diseased,Count" Value="2"/>
+        <EffectArray Reference="Effect,Diseased,Radius" Value="2"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Portal">
         <EffectArray Reference="Effect,PortalDelay,Chance" Value="0.02"/>
@@ -2326,9 +2401,9 @@
         <EffectArray Operation="Set" Reference="Effect,ConsumeAB,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Warmth">
+    <CUpgrade id="FireHeroWarmth">
         <EffectArray Operation="Subtract" Reference="Abil,FireInfusion,Cost[0].Vital[Energy]" Value="10"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Fissure">
         <EffectArray Reference="Effect,GravitySliversSA,AreaArray[0].Radius" Value="0.25"/>
@@ -2342,8 +2417,9 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="FrostshockCoolant">
+    <CUpgrade id="LightningHeroCoolant">
         <EffectArray Reference="Effect,FrostshockCoolantSearch,Chance" Value="0.11"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Gateway">
@@ -2387,34 +2463,40 @@
         <EffectArray Reference="Effect,Lifeline,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Lightningfury">
+    <CUpgrade id="LightningHeroLightningfury">
         <EffectArray Reference="Actor,Thunderfury,Scale" Value="0.600000"/>
         <EffectArray Reference="Actor,LightningHeroThunderfury,Scale" Value="0.330000"/>
         <EffectArray Reference="Effect,LightningHeroThunderfuryWrathSA,AreaArray[0].Radius" Value="0.66"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="MagmaArmorFireChannels">
-        <MaxLevel value="4"/>
+    <CUpgrade id="FireHeroFireChannels">
         <EffectArray Reference="Effect,MagmaArmorFireChannels,Chance" Value="0.05"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="FireballIgnite">
+    <CUpgrade id="FireHeroIgnite">
         <EffectArray Reference="Effect,FireballIgniteAdd,Count[0]" Value="1"/>
         <EffectArray Reference="Effect,MeteorDMG,Amount" Value="5"/>
         <EffectArray Reference="Actor,MeteorFireAttachement,Scale" Value="0.250000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="FireballMeteor">
+    <CUpgrade id="FireHeroFieryJustice">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="FireballMeteorChain"/>
-    <CUpgrade id="Fireballspeed">
+    <CUpgrade id="FireHeroBurningSky">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="FireHeroBlazingSpeed">
         <EffectArray Operation="Set" Reference="Unit,FireHeroFireball,Mover[0]" Value="FireballMoverUP1"/>
         <EffectArray Reference="Abil,FireHeroFireball,AutoCastRange" Value="2.5"/>
         <EffectArray Reference="Actor,FireHeroFireballQuad,Height" Value="3.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Fireballrange">
-        <MaxLevel value="3"/>
+    <CUpgrade id="FireHeroInnerFire">
         <EffectArray Reference="Effect,FireballImpactSearch,AreaArray[0].Radius[0]" Value="0.333"/>
         <EffectArray Reference="Actor,FireHeroFireball,Scale" Value="0.200000"/>
         <EffectArray Reference="Actor,FireballImpactModel,Scale" Value="0.200000"/>
@@ -2422,11 +2504,12 @@
         <EffectArray Reference="Actor,Meteor,Scale" Value="0.100000"/>
         <EffectArray Reference="Actor,MeteorImpactFX,Scale" Value="0.100000"/>
         <EffectArray Reference="Actor,FireHeroFireballSplat,Scale" Value="0.330000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="FireballspeedUP2">
+    <CUpgrade id="FireHeroBlazingSpeed2">
         <EffectArray Operation="Set" Reference="Unit,FireHeroFireball,Mover[0]" Value="FireballMoverUP2"/>
-        <EffectArray Reference="Abil,FireHeroFireball,AutoCastRange" Value="2.5"/>
-        <EffectArray Reference="Actor,FireHeroFireballQuad,Height" Value="3.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="ForgeMineralUpgrade">
         <EffectArray Reference="Unit,Zealot,LifeArmor[0]" Value="0.0625"/>
@@ -2526,43 +2609,51 @@
         <EffectArray Reference="Unit,Pylon,LifeStart" Value="25"/>
         <MaxLevel value="100"/>
     </CUpgrade>
-    <CUpgrade id="FrostshockIceage">
+    <CUpgrade id="LightningHeroIceAge">
         <EffectArray Operation="Set" Reference="Effect,FrostshockInitSet2,Chance[0]" Value="1"/>
         <EffectArray Operation="Set" Reference="Effect,FrostshockSpreadSetCoolant,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="FrostshockShatter">
+    <CUpgrade id="LightningHeroShatter">
         <EffectArray Reference="Effect,FrostshockApplyShatter,Count[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="FrostshockArea">
+    <CUpgrade id="LightningHeroBlizzard">
         <EffectArray Reference="Effect,FrostshockSpreadSearch,AreaArray[0].Radius[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="FrostshockWinter">
+    <CUpgrade id="LightningHeroWinter">
         <EffectArray Reference="Effect,FrostshockInitSet3,Chance[0]" Value="0.1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="GuidedMissileSplit"/>
-    <CUpgrade id="GuidedMissileTTL">
-        <MaxLevel value="3"/>
-        <EffectArray Reference="Behavior,AssaultDrone,Duration" Value="2.500000"/>
+    <CUpgrade id="WarpHeroSplit">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="GuidedMissileScanrange">
+    <CUpgrade id="WarpHeroZortrium">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
-        <EffectArray Reference="Effect,AssaultSearchSA,AreaArray[0].Radius" Value="0.25"/>
-        <EffectArray Reference="Actor,AssaultImpact,Scale" Value="0.200000"/>
     </CUpgrade>
-    <CUpgrade id="GuidedMissilePierce">
+    <CUpgrade id="WarpHeroSonar">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="WarpHeroPierce">
         <EffectArray Reference="Effect,AssaultData,ValidateMax" Value="1"/>
-    </CUpgrade>
-    <CUpgrade id="InfernoDebuff">
-        <EffectArray Reference="Effect,InfernoDebuff,Count[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="InfernoLeech">
+    <CUpgrade id="FireHeroEvilPresent">
+        <EffectArray Reference="Effect,InfernoDebuff,Count[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="FireHeroFireMastery">
         <EffectArray Reference="Effect,InfernoDMG,LeechFraction[Life]" Value="0.15"/>
         <EffectArray Reference="Effect,InfernoDMG,LeechFraction[Shields]" Value="0.15"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Magnetism">
@@ -2576,128 +2667,156 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="MultiphaseShieldFast">
+    <CUpgrade id="ParticleHeroEmitters">
         <EffectArray Operation="Subtract" Reference="Behavior,MultiphaseShieldHiddenreplenish,Duration[0]" Value="3.000000"/>
         <EffectArray Reference="Behavior,MultiphaseShield,Modification.ShieldArmorBonus" Value="0.5"/>
         <EffectArray Reference="Behavior,MultiphaseShield,Modification.LifeArmorBonus" Value="0.5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="MultiphaseShieldred">
+    <CUpgrade id="ParticleHeroDampeners">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="MultiphaseShieldrestore">
+    <CUpgrade id="ParticleHeroConverter">
         <EffectArray Reference="Effect,MultiphaseShieldrestore,VitalArray[Life].Change[0]" Value="10"/>
         <EffectArray Reference="Effect,MultiphaseShieldrestore,VitalArray[Shields].Change[0]" Value="10"/>
-        <MaxLevel value="3"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="MultishotEnergyreturn">
+    <CUpgrade id="WarpHeroManaleech">
         <EffectArray Reference="Effect,ImmortalMultiShotDamage,LeechFraction[Energy]" Value="0.04"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="WarpHero"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="MultishotMultitask">
-        <MaxLevel value="3"/>
+    <CUpgrade id="WarpHeroMultitask">
         <EffectArray Reference="Effect,WarpHeroMultishotDummy,ExpireDelay" Value="2.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="MultishotFlames"/>
-    <CUpgrade id="MutationEnergy">
+    <CUpgrade id="WarpHeroBlaze">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="TimeHeroEnergy">
         <EffectArray Reference="Effect,MutationEnergy,VitalArray[Energy].Change[0]" Value="0.33"/>
         <EffectArray Reference="Effect,MutationEnergy,VitalArray[Life].Change" Value="0.33"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="MutationRange">
+    <CUpgrade id="TimeHeroSource">
         <EffectArray Reference="Effect,AlterTimeSearchMutation,AreaArray[0].Radius[0]" Value="1.33"/>
         <EffectArray Reference="Effect,TimewaveSearchMutation,AreaArray[0].Radius[0]" Value="1.33"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="MutationDamage">
+    <CUpgrade id="TimeHeroSupply">
         <EffectArray Reference="Effect,AlterTimeMutationDmg,Amount[0]" Value="1.5"/>
         <EffectArray Reference="Effect,TimewaveDamageMutation,Amount[0]" Value="0.5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="MutationHost">
+    <CUpgrade id="TimeHeroHost">
         <EffectArray Operation="Set" Reference="Effect,MutationSearchNextHost,Chance[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="NightstormBlind">
+    <CUpgrade id="TwilightHeroBlind">
         <EffectArray Reference="Effect,TwilightHeroNightstormAB,Count[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="NightstormCheap">
+    <CUpgrade id="TwilightHeroCreative">
         <EffectArray Operation="Subtract" Reference="Abil,TwilightHeroNightstorm,Cost[0].Vital[Energy]" Value="5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="NightstormDuration">
+    <CUpgrade id="TwilightHeroStability">
         <EffectArray Reference="Effect,NightstormCP,PeriodCount" Value="3"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="NightstormDamage">
+    <CUpgrade id="TwilightHeroOverwhelming">
         <EffectArray Reference="Effect,NightstormDMG,Amount" Value="5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="OrbitalCannonAE">
+    <CUpgrade id="ParticleHeroSupply">
         <EffectArray Reference="Effect,OrbitalCannonSearch,AreaArray[0].Radius[0]" Value="0.5"/>
         <EffectArray Reference="Actor,OrbitalCannon,Scale" Value="0.300000,0.300000,0.100000"/>
         <EffectArray Reference="Actor,OrbitalCannon2,Scale" Value="0.300000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="OrbitalCannonIgnite">
+    <CUpgrade id="ParticleHeroPlasma">
         <EffectArray Reference="Effect,OrbitalCannonIgnite,Count[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="OrbitalCannonPreheat">
+    <CUpgrade id="ParticleHeroPreheat">
         <EffectArray Operation="Subtract" Reference="Behavior,OrbitalCannonIgnite,Duration[0]" Value="1.500000"/>
         <EffectArray Operation="Multiply" Reference="Effect,OrbitalCannonIgniteDamage,Amount[0]" Value="2"/>
         <EffectArray Operation="Subtract" Reference="Abil,ParticleHeroOrbitalCannon,Cost[0].Vital[Energy]" Value="5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="OrbitalCannonNeutron">
-        <MaxLevel value="3"/>
+    <CUpgrade id="ParticleHeroNeutronblast">
         <EffectArray Reference="Effect,OrbitalCannonDematerialize,Chance[0]" Value="0.08"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Permeate">
         <EffectArray Reference="Behavior,GatewayHeroExplosive,DamageResponse.ModifyFraction" Value="0.25"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="PlasmaTorpedoCharge">
-        <MaxLevel value="3"/>
+    <CUpgrade id="ParticleHeroOverload">
         <EffectArray Operation="Subtract" Reference="Effect,ParticleHeroPlasmaTorpedo,ExpireDelay" Value="1.000000"/>
-    </CUpgrade>
-    <CUpgrade id="PlasmaTorpedoRange">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="PlasmaTorpedoShieldgain">
+    <CUpgrade id="ParticleHeroNGR">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="ParticleHeroReceiver">
         <EffectArray Reference="Effect,PlasmaTorpedoReplenishShieldSet,Chance[0]" Value="0.2"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="PlasmaTorpedoMissile">
-        <MaxLevel value="3"/>
+    <CUpgrade id="ParticleHeroLaunchers">
         <EffectArray Reference="Effect,ParticleHeroPlasmaTorpedo,ExpireDelay" Value="1.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="PoisonBubbleDuration">
+    <CUpgrade id="PoisonHeroConsolation">
         <EffectArray Reference="Effect,PoisonBubble,PeriodCount[0]" Value="2"/>
         <EffectArray Reference="Effect,PoisonBubbleAtTarget,PeriodCount[0]" Value="2"/>
         <EffectArray Reference="Effect,PoisonBubbleAtSource,PeriodCount[0]" Value="2"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="PoisonHero"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="PoisonBubbleDamage">
+    <CUpgrade id="PoisonHeroVentilation">
         <EffectArray Reference="Effect,PoisonBubbleAEdamage,Amount[0]" Value="2.5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="PoisonHero"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="PoisonboltPlague">
+    <CUpgrade id="PoisonHeroPlague">
         <EffectArray Reference="Effect,PoisonboltPlagueApply,Chance[0]" Value="0.3"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="PolymerArmor">
+    <CUpgrade id="TwilightHeroResidue">
         <EffectArray Reference="Unit,TwilightHero,ShieldArmor[0]" Value="2.5"/>
         <EffectArray Reference="Unit,TwilightHero,LifeArmor[0]" Value="2.5"/>
         <EffectArray Reference="Effect,PolymerHeal,VitalArray[Energy].Change" Value="1"/>
         <EffectArray Operation="Set" Reference="Effect,PolymerHeal,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="PolymerHeal">
+    <CUpgrade id="TwilightHeroStructure">
         <EffectArray Reference="Effect,PolymerHeal,VitalArray[Shields].Change[0]" Value="2"/>
         <EffectArray Operation="Set" Reference="Effect,PolymerHeal,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Potency">
@@ -2716,40 +2835,45 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="PowerDrainCheap">
+    <CUpgrade id="LightningHeroShort">
         <EffectArray Operation="Subtract" Reference="Abil,PowerDrain,Cost[0].Vital[Energy]" Value="25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="PowerDrainDuration">
+    <CUpgrade id="LightningHeroCapacitor">
         <EffectArray Reference="Behavior,PowerDrain,Duration[0]" Value="2.500000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="LightningHero"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="PowerDrainStacks">
-        <MaxLevel value="2"/>
+    <CUpgrade id="LightningHeroVampirism">
         <EffectArray Reference="Behavior,PowerDrain,Modification.VitalDamageLeechArray[Shields].KindArray[Spell]" Value="0.05"/>
         <EffectArray Reference="Behavior,PowerDrain,Modification.VitalDamageLeechArray[Life].KindArray[Spell]" Value="0.05"/>
         <EffectArray Reference="Behavior,PowerDrainEnergy,Modification.VitalDamageLeechArray[Energy].KindArray[Spell]" Value="0.01"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="PowerPlatingEnergy">
+    <CUpgrade id="WarpHeroGenerators">
         <EffectArray Operation="Set" Reference="Effect,PowerPlatingSet,Chance" Value="1"/>
         <EffectArray Reference="Behavior,PowerPlatingarmorbonus,Modification.LifeArmorBonus" Value="0.125"/>
         <EffectArray Reference="Behavior,PowerPlatingarmorbonus,Modification.ShieldArmorBonus" Value="0.125"/>
         <EffectArray Reference="Behavior,PowerPlatingenergybonus,Modification.VitalRegenArray[Energy]" Value="0.125"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="WarpHero"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="PowerPlatingHPreg">
+    <CUpgrade id="WarpHeroMicrobots">
         <EffectArray Operation="Subtract" Reference="Unit,WarpHero,ShieldRegenDelay" Value="2.000000"/>
         <EffectArray Reference="Behavior,PowerPlating,Modification.VitalRegenArray[Life]" Value="2"/>
         <EffectArray Reference="Behavior,PowerPlating,Modification.VitalRegenArray[Shields]" Value="2"/>
         <EffectArray Reference="Behavior,PowerPlating,Modification.VitalRegenMultiplier[Life]" Value="0.5"/>
         <EffectArray Reference="Behavior,PowerPlating,Modification.VitalRegenMultiplier[Shields]" Value="0.5"/>
         <EffectArray Reference="Behavior,PowerPlating2,Modification.VitalRegenArray[Energy]" Value="2"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="WarpHero"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Preservation">
-        <EffectArray Operation="Subtract" Reference="Abil,TimberLance,Cost[0].Vital[Life]" Value="15"/>
+        <EffectArray Operation="Subtract" Reference="Abil,TimberLance,Cost[0].Vital[Life]" Value="25"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Pressure">
@@ -2905,35 +3029,36 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="RecombulatorAbsorb">
+    <CUpgrade id="TwilightHeroAbsorbertron">
         <EffectArray Operation="Subtract" Reference="Effect,RecombulatorDamage2,Amount" Value="5"/>
         <EffectArray Reference="Effect,RecombulatorHeal,VitalArray[Life].Change" Value="5"/>
         <EffectArray Reference="Effect,RecombulatorHeal,VitalArray[Shields].Change" Value="5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="TwilightHeroMatrix">
         <EffectArray Reference="Effect,RecombulatorMatrixCP,PeriodCount" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="RecombulatorCheap">
+    <CUpgrade id="TwilightHeroVersion2">
         <EffectArray Operation="Subtract" Reference="Abil,TwilightHeroRecombulator,Cost[0].Vital[Energy]" Value="15"/>
-        <MaxLevel value="3"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="RecombulatorReflect">
+    <CUpgrade id="TwilightHeroReflector">
         <EffectArray Operation="Set" Reference="Effect,RecombulatorLaunch2,Chance[0]" Value="1"/>
         <EffectArray Reference="Effect,RecombulatorEnergy,VitalArray[Energy].Change[0]" Value="3"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="RecombulatorRange">
+    <CUpgrade id="TwilightHeroLRSS">
         <EffectArray Reference="Effect,RecombulatorSearch,AreaArray[0].Radius" Value="1.75"/>
         <EffectArray Reference="Effect,RecombulatorSearch2,AreaArray[0].Radius[0]" Value="1.75"/>
         <EffectArray Reference="Effect,RecombulatorSearch3,AreaArray[0].Radius[0]" Value="1.75"/>
         <EffectArray Reference="Effect,RecombulatorSearch,MaxCount" Value="1"/>
         <EffectArray Reference="Effect,RecombulatorEnergy,VitalArray[Energy].Change[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
-    </CUpgrade>
-    <CUpgrade id="RecombulatorReflect2">
-        <EffectArray Operation="Set" Reference="Effect,RecombulatorReturn2,Chance[0]" Value="1"/>
-        <EffectArray Reference="Effect,RecombulatorEnergy,VitalArray[Energy].Change[0]" Value="3"/>
     </CUpgrade>
     <CUpgrade id="Reconstruct">
         <EffectArray Reference="Effect,ReconstructMU,VitalArray[Life].ChangeFraction" Value="0.01"/>
@@ -2966,22 +3091,25 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="Reload">
+    <CUpgrade id="ParticleHeroReload">
         <EffectArray Reference="Effect,OrbitalCannon,PeriodCount" Value="1"/>
         <EffectArray Reference="Effect,OrbitalCannon2,PeriodCount" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Rematerialize">
+    <CUpgrade id="ParticleHeroRematerialize">
         <EffectArray Operation="Set" Reference="Effect,RematerializeRefund,Chance" Value="0"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Replenish">
         <EffectArray Operation="Set" Reference="Effect,ApplyReplenishAB,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Resonance">
+    <CUpgrade id="TwilightHeroResonance">
         <EffectArray Reference="Behavior,Polymercrust,Modification.VitalRegenMultiplier[Energy]" Value="0.025"/>
         <EffectArray Reference="Behavior,Polymercrust,Modification.VitalRegenMultiplier[Life]" Value="0.025"/>
         <EffectArray Reference="Behavior,Polymercrust,Modification.VitalRegenMultiplier[Shields]" Value="0.025"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Retarget">
@@ -3216,57 +3344,74 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="ShadowEnergyToEnergy">
+    <CUpgrade id="ShadowHeroShadowFeast">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="ShadowcrashPowergain">
+    <CUpgrade id="ShadowHeroShadows">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="ShadowcrashRange">
-        <MaxLevel value="3"/>
+    <CUpgrade id="ShadowHeroDusk">
         <EffectArray Reference="Actor,ShadowCrashModel,Scale" Value="0.100000"/>
         <EffectArray Reference="Actor,ShadowHeroShadowcrashSplat,Scale" Value="0.500000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="ShadowcrashSlow">
+    <CUpgrade id="ShadowHeroDarkGrasp">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="ShadowcrashAEEnergy"/>
-    <CUpgrade id="ShadowplayHeal"/>
-    <CUpgrade id="ShadowplayImproved">
-        <EditorCategories value="UpgradeType:SpellResearch"/>
+    <CUpgrade id="ShadowHeroHaunt">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="ShadowHeroMedic">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="ShadowHeroPuppeteer">
+        <EditorCategories value="UpgradeType:Talents,Race:Protoss"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="ShadowplayLimit">
-        <MaxLevel value="3"/>
+    <CUpgrade id="ShadowHeroDarkArt">
         <EffectArray Reference="Effect,ShadowplayDummyEffectTarget,Duration" Value="2.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="ShadowplayOverlord"/>
+    <CUpgrade id="ShadowHeroOverlord">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
     <CUpgrade id="FireHeroEternalFlame">
         <EffectArray Operation="Subtract" Reference="Abil,FireHeroBlastwave,Cost[0].Charge.TimeUse" Value="1.000000"/>
         <EffectArray Reference="Abil,FireHeroBlastwave,Cost[0].Charge.CountMax" Value="1"/>
         <EffectArray Reference="Abil,FireHeroBlastwave,Cost[0].Charge.CountStart" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="FireHero"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="ShockwaveCannon">
+    <CUpgrade id="ParticleHeroOrbitalLink">
         <EffectArray Operation="Set" Reference="Effect,OrbitalCannon2,Chance[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="ShockwaveCheap">
+    <CUpgrade id="ParticleHeroClock">
         <EffectArray Operation="Subtract" Reference="Abil,Shockwave,Cost[0].Vital[Energy]" Value="2"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="ShockwaveRange">
+    <CUpgrade id="ParticleHeroMerculite">
         <EffectArray Reference="Effect,ShockwaveSearch,AreaArray[0].RectangleWidth" Value="0.2"/>
         <EffectArray Reference="Actor,ShockwaveMissile,Scale" Value="0.200000,0.100000,0.080000"/>
         <EffectArray Reference="Actor,ParticleHeroShockwaveQuad,Width" Value="0.200000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="ShockwaveDebuff">
+    <CUpgrade id="ParticleHeroRipfield">
         <EffectArray Reference="Effect,Shockwaved,Count[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="ShockwaveDoubleCast">
+    <CUpgrade id="ParticleHeroPattern">
         <EffectArray Reference="Effect,ShockwaveInitLink,Chance[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Shrapnel">
         <EffectArray Reference="Effect,GatewayHeroDeflectorDroneShrapnel,Chance" Value="0.08"/>
@@ -3336,7 +3481,7 @@
         <EffectArray Operation="Set" Reference="Effect,AirHeroTornadoTempestDataInc,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Thermal">
+    <CUpgrade id="FireHeroThermal">
         <EffectArray Reference="Behavior,Thermal,Modification.VitalMaxAdditiveMultiplierArray[Energy]" Value="0.5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
@@ -3359,8 +3504,9 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Transmute">
+    <CUpgrade id="ParticleHeroTransmute">
         <EffectArray Reference="Effect,ParticleHeroTransmute,VitalArray[Energy].Change" Value="5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Tremor">
@@ -3426,7 +3572,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Transmission">
+    <CUpgrade id="PoisonHeroTransmission">
         <EffectArray Reference="Actor,MusclePoisonImpact,Scale" Value="0.250000"/>
         <EffectArray Reference="Actor,MusclePoisonSplat,Scale" Value="0.450000"/>
         <EffectArray Reference="Actor,MusclePoisonImpact2,Scale" Value="0.125000"/>
@@ -3500,47 +3646,55 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="StaticShieldEnergy">
+    <CUpgrade id="LightningHeroEnergyflow">
         <EffectArray Reference="Effect,StaticShieldEnergy,VitalArray[Energy].Change[0]" Value="0.5"/>
         <EffectArray Reference="Effect,StaticShieldEnergyRemove,VitalArray[Energy].Change[0]" Value="5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="StrafeAgility" parent="Research">
+    <CUpgrade id="WarpHeroAgility" parent="Research">
         <EffectArray Reference="Effect,ImmortalStrafeDamage,Amount" Value="5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="WarpHero"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="StrafeEndless">
+    <CUpgrade id="WarpHeroEndless">
         <EffectArray Reference="Effect,ImmortalStrafeEndless,Chance" Value="0.1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="StrafeVirtuosity" parent="Research">
+    <CUpgrade id="WarpHeroVirtuosity" parent="Research">
         <EffectArray Operation="Subtract" Reference="Abil,WarpHeroStrafe,Cost[0].Vital[Energy]" Value="3"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="WarpHero"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="StrafeEndurance" parent="Research">
-        <AffectedUnitArray value="WarpHero"/>
-        <MaxLevel value="3"/>
+    <CUpgrade id="WarpHeroEndurance" parent="Research">
         <EffectArray Reference="Effect,WarpHeroStrafeDummy,ExpireDelay" Value="1.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <AffectedUnitArray value="WarpHero"/>
+        <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="StrafeExplosives" parent="Research">
+    <CUpgrade id="WarpHeroExplosives" parent="Research">
         <EffectArray Operation="Set" Reference="Effect,StrafeImpactSearchArea,MaxCount[0]" Value="4294967295"/>
         <EffectArray Operation="Set" Reference="Effect,StrafeImpactSearchArea,MinCount[0]" Value="0"/>
         <EffectArray Operation="Set" Reference="Effect,StrafeImpactSearchArea,AreaArray[0].Radius[0]" Value="1.5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="WarpHero"/>
     </CUpgrade>
     <CUpgrade id="ThorQuestReward"/>
     <CUpgrade id="ThorQuestRewardPhotonDamage">
         <EffectArray Reference="Effect,PhotonCannonU,Amount[0]" Value="10"/>
     </CUpgrade>
-    <CUpgrade id="ThunderfuryLightningsTalent">
+    <CUpgrade id="LightningHeroStormRage">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="ThunderfuryWrath">
+    <CUpgrade id="LightningHeroWrath">
         <EffectArray Operation="Set" Reference="Effect,LightningHeroThunderfuryWrathSet,Chance" Value="1"/>
         <EffectArray Reference="Effect,LightningHeroThunderfuryWrathDMG,Amount" Value="45"/>
         <EffectArray Operation="Set" Reference="Effect,LightningHeroThunderfuryStormrageWrathSet,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="TimeHeroReversal">
@@ -3549,50 +3703,57 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="TimeriftShield">
-        <EffectArray Reference="Effect,TimeriftShield,Count[0]" Value="1"/>
-    </CUpgrade>
     <CUpgrade id="TimeHeroFlux">
         <EffectArray Operation="Subtract" Reference="Abil,TimeHeroTimerift,Cost[0].Vital[Energy]" Value="20"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="TimewaveCheap">
+    <CUpgrade id="TimeHeroFutures">
         <EffectArray Operation="Subtract" Reference="Abil,TimeHeroTimewave,Cost[0].Vital[Energy]" Value="10"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="TimewaveDuration">
+    <CUpgrade id="TimeHeroTimefield">
         <EffectArray Reference="Behavior,Timewaved,Duration[0]" Value="1.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="TimewaveInstability">
+    <CUpgrade id="TimeHeroInstability">
         <EffectArray Reference="Effect,TimewaveInstability,Chance" Value="0.1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="TimewaveLink">
+    <CUpgrade id="TimerHeroParadox">
         <EffectArray Reference="Effect,TimewaveAltertimeLink,Chance[0]" Value="0.1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="TimewaveRange">
+    <CUpgrade id="TimeHeroMetawave">
         <EffectArray Reference="Actor,Timewave,Scale" Value="0.080000,0.030000,0.020000"/>
         <EffectArray Reference="Effect,TimewaveSearchInstability,AreaArray[0].Radius" Value="0.25"/>
         <EffectArray Reference="Effect,TimewaveSearch,AreaArray[0].Radius[0]" Value="0.25"/>
         <EffectArray Reference="Actor,TimewaveInstability2,Scale" Value="0.080000"/>
         <EffectArray Reference="Actor,TimeHeroTimewaveQuad,Width" Value="0.250000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="TwilightCannonAbsorb">
+    <CUpgrade id="TwilightHeroAbsorbtion">
         <EffectArray Reference="Effect,TwilightCannonAbsorb,Count[0]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="TwilightCannonDamage">
+    <CUpgrade id="TwilightHeroConduits">
         <EffectArray Reference="Effect,TwilightCannonDamage,Amount[0]" Value="20"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="TwilightCannonSuper">
+    <CUpgrade id="TwilightHeroRecursion">
         <EffectArray Reference="Effect,TwilightCannonDamage,VitalFractionCurrent[Life]" Value="0.025"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="TwilightCannonMultigun">
-        <EffectArray Operation="Set" Reference="Effect,TwilightCannonInit,PeriodCount[0]" Value="2"/>
+    <CUpgrade id="TwilightHeroNightfall">
+        <EffectArray Reference="Effect,TwilightCannonInit,PeriodCount[0]" Value="1"/>
+        <EffectArray Reference="Abil,TwilightHeroTwilightCannon,Cost[0].Vital[Energy]" Value="5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="UnknownUpgrade">
         <EffectArray Reference="Effect,thorimpact,Amount[0]" Value="90"/>
@@ -3615,9 +3776,10 @@
         <EffectArray Reference="Unit,Warbot,Speed[0]" Value="0.062500"/>
         <MaxLevel value="5"/>
     </CUpgrade>
-    <CUpgrade id="WarpDrone">
+    <CUpgrade id="WarpHeroDrone">
         <EffectArray Operation="Subtract" Reference="Behavior,WarpDroneHidden,Duration" Value="60.000000"/>
         <EffectArray Operation="Subtract" Reference="Effect,WarpHeroWarpDroneCD,Cost[0].CooldownTimeUse" Value="60.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Warpgate">
@@ -3628,16 +3790,16 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="WarpoutCheap">
+    <CUpgrade id="TwilightHeroEnergize">
         <EffectArray Operation="Subtract" Reference="Abil,TwilightHeroWarpout,Cost[0].Vital[Energy]" Value="20"/>
-        <EffectArray Operation="Subtract" Reference="Effect,WarpoutSelfRefund,VitalArray[Energy].Change" Value="20"/>
-        <EffectArray Operation="Subtract" Reference="Effect,WarpoutSelfDMGCP,PeriodCount" Value="2"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="WarpoutSurplus">
+    <CUpgrade id="TwilightHeroSurplus">
         <EffectArray Operation="Set" Reference="Behavior,Warpout,Modification.StateFlags[SuppressCollision]" Value="1"/>
         <EffectArray Reference="Behavior,Warpout,Modification.MoveSpeedMultiplier" Value="0.25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="WarpoutHeal">
+    <CUpgrade id="TwilightHeroTranswarp">
         <EffectArray Reference="Effect,TwilightHeroWarpoutHeal,VitalArray[Life].Change[0]" Value="100"/>
         <EffectArray Reference="Effect,TwilightHeroWarpoutHeal,VitalArray[Shields].Change[0]" Value="100"/>
         <EffectArray Reference="Effect,WarpoutNightwarpSA,AreaArray[0].Radius" Value="1"/>
@@ -3645,6 +3807,7 @@
         <EffectArray Reference="Actor,NightwarpImpact,Scale" Value="0.330000"/>
         <EffectArray Reference="Effect,TwilightHeroWarpoutDistributeHeal,VitalArray[Life].Change" Value="100"/>
         <EffectArray Reference="Effect,TwilightHeroWarpoutDistributeHeal,VitalArray[Shields].Change" Value="100"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Whiplash">
@@ -3675,8 +3838,9 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Zap">
-        <EffectArray Reference="Effect,LightningHeroThunderfuryWrathStormrageSA,Chance" Value="0.25"/>
+    <CUpgrade id="LightningHeroZap">
+        <EffectArray Reference="Effect,LightningHeroThunderfuryWrathZapSA,Chance" Value="0.25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="RewardDamage2">
@@ -3950,11 +4114,14 @@
         <EffectArray Reference="Effect,LocustFlyingDamage,Amount" Value="5"/>
         <MaxLevel value="10"/>
     </CUpgrade>
-    <CUpgrade id="doombox"/>
-    <CUpgrade id="DoomRange">
-        <MaxLevel value="3"/>
+    <CUpgrade id="ShadowHeroHavoc">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="ShadowHeroSoulburn">
         <EffectArray Reference="Actor,DoomBoomModel,Scale" Value="0.250000"/>
         <EffectArray Reference="Actor,ShadowHeroDoomSplat,Scale" Value="0.600000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="easyZergsmoveslower">
         <EffectArray Operation="Multiply" Reference="Unit,Zergling,Speed[0]" Value="0.750000"/>

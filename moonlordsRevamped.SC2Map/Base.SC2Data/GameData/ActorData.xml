@@ -802,7 +802,7 @@
         <Filter index="Neutral" value="1"/>
         <Filter index="Enemy" value="1"/>
         <On Terms="Effect.TimeHeroTimeriftDelay.Start" Send="Create"/>
-        <On Terms="Effect.TimeHeroTimeriftDelay.Stop; FromEffectTreeDescendant" Send="Destroy"/>
+        <On Terms="Effect.TimeHeroTimeriftDelay.Stop; FromEffectTreeDescendant" Send="Destroy Immediate"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,0,255"/>
         <On Terms="ActorCreation" Send="SetOpacity 0.250000 5.000000"/>
         <On Terms="ActorCreation" Send="SetScale 0.250000 5.000000"/>
@@ -1263,6 +1263,7 @@
     <CActorQuad id="ShadowHeroShadowcrashQuad" parent="GuideVisualQuadDown" abil="ShadowHeroShadowcrash">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
         <On index="0" Terms="Abil.ShadowHeroShadowcrash.Cursor" Send="Create"/>
+        <On index="4" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
         <On Terms="ActorCreation" Send="Create ShadowHeroShadowcrashSplat"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
@@ -9892,7 +9893,7 @@
         <On Terms="Effect.ExploderExplodeSA.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="SetTintColor 0,255,255"/>
         <Model value="ExploderImpact"/>
-        <Scale value="0.800000"/>
+        <Scale value="0.500000"/>
     </CActorModel>
     <CActorModel id="GravityDashForce" parent="ModelAnimationStyleContinuous">
         <Flags index="SuppressSaveLoad" value="1"/>

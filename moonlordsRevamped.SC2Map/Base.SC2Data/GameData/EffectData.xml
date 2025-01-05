@@ -255,7 +255,7 @@
         <TargetSorts>
             <SortArray value="Enemy"/>
         </TargetSorts>
-        <AreaArray MaxCount="3" Radius="2" Effect="GatewayHeroExploderDebuffSet"/>
+        <AreaArray MaxCount="3" Radius="3" Effect="GatewayHeroExploderDebuffSet"/>
         <RevealerParams Duration="0.5">
             <RevealFlags index="Unfog" value="1"/>
         </RevealerParams>
@@ -566,6 +566,15 @@
         <ImpactEffect value="GatewayHeroSplitterImpactSet"/>
         <AmmoUnit value="SplitterMissile"/>
     </CEffectLaunchMissile>
+    <CEffectSet id="LightningHeroThunderfuryWrathZapSet">
+        <ValidatorArray value="HasStaticShield"/>
+        <EditorCategories value=""/>
+        <EffectArray value="LightningHeroThunderfuryWrathDummy"/>
+        <EffectArray value="LightningHeroThunderfuryWrathRB"/>
+        <EffectArray value="LightningHeroThunderfuryWrathAB"/>
+        <EffectArray value="StaticShieldEnergyRemove"/>
+        <TargetLocationType value="UnitOrPoint"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="ZergLordGlaiveAttackCP">
         <EditorCategories value="Race:Zerg"/>
         <Flags index="RandomOffset" value="1"/>
@@ -1687,7 +1696,7 @@
     <CEffectEnumArea id="ShadowHeroPenumbraSA">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Neutral,Enemy,Structure,Heroic,Missile,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="ShadowHeroPenumbraAB"/>
+        <AreaArray Radius="6" Effect="ShadowHeroPenumbraAB"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="SpawnArmyGuardianAB">
         <EditorCategories value="Race:Protoss"/>
@@ -2132,13 +2141,13 @@
             <AccumulatorArray value="DamageInherited"/>
         </Amount>
         <ValidateMin value="-500000"/>
-        <ValidateMax value="300"/>
+        <ValidateMax value="350"/>
         <EffectFailure value="FuelSet"/>
         <BehaviorScope Behavior="FireHeroFuel"/>
     </CEffectUserData>
     <CEffectUserData id="FireHeroFuelDataDecrease">
         <EditorCategories value="Race:Protoss"/>
-        <Amount value="-300"/>
+        <Amount value="-350"/>
         <BehaviorScope Behavior="FireHeroFuel"/>
     </CEffectUserData>
     <CEffectApplyBehavior id="FireHeroHadesABDMG">
@@ -6458,7 +6467,7 @@
         <WhichLocation Value="CasterPoint"/>
         <Effect value="BlackDeathPersistent1"/>
         <Count value="2"/>
-        <Radius value="4"/>
+        <Radius value="2"/>
     </CEffectRandomPointInCircle>
     <CEffectSet id="BlazeIncinerateSet">
         <EditorCategories value="Race:Protoss"/>
@@ -7472,7 +7481,7 @@
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
         <PeriodCount value="8"/>
-        <PeriodicEffectArray value="SpawnArmySet"/>
+        <PeriodicEffectArray value="SpawnArmySwitch"/>
         <PeriodicPeriodArray value="0.1"/>
     </CEffectCreatePersistent>
     <CEffectCreateUnit id="SpawnArmyCUArchon">
@@ -9994,7 +10003,7 @@
         <EffectArray value="SaturateSet"/>
         <EffectArray value="ImbueSet"/>
     </CEffectSet>
-    <CEffectSet id="SpawnArmyEquip1Set">
+    <CEffectSet id="SpawnArmyEquip0Set">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="SpawnArmyCUZealot"/>
         <EffectArray value="SpawnArmyCUZealot"/>
@@ -10004,10 +10013,8 @@
         <MinCount value="1"/>
         <MaxCount value="1"/>
     </CEffectSet>
-    <CEffectSet id="SpawnArmyEquip2Set">
+    <CEffectSet id="SpawnArmyEquip1Set">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/SpawnArmyEquip1Set"/>
-        <Chance value="0"/>
         <EffectArray value="SpawnArmyCUZealot"/>
         <EffectArray value="SpawnArmyCUZealot"/>
         <EffectArray value="SpawnArmyCUAdept"/>
@@ -10018,10 +10025,8 @@
         <MinCount value="1"/>
         <MaxCount value="1"/>
     </CEffectSet>
-    <CEffectSet id="SpawnArmyEquip3Set">
+    <CEffectSet id="SpawnArmyEquip2Set">
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/SpawnArmyEquip1Set"/>
-        <Chance value="0"/>
         <EffectArray value="SpawnArmyCUZealot"/>
         <EffectArray value="SpawnArmyCUAdept"/>
         <EffectArray value="SpawnArmyCUStalker"/>
@@ -10050,12 +10055,12 @@
         <SearchFilters value="Structure;Player,Neutral,Enemy,Missile,Item,Dead,Hidden"/>
         <AreaArray MaxCount="1" Radius="500" Effect="SpawnArmyCP"/>
     </CEffectEnumArea>
-    <CEffectSet id="SpawnArmySet">
+    <CEffectSwitch id="SpawnArmySwitch">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="SpawnArmyEquip1Set"/>
-        <EffectArray value="SpawnArmyEquip2Set"/>
-        <EffectArray value="SpawnArmyEquip3Set"/>
-    </CEffectSet>
+        <CaseArray Validator="ProbeHeroEquipE2" Effect="SpawnArmyEquip2Set"/>
+        <CaseArray Validator="ProbeHeroEquipE1" Effect="SpawnArmyEquip1Set"/>
+        <CaseDefault value="SpawnArmyEquip0Set"/>
+    </CEffectSwitch>
     <CEffectCreateUnit id="SpawnArmyCUZealot">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
@@ -14499,7 +14504,7 @@
         <EffectArray value="StaticChargeDMG"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
-    <CEffectEnumArea id="LightningHeroThunderfuryWrathStormrageSA">
+    <CEffectEnumArea id="LightningHeroThunderfuryWrathZapSA">
         <EditorCategories value=""/>
         <Chance value="0"/>
         <ImpactLocation Value="CasterUnitOrPoint"/>
@@ -14507,7 +14512,7 @@
         <TargetSorts>
             <SortArray value="TSRandom"/>
         </TargetSorts>
-        <AreaArray MaxCount="1" Radius="12" Effect="LightningHeroThunderfuryStormrageWrathSet"/>
+        <AreaArray MaxCount="1" Radius="12" Effect="LightningHeroThunderfuryWrathZapSet"/>
     </CEffectEnumArea>
     <CEffectSet id="LightningHeroThunderfuryStormrageWrathSet">
         <EditorCategories value=""/>
@@ -14867,7 +14872,7 @@
     </CEffectSet>
     <CEffectSet id="ZapSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="LightningHeroThunderfuryWrathStormrageSA"/>
+        <EffectArray value="LightningHeroThunderfuryWrathZapSA"/>
     </CEffectSet>
     <CEffectDamage id="ZealotAiurWeapon">
         <Amount value="30"/>
@@ -15599,7 +15604,7 @@
     <CEffectEnumArea id="ExploderSA">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2" Effect="ExploderDMG"/>
+        <AreaArray Radius="3" Effect="ExploderDMG"/>
         <ImpactLocation Value="TargetPoint"/>
         <RevealerParams Duration="0.5">
             <RevealFlags index="Unfog" value="1"/>
@@ -17511,12 +17516,12 @@
     </CEffectLaunchMissile>
     <CEffectLaunchMissile id="RecombulatorReturn2">
         <EditorCategories value=""/>
-        <Chance value="0"/>
         <LaunchLocation Value="TargetUnit"/>
         <ImpactLocation Value="CasterUnit"/>
         <ImpactEffect value="RecombulatorSet4"/>
         <AmmoUnit value="RecombulatorMissile"/>
         <Movers Link="RecombulatorMissileReturn"/>
+        <ValidatorArray index="0" value="TwilightHeroReflectorGT1"/>
     </CEffectLaunchMissile>
     <CEffectEnumArea id="RecombulatorSearch3">
         <EditorCategories value=""/>
@@ -17844,7 +17849,6 @@
         <LaunchEffect value="FireballPersistent"/>
         <ImpactEffect value="FireballSet"/>
         <AmmoUnit value="FireHeroFireball"/>
-        <AmmoLife value="10"/>
         <Visibility value="Visible"/>
     </CEffectLaunchMissile>
     <CEffectCreatePersistent id="FireballPersistent">

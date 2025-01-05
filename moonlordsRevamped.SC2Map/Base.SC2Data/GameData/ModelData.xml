@@ -124,8 +124,8 @@
     <CModel id="ShadowHeroPenumbra">
         <Model value="Assets\Effects\Protoss\Sentry_Purifier_Energy_ForceField\Sentry_Purifier_Energy_ForceField.m3"/>
         <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="1.150000,1.150000,1.000000"/>
-        <ScaleMin value="1.150000,1.150000,1.000000"/>
+        <ScaleMax value="1.350000,1.350000,1.000000"/>
+        <ScaleMin value="1.350000,1.350000,1.000000"/>
     </CModel>
     <CModel id="WaterHero" parent="Unit" Race="Protoss">
         <Model value="Assets\Units\Protoss\Preserver\Preserver_00.m3"/>
@@ -437,8 +437,8 @@
     <CModel id="ExploderImpact">
         <Model value="Assets\Effects\Protoss\Zealot_Nerazim_PhaseChargeStun_Impact\Zealot_Nerazim_PhaseChargeStun_Impact.m3"/>
         <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="1.500000,1.500000,1.500000"/>
-        <ScaleMin value="1.500000,1.500000,1.500000"/>
+        <ScaleMax value="2.250000,2.250000,2.250000"/>
+        <ScaleMin value="2.250000,2.250000,2.250000"/>
     </CModel>
     <CModel id="ForwardBeamBeam">
         <Model value="Assets\Effects\Protoss\MothershipPhotonBeam\MothershipPhotonBeam.m3"/>

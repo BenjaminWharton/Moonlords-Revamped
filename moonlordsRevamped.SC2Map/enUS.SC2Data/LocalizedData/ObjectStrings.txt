@@ -106,7 +106,6 @@ Abil/EditorPrefix/TimberLance=Nature Hero -
 Abil/EditorPrefix/TimeHeroTimerift=Time Hero -
 Abil/EditorPrefix/Tornado=Air Hero -
 Abil/EditorPrefix/Trickery=Illusion Hero -
-Abil/EditorPrefix/TwilightHeroTwilightCannon=Twilight Hero -
 Abil/EditorPrefix/Upheaval=Earth Hero -
 Abil/EditorPrefix/VoidSentryShieldRepair=Gateway Hero -
 Abil/EditorPrefix/WarpInReinforcements=Pylon -
@@ -4580,9 +4579,9 @@ Effect/EditorPrefix/SpawnArmyCUImmortal=Probe Hero -
 Effect/EditorPrefix/SpawnArmyCUSentry=Probe Hero -
 Effect/EditorPrefix/SpawnArmyCUStalker=Probe Hero -
 Effect/EditorPrefix/SpawnArmyCUZealot=Probe Hero -
+Effect/EditorPrefix/SpawnArmyEquip0Set=Probe Hero -
 Effect/EditorPrefix/SpawnArmyEquip1Set=Probe Hero -
 Effect/EditorPrefix/SpawnArmyEquip2Set=Probe Hero -
-Effect/EditorPrefix/SpawnArmyEquip3Set=Probe Hero -
 Effect/EditorPrefix/SpawnArmyGuardianAB=Probe Hero -
 Effect/EditorPrefix/SpawnArmyGuardianAB2=Probe Hero -
 Effect/EditorPrefix/SpawnArmyGuardianABCannon=Probe Hero -
@@ -4590,7 +4589,7 @@ Effect/EditorPrefix/SpawnArmyInit=Probe Hero -
 Effect/EditorPrefix/SpawnArmyRB=Probe Hero -
 Effect/EditorPrefix/SpawnArmyRemoveCharges=Probe Hero -
 Effect/EditorPrefix/SpawnArmySearchPylon=Probe Hero -
-Effect/EditorPrefix/SpawnArmySet=Probe Hero -
+Effect/EditorPrefix/SpawnArmySwitch=Probe Hero -
 Effect/EditorPrefix/SpawnAttackCUBaneling=Zerg Lord -
 Effect/EditorPrefix/SpawnAttackCUChampInfestor=Zerg Lord -
 Effect/EditorPrefix/SpawnAttackCUCorpser=Zerg Lord -
@@ -6307,15 +6306,15 @@ Effect/EditorSuffix/SpawnArmyCUImmortal=(CUImmortal)
 Effect/EditorSuffix/SpawnArmyCUSentry=(CUSentry)
 Effect/EditorSuffix/SpawnArmyCUStalker=(CUStalker)
 Effect/EditorSuffix/SpawnArmyCUZealot=(CUZealot)
+Effect/EditorSuffix/SpawnArmyEquip0Set=(Set)
 Effect/EditorSuffix/SpawnArmyEquip1Set=(Set)
 Effect/EditorSuffix/SpawnArmyEquip2Set=(Set)
-Effect/EditorSuffix/SpawnArmyEquip3Set=(Set)
 Effect/EditorSuffix/SpawnArmyGuardianAB2=(AB)
 Effect/EditorSuffix/SpawnArmyInit=(Init)
 Effect/EditorSuffix/SpawnArmyRB=(RB)
 Effect/EditorSuffix/SpawnArmyRemoveCharges=(RemoveCharges)
 Effect/EditorSuffix/SpawnArmySearchPylon=(SearchPylon)
-Effect/EditorSuffix/SpawnArmySet=(Set)
+Effect/EditorSuffix/SpawnArmySwitch=(Switch)
 Effect/EditorSuffix/SpawnAttackCUBaneling=(CUBaneling)
 Effect/EditorSuffix/SpawnAttackCUChampInfestor=(CUChampInfestor)
 Effect/EditorSuffix/SpawnAttackCUCorpser=(CUCorpser)
@@ -7572,9 +7571,12 @@ Requirement/Name/PotentialIsLvl2=PotentialIsLvl2
 Requirement/Name/PotentialIsLvl3=PotentialIsLvl3
 Requirement/Name/PotentialIsLvl4=PotentialIsLvl4
 Requirement/Name/PotentialIsLvl5=PotentialIsLvl5
+Requirement/Name/ProbeHeroEquipE1=Probe Hero - Equip E 1
+Requirement/Name/ProbeHeroEquipE2=Probe Hero - Equip E 2
 Requirement/Name/ProbeHeroHasSeism=Probe Hero - Has Seism
 Requirement/Name/ProbeHeroTailGunGT0=Probe Hero - TailGun GT 0
 Requirement/Name/RematerializeIsLvl1=RematerializeIsLvl1
+Requirement/Name/ShadowHeroHasCloakofFear=Shadow Hero - Has Cloak of Fear
 Requirement/Name/ShadowHeroHasPenumbra=Shadow Hero - Has Penumbra
 Requirement/Name/ShadowplayLimit=ShadowplayLimit
 Requirement/Name/SteamIsLvl0=SteamIsLvl0
@@ -7598,6 +7600,7 @@ Requirement/Name/ToxicVaporCombo7=ToxicVaporCombo7
 Requirement/Name/ToxicVaporCombo8=ToxicVaporCombo8
 Requirement/Name/ToxicVaporCombo9=ToxicVaporCombo9
 Requirement/Name/TwilightHeroHasNightwarp=Twilight Hero - Has Nightwarp
+Requirement/Name/TwilightHeroReflectorGT1=Twilight Hero - Reflector GT 1
 Requirement/Name/Unstoppable=Unstoppable
 Requirement/Name/UseArmageddon=UseArmageddon
 Requirement/Name/UseDematerialize1=UseDematerialize>=1
@@ -7663,50 +7666,53 @@ RequirementNode/Name/CountBehaviorWaterInfusedQueuedOrBetterAtUnit=CountBehavior
 RequirementNode/Name/CountBehaviorWaterStackQueuedOrBetterAtUnit=CountBehavior(WaterStack,QueuedOrBetterAtUnit)
 RequirementNode/Name/CountBehaviorWindInfusedQueuedOrBetterAtUnit=CountBehavior(WindInfused,QueuedOrBetterAtUnit)
 RequirementNode/Name/CountBehaviorWindStackQueuedOrBetterAtUnit=CountBehavior(WindStack,QueuedOrBetterAtUnit)
-RequirementNode/Name/CountUpgradeArmageddonCompleteOnlyTechTreeCheat=CountUpgrade(Armageddon,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/CountUpgradeBlackDeathHostsCompleteOnlyTechTreeCheat=CountUpgrade(BlackDeathHosts,CompleteOnly)[TechTreeCheat]
-RequirementNode/Name/CountUpgradeBlackDeathRangeCompleteOnlyTechTreeCheat=CountUpgrade(BlackDeathRange,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/CountUpgradeBladeHeroExcaliburCompleteOnly=CountUpgrade(BladeHeroExcalibur,CompleteOnly)
 RequirementNode/Name/CountUpgradeBoundlessCompleteOnly=CountUpgrade(Boundless,CompleteOnly)
 RequirementNode/Name/CountUpgradeBufferQueuedOrBetter=CountUpgrade(Buffer,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeChargeTalentQueuedOrBetter=CountUpgrade(ChargeTalent,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeCondensationQueuedOrBetter=CountUpgrade(Condensation,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeCrossCompleteOnly=CountUpgrade(Cross,CompleteOnly)
 RequirementNode/Name/CountUpgradeCultivateCompleteOnly=CountUpgrade(Cultivate,CompleteOnly)
-RequirementNode/Name/CountUpgradeDematerializeEOLCompleteOnly=CountUpgrade(DematerializeEOL,CompleteOnly)
-RequirementNode/Name/CountUpgradeDilationQueuedOrBetter=CountUpgrade(Dilation,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeDistendQueuedOrBetter=CountUpgrade(Distend,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeDuplicateCompleteOnly=CountUpgrade(Duplicate,CompleteOnly)
 RequirementNode/Name/CountUpgradeEarthHeroBonusSkinQueuedOrBetter=CountUpgrade(EarthHeroBonusSkin,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeEnervateCompleteOnly=CountUpgrade(Enervate,CompleteOnly)
-RequirementNode/Name/CountUpgradeExcaliberCompleteOnly=CountUpgrade(Excaliber,CompleteOnly)
 RequirementNode/Name/CountUpgradeExpansionQueuedOrBetter=CountUpgrade(Expansion,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeFaultLinesCompleteOnly=CountUpgrade(FaultLines,CompleteOnly)
-RequirementNode/Name/CountUpgradeFireballMeteorChainCompleteOnlyTechTreeCheat=CountUpgrade(FireballMeteorChain,CompleteOnly)[TechTreeCheat]
-RequirementNode/Name/CountUpgradeFireballMeteorCompleteOnlyTechTreeCheat=CountUpgrade(FireballMeteor,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/CountUpgradeFireHeroArmageddonCompleteOnlyTechTreeCheat=CountUpgrade(FireHeroArmageddon,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/CountUpgradeFireHeroBurningSkyCompleteOnlyTechTreeCheat=CountUpgrade(FireHeroBurningSky,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/CountUpgradeFireHeroFieryJusticeCompleteOnlyTechTreeCheat=CountUpgrade(FireHeroFieryJustice,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/CountUpgradeFireHeroMoltenFuryQueuedOrBetter=CountUpgrade(FireHeroMoltenFury,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeFirewallQueuedOrBetter=CountUpgrade(Firewall,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeFlowQueuedOrBetter=CountUpgrade(Flow,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeLandslideQueuedOrBetter=CountUpgrade(Landslide,QueuedOrBetter)
-RequirementNode/Name/CountUpgradeMoltenFuryQueuedOrBetter=CountUpgrade(MoltenFury,QueuedOrBetter)
-RequirementNode/Name/CountUpgradeMultiphaseShieldFastCompleteOnly=CountUpgrade(MultiphaseShieldFast,CompleteOnly)
-RequirementNode/Name/CountUpgradeMultiphaseShieldredCompleteOnly=CountUpgrade(MultiphaseShieldred,CompleteOnly)
-RequirementNode/Name/CountUpgradeMultishotFlamesCompleteOnly1346870113TechTreeCheat=CountUpgrade(MultishotFlames,CompleteOnly){Research Multishot Flames}[TechTreeCheat]
-RequirementNode/Name/CountUpgradeNightwarpCompleteOnly=CountUpgrade(Nightwarp,CompleteOnly)
-RequirementNode/Name/CountUpgradeOrbitalCannonAECompleteOnly=CountUpgrade(OrbitalCannonAE,CompleteOnly)
+RequirementNode/Name/CountUpgradeParticleHeroDampenersCompleteOnlyTechTreeCheat=CountUpgrade(ParticleHeroDampeners,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/CountUpgradeParticleHeroDischargeCompleteOnlyTechTreeCheat=CountUpgrade(ParticleHeroDischarge,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/CountUpgradeParticleHeroEmittersCompleteOnlyTechTreeCheat=CountUpgrade(ParticleHeroEmitters,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/CountUpgradeParticleHeroReloadCompleteOnly=CountUpgrade(ParticleHeroReload,CompleteOnly)
+RequirementNode/Name/CountUpgradeParticleHeroRematerializeQueuedOrBetter=CountUpgrade(ParticleHeroRematerialize,QueuedOrBetter)
+RequirementNode/Name/CountUpgradeParticleHeroSupplyCompleteOnlyTechTreeCheat=CountUpgrade(ParticleHeroSupply,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat=CountUpgrade(PoisonHeroTransfer,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/CountUpgradePotentialQueuedOrBetter=CountUpgrade(Potential,QueuedOrBetter)
-RequirementNode/Name/CountUpgradeReloadCompleteOnly=CountUpgrade(Reload,CompleteOnly)
-RequirementNode/Name/CountUpgradeRematerializeQueuedOrBetter=CountUpgrade(Rematerialize,QueuedOrBetter)
+RequirementNode/Name/CountUpgradeProbeHeroEquipCompleteOnly=CountUpgrade(ProbeHeroEquip,CompleteOnly)
 RequirementNode/Name/CountUpgradeReservoirCompleteOnly=CountUpgrade(Reservoir,CompleteOnly)
 RequirementNode/Name/CountUpgradeRetributionQueuedOrBetter=CountUpgrade(Retribution,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeSeismCompleteOnly=CountUpgrade(Seism,CompleteOnly)
+RequirementNode/Name/CountUpgradeShadowHeroCloakofFearCompleteOnly=CountUpgrade(ShadowHeroCloakofFear,CompleteOnly)
+RequirementNode/Name/CountUpgradeShadowHeroDarkArtCompleteOnly=CountUpgrade(ShadowHeroDarkArt,CompleteOnly)
 RequirementNode/Name/CountUpgradeShadowHeroPenumbraCompleteOnly=CountUpgrade(ShadowHeroPenumbra,CompleteOnly)
-RequirementNode/Name/CountUpgradeShadowplayLimitCompleteOnly=CountUpgrade(ShadowplayLimit,CompleteOnly)
 RequirementNode/Name/CountUpgradeSteamQueuedOrBetter=CountUpgrade(Steam,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeTailGunCompleteOnly=CountUpgrade(TailGun,CompleteOnly)
 RequirementNode/Name/CountUpgradeThorQuestRewardCompleteOnlyTechTreeCheat=CountUpgrade(ThorQuestReward,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/CountUpgradeTimeHeroDimensionCompleteOnly=CountUpgrade(TimeHeroDimension,CompleteOnly)
 RequirementNode/Name/CountUpgradeTimeHeroEscapeCompleteOnly=CountUpgrade(TimeHeroEscape,CompleteOnly)
+RequirementNode/Name/CountUpgradeTwilightHeroDilationQueuedOrBetter=CountUpgrade(TwilightHeroDilation,QueuedOrBetter)
+RequirementNode/Name/CountUpgradeTwilightHeroNightwarpCompleteOnly=CountUpgrade(TwilightHeroNightwarp,CompleteOnly)
+RequirementNode/Name/CountUpgradeTwilightHeroReflectorCompleteOnly=CountUpgrade(TwilightHeroReflector,CompleteOnly)
 RequirementNode/Name/CountUpgradeUnstoppableCompleteOnly=CountUpgrade(Unstoppable,CompleteOnly)
-RequirementNode/Name/CountUpgradeWarpDroneCompleteOnlyTechTreeCheat=CountUpgrade(WarpDrone,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/CountUpgradeWarpHeroBlazeCompleteOnly1346870113TechTreeCheat=CountUpgrade(WarpHeroBlaze,CompleteOnly){Research Multishot Flames}[TechTreeCheat]
+RequirementNode/Name/CountUpgradeWarpHeroDroneCompleteOnlyTechTreeCheat=CountUpgrade(WarpHeroDrone,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/CountUpgradeWarpHeroDurableCompleteOnly=CountUpgrade(WarpHeroDurable,CompleteOnly)
 RequirementNode/Name/CountUpgradeWarpgateQueuedOrBetter=CountUpgrade(Warpgate,QueuedOrBetter)
 RequirementNode/Name/CountWarpDrone=CountWarpDrone
@@ -7716,15 +7722,14 @@ RequirementNode/Name/Eq0CountBehaviorFireInfusedQueuedOrBetterAtUnit=0 == CountB
 RequirementNode/Name/Eq0CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit=0 == CountBehavior(ToxicVaporComboCount,QueuedOrBetterAtUnit)
 RequirementNode/Name/Eq0CountBehaviorWaterInfusedQueuedOrBetterAtUnit=0 == CountBehavior(WaterInfused,QueuedOrBetterAtUnit)
 RequirementNode/Name/Eq0CountBehaviorWindInfusedQueuedOrBetterAtUnit=0 == CountBehavior(WindInfused,QueuedOrBetterAtUnit)
-RequirementNode/Name/Eq0CountUpgradeBlackDeathRangeCompleteOnlyTechTreeCheat=0 == CountUpgrade(BlackDeathRange,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/Eq0CountUpgradeCondensationQueuedOrBetter=0 == CountUpgrade(Condensation,QueuedOrBetter)
-RequirementNode/Name/Eq0CountUpgradeDilationQueuedOrBetter=1 == CountUpgrade(Dilation,QueuedOrBetter)
 RequirementNode/Name/Eq0CountUpgradeEarthHeroBonusSkinQueuedOrBetter=0 == CountUpgrade(EarthHeroBonusSkin,QueuedOrBetter)
 RequirementNode/Name/Eq0CountUpgradeExpansionQueuedOrBetter=0 == CountUpgrade(Expansion,QueuedOrBetter)
 RequirementNode/Name/Eq0CountUpgradeFirewallQueuedOrBetter=0 == CountUpgrade(Firewall,QueuedOrBetter)
 RequirementNode/Name/Eq0CountUpgradeFlowQueuedOrBetter=0 == CountUpgrade(Flow,QueuedOrBetter)
-RequirementNode/Name/Eq0CountUpgradeMultiphaseShieldFastCompleteOnly=0 == CountUpgrade(MultiphaseShieldFast,CompleteOnly)
-RequirementNode/Name/Eq0CountUpgradeMultiphaseShieldredCompleteOnly=0 == CountUpgrade(MultiphaseShieldred,CompleteOnly)
+RequirementNode/Name/Eq0CountUpgradeParticleHeroDampenersCompleteOnlyTechTreeCheat=0 == CountUpgrade(ParticleHeroDampeners,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq0CountUpgradeParticleHeroEmittersCompleteOnlyTechTreeCheat=0 == CountUpgrade(ParticleHeroEmitters,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq0CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat=0 == CountUpgrade(PoisonHeroTransfer,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/Eq0CountUpgradePotentialQueuedOrBetter=0 == CountUpgrade(Potential,QueuedOrBetter)
 RequirementNode/Name/Eq0CountUpgradeSteamQueuedOrBetter=0 == CountUpgrade(Steam,QueuedOrBetter)
 RequirementNode/Name/Eq0CountUpgradeWarpgateQueuedOrBetter=0 == CountUpgrade(Warpgate,QueuedOrBetter)
@@ -7739,35 +7744,36 @@ RequirementNode/Name/Eq1CountBehaviorFireInfusedQueuedOrBetterAtUnit=1 == CountB
 RequirementNode/Name/Eq1CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit=1 == CountBehavior(ToxicVaporComboCount,QueuedOrBetterAtUnit)
 RequirementNode/Name/Eq1CountBehaviorWaterInfusedQueuedOrBetterAtUnit=1 == CountBehavior(WaterInfused,QueuedOrBetterAtUnit)
 RequirementNode/Name/Eq1CountBehaviorWindInfusedQueuedOrBetterAtUnit=1 == CountBehavior(WindInfused,QueuedOrBetterAtUnit)
-RequirementNode/Name/Eq1CountUpgradeArmageddonCompleteOnlyTechTreeCheat=1 == CountUpgrade(Armageddon,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/Eq1CountUpgradeBlackDeathHostsCompleteOnlyTechTreeCheat=1 == CountUpgrade(BlackDeathHosts,CompleteOnly)[TechTreeCheat]
-RequirementNode/Name/Eq1CountUpgradeBlackDeathRangeCompleteOnlyTechTreeCheat=1 == CountUpgrade(BlackDeathRange,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/Eq1CountUpgradeCondensationQueuedOrBetter=1 == CountUpgrade(Condensation,QueuedOrBetter)
 RequirementNode/Name/Eq1CountUpgradeDistendQueuedOrBetter=1 == CountUpgrade(Distend,QueuedOrBetter)
 RequirementNode/Name/Eq1CountUpgradeEarthHeroBonusSkinQueuedOrBetter=1 == CountUpgrade(EarthHeroBonusSkin,QueuedOrBetter)
 RequirementNode/Name/Eq1CountUpgradeExpansionQueuedOrBetter=1 == CountUpgrade(Expansion,QueuedOrBetter)
-RequirementNode/Name/Eq1CountUpgradeFireballMeteorChainCompleteOnlyTechTreeCheat=1 == CountUpgrade(FireballMeteorChain,CompleteOnly)[TechTreeCheat]
-RequirementNode/Name/Eq1CountUpgradeFireballMeteorCompleteOnlyTechTreeCheat=1 == CountUpgrade(FireballMeteor,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq1CountUpgradeFireHeroArmageddonCompleteOnlyTechTreeCheat=1 == CountUpgrade(FireHeroArmageddon,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq1CountUpgradeFireHeroBurningSkyCompleteOnlyTechTreeCheat=1 == CountUpgrade(FireHeroBurningSky,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq1CountUpgradeFireHeroFieryJusticeCompleteOnlyTechTreeCheat=1 == CountUpgrade(FireHeroFieryJustice,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/Eq1CountUpgradeFirewallQueuedOrBetter=1 == CountUpgrade(Firewall,QueuedOrBetter)
 RequirementNode/Name/Eq1CountUpgradeFlowQueuedOrBetter=1 == CountUpgrade(Flow,QueuedOrBetter)
-RequirementNode/Name/Eq1CountUpgradeMultiphaseShieldFastCompleteOnly=1 == CountUpgrade(MultiphaseShieldFast,CompleteOnly)
-RequirementNode/Name/Eq1CountUpgradeMultiphaseShieldredCompleteOnly=1 == CountUpgrade(MultiphaseShieldred,CompleteOnly)
-RequirementNode/Name/Eq1CountUpgradeOrbitalCannonAECompleteOnly=1 == CountUpgrade(OrbitalCannonAE,CompleteOnly)
+RequirementNode/Name/Eq1CountUpgradeParticleHeroDampenersCompleteOnlyTechTreeCheat=1 == CountUpgrade(ParticleHeroDampeners,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq1CountUpgradeParticleHeroEmittersCompleteOnlyTechTreeCheat=1 == CountUpgrade(ParticleHeroEmitters,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq1CountUpgradeParticleHeroRematerializeQueuedOrBetter=1 == CountUpgrade(ParticleHeroRematerialize,QueuedOrBetter)
+RequirementNode/Name/Eq1CountUpgradeParticleHeroSupplyCompleteOnlyTechTreeCheat=1 == CountUpgrade(ParticleHeroSupply,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq1CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat=1 == CountUpgrade(PoisonHeroTransfer,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/Eq1CountUpgradePotentialQueuedOrBetter=1 == CountUpgrade(Potential,QueuedOrBetter)
-RequirementNode/Name/Eq1CountUpgradeRematerializeQueuedOrBetter=1 == CountUpgrade(Rematerialize,QueuedOrBetter)
 RequirementNode/Name/Eq1CountUpgradeSteamQueuedOrBetter=1 == CountUpgrade(Steam,QueuedOrBetter)
+RequirementNode/Name/Eq1CountUpgradeTwilightHeroDilationQueuedOrBetter=1 == CountUpgrade(TwilightHeroDilation,QueuedOrBetter)
 RequirementNode/Name/Eq1CountUpgradeWarpgateQueuedOrBetter=1 == CountUpgrade(Warpgate,QueuedOrBetter)
 RequirementNode/Name/Eq2CountBehaviorExpelComboCountQueuedOrBetterAtUnit=2 == CountBehavior(ExpelComboCount,QueuedOrBetterAtUnit)
 RequirementNode/Name/Eq2CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit=2 == CountBehavior(ToxicVaporComboCount,QueuedOrBetterAtUnit)
 RequirementNode/Name/Eq2CountUpgradeBlackDeathHostsCompleteOnlyTechTreeCheat=2 == CountUpgrade(BlackDeathHosts,CompleteOnly)[TechTreeCheat]
-RequirementNode/Name/Eq2CountUpgradeBlackDeathRangeCompleteOnlyTechTreeCheat=2 == CountUpgrade(BlackDeathRange,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/Eq2CountUpgradeCondensationQueuedOrBetter=2 == CountUpgrade(Condensation,QueuedOrBetter)
-RequirementNode/Name/Eq2CountUpgradeFireballMeteorCompleteOnlyTechTreeCheat=2 == CountUpgrade(FireballMeteor,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq2CountUpgradeFireHeroFieryJusticeCompleteOnlyTechTreeCheat=2 == CountUpgrade(FireHeroFieryJustice,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/Eq2CountUpgradeFirewallQueuedOrBetter=2 == CountUpgrade(Firewall,QueuedOrBetter)
 RequirementNode/Name/Eq2CountUpgradeFlowQueuedOrBetter=2 == CountUpgrade(Flow,QueuedOrBetter)
-RequirementNode/Name/Eq2CountUpgradeMultiphaseShieldFastCompleteOnly=2 == CountUpgrade(MultiphaseShieldFast,CompleteOnly)
-RequirementNode/Name/Eq2CountUpgradeMultiphaseShieldredCompleteOnly=2 == CountUpgrade(MultiphaseShieldred,CompleteOnly)
-RequirementNode/Name/Eq2CountUpgradeOrbitalCannonAECompleteOnly=2 == CountUpgrade(OrbitalCannonAE,CompleteOnly)
+RequirementNode/Name/Eq2CountUpgradeParticleHeroDampenersCompleteOnlyTechTreeCheat=2 == CountUpgrade(ParticleHeroDampeners,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq2CountUpgradeParticleHeroEmittersCompleteOnlyTechTreeCheat=2 == CountUpgrade(ParticleHeroEmitters,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq2CountUpgradeParticleHeroSupplyCompleteOnlyTechTreeCheat=2 == CountUpgrade(ParticleHeroSupply,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/Eq2CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat=2 == CountUpgrade(PoisonHeroTransfer,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/Eq2CountUpgradePotentialQueuedOrBetter=2 == CountUpgrade(Potential,QueuedOrBetter)
 RequirementNode/Name/Eq2CountUpgradeSteamQueuedOrBetter=2 == CountUpgrade(Steam,QueuedOrBetter)
 RequirementNode/Name/Eq2CountUpgradeWarpgateQueuedOrBetter=2 == CountUpgrade(Warpgate,QueuedOrBetter)
@@ -7777,7 +7783,7 @@ RequirementNode/Name/Eq3CountBehaviorFireStackQueuedOrBetterAtUnit=3 == CountBeh
 RequirementNode/Name/Eq3CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit=3 == CountBehavior(ToxicVaporComboCount,QueuedOrBetterAtUnit)
 RequirementNode/Name/Eq3CountBehaviorWaterStackQueuedOrBetterAtUnit=3 == CountBehavior(WaterStack,QueuedOrBetterAtUnit)
 RequirementNode/Name/Eq3CountBehaviorWindStackQueuedOrBetterAtUnit=3 == CountBehavior(WindStack,QueuedOrBetterAtUnit)
-RequirementNode/Name/Eq3CountUpgradeMultiphaseShieldredCompleteOnly=3 == CountUpgrade(MultiphaseShieldred,CompleteOnly)
+RequirementNode/Name/Eq3CountUpgradeParticleHeroDampenersCompleteOnlyTechTreeCheat=3 == CountUpgrade(ParticleHeroDampeners,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/Eq3CountUpgradePotentialQueuedOrBetter=3 == CountUpgrade(Potential,QueuedOrBetter)
 RequirementNode/Name/Eq3CountUpgradeWarpgateQueuedOrBetter=3 == CountUpgrade(Warpgate,QueuedOrBetter)
 RequirementNode/Name/Eq4CountBehaviorExpelComboCountQueuedOrBetterAtUnit=4 == CountBehavior(ExpelComboCount,QueuedOrBetterAtUnit)
@@ -7794,32 +7800,35 @@ RequirementNode/Name/Eq8CountBehaviorExpelComboCountQueuedOrBetterAtUnit=8 == Co
 RequirementNode/Name/Eq8CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit=8 == CountBehavior(ToxicVaporComboCount,QueuedOrBetterAtUnit)
 RequirementNode/Name/Eq9CountBehaviorExpelComboCountQueuedOrBetterAtUnit=9 == CountBehavior(ExpelComboCount,QueuedOrBetterAtUnit)
 RequirementNode/Name/Eq9CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit=9 == CountBehavior(ToxicVaporComboCount,QueuedOrBetterAtUnit)
-RequirementNode/Name/EqCountUpgradeExcaliberCompleteOnly1=CountUpgrade(Excaliber,CompleteOnly) == 1
-RequirementNode/Name/EqCountUpgradeExcaliberCompleteOnly2=CountUpgrade(Excaliber,CompleteOnly) == 2
+RequirementNode/Name/EqCountUpgradeBladeHeroExcaliburCompleteOnly1=CountUpgrade(BladeHeroExcalibur,CompleteOnly) == 1
+RequirementNode/Name/EqCountUpgradeBladeHeroExcaliburCompleteOnly2=CountUpgrade(BladeHeroExcalibur,CompleteOnly) == 2
+RequirementNode/Name/EqCountUpgradeProbeHeroEquipCompleteOnly1=CountUpgrade(ProbeHeroEquip,CompleteOnly) == 1
+RequirementNode/Name/EqCountUpgradeProbeHeroEquipCompleteOnly2=CountUpgrade(ProbeHeroEquip,CompleteOnly) == 2
 RequirementNode/Name/EqCountUpgradeReservoirCompleteOnly1=CountUpgrade(Reservoir,CompleteOnly) == 1
 RequirementNode/Name/EqCountUpgradeReservoirCompleteOnly2=CountUpgrade(Reservoir,CompleteOnly) == 2
 RequirementNode/Name/EqCountUpgradeTimeHeroDimensionCompleteOnly1=CountUpgrade(TimeHeroDimension,CompleteOnly) == 1
 RequirementNode/Name/EqCountUpgradeTimeHeroDimensionCompleteOnly2=CountUpgrade(TimeHeroDimension,CompleteOnly) == 2
 RequirementNode/Name/EqCountUpgradeTimeHeroDimensionCompleteOnly3=CountUpgrade(TimeHeroDimension,CompleteOnly) == 3
 RequirementNode/Name/EqCountUpgradeWarpHeroDurableCompleteOnly1=CountUpgrade(WarpHeroDurable,CompleteOnly) == 1
-RequirementNode/Name/GT106576107SumMulCountUpgradeShadowplayLimitCompleteOnly24CountBehaviorShadowplayStackQueuedOrBetterAtUnit=((CountUpgrade(ShadowplayLimit,CompleteOnly) * 2) + 4) > {Too many mind controlled units}CountBehavior(ShadowplayStack,QueuedOrBetterAtUnit)
+RequirementNode/Name/GT106576107SumMulCountUpgradeShadowHeroDarkArtCompleteOnly24CountBehaviorShadowplayStackQueuedOrBetterAtUnit=((CountUpgrade(ShadowHeroDarkArt,CompleteOnly) * 2) + 4) > {Too many mind controlled units}CountBehavior(ShadowplayStack,QueuedOrBetterAtUnit)
 RequirementNode/Name/GTCountUpgradeDuplicateCompleteOnly1=CountUpgrade(Duplicate,CompleteOnly) > 1
 RequirementNode/Name/GTCountUpgradeEnervateCompleteOnly0=CountUpgrade(Enervate,CompleteOnly) > 0
 RequirementNode/Name/GTCountUpgradeFaultLinesCompleteOnly0=CountUpgrade(FaultLines,CompleteOnly) > 0
 RequirementNode/Name/GTCountUpgradeFaultLinesCompleteOnly1=CountUpgrade(FaultLines,CompleteOnly) > 1
-RequirementNode/Name/GTCountUpgradeReloadCompleteOnly0=CountUpgrade(Reload,CompleteOnly) > 0
-RequirementNode/Name/GTCountUpgradeReloadCompleteOnly1=CountUpgrade(Reload,CompleteOnly) > 1
-RequirementNode/Name/GTECountUpgradeDematerializeEOLCompleteOnly1=CountUpgrade(DematerializeEOL,CompleteOnly) >= 1
-RequirementNode/Name/LT0CountUpgradeWarpDroneCompleteOnlyTechTreeCheat=0 < CountUpgrade(WarpDrone,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/GTCountUpgradeParticleHeroReloadCompleteOnly0=CountUpgrade(ParticleHeroReload,CompleteOnly) > 0
+RequirementNode/Name/GTCountUpgradeParticleHeroReloadCompleteOnly1=CountUpgrade(ParticleHeroReload,CompleteOnly) > 1
+RequirementNode/Name/GTCountUpgradeTwilightHeroReflectorCompleteOnly1=CountUpgrade(TwilightHeroReflector,CompleteOnly) > 1
+RequirementNode/Name/GTECountUpgradeParticleHeroDischargeCompleteOnlyTechTreeCheat1=CountUpgrade(ParticleHeroDischarge,CompleteOnly)[TechTreeCheat] >= 1
+RequirementNode/Name/LT0CountUpgradeWarpHeroDroneCompleteOnlyTechTreeCheat=0 < CountUpgrade(WarpHeroDrone,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/LT1=1 < ()
 RequirementNode/Name/LTCountBehaviorBufferQueuedOrBetterAtUnitMul10CountUpgradeBufferQueuedOrBetter=CountBehavior(Buffer,QueuedOrBetterAtUnit) < (10 * CountUpgrade(Buffer,QueuedOrBetter))
-RequirementNode/Name/LTCountBehaviorMagmaArmorQueuedOrBetterAtUnitSum4Mul2CountUpgradeMoltenFuryQueuedOrBetter=CountBehavior(MagmaArmor,QueuedOrBetterAtUnit) < (4 + (2 * CountUpgrade(MoltenFury,QueuedOrBetter)))
+RequirementNode/Name/LTCountBehaviorMagmaArmorQueuedOrBetterAtUnitSum4Mul2CountUpgradeFireHeroMoltenFuryQueuedOrBetter=CountBehavior(MagmaArmor,QueuedOrBetterAtUnit) < (4 + (2 * CountUpgrade(FireHeroMoltenFury,QueuedOrBetter)))
 RequirementNode/Name/LTCountUnitBroodlingEscortQueuedOrBetterAtUnit8=CountUnit(BroodlingEscort,QueuedOrBetterAtUnit) < 8
 RequirementNode/Name/LTCountUpgradeThorQuestRewardCompleteOnlyTechTreeCheat1=CountUpgrade(ThorQuestReward,CompleteOnly)[TechTreeCheat] < 1
 RequirementNode/Name/Mul=() * ()
 RequirementNode/Name/Mul10CountUpgradeBufferQueuedOrBetter=10 * CountUpgrade(Buffer,QueuedOrBetter)
-RequirementNode/Name/Mul2CountUpgradeMoltenFuryQueuedOrBetter=2 * CountUpgrade(MoltenFury,QueuedOrBetter)
-RequirementNode/Name/MulCountUpgradeShadowplayLimitCompleteOnly2=CountUpgrade(ShadowplayLimit,CompleteOnly) * 2
+RequirementNode/Name/Mul2CountUpgradeFireHeroMoltenFuryQueuedOrBetter=2 * CountUpgrade(FireHeroMoltenFury,QueuedOrBetter)
+RequirementNode/Name/MulCountUpgradeShadowHeroDarkArtCompleteOnly2=CountUpgrade(ShadowHeroDarkArt,CompleteOnly) * 2
 RequirementNode/Name/NE3CountBehaviorEarthStackQueuedOrBetterAtUnit=3 != CountBehavior(EarthStack,QueuedOrBetterAtUnit)
 RequirementNode/Name/NE3CountBehaviorFireStackQueuedOrBetterAtUnit=3 != CountBehavior(FireStack,QueuedOrBetterAtUnit)
 RequirementNode/Name/NE3CountBehaviorWaterStackQueuedOrBetterAtUnit=3 != CountBehavior(WaterStack,QueuedOrBetterAtUnit)
@@ -7832,8 +7841,8 @@ RequirementNode/Name/OrNE3CountBehaviorFireStackQueuedOrBetterAtUnitNE3CountBeha
 RequirementNode/Name/OrNE3CountBehaviorWaterStackQueuedOrBetterAtUnitNE3CountBehaviorWindStackQueuedOrBetterAtUnit=3 != CountBehavior(WaterStack,QueuedOrBetterAtUnit) || 3 != CountBehavior(WindStack,QueuedOrBetterAtUnit)
 RequirementNode/Name/OrNE3CountBehaviorWindStackQueuedOrBetterAtUnitNE3CountBehaviorEarthStackQueuedOrBetterAtUnit=3 != CountBehavior(WindStack,QueuedOrBetterAtUnit) || 3 != CountBehavior(EarthStack,QueuedOrBetterAtUnit)
 RequirementNode/Name/Sum=() + ()
-RequirementNode/Name/Sum4Mul2CountUpgradeMoltenFuryQueuedOrBetter=4 + (2 * CountUpgrade(MoltenFury,QueuedOrBetter))
-RequirementNode/Name/SumMulCountUpgradeShadowplayLimitCompleteOnly24=(CountUpgrade(ShadowplayLimit,CompleteOnly) * 2) + 4
+RequirementNode/Name/Sum4Mul2CountUpgradeFireHeroMoltenFuryQueuedOrBetter=4 + (2 * CountUpgrade(FireHeroMoltenFury,QueuedOrBetter))
+RequirementNode/Name/SumMulCountUpgradeShadowHeroDarkArtCompleteOnly24=(CountUpgrade(ShadowHeroDarkArt,CompleteOnly) * 2) + 4
 Sound/EditorPrefix/BlastwaveSound=Fire Hero -
 Sound/EditorPrefix/BloodReleaseSound=Blade Hero -
 Sound/EditorPrefix/BoulderLaunchSound=Earth Hero -
@@ -8201,9 +8210,7 @@ Upgrade/EditorPrefix/Anoint=Gateway Hero -
 Upgrade/EditorPrefix/Anomaly=Luck Hero -
 Upgrade/EditorPrefix/Apocalypse=Elemental Hero -
 Upgrade/EditorPrefix/Arc=Luck Hero -
-Upgrade/EditorPrefix/Armageddon=
 Upgrade/EditorPrefix/Assassinate=Illusion Hero -
-Upgrade/EditorPrefix/Assault=Warp Hero -
 Upgrade/EditorPrefix/Augment=Elemental Hero -
 Upgrade/EditorPrefix/Barbed=Nature Hero -
 Upgrade/EditorPrefix/Barrage=Probe Hero -
@@ -8214,7 +8221,6 @@ Upgrade/EditorPrefix/Billow=Probe Hero -
 Upgrade/EditorPrefix/BlastRadius=Gateway Hero -
 Upgrade/EditorPrefix/BlastZone=Gateway Hero -
 Upgrade/EditorPrefix/Blaze=Elemental Hero -
-Upgrade/EditorPrefix/Blight=Poison Hero -
 Upgrade/EditorPrefix/Blitz=Probe Hero -
 Upgrade/EditorPrefix/Block=Beam Hero -
 Upgrade/EditorPrefix/BluntForce=Elemental Hero -
@@ -8226,14 +8232,10 @@ Upgrade/EditorPrefix/Broaden=Blade Hero -
 Upgrade/EditorPrefix/Buffer=Blade Hero -
 Upgrade/EditorPrefix/Buildup=Illusion Hero -
 Upgrade/EditorPrefix/Bulwark=Earth Hero -
-Upgrade/EditorPrefix/BurningBlood=Fire Hero -
-Upgrade/EditorPrefix/BurningSoul=Fire Hero -
 Upgrade/EditorPrefix/Burst=Nature Hero -
 Upgrade/EditorPrefix/Buttress=Nature Hero -
 Upgrade/EditorPrefix/Bypass=Beam Hero -
 Upgrade/EditorPrefix/Cannon=Probe Hero -
-Upgrade/EditorPrefix/Cataclysm=Fire Hero -
-Upgrade/EditorPrefix/Cauterize=Fire Hero -
 Upgrade/EditorPrefix/Celerity=Beam Hero -
 Upgrade/EditorPrefix/ChainReact=Gateway Hero -
 Upgrade/EditorPrefix/ChampionModeBossBuff=Zerg Boss -
@@ -8245,21 +8247,16 @@ Upgrade/EditorPrefix/Cohesive=Elemental Hero -
 Upgrade/EditorPrefix/Colossal=Earth Hero -
 Upgrade/EditorPrefix/Combust=Earth Hero -
 Upgrade/EditorPrefix/Concuss=Elemental Hero -
-Upgrade/EditorPrefix/Condemnation=Shadow Hero -
 Upgrade/EditorPrefix/Condensation=Water Hero -
 Upgrade/EditorPrefix/Conservative=Water Hero -
 Upgrade/EditorPrefix/Constant=Beam Hero -
-Upgrade/EditorPrefix/Containment=Poison Hero -
-Upgrade/EditorPrefix/Corruption=Poison Hero -
 Upgrade/EditorPrefix/Crash=Blade Hero -
 Upgrade/EditorPrefix/Cremate=Beam Hero -
 Upgrade/EditorPrefix/Critical=Elemental Hero -
 Upgrade/EditorPrefix/Cross=Beam Hero -
 Upgrade/EditorPrefix/Cultivate=Nature Hero -
 Upgrade/EditorPrefix/Current=Water Hero -
-Upgrade/EditorPrefix/Cycle=Twilight Hero -
 Upgrade/EditorPrefix/Cyclone=Air Hero -
-Upgrade/EditorPrefix/Darkness=Shadow Hero -
 Upgrade/EditorPrefix/Debris=Air Hero -
 Upgrade/EditorPrefix/Deflection=Elemental Hero -
 Upgrade/EditorPrefix/Deluge=Luck Hero -
@@ -8268,12 +8265,9 @@ Upgrade/EditorPrefix/Density=Gravity Hero -
 Upgrade/EditorPrefix/Deseased=Poison Hero -
 Upgrade/EditorPrefix/Desolation=Blade Hero -
 Upgrade/EditorPrefix/Deviance=Luck Hero -
-Upgrade/EditorPrefix/Dilation=Twilight Hero -
-Upgrade/EditorPrefix/Diseased=Poison Hero -
 Upgrade/EditorPrefix/Disintegrated=Protoss Allies -
 Upgrade/EditorPrefix/Dispatch=Beam Hero -
 Upgrade/EditorPrefix/Distend=Illusion Hero -
-Upgrade/EditorPrefix/Distribute=Twilight Hero -
 Upgrade/EditorPrefix/Divert=Elemental Hero -
 Upgrade/EditorPrefix/Divination=Luck Hero -
 Upgrade/EditorPrefix/Division=Luck Hero -
@@ -8300,11 +8294,8 @@ Upgrade/EditorPrefix/Enervate=Luck Hero -
 Upgrade/EditorPrefix/Engulf=Luck Hero -
 Upgrade/EditorPrefix/Enliven=Nature Hero -
 Upgrade/EditorPrefix/Entangle=Nature Hero -
-Upgrade/EditorPrefix/Equip1=Probe Hero -
-Upgrade/EditorPrefix/Equip2=Probe Hero -
 Upgrade/EditorPrefix/Eradicate=Luck Hero -
 Upgrade/EditorPrefix/Evasion=Air Hero -
-Upgrade/EditorPrefix/Excaliber=Blade Hero -
 Upgrade/EditorPrefix/Excess=Gravity Hero -
 Upgrade/EditorPrefix/Expansion=Gateway Hero -
 Upgrade/EditorPrefix/Expose=Gateway Hero -
@@ -8318,21 +8309,18 @@ Upgrade/EditorPrefix/Fence=Beam Hero -
 Upgrade/EditorPrefix/Fertilizer=Nature Hero -
 Upgrade/EditorPrefix/Fiery=Earth Hero -
 Upgrade/EditorPrefix/Finale=Illusion Hero -
-Upgrade/EditorPrefix/Firestarter=Fire Hero -
+Upgrade/EditorPrefix/FireHeroArmageddon=
 Upgrade/EditorPrefix/Firewall=Earth Hero -
 Upgrade/EditorPrefix/Fissure=Gravity Hero -
 Upgrade/EditorPrefix/Flatten=Earth Hero -
 Upgrade/EditorPrefix/Flow=Earth Hero -
 Upgrade/EditorPrefix/Flurry=Gateway Hero -
-Upgrade/EditorPrefix/Focus=Warp Hero -
 Upgrade/EditorPrefix/Fracture=Water Hero -
 Upgrade/EditorPrefix/Fragments=Gateway Hero -
 Upgrade/EditorPrefix/Frailty=Nature Hero -
 Upgrade/EditorPrefix/Frenzy=Blade Hero -
 Upgrade/EditorPrefix/Frost=Water Hero -
 Upgrade/EditorPrefix/FrostFire=Elemental Hero -
-Upgrade/EditorPrefix/FrostFury=Lightning Hero -
-Upgrade/EditorPrefix/Fuel=Fire Hero -
 Upgrade/EditorPrefix/Furor=Blade Hero -
 Upgrade/EditorPrefix/GForce=Gravity Hero -
 Upgrade/EditorPrefix/Gale=Air Hero -
@@ -8342,12 +8330,10 @@ Upgrade/EditorPrefix/Gravitate=Probe Hero -
 Upgrade/EditorPrefix/Greed=Gravity Hero -
 Upgrade/EditorPrefix/Guardian=Probe Hero -
 Upgrade/EditorPrefix/Gust=Air Hero -
-Upgrade/EditorPrefix/Hades=Fire Hero -
 Upgrade/EditorPrefix/Hallucinogen=Nature Hero -
 Upgrade/EditorPrefix/Haste=Luck Hero -
 Upgrade/EditorPrefix/Heatwave=Water Hero -
 Upgrade/EditorPrefix/Heist=Illusion Hero -
-Upgrade/EditorPrefix/Hellfire=Fire Hero -
 Upgrade/EditorPrefix/Hew=Earth Hero -
 Upgrade/EditorPrefix/Hoax=Illusion Hero -
 Upgrade/EditorPrefix/HotPool=Water Hero -
@@ -8368,7 +8354,6 @@ Upgrade/EditorPrefix/Jagged=Earth Hero -
 Upgrade/EditorPrefix/Jolt=Air Hero -
 Upgrade/EditorPrefix/KillHatchOff=Allies -
 Upgrade/EditorPrefix/KillHatchOn=Allies -
-Upgrade/EditorPrefix/KineticBuffer=Twilight Hero -
 Upgrade/EditorPrefix/LVL10=Demolisher -
 Upgrade/EditorPrefix/LVL15=Demolisher -
 Upgrade/EditorPrefix/LVL20=Demolisher -
@@ -8387,10 +8372,7 @@ Upgrade/EditorPrefix/LavaSpout=Earth Hero -
 Upgrade/EditorPrefix/Leach=Gravity Hero -
 Upgrade/EditorPrefix/Leakage=Probe Hero -
 Upgrade/EditorPrefix/Lifeline=Gateway Hero -
-Upgrade/EditorPrefix/Lightningfury=Lightning Hero -
 Upgrade/EditorPrefix/Limitless=Illusion Hero -
-Upgrade/EditorPrefix/Link=Beam Hero -
-Upgrade/EditorPrefix/Link2=Beam Hero -
 Upgrade/EditorPrefix/Liquidate=Luck Hero -
 Upgrade/EditorPrefix/Longevity=Gateway Hero -
 Upgrade/EditorPrefix/MLStasis=Beam Hero -
@@ -8399,21 +8381,17 @@ Upgrade/EditorPrefix/Magnitude=Luck Hero -
 Upgrade/EditorPrefix/Mangle=Blade Hero -
 Upgrade/EditorPrefix/Mass=Earth Hero -
 Upgrade/EditorPrefix/Mend=Nature Hero -
-Upgrade/EditorPrefix/Midnight=Shadow Hero -
 Upgrade/EditorPrefix/Molten=Earth Hero -
-Upgrade/EditorPrefix/MoltenFury=Fire Hero -
 Upgrade/EditorPrefix/Momentum=Gravity Hero -
 Upgrade/EditorPrefix/Monsoon=Air Hero -
 Upgrade/EditorPrefix/Muck=Probe Hero -
 Upgrade/EditorPrefix/Mutilate=Blade Hero -
 Upgrade/EditorPrefix/Network=Illusion Hero -
-Upgrade/EditorPrefix/Nightwarp=Twilight Hero -
 Upgrade/EditorPrefix/Obscured=Illusion Hero -
 Upgrade/EditorPrefix/Ocean=Water Hero -
 Upgrade/EditorPrefix/Orbit=Blade Hero -
 Upgrade/EditorPrefix/Outbreak=Probe Hero -
 Upgrade/EditorPrefix/Overhaul=Beam Hero -
-Upgrade/EditorPrefix/PartingGift=Warp Hero -
 Upgrade/EditorPrefix/Perforate=Beam Hero -
 Upgrade/EditorPrefix/Permeate=Gateway Hero -
 Upgrade/EditorPrefix/Perpetual=Beam Hero -
@@ -8421,8 +8399,6 @@ Upgrade/EditorPrefix/Perpetuation=Luck Hero -
 Upgrade/EditorPrefix/Pervade=Luck Hero -
 Upgrade/EditorPrefix/Phantom=Illusion Hero -
 Upgrade/EditorPrefix/PoisonboltButtonDummy=Poison Hero -
-Upgrade/EditorPrefix/PoisonboltButtonDummyDMG=Poison Hero -
-Upgrade/EditorPrefix/PoisonboltButtonDummyDuration=Poison Hero -
 Upgrade/EditorPrefix/Portal=Gravity Hero -
 Upgrade/EditorPrefix/Potency=Nature Hero -
 Upgrade/EditorPrefix/Potential=Nature Hero -
@@ -8451,15 +8427,12 @@ Upgrade/EditorPrefix/Refresh=Elemental Hero -
 Upgrade/EditorPrefix/Reiterate=Beam Hero -
 Upgrade/EditorPrefix/Release=Elemental Hero -
 Upgrade/EditorPrefix/Relentless=Gravity Hero -
-Upgrade/EditorPrefix/Reload=Particle Hero -
-Upgrade/EditorPrefix/Rematerialize=Particle Hero -
 Upgrade/EditorPrefix/Remote=Beam Hero -
 Upgrade/EditorPrefix/Rend=Gateway Hero -
 Upgrade/EditorPrefix/Repair=Probe Hero -
 Upgrade/EditorPrefix/Replenish=Water Hero -
 Upgrade/EditorPrefix/Reserves=Luck Hero -
 Upgrade/EditorPrefix/Reservoir=Water Hero -
-Upgrade/EditorPrefix/Resonance=Twilight Hero -
 Upgrade/EditorPrefix/Resound=Luck Hero -
 Upgrade/EditorPrefix/Retarget=Gateway Hero -
 Upgrade/EditorPrefix/Retribution=Gateway Hero -
@@ -8492,7 +8465,6 @@ Upgrade/EditorPrefix/Spare=Probe Hero -
 Upgrade/EditorPrefix/SpeedStorm=Elemental Hero -
 Upgrade/EditorPrefix/Spillover=Gateway Hero -
 Upgrade/EditorPrefix/Splash=Water Hero -
-Upgrade/EditorPrefix/Splatter=Poison Hero -
 Upgrade/EditorPrefix/Splinter=Nature Hero -
 Upgrade/EditorPrefix/Split=Gateway Hero -
 Upgrade/EditorPrefix/SplitTalent=Gateway Hero -
@@ -8503,8 +8475,7 @@ Upgrade/EditorPrefix/Squall=Air Hero -
 Upgrade/EditorPrefix/Steam=Water Hero -
 Upgrade/EditorPrefix/Stones=Earth Hero -
 Upgrade/EditorPrefix/Storm=Air Hero -
-Upgrade/EditorPrefix/Stretch=Beam Hero -
-Upgrade/EditorPrefix/Stretch2=Beam Hero -
+Upgrade/EditorPrefix/Stretch1=Beam Hero -
 Upgrade/EditorPrefix/Strike=Gateway Hero -
 Upgrade/EditorPrefix/SubZero=Water Hero -
 Upgrade/EditorPrefix/Supplement=Luck Hero -
@@ -8518,14 +8489,10 @@ Upgrade/EditorPrefix/Tear=Gravity Hero -
 Upgrade/EditorPrefix/TectonicFury=Elemental Hero -
 Upgrade/EditorPrefix/Tempest=Air Hero -
 Upgrade/EditorPrefix/Thaw=Water Hero -
-Upgrade/EditorPrefix/Thermal=Fire Hero -
 Upgrade/EditorPrefix/ThermalEnergy=Fire Hero -
-Upgrade/EditorPrefix/Thunderclap=Lightning Hero -
 Upgrade/EditorPrefix/Trample=Earth Hero -
 Upgrade/EditorPrefix/Transfer=Blade Hero -
 Upgrade/EditorPrefix/Transformer=Air Hero -
-Upgrade/EditorPrefix/Transmission=Poison Hero -
-Upgrade/EditorPrefix/Transmute=Particle Hero -
 Upgrade/EditorPrefix/Tremor=Earth Hero -
 Upgrade/EditorPrefix/Tsunami=Water Hero -
 Upgrade/EditorPrefix/Turbines=Air Hero -
@@ -8540,10 +8507,8 @@ Upgrade/EditorPrefix/Vast=Beam Hero -
 Upgrade/EditorPrefix/Velocity=Earth Hero -
 Upgrade/EditorPrefix/Vent=Elemental Hero -
 Upgrade/EditorPrefix/Vigor=Blade Hero -
-Upgrade/EditorPrefix/Virulent=Poison Hero -
 Upgrade/EditorPrefix/Volley=Nature Hero -
 Upgrade/EditorPrefix/Vortex=Gravity Hero -
-Upgrade/EditorPrefix/Warmth=Fire Hero -
 Upgrade/EditorPrefix/WarpIn=Gateway Hero -
 Upgrade/EditorPrefix/Warpgate=Gateway Hero -
 Upgrade/EditorPrefix/Wealth=Probe Hero -
@@ -8587,7 +8552,6 @@ Upgrade/EditorSuffix/IceBlast=(Talent)
 Upgrade/EditorSuffix/IceBurn=(Talent)
 Upgrade/EditorSuffix/Leach=(Talent)
 Upgrade/EditorSuffix/Lifeline=(Talent)
-Upgrade/EditorSuffix/Lightningfury=(Talent)
 Upgrade/EditorSuffix/Longevity=(Talent)
 Upgrade/EditorSuffix/Magnetism=(Talent)
 Upgrade/EditorSuffix/Momentum=(Talent)
@@ -8616,7 +8580,6 @@ Upgrade/EditorSuffix/SubZero=(Talent)
 Upgrade/EditorSuffix/Surge=(Talent)
 Upgrade/EditorSuffix/Tear=(Talent)
 Upgrade/EditorSuffix/Thaw=(Talent)
-Upgrade/EditorSuffix/Transmission=(Talent)
 Upgrade/EditorSuffix/Tsunami=(Talent)
 Upgrade/EditorSuffix/Unstoppable=(Talent)
 Upgrade/EditorSuffix/Vaporize=(Talent)
@@ -9250,6 +9213,8 @@ Validator/Name/PotentialIsLvl2=PotentialIsLvl2
 Validator/Name/PotentialIsLvl3=PotentialIsLvl3
 Validator/Name/PotentialIsLvl4=PotentialIsLvl4
 Validator/Name/PotentialIsLvl5=PotentialIsLvl5
+Validator/Name/ProbeHeroEquipE1=Probe Hero - Equip E 1
+Validator/Name/ProbeHeroEquipE2=Probe Hero - Equip E 2
 Validator/Name/ProbeHeroHasSeism=Probe Hero - Has Seism
 Validator/Name/ProbeHeroTailGunGT0=Probe Hero - TailGun GT 0
 Validator/Name/RematerializeIsLvl1=RematerializeIsLvl1
@@ -9332,6 +9297,7 @@ Validator/Name/ToxicVaporComboReq9=ToxicVaporComboReq9
 Validator/Name/TwilightHeroCasterHasDistribute=Twilight Hero - Caster Has Distribute
 Validator/Name/TwilightHeroHasNightwarp=Twilight Hero - Has Nightwarp
 Validator/Name/TwilightHeroNoDistribute=Twilight Hero - No Distribute
+Validator/Name/TwilightHeroReflectorGT1=Twilight Hero - Reflector GT 1
 Validator/Name/UnitHasEnergy=Unit Has Energy
 Validator/Name/UnitIsBoulder=UnitIsBoulder
 Validator/Name/UnitIsDemolisher=UnitIsDemolisher

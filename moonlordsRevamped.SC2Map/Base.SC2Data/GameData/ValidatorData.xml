@@ -457,6 +457,10 @@
         <Find value="1"/>
         <Value value="ParticleheroReloadGTLvl1"/>
     </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="ProbeHeroEquipE2">
+        <Find value="1"/>
+        <Value value="ProbeHeroEquipE2"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="ProbeHeroHasSeism">
         <Find value="1"/>
         <Value value="ProbeHeroHasSeism"/>
@@ -468,6 +472,10 @@
     <CValidatorPlayerRequirement id="IllusionHeroDuplicateGT0">
         <Find value="1"/>
         <Value value="IllusionHeroDuplicateGT0"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="ProbeHeroEquipE1">
+        <Find value="1"/>
+        <Value value="ProbeHeroEquipE1"/>
     </CValidatorPlayerRequirement>
     <CValidatorCombine id="ShadowplayCast">
         <ResultFailed value="Error,Error/ShadowplayLimit"/>
@@ -766,6 +774,10 @@
     <CValidatorUnitCompareBehaviorCount id="TwilightHeroNoDistribute">
         <Behavior value="TwilightHeroDistribute"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="TwilightHeroReflectorGT1">
+        <Find value="1"/>
+        <Value value="TwilightHeroReflectorGT1"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitType id="UnitIsBoulder">
         <Value value="FungalGrowthMissile"/>
     </CValidatorUnitType>
