@@ -1836,6 +1836,8 @@ DocInfo/PatchNote583=  - Changed a lot of the text styles in the ui
 DocInfo/PatchNote584=  - Gateway and Shadow minions can no longer attack allies
 DocInfo/PatchNote585=  - Refreshment Reward aura now gives damage reduction to non-heroics
 DocInfo/PatchNote586=  - Lots of minor tweaks to hero talents
+DocInfo/PatchNote587=- General
+DocInfo/PatchNote588=  - Fixed an issue that could delete peoples bank if they reset reward points in hardcore mode
 DocInfo/Screenshot01=Reward points carry over to subsequent games and can be beneficial in a variety of ways.
 DocInfo/Screenshot02=Standing near a Pylon enables you to teleport to any other base.
 DocInfo/Screenshot05=Spend talent points to increase your power.
@@ -4947,7 +4949,7 @@ Param/Value/33C9DB06= bonus reward points.
 Param/Value/33D3C1DF=Targets hit by Nightstorm are blinded by the sudden Lightning reducing their ability to deal damage by 75%
 Param/Value/34077A7C=Hard time
 Param/Value/3425CC0E=Match kills
-Param/Value/3472B08F=Kill <c val="FF0000">1million</c>,<c val="FF8000">100k</c>,<c val="FFFF00">10k</c>,<c val="00FF00">1k</c>,<c val="0000FF">100</c> enemies.<n/>
+Param/Value/3472B08F=Kill <c val="FF0000">1million</c>,<c val="FF8000">100k</c>,<c val="FFFF00">10k</c>,<c val="00FF00">1k</c>,<c val="0000FF">100</c> enemies.
 Param/Value/3487D1D6=Ninja
 Param/Value/34963F1E=Resound
 Param/Value/34CEAF3E=Surge
@@ -5025,7 +5027,7 @@ Param/Value/3DDEBAEC=complete each evolution quest in less than 60 seconds in 1 
 Param/Value/3E2DD590=Lacerate
 Param/Value/3EBE3B53=Hallucination
 Param/Value/3EC68D11=Chaos Lord
-Param/Value/3ECBDF69=kill <c val="FF0000">1million</c>,<c val="FF8000">100k</c>,<c val="FFFF00">10k</c>,<c val="00FF00">1k</c>,<c val="0000FF">100</c> enemies.<n/>currently at: 
+Param/Value/3ECBDF69=
 Param/Value/3ED85744= kills 
 Param/Value/3EF96337=All Earth infused abilities durations are increased by 100/200%
 Param/Value/3F02BDF2=Upgrades???
@@ -5097,7 +5099,6 @@ Param/Value/47055505=Increase sight radius by 4/8 and reduce shield regeneration
 Param/Value/473B3BCE=Against odds
 Param/Value/475464EA=Adrenaline
 Param/Value/4769C247=Vanquish
-Param/Value/4769EDCD=Gateway
 Param/Value/476E931E=Extinction Lord has despawned.
 Param/Value/4781410C=Indecisive
 Param/Value/478D296C=Queen
@@ -5447,6 +5448,7 @@ Param/Value/737FCD08=The Zerg are swarming ... but they will run out of minerals
 Param/Value/73871FA5=Fire
 Param/Value/7387C05D=Misdirection
 Param/Value/73885120=Shadow Energy builds up to 100 - then it is released and fires up to 10 Shadow Crash spells targeting random nearby enemy units.
+Param/Value/739F8441=
 Param/Value/73B5574E=Condensation
 Param/Value/73F09363=Kill <c val="FF0000">50k</c>,<c val="FF8000">25k</c>,<c val="FFFF00">10k,</c><c val="00FF00">5k</c>,<c val="0000FF">1k</c> enemies in one match
 Param/Value/748A0B94=Manaleech
@@ -5528,7 +5530,7 @@ Param/Value/7C3B200B=Warning: The Zerg have build a Nydus Worm - destroy it!
 Param/Value/7C58EF77=Doubleganger
 Param/Value/7C6CF99F=Increase maximum energy by 0/50/100%
 Param/Value/7CDDA30A=We have detected an evolution chamber on that hill.<n/>You should destroy it before it can complete its research.
-Param/Value/7CDFE03C=complete <c val="FF0000">500</c>,<c val="FF8000">250</c>,<c val="FFFF00">175</c>,<c val="00FF00">100</c>,<c val="0000FF">50</c> quests in one match<n/>currently at: 
+Param/Value/7CDFE03C=
 Param/Value/7CFAA9E2=Bonus
 Param/Value/7D02EAD3=Bollow
 Param/Value/7D4901E5=Use the 'Teleport' button and then select the stage you would like to be teleported to to get right back in the action.<n/>Read the tips (F12) if you want to know more about teleport and the other relevant things in this map.
@@ -5826,6 +5828,7 @@ Param/Value/9E455E35=A once fallen warrior who has returned to the battlefield i
 Param/Value/9E45D119=A mighty hero who utilizes the power of electricity.
 Param/Value/9E70A2DD=When absorbing the Recombulatorfeedback this nifty technology allows you to reflect the charge towards the closest enemy unit 0/1/2 times.<n/>Hitting another unit with the reflection will create another feedback but who cares about feedbackloops when the cost to absorb a charge is reduced by an additional 0/3/6 energy
 Param/Value/9E737823=Gives you access to the Shielder Drone and the Destroyer Drone
+Param/Value/9E8E5D76=<n/>currently at: 
 Param/Value/9EA7A505=<c val="FFFF00">
 Param/Value/9EA83F3D=Casting Warpout creates an explosion with a radius of 3 around the target. Damage and area is increased by Transwarp
 Param/Value/9ED03B35=Density
@@ -5945,6 +5948,7 @@ Param/Value/ADE3C4B7=Evolution averted +1 talent
 Param/Value/AE178527=Increase the amount of beam segments by 1/2
 Param/Value/AE774D7C=Wither
 Param/Value/AE8F6B63=Transmute
+Param/Value/AED0DA70=<n/>currently at: 
 Param/Value/AF2A33AD=Explore 
 Param/Value/AF3461D7=Perpetual
 Param/Value/AF7EA54F=Reward: +1 Zealot Damage
@@ -6310,7 +6314,7 @@ Param/Value/DB1F1C20=Transwarp
 Param/Value/DB31277C=New Quest: 
 Param/Value/DB35FB1A=reward points.
 Param/Value/DB6EF050=Encompass
-Param/Value/DBC01BBD=complete <c val="FF0000">100k</c>,<c val="FF8000">10k</c>,<c val="FFFF00">1k</c>,<c val="00FF00">100</c>,<c val="0000FF">10</c> quests<n/>currently at: 
+Param/Value/DBC01BBD=
 Param/Value/DBFC2FC9=Defeat the Annihilator v2 without it having a single kill <n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
 Param/Value/DC1594F7=Ignite 0/3
 Param/Value/DC1998A5=Congratulations: Training completed on 
@@ -6354,6 +6358,7 @@ Param/Value/DFE6C891=Zerg Bosses
 Param/Value/E004F634=Boss down
 Param/Value/E00A74B8=Defense cost: 
 Param/Value/E0202569=Increases the size of the impact area of your Shadowcrash ability by 0/50/100/150%
+Param/Value/E07194F6=<n/>currently at: 
 Param/Value/E07BC7E0=Stones
 Param/Value/E07FE3B6=Boss despawned
 Param/Value/E0BAAF1E=Broaden

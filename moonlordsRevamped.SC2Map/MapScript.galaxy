@@ -1106,9 +1106,6 @@ text gf_NumberToHeroName (int lp_herotypenumber, int lp_add) {
     else if (auto763C6FAB_val == ge_Heroes_Gateway) {
         lv_ls = StringExternal("Param/Value/9E323AFB");
     }
-    else if (auto763C6FAB_val == 19) {
-        lv_ls = StringExternal("Param/Value/4769EDCD");
-    }
     else {
         lv_ls = StringExternal("Param/Value/963C0756");
     }
@@ -1350,7 +1347,7 @@ int gf_updatexp (fixed lp_amount) {
         }
 
         lv_i = 0;
-        while ((lv_i < 4)) {
+        while ((lv_i < gv_pLAYERCOUNT)) {
             lv_i += 1;
             if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
                 if ((gf_achievementgetvalueofnextlevel(11, lv_i) <= gf_Currentlevel())) {
@@ -1936,7 +1933,7 @@ void gf_GainReward (int lp_num) {
 
     // Implementation
     gv_zquestssolved += 1;
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
             lv_k = gf_achievementgetlevel(lv_i, 8);
@@ -4211,7 +4208,7 @@ text gf_achievementgettext (bool lp_title, int lp_number) {
             return StringExternal("Param/Value/15EA5EB7");
         }
         else if (auto774847E8_val == 7) {
-            return (StringExternal("Param/Value/3472B08F") + IntToText(0));
+            return (StringExternal("Param/Value/3472B08F") + StringToText(""));
         }
         else if (auto774847E8_val == 8) {
             return StringExternal("Param/Value/FEE95141");
@@ -4457,9 +4454,9 @@ void gf_achievementopen (int lp_player, int lp_targetplayer) {
         libNtve_gf_SetDialogItemText(gv_zachievementObjects[lv_i], (gf_achievementgetlevelcolorcode(gf_achievementgetlevel(lp_targetplayer, lv_i)) + gf_achievementgettext(true, lv_i) + StringExternal("Param/Value/1893EEF2")), lv_pg);
     }
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[22], gf_achievementgettext(false, 22), PlayerGroupAll());
-    libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[7], (StringExternal("Param/Value/3ECBDF69") + IntToText(gf_bankgetint(gv_zbanks[lp_targetplayer], "7", "acm"))), lv_pg);
-    libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[8], (StringExternal("Param/Value/DBC01BBD") + IntToText(gf_bankgetint(gv_zbanks[lp_targetplayer], "8", "acm"))), lv_pg);
-    libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[9], (StringExternal("Param/Value/7CDFE03C") + IntToText(gv_zquestssolved)), lv_pg);
+    libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[7], (gf_achievementgettext(false, 7) + StringExternal("Param/Value/9E8E5D76") + IntToText(gf_bankgetint(gv_zbanks[lp_targetplayer], "7", "acm"))), lv_pg);
+    libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[8], (gf_achievementgettext(false, 8) + StringExternal("Param/Value/AED0DA70") + IntToText(gf_bankgetint(gv_zbanks[lp_targetplayer], "8", "acm"))), lv_pg);
+    libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[9], (gf_achievementgettext(false, 9) + StringExternal("Param/Value/E07194F6") + IntToText(gv_zquestssolved)), lv_pg);
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[33], (gf_achievementgettext(false, 33) + StringExternal("Param/Value/E681394C") + IntToText(gv_zstageslostinmax)), lv_pg);
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[45], (gf_achievementgettext(false, 45) + StringExternal("Param/Value/FCDD7783") + IntToText(gf_bankgetint(gv_zbanks[lp_targetplayer], "m", "acm"))), lv_pg);
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[46], (gf_achievementgettext(false, 46) + StringExternal("Param/Value/9190B4D5") + IntToText(gf_bankgetint(gv_zbanks[lp_targetplayer], "h", "acm"))), lv_pg);
@@ -4470,11 +4467,11 @@ void gf_achievementopen (int lp_player, int lp_targetplayer) {
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[65], (gf_achievementgettext(false, 65) + StringExternal("Param/Value/31A3CE48") + IntToText(gv_acmProtossKills)), lv_pg);
     lv_i = 0;
     while ((lv_i < gv_pLAYERCOUNT)) {
+        lv_i += 1;
         if ((gv_hero[lv_i] != null)) {
             lv_killsum = (lv_killsum + libNtve_gf_UnitGetPropertyKills(gv_hero[lv_i], c_unitPropCurrent));
         }
 
-        lv_i += 1;
     }
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[66], (gf_achievementgettext(false, 66) + StringExternal("Param/Value/A27DA640") + IntToText(lv_killsum)), lv_pg);
     lv_i = 0;
@@ -4608,7 +4605,7 @@ void gf_achievementTeam (int lp_player) {
     // Variable Initialization
 
     // Implementation
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive) && (lp_player != lv_i)) {
             gf_bankaddtoint(gv_zbanks[lv_i], "h", "acm", 1);
@@ -5366,7 +5363,7 @@ bool auto_gf_laForge_TriggerFunc (bool testConds, bool runActions) {
         if ((lv_level >= 20) && (lv_level <= 41)) {
             lv_i = 0;
             lv_j = (lv_level-15)/5;
-            while ((lv_i < 4)) {
+            while ((lv_i < gv_pLAYERCOUNT)) {
                 lv_i += 1;
                 if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
                     if ((gf_achievementgetlevel(lv_i, 28) < lv_j)) {
@@ -6965,10 +6962,13 @@ void gf_rewardreset (int lp_pnum) {
     UnitBehaviorRemove(gv_hero[lp_pnum], "MLPowerField", 0);
     UnitBehaviorRemove(gv_hero[lp_pnum], "MoonLord", 0);
     gf_undisguiseunit(gv_hero[lp_pnum]);
-    BankValueSetFromInt(gv_zbanks[lp_pnum], "rewards", "all", gv_rewardaccumulated[lp_pnum]);
-    BankValueSetFromInt(gv_zbanks[lp_pnum], "rewards", "unspend", gv_rewardaccumulated[lp_pnum]);
+    if ((gv_hardcore == false)) {
+        BankValueSetFromInt(gv_zbanks[lp_pnum], "rewards", "all", gv_rewardaccumulated[lp_pnum]);
+        BankValueSetFromInt(gv_zbanks[lp_pnum], "rewards", "unspend", gv_rewardaccumulated[lp_pnum]);
+        BankSave(gv_zbanks[lp_pnum]);
+    }
+
     gv_rewardUnspend[lp_pnum] = gv_rewardaccumulated[lp_pnum];
-    BankSave(gv_zbanks[lp_pnum]);
     gf_UpdateRewardCostTitle(lp_pnum);
 }
 
@@ -7491,7 +7491,7 @@ void gf_initbanks () {
     // Variable Initialization
 
     // Implementation
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
             BankLoad("Moonlords", lv_i);
@@ -14525,7 +14525,7 @@ bool gt_XPbonusPeriodic_Func (bool testConds, bool runActions) {
             lv_i=0;
         
         
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i+=1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive) && (gf_achievementgetvalueofnextlevel(70, lv_i) <= gv_xPPeriodicBonusSum)) {
             gf_achievementnew(lv_i, 70);
@@ -16737,7 +16737,7 @@ bool gt_AchievementChampionkill_Func (bool testConds, bool runActions) {
     }
 
     gv_zacmchampionkillcounter += 1;
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
             if ((gv_zacmchampionkillcounter >= gf_achievementgetvalueofnextlevel(48, lv_i))) {
@@ -18027,7 +18027,7 @@ bool gt_displayhandle_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    while ((lv_n < 4)) {
+    while ((lv_n < gv_pLAYERCOUNT)) {
         lv_n += 1;
         if ((PlayerStatus(lv_n) == c_playerStatusActive)) {
             UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, (PlayerName(lv_n) + StringExternal("Param/Value/B84D8E6F") + StringToText(PlayerHandle(lv_n))));
@@ -18255,7 +18255,7 @@ bool gt_initstatwindow_Func (bool testConds, bool runActions) {
     while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
-            libNtve_gf_SetDialogItemText(lv_labels[lv_i], IntToText(gv_rewardaccumulated[lv_i]), PlayerGroupAll());
+            libNtve_gf_SetDialogItemText(lv_labels[lv_i], IntToText(gv_totalRewards[lv_i]), PlayerGroupAll());
             libNtve_gf_SetDialogItemTooltip(lv_labels[lv_i], gf_getrewardinfo(lv_i), PlayerGroupAll());
             libNtve_gf_SetDialogItemText(lv_labels[lv_i+4], IntToText(gv_zdeathcount[lv_i]), PlayerGroupAll());
         }
