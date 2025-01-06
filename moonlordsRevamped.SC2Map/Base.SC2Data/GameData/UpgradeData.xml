@@ -1088,7 +1088,7 @@
         <EffectArray Reference="Unit,Sentry,EnergyMax" Value="10"/>
         <EffectArray Reference="Unit,Archon,EnergyMax" Value="10"/>
         <EffectArray Reference="Unit,ProtossAlliesImmortal,EnergyMax" Value="10"/>
-        <MaxLevel value="10"/>
+        <MaxLevel value="5"/>
         <LeaderAlias value=""/>
     </CUpgrade>
     <CUpgrade id="UnitMovementSpeed">

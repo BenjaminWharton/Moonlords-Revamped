@@ -487,6 +487,13 @@
 <Upgrade id="TwilightHeroOverpower"/>
 <Upgrade id="WarpHeroDurable"/>
 <Upgrade id="Wisp"/>
+<Upgrade id="UnitAttackSpeed"/>
+<Upgrade id="UnitEnergyRegeneration"/>
+<Upgrade id="UnitEnergyMaximum"/>
+<Upgrade id="UnitMovementSpeed"/>
+<Upgrade id="UnitEnergyStartingAmount"/>
+<Upgrade id="UnitShieldRegeneration"/>
+<Upgrade id="UnitHealthRegeneration"/>
 <Upgrade id="Unstable"/>
 <Upgrade id="Vanquish"/>
 <Upgrade id="Variety"/>
@@ -813,6 +820,13 @@
 <Upgrade id="Whirlwind"/>
 <Upgrade id="Yield"/>
 <Upgrade id="LightningHeroZap"/>
+<Upgrade id="OverchargeDuration"/>
+<Upgrade id="StructureShieldRegeneration"/>
+<Upgrade id="StructureHealthRegeneration"/>
+<Upgrade id="StructureShieldArmor"/>
+<Upgrade id="StructureArmor"/>
+<Upgrade id="StructureAttackSpeed"/>
+<Upgrade id="OverchargeRange"/>
 <Upgrade id="Zephyr"/>
 <Upgrade id="ShadowHeroHavoc"/>
 <Upgrade id="ShadowHeroSoulburn"/>
