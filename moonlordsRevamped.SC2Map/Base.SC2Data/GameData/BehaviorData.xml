@@ -290,6 +290,11 @@
     <CBehaviorBuff id="GiantYetiLeapStun">
         <FinalEffect value="ApplyUnitWasStunned"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Ironcore">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="IllusionHeroAegis">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>

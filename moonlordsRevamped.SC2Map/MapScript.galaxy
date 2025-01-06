@@ -258,6 +258,7 @@ void gf_buildbase1 ();
 void gf_buildzergbase1 ();
 void gf_initaddgametime ();
 void gf_initdisplaytalentsetcasMinerals ();
+void gf_DialogHideAll (int lp_player);
 text gf_NumberToHeroName (int lp_herotypenumber, int lp_add);
 bool gf_AllPlayersVoted ();
 void gf_UndoVote (int lp_player, bool lp_update);
@@ -334,7 +335,6 @@ void gf_AwardTalentPoints (int lp_amount);
 void gf_CreateTalentDialog (int lp_player, string lp_background, int lp_heroNum);
 void gf_CreateTalent (int lp_row, int lp_column, int lp_player, text lp_name, text lp_tooltip, string lp_upgrade, int lp_req);
 void gf_CreateTalentWithReqInc (int lp_row, int lp_column, int lp_player, text lp_name, text lp_tooltip, string lp_upgrade, int lp_req, int lp_reqIncrease);
-void gf_DialogHideAll (int lp_player);
 void gf_talentfreeupdater ();
 void gf_TalentPressedGeneric (int lp_row, int lp_column, int lp_player);
 void gf_TalentDialogFire (int lp_player);
@@ -454,7 +454,7 @@ void gf_stage11finalcheckfortimeachievements ();
 void gf_stagetimer (fixed lp_time);
 text gf_gametime (int lp_seconds);
 text gf_difficultytotext ();
-text gf_difficultytotex2 (int lp_diff);
+text gf_difficultytotextExtra (int lp_diff, text lp_extraText);
 void gf_zergbase1 (unit lp_basebuilding, point lp_attackpoint);
 void gf_tossbase1 (unit lp_basebuilding, unit lp_basebuilding2, point lp_attackpoint, unit lp_probe);
 void gf__2pathbase (unit lp_zbase1, unit lp_zbase2, point lp_protossspawnpoint, point lp_waypoint11, point lp_waypoint12, unit lp_pbase1, unit lp_pbase2, order lp_zattackertype1, order lp_zattackertype2, order lp_zattackertype3, order lp_zattackertype4, order lp_zattackertype5, int lp_zarmysize, int lp_parmysize, bool lp_isQuest);
@@ -780,6 +780,7 @@ void gf_initdifficultyplayercount () {
         }
     }
     else {
+        gv_playercount = PlayerGroupCount(PlayerGroupActive());
         gv_difficulty = 5.0;
     }
     TechTreeUpgradeAddLevel(6, "DifficultyBuildingHP", FixedToInt(gv_difficulty));
@@ -823,7 +824,12 @@ void gf_initdifficultyplayercount () {
     }
     else if (auto72232853_val == 5.0) {
         if ((gv_hardcore == true)) {
-            UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/8142D730"));
+            if ((gv_playercount == 1)) {
+                UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/A049B52D"));
+            }
+            else {
+                UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/8142D730"));
+            }
         }
         else {
             UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/A2601971"));
@@ -1014,6 +1020,19 @@ bool auto_gf_initdisplaytalentsetcasMinerals_TriggerFunc (bool testConds, bool r
     Wait(1.0, c_timeGame);
     }
     return true;
+}
+
+void gf_DialogHideAll (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogSetVisible(gv_rewardDialog, PlayerGroupSingle(lp_player), false);
+    DialogSetVisible(gv_teleportdialog, PlayerGroupSingle(lp_player), false);
+    DialogSetVisible(gv_upgradeDialog, PlayerGroupSingle(lp_player), false);
+    DialogSetVisible(gv_zachievementDialog, PlayerGroupSingle(lp_player), false);
+    if ((gv_talentDialogs[lp_player].lv_dialog != c_invalidDialogId)) {
+        DialogSetVisible(gv_talentDialogs[lp_player].lv_dialog, PlayerGroupSingle(lp_player), false);
+    }
+
 }
 
 text gf_NumberToHeroName (int lp_herotypenumber, int lp_add) {
@@ -3562,31 +3581,43 @@ bool gf_HeroUnlockReq (int lp_winDifficulty, int lp_achievements, int lp_player)
     // Implementation
     auto7D69DEB7_val = lp_winDifficulty;
     if (auto7D69DEB7_val == 1) {
-        if ((gf_bankgetint(gv_zbanks[lp_player], "1", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "5", "completeruns") == 0)) {
+        if ((gf_bankgetint(gv_zbanks[lp_player], "1", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "5", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "6", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "7", "completeruns") == 0)) {
             lv_pass = false;
         }
 
     }
     else if (auto7D69DEB7_val == 2) {
-        if ((gf_bankgetint(gv_zbanks[lp_player], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "5", "completeruns") == 0)) {
+        if ((gf_bankgetint(gv_zbanks[lp_player], "2", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "5", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "6", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "7", "completeruns") == 0)) {
             lv_pass = false;
         }
 
     }
     else if (auto7D69DEB7_val == 3) {
-        if ((gf_bankgetint(gv_zbanks[lp_player], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "5", "completeruns") == 0)) {
+        if ((gf_bankgetint(gv_zbanks[lp_player], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "5", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "6", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "7", "completeruns") == 0)) {
             lv_pass = false;
         }
 
     }
     else if (auto7D69DEB7_val == 4) {
-        if ((gf_bankgetint(gv_zbanks[lp_player], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "5", "completeruns") == 0)) {
+        if ((gf_bankgetint(gv_zbanks[lp_player], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "5", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "6", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "7", "completeruns") == 0)) {
             lv_pass = false;
         }
 
     }
     else if (auto7D69DEB7_val == 5) {
-        if ((gf_bankgetint(gv_zbanks[lp_player], "5", "completeruns") == 0)) {
+        if ((gf_bankgetint(gv_zbanks[lp_player], "5", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "6", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "7", "completeruns") == 0)) {
+            lv_pass = false;
+        }
+
+    }
+    else if (auto7D69DEB7_val == 6) {
+        if ((gf_bankgetint(gv_zbanks[lp_player], "6", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[lp_player], "7", "completeruns") == 0)) {
+            lv_pass = false;
+        }
+
+    }
+    else if (auto7D69DEB7_val == 7) {
+        if ((gf_bankgetint(gv_zbanks[lp_player], "7", "completeruns") == 0)) {
             lv_pass = false;
         }
 
@@ -3643,8 +3674,8 @@ void gf_HeroPickDialog () {
     gf_CreateHeroPickButton(7, 1, StringExternal("Param/Value/FC24F47A"), StringExternal("Param/Value/3884B267"), ge_Heroes_Blade, 0, 225);
     gf_CreateHeroPickButton(8, 0, StringExternal("Param/Value/65D4A1EC"), StringExternal("Param/Value/E2BFB6A7"), ge_Heroes_Luck, 0, 250);
     gf_CreateHeroPickButton(8, 1, StringExternal("Param/Value/5F05A936"), StringExternal("Param/Value/D26541DB"), ge_Heroes_Elemental, 0, 275);
-    gf_CreateHeroPickButton(9, 0, StringExternal("Param/Value/6EA73102"), StringExternal("Param/Value/68407574"), ge_Heroes_Gravity, 0, 300);
-    gf_CreateHeroPickButton(9, 1, StringExternal("Param/Value/4FCD4B97"), StringExternal("Param/Value/3AE1B960"), ge_Heroes_Gateway, 0, 350);
+    gf_CreateHeroPickButton(9, 0, StringExternal("Param/Value/6EA73102"), StringExternal("Param/Value/68407574"), ge_Heroes_Gravity, 6, 300);
+    gf_CreateHeroPickButton(9, 1, StringExternal("Param/Value/4FCD4B97"), StringExternal("Param/Value/3AE1B960"), ge_Heroes_Gateway, 7, 350);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
     libNtve_gf_DisplayScreenButton(39, StringExternal("Param/Value/4400E7A9"), 120, 60, c_anchorBottomRight, 0, 500, null);
 }
@@ -4614,7 +4645,7 @@ void gf_achievementPossiblyGainedTeam (int lp_achievementnumber, int lp_amountto
     // Variable Initialization
 
     // Implementation
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i+=1;
         while ((PlayerStatus(lv_i) == c_playerStatusActive) && (gf_achievementgetvalueofnextleveladd(lp_achievementnumber, lv_i, 0) <= lp_amounttocheckfor)) {
             gf_achievementnew(lv_i, lp_achievementnumber);
@@ -4630,7 +4661,7 @@ void gf_achievementPossiblyGainedTeamLessThan (int lp_achievementnumber, int lp_
     // Variable Initialization
 
     // Implementation
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i+=1;
         while ((PlayerStatus(lv_i) == c_playerStatusActive) && (gf_achievementgetvalueofnextleveladd(lp_achievementnumber, lv_i, 0) >= lp_amounttocheckfor)) {
             gf_achievementnew(lv_i, lp_achievementnumber);
@@ -5099,7 +5130,7 @@ void gf_achievementherokills () {
 
     // Implementation
     gv_zacmherokillscounter += 1;
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
             if ((gf_achievementgetvalueofnextlevel(47, lv_i) <= gv_zacmherokillscounter)) {
@@ -5121,7 +5152,7 @@ void gf_achievements0killaward (int lp_achievement) {
     lv_d = FixedToInt(gv_difficulty);
 
     // Implementation
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
             while ((gf_achievementgetlevel(lv_i, lp_achievement) < lv_d)) {
@@ -5147,7 +5178,7 @@ void gf_achievementlowlevel (int lp_achievement) {
         return;
     }
 
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
             while ((gf_achievementgetlevel(lv_i, lp_achievement) < lv_d) && (gf_achievementgetlevel(lv_i, lp_achievement) < 5)) {
@@ -5548,19 +5579,6 @@ void gf_CreateTalentWithReqInc (int lp_row, int lp_column, int lp_player, text l
     // Implementation
     gv_talents[lp_row][lp_column][lp_player].lv_reqIncrease = lp_reqIncrease;
     gf_CreateTalent(lp_row, lp_column, lp_player, lp_name, lp_tooltip, lp_upgrade, lp_req);
-}
-
-void gf_DialogHideAll (int lp_player) {
-    // Automatic Variable Declarations
-    // Implementation
-    DialogSetVisible(gv_rewardDialog, PlayerGroupSingle(lp_player), false);
-    DialogSetVisible(gv_teleportdialog, PlayerGroupSingle(lp_player), false);
-    DialogSetVisible(gv_upgradeDialog, PlayerGroupSingle(lp_player), false);
-    DialogSetVisible(gv_zachievementDialog, PlayerGroupSingle(lp_player), false);
-    if ((gv_talentDialogs[lp_player].lv_dialog != c_invalidDialogId)) {
-        DialogSetVisible(gv_talentDialogs[lp_player].lv_dialog, PlayerGroupSingle(lp_player), false);
-    }
-
 }
 
 trigger auto_gf_talentfreeupdater_Trigger = null;
@@ -6560,8 +6578,12 @@ text gf_getrewardinfo (int lp_player) {
     // Variable Initialization
 
     // Implementation
-    while ((lv_i < 10)) {
-        lv_returntext = (lv_returntext + gf_getrewardtext(lv_i) + IntToText(gv_rewardUsed[lp_player][lv_i]) + StringExternal("Param/Value/41A12106"));
+    while ((lv_i < 14)) {
+        lv_returntext = (lv_returntext + gf_getrewardtext(lv_i) + IntToText(gv_rewardUsed[lp_player][lv_i]));
+        if ((lv_i < 13)) {
+            lv_returntext = (lv_returntext + StringExternal("Param/Value/8674AA2A"));
+        }
+
         lv_i = lv_i+1;
     }
     return lv_returntext;
@@ -6602,6 +6624,21 @@ text gf_getrewardtext (int lp_rewardnum) {
     }
     else if (auto2B5D42FE_val == 9) {
         return StringExternal("Param/Value/E4C713FB");
+    }
+    else if (auto2B5D42FE_val == 10) {
+        return StringExternal("Param/Value/A6D470F0");
+    }
+    else if (auto2B5D42FE_val == 11) {
+        return StringExternal("Param/Value/D29C1228");
+    }
+    else if (auto2B5D42FE_val == 12) {
+        return StringExternal("Param/Value/27E733E6");
+    }
+    else if (auto2B5D42FE_val == 13) {
+        return StringExternal("Param/Value/F8B346C2");
+    }
+    else if (auto2B5D42FE_val == 14) {
+        return StringExternal("Param/Value/D158B4B6");
     }
     else {
         return StringExternal("Param/Value/4DDC9510");
@@ -7500,7 +7537,13 @@ void gf_loadvalues (bank lp_bank, int lp_pnum) {
     }
     if ((gf_bankgetint(lp_bank, "1", "time")+(gf_bankgetint(lp_bank, "2", "time")*2)+(gf_bankgetint(lp_bank, "3", "time")*3)+(gf_bankgetint(lp_bank, "4", "time")*4)+(gf_bankgetint(lp_bank, "5", "time")*5))!= gf_bankgetint(lp_bank, "all", "rewards")) {
     lv_cheater=true;}
-    if ((gf_achievementgetlevel(lp_pnum,39)*50)> (gf_bankgetint(lp_bank, "1", "completeruns")+gf_bankgetint(lp_bank, "2", "completeruns")+gf_bankgetint(lp_bank, "3", "completeruns")+gf_bankgetint(lp_bank, "4", "completeruns")+gf_bankgetint(lp_bank, "5", "completeruns"))) {
+    if ((gf_achievementgetlevel(lp_pnum,39)*50)> (gf_bankgetint(lp_bank, "1", "completeruns")+
+                                                  gf_bankgetint(lp_bank, "2", "completeruns")+
+                                                  gf_bankgetint(lp_bank, "3", "completeruns")+
+                                                  gf_bankgetint(lp_bank, "4", "completeruns")+
+                                                  gf_bankgetint(lp_bank, "5", "completeruns")+
+                                                  gf_bankgetint(lp_bank, "6", "completeruns")+
+                                                  gf_bankgetint(lp_bank, "7", "completeruns"))) {
     lv_cheater=true;}
     if (gf_bankgetint(lp_bank, "unspend", "rewards") > gf_bankgetint(lp_bank, "all", "rewards")) {
     lv_cheater=true;}
@@ -10683,6 +10726,9 @@ void gf_winachievementcheck () {
     int lv_heroesplayed;
 
     // Automatic Variable Declarations
+    const int auto7DE664B4_ae = 7;
+    int auto7DE664B4_var;
+
     // Variable Initialization
     lv_d = FixedToInt(gv_difficulty);
     lv_allsame = true;
@@ -10748,7 +10794,11 @@ void gf_winachievementcheck () {
     while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
-            lv_d = (gf_bankgetint(gv_zbanks[lv_i], "1", "completeruns") + gf_bankgetint(gv_zbanks[lv_i], "2", "completeruns") + gf_bankgetint(gv_zbanks[lv_i], "3", "completeruns") + gf_bankgetint(gv_zbanks[lv_i], "4", "completeruns") + gf_bankgetint(gv_zbanks[lv_i], "5", "completeruns"));
+            lv_d = 0;
+            auto7DE664B4_var = 1;
+            for ( ; auto7DE664B4_var <= auto7DE664B4_ae; auto7DE664B4_var += 1 ) {
+                lv_d += gf_bankgetint(gv_zbanks[lv_i], IntToString(auto7DE664B4_var), "completeruns");
+            }
             while ((gf_achievementgetvalueofnextlevel(39, lv_i) <= lv_d)) {
                 gf_achievementnew(lv_i, 39);
             }
@@ -10806,7 +10856,7 @@ void gf_stage11finalcheckfortimeachievements () {
     lv_d = FixedToInt(gv_difficulty);
 
     // Implementation
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
             lv_k = 5.0;
@@ -10883,48 +10933,69 @@ text gf_difficultytotext () {
     // Implementation
     autoECF71401_val = gv_difficulty;
     if (autoECF71401_val == 1.0) {
-        return StringExternal("Param/Value/414F1956");
+        return (StringExternal("Param/Value/FA694E31") + StringExternal("Param/Value/C18DB289") + StringExternal("Param/Value/15C10426"));
     }
     else if (autoECF71401_val == 2.0) {
-        return StringExternal("Param/Value/3C04C5FC");
+        return (StringExternal("Param/Value/0D38FDD7") + StringExternal("Param/Value/8C7FCC65") + StringExternal("Param/Value/6C146C0F"));
     }
     else if (autoECF71401_val == 3.0) {
-        return StringExternal("Param/Value/55307AEE");
+        return (StringExternal("Param/Value/7B451784") + StringExternal("Param/Value/08AB3F82") + StringExternal("Param/Value/936F7178"));
     }
     else if (autoECF71401_val == 4.0) {
-        return StringExternal("Param/Value/11B146D7");
+        return (StringExternal("Param/Value/57CF7CEE") + StringExternal("Param/Value/78C19E6F") + StringExternal("Param/Value/4855E72F"));
     }
     else if (autoECF71401_val == 5.0) {
-        return StringExternal("Param/Value/C3D76DFC");
+        if ((gv_hardcore == true)) {
+            if ((gv_playercount == 1)) {
+                return (StringExternal("Param/Value/760367C7") + StringExternal("Param/Value/C8B964DD") + StringExternal("Param/Value/28154BF6"));
+            }
+            else {
+                return (StringExternal("Param/Value/3B74AC17") + StringExternal("Param/Value/47DFE016") + StringExternal("Param/Value/6739AA43"));
+            }
+        }
+        else {
+            return (StringExternal("Param/Value/32B5C962") + StringExternal("Param/Value/95273FC9") + StringExternal("Param/Value/F16032F8"));
+        }
     }
     else {
-        return StringExternal("Param/Value/AD02265C");
+        return (StringExternal("Param/Value/87887B28") + StringExternal("Param/Value/ACA087A6") + StringExternal("Param/Value/C887DC5B"));
     }
 }
 
-text gf_difficultytotex2 (int lp_diff) {
+text gf_difficultytotextExtra (int lp_diff, text lp_extraText) {
+    // Variable Declarations
+    text lv_text;
+
     // Automatic Variable Declarations
-    int auto95CD6A83_val;
+    int autoE5334152_val;
+
+    // Variable Initialization
 
     // Implementation
-    auto95CD6A83_val = lp_diff;
-    if (auto95CD6A83_val == 1) {
-        return StringExternal("Param/Value/D4E50490");
+    autoE5334152_val = lp_diff;
+    if (autoE5334152_val == 1) {
+        return (StringExternal("Param/Value/8A2B3912") + StringExternal("Param/Value/93057DA9") + lp_extraText + StringExternal("Param/Value/04B7AD77"));
     }
-    else if (auto95CD6A83_val == 2) {
-        return StringExternal("Param/Value/1C3C8814");
+    else if (autoE5334152_val == 2) {
+        return (StringExternal("Param/Value/86118DBB") + StringExternal("Param/Value/A650FFC4") + lp_extraText + StringExternal("Param/Value/548981D0"));
     }
-    else if (auto95CD6A83_val == 3) {
-        return StringExternal("Param/Value/D00886ED");
+    else if (autoE5334152_val == 3) {
+        return (StringExternal("Param/Value/221A9A2E") + StringExternal("Param/Value/2B609BCF") + lp_extraText + StringExternal("Param/Value/37FDDD48"));
     }
-    else if (auto95CD6A83_val == 4) {
-        return StringExternal("Param/Value/D5E3393F");
+    else if (autoE5334152_val == 4) {
+        return (StringExternal("Param/Value/4ECBBF50") + StringExternal("Param/Value/94081D01") + lp_extraText + StringExternal("Param/Value/46213939"));
     }
-    else if (auto95CD6A83_val == 5) {
-        return StringExternal("Param/Value/14844ED4");
+    else if (autoE5334152_val == 5) {
+        return (StringExternal("Param/Value/B0F2F941") + StringExternal("Param/Value/4DC860FB") + lp_extraText + StringExternal("Param/Value/7BC9E6C9"));
+    }
+    else if (autoE5334152_val == 6) {
+        return (StringExternal("Param/Value/E907E47B") + StringExternal("Param/Value/3236B927") + lp_extraText + StringExternal("Param/Value/211FFF1A"));
+    }
+    else if (autoE5334152_val == 7) {
+        return (StringExternal("Param/Value/297AC28A") + StringExternal("Param/Value/52356ED1") + lp_extraText + StringExternal("Param/Value/A4EFC3E4"));
     }
     else {
-        return StringExternal("Param/Value/ADCCFA40");
+        return (StringExternal("Param/Value/0144DB44") + StringExternal("Param/Value/D6462385") + lp_extraText + StringExternal("Param/Value/F0944574"));
     }
 }
 
@@ -16455,7 +16526,12 @@ bool gt_pickhero_Func (bool testConds, bool runActions) {
 
     if ((gv_difficulty == 5.0)) {
         if ((gv_hardcore == true)) {
-            UnitBehaviorAdd(UnitLastCreated(), "Hardcore", UnitLastCreated(), 1);
+            if ((gv_playercount == 1)) {
+                UnitBehaviorAdd(UnitLastCreated(), "Ironcore", UnitLastCreated(), 1);
+            }
+            else {
+                UnitBehaviorAdd(UnitLastCreated(), "Hardcore", UnitLastCreated(), 1);
+            }
         }
         else {
             UnitBehaviorAdd(UnitLastCreated(), "Legendary", UnitLastCreated(), 1);
@@ -17471,6 +17547,8 @@ bool gt_restoreachievm_Func (bool testConds, bool runActions) {
     int autoC11EDB97_val;
     int autoF6C7C7ED_val;
     int auto4EBD45D3_val;
+    const int auto845E48A2_ae = 7;
+    int auto845E48A2_var;
     int auto60847657_val;
 
     // Variable Initialization
@@ -17581,7 +17659,10 @@ bool gt_restoreachievm_Func (bool testConds, bool runActions) {
     }
 
     if ((lv_ach == 39)) {
-        lv_wins = (gf_bankgetint(gv_zbanks[lv_player], "1", "completeruns") + gf_bankgetint(gv_zbanks[lv_player], "2", "completeruns") + gf_bankgetint(gv_zbanks[lv_player], "3", "completeruns") + gf_bankgetint(gv_zbanks[lv_player], "4", "completeruns") + gf_bankgetint(gv_zbanks[lv_player], "5", "completeruns"));
+        auto845E48A2_var = 1;
+        for ( ; auto845E48A2_var <= auto845E48A2_ae; auto845E48A2_var += 1 ) {
+            lv_wins += gf_bankgetint(gv_zbanks[lv_player], IntToString(auto845E48A2_var), "completeruns");
+        }
         auto60847657_val = lv_level;
         if (auto60847657_val == 1) {
             lv_i = 50;
@@ -18031,8 +18112,6 @@ bool gt_initstatwindow_Func (bool testConds, bool runActions) {
     text lv_tstring;
 
     // Automatic Variable Declarations
-    int autoCF7721DF_val;
-
     // Variable Initialization
     for (init_i = 0; init_i <= 20; init_i += 1) {
         lv_labels[init_i] = c_invalidDialogControlId;
@@ -18048,77 +18127,109 @@ bool gt_initstatwindow_Func (bool testConds, bool runActions) {
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
     gv_zstatsdialog = DialogLastCreated();
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 100, StringExternal("Param/Value/DA45D0B7"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 125, StringExternal("Param/Value/BD27CCF0"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 150, StringExternal("Param/Value/BD90A4E2"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 175, StringExternal("Param/Value/B81DAA4F"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 200, StringExternal("Param/Value/1CB120B4"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 225, StringExternal("Param/Value/B2585605"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 250, StringExternal("Param/Value/83840A18"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 275, StringExternal("Param/Value/FB5932D6"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 300, StringExternal("Param/Value/14D1660D"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 325, StringExternal("Param/Value/5F99A612"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 350, StringExternal("Param/Value/728BCA60"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 375, StringExternal("Param/Value/6396B7FF"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 400, StringExternal("Param/Value/594CD4DA"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 425, StringExternal("Param/Value/BA557C98"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 450, StringExternal("Param/Value/78AB9383"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 475, StringExternal("Param/Value/FBD7F74E"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 500, StringExternal("Param/Value/21CFFE57"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 525, StringExternal("Param/Value/1DC0D8F3"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 550, StringExternal("Param/Value/406431EB"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 575, StringExternal("Param/Value/CA66DD70"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 150, 50, c_anchorTopLeft, 50, 600, StringExternal("Param/Value/0450D8AB"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 150, 50, c_anchorTopLeft, 50, 695, StringExternal("Param/Value/97B2DC20"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 645, StringExternal("Param/Value/A6709D11"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemButton(gv_zstatsdialog, 35, 35, c_anchorTopRight, 25, 25, StringToText(""), StringExternal("Param/Value/E3757C1A"), "");
-    while ((lv_i < 4)) {
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
             DialogSetSize(gv_zstatsdialog, 200+(150*lv_i), 750);
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 200, 50, c_anchorTopLeft, 50+(150*lv_i), 60, PlayerName(lv_i), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 100, IntToText(gf_bankgetint(gv_zbanks[lv_i], "firehero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 125, IntToText(gf_bankgetint(gv_zbanks[lv_i], "lightninghero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 150, IntToText(gf_bankgetint(gv_zbanks[lv_i], "poisonhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 175, IntToText(gf_bankgetint(gv_zbanks[lv_i], "warphero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 200, IntToText(gf_bankgetint(gv_zbanks[lv_i], "particlehero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 225, IntToText(gf_bankgetint(gv_zbanks[lv_i], "timehero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 250, IntToText(gf_bankgetint(gv_zbanks[lv_i], "twilighthero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 275, IntToText(gf_bankgetint(gv_zbanks[lv_i], "shadowhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 300, IntToText(gf_bankgetint(gv_zbanks[lv_i], "probehero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 325, IntToText(gf_bankgetint(gv_zbanks[lv_i], "beamhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 350, IntToText(gf_bankgetint(gv_zbanks[lv_i], "waterhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 375, IntToText(gf_bankgetint(gv_zbanks[lv_i], "earthhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 400, IntToText(gf_bankgetint(gv_zbanks[lv_i], "airhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 425, IntToText(gf_bankgetint(gv_zbanks[lv_i], "naturehero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 450, IntToText(gf_bankgetint(gv_zbanks[lv_i], "illusionhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 475, IntToText(gf_bankgetint(gv_zbanks[lv_i], "bladehero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 500, IntToText(gf_bankgetint(gv_zbanks[lv_i], "luckhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 525, IntToText(gf_bankgetint(gv_zbanks[lv_i], "elementalhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 550, IntToText(gf_bankgetint(gv_zbanks[lv_i], "gravityhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 575, IntToText(gf_bankgetint(gv_zbanks[lv_i], "gatewayhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
-            lv_j = 5;
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
+            lv_j = 7;
             while ((lv_j > 0)) {
                 if (((gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns") != 0))) {
-                    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 150, 50, c_anchorTopLeft, 50+(150*lv_i), 600, gf_difficultytotex2(lv_j), ColorWithAlpha(0,0,0,0), false, 2.0);
+                    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 150, 50, c_anchorTopLeft, 50+(150*lv_i), 600, gf_difficultytotextExtra(lv_j, StringToText("")), ColorWithAlpha(0,0,0,0), false, 2.0);
                     while ((lv_j > 0)) {
-                        autoCF7721DF_val = lv_j;
-                        if (autoCF7721DF_val == 5) {
-                            lv_tstring = (lv_tstring + StringExternal("Param/Value/EA24032D") + IntToText(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")) + StringExternal("Param/Value/206EA15C"));
+                        lv_tstring = (lv_tstring + gf_difficultytotextExtra(lv_j, (StringExternal("Param/Value/19020720") + IntToText(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")))));
+                        if ((lv_j > 1)) {
+                            lv_tstring = (lv_tstring + StringExternal("Param/Value/F395A649"));
                         }
-                        else if (autoCF7721DF_val == 4) {
-                            lv_tstring = (lv_tstring + StringExternal("Param/Value/F63A4AD5") + IntToText(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")) + StringExternal("Param/Value/3F8A5CE6"));
-                        }
-                        else if (autoCF7721DF_val == 3) {
-                            lv_tstring = (lv_tstring + StringExternal("Param/Value/6F9CCE39") + IntToText(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")) + StringExternal("Param/Value/EEF0A9B1"));
-                        }
-                        else if (autoCF7721DF_val == 2) {
-                            lv_tstring = (lv_tstring + StringExternal("Param/Value/45E9D342") + IntToText(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")) + StringExternal("Param/Value/DD8DA9DC"));
-                        }
-                        else if (autoCF7721DF_val == 1) {
-                            lv_tstring = (lv_tstring + StringExternal("Param/Value/96831289") + IntToText(gf_bankgetint(gv_zbanks[lv_i], IntToString(lv_j), "completeruns")) + StringToText(""));
-                        }
-                        else {
-                        }
+
                         lv_j -= 1;
                     }
                     libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), lv_tstring, PlayerGroupAll());
@@ -18129,9 +18240,11 @@ bool gt_initstatwindow_Func (bool testConds, bool runActions) {
                 lv_j -= 1;
             }
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 150, 50, c_anchorTopLeft, 50+(150*lv_i), 695, IntToText(gv_rewardaccumulated[lv_i]), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLRewardPoints", PlayerGroupAll());
             lv_labels[lv_i] = DialogControlLastCreated();
             libNtve_gf_SetDialogItemTooltip(lv_labels[lv_i], gf_getrewardinfo(lv_i), PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50+(150*lv_i), 645, IntToText(gv_zdeathcount[lv_i]), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             lv_labels[lv_i+4] = DialogControlLastCreated();
         }
 
@@ -18139,7 +18252,7 @@ bool gt_initstatwindow_Func (bool testConds, bool runActions) {
     while(true){
     Wait(5.0, c_timeGame);
     lv_i = 0;
-    while ((lv_i < 4)) {
+    while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
             libNtve_gf_SetDialogItemText(lv_labels[lv_i], IntToText(gv_rewardaccumulated[lv_i]), PlayerGroupAll());
@@ -18428,10 +18541,6 @@ bool gt_PlayerLeaves_Func (bool testConds, bool runActions) {
     }
 
     gf_UndoVote(lv_player, true);
-    if ((gv_hero[lv_player] != null)) {
-        UnitRemove(gv_hero[lv_player]);
-    }
-
     if ((gv_demolisher == null) && (PlayerGroupCount(PlayerGroupActive()) == 1)) {
         if ((gv_mode == 0) && (gv_zmaxstage > 1)) {
             UnitCreate(1, "Demolisher", 0, 5, UnitGetPosition(gf_getpylonofprevstage()), 270.0);
@@ -22144,9 +22253,9 @@ bool gt_activateStage11_Func (bool testConds, bool runActions) {
     int lv_k;
     int lv_rnd;
     bool lv_flawless;
-    fixed lv_ambushcounter;
     fixed lv_overssercounter;
     int lv_survivalcounter;
+    int lv_rewardGain;
 
     // Automatic Variable Declarations
     unitgroup autoCC3F29E4_g;
@@ -22242,7 +22351,6 @@ bool gt_activateStage11_Func (bool testConds, bool runActions) {
         gf_SpawningBuilding4(Point(0,0), Point(239,228), 3, 7, false, 250.0, "DestructibleSignsIcons", "Baneling", null, 0, null, 0, null, false, false, 0, 0, true, gv_stage);
         gf_SpawningBuilding4(Point(0,0), Point(239,222), 1, 31, false, 250.0, "DestructibleSignsIcons", "Queen", null, 0, null, 0, null, false, false, 0, 0, true, gv_stage);
     }
-    lv_ambushcounter = (60.0 + 0.0);
     lv_overssercounter = (120.0 + 0.0);
     while ((UnitIsAlive(lv_z1) == true) && (UnitIsAlive(lv_pylon) == true)) {
         if ((UnitGroupCount(gv_alliedUnitsOnMap, c_unitCountAlive) <= (24 + (gv_stage * 3)))) {
@@ -22262,19 +22370,6 @@ bool gt_activateStage11_Func (bool testConds, bool runActions) {
             gf_achievementPossiblyGainedTeam(68, lv_survivalcounter);
         }
 
-        if ((lv_ambushcounter <= 1.0)) {
-            lv_ambushcounter = (5.0 + RandomFixed(16-gv_difficulty, (50.0 - (gv_difficulty * 7.0))));
-            if ((TechTreeUpgradeCount(6, "thorquestrewardmutagen", c_techCountQueuedOrBetter) < 1)) {
-                lv_ambushcounter *= 2.0;
-            }
-
-            if ((gv_difficulty > 2.0)) {
-            }
-
-        }
-        else {
-            lv_ambushcounter -= 1.0;
-        }
         if ((lv_overssercounter <= 1.0)) {
             lv_overssercounter = (30.0 + RandomFixed(16-gv_difficulty, (50.0 - (gv_difficulty * 7.0))));
             if ((TechTreeUpgradeCount(6, "thorquestrewardmutagen", c_techCountQueuedOrBetter) < 1)) {
@@ -22330,19 +22425,31 @@ bool gt_activateStage11_Func (bool testConds, bool runActions) {
             gf_achievements0killaward(16);
         }
 
-        gf_winachievementcheck();
         if ((gv_zdeathcount[1] == 0) && (gv_zdeathcount[2] == 0) && (gv_zdeathcount[3] == 0) && (gv_zdeathcount[4] == 0) && (gv_zdeathcount[0] == 0)) {
             gf_achievements0killaward(15);
         }
 
         gv_stage += 1;
+        lv_rewardGain = (20 * FixedToInt(gv_difficulty));
+        if ((gv_champion > 0) && (gv_hardcore == false)) {
+            lv_rewardGain *= 5;
+        }
+
+        if ((gv_hardcore == true)) {
+            if ((gv_playercount == 1)) {
+                lv_rewardGain *= 10;
+            }
+            else {
+                lv_rewardGain *= 6;
+            }
+        }
+
+        gf_gainrewardbonusall(lv_rewardGain);
         if ((gv_champion == 1)) {
-            gf_gainrewardbonusall(FixedToInt(100*gv_difficulty));
-            TransmissionSend(PlayerGroupAll(), TransmissionSourceFromUnitType("Pylon", false), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/F63AC73C"), (StringExternal("Param/Value/0350ED00") + gf_difficultytotext() + StringExternal("Param/Value/66A2CA88") + gf_gametime(gv_zgametime[3]) + StringToText("") + StringExternal("Param/Value/1A4C0E6F") + StringExternal("Param/Value/6DA47058") + IntToText(FixedToInt(gv_difficulty*500)) + StringExternal("Param/Value/568F8508")), 6.0, c_transmissionDurationAdd, false);
+            TransmissionSend(PlayerGroupAll(), TransmissionSourceFromUnitType("Pylon", false), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/F63AC73C"), (StringExternal("Param/Value/0350ED00") + gf_difficultytotext() + StringExternal("Param/Value/66A2CA88") + gf_gametime(gv_zgametime[3]) + StringToText("") + StringExternal("Param/Value/1A4C0E6F") + StringExternal("Param/Value/6DA47058") + IntToText((lv_rewardGain * 5)) + StringExternal("Param/Value/568F8508")), 6.0, c_transmissionDurationAdd, false);
         }
         else {
-            gf_gainrewardbonusall(FixedToInt(20*gv_difficulty));
-            TransmissionSend(PlayerGroupAll(), TransmissionSourceFromUnitType("Pylon", false), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/D3257567"), (StringExternal("Param/Value/DC1998A5") + gf_difficultytotext() + StringExternal("Param/Value/6091C9E8") + gf_gametime(gv_zgametime[3]) + StringToText("") + StringExternal("Param/Value/0C481269") + StringExternal("Param/Value/BC87E87A") + IntToText(FixedToInt(gv_difficulty*100)) + StringExternal("Param/Value/33C9DB06")), 6.0, c_transmissionDurationAdd, false);
+            TransmissionSend(PlayerGroupAll(), TransmissionSourceFromUnitType("Pylon", false), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/D3257567"), (StringExternal("Param/Value/DC1998A5") + gf_difficultytotext() + StringExternal("Param/Value/6091C9E8") + gf_gametime(gv_zgametime[3]) + StringToText("") + StringExternal("Param/Value/0C481269") + StringExternal("Param/Value/BC87E87A") + IntToText((lv_rewardGain * 5)) + StringExternal("Param/Value/33C9DB06")), 6.0, c_transmissionDurationAdd, false);
         }
         autoCC3F29E4_g = UnitGroup(null, 6, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), (1 << (c_targetFilterInvulnerable - 32)), (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
         autoCC3F29E4_u = UnitGroupCount(autoCC3F29E4_g, c_unitCountAll);
@@ -22389,11 +22496,22 @@ bool gt_activateStage11_Func (bool testConds, bool runActions) {
         while ((lv_i < gv_pLAYERCOUNT)) {
             lv_i += 1;
             if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
-                gf_bankaddtoint(gv_zbanks[lv_i], FixedToString(gv_difficulty, c_fixedPrecisionAny), "completeruns", 1);
+                if ((gv_hardcore == true)) {
+                    if ((gv_playercount == 1)) {
+                        gf_bankaddtoint(gv_zbanks[lv_i], "7", "completeruns", 1);
+                    }
+                    else {
+                        gf_bankaddtoint(gv_zbanks[lv_i], "6", "completeruns", 1);
+                    }
+                }
+                else {
+                    gf_bankaddtoint(gv_zbanks[lv_i], FixedToString(gv_difficulty, c_fixedPrecisionAny), "completeruns", 1);
+                }
                 gf_showstatwindow(lv_i);
             }
 
         }
+        gf_winachievementcheck();
         lv_remainingzerg = UnitGroup(null, 6, RegionRect(122.0, 230.0, 247.0, 215.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
         while ((UnitGroupCount(lv_remainingzerg, c_unitCountAll) > 0)) {
             UnitKill(UnitGroupUnit(lv_remainingzerg, 1));

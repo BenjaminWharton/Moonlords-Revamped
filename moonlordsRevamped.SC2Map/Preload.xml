@@ -142,6 +142,7 @@
 <Behavior id="plasmacharge"/>
 <Behavior id="rewardarmor"/>
 <Behavior id="rewarddmg"/>
+<Behavior id="Ironcore"/>
 <Effect id="WarbotBLM"/>
 <Effect id="FullHeal"/>
 <Effect id="MultiphaseShieldreplenishset"/>
