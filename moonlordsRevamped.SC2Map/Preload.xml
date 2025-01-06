@@ -61,6 +61,7 @@
 <Behavior id="BladeStorm"/>
 <Behavior id="CastLeftSide"/>
 <Behavior id="ChronoWave"/>
+<Behavior id="Ironcore"/>
 <Behavior id="Hardcore"/>
 <Behavior id="ShadowplayMedic"/>
 <Behavior id="ThorStopMoveIndicatorFate"/>
@@ -142,7 +143,6 @@
 <Behavior id="plasmacharge"/>
 <Behavior id="rewardarmor"/>
 <Behavior id="rewarddmg"/>
-<Behavior id="Ironcore"/>
 <Effect id="WarbotBLM"/>
 <Effect id="FullHeal"/>
 <Effect id="MultiphaseShieldreplenishset"/>

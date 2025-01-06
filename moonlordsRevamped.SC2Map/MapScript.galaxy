@@ -1224,8 +1224,8 @@ void gf_CreateSelectModeDialog () {
         while (true) {
             auto723F289B_var = PlayerGroupNextPlayer(auto723F289B_g, auto723F289B_var);
             if (auto723F289B_var < 0) { break; }
-            if ((gf_bankgetint(gv_zbanks[auto723F289B_var], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[auto723F289B_var], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[auto723F289B_var], "5", "completeruns") == 0)) {
-                DialogControlSetEnabled(gv_rewardButtons[4], PlayerGroupSingle(auto723F289B_var), false);
+            if ((gf_bankgetint(gv_zbanks[auto723F289B_var], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[auto723F289B_var], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[auto723F289B_var], "5", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[auto723F289B_var], "6", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[auto723F289B_var], "7", "completeruns") == 0)) {
+                DialogControlSetEnabled(gv_rewardButtons[3], PlayerGroupSingle(auto723F289B_var), false);
             }
 
         }
@@ -18173,7 +18173,7 @@ bool gt_initstatwindow_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 645, StringExternal("Param/Value/A6709D11"), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemButton(gv_zstatsdialog, 35, 35, c_anchorTopRight, 25, 25, StringToText(""), StringExternal("Param/Value/E3757C1A"), "");
-    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLTalentName", PlayerGroupAll());
     while ((lv_i < gv_pLAYERCOUNT)) {
         lv_i += 1;
         if ((PlayerStatus(lv_i) == c_playerStatusActive)) {
