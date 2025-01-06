@@ -152682,7 +152682,7 @@
     </Element>
     <Element Type="Param" Id="82D70291">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="7F7EC340"/>
-        <Value>200</Value>
+        <Value>250</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="Param" Id="95A1FFD2">
@@ -152795,7 +152795,7 @@
     </Element>
     <Element Type="Param" Id="9DE88805">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="7F7EC340"/>
-        <Value>200</Value>
+        <Value>250</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="Param" Id="92E0E017">
@@ -152908,7 +152908,7 @@
     </Element>
     <Element Type="Param" Id="020D91B7">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="7F7EC340"/>
-        <Value>200</Value>
+        <Value>250</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="Param" Id="97B9ACA7">
@@ -167404,7 +167404,7 @@
                                                           gf_bankgetint(lp_bank, &quot;4&quot;, &quot;completeruns&quot;)+
                                                           gf_bankgetint(lp_bank, &quot;5&quot;, &quot;completeruns&quot;)+
                                                           gf_bankgetint(lp_bank, &quot;6&quot;, &quot;completeruns&quot;)+
-                                                          gf_bankgetint(lp_bank, &quot;7&quot;, &quot;completeruns&quot;))) {
+                                                          gf_bankgetint(lp_bank, &quot;7&quot;, &quot;completeruns&quot;)+1)) {
             lv_cheater=true;}
         </ScriptCode>
     </Element>

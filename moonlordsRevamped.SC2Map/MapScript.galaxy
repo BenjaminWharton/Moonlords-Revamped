@@ -6668,13 +6668,13 @@ void gf_CreateRewardDialog () {
     DialogCreate(760, 550, c_anchorCenter, 0, 0, true);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
     gv_rewardDialog = DialogLastCreated();
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 50, 120, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTopLeft, 50, 120, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLRewardCost", PlayerGroupAll());
     gv_rewardButtons[21] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 280, 120, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTopLeft, 280, 120, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLRewardCost", PlayerGroupAll());
     gv_rewardButtons[22] = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 510, 120, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 250, 50, c_anchorTopLeft, 510, 120, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLRewardCost", PlayerGroupAll());
     gv_rewardButtons[23] = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 60, 50, c_anchorTopRight, 50, 50, StringToText(""), StringExternal("Param/Value/0575CF0A"), "");
@@ -7543,7 +7543,7 @@ void gf_loadvalues (bank lp_bank, int lp_pnum) {
                                                   gf_bankgetint(lp_bank, "4", "completeruns")+
                                                   gf_bankgetint(lp_bank, "5", "completeruns")+
                                                   gf_bankgetint(lp_bank, "6", "completeruns")+
-                                                  gf_bankgetint(lp_bank, "7", "completeruns"))) {
+                                                  gf_bankgetint(lp_bank, "7", "completeruns")+1)) {
     lv_cheater=true;}
     if (gf_bankgetint(lp_bank, "unspend", "rewards") > gf_bankgetint(lp_bank, "all", "rewards")) {
     lv_cheater=true;}
