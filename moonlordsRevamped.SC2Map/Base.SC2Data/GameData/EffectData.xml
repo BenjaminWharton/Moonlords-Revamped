@@ -184,6 +184,21 @@
         <EffectArray value="MLLeapHeroDMG"/>
         <EffectArray value="ApplyUnitWasStunned"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="DemolisherShieldUnitAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="DemolisherShieldUnit"/>
+    </CEffectApplyBehavior>
+    <CEffectAddTrackedUnit id="DemolisherShieldUnitATU">
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="DemolisherTracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectSet id="DemolisherShieldUnitCUSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="DemolisherShieldUnitAB"/>
+        <EffectArray value="DemolisherShieldUnitATU"/>
+        <EffectArray value="FollowCasterAK"/>
+    </CEffectSet>
     <CEffectDamage id="GatewayHeroDeflectorDroneDMG">
         <EditorCategories value="Race:Protoss"/>
         <Visibility value="Visible"/>
@@ -9203,6 +9218,7 @@
     <CEffectDamage id="ShieldUnitKillShield">
         <EditorCategories value="Race:Protoss"/>
         <Flags index="Kill" value="1"/>
+        <ValidatorArray value="IsDemolisherShieldDummy"/>
     </CEffectDamage>
     <CEffectSet id="MultiphaseShieldremoveset">
         <EditorCategories value="Race:Protoss"/>
@@ -9366,19 +9382,23 @@
         <PeriodicValidator value="SourceNotDead"/>
         <PeriodicEffectArray value="ShieldUnitTP"/>
         <PeriodicPeriodArray value="0.0625"/>
+        <InitialEffect value="DemolisherShieldUnitATU"/>
     </CEffectCreatePersistent>
     <CEffectCreateUnit id="ShieldUnitCU">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="SourceUnit"/>
-        <SpawnEffect value="ShieldUnitCP"/>
+        <SpawnEffect value="DemolisherShieldUnitCUSet"/>
         <SpawnUnit value="ShieldUnit"/>
         <SpawnRange value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
     </CEffectCreateUnit>
-    <CEffectEnumArea id="ShieldUnitSA">
+    <CEffectEnumTrackedUnits id="DemolisherShieldUnitETU">
         <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="Light,Armored,Massive,Invulnerable;-"/>
-        <AreaArray MaxCount="1" Radius="500" Effect="ShieldUnitKillShield"/>
-    </CEffectEnumArea>
+        <BehaviorLink value="DemolisherTracker"/>
+        <Effect value="KillRemove"/>
+    </CEffectEnumTrackedUnits>
     <CEffectTeleport id="ShieldUnitTP">
         <EditorCategories value="Race:Protoss"/>
         <MinDistance value="0"/>

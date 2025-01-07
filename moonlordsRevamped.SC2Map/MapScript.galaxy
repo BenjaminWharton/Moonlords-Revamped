@@ -758,12 +758,12 @@ void gf_initdifficultyplayercount () {
                     gv_difficulty += 1.0;
                 }
 
-                if ((GameAttributePlayerValue("1", lv_i) == "0003")) {
-                    gv_difficulty += 3.0;
-                }
-
                 if ((GameAttributePlayerValue("1", lv_i) == "0002")) {
                     gv_difficulty += 2.0;
+                }
+
+                if ((GameAttributePlayerValue("1", lv_i) == "0003")) {
+                    gv_difficulty += 3.0;
                 }
 
                 if ((GameAttributePlayerValue("1", lv_i) == "0004")) {
@@ -776,8 +776,8 @@ void gf_initdifficultyplayercount () {
 
             }
 
-            gv_difficulty = IntToFixed(RoundI((gv_difficulty / gv_playercount)));
         }
+        gv_difficulty = IntToFixed(RoundI((gv_difficulty / gv_playercount)));
     }
     else {
         gv_playercount = PlayerGroupCount(PlayerGroupActive());
@@ -1130,7 +1130,7 @@ bool gf_AllPlayersVoted () {
     // Implementation
     autoA6752CCC_var = 1;
     for ( ; autoA6752CCC_var <= autoA6752CCC_ae; autoA6752CCC_var += 1 ) {
-        if ((PlayerGroupHasPlayer(PlayerGroupActive(), autoA6752CCC_var) == true) && (gv_hasVoted[autoA6752CCC_var] == 0)) {
+        if ((PlayerGroupHasPlayer(PlayerGroupActive(), autoA6752CCC_var) == true) && (PlayerType(autoA6752CCC_var) == c_playerTypeUser) && (gv_hasVoted[autoA6752CCC_var] == 0)) {
             lv_pass = false;
         }
 
@@ -1227,7 +1227,7 @@ void gf_CreateSelectModeDialog () {
 
         }
         DialogSetVisible(lv_dialog, PlayerGroupAll(), true);
-        while ((gf_AllPlayersVoted() == false)) {
+        while ((lv_timer > 0) && (gf_AllPlayersVoted() == false)) {
             libNtve_gf_SetDialogItemText(gv_rewardButtons[4], IntToText(lv_timer), PlayerGroupAll());
             lv_timer -= 1;
             Wait(1.0, c_timeGame);

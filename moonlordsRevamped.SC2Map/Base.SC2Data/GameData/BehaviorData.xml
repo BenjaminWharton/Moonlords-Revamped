@@ -245,6 +245,18 @@
         <InfoIcon value="Assets\Textures\abilityicon_corrosivespores_square.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="DemolisherShieldUnit">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="DemolisherNotIncapacitated"/>
+        <RemoveValidatorArray value="DemolisherHasReactiveShields"/>
+        <FinalEffect value="KillRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorUnitTracker id="DemolisherTracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <MaxTrackedUnits value="1"/>
+        <ReplacedEffect value="KillRemove"/>
+    </CBehaviorUnitTracker>
     <CBehaviorBuff id="GatewayHeroAnoint">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
@@ -3878,7 +3890,8 @@
             <Chance value="1"/>
         </DamageResponse>
         <InitialEffect value="ShieldUnitCU"/>
-        <FinalEffect value="ShieldUnitSA"/>
+        <FinalEffect value="DemolisherShieldUnitETU"/>
+        <RemoveValidatorArray value="DemolisherNotIncapacitated"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Replenish">
         <InfoIcon value="Assets\Textures\btn-ability-protoss-astralwind.dds"/>

@@ -130,6 +130,15 @@
         <Key value="Default"/>
         <Value value="10"/>
     </CValidatorEffectTreeUserData>
+    <CValidatorUnitCompareBehaviorCount id="DemolisherHasReactiveShields">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="ReactiveShields"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="DemolisherNotIncapacitated">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="IncapacitatedDemolisher"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorLocationCompareRange id="DistanceFromCasterLT1">
         <Compare value="LT"/>
         <Range value="1"/>
@@ -231,6 +240,9 @@
         <CombineArray value="TargetIsAllyorPlayer"/>
         <CombineArray value="GatewayHeroHaveRetribution"/>
     </CValidatorCombine>
+    <CValidatorUnitType id="IsDemolisherShieldDummy">
+        <Value value="ShieldUnit"/>
+    </CValidatorUnitType>
     <CValidatorCombine id="IsHeroicorStructure">
         <CombineArray value="IsHeroic"/>
         <CombineArray value="IsStructure"/>

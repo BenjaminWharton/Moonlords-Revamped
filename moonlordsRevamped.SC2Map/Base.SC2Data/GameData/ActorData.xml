@@ -5249,7 +5249,7 @@
         <On Terms="ActorCreation" Send="SetTintColor 0,0,255"/>
         <On Terms="ActorCreation" Send="TimerSet 0.100000 TintTimer"/>
         <On Terms="TimerExpired; TimerName TintTimer" Send="SetTintColor 0,0,255"/>
-        <HostSiteOps Ops="SOpAttachOverhead SOpMoveDownBy1 ReactiveShieldsRotation"/>
+        <HostSiteOps Ops="SOpMoveUpBy1 ReactiveShieldsRotation"/>
         <Model value="Invisible"/>
         <EditorModel value="Pylon"/>
         <BarOffset value="135"/>
@@ -5260,7 +5260,6 @@
         <StatusBarFlags index="Cargo" value="0"/>
         <StatusBarFlags index="Progress" value="0"/>
         <UnitFlags index="ShowBlobShadow" value="0"/>
-        <Host Subject="_Selectable" Scope="Caster" Actor="Find"/>
     </CActorUnit>
     <CActorSound id="LightningMissileImpactSound" parent="SoundOneShot">
         <On Terms="Effect.LightningHitDamage.Start" Send="Create"/>
