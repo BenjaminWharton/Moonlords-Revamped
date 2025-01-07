@@ -199,6 +199,19 @@
         <EffectArray value="DemolisherShieldUnitATU"/>
         <EffectArray value="FollowCasterAK"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="ElementalHeroIcefireSteamOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="IcefireSteamSA"/>
+        <PeriodicOffsetArray value="0,-10,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="ElementalHeroIcefireSteamSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="DistanceFromCasterGT10" Effect="ElementalHeroIcefireSteamOffset"/>
+        <CaseDefault value="IcefireSteamSA"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSwitch>
     <CEffectDamage id="GatewayHeroDeflectorDroneDMG">
         <EditorCategories value="Race:Protoss"/>
         <Visibility value="Visible"/>
@@ -3620,7 +3633,7 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="IcefireBlastOffset"/>
         <EffectArray value="IcefireBlastCastSet"/>
-        <EffectArray value="IcefireSteamSA"/>
+        <EffectArray value="ElementalHeroIcefireSteamSwitch"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
     <CEffectCreatePersistent id="IcefireSteamExplodeDelay">
@@ -7852,7 +7865,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/ApplyIcefireCooldown"/>
         <ImpactUnit Value="Caster"/>
-        <Cost Abil="QuicksandEarth,Execute" CooldownOperation="Set" CooldownTimeUse="8"/>
+        <Cost Abil="QuicksandEarth,Execute" CooldownOperation="Set" CooldownTimeUse="15"/>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="ApplySiphonCooldownMU">
         <EditorCategories value="Race:Protoss"/>
@@ -7864,7 +7877,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/ApplyIcefireCooldown"/>
         <ImpactUnit Value="Caster"/>
-        <Cost Abil="QuicksandWater,Execute" CooldownTimeUse="8"/>
+        <Cost Abil="QuicksandWater,Execute" CooldownTimeUse="15"/>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="ApplyEternalLifeCooldown">
         <EditorCategories value="Race:Protoss"/>

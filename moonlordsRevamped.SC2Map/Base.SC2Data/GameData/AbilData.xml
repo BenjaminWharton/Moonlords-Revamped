@@ -645,7 +645,7 @@
         <Cost>
             <Vital index="Energy" value="40"/>
             <Charge Link="Abil/EruptionFire"/>
-            <Cooldown Link="Abil/EruptionFire" TimeUse="8"/>
+            <Cooldown Link="Abil/EruptionFire" TimeUse="15"/>
         </Cost>
         <InterruptCost>
             <Charge Link="Abil/EruptionFire"/>
@@ -653,7 +653,6 @@
         </InterruptCost>
         <Range value="12"/>
         <Arc value="360"/>
-        <Marker Link="Abil/EruptionFire"/>
         <CursorEffect value="QuicksandEarthSA"/>
         <AINotifyEffect value="EruptionFire"/>
         <SetLastTarget value="Move"/>
@@ -781,7 +780,7 @@
         <Cost>
             <Vital index="Energy" value="40"/>
             <Charge Link="Abil/EruptionFire"/>
-            <Cooldown Link="Abil/EruptionFire" TimeUse="8"/>
+            <Cooldown Link="Abil/EruptionFire" TimeUse="15"/>
         </Cost>
         <InterruptCost>
             <Charge Link="Abil/EruptionFire"/>
@@ -789,7 +788,6 @@
         </InterruptCost>
         <Range value="12"/>
         <Arc value="360"/>
-        <Marker Link="Abil/EruptionFire"/>
         <CursorEffect value="QuicksandWaterSA"/>
         <AINotifyEffect value="EruptionFire"/>
         <SetLastTarget value="Move"/>
