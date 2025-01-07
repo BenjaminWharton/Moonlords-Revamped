@@ -477,7 +477,6 @@ Behavior/Name/SystemsResetStun=Systems Reset Stun
 Behavior/Name/Tangled=Tangled
 Behavior/Name/TectonicHellfireExterminate=Tectonic Hellfire Exterminate
 Behavior/Name/Terminator=Terminator
-Behavior/Name/TerminatorHidden=TerminatorHidden
 Behavior/Name/TheDreadedOne=The Dreaded One
 Behavior/Name/ThickCarapace=Thick Carapace
 Behavior/Name/ThorScienceSeekerProduce=ThorScienceSeekerProduce

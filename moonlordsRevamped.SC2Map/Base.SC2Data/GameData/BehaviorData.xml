@@ -812,10 +812,12 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Period value="0.25"/>
         <PeriodicEffect value="InspirationSA"/>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MLPowerField">
         <InfoIcon value="Assets\Textures\btn-upgrade-artanis-pylonpower.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="LegendaryBoss">
         <InfoIcon value="Assets\Textures\coop_mutators_difficulty_brutal_150.dds"/>
@@ -853,6 +855,7 @@
             <VitalRegenArray index="Shields" value="5"/>
             <VitalRegenArray index="Energy" value="5"/>
         </Modification>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NormalBoss">
         <InfoIcon value="Assets\Textures\coop_mutators_difficulty_hard_25.dds"/>
@@ -889,6 +892,7 @@
         <Period value="0.5"/>
         <PeriodicEffect value="RewardEnergyAuraSearch"/>
         <TimeScaleSource Value="Global"/>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="RewardEnergyAuraCDS">
         <InfoFlags index="Hidden" value="1"/>
@@ -4234,6 +4238,7 @@
             <VitalMaxArray index="Energy" value="5"/>
             <VitalRegenArray index="Energy" value="0.5"/>
         </Modification>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Hallucination">
         <Modification>
@@ -4912,6 +4917,7 @@
         <DamageResponse Handled="TerminatorAdd" Location="Attacker" Minimum="4">
             <Chance value="1"/>
         </DamageResponse>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ThorScienceSeekerProduce">
         <InfoFlags index="Hidden" value="1"/>

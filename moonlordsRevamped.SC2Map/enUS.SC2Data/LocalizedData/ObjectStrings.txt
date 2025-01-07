@@ -2826,6 +2826,7 @@ Behavior/Name/Surge=Surge
 Behavior/Name/Swarmling=Swarmling
 Behavior/Name/SweepingBeamAlternatingSides=Sweeping Beam Alternating Sides
 Behavior/Name/TeleportBackToCaster=Teleport Back To Caster
+Behavior/Name/TerminatorHidden=TerminatorHidden
 Behavior/Name/Thermal=Thermal
 Behavior/Name/ThorStopMoveIndicatorFate=ThorStopMoveIndicatorFate
 Behavior/Name/ThorStopMoveIndicatorFollow=ThorStopMoveIndicatorFollow

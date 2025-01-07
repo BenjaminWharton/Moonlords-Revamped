@@ -7238,10 +7238,7 @@ void gf_rewardaddall (int lp_pnum, bool lp_respawn) {
 
     // Implementation
     while ((lv_i < 15)) {
-        if ((gv_hardcore == false)) {
-            gf_rewardadd(lv_i, gv_rewardUsed[lp_pnum][lv_i], lp_pnum, lp_respawn);
-        }
-
+        gf_rewardadd(lv_i, gv_rewardUsed[lp_pnum][lv_i], lp_pnum, lp_respawn);
         lv_i += 1;
     }
 }
@@ -18823,9 +18820,8 @@ bool gt_unitdeath_Func (bool testConds, bool runActions) {
             Wait(0.125, c_timeGame);
             UnitRevive(gv_hero[lv_heron]);
             UnitCreateEffectUnit(gv_hero[lv_heron], "FullHeal", gv_hero[lv_heron]);
-            UnitControlGroupAddUnit(EventPlayer(), 1, gv_hero[lv_heron]);
-            UnitSelect(gv_hero[lv_heron], 1, true);
-            gf_rewardaddall(lv_pnum, true);
+            UnitControlGroupAddUnit(lv_pnum, 1, gv_hero[lv_heron]);
+            UnitSelect(gv_hero[lv_heron], lv_pnum, true);
             while ((lv_i < 40)) {
                 UnitSetCustomValue(gv_hero[lv_heron], lv_i, UnitGetCustomValue(lv_fail, lv_i));
                 lv_i += 1;
