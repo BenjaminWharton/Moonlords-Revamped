@@ -82,6 +82,7 @@
             <Value>1.235</Value>
             <Value>1.236</Value>
             <Value>1.237</Value>
+            <Value>1.238</Value>
         </Version>
         <Date>
             <Value>11/20/2019</Value>
@@ -135,6 +136,7 @@
             <Value>12/30/2024</Value>
             <Value>1/4/2025</Value>
             <Value>1/6/2025</Value>
+            <Value>1/7/2025</Value>
         </Date>
         <Notes>
             <Value>1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30</Value>
@@ -188,6 +190,7 @@
             <Value>570,571,572,573,574,575,576,577</Value>
             <Value>578,579,580,581,582,583,584,585,586</Value>
             <Value>587,588</Value>
+            <Value>589,590,591</Value>
         </Notes>
     </PatchNote>
 </DocInfo>

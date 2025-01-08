@@ -9228,11 +9228,6 @@
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="ThornSlow"/>
     </CEffectApplyBehavior>
-    <CEffectDamage id="ShieldUnitKillShield">
-        <EditorCategories value="Race:Protoss"/>
-        <Flags index="Kill" value="1"/>
-        <ValidatorArray value="IsDemolisherShieldDummy"/>
-    </CEffectDamage>
     <CEffectSet id="MultiphaseShieldremoveset">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="MultiphaseShieldremove"/>
@@ -9388,15 +9383,6 @@
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
     </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="ShieldUnitCP">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="TargetUnit"/>
-        <Flags index="PersistUntilDestroyed" value="1"/>
-        <PeriodicValidator value="SourceNotDead"/>
-        <PeriodicEffectArray value="ShieldUnitTP"/>
-        <PeriodicPeriodArray value="0.0625"/>
-        <InitialEffect value="DemolisherShieldUnitATU"/>
-    </CEffectCreatePersistent>
     <CEffectCreateUnit id="ShieldUnitCU">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="SourceUnit"/>
@@ -9412,11 +9398,6 @@
         <BehaviorLink value="DemolisherTracker"/>
         <Effect value="KillRemove"/>
     </CEffectEnumTrackedUnits>
-    <CEffectTeleport id="ShieldUnitTP">
-        <EditorCategories value="Race:Protoss"/>
-        <MinDistance value="0"/>
-        <SourceLocation Value="TargetUnit"/>
-    </CEffectTeleport>
     <CEffectCreatePersistent id="SiphonCP">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="CasterOuterUnitOrPoint"/>
