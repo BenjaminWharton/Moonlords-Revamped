@@ -1072,6 +1072,7 @@
     <CActorQuad id="NatureHeroTimberLanceQuad" parent="GuideVisualQuadDown" abil="TimberLance">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
         <On index="0" Terms="Abil.TimberLance.Cursor" Send="Create"/>
+        <On index="4" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
         <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>

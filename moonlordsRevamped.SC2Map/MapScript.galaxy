@@ -7413,13 +7413,19 @@ bool auto_gf_PowerField_TriggerFunc (bool testConds, bool runActions) {
     // Implementation
     Wait(0.125, c_timeGame);
     UnitBehaviorAdd(lp_unit, "MLPowerField", lp_unit, 1);
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "PowerFieldPylon", c_unitCreateIgnorePlacement, 5, UnitGetPosition(lp_unit));
-    lv_pylon = UnitLastCreated();
-    while ((UnitBehaviorCount(lp_unit, "MLPowerField") > 0)) {
-        UnitSetPosition(lv_pylon, UnitGetPosition(lp_unit), false);
+    while ((UnitHasBehavior2(lp_unit, "MLPowerField") == true)) {
+        if ((UnitBehaviorCount(lp_unit, "MLPowerField") > 0)) {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "PowerFieldPylon", c_unitCreateIgnorePlacement, 5, UnitGetPosition(lp_unit));
+            lv_pylon = UnitLastCreated();
+            while ((UnitBehaviorCount(lp_unit, "MLPowerField") > 0)) {
+                UnitSetPosition(lv_pylon, UnitGetPosition(lp_unit), false);
+                Wait(0.0625, c_timeGame);
+            }
+            UnitKill(lv_pylon);
+        }
+
         Wait(0.0625, c_timeGame);
     }
-    UnitKill(lv_pylon);
     return true;
 }
 
