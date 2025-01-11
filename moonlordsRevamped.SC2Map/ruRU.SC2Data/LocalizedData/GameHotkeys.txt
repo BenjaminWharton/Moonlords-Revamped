@@ -1,4 +1,4 @@
-Button/Hotkey/A=S
+﻿Button/Hotkey/A=S
 Button/Hotkey/Ad=S
 Button/Hotkey/Ade=S
 Button/Hotkey/Adep=S
@@ -46,6 +46,7 @@ Button/Hotkey/Frostshock=W
 Button/Hotkey/GasBomb=E
 Button/Hotkey/GlaiveBarrage=Q
 Button/Hotkey/GravityDash=E
+Button/Hotkey/GravityHeroPolarity=T
 Button/Hotkey/GravityShot=Q
 Button/Hotkey/GravityShot2=Y
 Button/Hotkey/GravitySlivers=W
