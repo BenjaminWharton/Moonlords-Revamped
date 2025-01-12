@@ -1841,6 +1841,7 @@ DocInfo/PatchNote588=  - Fixed an issue that could delete peoples bank if they r
 DocInfo/PatchNote589=- General
 DocInfo/PatchNote590=  - Fixed difficulty selection and mode selection breaking under certain circumstances
 DocInfo/PatchNote591=  - Fixed Demolisher shield visuals sometimes remaining after death
+DocInfo/PatchNote592=- Fixed Power Field breaking after death
 DocInfo/Screenshot01=Reward points carry over to subsequent games and can be beneficial in a variety of ways.
 DocInfo/Screenshot02=Standing near a Pylon enables you to teleport to any other base.
 DocInfo/Screenshot05=Spend talent points to increase your power.
