@@ -7281,7 +7281,7 @@ void gf_rewardcollectachievement (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
     if ((PlayerStatus(lp_player) == c_playerStatusActive)) {
-        while ((gf_achievementgetvalueofnextlevel(44, lp_player) <= gv_rewardaccumulated[lp_player])) {
+        while ((gf_achievementgetvalueofnextlevel(44, lp_player) <= gv_totalRewards[lp_player])) {
             gf_achievementnew(lp_player, 44);
         }
     }
@@ -7352,14 +7352,14 @@ void gf_rewardgainpoints (int lp_pnum, int lp_amount, int lp_difficulty) {
             }
 
             lv_modulo = ModI(lv_total, lp_difficulty);
+            gv_totalRewards[lp_pnum] += lv_total;
             gf_bankaddtoint(gv_zbanks[lv_i], IntToString(lp_difficulty), "time", (lv_total / lp_difficulty));
             gf_bankaddtoint(gv_zbanks[lv_i], "1", "time", lv_modulo);
             gf_bankaddtoint(gv_zbanks[lv_i], "all", "rewards", lv_total);
             gf_bankaddtoint(gv_zbanks[lv_i], "unspend", "rewards", lv_total);
             gf_rewardnewpoints(lv_i, lv_total);
-            gf_rewardcollectachievement(lv_i);
             gf_banksetc(lp_pnum, gv_zbanks[lv_i]);
-            gv_totalRewards[lp_pnum] += lv_total;
+            gf_rewardcollectachievement(lv_i);
         }
         else {
             if ((gv_hardcore == true)) {
