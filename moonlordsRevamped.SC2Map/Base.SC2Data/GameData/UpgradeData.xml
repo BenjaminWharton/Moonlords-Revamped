@@ -686,6 +686,7 @@
         <EffectArray Reference="Unit,GatewayHeroZealot,LifeRegenRate" Value="0.500000"/>
         <EffectArray Reference="Unit,HoloShieldUnit,LifeRegenRate" Value="0.500000"/>
         <EffectArray Reference="Accumulator,HealingMultiplier,Amount" Value="0.02"/>
+        <EffectArray Reference="Behavior,ParticleHeroOverheal,Modification.VitalMaxArray[Shields]" Value="0.04"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,LifeRegenRate" Value="0.5"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldRegenRate" Value="1"/>
         <MaxLevel value="100"/>
@@ -695,6 +696,7 @@
         <EffectArray Reference="Unit,GatewayHeroZealot,LifeRegenRate" Value="50.000000"/>
         <EffectArray Reference="Unit,HoloShieldUnit,LifeRegenRate" Value="50.000000"/>
         <EffectArray Reference="Accumulator,HealingMultiplier,Amount" Value="2"/>
+        <EffectArray Reference="Behavior,ParticleHeroOverheal,Modification.VitalMaxArray[Shields]" Value="4"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,LifeRegenRate" Value="50"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldRegenRate" Value="100"/>
         <MaxLevel value="100"/>

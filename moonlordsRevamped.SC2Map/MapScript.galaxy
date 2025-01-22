@@ -7043,7 +7043,7 @@ void gf_rewardadd (int lp_typ, int lp_amount, int lp_pnum, bool lp_respawn) {
     }
 
     if ((lp_typ == 12) && (gv_rewardUsed[lp_pnum][12] >= 1) && (gf_achievementpointsum(lp_pnum) >= 300)) {
-        UnitBehaviorAdd(gv_hero[lp_pnum], "MoonLord", gv_hero[(lp_pnum - 1)], 1);
+        UnitBehaviorAdd(gv_hero[lp_pnum], "MoonLord", gv_hero[lp_pnum], 1);
         gf_disguiseunit(gv_hero[lp_pnum], lp_pnum);
     }
 
@@ -18426,7 +18426,7 @@ bool gt_RewardButtonPressed_Func (bool testConds, bool runActions) {
     int lv_i;
 
     // Automatic Variable Declarations
-    const int autoA91054EE_n = 10;
+    int autoA91054EE_n;
     int autoA91054EE_i;
 
     // Variable Initialization
@@ -18457,33 +18457,32 @@ bool gt_RewardButtonPressed_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if ((((lv_buttonnumber < 5) && (gf_rewardgetprice(lv_pnum, 0) <= gv_rewardUnspend[lv_pnum])) || ((lv_buttonnumber < 10) && (lv_buttonnumber >= 5) && (gf_rewardgetprice(lv_pnum, 5) <= gv_rewardUnspend[lv_pnum])) || ((lv_buttonnumber < 15) && (lv_buttonnumber >= 10) && (gf_rewardgetprice(lv_pnum, 10) <= gv_rewardUnspend[lv_pnum])))) {
-        if ((gv_rewardSpendMultiplier[lv_pnum] == 10)) {
-            for (autoA91054EE_i = 1; autoA91054EE_i <= autoA91054EE_n; autoA91054EE_i += 1) {
-                gf_rewardbuy(lv_pnum, lv_buttonnumber);
-            }
-        }
-        else {
+    autoA91054EE_n = gv_rewardSpendMultiplier[lv_pnum];
+    for (autoA91054EE_i = 1; autoA91054EE_i <= autoA91054EE_n; autoA91054EE_i += 1) {
+        if ((((lv_buttonnumber < 5) && (gf_rewardgetprice(lv_pnum, 0) <= gv_rewardUnspend[lv_pnum])) || ((lv_buttonnumber < 10) && (lv_buttonnumber >= 5) && (gf_rewardgetprice(lv_pnum, 5) <= gv_rewardUnspend[lv_pnum])))) {
             gf_rewardbuy(lv_pnum, lv_buttonnumber);
         }
-    }
-    else {
-        if ((lv_buttonnumber == 20)) {
-            gf_rewardreset(lv_pnum);
-        }
-
-        if ((lv_buttonnumber == 24)) {
-            if ((gv_rewardSpendMultiplier[lv_pnum] == 1)) {
-                gv_rewardSpendMultiplier[lv_pnum] = 10;
-                libNtve_gf_SetDialogItemText(gv_rewardButtons[24], StringExternal("Param/Value/00F162F5"), PlayerGroupSingle(lv_pnum));
-            }
-            else {
-                gv_rewardSpendMultiplier[lv_pnum] = 1;
-                libNtve_gf_SetDialogItemText(gv_rewardButtons[24], StringExternal("Param/Value/7F267D1C"), PlayerGroupSingle(lv_pnum));
-            }
-        }
 
     }
+    if ((lv_buttonnumber < 15) && (lv_buttonnumber >= 10) && (gf_rewardgetprice(lv_pnum, 10) <= gv_rewardUnspend[lv_pnum])) {
+        gf_rewardbuy(lv_pnum, lv_buttonnumber);
+    }
+
+    if ((lv_buttonnumber == 20)) {
+        gf_rewardreset(lv_pnum);
+    }
+
+    if ((lv_buttonnumber == 24)) {
+        if ((gv_rewardSpendMultiplier[lv_pnum] == 1)) {
+            gv_rewardSpendMultiplier[lv_pnum] = 10;
+            libNtve_gf_SetDialogItemText(gv_rewardButtons[24], StringExternal("Param/Value/00F162F5"), PlayerGroupSingle(lv_pnum));
+        }
+        else {
+            gv_rewardSpendMultiplier[lv_pnum] = 1;
+            libNtve_gf_SetDialogItemText(gv_rewardButtons[24], StringExternal("Param/Value/7F267D1C"), PlayerGroupSingle(lv_pnum));
+        }
+    }
+
     return true;
 }
 

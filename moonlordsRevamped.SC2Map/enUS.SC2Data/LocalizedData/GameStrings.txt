@@ -1842,6 +1842,7 @@ DocInfo/PatchNote589=- General
 DocInfo/PatchNote590=  - Fixed difficulty selection and mode selection breaking under certain circumstances
 DocInfo/PatchNote591=  - Fixed Demolisher shield visuals sometimes remaining after death
 DocInfo/PatchNote592=- Fixed Power Field breaking after death
+DocInfo/PatchNote593=- Fixed an issue that could break peoples bank if they overspent rewards with x10 mode
 DocInfo/Screenshot01=Reward points carry over to subsequent games and can be beneficial in a variety of ways.
 DocInfo/Screenshot02=Standing near a Pylon enables you to teleport to any other base.
 DocInfo/Screenshot05=Spend talent points to increase your power.
