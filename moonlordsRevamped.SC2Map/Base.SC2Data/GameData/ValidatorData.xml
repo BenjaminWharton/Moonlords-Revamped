@@ -228,6 +228,12 @@
     <CValidatorUnitType id="GatewayHeroIsDestroyerDrone">
         <Value value="DestroyerDrone"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="HasNOShockwaveOrbiAntirecast">
+        <WhichUnit Value="Source"/>
+        <Compare value="LT"/>
+        <Value value="1"/>
+        <Behavior value="ShockwaveOrbiAntiRecast"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="IllusionHeroDuplicateGT1">
         <Find value="1"/>
         <Value value="IllusionHeroDuplicateGT1"/>

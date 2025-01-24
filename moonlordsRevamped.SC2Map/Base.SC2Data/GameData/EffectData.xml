@@ -603,6 +603,15 @@
         <EffectArray value="StaticShieldEnergyRemove"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="ShockwaveOrbiAntiRecast">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="ShockwaveTravelSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="OrbitalCannon2"/>
+        <EffectArray value="ShockwaveInitLink"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="ZergLordGlaiveAttackCP">
         <EditorCategories value="Race:Zerg"/>
         <Flags index="RandomOffset" value="1"/>
@@ -2162,22 +2171,6 @@
         <InitialDelay value="0.0625"/>
         <FinalEffect value="FireHeroBlastwaveMU"/>
     </CEffectCreatePersistent>
-    <CEffectUserData id="FireHeroFuelData">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <Amount value="0">
-            <AccumulatorArray value="DamageInherited"/>
-        </Amount>
-        <ValidateMin value="-500000"/>
-        <ValidateMax value="350"/>
-        <EffectFailure value="FuelSet"/>
-        <BehaviorScope Behavior="FireHeroFuel"/>
-    </CEffectUserData>
-    <CEffectUserData id="FireHeroFuelDataDecrease">
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="-350"/>
-        <BehaviorScope Behavior="FireHeroFuel"/>
-    </CEffectUserData>
     <CEffectApplyBehavior id="FireHeroHadesABDMG">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="FireHeroHadesDamage"/>
@@ -2679,15 +2672,16 @@
         <EditorCategories value="Race:Protoss"/>
         <ImpactUnit Value="Caster"/>
     </CEffectModifyUnit>
-    <CEffectCreatePersistent id="FuelSet">
+    <CEffectCreatePersistent id="FireHeroFuelOrphan">
         <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
         <WhichLocation Value="CasterUnit"/>
+        <OffsetVectorStartLocation Value="CasterUnit"/>
+        <OffsetVectorEndLocation Value="TargetUnit"/>
         <Flags index="OrphanParams" value="1"/>
-        <InitialEffect value="FireHeroFuelDataDecrease"/>
-        <FinalEffect value="InfernoInit"/>
         <PeriodCount value="1"/>
-        <PeriodicEffectArray value="FireHeroFuelData"/>
-        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicEffectArray value="InfernoInit"/>
+        <PeriodicOffsetArray value="0,-0.2,0"/>
     </CEffectCreatePersistent>
     <CEffectApplyBehavior id="GasBombLeakageApplyFate">
         <EditorCategories value="Race:Protoss"/>
@@ -17743,6 +17737,7 @@
         <EditorCategories value=""/>
         <EffectArray value="FireballInit"/>
         <EffectArray value="MagmaArmorRemove"/>
+        <EffectArray value="FireHeroFuelOrphan"/>
         <EffectArray value="MagmaArmorFireChannels"/>
         <ValidatorArray value="HasMagmaArmor"/>
     </CEffectSet>
@@ -18283,6 +18278,7 @@
     </CEffectApplyBehavior>
     <CEffectCreatePersistent id="OrbitalCannon2">
         <ValidatorArray value="OrbitalLinkCount"/>
+        <ValidatorArray value="HasNOShockwaveOrbiAntirecast"/>
         <EditorCategories value=""/>
         <Chance value="0"/>
         <WhichLocation Value="SourceUnitOrPoint"/>
@@ -18294,6 +18290,7 @@
         <PeriodicOffsetArray value="0,-1.5,0"/>
         <PeriodicOffsetArray value="0,-3,0"/>
         <PeriodicPeriodArray value="0.4"/>
+        <InitialEffect value="ShockwaveOrbiAntiRecast"/>
     </CEffectCreatePersistent>
     <CEffectSet id="OverlordZerglingsSet">
         <EditorCategories value=""/>
@@ -18593,7 +18590,7 @@
         <WhichLocation Value="SourcePoint"/>
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="ShockwaveLaunch"/>
-        <PeriodicOffsetArray value="0,-12,0.5"/>
+        <PeriodicOffsetArray value="0,-15,0.5"/>
     </CEffectCreatePersistent>
     <CEffectDestroyPersistent id="ChampionLightningDestroyPersistent">
         <EditorCategories value=""/>
@@ -18628,11 +18625,11 @@
         <EditorCategories value=""/>
         <Marker Link="Effect/ShockwaveInit"/>
         <Chance value="0"/>
-        <WhichLocation Value="SourcePoint"/>
+        <WhichLocation Value="CasterUnit"/>
         <FinalEffect value="ShockwaveAntiRecast"/>
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="ShockwaveLaunch"/>
-        <PeriodicOffsetArray value="0,12,0.5"/>
+        <PeriodicOffsetArray value="0,15,0.5"/>
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="ChampionLightningInit">
         <EditorCategories value=""/>
@@ -18664,7 +18661,7 @@
     <CEffectEnumArea id="ShockwaveSearch">
         <EditorCategories value=""/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray RectangleWidth="0.8" RectangleHeight="0.8" Effect="ShockwaveSet"/>
+        <AreaArray RectangleWidth="1.2" Effect="ShockwaveSet"/>
     </CEffectEnumArea>
     <CEffectCreatePersistent id="ChampionLightningPersistent">
         <EditorCategories value=""/>
@@ -18880,33 +18877,24 @@
         <AreaArray/>
     </CEffectDamage>
     <CEffectLaunchMissile id="ShockwaveLaunch">
-        <ValidatorArray index="0" removed="1"/>
         <EditorCategories value=""/>
         <ImpactLocation Value="TargetPoint"/>
-        <LaunchEffect value="ShockwavePersistent"/>
-        <ImpactEffect value="ShockwaveSet"/>
         <AmmoUnit value="ShockwaveMissile"/>
-        <AmmoLife value="10"/>
-        <Visibility value="Visible"/>
         <LaunchLocation Value="CasterUnit"/>
-    </CEffectLaunchMissile>
-    <CEffectCreatePersistent id="ShockwavePersistent">
-        <EditorCategories value=""/>
         <Marker>
             <MatchFlags index="Id" value="1"/>
         </Marker>
-        <WhichLocation Value="SourceUnit"/>
-        <ExpireEffect value="ShockwaveSuicide"/>
-        <PeriodCount value="40"/>
-        <PeriodicEffectArray value="ShockwaveSearch"/>
-        <PeriodicEffectArray value="OrbitalCannon2"/>
-        <PeriodicEffectArray value="ShockwaveInitLink"/>
-        <PeriodicPeriodArray value="0.125"/>
-    </CEffectCreatePersistent>
+        <SearchEffect value="ShockwaveSearch"/>
+        <PeriodicEffect value="ShockwaveTravelSet"/>
+        <PeriodicPeriod value="0.25"/>
+        <SearchFlags index="DynamicSearchArea" value="1"/>
+        <ImpactRange value="3"/>
+    </CEffectLaunchMissile>
     <CEffectSet id="ShockwaveSet">
         <EditorCategories value=""/>
         <EffectArray value="ShockwaveDamage"/>
         <EffectArray value="Shockwaved"/>
+        <ValidatorArray value="noMarkers"/>
     </CEffectSet>
     <CEffectApplyBehavior id="Shockwaved">
         <EditorCategories value=""/>

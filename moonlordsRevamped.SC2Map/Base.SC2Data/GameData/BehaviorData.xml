@@ -477,6 +477,9 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ShockwaveOrbiAntiRecast">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ThorStopMoveIndicatorFate">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -681,7 +684,7 @@
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-cloakfield.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="30"/>
+        <MaxStackCount value="25"/>
         <DamageResponse Location="Attacker" ModifyFraction="0.95">
             <ValidatorArray value="IsLightningHero"/>
             <Chance value="1"/>
@@ -720,13 +723,6 @@
         <Modification>
             <StateFlags index="Stun" value="1"/>
         </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="FireHeroFuel">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DamageResponse Handled="FireHeroFuelData" HandledValue="Remaining">
-            <Chance value="1"/>
-        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="FireHeroHadesDamage">
         <InfoFlags index="Hidden" value="1"/>
@@ -782,7 +778,7 @@
         <RemoveValidatorArray value="IsFireInfused"/>
         <MaxStackCount value="50"/>
         <Duration value="20"/>
-        <DamageResponse ModifyFraction="0.95">
+        <DamageResponse ModifyFraction="0.97">
             <Chance value="1"/>
         </DamageResponse>
         <InfoFlags index="Hidden" value="1"/>
@@ -4383,7 +4379,7 @@
                 </Cost>
             </DeathResponse>
         </Modification>
-        <DamageResponse Handled="MultiphaseShieldremoveset" Minimum="40" ModifyFraction="0.5">
+        <DamageResponse Handled="MultiphaseShieldremoveset" Minimum="40" ModifyFraction="0.45">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -4403,7 +4399,7 @@
                 </Cost>
             </DeathResponse>
         </Modification>
-        <DamageResponse Handled="MultiphaseShieldremoveset" Minimum="40" ModifyFraction="0.45">
+        <DamageResponse Handled="MultiphaseShieldremoveset" Minimum="40" ModifyFraction="0.35">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -4423,7 +4419,7 @@
                 </Cost>
             </DeathResponse>
         </Modification>
-        <DamageResponse Handled="MultiphaseShieldremoveset" Minimum="40" ModifyFraction="0.4">
+        <DamageResponse Handled="MultiphaseShieldremoveset" Minimum="40" ModifyFraction="0.25">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>

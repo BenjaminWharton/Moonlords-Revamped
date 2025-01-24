@@ -180279,7 +180279,7 @@
     </Element>
     <Element Type="Param" Id="939D06ED">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000205"/>
-        <Value>32</Value>
+        <Value>40</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="Param" Id="CE6A151F">
@@ -194390,7 +194390,7 @@
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="A1B37466"/>
         <FunctionCall Type="FunctionCall" Id="31C4A38E"/>
-        <FunctionCall Type="FunctionCall" Id="3909A180"/>
+        <FunctionCall Type="FunctionCall" Id="1B768261"/>
     </Element>
     <Element Type="FunctionCall" Id="31C4A38E">
         <FunctionDef Type="FunctionDef" Id="BD33F61F"/>
@@ -194507,42 +194507,78 @@
     <Element Type="FunctionCall" Id="CA653EB3">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000104"/>
     </Element>
-    <Element Type="FunctionCall" Id="3909A180">
+    <Element Type="FunctionCall" Id="1B768261">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
-        <Parameter Type="Param" Id="A6125BC5"/>
-        <Parameter Type="Param" Id="51EB6A9B"/>
-        <Parameter Type="Param" Id="0C4E48BF"/>
+        <Parameter Type="Param" Id="A718B3A5"/>
+        <Parameter Type="Param" Id="6F72496A"/>
+        <Parameter Type="Param" Id="D840E4E2"/>
     </Element>
-    <Element Type="Param" Id="A6125BC5">
+    <Element Type="Param" Id="A718B3A5">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
-        <FunctionCall Type="FunctionCall" Id="0128F327"/>
+        <FunctionCall Type="FunctionCall" Id="13C531FE"/>
     </Element>
-    <Element Type="FunctionCall" Id="0128F327">
+    <Element Type="FunctionCall" Id="13C531FE">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000196"/>
-        <Parameter Type="Param" Id="201C703B"/>
-        <Parameter Type="Param" Id="F7B31A2D"/>
+        <Parameter Type="Param" Id="A2229AA8"/>
+        <Parameter Type="Param" Id="7D2D4285"/>
     </Element>
-    <Element Type="Param" Id="201C703B">
+    <Element Type="Param" Id="A2229AA8">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000331"/>
         <Value>0</Value>
         <ValueType Type="fixed"/>
     </Element>
-    <Element Type="Param" Id="F7B31A2D">
+    <Element Type="Param" Id="7D2D4285">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000332"/>
         <Value>1.0</Value>
         <ValueType Type="fixed"/>
     </Element>
-    <Element Type="Param" Id="51EB6A9B">
+    <Element Type="Param" Id="6F72496A">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
         <Preset Type="PresetValue" Library="Ntve" Id="684CA9CE"/>
     </Element>
-    <Element Type="Param" Id="0C4E48BF">
+    <Element Type="Param" Id="D840E4E2">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
-        <CustomType Type="fixed"/>
-        <ScriptCode>
-            0.25*(TechTreeUpgradeCount(lp_owner, &quot;ThunderfuryLightningsTalent&quot;, c_techCountCompleteOnly))
-        </ScriptCode>
+        <FunctionCall Type="FunctionCall" Id="C9A0FA03"/>
+    </Element>
+    <Element Type="FunctionCall" Id="C9A0FA03">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000129"/>
+        <Parameter Type="Param" Id="029B6B77"/>
+        <Parameter Type="Param" Id="F36E09EE"/>
+        <Parameter Type="Param" Id="DFD3233D"/>
+    </Element>
+    <Element Type="Param" Id="029B6B77">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000209"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="00000087"/>
+    </Element>
+    <Element Type="Param" Id="F36E09EE">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000210"/>
+        <Value>0.25</Value>
+        <ValueType Type="fixed"/>
+    </Element>
+    <Element Type="Param" Id="DFD3233D">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000208"/>
+        <FunctionCall Type="FunctionCall" Id="FA45EC82"/>
+    </Element>
+    <Element Type="FunctionCall" Id="FA45EC82">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000255"/>
+        <Parameter Type="Param" Id="8E9E8C22"/>
+        <Parameter Type="Param" Id="20D64A46"/>
+        <Parameter Type="Param" Id="4B53FD5F"/>
+    </Element>
+    <Element Type="Param" Id="8E9E8C22">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="448F39DC"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="DA6F0821"/>
+    </Element>
+    <Element Type="Param" Id="20D64A46">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000447"/>
+        <Value>LightningHeroStormRage</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Upgrade"/>
+    </Element>
+    <Element Type="Param" Id="4B53FD5F">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000446"/>
+        <Parameter Type="ParamDef" Id="8B5CFB86"/>
     </Element>
     <Element Type="FunctionCall" Id="8D16C0D2">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>

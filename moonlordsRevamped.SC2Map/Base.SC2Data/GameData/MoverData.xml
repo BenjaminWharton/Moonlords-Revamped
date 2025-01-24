@@ -1082,6 +1082,19 @@
             <YawPitchRoll value="5759.6484"/>
         </MotionPhases>
     </CMoverMissile>
+    <CMoverMissile id="ParticleHeroShockwave">
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="2.3984"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-1"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+        <MotionPhases YawPitchRoll="MAX"/>
+    </CMoverMissile>
     <CMoverMissile id="WaveMissile">
         <MotionPhases>
             <Driver value="Guidance"/>
@@ -1315,8 +1328,8 @@
     <CMoverMissile id="MothershipCoreWeaponWeapon">
         <MotionPhases index="0" MaxSpeed="25" ThrowBandYaw="-360,-360,-360,-360" ThrowBandPitch="-360,-360,-360,-360"/>
     </CMoverMissile>
-    <CMoverMissile id="PhotonCannonWeapon2" parent="MissileDefault">
-        <MotionPhases index="0">
+    <CMoverMissile id="TimeHeroTimewave">
+        <MotionPhases>
             <Driver value="Guidance"/>
             <Acceleration value="3200"/>
             <MaxSpeed value="2.3984"/>
@@ -1325,6 +1338,7 @@
             <Outro value="-1"/>
             <YawPitchRoll value="719.2968"/>
         </MotionPhases>
+        <MotionPhases YawPitchRoll="MAX"/>
     </CMoverMissile>
     <CMoverMissile id="ExplosiveVolley" parent="MissileDefault">
         <MotionPhases index="0">

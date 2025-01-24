@@ -1382,7 +1382,7 @@
         <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
         <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
         <Height value="12.000000"/>
-        <Width value="0.800000"/>
+        <Width value="1.200000"/>
     </CActorQuad>
     <CActorQuad id="WarpHeroGuidedMissileQuad" parent="GuideVisualQuadDown" abil="GuidedMissile">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>

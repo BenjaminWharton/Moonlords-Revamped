@@ -1476,7 +1476,7 @@
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
-            <Vital index="Energy" value="20"/>
+            <Vital index="Energy" value="15"/>
             <Charge Link=""/>
             <Cooldown Link=""/>
         </Cost>

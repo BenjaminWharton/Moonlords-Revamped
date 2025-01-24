@@ -7858,7 +7858,7 @@ bool auto_gf_SkillPlasmaTorpedo_TriggerFunc (bool testConds, bool runActions) {
     lv_heading = lp_heading;
     lv_distance = 1.0;
     lv_change = 4.5;
-    lv_range = (160 + (32 * TechTreeUpgradeCount(lp_owner, "ParticleHeroNGR", c_techCountCompleteOnly)));
+    lv_range = (160 + (40 * TechTreeUpgradeCount(lp_owner, "ParticleHeroNGR", c_techCountCompleteOnly)));
 
     // Implementation
     UnitCreate(1, "PlasmaTorpedo", c_unitCreateIgnorePlacement, lp_owner, PointWithOffsetPolar(lp_origin, 1.0, lp_heading), lp_heading);
@@ -8407,7 +8407,7 @@ bool auto_gf_Thunderfury_TriggerFunc (bool testConds, bool runActions) {
             UnitCreateEffectUnit(lp_caster, "LightningHeroThunderfuryWrathSet", UnitGroupUnit(lv_targetgrp, lv_i));
         }
 
-        if ((RandomFixed(0.0, 1.0) < 0.25*(TechTreeUpgradeCount(lp_owner, "ThunderfuryLightningsTalent", c_techCountCompleteOnly)))) {
+        if ((RandomFixed(0.0, 1.0) < (TechTreeUpgradeCount(lp_owner, "LightningHeroStormRage", c_techCountQueuedOrBetter) * 0.25))) {
             gf_Lightning(UnitGetPosition(lp_caster), UnitGetCustomValue(lp_caster,0), UnitGetCustomValue(lp_caster,1), UnitGetCustomValue(lp_caster,2), UnitGetCustomValue(lp_caster,3), FixedToInt(UnitGetCustomValue(lp_caster,4)), UnitGetPosition(UnitGroupUnit(lv_targetgrp, lv_i)), lp_caster, UnitGetOwner(lp_caster), 40.0, UnitGroupEmpty());
         }
 
