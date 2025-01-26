@@ -72,6 +72,47 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
+    <CUpgrade id="EarthHeroPassive">
+        <EffectArray Reference="Unit,EarthHero,LifeMax" Value="30"/>
+        <EffectArray Reference="Unit,EarthHero,LifeStart" Value="30"/>
+        <EffectArray Reference="Unit,EarthHero,ShieldsMax" Value="30"/>
+        <EffectArray Reference="Unit,EarthHero,ShieldsStart" Value="30"/>
+        <EffectArray Reference="Actor,EarthHero,Scale" Value="0.020000"/>
+        <EffectArray Reference="Behavior,Massive,Modification.RadiusMultiplier" Value="0.02"/>
+        <EffectArray Reference="Actor,LavaFX,Scale" Value="0.020000"/>
+        <EffectArray Reference="Effect,LavaSA,AreaArray[0].Radius" Value="0.034"/>
+        <EffectArray Reference="Effect,EarthHeroLavaMoltenSA,AreaArray[0].Radius" Value="0.034"/>
+        <EffectArray Reference="Effect,LavaSpoutSA,AreaArray[0].Radius" Value="0.02"/>
+        <EffectArray Reference="Actor,LavaSpoutFX,Scale" Value="0.020000"/>
+        <EffectArray Reference="Effect,UpheavalSA,AreaArray[0].Radius" Value="0.02"/>
+        <EffectArray Reference="Actor,UpheavalFX,Scale" Value="0.020000"/>
+        <EffectArray Reference="Actor,UpheavalUpgradeFX,Scale" Value="0.020000"/>
+        <EffectArray Reference="Actor,TremorFX,Scale" Value="0.020000"/>
+        <EffectArray Reference="Actor,TremorUpgradeFX,Scale" Value="0.020000"/>
+        <EffectArray Reference="Effect,TremorSA,AreaArray[0].Radius" Value="0.02"/>
+        <EffectArray Reference="Actor,EarthHeroUpheavalQuad,Width" Value="0.035000"/>
+        <EffectArray Reference="Actor,EarthHeroUpheavalQuadL,Width" Value="0.035000"/>
+        <EffectArray Reference="Actor,EarthHeroUpheavalQuadL2,Width" Value="0.035000"/>
+        <EffectArray Reference="Actor,EarthHeroUpheavalQuadL3,Width" Value="0.035000"/>
+        <EffectArray Reference="Actor,EarthHeroUpheavalQuadR,Width" Value="0.035000"/>
+        <EffectArray Reference="Actor,EarthHeroUpheavalQuadR2,Width" Value="0.035000"/>
+        <EffectArray Reference="Actor,EarthHeroUpheavalQuadR3,Width" Value="0.035000"/>
+        <EffectArray Reference="Accumulator,EarthHeroBoulderRadiusMultiplier,Amount" Value="0.02"/>
+        <EffectArray Reference="Actor,EarthHeroBoulder,Scale" Value="0.020000"/>
+        <EffectArray Reference="Actor,Chink,Scale" Value="0.012500"/>
+        <EffectArray Reference="Actor,EarthHeroBoulderQuad,Width" Value="0.020000"/>
+        <EffectArray Reference="Effect,FortifySA,AreaArray[0].Radius" Value="0.06"/>
+        <EffectArray Reference="Actor,EarthHeroFortify,Scale" Value="0.020000"/>
+        <EffectArray Reference="Unit,EarthHero,Sight" Value="0.06"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <AffectedUnitArray value="EarthHero"/>
+        <MaxLevel value="50"/>
+    </CUpgrade>
+    <CUpgrade id="EarthHeroPassive2">
+        <EffectArray Reference="Unit,EarthHero,VisionHeight" Value="4"/>
+        <EffectArray Operation="Set" Reference="Behavior,Massive,Modification.StateFlags[UnitAttrOnMassive]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
     <CUpgrade id="TimeHeroVanish">
         <EffectArray Reference="Effect,AlteredTimeDMG,Amount[0]" Value="8"/>
         <EffectArray Reference="Effect,AlterTimeMutationDmg,Amount[0]" Value="4"/>
@@ -1681,6 +1722,7 @@
         <EffectArray Reference="Behavior,FortifyHero,Modification.LifeArmorBonus" Value="5"/>
         <EffectArray Reference="Behavior,FortifyStucture,Modification.VitalMaxFractionArray[Life]" Value="0.5"/>
         <EffectArray Reference="Behavior,FortifyStucture,Modification.VitalMaxFractionArray[Shields]" Value="0.5"/>
+        <EffectArray Reference="Effect,EarthHeroFortifyHeal,VitalArray[Life].Change" Value="15"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -1720,8 +1762,11 @@
         <EffectArray Reference="Behavior,Massive,Modification.VitalMaxFractionArray[Shields]" Value="-0.1"/>
         <EffectArray Reference="Behavior,Massive,Modification.VitalMaxFractionArray[Life]" Value="0.2"/>
         <EffectArray Reference="Behavior,Massive,Modification.VitalMaxFractionArray[Energy]" Value="0.2"/>
+        <EffectArray Reference="Actor,EarthHero,Scale" Value="0.100000"/>
+        <EffectArray Reference="Unit,EarthHero,Radius" Value="0.125"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
+        <AffectedUnitArray value="EarthHero"/>
     </CUpgrade>
     <CUpgrade id="Combust">
         <EffectArray Reference="Effect,LavaDMG,Amount" Value="4"/>
@@ -2126,11 +2171,12 @@
     </CUpgrade>
     <CUpgrade id="Firewall">
         <EffectArray Reference="Effect,LavaInitCP,PeriodCount" Value="1"/>
+        <EffectArray Reference="Abil,Lava,Cost[0].Vital[Energy]" Value="10"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Flatten">
-        <EffectArray Reference="Effect,ApplyFlattened,Chance" Value="0.03"/>
+        <EffectArray Reference="Effect,ApplyFlattened,Chance" Value="0.06"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Flattened,Modification.LifeArmorBonus" Value="5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
@@ -2344,6 +2390,7 @@
         <EffectArray Operation="Set" Reference="Effect,EarthHeroLandslideBigSA,Chance" Value="1"/>
         <EffectArray Operation="Set" Reference="Effect,EarthHeroLandslideMedSA,Chance" Value="1"/>
         <EffectArray Operation="Set" Reference="Effect,EarthHeroLandslideSmallSA,Chance" Value="1"/>
+        <EffectArray Operation="Set" Reference="Effect,EarthHeroFortifyEnemyAB,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="LavaSpout">
@@ -2351,13 +2398,13 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Mass">
-        <EffectArray Reference="Effect,BoulderSA,AreaArray[0].Radius" Value="0.2"/>
-        <EffectArray Reference="Actor,FungalGrowthAttackMissile,Scale" Value="0.300000"/>
-        <EffectArray Reference="Effect,ChinkSA,AreaArray[0].Radius" Value="0.1"/>
+        <EffectArray Reference="Effect,BoulderSA,AreaArray[0].Radius" Value="0.175"/>
+        <EffectArray Reference="Actor,EarthHeroBoulder,Scale" Value="0.300000"/>
+        <EffectArray Reference="Effect,ChinkSA,AreaArray[0].Radius" Value="0.0874"/>
         <EffectArray Reference="Actor,Chink,Scale" Value="0.100000"/>
         <EffectArray Reference="Effect,StonesDMG,Amount" Value="5"/>
         <EffectArray Reference="Behavior,StonesKB,Duration" Value="0.062500"/>
-        <EffectArray Reference="Actor,EarthHeroBoulderQuad,Width" Value="0.200000"/>
+        <EffectArray Reference="Actor,EarthHeroBoulderQuad,Width" Value="0.350000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -2570,12 +2617,12 @@
         <EffectArray Reference="Effect,LightningStrikesDMG,Amount" Value="0.75"/>
         <EffectArray Reference="Effect,LightningStrikesCP,Chance" Value="0.006"/>
         <EffectArray Reference="Effect,DisintegratorDMG,Amount" Value="0.5"/>
-        <EffectArray Reference="Unit,Disintegrator,LifeMax" Value="4"/>
-        <EffectArray Reference="Unit,Disintegrator,LifeStart" Value="4"/>
+        <EffectArray Reference="Unit,Disintegrator,LifeMax" Value="15"/>
+        <EffectArray Reference="Unit,Disintegrator,LifeStart" Value="15"/>
         <EffectArray Reference="Unit,Disintegrator,LifeArmor" Value="0.1"/>
-        <EffectArray Reference="Unit,Disintegrator,ShieldsMax" Value="6"/>
-        <EffectArray Reference="Unit,Disintegrator,ShieldsStart" Value="6"/>
-        <EffectArray Reference="Unit,Disintegrator,ShieldRegenRate" Value="0.250000"/>
+        <EffectArray Reference="Unit,Disintegrator,ShieldsMax" Value="10"/>
+        <EffectArray Reference="Unit,Disintegrator,ShieldsStart" Value="10"/>
+        <EffectArray Reference="Unit,Disintegrator,ShieldRegenRate" Value="0.500000"/>
         <EffectArray Reference="Unit,Disintegrator,ShieldArmor" Value="0.1"/>
         <EffectArray Reference="Effect,PsiShockDMG,Amount" Value="0.5"/>
         <EffectArray Reference="Unit,ProtossAlliesHighTemplar,LifeArmor" Value="0.125"/>
@@ -3063,7 +3110,7 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Reconstruct">
-        <EffectArray Reference="Effect,ReconstructMU,VitalArray[Life].ChangeFraction" Value="0.01"/>
+        <EffectArray Reference="Effect,ReconstructMU,VitalArray[Life].ChangeFraction" Value="0.005"/>
         <EffectArray Reference="Effect,ReconstructMU,VitalArray[Life].Change" Value="5"/>
         <EffectArray Reference="Effect,ReconstructMU,VitalArray[Energy].ChangeFraction" Value="0.01"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -3438,6 +3485,7 @@
     </CUpgrade>
     <CUpgrade id="Stones">
         <EffectArray Operation="Set" Reference="Effect,StonesLM,Chance" Value="0.35"/>
+        <EffectArray Operation="Set" Reference="Effect,EarthHeroFortifyStonesCP,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Storm">
@@ -4152,6 +4200,7 @@
         <EffectArray Operation="Subtract" Reference="Behavior,FortifyHero,DamageResponse.ModifyFraction" Value="0.05"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Fortify,Modification.DamageDealtAttributeMultiplier[Heroic]" Value="0.1875"/>
         <EffectArray Operation="Subtract" Reference="Behavior,FortifyStucture,Modification.DamageDealtAttributeMultiplier[Heroic]" Value="0.1875"/>
+        <EffectArray Reference="Effect,EarthHeroFortifyHeal,VitalArray[Shields].Change" Value="10"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -4161,6 +4210,7 @@
         <EffectArray Reference="Behavior,FortifyHero,Modification.VitalRegenArray[Energy]" Value="0.101500"/>
         <EffectArray Reference="Behavior,FortifyHero,Modification.VitalRegenArray[Life]" Value="0.101500"/>
         <EffectArray Reference="Behavior,FortifyHero,Modification.VitalRegenArray[Shields]" Value="0.101500"/>
+        <EffectArray Reference="Effect,EarthHeroFortifyHeal,VitalArray[Energy].Change" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>

@@ -353,6 +353,7 @@ void gf_TalentDialogBeam (int lp_player);
 void gf_TalentPressedBeam (int lp_row, int lp_column, int lp_player);
 void gf_TalentDialogWater (int lp_player);
 void gf_TalentDialogEarth (int lp_player);
+void gf_TalentPressedEarth (int lp_row, int lp_column, int lp_player);
 void gf_TalentDialogAir (int lp_player);
 void gf_TalentDialogNature (int lp_player);
 void gf_TalentPressedNature (int lp_row, int lp_column, int lp_player);
@@ -6122,24 +6123,24 @@ void gf_TalentPressedBeam (int lp_row, int lp_column, int lp_player) {
         TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
         libNtve_gf_SetDialogItemText(EventDialogControl(), gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
         gv_talentpointsavailable[lp_player] -= 1;
-        if ((lp_row == 1) && (lp_column == 1)) {
-            if ((lv_upgradeLevel == 0)) {
-                TechTreeUpgradeAddLevel(lp_player, "BeamHeroStretch1", 1);
-            }
-            else {
-                TechTreeUpgradeAddLevel(lp_player, "BeamHeroStretch2", 1);
-            }
-        }
+    }
 
-        if ((lp_row == 5) && (lp_column == 1)) {
-            if ((lv_upgradeLevel == 0)) {
-                TechTreeUpgradeAddLevel(lp_player, "BeamHeroLink1", 1);
-            }
-            else {
-                TechTreeUpgradeAddLevel(lp_player, "BeamHeroLink2", 1);
-            }
+    if ((lp_row == 1) && (lp_column == 1)) {
+        if ((lv_upgradeLevel == 0)) {
+            TechTreeUpgradeAddLevel(lp_player, "BeamHeroStretch1", 1);
         }
+        else {
+            TechTreeUpgradeAddLevel(lp_player, "BeamHeroStretch2", 1);
+        }
+    }
 
+    if ((lp_row == 5) && (lp_column == 1)) {
+        if ((lv_upgradeLevel == 0)) {
+            TechTreeUpgradeAddLevel(lp_player, "BeamHeroLink1", 1);
+        }
+        else {
+            TechTreeUpgradeAddLevel(lp_player, "BeamHeroLink2", 1);
+        }
     }
 
     libNtve_gf_SetDialogItemText(gv_talents[8][0][lp_player].lv_dialogItem, gf_GetTalentPointsTextForPlayer(lp_player), lv_pg);
@@ -6203,6 +6204,42 @@ void gf_TalentDialogEarth (int lp_player) {
     gf_CreateTalent(1, 4, lp_player, StringExternal("Param/Value/C27B984C"), StringExternal("Param/Value/482C7023"), "Chip", 0);
     gf_CreateTalent(2, 4, lp_player, StringExternal("Param/Value/861EB06F"), StringExternal("Param/Value/B3B1B46B"), "Reconstruct", 0);
     gf_CreateTalent(5, 4, lp_player, StringExternal("Param/Value/DF7EF9C1"), StringExternal("Param/Value/25E290A5"), "Trample", 10);
+}
+
+void gf_TalentPressedEarth (int lp_row, int lp_column, int lp_player) {
+    // Variable Declarations
+    string lv_upgrade;
+    int lv_upgradeLevel;
+    int lv_upgradeMax;
+    int lv_req;
+    text lv_name;
+    playergroup lv_pg;
+    fixed lv_scale;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_upgrade = gv_talents[lp_row][lp_column][lp_player].lv_upgrade;
+    lv_upgradeLevel = TechTreeUpgradeCount(lp_player, gv_talents[lp_row][lp_column][lp_player].lv_upgrade, c_techCountCompleteOnly);
+    lv_upgradeMax = CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, lv_upgrade, "MaxLevel", lp_player);
+    lv_req = gv_talents[lp_row][lp_column][lp_player].lv_req;
+    lv_name = gv_talents[lp_row][lp_column][lp_player].lv_name;
+    lv_pg = PlayerGroupSingle(lp_player);
+
+    // Implementation
+    if ((gf_Currentlevel() >= lv_req) && (lv_upgradeLevel < lv_upgradeMax)) {
+        TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
+        TechTreeUpgradeAddLevel(lp_player, "EarthHeroPassive", 1);
+        libNtve_gf_SetDialogItemText(EventDialogControl(), gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
+        gv_talentpointsavailable[lp_player] -= 1;
+        lv_scale = (1.0 + (TechTreeUpgradeCount(lp_player, "Colossal", c_techCountQueuedOrBetter) * 0.1) + (TechTreeUpgradeCount(lp_player, "EarthHeroPassive", c_techCountQueuedOrBetter) * 0.02));
+        libNtve_gf_SendActorMessageToUnit(gv_hero[lp_player], libNtve_gf_SetScale(lv_scale, lv_scale, lv_scale, 1.0));
+        if ((lv_scale >= 1.6) && (TechTreeUpgradeCount(lp_player, "EarthHeroPassive2", c_techCountCompleteOnly) == 0)) {
+            TechTreeUpgradeAddLevel(lp_player, "EarthHeroPassive2", 1);
+        }
+
+    }
+
+    libNtve_gf_SetDialogItemText(gv_talents[8][0][lp_player].lv_dialogItem, gf_GetTalentPointsTextForPlayer(lp_player), lv_pg);
 }
 
 void gf_TalentDialogAir (int lp_player) {
@@ -6796,7 +6833,6 @@ void gf_disguiseunit (unit lp_unit, int lp_player) {
         }
 
         if ((UnitGetType(lp_unit) == "EarthHero")) {
-            ActorSend(libNtve_gf_MainActorofUnit(lp_unit), "ModelSwap EarthHeroUpgrade");
             libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "EarthHeroBonusSkin", 1);
         }
 
@@ -6883,7 +6919,7 @@ void gf_undisguiseunit (unit lp_unit) {
     }
 
     if ((UnitGetType(lp_unit) == "EarthHero")) {
-        ActorSend(libNtve_gf_MainActorofUnit(lp_unit), "ModelSwap EarthHero");
+        libNtve_gf_SetUpgradeLevelForPlayer(UnitGetOwner(lp_unit), "EarthHeroBonusSkin", 0);
     }
 
     if ((UnitGetType(lp_unit) == "GatewayHero")) {
@@ -18393,6 +18429,9 @@ bool gt_TalentButtonPressed_Func (bool testConds, bool runActions) {
     }
     else if (autoF99073C8_val == ge_Heroes_Beam) {
         gf_TalentPressedBeam(lv_row, lv_column, lv_player);
+    }
+    else if (autoF99073C8_val == ge_Heroes_Earth) {
+        gf_TalentPressedEarth(lv_row, lv_column, lv_player);
     }
     else if (autoF99073C8_val == ge_Heroes_Nature) {
         gf_TalentPressedNature(lv_row, lv_column, lv_player);

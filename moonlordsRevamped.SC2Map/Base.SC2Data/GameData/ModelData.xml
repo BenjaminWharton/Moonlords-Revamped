@@ -28,6 +28,23 @@
         <Model value="Assets\Effects\Protoss\SuppressionTower_PurificationLaser_Cursor\SuppressionTower_PurificationLaser_Cursor.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
+    <CModel id="EarthHeroFortifyHeal">
+        <Model value="Assets\Effects\Zerg\MendBuff\MendBuff.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+    </CModel>
+    <CModel id="EarthHeroFortifyMissile">
+        <Model value="Assets\Effects\Zerg\AggressiveMutation_State\AggressiveMutation_State.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Lighting value="EarthHeroFortifyOverhead"/>
+    </CModel>
+    <CModel id="EarthHeroUpgradeAttachment">
+        <Model value="Assets\Effects\Protoss\AI_Champion_Air_Coop_Carrier\AI_Champion_Air_Coop_Carrier.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+    </CModel>
     <CModel id="FireHero" Prefix="Units\" Race="Protoss">
         <Model value="Assets\Units\Protoss\HighTemplar_TaldarimEx3\HighTemplar_TaldarimEx3.m3"/>
         <RequiredAnims value="Assets\Units\Protoss\HighTemplar_SwarmAnims\HighTemplar_SwarmAnims.m3a"/>
@@ -65,6 +82,15 @@
         <SquibTypeDefault value="Metal"/>
         <TechPurchaseCamera value="Star2CameraLow05"/>
         <UnitGlossaryCamera value="Star2CameraLow05"/>
+    </CModel>
+    <CModel id="EarthHeroBoulder" parent="MissileFX">
+        <Model value="Assets\Boulder.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
+    <CModel id="FungalGrowthMissile">
+        <Model value="Assets\Boulder.m3"/>
     </CModel>
     <CModel id="GatewayHero" parent="Unit" Race="Protoss">
         <Model value="Assets\Units\Protoss\Karax\Karax.m3"/>
@@ -743,8 +769,6 @@
     </CModel>
     <CModel id="Disintegrator" parent="ColossusBase">
         <Model value="Assets\Units\Protoss\Colossus\Colossus.m3"/>
-        <ScaleMax value="0.500000,0.500000,0.500000"/>
-        <ScaleMin value="0.500000,0.500000,0.500000"/>
         <TextureDeclares Prefix="colossus_">
             <Adaptions TriggerOnSubstring="_Diffuse" Slot="main"/>
         </TextureDeclares>
@@ -984,8 +1008,8 @@
         <Model value="Assets\LavaFieldEx6.m3"/>
         <AnimSpeed value="0.300000"/>
         <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="1.600000,1.600000,1.600000"/>
-        <ScaleMin value="1.600000,1.600000,1.600000"/>
+        <ScaleMax value="1.400000,1.400000,1.400000"/>
+        <ScaleMin value="1.400000,1.400000,1.400000"/>
     </CModel>
     <CModel id="LifeDrainBeam">
         <Model value="Assets\Effects\Protoss\Nemesis_Support_Beam\Nemesis_Support_Beam.m3"/>
@@ -1621,9 +1645,35 @@
     </CModel>
     <CModel id="EarthHero">
         <Model value="Assets\Units\Protoss\StoneZealot\StoneZealot.m3"/>
-        <ScaleMax value="0.400000,0.400000,0.400000"/>
-        <ScaleMin value="0.400000,0.400000,0.400000"/>
+        <AttachProps Id="Ref_Center" SquibType="Shield" RadiusShield="2.500000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Events>
+            <Anim value="Walk"/>
+            <Name value="Footstep"/>
+            <Type value="Sound"/>
+            <Time value="0.100000"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Name value="Footstep"/>
+            <Type value="Sound"/>
+            <Time value="1.400000"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,01"/>
+            <Name value="Footstep"/>
+            <Type value="Sound"/>
+            <Time value="0.100000"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,01"/>
+            <Name value="Footstep"/>
+            <Type value="Sound"/>
+            <Time value="1.400000"/>
+        </Events>
         <Radius value="1.500000"/>
+        <ScaleMax value="0.425000,0.425000,0.425000"/>
+        <ScaleMin value="0.425000,0.425000,0.425000"/>
         <SelectionRadius value="1.500000"/>
     </CModel>
     <CModel id="EvolutionLord" parent="Unit" Race="Zerg">
@@ -1959,9 +2009,6 @@
         <Model value="Assets\Units\Protoss\Hybrid_ProtossAdvanced_Experimented_Death\Hybrid_ProtossAdvanced_Experimented_Death.m3"/>
         <ScaleMax value="1.500000,1.500000,1.500000"/>
         <ScaleMin value="1.500000,1.500000,1.500000"/>
-    </CModel>
-    <CModel id="FungalGrowthMissile">
-        <Model value="Assets\Boulder.m3"/>
     </CModel>
     <CModel id="FungalAttackMissile" parent="MissileFX">
         <Model value="Assets\Effects\Zerg\FungalGrowthMissile\FungalGrowthMissile.m3"/>
@@ -2530,12 +2577,6 @@
         <ScaleMax value="0.500000,0.500000,0.500000"/>
         <ScaleMin value="0.500000,0.500000,0.500000"/>
     </CModel>
-    <CModel id="EarthHeroUpgrade">
-        <EditorCategories value="Race:Protoss"/>
-        <Model value="Assets\Units\Protoss\Fenix\Fenix.m3"/>
-        <ScaleMax value="0.900000,0.900000,0.900000"/>
-        <ScaleMin value="0.900000,0.900000,0.900000"/>
-    </CModel>
     <CModel id="EmergencyRecallImpact">
         <Model value="Assets\Effects\Protoss\DarkTemplarAiurWarpOut\DarkTemplarAiurWarpOut.m3"/>
         <EditorCategories value="Race:Protoss"/>
@@ -2740,6 +2781,8 @@
     <CModel id="LavaSpout">
         <Model value="Assets\Effects\Neutral\LavaBurst_Coop\LavaBurst_Coop.m3"/>
         <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.700000,0.700000,0.700000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
     </CModel>
     <CModel id="LighningStrikesCast">
         <Model value="Assets\Effects\Protoss\Alarak_COOP_LightningStrikes_PowerUp\Alarak_COOP_LightningStrikes_PowerUp.m3"/>

@@ -147,7 +147,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBladeHeroExcaliburCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="BladeHeroExcalibur" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBoundlessCompleteOnly">
@@ -161,6 +160,10 @@
     <CRequirementCountUpgrade id="CountUpgradeChargeTalentQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="ChargeTalent" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeColossalCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Colossal" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCondensationQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
@@ -185,6 +188,11 @@
     <CRequirementCountUpgrade id="CountUpgradeEarthHeroBonusSkinQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="EarthHeroBonusSkin" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeEarthHeroPassive2CompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="EarthHeroPassive2" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeEnervateCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
@@ -669,14 +677,24 @@
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeBladeHeroExcaliburCompleteOnly1">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeBladeHeroExcaliburCompleteOnly"/>
         <OperandArray index="1" value="1"/>
     </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeBladeHeroExcaliburCompleteOnly2">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeBladeHeroExcaliburCompleteOnly"/>
         <OperandArray index="1" value="2"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeColossalCompleteOnly1">
+        <OperandArray index="0" value="CountUpgradeColossalCompleteOnly"/>
+        <OperandArray index="1" value="1"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeColossalCompleteOnly2">
+        <OperandArray index="0" value="CountUpgradeColossalCompleteOnly"/>
+        <OperandArray index="1" value="2"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeColossalCompleteOnly3">
+        <OperandArray index="0" value="CountUpgradeColossalCompleteOnly"/>
+        <OperandArray index="1" value="3"/>
     </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeProbeHeroEquipCompleteOnly1">
         <OperandArray index="0" value="CountUpgradeProbeHeroEquipCompleteOnly"/>

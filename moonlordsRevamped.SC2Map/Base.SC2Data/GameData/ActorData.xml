@@ -94,6 +94,19 @@
         <On Terms="Behavior.annihilatornomovecheck.On" Send="Create"/>
     </CActorSound>
     <CActorModel id="BladeHeroUpgradeAttachment" parent="ModelAddition"/>
+    <CActorModel id="EarthHeroUpgradeAttachment" parent="ModelAddition">
+        <HostSiteOps Ops="SOpAttachHead SOpMoveDownByDot15 SOpMoveByDot15"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorModel id="EarthHeroFortifyHeal" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.EarthHeroFortifyHeal.Start; At Caster" Send="Create"/>
+        <HostSiteOps Ops="SOpCasterUnit SOpAttachOverhead SOpRandomPointInCircle1"/>
+    </CActorModel>
+    <CActorAction id="EarthHeroFortifyMissileAttack" parent="GenericAttack" effectImpact="EarthHeroFortifyHeal" effectLaunch="EarthHeroFortifyLM">
+        <LaunchSiteOps Ops="SOpAttachHarness SOpAttachOverhead"/>
+        <Missile value="EarthHeroFortifyMissile"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpAttachCenter"/>
+    </CActorAction>
     <CActorSiteOpRotator id="EarthHeroUpheavalGuideRotL3">
         <EditorCategories value=""/>
         <LocalAxis value="0.000000,0.000000,1.000000"/>
@@ -134,6 +147,7 @@
         <Height value="7.000000"/>
         <Width value="1.000000"/>
     </CActorQuad>
+    <CActorSound id="EarthHero_Footstep" parent="SoundOneShot"/>
     <CActorAction id="ElementalHeroSteamFireAttack" parent="GenericAttack" effectAttack="SteamFireDMG" effectImpact="">
         <On index="1" Terms="Effect.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
         <On index="2" Terms="Effect.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
@@ -145,6 +159,9 @@
         <ImpactMap index="None" Model="Exterminate"/>
         <ImpactModel value="ExterminateIcefireModel"/>
     </CActorAction>
+    <CActorMissile id="EarthHeroBoulder" parent="GenericAttackMissile" unitName="EarthHeroBoulder">
+        <HostSiteOps Ops="SOpShadow"/>
+    </CActorMissile>
     <CActorModel id="GatewayHeroBarrier" parent="ModelAddition">
         <Inherits index="TintColor" value="0"/>
         <On Terms="Behavior.Barrier.On" Send="Create"/>
@@ -230,6 +247,20 @@
         <Host Subject="PointDefenseDrone"/>
         <Sound value="Raven_PointDefenseDroneAttackLaunch"/>
     </CActorSound>
+    <CActorMissile id="EarthHeroFortifyMissile" parent="GenericAttackMissile" unitName="EarthHeroFortifyMissile">
+        <On Terms="ActorCreation" Send="SetTintColor 160,90,0"/>
+        <BarHeight value="1"/>
+        <BarWidth value="1"/>
+    </CActorMissile>
+    <CActorSiteOpRandomPointInCircle id="SOpRandomPointInCircle1">
+        <Radius value="1.000000"/>
+    </CActorSiteOpRandomPointInCircle>
+    <CActorSiteOpRandomPointInCircle id="SOpRandomPointInCircleDot75">
+        <Radius value="0.750000"/>
+    </CActorSiteOpRandomPointInCircle>
+    <CActorSiteOpRandomPointInCircle id="SOpRandomPointInCircle2">
+        <Radius value="2.000000"/>
+    </CActorSiteOpRandomPointInCircle>
     <CActorAction id="SplitterSplitAttack" parent="GenericAttack" effectImpact="GatewayHeroSplitterSplitDMG" effectLaunch="SplitterSplitLM">
         <LaunchRequest Subject="GatewayHeroSplitterSite"/>
         <LaunchAssets Sound="GatewayHeroSplitter_Launch"/>
@@ -1045,7 +1076,7 @@
         <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
         <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
         <Height value="12.000000"/>
-        <Width value="0.800000"/>
+        <Width value="1.000000"/>
     </CActorQuad>
     <CActorQuad id="EarthHeroUpheavalQuad" parent="GuideVisualQuadDown" abil="Upheaval">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
@@ -6521,12 +6552,12 @@
         <Sound value="SiegeTank_AttackImpact"/>
     </CActorSound>
     <CActorModel id="LavaFX" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.LavaCP.Start" Send="SetScale 0.100000"/>
         <On Terms="Effect.LavaCP.Stop" Send="SetScale 0.100000 1.000000"/>
         <On Terms="Effect.LavaCP.Stop" Send="TimerSet 0.000000,1.000000 Lava"/>
         <On Terms="TimerExpired; TimerName Lava" Send="Destroy"/>
-        <On Terms="Effect.LavaCP.Start" Send="SetScale 1.000000 0.250000"/>
         <On Terms="Effect.LavaCP.Start" Send="Create"/>
+        <On Terms="Effect.LavaCP.Start" Send="SetOpacity 0.250000"/>
+        <On Terms="Effect.LavaCP.Start" Send="SetOpacity 1.000000 0.500000"/>
     </CActorModel>
     <CActorMissile id="Meteor" parent="GenericAttackMissile" unitName="Meteor">
         <On Terms="ActorCreation" Send="AttachModel MeteorFireAttachement FireMedium {Origin 0}"/>
@@ -9066,7 +9097,7 @@
         <On Terms="ActorCreation" Send="SetTintColor 196,0,0"/>
     </CActorMissile>
     <CActorSound id="BoulderSound" parent="SoundOneShot">
-        <On Terms="Abil.Boulder.SourceCastStart" Send="Create"/>
+        <On Terms="Effect.BoulderLM.Start; At Caster" Send="Create"/>
         <Sound value="BoulderLaunchSound"/>
     </CActorSound>
     <CActorSound id="LavaSpoutSound" parent="SoundOneShot">
@@ -9372,6 +9403,7 @@
     <CActorMissile id="Chink" parent="GenericAttackMissile" unitName="Chink">
         <Model value="FungalGrowthMissile"/>
         <Scale value="0.600000"/>
+        <HostSiteOps Ops="SOpShadow"/>
     </CActorMissile>
     <CActorSimple id="FlattenedFX">
         <On Terms="Behavior.Flattened.On" Send="Create"/>
@@ -9383,18 +9415,14 @@
         <Model value="VoidProtossAOECursorSplat"/>
     </CActorSplat>
     <CActorModel id="LavaSpoutFX" parent="ModelAnimationStyleOneShot">
-        <On index="0" Terms="ActorCreation; ValidatePlayer FlowIsLvl0" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 0.400000 AsDuration"/>
         <On Terms="Effect.LavaSpoutCP.Start" Send="Create"/>
-        <On Terms="ActorCreation; ValidatePlayer FlowIsLvl1" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 0.600000 AsDuration"/>
-        <On Terms="ActorCreation; ValidatePlayer FlowIsLvl2" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 0.800000 AsDuration"/>
+        <On Terms="Effect.LavaSpoutCP.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
         <Model value="LavaSpout"/>
-        <Scale value="0.700000"/>
     </CActorModel>
     <CActorSound id="BoilCastSound" parent="SoundOneShot">
         <On Terms="Effect.BoilSA.Start" Send="Create"/>
         <Sound value="Immortal_Explode_Legs_Impact"/>
     </CActorSound>
-    <CActorMissile id="FungalGrowthAttackMissile"/>
     <CActorMissile id="FungalGrowthAttackMissile2" parent="GenericAttackMissile" unitName="UpheavalMissile">
         <On Terms="ActorCreation" Send="SetOpacity"/>
         <Model value="FungalGrowthMissile"/>
@@ -9454,18 +9482,17 @@
         <On index="56" Terms="BuildCoachHover.*.Off" Send="TimerSet 0.300000 DelayUnhighlight"/>
         <On index="57" Terms="TimerExpired; TimerName DelayUnhighlight" Send="SetTintColor 255,255,255 0.500000"/>
         <On index="58" Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On index="59" Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
-        <On index="60" Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
-        <On index="61" Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On index="62" Terms="Abil.Upheaval.SourceCastStart; ModelName EarthHero" Send="$Spell,B"/>
-        <On index="63" Terms="Abil.Boulder.SourceCastStart; ModelName EarthHero" Send="$Spell,B"/>
-        <On index="64" Terms="Abil.Lava.SourceWaitStart; ModelName EarthHero" Send="$Spell,B"/>
-        <On index="65" Terms="Abil.Upheaval.SourceCastStart; ModelName EarthHeroUpgrade" Send="$Spell,A"/>
-        <On index="66" Terms="Abil.Boulder.SourceCastStart; ModelName EarthHeroUpgrade" Send="AnimPlay Spell Attack"/>
-        <On index="67" Terms="Abil.Lava.SourceWaitStart; ModelName EarthHeroUpgrade" Send="AnimPlay Spell Attack"/>
-        <On index="68" Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
-        <On Terms="UnitMovementUpdate.*.Stand; AnimPlaying BSD Walk" Send="AnimClear BSD"/>
-        <On Terms="UnitMovementUpdate.*.Walk" Send="AnimPlay BSD Walk"/>
+        <On index="59" Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On index="60" Terms="Abil.Upheaval.SourceCastStart; !AnimPlayingName Spell" Send="$Spell,B"/>
+        <On index="61" Terms="Abil.Boulder.SourceCastStart; !AnimPlayingName Spell" Send="$Spell,B"/>
+        <On index="62" Terms="Abil.Lava.SourceWaitStart; !AnimPlayingName Spell" Send="$Spell,B"/>
+        <On index="63" Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
+        <On index="64" Terms="UnitMovementUpdate.*.Stand; AnimPlaying BSD Walk" Send="AnimClear BSD"/>
+        <On index="65" Terms="UnitMovementUpdate.*.Walk" Send="AnimPlay BSD Walk"/>
+        <On index="66" Terms="ModelEvent; ModelEventName Footstep; ValidateUnit EarthHeroHasPassive2" Send="Create EarthHero_Footstep"/>
+        <On index="67" Terms="Behavior.MoonLord.On" Send="Create EarthHeroUpgradeAttachment"/>
+        <On index="68" Terms="Behavior.MoonLord.Off" Target="EarthHeroUpgradeAttachment" Send="Destroy"/>
+        <On Terms="Abil.Fortify.SourceCastStart; !AnimPlayingName Spell" Send="$Spell,B"/>
         <PortraitModel value="FenixEx2Portrait"/>
         <HeroIcon value="Assets\Textures\btn-unit-protoss-stonezealot.dds"/>
         <PortraitActor value="FenixEx2Portrait"/>

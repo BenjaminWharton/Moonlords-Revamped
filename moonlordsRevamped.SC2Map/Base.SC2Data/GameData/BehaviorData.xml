@@ -629,7 +629,7 @@
     <CBehaviorBuff id="EarthHeroLandslide">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="5"/>
+        <Duration value="3"/>
         <FinalEffect value="ApplyUnitWasStunned"/>
         <Modification>
             <StateFlags index="Stun" value="1"/>
@@ -3501,6 +3501,9 @@
         <Period value="1"/>
         <PeriodicEffect value="ReconstructMU"/>
         <Modification>
+            <VitalMaxArray index="Life" value="0.5"/>
+            <VitalMaxArray index="Shields" value="0.5"/>
+            <VitalMaxArray index="Energy" value="0.5"/>
             <VitalMaxFractionArray index="Life" value="0.4"/>
             <VitalMaxFractionArray index="Shields" value="-0.2"/>
             <VitalMaxFractionArray index="Energy" value="0.4"/>
@@ -4698,14 +4701,14 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="HardShell">
         <Alignment value="Positive"/>
-        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-zerg-hardenedcarapace.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DamageResponse ModifyFraction="0.1">
-            <Chance value="1"/>
-        </DamageResponse>
         <Modification>
             <StateFlags index="UnitAttrOnPsionic" value="1"/>
         </Modification>
+        <DamageResponse ModifyFraction="0" ModifyMinimumDamage="1">
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="Newbprotection">
         <InfoFlags index="Hidden" value="1"/>

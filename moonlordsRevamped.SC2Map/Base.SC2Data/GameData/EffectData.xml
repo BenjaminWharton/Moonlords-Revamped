@@ -199,6 +199,71 @@
         <EffectArray value="DemolisherShieldUnitATU"/>
         <EffectArray value="FollowCasterAK"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="EarthHeroFortifyDelayHero">
+        <ValidatorArray value="IsHeroic"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialDelay value="0.0625"/>
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="EarthHeroFortifyHeal"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="EarthHeroFortifyDelayMassive">
+        <ValidatorArray value="MassiveOrStructure"/>
+        <ValidatorArray value="NotHeroic"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialDelay value="0.0625"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="EarthHeroFortifyHeal"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="EarthHeroFortifyHeal">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <Change value="30">
+                <AccumulatorArray value="HealingMultiplier"/>
+            </Change>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="0">
+                <AccumulatorArray value="HealingMultiplier"/>
+            </Change>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="EarthHeroFortify">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="FortifySA"/>
+        <EffectArray value="EarthHeroFortifyStonesCP"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="EarthHeroFortifyLM">
+        <EditorCategories value="Race:Protoss"/>
+        <LaunchLocation Value="TargetUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <ImpactEffect value="EarthHeroFortifyHeal"/>
+        <AmmoUnit value="EarthHeroFortifyMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="EarthHeroFortifyStonesCP">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <WhichLocation Value="OriginPoint"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="BoulderLM"/>
+        <PeriodicOffsetArray value="0.5,-12,0"/>
+        <PeriodicOffsetArray value="-0.5,-12,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="EarthHeroFortifySwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="TargetIsAllyorPlayer" Effect="FortifyAllySet"/>
+        <CaseDefault value="FortifyEnemySet"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="EarthHeroFortifyEnemyAB">
+        <ValidatorArray index="0" value="NotHeroic"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <Behavior value="EarthHeroLandslide"/>
+    </CEffectApplyBehavior>
     <CEffectCreatePersistent id="ElementalHeroIcefireSteamOffset">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="CasterPoint"/>
@@ -212,6 +277,21 @@
         <CaseDefault value="IcefireSteamSA"/>
         <TargetLocationType value="Point"/>
     </CEffectSwitch>
+    <!--Need a one game cycle delay for the heal, because otherwise it will occur before the energy cost of the ability-->
+    <CEffectSet id="FortifyEnemySet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="EarthHeroFortifyEnemyAB"/>
+        <EffectArray value="EarthHeroFortifyDelay"/>
+        <EffectArray value="EarthHeroFortifyDelayMassive"/>
+        <EffectArray value="EarthHeroFortifyDelayHero"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="EarthHeroFortifyDelay">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialDelay value="0.0625"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="EarthHeroFortifyHeal"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="GatewayHeroDeflectorDroneDMG">
         <EditorCategories value="Race:Protoss"/>
         <Visibility value="Visible"/>
@@ -1449,9 +1529,9 @@
     <CEffectDamage id="BoulderMoltenDMG">
         <ValidatorArray value="EarthHeroIsMoltenSource"/>
         <EditorCategories value="Race:Protoss"/>
-        <Amount value="3"/>
+        <Amount value="80"/>
         <Death value="Fire"/>
-        <ArmorReduction value="0.03"/>
+        <ArmorReduction value="1"/>
     </CEffectDamage>
     <CEffectUserData id="DefaultDataAdd1">
         <EditorCategories value="Race:Protoss"/>
@@ -2102,6 +2182,7 @@
     <CEffectApplyBehavior id="EarthHeroLandslideAB">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="EarthHeroLandslide"/>
+        <ValidatorArray index="0" value="NotHeroic"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="EarthHeroLandslideBigSA">
         <EditorCategories value="Race:Protoss"/>
@@ -2141,7 +2222,7 @@
         <LaunchLocation Value="SourcePoint"/>
         <ImpactLocation Value="TargetPoint"/>
         <SearchFilters value="Missile;Neutral,Enemy,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="2" Effect="EarthHeroBoulderMoltenAB"/>
+        <AreaArray Radius="1.7" Effect="EarthHeroBoulderMoltenAB"/>
     </CEffectEnumArea>
     <CEffectSet id="EarthHeroLavaSASet">
         <EditorCategories value="Race:Protoss"/>
@@ -12434,21 +12515,24 @@
         <Behavior value="FrozenWater"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="BoulderDMG">
-        <ValidatorArray value="BoulderDMGTargetFilters"/>
+        <ValidatorArray value="EarthHeroNoMoltenSource"/>
         <EditorCategories value="Race:Protoss"/>
-        <Amount value="3.125"/>
-        <ArmorReduction value="0.02"/>
+        <Amount value="40"/>
+        <ArmorReduction value="1"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="BoulderLM">
         <EditorCategories value="Race:Protoss"/>
         <LaunchLocation Value="SourcePoint"/>
         <ImpactLocation Value="TargetPoint"/>
         <PeriodicEffect value="BoulderPeriodSet"/>
-        <AmmoUnit value="FungalGrowthMissile"/>
+        <AmmoUnit value="EarthHeroBoulder"/>
         <ImpactEffect value="SlopeLM"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
     </CEffectLaunchMissile>
     <CEffectCreatePersistent id="BoulderOffset">
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="CasterPoint"/>
         <OffsetVectorStartLocation Value="SourcePoint"/>
         <PeriodCount value="1"/>
@@ -12459,8 +12543,10 @@
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="SourceUnit"/>
         <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="0.8" Effect="BoulderSet"/>
-        <DebugTrace value="1"/>
+        <AreaArray Radius="0.7" Effect="BoulderSet"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="EarthHeroBoulderRadiusMultiplier"/>
+        </ExtraRadiusBonus>
     </CEffectEnumArea>
     <CEffectSet id="BoulderPeriodSet">
         <EditorCategories value="Race:Protoss"/>
@@ -12472,6 +12558,7 @@
         <EffectArray value="ApplyFlattened"/>
         <EffectArray value="BoulderDMG"/>
         <EffectArray value="BoulderMoltenDMG"/>
+        <ValidatorArray value="noMarkers"/>
     </CEffectSet>
     <CEffectSet id="BoulderTossImpactSet">
         <EditorCategories value="Race:Zerg"/>
@@ -12703,6 +12790,9 @@
         <AmmoUnit value="Chink"/>
         <ImpactRange value="2"/>
         <LaunchEffect value="EarthHeroBoulderMoltenAB2"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
     </CEffectLaunchMissile>
     <CEffectDamage id="DMG">
         <EditorCategories value=""/>
@@ -15169,7 +15259,10 @@
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="SourceUnit"/>
         <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="0.4" Effect="BoulderSet"/>
+        <AreaArray Radius="0.35" Effect="BoulderSet"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="EarthHeroBoulderRadiusMultiplier"/>
+        </ExtraRadiusBonus>
     </CEffectEnumArea>
     <CEffectEnumArea id="ChipSearchTarget">
         <EditorCategories value="Race:Protoss"/>
@@ -15197,15 +15290,19 @@
     </CEffectApplyBehavior>
     <CEffectEnumArea id="FortifySA">
         <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="3" Effect="FortifySet"/>
+        <SearchFilters value="-;Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="3" Effect="EarthHeroFortifySwitch"/>
         <ImpactLocation Value="TargetPoint"/>
+        <ExcludeArray/>
     </CEffectEnumArea>
-    <CEffectSet id="FortifySet">
+    <CEffectSet id="FortifyAllySet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="FortifyAB"/>
         <EffectArray value="FortifyABHero"/>
         <EffectArray value="FortifyABStructure"/>
+        <EffectArray value="EarthHeroFortifyDelay"/>
+        <EffectArray value="EarthHeroFortifyDelayMassive"/>
+        <EffectArray value="EarthHeroFortifyDelayHero"/>
     </CEffectSet>
     <CEffectModifyUnit id="HealingWaveHeal">
         <EditorCategories value="Race:Protoss"/>
@@ -15270,7 +15367,7 @@
         <LaunchLocation Value="SourcePoint"/>
         <ImpactLocation Value="TargetPoint"/>
         <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2" Effect="LavaSet"/>
+        <AreaArray Radius="1.7" Effect="LavaSet"/>
     </CEffectEnumArea>
     <CEffectCreatePersistent id="LavaCP">
         <EditorCategories value="Race:Protoss"/>
@@ -15336,7 +15433,7 @@
             <ChangeFraction value="0.01"/>
         </VitalArray>
         <VitalArray index="Energy">
-            <ChangeFraction value="0.01"/>
+            <ChangeFraction value="0.02"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectSet id="RecycleSet">
@@ -16499,8 +16596,11 @@
         <Chance value="0"/>
         <ImpactLocation Value="CasterUnit"/>
         <PeriodicEffect value="BoulderPeriodSet"/>
-        <AmmoUnit value="FungalGrowthMissile"/>
+        <AmmoUnit value="EarthHeroBoulder"/>
         <LaunchEffect value="EarthHeroBoulderMoltenAB2"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
     </CEffectLaunchMissile>
     <CEffectApplyBehavior id="SoulAbsorptionAB">
         <Chance value="0"/>
@@ -16690,6 +16790,7 @@
         <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1" Effect="TremorSet"/>
         <ImpactLocation Value="TargetPoint"/>
+        <RevealerParams Duration="0.5"/>
     </CEffectEnumArea>
     <CEffectSet id="TremorSet">
         <EditorCategories value="Race:Protoss"/>

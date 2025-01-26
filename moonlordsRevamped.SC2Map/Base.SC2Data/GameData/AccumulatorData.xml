@@ -23,6 +23,10 @@
     <CAccumulatorBehavior id="DestructionOrbCounter">
         <Behavior value="DestructionOrbCounter"/>
     </CAccumulatorBehavior>
+    <CAccumulatorConstant id="EarthHeroBoulderRadiusMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="1"/>
+    </CAccumulatorConstant>
     <CAccumulatorConstant id="ElementalHeroPermanenceMultiplier">
         <ApplicationRule value="Multiply"/>
         <Amount value="1"/>

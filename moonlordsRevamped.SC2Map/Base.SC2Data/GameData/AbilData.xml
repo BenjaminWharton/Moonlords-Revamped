@@ -70,7 +70,7 @@
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
-        <Range value="12"/>
+        <Range value="500"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Boulder"/>
         <Cost>
             <Vital index="Energy" value="15"/>
@@ -1091,7 +1091,7 @@
     </CAbilEffectInstant>
     <CAbilEffectTarget id="Fortify">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="FortifySA"/>
+        <Effect index="0" value="EarthHeroFortify"/>
         <TargetFilters value="-;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
         <Range value="10"/>
         <AutoCastFilters value="Visible;Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead"/>
@@ -1099,8 +1099,15 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="Fortify"/>
         <CursorEffect value="FortifySA"/>
         <Cost>
-            <Vital index="Energy" value="65"/>
+            <Vital index="Energy" value="50"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="1"/>
+                <TimeUse value="3"/>
+            </Charge>
         </Cost>
+        <Flags index="RequireTargetVision" value="0"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Freeze">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -1257,7 +1264,7 @@
         <AINotifyEffect value="LavaSA"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Lava"/>
         <Cost>
-            <Vital index="Energy" value="45"/>
+            <Vital index="Energy" value="40"/>
         </Cost>
         <TargetSorts>
             <SortArray value="TSRandom"/>
@@ -2330,4 +2337,7 @@
     <CAbilAttack id="attack">
         <SupportedFilters value="-;Self,Ally,Outer"/>
     </CAbilAttack>
+    <CAbilMove id="move">
+        <Flags index="UpdateTarget" value="1"/>
+    </CAbilMove>
 </Catalog>

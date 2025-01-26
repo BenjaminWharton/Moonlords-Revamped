@@ -141,7 +141,7 @@
         <AssetArray File="Assets\Sounds\Uni\Units\Civilian\Civilian_AttackLaunch1.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Uni\Units\Civilian\Civilian_AttackLaunch2.wav" FacialGroup=""/>
         <Pitch value="-2.000000,-2.000000"/>
-        <Volume value="3.000000,3.000000"/>
+        <Volume value="5.000000,5.000000"/>
     </CSound>
     <CSound id="EarthHeroLandslide_Big" parent="Spell">
         <EditorCategories value="Race:Protoss"/>
@@ -171,6 +171,20 @@
         <AssetArray File="Assets\Sounds\RockDebris_ImpactExplosion_Small4.wav" FacialGroup=""/>
         <Pitch value="-2.000000,-2.000000"/>
         <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="EarthHero_Footstep" parent="Movement">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\StoneZealot_footstep01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StoneZealot_footstep02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StoneZealot_footstep03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StoneZealot_footstep04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StoneZealot_footstep05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StoneZealot_footstep06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StoneZealot_footstep07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StoneZealot_footstep08.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StoneZealot_footstep09.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Volume value="2.000000,2.000000"/>
     </CSound>
     <CSound id="GatewayHeroExploder_Impact" parent="Spell">
         <EditorCategories value="Race:Protoss"/>

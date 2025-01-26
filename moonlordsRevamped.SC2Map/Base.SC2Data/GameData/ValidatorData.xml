@@ -163,6 +163,14 @@
         <Range value="10"/>
         <Value Value="SourceUnit"/>
     </CValidatorLocationCompareRange>
+    <CValidatorPlayerRequirement id="EarthHeroColossalIsLvl2">
+        <Find value="1"/>
+        <Value value="EarthHeroColossalIsLvl2"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="EarthHeroColossalIsLvl3">
+        <Find value="1"/>
+        <Value value="EarthHeroColossalIsLvl3"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="EarthHeroFaultLinesGT0">
         <Find value="1"/>
         <Value value="EarthHeroFaultLinesGT0"/>
@@ -170,6 +178,18 @@
     <CValidatorPlayerRequirement id="EarthHeroFaultLinesGT1">
         <Find value="1"/>
         <Value value="EarthHeroFaultLinesGT1"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="EarthHeroColossalIsLvl1">
+        <Find value="1"/>
+        <Value value="EarthHeroColossalIsLvl1"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="EarthHeroNoMoltenSource">
+        <WhichUnit Value="Source"/>
+        <Behavior value="Molten"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="EarthHeroHasPassive2">
+        <Find value="1"/>
+        <Value value="EarthHeroHasPassive2"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="ExpelComboReq1">
         <Find value="1"/>
@@ -284,7 +304,7 @@
         <Value value="FirewallLvl0"/>
     </CValidatorPlayerRequirement>
     <CValidatorUnitType id="EarthHeroIsBoulder">
-        <Value value="FungalGrowthMissile"/>
+        <Value value="EarthHeroBoulder"/>
     </CValidatorUnitType>
     <CValidatorCombine id="EarthHeroIsBoulderOrChink">
         <CombineArray value="EarthHeroIsBoulder"/>
@@ -797,7 +817,7 @@
         <Value value="TwilightHeroReflectorGT1"/>
     </CValidatorPlayerRequirement>
     <CValidatorUnitType id="UnitIsBoulder">
-        <Value value="FungalGrowthMissile"/>
+        <Value value="EarthHeroBoulder"/>
     </CValidatorUnitType>
     <CValidatorUnitCompareBehaviorCount id="UnitNotFrozen">
         <Behavior value="FrozenWater"/>

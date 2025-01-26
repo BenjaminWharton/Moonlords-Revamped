@@ -104,6 +104,11 @@
         </CardLayouts>
         <Mover value="Fly"/>
     </CUnit>
+    <CUnit id="EarthHeroBoulder" parent="MISSILE_INVULNERABLE">
+        <Race value="Prot"/>
+        <Mover value="Boulder"/>
+        <Sight value="2"/>
+    </CUnit>
     <CUnit id="NatureHeroFruitExplode">
         <Race value="Prot"/>
         <FlagArray index="Unselectable" value="1"/>
@@ -217,6 +222,13 @@
         </CardLayouts>
         <Radius value="0.25"/>
         <InnerRadius value="0.25"/>
+    </CUnit>
+    <CUnit id="EarthHeroFortifyMissile" parent="MISSILE_INVULNERABLE">
+        <Race value="Prot"/>
+        <Sight value="1"/>
+        <Height value="0.5"/>
+        <VisionHeight value="4"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
     <CUnit id="WaterHeroPuddleUnit">
         <Race value="Prot"/>
@@ -1498,9 +1510,9 @@
         <Description value="Button/Tooltip/Disintegrator"/>
         <Attributes index="Heroic" value="1"/>
         <LifeArmor value="5"/>
-        <ShieldsStart value="450"/>
-        <ShieldsMax value="450"/>
-        <ShieldRegenDelay value="0"/>
+        <ShieldsStart value="500"/>
+        <ShieldsMax value="500"/>
+        <ShieldRegenDelay value="5"/>
         <ShieldRegenRate value="5"/>
         <Mover value="Ground"/>
         <Sight value="12"/>
@@ -1518,6 +1530,8 @@
         <VisionHeight value="1"/>
         <LifeRegenRate value="1"/>
         <Collide index="Structure" value="0"/>
+        <LifeStart value="750"/>
+        <LifeMax value="750"/>
     </CUnit>
     <CUnit id="CorruptionLord">
         <DeathRevealRadius value="3"/>
@@ -4014,10 +4028,10 @@
         <FlagArray index="ArmySelect" value="1"/>
         <PlaneArray index="Ground" value="1"/>
         <PushPriority value="200"/>
-        <Collide index="Ground" value="1"/>
+        <Collide index="Colossus" value="1"/>
+        <Collide index="Structure" value="1"/>
         <Response value="Nothing"/>
         <Attributes index="Armored" value="1"/>
-        <Attributes index="Massive" value="1"/>
         <Attributes index="Heroic" value="1"/>
         <LifeStart value="500"/>
         <LifeMax value="500"/>
@@ -4072,15 +4086,10 @@
         <GlossaryPriority value="12"/>
         <HotkeyCategory value="Unit/Category/HeroUnits"/>
         <RankDisplay value="Never"/>
-        <AlliedPushPriority value="100"/>
     </CUnit>
     <CUnit id="Egg">
         <Attributes index="Psionic" value="1"/>
         <Attributes index="Hover" value="1"/>
-    </CUnit>
-    <CUnit id="FungalGrowthMissile">
-        <Sight value="2"/>
-        <Mover value="Boulder"/>
     </CUnit>
     <CUnit id="SpawningMissile" parent="MISSILE">
         <Race value="Zerg"/>
@@ -4904,11 +4913,11 @@
         <BehaviorArray Link="Youfailedhidden"/>
     </CUnit>
     <CUnit id="RecombulatorMissile" parent="MISSILE_INVULNERABLE">
-        <Race value="Terr"/>
-        <Height value="0.5"/>
-        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+        <Race value="Prot"/>
         <Sight value="1"/>
+        <Height value="0.5"/>
         <VisionHeight value="4"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
     <CUnit id="EvolutionChamber">
         <BehaviorArray Link="makeCreep4x4"/>

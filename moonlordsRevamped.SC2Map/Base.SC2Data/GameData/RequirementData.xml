@@ -31,6 +31,18 @@
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Show" Link="Eq1CountUpgradeDistendQueuedOrBetter"/>
     </CRequirement>
+    <CRequirement id="EarthHeroColossalIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="EqCountUpgradeColossalCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="EarthHeroColossalIsLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="EqCountUpgradeColossalCompleteOnly2"/>
+    </CRequirement>
+    <CRequirement id="EarthHeroColossalIsLvl3">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="EqCountUpgradeColossalCompleteOnly3"/>
+    </CRequirement>
     <CRequirement id="EarthHeroFaultLinesGT0">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Use" Link="GTCountUpgradeFaultLinesCompleteOnly0"/>
@@ -38,6 +50,10 @@
     <CRequirement id="EarthHeroFaultLinesGT1">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Use" Link="GTCountUpgradeFaultLinesCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="EarthHeroHasPassive2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeEarthHeroPassive2CompleteOnly"/>
     </CRequirement>
     <CRequirement id="ExpansionIsLvl0">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>

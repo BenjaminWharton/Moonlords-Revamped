@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CMoverMissile id="EarthHeroFortifyMissile">
+        <MotionPhases>
+            <Driver value="Throw"/>
+            <Acceleration value="5"/>
+            <Speed value="8"/>
+            <MaxSpeed value="15"/>
+            <BlendType value="Linear"/>
+            <Outro value="3,3.5"/>
+            <RotationActorType value="LookAtTarget"/>
+            <ThrowVector value="0,-1,0"/>
+            <ThrowBandYaw value="180,-180,14.9963,-14.9963"/>
+            <ThrowBandPitch value="90,4.9987,-360,-360"/>
+        </MotionPhases>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="15"/>
+            <TurnType value="Optimal"/>
+            <BlendType value="Linear"/>
+            <RotationActorType value="LookAtTarget"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+        </MotionPhases>
+    </CMoverMissile>
     <CMoverMissile id="ParticleHeroDematerializeMover">
         <MotionPhases>
             <Driver value="Throw"/>
