@@ -150,12 +150,12 @@
 <Effect id="AnnihilatorLaserTrackingDamage"/>
 <Effect id="BladeHeroBloodFanaticalEvisStartSwitch"/>
 <Effect id="BladeHeroBloodFanaticalEvisEndSwitch"/>
+<Effect id="WarpHeroTurretAimStart"/>
 <Effect id="NatureHeroExpelCostUpMP"/>
 <Effect id="PoisonHeroHealingReagentMU"/>
 <Effect id="PoisonHeroPoisonBoltMU"/>
 <Effect id="PoisonHeroMusclePoisonMU"/>
 <Effect id="DarknessSet"/>
-<Effect id="ImmortalStrafeImpactSet"/>
 <Effect id="LightningHitDamage"/>
 <Effect id="ShadowplayApplyEntropy"/>
 <Effect id="FireballImpactSearchSpire"/>
@@ -175,6 +175,8 @@
 <Effect id="DoomDetonate"/>
 <Effect id="MultishotImpactSearchArea"/>
 <Effect id="GuidedImpactSearchArea"/>
+<Effect id="WarpHeroStrafeSet"/>
+<Effect id="WarpHeroStrafeHeal"/>
 <Model id="PingBoss"/>
 <Model id="PingObjective"/>
 <Model id="SiegeTankSiegedAttackImpact"/>
@@ -293,7 +295,7 @@
 <Unit id="ParticleHero"/>
 <Unit id="ThorAttackIndicator"/>
 <Unit id="TimeHero"/>
-<Unit id="WarpHeroMissile"/>
+<Unit id="WarpHeroGuidedMissile"/>
 <Unit id="WarpHero"/>
 <Unit id="ParasiteLord"/>
 <Unit id="FleshLord"/>
@@ -834,4 +836,5 @@
 <Upgrade id="Jagged"/>
 <Upgrade id="Velocity"/>
 <Upgrade id="Retribution"/>
+<Upgrade id="WarpHeroCover"/>
 </Preload>

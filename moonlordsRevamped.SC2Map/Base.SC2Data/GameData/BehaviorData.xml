@@ -1784,6 +1784,26 @@
         <MaxStackCount value="7"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="WarpHeroDummyFate">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="CasterNotDead"/>
+        <FinalEffect value="Suicide"/>
+    </CBehaviorBuff>
+    <CBehaviorUnitTracker id="WarpHeroDummyTracker">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <MaxTrackedUnits value="1"/>
+        <ReplacedEffect value="Suicide"/>
+    </CBehaviorUnitTracker>
+    <CBehaviorBuff id="WarpHeroTurretAim">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.25"/>
+        <InitialEffect value="WarpHeroTurretAimTurretStart"/>
+        <FinalEffect value="WarpHeroTurretAimTurretStop"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="WaterHeroIceBlast">
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>

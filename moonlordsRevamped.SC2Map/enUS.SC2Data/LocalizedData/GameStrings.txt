@@ -505,6 +505,7 @@ Behavior/Name/Volatile=Volatile
 Behavior/Name/VolatileSporesUI=Volatile Spores
 Behavior/Name/WallofDarkness=Wall of Darkness
 Behavior/Name/WarpDrone=Warp Drone
+Behavior/Name/WarpHeroDummyFate=Warp Hero - Dummy Fate
 Behavior/Name/Warpout=Warpout
 Behavior/Name/WaterHeroIceBlast=Water Hero - Ice Blast
 Behavior/Name/WaterHeroPuddleFate=Water Hero - Puddle Fate
@@ -1148,7 +1149,7 @@ Button/Tooltip/QuicksandWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c
 Button/Tooltip/RapidRepairs=The Beam Hero regenerates health and shields very quickly. Taking at least <c val="FFFF80">30</c> damage from a single damage instance will cancel this effect for <c val="FFFF80"><d ref="Behavior,RapidRepairsDisable,Duration" precision = "1"/></c> seconds.<n/><n/>Additionally, the Beam Hero has <c val="FFFF80">100%</c> armor penetration.
 Button/Tooltip/Recharge=<c val="0080FF">Restore <c val="FFFFFF"><d ref="Effect,RechargeAddEnergy,VitalArray[Energy].Change"/></c> energy to your drones and toggle which drones are currently active</c>
 Button/Tooltip/Recombulator=Recombulates up to <c val="FFFF80"><d ref="Effect,RecombulatorSearch,MaxCount"/></c> enemy units in a radius of <c val="FFFF80"><d ref="Effect,RecombulatorSearch,AreaArray[0].Radius" precision="1"/></c>, dealing <c val="FFFF80"><d ref="Effect,RecombulatorDamage,Amount"/></c> damage to each primary target and <c val="FFFF80"><d ref="Effect,RecombulatorDamage,Amount*0.25"/></c> damage in a radius of <c val="FFFF80">1</c>.<n/><n/>Each unit hit will launch a Recombulatorfeedback charge towards you. <n/>It takes <c val="FFFF80"><d ref="Effect,RecombulatorEnergy,VitalArray[Energy].Change*(-1)" precision="1"/></c> energy to annihilate a Recombulatorfeedback safely - if you dont have enough energy you will take <c val="FFFF80"><d ref="Effect,RecombulatorDamage2,Amount" precision="1"/></c> damage.<n/><n/>Casting Recombulator will create <c val="FFFF80"><d ref="Effect,RecombulatorMatrixCP,PeriodCount"/></c> Twilight Cannon missile(s) that will rotate around your hero for <c val="FFFF80"><d ref="Behavior,TwilightHeroMatrixFate,Duration"/></c> seconds
-Button/Tooltip/Reinforce=<c val="0080FF">Spawn <c val="FFFFFF"><d ref="Effect,ReinforceSpawnZealot,SpawnCount"/></c> Zealot(s) at the target point<n/><n/>Can have up to <c val="FFFFFF"><d ref="Behavior,GatewayHeroZealotTracker,MaxTrackedUnits"/></c> permanent Zealots at a time. If your Zealot count gets above this then the excess Zealots will warp out after <c val="FFFFFF"><d ref="Behavior,ReinforceTimedLife,Duration"/></c> seconds<n/><n/>(Zealots gain <c val="FFFFFF">10</c> <c val="008000">health</c>/<c val="0000FF">shield</c>, <c val="FFFFFF">0.5</c> <c val="00FF80">regen</c>, <c val="FFFFFF">0.5</c> <c val="808080">armor</c>, and <c val="FFFFFF"> 0.0625</c> <c val="FFFF00">move speed</c> per reward bonus.)
+Button/Tooltip/Reinforce=<c val="0080FF">Spawn <c val="FFFFFF"><d ref="Effect,ReinforceSpawnZealot,SpawnCount"/></c> Zealot(s) at the target point<n/><n/>Can have up to <c val="FFFFFF"><d ref="Behavior,GatewayHeroZealotTracker,MaxTrackedUnits"/></c> permanent Zealots at a time. If your Zealot count gets above this then the excess Zealots will warp out after <c val="FFFFFF"><d ref="Behavior,ReinforceTimedLife,Duration"/></c> seconds<n/><n/>(Zealots gain <c val="FFFFFF">10</c> <c val="008000">health</c>/<c val="0000FF">shield</c>, <c val="FFFFFF">0.5</c> <c val="00FF80">regen</c>, <c val="FFFFFF">0.5</c> <c val="808080">armor</c>, and <c val="FFFFFF"> 0.0625</c> <c val="FFFF00">move speed</c> per respective reward bonus.)
 Button/Tooltip/Renew=Heals <c val="FFFF80"><d ref="Effect,RenewHealMU,VitalArray[Life].Change*20" precision="1"/></c> health over <c val="FFFF80">10</c> seconds and slows movement speed by <c val="FFFF80"><d ref="(Behavior,RenewHealSlow,Modification.MoveSpeedMultiplier-1)*(-100)" precision="1"/>%<n/></c><n/>Each combo power heals <c val="FFFF80"><d ref="Effect,RenewComboHealMU,VitalArray[Life].ChangeFraction*500" precision="0"/>%</c> + <c val="FFFF80"><d ref="Effect,RenewComboFlatHealMU,VitalArray[Life].Change*5"/> </c> hp over <c val="FFFF80">10</c> seconds<n/><n/>Casting <c val="FFFF80">Renew</c> consumes all stacks.<n/>
 Button/Tooltip/Repel=Knock back and damage enemy units that get too close.<n/><n/>Additionally the Gravity hero deals 50% more damage vs Armored targets and 100% more damage vs Massive and Heroic targets.
 Button/Tooltip/ResourceCollector=Every unit killed after having been affected by any Probe Hero spell has a <c val="FFFF80"><d ref="Effect,ResourcesCU,Chance*100"/>%</c> chance to drop a mineral pickup worth <c val="FFFF80">1</c> resource.<n/><n/>Once <c val="FFFF80">100</c> resources have been gained the Probe Hero will gain <c val="FFFF80"><d ref="Behavior,ProbeHeroUpgrade,Modification.VitalMaxArray[Shields]"/></c> increased maximum health/shields, <c val="FFFF80"><d ref="Behavior,ProbeHeroUpgrade,Modification.VitalMaxArray[Energy]"/></c> maximum energy, and <c val="FFFF80"><d ref="Effect,SpawnArmyCP,PeriodCount"/></c> random units get spawned for your Protoss Allies at their nearest structure.
@@ -1180,7 +1181,7 @@ Button/Tooltip/Stealth=Become invisible for <c val="FFFF80"><d ref="Behavior,Ste
 Button/Tooltip/Steam=Infusion: <c val="FF8000">Fire</c><n/>Release: <c val="0080FF">Water</c><n/><n/>Boils the insides of enemies in a radius of <c val="FFFF80"><d ref="Effect,SteamFireSA,AreaArray[0].Radius" precision="1"/></c> around the target point dealing <c val="FFFF80"><d ref="Effect,SteamFireInitDMG,Amount"/></c> damage to affected enemies, and then an additional <c val="FFFF80"><d ref="Effect,SteamFireDMG,Amount*20"/></c> damage over <c val="FFFF80">10</c> seconds. Units that die while under the effects of Steam have a <c val="FFFF80">15%</c> to cause another Steam explosion.
 Button/Tooltip/SteamWater=Infusion: <c val="0080FF">Water</c><n/>Release: <c val="FF8000">Fire</c><n/><n/>Boils the insides of enemies in a radius of <c val="FFFF80"><d ref="Effect,SteamWaterSA,AreaArray[0].Radius" precision="1"/></c> around the target point dealing <c val="FFFF80"><d ref="Effect,SteamWaterInitDMG,Amount"/></c> damage to affected enemies, and then an additional <c val="FFFF80"><d ref="Effect,SteamWaterDMG,Amount*20"/></c> damage over <c val="FFFF80">10</c> seconds. Units that die while under the effects of Steam have a <c val="FFFF80"><d ref="Effect,SteamWaterExplodeDelay,Chance*100"precision="1"/>%</c> to cause another Steam explosion.
 Button/Tooltip/StormLord=Gives zerg units 40% damage reduction in a range of 8, gains 5% damage reduction and loses 2% damage for every zerg unit in the same radius.
-Button/Tooltip/Strafe=Rapidly launches <c val="FFFF80"><d ref="Effect,WarpHeroStrafeDummy,ExpireDelay"/></c> missiles at random targets in range, each dealing <c val="FFFF80"><d ref="Effect,ImmortalStrafeDamage,Amount"/></c> damage.
+Button/Tooltip/Strafe=Rapidly launches <c val="FFFF80"><d ref="Effect,WarpHeroStrafeDummy,ExpireDelay"/></c> missiles at random targets in range, each dealing <c val="FFFF80"><d ref="Effect,WarpHeroStrafeDMG,Amount"/></c> damage.
 Button/Tooltip/SubarmorPolymerflow=Polymer is released when getting hit by melee or ranged attacks reducing damage taken by <d ref="(Behavior,Polymercrust,DamageResponse.ModifyFraction-1)*(-100)" precision="2"/>% Stacks up to 10 times.
 Button/Tooltip/Substitution=Instantly restore <c val="FFFF80"><d ref="Effect,SubstitutionMU,VitalArray[Shields].Change"/></c> shield points
 Button/Tooltip/Superlisk=Heavy assault beast. Has an area-damage attack.<n/><n/><c val="ffff8a">Can attack ground units.</c>
@@ -1211,6 +1212,7 @@ Button/Tooltip/Upheaval=Summon <c val="FFFF80"><d ref="Effect,UpheavalOffsets,Pe
 Button/Tooltip/VoidLord=The Void Lord has 20% chance to gain 70% damage reduction for 1 second after receiving damage
 Button/Tooltip/WallofDarkness=Receiving damage generates Dark Energy<n/><n/>When Dark Energy reaches 100, the Shadow Hero will release 10 Shadowcrashes at surrounding enemies
 Button/Tooltip/WarpHero=Somehow he never runs out of ammo.
+Button/Tooltip/WarpHeroTurretDummy=
 Button/Tooltip/Warpout=Warps out a friendly target unit and uses its parts and energy to reconstruct your hero healing for <c val="FFFF80"><d ref="Effect,TwilightHeroWarpoutHeal,VitalArray[Life].Change"/></c> life/shields, and also cloaks you for up to <c val="FFFF80"><d ref="Behavior,Warpout,Duration"/></c> seconds or until the next ability cast.
 Button/Tooltip/Water=Holds the power of life and death.
 Button/Tooltip/WaterBlast=Fire a Water Blast at the targeted location, dealing <c val="FFFF80"><d ref="Effect,WaterBlastDMG,Amount"/></c> damage to a single target on impact and soaking all enemies in a radius of <c val="FFFF80"><d ref="Effect,WaterBlastABSearch,AreaArray[0].Radius" precision="2"/></c>
@@ -1871,6 +1873,12 @@ DocInfo/PatchNote615=  - Can no longer Fortify yourself
 DocInfo/PatchNote616=  - Altered Fortify and all of its talents
 DocInfo/PatchNote617=  - Boulders will now hit each unit once instead of continuously (damage increased to compensate)
 DocInfo/PatchNote618=  - Nerfed Firewall
+DocInfo/PatchNote619=- General
+DocInfo/PatchNote620=  - All skillshot spells should now take unit radius into consideration when finding a target
+DocInfo/PatchNote621=
+DocInfo/PatchNote622=- Warp Hero
+DocInfo/PatchNote623=  - Visual overhaul
+DocInfo/PatchNote624=  - Removed one level from "Agility" and added a new talent "Cover"
 DocInfo/Screenshot01=Reward points carry over to subsequent games and can be beneficial in a variety of ways.
 DocInfo/Screenshot02=Standing near a Pylon enables you to teleport to any other base.
 DocInfo/Screenshot05=Spend talent points to increase your power.
@@ -2867,6 +2875,7 @@ Effect/Name/GatewayHeroSplitterSplitSplitSearchTarget=Gateway Hero - Splitter Sp
 Effect/Name/GatewayHeroWarpInCU=Gateway Hero - WarpIn (CU)
 Effect/Name/GatewayHeroWarpInSet=Gateway Hero - WarpIn (Set)
 Effect/Name/GatewayHeroWarpinMU=Gateway Hero - Warpin (MU)
+Effect/Name/GatewayHeroZealotAttackDMG=Gateway Hero - Zealot Attack (DMG)
 Effect/Name/GlaiveAttackAB=Glaive Attack
 Effect/Name/GlaiveAttackCU=Glaive Attack
 Effect/Name/GlaiveAttackDMG=Glaive Attack
@@ -3074,9 +3083,6 @@ Effect/Name/ImmortalMultiShotDamage=ImmortalMultiShotDamage
 Effect/Name/ImmortalMultiShotFireDamage=ImmortalMultiShotFireDamage
 Effect/Name/ImmortalMultishotSet=ImmortalMultishotSet
 Effect/Name/ImmortalMultishotfire=ImmortalMultishotfire
-Effect/Name/ImmortalStrafeDamage=ImmortalStrafeDamage
-Effect/Name/ImmortalStrafeEndless=ImmortalStrafeEndless
-Effect/Name/ImmortalStrafeImpactSet=ImmortalStrafeImpactSet
 Effect/Name/Impact=Impact
 Effect/Name/ImpalerSpinesAB=Impaler Spines
 Effect/Name/ImpalerSpinesSet=Impaler Spines
@@ -4210,7 +4216,6 @@ Effect/Name/StormStrikeCP=Storm Strike
 Effect/Name/StormStrikeDMG=Storm Strike
 Effect/Name/StormStrikeLM=Storm Strike
 Effect/Name/StormStrikeSA=Storm Strike
-Effect/Name/StrafeImpactSearchArea=StrafeImpactSearchArea
 Effect/Name/SubstitutionBufferAB=Substitution Buffer
 Effect/Name/SubstitutionFrenzyCP=Substitution Frenzy
 Effect/Name/SubstitutionFrenzyOffset=Substitution Frenzy
@@ -4471,7 +4476,28 @@ Effect/Name/WarpHeroDecoyLimitAB=Warp Hero - Decoy Limit (AB)
 Effect/Name/WarpHeroDecoyLimitRB=Warp Hero - Decoy Limit (RB)
 Effect/Name/WarpHeroDecoySet=Warp Hero - Decoy (Set)
 Effect/Name/WarpHeroMultishotDummy=Warp Hero - Multishot Dummy
+Effect/Name/WarpHeroStrafeDMG=Warp Hero - Strafe (DMG)
 Effect/Name/WarpHeroStrafeDummy=Warp Hero - Strafe Dummy
+Effect/Name/WarpHeroStrafeEndless=Warp Hero - Strafe Endless
+Effect/Name/WarpHeroStrafeHeal=Warp Hero - Strafe (Heal)
+Effect/Name/WarpHeroStrafeSA=Warp Hero - Strafe (SA)
+Effect/Name/WarpHeroStrafeSet=Warp Hero - Strafe (Set)
+Effect/Name/WarpHeroTurretATU=Warp Hero - Turret (ATU)
+Effect/Name/WarpHeroTurretAimAB=Warp Hero - Turret Aim (AB)
+Effect/Name/WarpHeroTurretAimBusy=Warp Hero - Turret Aim (Busy)
+Effect/Name/WarpHeroTurretAimBusyTarget=Warp Hero - Turret Aim (BusyTarget)
+Effect/Name/WarpHeroTurretAimETU=Warp Hero - Turret Aim (ETU)
+Effect/Name/WarpHeroTurretAimRB=Warp Hero - Turret Aim (RB)
+Effect/Name/WarpHeroTurretAimSet=Warp Hero - Turret Aim (Set)
+Effect/Name/WarpHeroTurretAimStart=Warp Hero - Turret Aim (Start)
+Effect/Name/WarpHeroTurretAimSwitch=Warp Hero - Turret Aim (Switch)
+Effect/Name/WarpHeroTurretAimTP=Warp Hero - Turret Aim (TP)
+Effect/Name/WarpHeroTurretAimTurretStart=Warp Hero - Turret Aim (TurretStart)
+Effect/Name/WarpHeroTurretAimTurretStop=Warp Hero - Turret Aim (TurretStop)
+Effect/Name/WarpHeroTurretCU=Warp Hero - Turret (CU)
+Effect/Name/WarpHeroTurretCUSet=Warp Hero - Turret (CUSet)
+Effect/Name/WarpHeroTurretFate=Warp Hero - Turret (Fate)
+Effect/Name/WarpHeroTurretKillETU=Warp Hero - Turret Kill (ETU)
 Effect/Name/WarpHeroWarpDroneCD=Warp Hero - Warp Drone CD
 Effect/Name/WarpoutAB=Warpout
 Effect/Name/WarpoutNightwarpDMG=Warpout Nightwarp
@@ -4516,7 +4542,6 @@ Effect/Name/WindstormSet=Windstorm
 Effect/Name/YouFailedKillMissile=YouFailed
 Effect/Name/YouFailedSA=YouFailed
 Effect/Name/ZapSet=Zap
-Effect/Name/ZealotAiurWeapon=Zealot Attack
 Effect/Name/ZealotAttackRendAB=Zealot Attack
 Effect/Name/ZealotAttackRendDMG=Zealot Attack
 Effect/Name/ZealotAttackSet=Zealot Attack
@@ -4917,7 +4942,7 @@ Param/Value/2A3C3954=A Horde Lord has been spawned by the Mind Lord.
 Param/Value/2A6E8A1B=Vampirism
 Param/Value/2ABC29A3=Zealots gain the Shadow Charge ability.
 Param/Value/2AD46311=Greed
-Param/Value/2AF185B1=Strafe missiles launch 12/25% faster and deal 5/10 more damage
+Param/Value/2AF185B1=Strafe missiles deal 10 more damage and will launch 25% faster
 Param/Value/2B37DBB3=Blizzard
 Param/Value/2B3F4E57=Ration
 Param/Value/2B447AA7=Warning
@@ -5945,6 +5970,7 @@ Param/Value/A6E34EC2=Increase the radius of Healing Wave by 50/100%
 Param/Value/A6F490AC=BluntForce
 Param/Value/A707556F=Destroy 
 Param/Value/A72E08DD=Overcharge Duration
+Param/Value/A862B80D=Cover
 Param/Value/A88B3D1E=Overseer down
 Param/Value/A8D8C882=Scout
 Param/Value/A8E6F964=
@@ -6468,6 +6494,7 @@ Param/Value/E7D5055B=Congratulations.<n/>Reward: 1 Warpgate warping in Archon's 
 Param/Value/E7D8930F=Lofty
 Param/Value/E7E6B679=Earth infused abilities stun for 1/2 more seconds.
 Param/Value/E7FC64E2=Havoc Orbs can target 1 additional enemy per 2 Orbs used
+Param/Value/E8062859=Restore 10 shields each time Strafe launches a missile
 Param/Value/E81098CD=Increases the impact radius of your timewaves by 0/25/50/75%
 Param/Value/E81BE771=Warning
 Param/Value/E84895EE=Increase the amount that Cold slows enemies by an additive 5/10% and increase the amount of shields that Freezing enemies gives by 10/20
@@ -6917,7 +6944,10 @@ Unit/Name/UpheavalMissile=Upheaval Missile
 Unit/Name/VoidLord=Void Lord
 Unit/Name/VolatileSporesMissile=Volatile Spores Missile
 Unit/Name/WarpHero=Warp
-Unit/Name/WarpHeroMissile=Warp Hero Missile
+Unit/Name/WarpHeroGuidedMissile=Warp Hero - Guided Missile
+Unit/Name/WarpHeroMultishot=Warp Hero - Multishot
+Unit/Name/WarpHeroStrafe=Warp Hero - Strafe
+Unit/Name/WarpHeroTurretDummy=Warp Hero - Turret Dummy
 Unit/Name/WaterBlastMissile=Water Blast Missile
 Unit/Name/WaterHero=Water
 Unit/Name/WaterHeroPuddleUnit=Water Hero - Puddle Unit
@@ -7602,6 +7632,7 @@ Upgrade/Name/Vortex=Vortex
 Upgrade/Name/WarpHeroAgility=Warp Hero - Agility
 Upgrade/Name/WarpHeroAssault=Warp Hero - Assault
 Upgrade/Name/WarpHeroBlaze=Warp Hero - Blaze
+Upgrade/Name/WarpHeroCover=Warp Hero - Cover
 Upgrade/Name/WarpHeroDoubleganger=Warp Hero - Doubleganger
 Upgrade/Name/WarpHeroDrone=Warp Hero - Drone
 Upgrade/Name/WarpHeroDurable=Warp Hero - Durable
@@ -7677,6 +7708,7 @@ Weapon/Name/EssenceSteal=Essence Steal
 Weapon/Name/Extinction=Extinction
 Weapon/Name/FireBall=Fire Ball
 Weapon/Name/FungalDischarge=Fungal Discharge
+Weapon/Name/GatewayHeroSolariteReaper=Solarite Reaper
 Weapon/Name/Glaive=Glaive
 Weapon/Name/Horror=Horror
 Weapon/Name/HunterKiller=Impaler Spines

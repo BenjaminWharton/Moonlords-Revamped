@@ -1925,6 +1925,24 @@
         <Find value="1"/>
         <Value value="WarpHeroDurableIsLvl1"/>
     </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="WarpHeroMultitaskingGTE1">
+        <Find value="1"/>
+        <Value value="WarpHeroMultitaskingGTE1"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="WarpHeroMultitaskingGTE2">
+        <Find value="1"/>
+        <Value value="WarpHeroMultitaskingGTE2"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="WarpHeroMultitaskingGTE3">
+        <Find value="1"/>
+        <Value value="WarpHeroMultitaskingGTE3"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="WarpHeroNoTurretAim">
+        <Behavior value="WarpHeroTurretAim"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCompareTrackedUnitsCount id="WarpHeroNoTurretDummy">
+        <BehaviorLink value="WarpHeroDummyTracker"/>
+    </CValidatorCompareTrackedUnitsCount>
     <CValidatorPlayerRequirement id="WarpgateIsLvl0">
         <Find value="1"/>
         <Value value="WarpgateIsLvl0"/>

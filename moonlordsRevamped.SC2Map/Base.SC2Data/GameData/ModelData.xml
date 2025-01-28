@@ -132,6 +132,26 @@
         <ScaleMax value="0.330000,0.330000,0.330000"/>
         <ScaleMin value="0.330000,0.330000,0.330000"/>
     </CModel>
+    <CModel id="WarpHeroGuidedMissileImpact">
+        <Model value="Assets\Effects\Protoss\MotherShipCoreMissileImpact\MotherShipCoreMissileImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.700000,0.700000,0.700000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
+    </CModel>
+    <CModel id="WarpHeroStrafeImpact">
+        <Model value="Assets\Effects\Protoss\Immortal_Collection_Missile_Impact\Immortal_Collection_Missile_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.700000,0.700000,0.700000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
+    </CModel>
+    <CModel id="WarpHeroDecoyPlacement" parent="Placement" Race="Protoss">
+        <Model value="Assets\Units\Protoss\ImmortalPlacement\ImmortalPlacement.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.650000,0.650000,0.650000"/>
+        <ScaleMin value="0.650000,0.650000,0.650000"/>
+        <SelectionRadius value="0.866400"/>
+        <ShadowRadius value="0.866400"/>
+    </CModel>
     <CModel id="NatureHeroHarvestBeam">
         <Model value="Assets\Effects\Zerg\Dehaka_Coop_Consume\Dehaka_Coop_Consume.m3"/>
         <EditorCategories value="Race:Protoss"/>
@@ -152,6 +172,55 @@
         <EditorCategories value="Race:Protoss"/>
         <ScaleMax value="1.350000,1.350000,1.000000"/>
         <ScaleMin value="1.350000,1.350000,1.000000"/>
+    </CModel>
+    <CModel id="WarpHeroDecoy" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Immortal_Golden\Immortal_Golden.m3"/>
+        <Lighting value="WarpHero"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigh05"/>
+        <Radius value="0.400000"/>
+        <ScaleMax value="0.650000,0.650000,0.650000"/>
+        <ScaleMin value="0.650000,0.650000,0.650000"/>
+        <SelectionRadius value="0.750000"/>
+        <ShadowRadius value="0.375000"/>
+        <SquibTypeDefault value="LightArmor"/>
+        <TechPurchaseCamera value="Star2CameraHigh05"/>
+        <UnitGlossaryCamera value="Star2CameraHigh05"/>
+    </CModel>
+    <CModel id="WarpHeroStrafe" parent="MissileFX">
+        <Model value="Assets\Units\Protoss\Observer_Taldarim\Observer_Taldarim.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Observer_KaraxAnims\Observer_KaraxAnims.m3a"/>
+        <AnimSpeed value="2.000000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+    </CModel>
+    <CModel id="WarpHeroTurretAimBusy">
+        <Model value="Assets\Effects\Protoss\ImmortalShield\ImmortalShield.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.300000,1.300000,1.300000"/>
+        <ScaleMin value="1.300000,1.300000,1.300000"/>
+    </CModel>
+    <CModel id="WarpHeroUpgrade" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Immortal_Ihanrii\Immortal_Ihanrii.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigh05"/>
+        <Radius value="0.400000"/>
+        <ScaleMax value="0.650000,0.650000,0.650000"/>
+        <ScaleMin value="0.650000,0.650000,0.650000"/>
+        <SelectionRadius value="0.750000"/>
+        <ShadowRadius value="0.375000"/>
+        <SquibTypeDefault value="LightArmor"/>
+        <TechPurchaseCamera value="Star2CameraHigh05"/>
+        <UnitGlossaryCamera value="Star2CameraHigh05"/>
+    </CModel>
+    <CModel id="WarpHeroMultishot" parent="MissileFX">
+        <Model value="Assets\Units\Protoss\Observer_Ihanrii\Observer_Ihanrii.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Observer_KaraxAnims\Observer_KaraxAnims.m3a"/>
+        <AnimSpeed value="2.000000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
     </CModel>
     <CModel id="WaterHero" parent="Unit" Race="Protoss">
         <Model value="Assets\Units\Protoss\Preserver\Preserver_00.m3"/>
@@ -1056,10 +1125,10 @@
         <EditorCategories value="Race:Protoss"/>
     </CModel>
     <CModel id="MultishotImpact">
-        <Model value="Assets\Effects\Protoss\MothershipMissileImpact\MothershipMissileImpact.m3"/>
+        <Model value="Assets\Effects\Protoss\DarkImmortalMissileImpact\DarkImmortalMissileImpact.m3"/>
         <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="1.500000,1.500000,1.500000"/>
-        <ScaleMin value="1.500000,1.500000,1.500000"/>
+        <ScaleMax value="0.700000,0.700000,0.700000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
     </CModel>
     <CModel id="MusclePoisonImpact">
         <Model value="Assets\Effects\Zerg\MiasmaliskPoisonCloudBirth\MiasmaliskPoisonCloudBirth.m3"/>
@@ -3090,10 +3159,6 @@
         <Model value="Assets\Effects\Protoss\DragoonMissileImpact\DragoonMissileImpact.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
-    <CModel id="Immortal_CollectionSkin_Adun">
-        <ScaleMax value="1.000000,1.000000,1.000000"/>
-        <ScaleMin value="1.000000,1.000000,1.000000"/>
-    </CModel>
     <CModel id="KaraxServitorWeaponA">
         <ScaleMax value="0.750000,0.750000,0.750000"/>
         <ScaleMin value="0.750000,0.750000,0.750000"/>
@@ -3183,19 +3248,19 @@
         <Model value="Assets\Effects\Zerg\FrenzyMissile\FrenzyMissile.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
-    <CModel id="MultishotBlaze" parent="PersistentSpellFX">
-        <Model value="Assets\Doodads\GenericProtossFire_Medium\GenericProtossFire_Medium.m3"/>
+    <CModel id="WarpHeroMultishotBlaze" parent="PersistentSpellFX">
+        <Model value="Assets\Doodads\GenericProtossFire_Shakuras_Medium\GenericProtossFire_Shakuras_Medium.m3"/>
         <EditorCategories value="Race:Protoss"/>
         <ScaleMax value="1.500000,1.500000,1.500000"/>
         <ScaleMin value="1.500000,1.500000,1.500000"/>
     </CModel>
     <CModel id="WarpHero" parent="Unit" Race="Protoss">
-        <Model value="Assets\Units\Protoss\Immortal\Immortal.m3"/>
+        <Model value="Assets\Units\Protoss\Immortal_Golden\Immortal_Golden.m3"/>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraHigh05"/>
         <Radius value="0.400000"/>
-        <ScaleMax value="0.950000,0.950000,0.950000"/>
-        <ScaleMin value="0.950000,0.950000,0.950000"/>
+        <ScaleMax value="0.650000,0.650000,0.650000"/>
+        <ScaleMin value="0.650000,0.650000,0.650000"/>
         <SelectionRadius value="0.750000"/>
         <ShadowRadius value="0.375000"/>
         <SquibTypeDefault value="LightArmor"/>
@@ -3212,9 +3277,12 @@
         <RandomDeviation value="0.000000"/>
         <Flexibility value="0.000000"/>
     </CModelFoliage>
-    <CModel id="ImmortalMissile" parent="MissileFX">
-        <Model value="Assets\Units\Protoss\Observer\Observer.m3"/>
+    <CModel id="WarpHeroGuidedMissile" parent="MissileFX">
+        <Model value="Assets\Units\Protoss\Observer_Golden\Observer_Golden.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Observer_KaraxAnims\Observer_KaraxAnims.m3a"/>
         <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.400000,0.650000,0.400000"/>
+        <ScaleMin value="0.400000,0.650000,0.400000"/>
     </CModel>
     <CModel id="CloakOfFear">
         <Model value="Assets\Effects\Protoss\ProtossBuildingFireSmall\ProtossBuildingFireSmall.m3"/>

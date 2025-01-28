@@ -191,7 +191,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeEarthHeroPassive2CompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="EarthHeroPassive2" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeEnervateCompleteOnly">
@@ -333,6 +332,11 @@
     <CRequirementCountUpgrade id="CountUpgradeWarpHeroDurableCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="WarpHeroDurable" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeWarpHeroMultitaskCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="WarpHeroMultitask" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeWarpgateQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
@@ -763,6 +767,21 @@
     <CRequirementGTE id="GTECountUpgradeParticleHeroDischargeCompleteOnlyTechTreeCheat1">
         <OperandArray index="0" value="CountUpgradeParticleHeroDischargeCompleteOnlyTechTreeCheat"/>
         <OperandArray index="1" value="1"/>
+    </CRequirementGTE>
+    <CRequirementGTE id="GTECountUpgradeWarpHeroMultitaskCompleteOnly1">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeWarpHeroMultitaskCompleteOnly"/>
+        <OperandArray index="1" value="1"/>
+    </CRequirementGTE>
+    <CRequirementGTE id="GTECountUpgradeWarpHeroMultitaskCompleteOnly2">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeWarpHeroMultitaskCompleteOnly"/>
+        <OperandArray index="1" value="2"/>
+    </CRequirementGTE>
+    <CRequirementGTE id="GTECountUpgradeWarpHeroMultitaskCompleteOnly3">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeWarpHeroMultitaskCompleteOnly"/>
+        <OperandArray index="1" value="3"/>
     </CRequirementGTE>
     <CRequirementLT id="LT0CountUpgradeWarpHeroDroneCompleteOnlyTechTreeCheat">
         <OperandArray index="0" value="0"/>

@@ -1914,6 +1914,7 @@
         </Cost>
         <Range value="10"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Decoy"/>
+        <Arc value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Doom">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -1949,6 +1950,7 @@
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="GuidedMissile"/>
+        <Arc value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="ShadowHeroEnergytap">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -1976,6 +1978,7 @@
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Multishot"/>
         <AINotifyEffect value="WarpHeroMultishotDummy"/>
+        <Arc value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MusclePoison">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>

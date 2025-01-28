@@ -20,7 +20,6 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="Decoy">
-        <DeathRevealRadius value="3"/>
         <Race value="Prot"/>
         <Mob value="Multiplayer"/>
         <FlagArray index="Turnable" value="0"/>
@@ -34,6 +33,7 @@
         <Collide index="ForceField" value="1"/>
         <Collide index="Locust" value="1"/>
         <Collide index="Small" value="1"/>
+        <Response value="Nothing"/>
         <Attributes index="Armored" value="1"/>
         <Attributes index="Mechanical" value="1"/>
         <LifeStart value="200"/>
@@ -50,12 +50,12 @@
         <Sight value="9"/>
         <RepairTime value="55"/>
         <AttackTargetPriority value="20"/>
-        <DamageDealtXP value="1"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
         <AbilArray Link="Warpable"/>
         <AbilArray Link="ProgressRally"/>
+        <BehaviorArray Link="WarpHeroDummyTracker"/>
         <BehaviorArray Link="HardenedShield"/>
         <WeaponArray Link="PhaseDisruptors" Turret="Immortal"/>
         <CardLayouts>
@@ -80,7 +80,6 @@
             <ChanceArray index="Idle" value="90"/>
         </Fidget>
         <TauntDuration index="Dance" value="5"/>
-        <Response value="Nothing"/>
     </CUnit>
     <CUnit id="AirHeroMicroBurstUnit">
         <Race value="Prot"/>
@@ -229,6 +228,56 @@
         <Height value="0.5"/>
         <VisionHeight value="4"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="WarpHeroTurretDummy">
+        <Race value="Prot"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <Mover value="Fly"/>
+        <BehaviorArray Link="SpellUnit"/>
+        <MinimapRadius value="0"/>
+    </CUnit>
+    <CUnit id="WarpHeroMultishot">
+        <Race value="Prot"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="Missile" value="1"/>
+        <FlagArray index="Unradarable" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <Mover value="Fly"/>
+        <Sight value="1"/>
+        <Height value="0.5"/>
+        <VisionHeight value="4"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="WarpHeroStrafe">
+        <Race value="Prot"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="Missile" value="1"/>
+        <FlagArray index="Unradarable" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <Mover value="Fly"/>
+        <Sight value="1"/>
+        <Height value="0.5"/>
+        <VisionHeight value="4"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
     </CUnit>
     <CUnit id="WaterHeroPuddleUnit">
         <Race value="Prot"/>
@@ -2908,7 +2957,6 @@
     </CUnit>
     <CUnit id="GatewayHeroZealot">
         <DeathRevealRadius value="3"/>
-        <ReviveType value="Zealot"/>
         <Race value="Prot"/>
         <Mob value="Multiplayer"/>
         <FlagArray index="PreventDestroy" value="1"/>
@@ -2949,7 +2997,7 @@
         <BehaviorArray Link="ZealotRespawnDeath"/>
         <BehaviorArray Link="ApplyLifeline"/>
         <BehaviorArray Link="FullHeal"/>
-        <WeaponArray Link="SolariteReaper"/>
+        <WeaponArray Link="GatewayHeroSolariteReaper"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -2969,7 +3017,6 @@
         <SubgroupPriority value="5"/>
         <MinimapRadius value="0.375"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
-        <TacticalAI value="Zealot"/>
         <GlossaryCategory value="Unit/Category/ProtossUnits"/>
         <GlossaryPriority value="20"/>
         <GlossaryStrongArray value="Marauder"/>
@@ -2985,10 +3032,6 @@
             <ChanceArray index="Idle" value="70"/>
             <ChanceArray index="Turn" value="10"/>
         </Fidget>
-        <ReviveInfoBase>
-            <Charge Link="Zealot/Revive"/>
-            <Cooldown Link="Zealot/Revive"/>
-        </ReviveInfoBase>
     </CUnit>
     <CUnit id="ZergLord">
         <DeathRevealRadius value="3"/>
@@ -5564,10 +5607,8 @@
         <TauntDuration index="Dance" value="5"/>
         <DeathTime value="-1"/>
     </CUnit>
-    <CUnit id="WarpHeroMissile">
-        <DeathRevealRadius value="1"/>
+    <CUnit id="WarpHeroGuidedMissile">
         <Race value="Prot"/>
-        <Mob value="Multiplayer"/>
         <FlagArray index="Uncommandable" value="1"/>
         <FlagArray index="Unselectable" value="1"/>
         <FlagArray index="Untargetable" value="1"/>
@@ -5578,58 +5619,19 @@
         <FlagArray index="KillCredit" value="0"/>
         <FlagArray index="Invulnerable" value="1"/>
         <FlagArray index="NoScore" value="1"/>
-        <PlaneArray index="Air" value="1"/>
-        <LifeStart value="10"/>
-        <LifeMax value="10"/>
-        <LifeArmorName value="Unit/LifeArmorName/ProtossPlating"/>
-        <EnergyStart value="50"/>
-        <EnergyMax value="200"/>
-        <EnergyRegenRate value="0.5625"/>
-        <ShieldsStart value="60"/>
-        <ShieldsMax value="60"/>
-        <ShieldRegenDelay value="10"/>
-        <ShieldRegenRate value="2"/>
-        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
         <Mover value="Fly"/>
-        <StationaryTurningRate value="1499.9414"/>
-        <TurningRate value="1499.9414"/>
         <Sight value="1"/>
         <Height value="0.5"/>
         <VisionHeight value="4"/>
-        <CostCategory value="Army"/>
-        <RepairTime value="45"/>
-        <DamageDealtXP value="1"/>
-        <DamageTakenXP value="1"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="move"/>
-        <CardLayouts>
-            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
-            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
-            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
-        </CardLayouts>
-        <Radius value="0.75"/>
-        <SeparationRadius value="0"/>
-        <ScoreMake value="350"/>
-        <ScoreKill value="700"/>
-        <ScoreResult value="BuildOrder"/>
-        <SubgroupPriority value="15"/>
-        <MinimapRadius value="0.75"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
-        <AIEvalFactor value="0.7"/>
-        <GlossaryCategory value="Unit/Category/ProtossUnits"/>
-        <GlossaryPriority value="140"/>
-        <GlossaryStrongArray value="Banshee"/>
-        <GlossaryStrongArray value="Mutalisk"/>
-        <GlossaryStrongArray value="VoidRay"/>
-        <GlossaryWeakArray value="Battlecruiser"/>
-        <GlossaryWeakArray value="Corruptor"/>
-        <GlossaryWeakArray value="Carrier"/>
-        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
     </CUnit>
     <CUnit id="WarpHero">
         <DeathRevealRadius value="3"/>
         <Race value="Prot"/>
         <Mob value="Multiplayer"/>
+        <FlagArray index="Turnable" value="0"/>
         <FlagArray index="Hero" value="1"/>
         <FlagArray index="PreventDestroy" value="1"/>
         <FlagArray index="UseLineOfSight" value="1"/>
@@ -5677,6 +5679,7 @@
         <AbilArray Link="WarpHeroMultishot"/>
         <AbilArray Link="GuidedMissile"/>
         <AbilArray Link="WarpHeroDecoy"/>
+        <BehaviorArray Link="WarpHeroDummyTracker"/>
         <BehaviorArray Link="PowerPlating2"/>
         <BehaviorArray Link="WarpDrone"/>
         <BehaviorArray Link="PowerPlatingbase"/>
@@ -5704,7 +5707,7 @@
             <LayoutButtons Face="Strafe" Type="AbilCmd" AbilCmd="WarpHeroStrafe,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="ChatCommands" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
-        <Radius value="0.375"/>
+        <Radius value="0.4375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
         <CargoSize value="2"/>

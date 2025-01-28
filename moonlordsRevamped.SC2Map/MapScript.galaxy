@@ -428,7 +428,7 @@ void gf_SpireFireball2 (int lp_owner, unit lp_caster, point lp_target, point lp_
 point gf_targetmissilespell (unit lp_caster, int lp_owner, bool lp_attackally, point lp_origin, point lp_target, string lp_animunit, fixed lp_timetolive, fixed lp_speed, fixed lp_detonationdistance, unitgroup lp_excludedgrp);
 unit gf_targetmisslespelltarget (int lp_caster, point lp_impactpoint, fixed lp_range, bool lp_includeally);
 unitgroup gf_targetmisslespelltargets (int lp_caster, point lp_impactpoint, fixed lp_range, bool lp_includeally);
-unitgroup gf_targetmisslespelltargets2 (int lp_caster, point lp_impactpoint, fixed lp_range, bool lp_includeally, unitgroup lp_excluded);
+unitgroup gf_targetmisslespelltargetsexclude (int lp_caster, point lp_impactpoint, fixed lp_range, bool lp_includeally, unitgroup lp_excluded);
 unit gf_targetunitmissilespell (unit lp_caster, point lp_origin, unit lp_target, bool lp_cancrash, fixed lp_ttl, fixed lp_impactsize, bool lp_targetally, string lp_missleused, fixed lp_speed, unitgroup lp_excludegrp, fixed lp_retargetarea);
 void gf_Lightning2 (point lp_origin, point lp_target, unit lp_caster, int lp_owner, unitgroup lp_excludedtargets, fixed lp_ttl);
 void gf_Queen (unit lp_queen, int lp_overlordcount, int lp_zerglingcount, fixed lp_radius, fixed lp_turnspeed1);
@@ -5899,10 +5899,11 @@ void gf_TalentDialogWarp (int lp_player) {
     gf_CreateTalent(1, 1, lp_player, StringExternal("Param/Value/748A0B94"), StringExternal("Param/Value/D242F6AE"), "WarpHeroManaleech", 0);
     gf_CreateTalent(2, 1, lp_player, StringExternal("Param/Value/2E011766"), StringExternal("Param/Value/FB2B0969"), "WarpHeroFocus", 0);
     gf_CreateTalent(5, 1, lp_player, StringExternal("Param/Value/EE1AB8C1"), StringExternal("Param/Value/782A523F"), "WarpHeroBlaze", 10);
-    gf_CreateTalent(0, 2, lp_player, StringExternal("Param/Value/50162B8A"), StringExternal("Param/Value/2AF185B1"), "WarpHeroAgility", 0);
+    gf_CreateTalent(0, 2, lp_player, StringExternal("Param/Value/94EDEDF4"), StringExternal("Param/Value/173C3F0C"), "WarpHeroEndurance", 0);
     gf_CreateTalent(1, 2, lp_player, StringExternal("Param/Value/CC3E0931"), StringExternal("Param/Value/12344917"), "WarpHeroVirtuosity", 0);
-    gf_CreateTalent(2, 2, lp_player, StringExternal("Param/Value/94EDEDF4"), StringExternal("Param/Value/173C3F0C"), "WarpHeroEndurance", 0);
-    gf_CreateTalent(3, 2, lp_player, StringExternal("Param/Value/54DDEBE7"), StringExternal("Param/Value/4BC49456"), "WarpHeroEndless", 0);
+    gf_CreateTalent(2, 2, lp_player, StringExternal("Param/Value/54DDEBE7"), StringExternal("Param/Value/4BC49456"), "WarpHeroEndless", 0);
+    gf_CreateTalent(3, 2, lp_player, StringExternal("Param/Value/50162B8A"), StringExternal("Param/Value/2AF185B1"), "WarpHeroAgility", 0);
+    gf_CreateTalent(4, 2, lp_player, StringExternal("Param/Value/A862B80D"), StringExternal("Param/Value/E8062859"), "WarpHeroCover", 0);
     gf_CreateTalent(5, 2, lp_player, StringExternal("Param/Value/5C2C5C18"), StringExternal("Param/Value/DED8FC1F"), "WarpHeroExplosives", 10);
     gf_CreateTalent(0, 3, lp_player, StringExternal("Param/Value/3EBE3B53"), StringExternal("Param/Value/CB11C11F"), "WarpHeroHallucination", 0);
     gf_CreateTalent(1, 3, lp_player, StringExternal("Param/Value/E5208C0B"), StringExternal("Param/Value/E2F8110C"), "WarpHeroNull", 0);
@@ -6817,7 +6818,7 @@ void gf_disguiseunit (unit lp_unit, int lp_player) {
         }
 
         if ((UnitGetType(lp_unit) == "WarpHero")) {
-            ActorSend(libNtve_gf_MainActorofUnit(lp_unit), "ModelSwap Immortal_CollectionSkin_Adun");
+            ActorSend(libNtve_gf_MainActorofUnit(lp_unit), "ModelSwap WarpHeroUpgrade");
         }
 
         if ((UnitGetType(lp_unit) == "TimeHero")) {
@@ -7969,7 +7970,7 @@ bool auto_gf_SkillGuidedMissile_TriggerFunc (bool testConds, bool runActions) {
     lv_scanrange = (2.0 + IntToFixed(TechTreeUpgradeCount(lp_owner, "WarpHeroSonar", c_techCountQueuedOrBetter)));
 
     // Implementation
-    UnitCreate(1, "WarpHeroMissile", c_unitCreateIgnorePlacement, lp_owner, lp_origin, AngleBetweenPoints(lp_origin, lp_target));
+    UnitCreate(1, "WarpHeroGuidedMissile", c_unitCreateIgnorePlacement, lp_owner, lp_origin, AngleBetweenPoints(lp_origin, lp_target));
     lv_missile = UnitLastCreated();
     while ((UnitIsAlive(lv_missile) == true) && (lv_ttl > 0.0) && (DistanceBetweenPoints(UnitGetPosition(lv_missile), lp_origin) <= 12.0)) {
         lv_targetgrp = UnitGroup(null, 6, RegionCircle(UnitGetPosition(lv_missile), 0.5), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
@@ -8047,15 +8048,19 @@ bool auto_gf_SkillStrafeShot_TriggerFunc (bool testConds, bool runActions) {
     lv_targetgrp = UnitGroup(null, 6, RegionCircle(UnitGetPosition(lp_location), 12.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
 
     // Implementation
+    UnitCreateEffectUnit(lp_caster, "WarpHeroStrafeHeal", lp_caster);
     if ((UnitGroupCount(lv_targetgrp, c_unitCountAll) >= 1)) {
-        lv_point = UnitGetPosition(UnitGroupRandomUnit(lv_targetgrp, c_unitCountAll));
-        lv_point = gf_targetmissilespell(lp_caster, lp_owner, false, UnitGetPosition(lp_location), lv_point, "WarpHeroMissile", 3.0, 0.25, 0.5, UnitGroupEmpty());
-        UnitCreateEffectPoint(lp_caster, "ImmortalStrafeImpactSet", lv_point);
+        lv_target = UnitGroupRandomUnit(lv_targetgrp, c_unitCountAlive);
+        lv_point = RegionRandomPoint(RegionCircle(UnitGetPosition(lv_target), (UnitGetPropertyFixed(lv_target, c_unitPropRadius, c_unitPropCurrent) * 0.8)));
+        UnitCreateEffectPoint(lp_location, "WarpHeroTurretAimStart", lv_point);
+        lv_point = gf_targetmissilespell(lp_caster, lp_owner, false, UnitGetPosition(lp_location), lv_point, "WarpHeroStrafe", 2.5, 0.3, 0.3, UnitGroupEmpty());
+        UnitCreateEffectPoint(lp_caster, "WarpHeroStrafeSet", lv_point);
     }
     else {
         lv_point = RegionRandomPoint(RegionCircle(UnitGetPosition(lp_location), 12.0));
-        lv_point = gf_targetmissilespell(lp_caster, lp_owner, false, UnitGetPosition(lp_location), lv_point, "WarpHeroMissile", 3.0, 0.25, 0.5, UnitGroupEmpty());
-        UnitCreateEffectPoint(lp_caster, "ImmortalStrafeImpactSet", lv_point);
+        UnitCreateEffectPoint(lp_location, "WarpHeroTurretAimStart", lv_point);
+        lv_point = gf_targetmissilespell(lp_caster, lp_owner, false, UnitGetPosition(lp_location), lv_point, "WarpHeroStrafe", 2.5, 0.3, 0.3, UnitGroupEmpty());
+        UnitCreateEffectPoint(lp_caster, "WarpHeroStrafeSet", lv_point);
     }
     return true;
 }
@@ -8096,7 +8101,7 @@ bool auto_gf_SkillMultishot_TriggerFunc (bool testConds, bool runActions) {
     lv_point = lp_target;
 
     // Implementation
-    lv_point = gf_targetmissilespell(lp_caster, lp_owner, false, UnitGetPosition(lp_location), lp_target, "WarpHeroMissile", 3.0, 0.25, 0.75, UnitGroupEmpty());
+    lv_point = gf_targetmissilespell(lp_caster, lp_owner, false, UnitGetPosition(lp_location), lp_target, "WarpHeroMultishot", 2.5, 0.3, 0.3, UnitGroupEmpty());
     UnitCreateEffectPoint(lp_caster, "MultishotImpactSearchArea", lv_point);
     return true;
 }
@@ -8142,7 +8147,8 @@ bool auto_gf_SkillMultishotTalent_TriggerFunc (bool testConds, bool runActions) 
     // Implementation
     Wait(lp_delay, c_timeGame);
     if ((UnitIsAlive(lp_location) == true)) {
-        lv_point = gf_targetmissilespell(lp_caster, lp_owner, false, UnitGetPosition(lp_location), lp_target, "WarpHeroMissile", 3.0, 0.25, 0.75, UnitGroupEmpty());
+        UnitCreateEffectPoint(lp_location, "WarpHeroTurretAimStart", lp_target);
+        lv_point = gf_targetmissilespell(lp_caster, lp_owner, false, UnitGetPosition(lp_location), lp_target, "WarpHeroMultishot", 2.5, 0.3, 0.3, UnitGroupEmpty());
         UnitCreateEffectPoint(lp_caster, "MultishotImpactSearchArea", lv_point);
     }
 
@@ -8182,6 +8188,9 @@ void gf_AEShadowCrash (int lp_owner) {
     int lv_energy;
 
     // Automatic Variable Declarations
+    int auto795CAC7D_n;
+    int auto795CAC7D_i;
+
     // Variable Initialization
     lv_targets = UnitGroup(null, 6, RegionCircle(UnitGetPosition(gv_hero[lp_owner]), 10.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
     lv_maxcount = (10 + (TechTreeUpgradeCount(lp_owner, "ShadowHeroMidnight", c_techCountQueuedOrBetter) * 2));
@@ -8214,6 +8223,14 @@ void gf_AEShadowCrash (int lp_owner) {
         }
 
     }
+    if ((lv_maxcount > 0)) {
+        auto795CAC7D_n = lv_maxcount;
+        for (auto795CAC7D_i = 1; auto795CAC7D_i <= auto795CAC7D_n; auto795CAC7D_i += 1) {
+            Wait(0.1, c_timeGame);
+            gf_Shadowcrash(lv_energy, RegionRandomPoint(RegionCircle(UnitGetPosition(gv_hero[lp_owner]), 12.0)), UnitGetPosition(gv_hero[lp_owner]), lp_owner, gv_hero[lp_owner]);
+        }
+    }
+
 }
 
 void gf_SkillShadowWallofDarkness (unit lp_target) {
@@ -8312,7 +8329,7 @@ bool auto_gf_Shadowcrash_TriggerFunc (bool testConds, bool runActions) {
     lv_targetgrp = UnitGroupEmpty();
 
     // Implementation
-    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_startpoint, lp_targetpoint, "ShadowCrashMissile", 2.8, 0.275, 1.0, UnitGroupEmpty());
+    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_startpoint, lp_targetpoint, "ShadowCrashMissile", 2.8, 0.275, 0.3, UnitGroupEmpty());
     lv_target = gf_targetmisslespelltarget(lp_owner, lv_impactpoint, 1.0, false);
     if ((lv_target != null)) {
         lv_impactpoint = UnitGetPosition(lv_target);
@@ -8320,7 +8337,7 @@ bool auto_gf_Shadowcrash_TriggerFunc (bool testConds, bool runActions) {
 
     UnitCreateEffectPoint(lp_caster, "ShadowcrashImpact", lv_impactpoint);
     if ((UnitIsAlive(lp_caster) == true)) {
-        lv_targetgrp = gf_targetmisslespelltargets2(lp_owner, lv_impactpoint, 1.0+(0.5*IntToFixed(TechTreeUpgradeCount(lp_owner, "ShadowcrashRange", c_techCountQueuedOrBetter))), false, UnitGroupEmpty());
+        lv_targetgrp = gf_targetmisslespelltargetsexclude(lp_owner, lv_impactpoint, 1.0+(0.5*IntToFixed(TechTreeUpgradeCount(lp_owner, "ShadowcrashRange", c_techCountQueuedOrBetter))), false, UnitGroupEmpty());
         while ((UnitGroupCount(lv_targetgrp, c_unitCountAll) > 0)) {
             lv_target = UnitGroupUnit(lv_targetgrp, 1);
             UnitDamage(lp_caster, "LightningDamage", lv_target, 40.0);
@@ -8561,7 +8578,7 @@ bool auto_gf_Lightning_TriggerFunc (bool testConds, bool runActions) {
     lv_excludedgrp = lp_excludedtargets;
 
     // Implementation
-    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_origin, lv_impactpoint, "LightningMissile", 2.5, 0.3, 1.0, lp_excludedtargets);
+    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_origin, lv_impactpoint, "LightningMissile", 2.5, 0.3, 0.3, lp_excludedtargets);
     lv_targetgrp = gf_targetmisslespelltargets(lp_owner, lv_impactpoint, 1.0, false);
     if ((UnitIsAlive(lp_caster) == false)) {
         return true;
@@ -8613,7 +8630,7 @@ void gf_Poisonbolt (unit lp_caster, int lp_owner, point lp_origin, point lp_targ
     lv_impactpoint = lp_target;
 
     // Implementation
-    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_origin, lv_impactpoint, "Poisonbolt", 3.0, 0.25, 1.0, lp_excludedtargets);
+    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_origin, lv_impactpoint, "Poisonbolt", 3.0, 0.25, 0.3, lp_excludedtargets);
     lv_targetgrp = gf_targetmisslespelltargets(lp_owner, lv_impactpoint, lp_impactsize, false);
     while ((UnitIsAlive(lp_caster) == true) && (UnitGroupCount(lv_targetgrp, c_unitCountAll) > 0)) {
         if ((UnitIsAlive(UnitGroupUnit(lv_targetgrp, 1)) == true)) {
@@ -9060,7 +9077,7 @@ bool auto_gf_SpireFireball_TriggerFunc (bool testConds, bool runActions) {
     lv_targetgrp = UnitGroupEmpty();
 
     // Implementation
-    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_origin, lv_impactpoint, "Fireball2", lp_ttl, lp_speed, 1.0, UnitGroupEmpty());
+    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_origin, lv_impactpoint, "Fireball2", lp_ttl, lp_speed, 0.3, UnitGroupEmpty());
     lv_targetgrp = gf_targetmisslespelltargets(lp_owner, lv_impactpoint, 1.0, false);
     libNtve_gf_CreateModelAtPoint("SiegeTankSiegedAttackImpact", lv_impactpoint);
     lv_m = libNtve_gf_ActorLastCreated();
@@ -9112,7 +9129,7 @@ bool auto_gf_SpireFireball2_TriggerFunc (bool testConds, bool runActions) {
     lv_impactpoint = lp_target;
 
     // Implementation
-    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_origin, lv_impactpoint, "Fireball2", lp_ttl, lp_speed, 1.0, UnitGroupEmpty());
+    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_origin, lv_impactpoint, "Fireball2", lp_ttl, lp_speed, 0.3, UnitGroupEmpty());
     UnitCreateEffectPoint(lp_caster, "FireballImpactSearchSpire", lv_impactpoint);
     return true;
 }
@@ -9126,6 +9143,10 @@ point gf_targetmissilespell (unit lp_caster, int lp_owner, bool lp_attackally, p
     fixed lv_ttl;
 
     // Automatic Variable Declarations
+    unitgroup auto7EF4D8E8_g;
+    int auto7EF4D8E8_u;
+    unit auto7EF4D8E8_var;
+
     // Variable Initialization
     lv_ttl = lp_timetolive;
 
@@ -9135,8 +9156,18 @@ point gf_targetmissilespell (unit lp_caster, int lp_owner, bool lp_attackally, p
     while ((lv_ttl >= 0.0) && (UnitIsAlive(lv_missile) == true)) {
         lv_ttl -= 0.0625;
         UnitSetPosition(lv_missile, PointWithOffsetPolar(UnitGetPosition(lv_missile), lp_speed, AngleBetweenPoints(lp_origin, lp_target)), true);
-        lv_targetgrp = UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(lv_missile), lp_detonationdistance), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
+        lv_targetgrp = UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(lv_missile), (lp_detonationdistance + 2.5)), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
         libNtve_gf_RemoveUnitGroupFromUnitGroup(lp_excludedgrp, lv_targetgrp);
+        auto7EF4D8E8_g = lv_targetgrp;
+        auto7EF4D8E8_u = UnitGroupCount(auto7EF4D8E8_g, c_unitCountAll);
+        for (;; auto7EF4D8E8_u -= 1) {
+            auto7EF4D8E8_var = UnitGroupUnitFromEnd(auto7EF4D8E8_g, auto7EF4D8E8_u);
+            if (auto7EF4D8E8_var == null) { break; }
+            if ((DistanceBetweenPoints(UnitGetPosition(lv_missile), UnitGetPosition(auto7EF4D8E8_var)) > (lp_detonationdistance + UnitGetPropertyFixed(auto7EF4D8E8_var, c_unitPropRadius, c_unitPropCurrent)))) {
+                UnitGroupRemove(lv_targetgrp, auto7EF4D8E8_var);
+            }
+
+        }
         lv_targetcount = UnitGroupCount(lv_targetgrp, c_unitCountAll);
         lv_i = 0;
         while ((lv_i < lv_targetcount)) {
@@ -9159,10 +9190,24 @@ unit gf_targetmisslespelltarget (int lp_caster, point lp_impactpoint, fixed lp_r
     int lv_i;
 
     // Automatic Variable Declarations
+    unitgroup auto05709DA5_g;
+    int auto05709DA5_u;
+    unit auto05709DA5_var;
+
     // Variable Initialization
-    lv_grp = UnitGroup(null, c_playerAny, RegionCircle(lp_impactpoint, lp_range), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
+    lv_grp = UnitGroup(null, c_playerAny, RegionCircle(lp_impactpoint, (lp_range + 2.5)), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
 
     // Implementation
+    auto05709DA5_g = lv_grp;
+    auto05709DA5_u = UnitGroupCount(auto05709DA5_g, c_unitCountAll);
+    for (;; auto05709DA5_u -= 1) {
+        auto05709DA5_var = UnitGroupUnitFromEnd(auto05709DA5_g, auto05709DA5_u);
+        if (auto05709DA5_var == null) { break; }
+        if ((DistanceBetweenPoints(lp_impactpoint, UnitGetPosition(auto05709DA5_var)) > (lp_range + UnitGetPropertyFixed(auto05709DA5_var, c_unitPropRadius, c_unitPropCurrent)))) {
+            UnitGroupRemove(lv_grp, auto05709DA5_var);
+        }
+
+    }
     while ((lv_i < UnitGroupCount(lv_grp, c_unitCountAll))) {
         lv_i += 1;
         if (((lp_includeally == true) || (PlayerGetAlliance(lp_caster, c_allianceIdPassive, UnitGetOwner(UnitGroupUnit(lv_grp, lv_i))) == false))) {
@@ -9181,12 +9226,27 @@ unitgroup gf_targetmisslespelltargets (int lp_caster, point lp_impactpoint, fixe
     int lv_c;
 
     // Automatic Variable Declarations
+    unitgroup autoB2F3303B_g;
+    int autoB2F3303B_u;
+    unit autoB2F3303B_var;
+
     // Variable Initialization
-    lv_grp = UnitGroup(null, c_playerAny, RegionCircle(lp_impactpoint, lp_range), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
+    lv_grp = UnitGroup(null, c_playerAny, RegionCircle(lp_impactpoint, (lp_range + 2.5)), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
     lv_remove = UnitGroupEmpty();
     lv_c = UnitGroupCount(lv_grp, c_unitCountAll);
 
     // Implementation
+    autoB2F3303B_g = lv_grp;
+    autoB2F3303B_u = UnitGroupCount(autoB2F3303B_g, c_unitCountAll);
+    for (;; autoB2F3303B_u -= 1) {
+        autoB2F3303B_var = UnitGroupUnitFromEnd(autoB2F3303B_g, autoB2F3303B_u);
+        if (autoB2F3303B_var == null) { break; }
+        if ((DistanceBetweenPoints(lp_impactpoint, UnitGetPosition(autoB2F3303B_var)) > (lp_range + UnitGetPropertyFixed(autoB2F3303B_var, c_unitPropRadius, c_unitPropCurrent)))) {
+            UnitGroupRemove(lv_grp, autoB2F3303B_var);
+        }
+
+    }
+    lv_c = UnitGroupCount(lv_grp, c_unitCountAll);
     while ((lv_i < lv_c)) {
         lv_i += 1;
         if (((lp_includeally == true) || (PlayerGetAlliance(lp_caster, c_allianceIdPassive, UnitGetOwner(UnitGroupUnit(lv_grp, lv_i))) == false))) {
@@ -9199,7 +9259,7 @@ unitgroup gf_targetmisslespelltargets (int lp_caster, point lp_impactpoint, fixe
     return lv_grp;
 }
 
-unitgroup gf_targetmisslespelltargets2 (int lp_caster, point lp_impactpoint, fixed lp_range, bool lp_includeally, unitgroup lp_excluded) {
+unitgroup gf_targetmisslespelltargetsexclude (int lp_caster, point lp_impactpoint, fixed lp_range, bool lp_includeally, unitgroup lp_excluded) {
     // Variable Declarations
     unitgroup lv_grp;
     unitgroup lv_remove;
@@ -9207,12 +9267,27 @@ unitgroup gf_targetmisslespelltargets2 (int lp_caster, point lp_impactpoint, fix
     int lv_c;
 
     // Automatic Variable Declarations
+    unitgroup autoDBA61BDA_g;
+    int autoDBA61BDA_u;
+    unit autoDBA61BDA_var;
+
     // Variable Initialization
-    lv_grp = UnitGroup(null, c_playerAny, RegionCircle(lp_impactpoint, lp_range), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
+    lv_grp = UnitGroup(null, c_playerAny, RegionCircle(lp_impactpoint, (lp_range + 2.5)), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
     lv_remove = UnitGroupEmpty();
     lv_c = UnitGroupCount(lv_grp, c_unitCountAll);
 
     // Implementation
+    autoDBA61BDA_g = lv_grp;
+    autoDBA61BDA_u = UnitGroupCount(autoDBA61BDA_g, c_unitCountAll);
+    for (;; autoDBA61BDA_u -= 1) {
+        autoDBA61BDA_var = UnitGroupUnitFromEnd(autoDBA61BDA_g, autoDBA61BDA_u);
+        if (autoDBA61BDA_var == null) { break; }
+        if ((DistanceBetweenPoints(lp_impactpoint, UnitGetPosition(autoDBA61BDA_var)) > (lp_range + UnitGetPropertyFixed(autoDBA61BDA_var, c_unitPropRadius, c_unitPropCurrent)))) {
+            UnitGroupRemove(lv_grp, autoDBA61BDA_var);
+        }
+
+    }
+    lv_c = UnitGroupCount(lv_grp, c_unitCountAll);
     while ((lv_i < lv_c)) {
         lv_i += 1;
         if (((lp_includeally == true) || (PlayerGetAlliance(lp_caster, c_allianceIdPassive, UnitGetOwner(UnitGroupUnit(lv_grp, lv_i))) == false))) {
@@ -9336,7 +9411,7 @@ bool auto_gf_Lightning2_TriggerFunc (bool testConds, bool runActions) {
     lv_excludedgrp = lp_excludedtargets;
 
     // Implementation
-    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_origin, lv_impactpoint, "SpireAttackMissile", lp_ttl, 0.3, 1.0, lp_excludedtargets);
+    lv_impactpoint = gf_targetmissilespell(lp_caster, lp_owner, false, lp_origin, lv_impactpoint, "SpireAttackMissile", lp_ttl, 0.3, 0.3, lp_excludedtargets);
     lv_targetgrp = gf_targetmisslespelltargets(lp_owner, lv_impactpoint, 1.0, false);
     if ((UnitGroupCount(lv_targetgrp, c_unitCountAll) >= 1)) {
         lv_target = UnitGroupUnit(gf_targetmisslespelltargets(lp_owner, lv_impactpoint, 1.0, false), 1);
@@ -19235,12 +19310,14 @@ bool gt_SkillGuidedMissileCast_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    UnitCreateEffectPoint(lv_caster, "WarpHeroTurretAimStart", lv_target);
     gf_SkillGuidedMissile(lv_caster, lv_owner, lv_target, UnitGetPosition(lv_caster), TechTreeUpgradeCount(lv_owner, "WarpHeroPierce", c_techCountQueuedOrBetter), TechTreeUpgradeCount(lv_owner, "WarpHeroSplit", c_techCountQueuedOrBetter));
     if ((TechTreeUpgradeCount(lv_owner, "WarpHeroDoubleganger", c_techCountQueuedOrBetter) > 0)) {
         lv_grp = UnitGroup("Decoy", lv_owner, RegionCircle(UnitGetPosition(EventUnit()), 12.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
         while ((UnitGroupCount(lv_grp, c_unitCountAll) > 0)) {
             if ((UnitHasBehavior(UnitGroupUnit(lv_grp, 1), "Doubleganger") == true)) {
                 UnitBehaviorRemove(UnitGroupUnit(lv_grp, 1), "Doubleganger", 1);
+                UnitCreateEffectPoint(UnitGroupUnit(lv_grp, 1), "WarpHeroTurretAimStart", lv_target);
                 gf_SkillGuidedMissile(lv_caster, lv_owner, lv_target, UnitGetPosition(UnitGroupUnit(lv_grp, 1)), lv_pierce, lv_split);
             }
 
@@ -19315,7 +19392,7 @@ bool gt_SkillStrafeCast_Func (bool testConds, bool runActions) {
             }
         }
 
-        Wait((0.5 - (IntToFixed(TechTreeUpgradeCount(lv_owner, "WarpHeroAgility", c_techCountQueuedOrBetter)) * 0.0625)), c_timeGame);
+        Wait((0.5 - (IntToFixed(TechTreeUpgradeCount(lv_owner, "WarpHeroAgility", c_techCountQueuedOrBetter)) * 0.125)), c_timeGame);
     }
     return true;
 }
@@ -19356,6 +19433,7 @@ bool gt_SkillMultishotCast_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    lv_target = PointWithOffsetPolar(lv_target, 2.0, AngleBetweenPoints(UnitGetPosition(lv_caster), lv_target));
     if ((TechTreeUpgradeCount(lv_owner, "WarpHeroDoubleganger", c_techCountQueuedOrBetter) > 0)) {
         lv_grp = UnitGroup("Decoy", lv_owner, RegionCircle(UnitGetPosition(EventUnit()), 12.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
         while ((lv_j < UnitGroupCount(lv_grp, c_unitCountAll))) {
@@ -19374,6 +19452,7 @@ bool gt_SkillMultishotCast_Func (bool testConds, bool runActions) {
         lv_i += 1;
         lv_j = 0;
         if ((lv_i == 1)) {
+            UnitCreateEffectPoint(lv_caster, "WarpHeroTurretAimStart", lv_target);
             gf_SkillMultishot(lv_caster, lv_caster, lv_owner, lv_target);
             autoA1EF4423_n = TechTreeUpgradeCount(lv_owner, "WarpHeroFocus", c_techCountQueuedOrBetter);
             for (autoA1EF4423_i = 1; autoA1EF4423_i <= autoA1EF4423_n; autoA1EF4423_i += 1) {
@@ -19384,6 +19463,7 @@ bool gt_SkillMultishotCast_Func (bool testConds, bool runActions) {
                 while ((lv_j < UnitGroupCount(lv_grp, c_unitCountAll))) {
                     lv_j += 1;
                     if ((UnitIsAlive(UnitGroupUnit(lv_grp, lv_j)) == true)) {
+                        UnitCreateEffectPoint(UnitGroupUnit(lv_grp, lv_j), "WarpHeroTurretAimStart", lv_target);
                         gf_SkillMultishot(lv_caster, UnitGroupUnit(lv_grp, lv_j), lv_owner, lv_target);
                         lv_delay = 0.0;
                         auto41A4407D_n = TechTreeUpgradeCount(lv_owner, "WarpHeroFocus", c_techCountQueuedOrBetter);
@@ -19402,7 +19482,7 @@ bool gt_SkillMultishotCast_Func (bool testConds, bool runActions) {
         }
         else {
             gf_SkillMultishot(lv_caster, lv_caster, lv_owner, PointWithOffsetPolar(lv_target, (lv_i-1), (90.0 + AngleBetweenPoints(UnitGetPosition(lv_caster), lv_target))));
-            gf_SkillMultishot(lv_caster, lv_caster, lv_owner, PointWithOffsetPolar(lv_target, ((lv_i)*-1)+1, (90.0 + AngleBetweenPoints(UnitGetPosition(lv_caster), lv_target))));
+            gf_SkillMultishot(lv_caster, lv_caster, lv_owner, PointWithOffsetPolar(lv_target, (lv_i-1), (270.0 + AngleBetweenPoints(UnitGetPosition(lv_caster), lv_target))));
             if ((TechTreeUpgradeCount(lv_owner, "WarpHeroDoubleganger", c_techCountQueuedOrBetter) > 0)) {
                 while ((lv_j < UnitGroupCount(lv_grp, c_unitCountAll))) {
                     lv_j += 1;

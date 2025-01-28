@@ -489,6 +489,18 @@
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Use" Link="EqCountUpgradeWarpHeroDurableCompleteOnly1"/>
     </CRequirement>
+    <CRequirement id="WarpHeroMultitaskingGTE1">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTECountUpgradeWarpHeroMultitaskCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="WarpHeroMultitaskingGTE2">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTECountUpgradeWarpHeroMultitaskCompleteOnly2"/>
+    </CRequirement>
+    <CRequirement id="WarpHeroMultitaskingGTE3">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTECountUpgradeWarpHeroMultitaskCompleteOnly3"/>
+    </CRequirement>
     <CRequirement id="WarpHeroWarpDroneOnCooldown">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Show" Link="CountBehaviorWarpDroneHiddenCompleteOnlyAtUnit"/>

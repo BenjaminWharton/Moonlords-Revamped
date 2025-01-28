@@ -112,11 +112,192 @@
         <LocalAxis value="0.000000,0.000000,1.000000"/>
         <InitialAngle value="38.000000"/>
     </CActorSiteOpRotator>
+    <CActorSiteOpLocalOffset id="SOpMoveLeftBy1">
+        <LocalOffset value="-1.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpMoveLeftBy2">
+        <LocalOffset value="-2.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpMoveLeftBy4">
+        <LocalOffset value="-4.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpMoveLeftByDot5">
+        <LocalOffset value="-0.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpMoveRightBy1">
+        <LocalOffset value="1.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpMoveRightBy2">
+        <LocalOffset value="2.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpMoveRightBy4">
+        <LocalOffset value="4.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpMoveRightByDot5">
+        <LocalOffset value="0.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorQuad id="WarpHeroMultishotQuadL2" parent="GuideVisualQuadDown" abil="Upheaval">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On index="4" removed="1"/>
+        <Host Subject="WarpHeroMultishotQuad"/>
+        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadL2Facing"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="12.500000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
+    <CActorQuad id="WarpHeroMultishotQuadL3" parent="GuideVisualQuadDown" abil="Upheaval">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On index="4" removed="1"/>
+        <Host Subject="WarpHeroMultishotQuad"/>
+        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadL3Facing"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="12.500000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
+    <CActorQuad id="WarpHeroMultishotQuadL4" parent="GuideVisualQuadDown" abil="Upheaval">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On index="4" removed="1"/>
+        <Host Subject="WarpHeroMultishotQuad"/>
+        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadL4Facing"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="12.500000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
+    <CActorQuad id="WarpHeroMultishotQuadR2" parent="GuideVisualQuadDown" abil="Upheaval">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On index="4" removed="1"/>
+        <Host Subject="WarpHeroMultishotQuad"/>
+        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadR2Facing"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="12.500000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
+    <CActorQuad id="WarpHeroMultishotQuadR3" parent="GuideVisualQuadDown" abil="Upheaval">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On index="4" removed="1"/>
+        <Host Subject="WarpHeroMultishotQuad"/>
+        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadR3Facing"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="12.500000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
+    <CActorQuad id="WarpHeroMultishotQuadR4" parent="GuideVisualQuadDown" abil="Upheaval">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On index="4" removed="1"/>
+        <Host Subject="WarpHeroMultishotQuad"/>
+        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadR4Facing"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="12.500000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadR3Facing">
+        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveRightBy3"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadR4Facing">
+        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveRightBy4"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadRFacing">
+        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveRightBy1"/>
+    </CActorSiteOpForward>
+    <CActorQuad id="WarpHeroMultishotQuadR" parent="GuideVisualQuadDown" abil="Upheaval">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On index="4" removed="1"/>
+        <Host Subject="WarpHeroMultishotQuad"/>
+        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadRFacing"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="12.500000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadL3Facing">
+        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveLeftBy3"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadL4Facing">
+        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveLeftBy4"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadLFacing">
+        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveLeftBy1"/>
+    </CActorSiteOpForward>
     <CActorSiteOpRotator id="EarthHeroUpheavalGuideRotR3">
         <EditorCategories value=""/>
         <LocalAxis value="0.000000,0.000000,1.000000"/>
         <InitialAngle value="322.000000"/>
     </CActorSiteOpRotator>
+    <CActorQuad id="WarpHeroMultishotQuadL" parent="GuideVisualQuadDown" abil="Upheaval">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On index="4" removed="1"/>
+        <Host Subject="WarpHeroMultishotQuad"/>
+        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadLFacing"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="12.500000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
+    <CActorQuad id="WarpHeroMultishotQuad" parent="GuideVisualQuadDown" abil="WarpHeroMultishot">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="Abil.WarpHeroMultishot.Cursor" Send="Create"/>
+        <On index="4" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On Terms="ActorCreation" Send="Create WarpHeroMultishotQuadL"/>
+        <On Terms="ActorCreation" Send="Create WarpHeroMultishotQuadR"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE1" Send="Create WarpHeroMultishotQuadL2"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE1" Send="Create WarpHeroMultishotQuadR2"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE2" Send="Create WarpHeroMultishotQuadL3"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE2" Send="Create WarpHeroMultishotQuadR3"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE3" Send="Create WarpHeroMultishotQuadL4"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE3" Send="Create WarpHeroMultishotQuadR4"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="12.500000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
     <CActorQuad id="EarthHeroUpheavalQuadL3" parent="GuideVisualQuadDown" abil="Upheaval">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
         <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
@@ -252,6 +433,116 @@
         <BarHeight value="1"/>
         <BarWidth value="1"/>
     </CActorMissile>
+    <CActorSound id="WarpHeroMissile_Impact" parent="SoundOneShot">
+        <On Terms="Effect.GuidedImpactSearchArea.Start" Send="Create"/>
+        <On Terms="Effect.MultishotImpactSearchArea.Start" Send="Create"/>
+        <On Terms="Effect.WarpHeroStrafeSA.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadL2Facing">
+        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveLeftBy2"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadR2Facing">
+        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveRightBy2"/>
+    </CActorSiteOpForward>
+    <CActorRange id="WarpHeroMultishotRange" parent="RangeAbil" abil="WarpHeroMultishot"/>
+    <CActorModel id="WarpHeroStrafeImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.WarpHeroStrafeSA.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpMoveUpByDot5"/>
+    </CActorModel>
+    <CActorSound id="WarpHeroMissile_Launch" parent="SoundOneShot">
+        <On Terms="Effect.WarpHeroTurretAimStart.Start; At Caster" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="WarpHeroGuidedMissileImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.GuidedImpactSearchArea.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpMoveUpByDot5"/>
+    </CActorModel>
+    <CActorModel id="WarpHeroTurretAimBusy" parent="ModelAddition">
+        <Inherits index="TintColor" value="0"/>
+        <On index="0" Terms="ActorOrphan" Send="Destroy"/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="Effect.WarpHeroTurretAimBusyTarget.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.400000 Death"/>
+        <On Terms="TimerExpired; TimerName Death" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="AnimPlay BSD Attack"/>
+        <On Terms="AnimDone; AnimName BSD" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.330000"/>
+        <HostSiteOps Ops="SOpCasterUnit SOpAttachTurret SOpForwardTargetPoint" HoldRotation="1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorUnit id="WarpHeroTurretDummy" parent="GenericUnitStandard" unitName="WarpHeroTurretDummy">
+        <On index="0" Send="Create"/>
+        <On index="1" Terms="UnitDeath" Send="Destroy"/>
+        <On index="2" Terms="ActorOrphan" Send="Destroy"/>
+        <On index="3" removed="1"/>
+        <On index="4" removed="1"/>
+        <On index="5" removed="1"/>
+        <On index="6" removed="1"/>
+        <On index="7" removed="1"/>
+        <On index="8" removed="1"/>
+        <On index="9" removed="1"/>
+        <On index="10" removed="1"/>
+        <On index="11" removed="1"/>
+        <On index="12" removed="1"/>
+        <On index="13" removed="1"/>
+        <On index="14" removed="1"/>
+        <On index="15" removed="1"/>
+        <On index="16" removed="1"/>
+        <On index="17" removed="1"/>
+        <On index="18" removed="1"/>
+        <On index="19" removed="1"/>
+        <On index="20" removed="1"/>
+        <On index="21" removed="1"/>
+        <On index="22" removed="1"/>
+        <On index="23" removed="1"/>
+        <On index="24" removed="1"/>
+        <On index="25" removed="1"/>
+        <On index="26" removed="1"/>
+        <On index="27" removed="1"/>
+        <On index="28" removed="1"/>
+        <On index="29" removed="1"/>
+        <On index="30" removed="1"/>
+        <On index="31" removed="1"/>
+        <On index="32" removed="1"/>
+        <On index="33" removed="1"/>
+        <On index="34" removed="1"/>
+        <On index="35" removed="1"/>
+        <On index="36" removed="1"/>
+        <On index="37" removed="1"/>
+        <On index="38" removed="1"/>
+        <On index="39" removed="1"/>
+        <On index="40" removed="1"/>
+        <On index="41" removed="1"/>
+        <On index="42" removed="1"/>
+        <On index="43" removed="1"/>
+        <On index="44" removed="1"/>
+        <On index="45" removed="1"/>
+        <On index="46" removed="1"/>
+        <On index="47" removed="1"/>
+        <On index="48" removed="1"/>
+        <On index="49" removed="1"/>
+        <On index="50" removed="1"/>
+        <On index="51" removed="1"/>
+        <On index="52" removed="1"/>
+        <On index="53" removed="1"/>
+        <On index="54" removed="1"/>
+        <On index="55" removed="1"/>
+        <On index="56" removed="1"/>
+        <On index="57" removed="1"/>
+        <On index="58" removed="1"/>
+        <On index="59" removed="1"/>
+        <On index="60" removed="1"/>
+        <On index="61" removed="1"/>
+        <On index="62" removed="1"/>
+        <On index="63" removed="1"/>
+        <On index="64" removed="1"/>
+        <On index="65" removed="1"/>
+        <On index="66" removed="1"/>
+        <On index="67" removed="1"/>
+        <On index="68" removed="1"/>
+        <Model value="Invisible"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <DeathArray index="Normal" ModelLink=""/>
+    </CActorUnit>
     <CActorSiteOpRandomPointInCircle id="SOpRandomPointInCircle1">
         <Radius value="1.000000"/>
     </CActorSiteOpRandomPointInCircle>
@@ -308,8 +599,8 @@
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Immortal_Land"/>
-        <Model value="Immortal"/>
-        <Scale value="0.800000"/>
+        <On Terms="Effect.WarpHeroTurretAimSet.Start" Send="AnimPlay Attack Attack"/>
+        <Model value="WarpHeroDecoy"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <BuildModel value="ImmortalWarpIn"/>
         <DeathArray index="Normal" ModelLink="ImmortalDeath"/>
@@ -524,6 +815,18 @@
     <CActorModel id="WarpGateWarpCast">
         <On Terms="Abil.WarpInReinforcements.SourceStart" Send="Create"/>
     </CActorModel>
+    <CActorSiteOpRotator id="WarpHeroMissileRotator">
+        <LocalAxis value="0.000000,-1.000000,0.000000"/>
+        <Rate value="180.000000"/>
+    </CActorSiteOpRotator>
+    <CActorMissile id="WarpHeroMultishot" parent="GenericAttackMissile" unitName="WarpHeroMultishot">
+        <On index="1" Terms="UnitBirth" Send="AnimBracketStart Lifetime Birth Walk"/>
+        <On Terms="ActorCreation" Send="SetTeamColor 0,200,0 0,200,0"/>
+    </CActorMissile>
+    <CActorMissile id="WarpHeroStrafe" parent="GenericAttackMissile" unitName="WarpHeroStrafe">
+        <On index="1" Terms="UnitBirth" Send="AnimBracketStart Lifetime Birth Walk"/>
+        <On Terms="ActorCreation" Send="SetTeamColor 255,100,0 255,100,0"/>
+    </CActorMissile>
     <CActorUnit id="WaterHeroPuddleUnit" parent="GenericUnitStandard" unitName="WaterHeroPuddleUnit">
         <On Terms="ActorCreation" Send="SetOpacity 0.300000"/>
         <On Terms="UnitDeath" Send="Destroy"/>
@@ -1977,7 +2280,7 @@
         <On Terms="Effect.ThorV2Fire.Start" Send="Create"/>
         <On Terms="Effect.ThorV2Fire.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpShadow"/>
-        <Model value="MultishotBlaze"/>
+        <Model value="WarpHeroMultishotBlaze"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CActorSplat id="PowerField" parent="GenericUnitSplat">
@@ -6316,7 +6619,10 @@
     <CActorMissile id="TimberLanceMissile" parent="WizSimpleMissile" unitName="TimberLanceMissile">
         <On Terms="ActorCreation" Send="SetTintColor 200,150,75"/>
     </CActorMissile>
-    <CActorModel id="MultishotImpact" parent="ModelAnimationStyleOneShot"/>
+    <CActorModel id="MultishotImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.MultishotImpactSearchArea.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpMoveUpByDot5"/>
+    </CActorModel>
     <CActorModel id="MusclePoisonImpact2" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.MusclePoisonDummy.Start" Send="Create"/>
         <Model value="MusclePoisonImpact"/>
@@ -7407,6 +7713,12 @@
             <Image value="Assets\Textures\wireframe-protoss-zealot-aiur-shield03.dds"/>
         </WireframeShield>
     </CActorUnit>
+    <CActorAction id="GatewayHeroZealotAttack" parent="GenericAttack" effectAttack="GatewayHeroZealotAttackDMG">
+        <LaunchAttachQuery Methods="AMFilterWeaponLeft"/>
+        <LaunchAssets Sound="ZealotAiur_AttackLaunch"/>
+        <ImpactMap index="None" Sound="ZealotAiur_AttackImpact"/>
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
     <CActorAction id="ZealotSlashAttack" parent="GenericAttack" effectAttack="ZealotSlashDMG">
         <EditorCategories value=""/>
         <ImpactSiteOps Ops="SOpCasterPoint"/>
@@ -9829,8 +10141,7 @@
         <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="Abil.WarpHeroDecoy.Cursor" Send="Create"/>
         <HostSiteOps Ops="SOpBasicScopeFollow"/>
-        <Model value="ImmortalPlacement"/>
-        <Scale value="0.800000"/>
+        <Model value="WarpHeroDecoyPlacement"/>
     </CActorModel>
     <CActorUnit id="DestroyerDrone" parent="GenericUnitMorph" HealerDrone="" unitName="DestroyerDrone">
         <Aliases value="_UnitSmall"/>
@@ -11555,15 +11866,8 @@
         <On Terms="Effect.ImmortalMultishotfire.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpShadow"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Model value="WarpHeroMultishotBlaze"/>
     </CActorModel>
-    <!--                                                                                         -->
-    <CActorAction id="ImmortalAttack">
-        <On index="4" Terms="Effect.ImmortalGuideddamage.Start; At Caster"/>
-        <On Terms="Effect.ImmortalMultiShotDamage.Start; At Caster" Send="Create"/>
-        <On Terms="Effect.ImmortalStrafeDamage.Start; At Caster" Send="Create"/>
-        <ImpactMap index="None" Model="MultishotImpact"/>
-        <ImpactModel value="MultishotImpact"/>
-    </CActorAction>
     <CActorAction id="PlasmaTorpedoAttack" parent="GenericAttack" effectAttack="PlasmaTorpedoDamage">
         <LaunchAssets Model="ImmortalAttackLaunch" Sound="Immortal_AttackLaunch"/>
         <ImpactMap index="None" Model="PlasmaTorpedoImpact" Sound="Immortal_AttackImpact" ModelReaction="ImmortalAttackImpactReaction"/>
@@ -11577,21 +11881,15 @@
         <On index="6" removed="1"/>
         <On index="7" removed="1"/>
         <On index="8" removed="1"/>
-        <On index="9" removed="1"/>
-        <On index="10" removed="1"/>
         <ImpactMap index="None" Model="ShockwaveMissileImpact" Sound="Phoenix_AirAttackImpact"/>
         <ImpactModel value="ShockwaveImpact"/>
     </CActorAction>
     <CActorUnit id="WarpHero" parent="GenericUnitStandard" unitName="WarpHero">
-        <On Terms="Abil.GuidedMissile.SourceCastStop" Send="AnimPlay Spell Attack"/>
-        <On Terms="Abil.WarpHeroMultishot.SourceCastStop" Send="AnimPlay Spell Attack"/>
-        <On Terms="Abil.WarpHeroStrafe.SourceCastStop" Send="AnimPlay Spell Attack"/>
-        <On Terms="Abil.WarpHeroDecoy.SourceCastStop" Send="AnimPlay Spell Attack"/>
-        <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
-        <On Terms="ActorCreation" Send="SetTeamColor 255,25,0 255,25,0"/>
-        <On Terms="Upgrade.WarpHeroDurable.Add" Send="SetScale 0.700000"/>
-        <On Terms="Upgrade.WarpHeroDurable.Add; ValidatePlayer WarpHeroDurableIsLvl1" Send="SetScale 0.800000"/>
-        <Scale value="0.600000"/>
+        <On Terms="Upgrade.WarpHeroDurable.Add" Send="SetScale 1.125000 1.000000"/>
+        <On Terms="Upgrade.WarpHeroDurable.Add; ValidatePlayer WarpHeroDurableIsLvl1" Send="SetScale 1.250000 1.000000"/>
+        <On Terms="Effect.WarpHeroTurretAimSet.Start" Send="AnimPlay Spell Attack"/>
+        <On Terms="Behavior.PowerPlating2.On" Send="SetTeamColor 0,172,255 0,96,255 0.500000 OneShot PowerPlating"/>
+        <On Terms="Behavior.PowerPlating.On" Send="SetTeamColor 0,175,0 64,225,64 0.500000 OneShot PowerPlating"/>
         <AnimBlendTime value="0.450000"/>
         <BuildModel value="ImmortalWarpIn"/>
         <PlacementModel value="ImmortalPlacement"/>
@@ -11631,11 +11929,14 @@
         <StatusBarFlags index="Workers" value="0"/>
         <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
-    <CActorMissile id="WarpHeroattackmissile" parent="GenericAttackMissile" unitName="ImmortalMissile">
-        <On index="0" Terms="UnitBirth.WarpHeroMissile" Send="Create"/>
-        <Scale value="0.400000,0.700000,0.400000"/>
-        <BarHeight value="1"/>
-        <BarWidth value="1"/>
+    <CActorMissile id="WarpHeroGuidedMissile" parent="GenericAttackMissile" unitName="WarpHeroGuidedMissile">
+        <On Terms="ActorCreation" Send="TimerSet 0.200000 Walk"/>
+        <On Terms="TimerExpired; TimerName Walk" Send="AnimPlay BSD Walk 0 0.350000"/>
+        <On Terms="TimerExpired; TimerName Walk" Send="TimerSet 0.200000 Stand"/>
+        <On Terms="TimerExpired; TimerName Stand" Send="AnimPlay BSD Stand 0 0.250000"/>
+        <On Terms="TimerExpired; TimerName Stand" Send="TimerSet 0.200000 Walk"/>
+        <On Terms="ActorCreation" Send="SetTeamColor 0,200,200 0,200,200"/>
+        <HostSiteOps Ops="WarpHeroMissileRotator"/>
     </CActorMissile>
     <CActorModel id="Regeneration" parent="ModelAddition">
         <EditorCategories value=""/>

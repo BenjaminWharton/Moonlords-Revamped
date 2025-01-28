@@ -692,6 +692,111 @@
         <EffectArray value="OrbitalCannon2"/>
         <EffectArray value="ShockwaveInitLink"/>
     </CEffectSet>
+    <CEffectModifyUnit id="WarpHeroStrafeHeal">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Shields">
+            <Change value="0">
+                <AccumulatorArray value="HealingMultiplier"/>
+            </Change>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectAddTrackedUnit id="WarpHeroTurretATU">
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="WarpHeroDummyTracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectApplyBehavior id="WarpHeroTurretAimAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="WarpHeroTurretAim"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="WarpHeroTurretAimBusy">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Effect="WarpHeroTurretAimStart"/>
+        <InitialEffect value="WarpHeroTurretAimBusyTarget"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumTrackedUnits id="WarpHeroTurretAimETU">
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="WarpHeroDummyTracker"/>
+        <Effect value="WarpHeroTurretAimSwitch"/>
+    </CEffectEnumTrackedUnits>
+    <!--Thought the visuals looked better without this-->
+    <CEffectRemoveBehavior id="WarpHeroTurretAimRB">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <BehaviorLink value="WarpHeroTurretAim"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="WarpHeroTurretAimSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="WarpHeroTurretAimTP"/>
+        <EffectArray value="WarpHeroTurretAimAB"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="WarpHeroTurretAimStart">
+        <EditorCategories value="Race:Protoss"/>
+        <InitialEffect value="WarpHeroTurretCU"/>
+        <FinalEffect value="WarpHeroTurretAimETU"/>
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="WarpHeroTurretAimSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="WarpHeroNoTurretAim" Effect="WarpHeroTurretAimSet"/>
+        <CaseDefault value="WarpHeroTurretAimBusy"/>
+    </CEffectSwitch>
+    <CEffectTeleport id="WarpHeroTurretAimTP">
+        <EditorCategories value="Race:Protoss"/>
+        <MinDistance value="0"/>
+        <SourceLocation Value="TargetUnit"/>
+        <TargetLocation Effect="WarpHeroTurretAimStart" Value="TargetPoint"/>
+    </CEffectTeleport>
+    <CEffectModifyUnit id="WarpHeroTurretAimTurretStart">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+        <ModifyTurret Turret="Immortal" AimCompleteEffect="WarpHeroTurretAimRB">
+            <Target Value="TargetUnit"/>
+            <Flags index="Tracking" value="1"/>
+        </ModifyTurret>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="WarpHeroTurretAimTurretStop">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+        <ModifyTurret Action="ClearTarget" Turret="Immortal">
+            <Target Value="TargetUnit"/>
+            <Flags index="Tracking" value="1"/>
+        </ModifyTurret>
+    </CEffectModifyUnit>
+    <CEffectCreateUnit id="WarpHeroTurretCU">
+        <ValidatorArray value="WarpHeroNoTurretDummy"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterPoint"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="WarpHeroTurretCUSet"/>
+        <SpawnUnit value="WarpHeroTurretDummy"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="WarpHeroTurretCUSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="WarpHeroTurretFate"/>
+        <EffectArray value="WarpHeroTurretATU"/>
+        <EffectArray value="FollowCasterAK"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="WarpHeroTurretAimBusyTarget">
+        <EditorCategories value="Race:Protoss"/>
+        <DebugTrace value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="WarpHeroTurretFate">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="WarpHeroDummyFate"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumTrackedUnits id="WarpHeroTurretKillETU">
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="WarpHeroDummyTracker"/>
+        <Effect value="KillRemove"/>
+    </CEffectEnumTrackedUnits>
+    <CEffectDamage id="GatewayHeroZealotAttackDMG" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="30"/>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
     <CEffectCreatePersistent id="ZergLordGlaiveAttackCP">
         <EditorCategories value="Race:Zerg"/>
         <Flags index="RandomOffset" value="1"/>
@@ -1850,6 +1955,7 @@
     <CEffectSet id="WarpHeroDecoyCUSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="WarpHeroDecoyFate"/>
+        <EffectArray value="WarpHeroTurretAimStart"/>
         <EffectArray value="HallucinatonDecoyBonus"/>
         <EffectArray value="Doubleganger"/>
         <EffectArray value="WarpHeroDecoyLimitAB"/>
@@ -14972,9 +15078,6 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="LightningHeroThunderfuryWrathZapSA"/>
     </CEffectSet>
-    <CEffectDamage id="ZealotAiurWeapon">
-        <Amount value="30"/>
-    </CEffectDamage>
     <CEffectApplyBehavior id="ZealotAttackRendAB">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
@@ -14988,7 +15091,7 @@
     <CEffectSet id="ZealotAttackSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="ZealotAttackRendAB"/>
-        <EffectArray value="ZealotAiurWeapon"/>
+        <EffectArray value="GatewayHeroZealotAttackDMG"/>
     </CEffectSet>
     <CEffectDamage id="ZealotSlashDMG">
         <EditorCategories value="Race:Protoss"/>
@@ -15294,6 +15397,9 @@
         <AreaArray Radius="3" Effect="EarthHeroFortifySwitch"/>
         <ImpactLocation Value="TargetPoint"/>
         <ExcludeArray/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
     </CEffectEnumArea>
     <CEffectSet id="FortifyAllySet">
         <EditorCategories value="Race:Protoss"/>
@@ -15368,6 +15474,9 @@
         <ImpactLocation Value="TargetPoint"/>
         <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1.7" Effect="LavaSet"/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
     </CEffectEnumArea>
     <CEffectCreatePersistent id="LavaCP">
         <EditorCategories value="Race:Protoss"/>
@@ -16135,15 +16244,16 @@
     <CEffectDamage id="HunterKillerU">
         <Amount value="18"/>
     </CEffectDamage>
-    <CEffectApplyBehavior id="ImmortalStrafeEndless">
-        <EditorCategories value=""/>
+    <CEffectApplyBehavior id="WarpHeroStrafeEndless">
+        <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
         <WhichUnit Value="Caster"/>
+        <Behavior value="ImmortalStrafeEndless"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="ImmortalStrafeImpactSet">
-        <EditorCategories value=""/>
-        <EffectArray value="StrafeImpactSearchArea"/>
-        <EffectArray value="ImmortalStrafeEndless"/>
+    <CEffectSet id="WarpHeroStrafeSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="WarpHeroStrafeSA"/>
+        <EffectArray value="WarpHeroStrafeEndless"/>
     </CEffectSet>
     <CEffectApplyBehavior id="ImpalerSpinesAB">
         <EditorCategories value="Race:Zerg"/>
@@ -16790,7 +16900,9 @@
         <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1" Effect="TremorSet"/>
         <ImpactLocation Value="TargetPoint"/>
-        <RevealerParams Duration="0.5"/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
     </CEffectEnumArea>
     <CEffectSet id="TremorSet">
         <EditorCategories value="Race:Protoss"/>
@@ -17478,10 +17590,6 @@
         <SearchFilters value="Missile;Player,Ally,Neutral"/>
         <AreaArray Radius="4" Effect="YouFailedKillMissile"/>
     </CEffectEnumArea>
-    <CEffectSet id="ZealotAiurWeaponCleaveSet">
-        <EffectArray index="0" value="InjectionSet"/>
-        <EffectArray value="ZealotAiurWeaponBurst"/>
-    </CEffectSet>
     <CEffectCreatePersistent id="ZergLordAttackInit">
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
@@ -18501,13 +18609,13 @@
         <PeriodicEffectArray value="MultishotFireSearchArea"/>
         <PeriodicPeriodArray value="0.25"/>
     </CEffectCreatePersistent>
-    <CEffectDamage id="ImmortalStrafeDamage">
-        <EditorCategories value=""/>
-        <ArmorReduction value="1"/>
-        <Amount value="40"/>
-        <Flags index="Notification" value="1"/>
+    <CEffectDamage id="WarpHeroStrafeDMG">
+        <EditorCategories value="Race:Protoss"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
+        <ArmorReduction value="1"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="40"/>
     </CEffectDamage>
     <CEffectDamage id="ImmortalMultiShotDamage">
         <EditorCategories value=""/>
@@ -19025,29 +19133,35 @@
         <Marker Link="Effect/StaticShieldEnergy"/>
         <ImpactUnit Value="Caster"/>
     </CEffectModifyUnit>
-    <CEffectEnumArea id="StrafeImpactSearchArea">
-        <EditorCategories value=""/>
+    <CEffectEnumArea id="WarpHeroStrafeSA">
+        <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/StrafeSearchArea"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1" Effect="ImmortalStrafeDamage"/>
+        <AreaArray Radius="1" Effect="WarpHeroStrafeDMG"/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
         <MaxCount value="1"/>
-        <MinCount value="1"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="MultishotImpactSearchArea">
         <EditorCategories value=""/>
         <Marker Link="Effect/StrafeSearchArea"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1" Effect="ImmortalMultishotSet"/>
-        <MinCount value="1"/>
         <MaxCount value="1"/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
     </CEffectEnumArea>
     <CEffectEnumArea id="GuidedImpactSearchArea">
         <EditorCategories value=""/>
         <Marker Link="Effect/StrafeSearchArea"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1" Effect="ImmortalGuideddamage"/>
-        <MinCount value="1"/>
         <MaxCount value="1"/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
     </CEffectEnumArea>
     <CEffectDamage id="Talons">
         <Amount value="24"/>

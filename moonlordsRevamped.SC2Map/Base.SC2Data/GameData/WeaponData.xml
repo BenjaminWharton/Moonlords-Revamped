@@ -14,6 +14,19 @@
         <Period value="0.7"/>
         <Effect value="OrbOfHavocWispSet"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="GatewayHeroSolariteReaper">
+        <EditorCategories value="Race:Protoss"/>
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="GatewayHeroZealotAttackDMG"/>
+        <DisplayAttackCount value="1"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="20"/>
+        <Range value="0.1"/>
+        <Period value="1.2"/>
+        <DamagePoint value="0"/>
+        <Effect value="ZealotAttackSet"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="SporeDefense">
         <EditorCategories value="Race:Zerg"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
@@ -724,10 +737,6 @@
         <LegacyOptions index="KeepChanneling" value="1"/>
         <RandomDelayMin value="0"/>
         <RandomDelayMax value="0"/>
-    </CWeaponLegacy>
-    <CWeaponLegacy id="SolariteReaper">
-        <MinScanRange value="20"/>
-        <Effect value="ZealotAttackSet"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="SpewBanelings">
         <EditorCategories value="Race:Zerg"/>
