@@ -283,6 +283,7 @@ Behavior/Name/Hallucinating=Галлюцинации
 Behavior/Name/HallucinatonDecoyBonus=HallucinatonDecoyBonus
 Behavior/Name/Hard=Сложно
 Behavior/Name/HardBoss=Сложно - босс
+Behavior/Name/HardShell=Твёрдый панцирь
 Behavior/Name/Hardcore=«Хардкор»
 Behavior/Name/HasteAura=Аура спешки
 Behavior/Name/HasteAuraChampion=Аура спешки защитника
@@ -446,6 +447,7 @@ Behavior/Name/ShadowplayHeroic=Игра тени
 Behavior/Name/Shatter=Разрушение
 Behavior/Name/Shell=Панцирь
 Behavior/Name/ShockwaveAntiRecast=ShockwaveAntiRecast
+Behavior/Name/ShockwaveOrbiAntiRecast=ShockwaveOrbiAntiRecast
 Behavior/Name/Shockwaved=Ударная волна
 Behavior/Name/Shredded=Измельчение
 Behavior/Name/SiegeWeaponryUI=Осадное вооружение
@@ -503,6 +505,7 @@ Behavior/Name/Volatile=Взрывной
 Behavior/Name/VolatileSporesUI=Взрывные споры
 Behavior/Name/WallofDarkness=Стена тьмы
 Behavior/Name/WarpDrone=Вызов дрона
+Behavior/Name/WarpHeroDummyFate=Warp Hero - Dummy Fate
 Behavior/Name/Warpout=Перемещение
 Behavior/Name/WaterHeroIceBlast=Герой воды - Ледяной взрыв
 Behavior/Name/WaterHeroPuddleFate=Герой воды - Лужа: задержка
@@ -612,6 +615,7 @@ Behavior/Tooltip/GuardianShellInvulnerable=Эта единица невоспр�
 Behavior/Tooltip/Hallucinating=Эта единица атакует своих союзников.
 Behavior/Tooltip/Hard=Сложность: Сложно
 Behavior/Tooltip/HardBoss=Этот босс появляется только на сложной+ сложности.
+Behavior/Tooltip/HardShell=Похоже, эта единица невосприимчива к повреждениям. Должен быть какой-то другой способ уничтожить её...
 Behavior/Tooltip/Hardcore=Сложность: «Хардкор»
 Behavior/Tooltip/HasteAura=Аура спешки – увеличивает скорость атаки на 15%.
 Behavior/Tooltip/HasteAuraChampion=Аура спешки защитника – увеличивает скорость атаки на 15% для всех ближайших союзников.
@@ -945,7 +949,7 @@ Button/Tooltip/BladeStormUnit=
 Button/Tooltip/Blastwave=Мгновенно наносит всем вражеским единицам в целевой области <c val="FFFF80"><d ref="Effect,FireHeroBlastwaveDMG,Amount"/></c> ед. урона, замедляя и оглушая их.
 Button/Tooltip/Blood=Получение <c val="FFFF80">1</c> ед. крови и исцеление <c val="FFFF80"><d ref="Effect,BloodDeathHeal,VitalArray[Life].Change" precision="1"/></c> ед. запаса здоровья, когда враги, поражённые вашими способностями, умирают. Крупные враги дают <c val="FFFF80"><d ref="Effect,BloodMassiveABStack,Count"/></c> ед. крови, а особые дают <c val="FFFF80"><d ref="Effect,BloodHeroicABStack,Count"/></c> ед. крови.<n/><n/>Когда <c val="FFFF80">100</c> ед. крови получено, количество крови сбрасывается, применяется способность «Подмена» бесплатно и максимальный запас здоровья навсегда увеличивается на <c val="FFFF80"><d ref="Effect,BladeHeroBloodHPAB10,Count"/></c> ед.<n/><n/>После <c val="FFFF80">500</c> ед. дополнительного здоровья бонус снизится до <c val="FFFF80"><d ref="Effect,BladeHeroBloodHPAB5,Count"/></c> ед., а после <c val="FFFF80">1 000</c> ед. бонус снизится до <c val="FFFF80"><d ref="Effect,BladeHeroBloodHPAB2,Count"/></c>.
 Button/Tooltip/Boil=Наносит <c val="FFFF80"><d ref="Effect,BoilDMG,Amount"/></c> ед. урона врагам в радиусе <c val="FFFF80"><d ref="Effect,BoilSA,AreaArray[0].Radius" precision="1"/></c> вокруг целевой области.<n/><n/>На промокших врагов накладывается эффект «Ошпаренность», который наносит <c val="FFFF80"><d ref="Effect,ScaldedDMG,Amount*4"/></c> ед. урона в секунду за эффект в течение <c val="FFFF80"><d ref="Behavior,ScaldedBase,Duration"/></c> сек.<n/><n/>Враги под эффектом «Ошпаренность» получают ещё один эффект каждый раз, когда они промакиваются снова, накладываясь до <c val="FFFF80"><d ref="Behavior,ScaldedStack,MaxStackCount"/></c> <lang rule="plural" val="">раз,раза,раз</lang>.
-Button/Tooltip/Boulder=Бросок валуна в направлении цели, который наносит <c val="FFFF80"><d ref="Effect,BoulderDMG,Amount*16"/></c> ед. урона в секунду в радиусе <c val="FFFF80"><d ref="Effect,BoulderSA,AreaArray[0].Radius" precision="1"/></c> врагам, через которых он проходит.
+Button/Tooltip/Boulder=Бросок валуна в направлении цели, который наносит <c val="FFFF80"><d ref="Effect,BoulderDMG,Amount"/></c> ед. урона в радиусе <c val="FFFF80"><d ref="Effect,BoulderSA,AreaArray[0].Radius*Accumulator,EarthHeroBoulderRadiusMultiplier,Amount" precision="1"/></c> врагам, через которых он проходит.
 Button/Tooltip/BoulderY=Бросок валуна в направлении цели.
 Button/Tooltip/BroodLord=В качестве основной атаки он выпускает симбионтов, а кроме того, единицы, убитые хозяином стаи, порождают 2 симбионтов.
 Button/Tooltip/CancelInfusion=Отмена заряжания стихии.
@@ -970,7 +974,7 @@ Button/Tooltip/DestroyerDrone=<c val="FFFF00">Копирует все атаку
 Button/Tooltip/Dexterity=Имеет <c val="FFFF80"><d ref="Behavior,Evasion,DamageResponse.Chance*100"/>%</c> шанс уклониться от урона.<n/><n/>Может применять способности во время передвижения.
 Button/Tooltip/Discharge=
 Button/Tooltip/Disintegrate=Убивает единицу под вашим контролем, позволяя вам использовать способность «Игра теней» на новую цель.
-Button/Tooltip/Disintegrator=Мощный шагающий боевой робот. Может свободно преодолевать уступы. Воспламеняет участки земли, нанося урон сразу нескольким противникам.<n/><n/><c val="ffff8a">Атакует только наземные цели.</c>
+Button/Tooltip/Disintegrator=Мощный бронебойный штурмовой робот с огромной дальностью атаки.
 Button/Tooltip/Distortion=Выстреливает <c val="FFFF80"><d ref="Effect,DistortionOffset,PeriodCount" precision="3"/></c> <lang rule="plural" val="">искажением,искажениями,искажениями</lang> в направлении цели, которые проходят расстояние до <c val="FFFF80">6</c> нанося <c val="FFFF80"><d ref="Effect,DistortionDMG,Amount"/></c> ед. урона и тянут за собой вражеские единицу.<n/><n/>Каждое искажение по истечении срока действия вызывает разряд, который наносит <c val="FFFF80"><d ref="Effect,DistortionDischargeDMG,Amount"/></c> ед. урона в радиусе <c val="FFFF80"><d ref="Effect,DistortionDischargeSA,AreaArray[0].Radius" precision="1"/></c>.<n/><n/>Каждое <c val="FFFF80"><d ref="Behavior,IllusionHeroOverload,MaxStackCount" precision="1"/></c> попадание искажением по одной и той же цели вызовет перегрузку, которая наносит <c val="FFFF80"><d ref="Effect,IllusionHeroDistortionOverloadDMG,Amount" precision="1"/></c> ед. урона в радиусе <c val="FFFF80"><d ref="Effect,IllusionHeroDistortionOverloadSA,AreaArray[0].Radius" precision="1"/></c>.
 Button/Tooltip/Doom=Насылает на цель надвигающуюся гибель, нанося периодический урон. Когда обречённая единица умирает, весь урон, нанесённый ей судьбой, высвобождается, нанося урон всем ближайшим единицам.
 Button/Tooltip/DoomLord=Насылает гибель, которую невозможно остановить, пока повелитель судьбы не будет уничтожен.
@@ -1015,7 +1019,7 @@ Button/Tooltip/Firestorm=Заряд: <c val="FF8000">Огонь</c>.<n/>Выпу
 Button/Tooltip/FirestormWind=Заряд: <c val="FFFFFF">Ветер</c>.<n/>Выпускает: <c val="FF8000">Огонь</c>.<n/><n/>Наносит <c val="FFFF80"><d ref="Effect,FirestormWindDMG,Amount"/></c> ед. урона по дуге в <c val="FFFF80">60</c> градусов в радиусе <c val="FFFF80"><d ref="Effect,FirestormWindSA,AreaArray[0].Radius" precision="1"/>.
 Button/Tooltip/FleshLord=Стремительно выбрасывает снаряды, перекатывая или подбрасывая их.
 Button/Tooltip/Flood=Оставляет после себя лужи воды каждые <c val="FFFF80"><d ref="Behavior,Flood,Period" precision="1"/></c> сек.<n/><n/>Лужи длятся <c val="FFFF80"><d ref="Behavior,WaterHeroPuddleFate,Duration" precision="1"/></c> сек. и периодически обмакивают врагов в радиусе <c val="FFFF80"><d ref="Effect,PuddleSA,AreaArray[0].Radius" precision="1"/></c>.
-Button/Tooltip/Fortify=Укрепляет всех союзников в радиусе <c val="FFFF80"><d ref="Effect,FortifySA,AreaArray[0].Radius"/></c>.<n/><n/>Если цель особая, броня увеличивается на <c val="FFFF80"><d ref="Behavior,FortifyHero,Modification.LifeArmorBonus"/></c>, снижение урона увеличивается на <c val="FFFF80"><d ref="(1-Behavior,FortifyHero,DamageResponse.ModifyFraction)*100" precision="1"/>%</c>, а вся скорость восстановления увеличивается на <c val="FFFF80"><d ref="Behavior,FortifyHero,Modification.VitalRegenArray[Energy]*100"/>%</c>.<n/><n/>Если цель не особая, показатели здоровья увеличиваются на <c val="FFFF80"><d ref="Behavior,Fortify,Modification.VitalMaxFractionArray[Life]*100"/>%</c>, урон увеличивается на <c val="FFFF80"><d ref="Behavior,Fortify,Modification.UnifiedDamageDealtFraction[Melee]*100"/>%</c>, а скорость атаки увеличивается на <c val="FFFF80"><d ref="Behavior,Fortify,Modification.AttackSpeedMultiplier*100-100" precision="1"/>%</c>.<n/><n/>Действует постоянно для строений, но длится <c val="FFFF80">30</c> секунд для боевых единиц.
+Button/Tooltip/Fortify=Даёт <c val="FFFF80"><d ref="Effect,EarthHeroFortifyHeal,VitalArray[Life].Change"/></c> ед. здоровья для каждой единицы в радиусе <c val="FFFF80"><d ref="Effect,FortifySA,AreaArray[0].Radius" precision="1"/></c> вокруг целевой точки. Крупным/строениям даёт x2, а особым – x5.<n/><n/>Все союзники в области получают следующий эффект<n/><n/>Если цель особая: получает <c val="FFFF80"><d ref="Behavior,FortifyHero,Modification.LifeArmorBonus"/></c> брони, <c val="FFFF80"><d ref="(1-Behavior,FortifyHero,DamageResponse.ModifyFraction)*100" precision="1"/>%</c> снижения урона и <c val="FFFF80"><d ref="Behavior,FortifyHero,Modification.VitalRegenArray[Energy]*100"/>%</c> ко всем скоростям восстановления.<n/><n/>Если цель не особая: получает <c val="FFFF80"><d ref="Behavior,Fortify,Modification.VitalMaxFractionArray[Life]*100"/>%</c> к показателям здоровья, <c val="FFFF80"><d ref="Behavior,Fortify,Modification.UnifiedDamageDealtFraction[Melee]*100"/>%</c> к урону и <c val="FFFF80"><d ref="Behavior,Fortify,Modification.AttackSpeedMultiplier*100-100" precision="1"/>%</c> к скорости атаки.<n/><n/>Действует постоянно для строений, но длится <c val="FFFF80">30</c> секунд для боевых единиц.
 Button/Tooltip/FortressLord=Сильно увеличивает броню, однако при получении урона она уменьшается на 1 ед.
 Button/Tooltip/ForwardBeam=Посылает лазер в точку цели, который пролетает на расстояние <c val="FFFF80">12</c>, нанося урон врагам, которые его касаются.<n/><n/>Действует <c val="FFFF80"><d ref="Effect,ForwardBeamLifetime,PeriodCount*Effect,ForwardBeamLifetime,PeriodicPeriodArray[0]" precision="2"/></c> сек.
 Button/Tooltip/Freeze=Накладывает на врагов в радиусе <c val="FFFF80"><d ref="Effect,FreezeSA,AreaArray[0].Radius" precision="1"/></c> вокруг целевой области эффект холода, который заставляет поражённых врагов двигаться и атаковать со скоростью <c val="FFFF80"><d ref="Behavior,Cold,Modification.MoveSpeedMultiplier*100" precision="1"/>%</c> от их первоначальной скорости.<n/><n/>Промокшие враги будут заморожены на <c val="FFFF80">10</c> секунд или до получения урона.<n/><n/>Замораживание врага восстановит <c val="FFFF80"><d ref="Effect,WaterHeroFreezeHealMU,VitalArray[Shields].Change"/></c> ед. щитов заклинателю.<n/><n/>Замороженные единицы, получившие урон, разлетаются на куски и получают <c val="FFFF80"><d ref="Effect,ShatterDMG,Amount"/></c> ед. урона.
@@ -1074,7 +1078,7 @@ Button/Tooltip/LaunchOrbsOfAttrition=Запустить все шары исто
 Button/Tooltip/LaunchOrbsOfDestruction=Запустить все шары разрушения в указанную точку, каждый из которых наносит <c val="FFFF80"><d ref="Effect,OrbOfDestructionDMG,Amount"/></c> ед. урона в радиусе <c val="FFFF80">1</c> и наносит <c val="FFFF80"><d ref="Effect,OrbOfDestructionSnipeDMG,Amount/Effect,OrbOfDestructionDMG,Amount*100"/>%</c> дополнительного урона врагу с наибольшим количеством здоровья в радиусе.<n/><n/>Если применить хотя бы <c val="FFFF80">1</c> силу шара, то каждый шар разрушения разделится на <c val="FFFF80"><d ref="1 + (Effect,LuckHeroOrbOfDestructionDivisionOffset,PeriodCount)"/></c> и затем отскочит <c val="FFFF80">1</c> раз за каждый использованный шар, каждый раз удаляясь дальше от первоначальной точки удара.<n/>
 Button/Tooltip/LaunchOrbsOfHavoc=Запустить все шары опустошения в указанную точку и создать неподвижный шар опустошения, который будет наносить <c val="FFFF80"><d ref="Effect,OrbOfHavocDMG,Amount"/></c> ед. урона вражеским единицам в радиусе <c val="FFFF80">3</c> каждые <c val="FFFF80"><d ref="Behavior,OrbOfHavocFate,Period" precision="1"/></c> сек.<n/><n/>Каждый использованный шар увеличивает наносимый урон на <c val="FFFF80"><d ref="((Effect,OrbOfHavoc1BounceDMG,Amount - Effect,OrbOfHavocDMG,Amount)/Effect,OrbOfHavocDMG,Amount)*100" precision="1"/>%</c>, дальность на <c val="FFFF80"><d ref="Accumulator,LuckHeroOrbOfHavocRadiusMultiplier,Amount" precision="2"/></c>, длительность на <c val="FFFF80"><d ref="Accumulator,LuckHeroOrbOfHavocDurationMultiplier,Amount" precision="2"/></c> сек. и заставляет каждую атаку отскакивать <c val="FFFF80">1</c> раз в радиусе <c val="FFFF80"><d ref="Effect,OrbOfHavoc1BounceSA,AreaArray[0].Radius"/></c>. (каждый отскок наносит меньше урона)<n/>
 Button/Tooltip/LaunchOrbsOfVitality=Запустить все шары живучести в намеченную точку, которые объединяются в один взрыв, который наносит <c val="FFFF80"><d ref="Accumulator,LuckHeroOrbOfVitalityDamageBase,Amount"/></c> ед. урона в радиусе <c val="FFFF80">2</c> и дающий <c val="FFFF80"><d ref="(Effect,LuckHeroOrbOfVitality0DMG,LeechFraction[Life])*100" precision="1"/>%</c> нанесённого урона обратно в виде здоровья. Также восстанавливает <c val="FFFF80"><d ref="Accumulator,LuckHeroOrbOfVitalityHealBase,Amount"/></c> ед. здоровья/щитов союзников в том же радиусе.<n/><n/>Каждый использованный шар увеличивает радиус первичного удара на <c val="FFFF80"><d ref="Accumulator,LuckHeroOrbOfVitalityRadiusMultiplier,Amount" precision="2"/></c>, увеличивает урон и лечение на <c val="FFFF80"><d ref="Accumulator,LuckHeroOrbOfVitalityDamageMultiplier,Amount/Accumulator,LuckHeroOrbOfVitalityDamageBase,Amount*100"/>%</c>, восстанавливает здоровье/щиты союзников на <c val="FFFF80"><d ref="(Effect,OrbOfVitalityHealMU,VitalArray[Life].ChangeFraction)*100" precision="1"/>%</c> от их максимального запаса и наносит <c val="FFFF80"><d ref="Effect,LuckHeroOrbOfVitality1DMG,VitalFractionCurrent[Life]*100"/>%</c> текущего здоровья врага в качестве урона.<n/>
-Button/Tooltip/Lava=Наносит <c val="FFFF80"><d ref="Effect,LavaDMG,Amount/Effect,LavaCP,PeriodicPeriodArray[0]"/></c> ед. урона в секунду в радиусе <c val="FFFF80"><d ref="Effect,LavaSA,AreaArray[0].Radius"/></c> в течение <c val="FFFF80"><d ref="Effect,LavaCP,PeriodCount*Effect,LavaCP,PeriodicPeriodArray[0]"/></c> сек. и замедляет скорость передвижения врагов на <c val="FFFF80"><d ref="1-Behavior,LavaSlow,Modification.MoveSpeedMultiplier*100" precision="2"/>%.</c>
+Button/Tooltip/Lava=Наносит <c val="FFFF80"><d ref="Effect,LavaDMG,Amount/Effect,LavaCP,PeriodicPeriodArray[0]"/></c> ед. урона в секунду в радиусе <c val="FFFF80"><d ref="Effect,LavaSA,AreaArray[0].Radius" precision="1"/></c> в течение <c val="FFFF80"><d ref="Effect,LavaCP,PeriodCount*Effect,LavaCP,PeriodicPeriodArray[0]"/></c> сек. и замедляет скорость передвижения врагов на <c val="FFFF80"><d ref="1-Behavior,LavaSlow,Modification.MoveSpeedMultiplier*100" precision="2"/>%.</c>
 Button/Tooltip/LeakageUnit=Создаёт на месте заклинателя пушку зонда, которая выпускает <c val="FFFF80"><d ref="Effect,ProbeCannonCP,PeriodCount*Effect,ProbeCannonOffset,PeriodCount"/></c> <lang rule="plural" val="">снаряд,снаряда,снарядов</lang> в направлении точки цели в течение <c val="FFFF80"><d ref="Effect,ProbeCannonCP,PeriodCount*Effect,ProbeCannonCP,PeriodicPeriodArray[0]" precision="2"/></c> сек.<n/><n/>Если целью стал сам герой или союзник, то к ним прикрепляется пушка зонда, которая будет стрелять по врагам в радиусе <c val="FFFF80">8</c> каждую секунду в течение <c val="FFFF80"><d ref="Behavior,ProbeCannon,Duration"/></c> сек.
 Button/Tooltip/Lifetap=Преобразует энергию в здоровье и щиты в течение следующих 10 секунд.
 Button/Tooltip/Lightning=Посылает шаровую молнию в заданном направлении, которая наносит 40 ед. урона первому врагу, в которого она попадёт.
@@ -1084,7 +1088,7 @@ Button/Tooltip/LightningStrikes=Вызов молнии, наносящей ур
 Button/Tooltip/LuckHero=Убивать зергов по-обычному было слишком скучно.
 Button/Tooltip/MLLeap=Прыжок к целевой точке, наносящий <c val="FFFF80"><d ref="Effect,MLLeapDMG,Amount"/></c> ед. урона и отбрасывающий вражеские единицы в радиусе <c val="FFFF80"><d ref="Effect,BladeHeroLeapImpactSA,AreaArray[0].Radius" precision="1"/></c> вокруг точки удара.<n/><n/>Не может преодолевать уступы.
 Button/Tooltip/MagmaArmor=Когда у вас есть магматическая броня и вы получаете урон от врага, вы автоматически выпускаете в нападающего огненный шар.
-Button/Tooltip/Massive=Герой земли имеет на <c val="FFFF80"><d ref="Behavior,Massive,Modification.VitalMaxFractionArray[Life]*100"/>%</c> больше здоровья/энергии, но теряет <c val="FFFF80"><d ref="Behavior,Massive,Modification.VitalMaxFractionArray[Shields]*(-100)"/>%</c> щитов.<n/><n/>Пассивно восстанавливает <c val="FFFF80"><d ref="Effect,ReconstructMU,VitalArray[Life].ChangeFraction*100"/>%</c> от максимального запаса здоровья/энергии и <c val="FFFF80"><d ref="Effect,ReconstructMU,VitalArray[Life].Change"/></c> ед. здоровья в секунду.<n/><n/>Может проталкиваться мимо других единиц.
+Button/Tooltip/Massive=Каждое потраченное очко таланта увеличивает размер и запас здоровья героя земли и увеличивает радиус применения его способностей.<n/><n/>Герой земли имеет на <c val="FFFF80"><d ref="Behavior,Massive,Modification.VitalMaxFractionArray[Life]*100"/>%</c> больше здоровья/энергии, но теряет <c val="FFFF80"><d ref="Behavior,Massive,Modification.VitalMaxFractionArray[Shields]*(-100)"/>%</c> щитов.<n/><n/>Пассивно восстанавливает <c val="FFFF80"><d ref="Effect,ReconstructMU,VitalArray[Life].ChangeFraction*100" precision="1"/>%</c> от максимального запаса здоровья, <c val="FFFF80"><d ref="Effect,ReconstructMU,VitalArray[Energy].ChangeFraction*100" precision="1"/>%</c> максимального запаса энергии и <c val="FFFF80"><d ref="Effect,ReconstructMU,VitalArray[Life].Change"/></c> ед. здоровья в секунду.<n/><n/>Может проталкиваться мимо других единиц.
 Button/Tooltip/Metalisk=Тяжёлобронированный зверь, наносящий урон всем противникам, находящимся перед ним.<n/><n/><c val="ffff8a">Атакует только наземные цели.</c>
 Button/Tooltip/MetaliskCavern=Позволяет улучшать ультралисков.<n/><n/><c val="ffff8a">Открывает возможности:</c><n/>– мутация личинок в ультралисков
 Button/Tooltip/MicroBurst=Выстреливает <c val="FFFF80"><d ref="Effect,AirHeroMicroBurstOffset,PeriodCount"/></c> <lang rule="plural" val="">небольшой очередью,небольшими очередями,небольшими очередями</lang> концентрированного воздуха, нанося <c val="FFFF80"><d ref="Effect,AirHeroMicroBurstDMG,Amount"/></c> ед. урона одной цели и поднимая <c val="FFFF80"><d ref="Effect,AirHeroMicroBurstElevateSA,AreaArray[0].MaxCount"/></c> <lang rule="plural" val="">ближайшую вражескую единицу,ближайшие вражеские единицы,ближайших вражеских единиц</lang>.<n/></c><n/>Поднятые единицы оглушаются на <c val="FFFF80"><d ref="Behavior,Lifted,Duration"/></c> сек., получая <c val="FFFF80"><d ref="Effect,AirHeroMicroBurstLiftedDMG,Amount"/></c> ед. урона в секунду и позволяют микроимпульсам проходить под ними.
@@ -1145,7 +1149,7 @@ Button/Tooltip/QuicksandWater=Заряд: <c val="0080FF">Вода</c>.<n/>Вы�
 Button/Tooltip/RapidRepairs=Герой луча очень быстро восстанавливает здоровье и щиты. Получение хотя бы <c val="FFFF80">30</c> ед. урона от одной атаки отменяет этот эффект на <c val="FFFF80"><d ref="Behavior,RapidRepairsDisable,Duration" precision = "1"/></c> сек.<n/><n/>Дополнительно, герой луча имеет <c val="FFFF80">100%</c> пробивания брони.
 Button/Tooltip/Recharge=<c val="0080FF">Восстанавливает <c val="FFFFFF"><d ref="Effect,RechargeAddEnergy,VitalArray[Energy].Change"/></c> ед. энергии вашим дронам и переключает, какие дроны в данный момент действуют.</c>
 Button/Tooltip/Recombulator=Перекомбулирует до <c val="FFFF80"><d ref="Effect,RecombulatorSearch,MaxCount"/></c> <lang rule="plural" val="">вражеской единицы,вражеских единиц,вражеских единиц</lang> в радиусе <c val="FFFF80"><d ref="Effect,RecombulatorSearch,AreaArray[0].Radius" precision="1"/></c>, нанося <c val="FFFF80"><d ref="Effect,RecombulatorDamage,Amount"/></c> ед. урона каждой первичной цели и <c val="FFFF80"><d ref="Effect,RecombulatorDamage,Amount*0.25"/></c> ед. урона в радиусе <c val="FFFF80">1</c>.<n/><n/>Каждая поражённая единица запускает в вашу сторону заряд обратной реакции перекомбулятора.<n/>Для безопасного уничтожения обратной реакции перекомбулятора требуется <c val="FFFF80"><d ref="Effect,RecombulatorEnergy,VitalArray[Energy].Change*(-1)" precision="1"/></c> ед. энергии – если у вас недостаточно энергии, вы получите <c val="FFFF80"><d ref="Effect,RecombulatorDamage2,Amount" precision="1"/></c> ед. урона.<n/><n/>Применение рекомбулятора создаст <c val="FFFF80"><d ref="Effect,RecombulatorMatrixCP,PeriodCount"/></c> <lang rule="plural" val="">ракету,ракеты,ракет</lang> сумеречной пушки, которые будут вращаться вокруг вашего героя в течение <c val="FFFF80"><d ref="Behavior,TwilightHeroMatrixFate,Duration"/></c> сек.
-Button/Tooltip/Reinforce=<c val="0080FF">Вызов <c val="FFFFFF"><d ref="Effect,ReinforceSpawnZealot,SpawnCount"/></c> <lang rule="plural" val="">зилота,зилота,зилотов</lang> в целевой точке.<n/><n/>Можно иметь до <c val="FFFFFF"><d ref="Behavior,GatewayHeroZealotTracker,MaxTrackedUnits"/></c> <lang rule="plural" val="">постоянного зилота,постоянных зилотов,постоянных зилотов</lang> за раз. Если количество зилотов превысит это значение, то лишние зилоты исчезнут через <c val="FFFFFF"><d ref="Behavior,ReinforceTimedLife,Duration"/></c> сек.<n/><n/>(зилоты получают <c val="FFFFFF">10</c> ед. <c val="008000">здоровья</c>/<c val="0000FF">щитов</c>, <c val="FFFFFF">0,5</c> <c val="00FF80">скорости восстановления</c>, <c val="FFFFFF">0,5</c> <c val="808080">брони</c> и <c val="FFFFFF">0,0625</c> <c val="FFFF00">скорости передвижения</c> за награду бонуса).</c>
+Button/Tooltip/Reinforce=<c val="0080FF">Вызов <c val="FFFFFF"><d ref="Effect,ReinforceSpawnZealot,SpawnCount"/></c> <lang rule="plural" val="">зилота,зилота,зилотов</lang> в целевой точке.<n/><n/>Можно иметь до <c val="FFFFFF"><d ref="Behavior,GatewayHeroZealotTracker,MaxTrackedUnits"/></c> <lang rule="plural" val="">постоянного зилота,постоянных зилотов,постоянных зилотов</lang> за раз. Если количество зилотов превысит это значение, то лишние зилоты исчезнут через <c val="FFFFFF"><d ref="Behavior,ReinforceTimedLife,Duration"/></c> сек.<n/><n/>(зилоты получают <c val="FFFFFF">10</c> ед. <c val="008000">здоровья</c>/<c val="0000FF">щитов</c>, <c val="FFFFFF">0,5</c> <c val="00FF80">скорости восстановления</c>, <c val="FFFFFF">0,5</c> <c val="808080">брони</c> и <c val="FFFFFF">0,0625</c> <c val="FFFF00">скорости передвижения</c> за соответствующую награду бонуса).</c>
 Button/Tooltip/Renew=Лечит <c val="FFFF80"><d ref="Effect,RenewHealMU,VitalArray[Life].Change*20" precision="1"/></c> ед. здоровья в течение <c val="FFFF80">10</c> секунд и замедляет скорость передвижения на <c val="FFFF80"><d ref="(Behavior,RenewHealSlow,Modification.MoveSpeedMultiplier-1)*(-100)" precision="1"/>%.<n/></c><n/>Каждая единица силы комбо лечит <c val="FFFF80"><d ref="Effect,RenewComboHealMU,VitalArray[Life].ChangeFraction*500" precision="0"/>%</c> + <c val="FFFF80"><d ref="Effect,RenewComboFlatHealMU,VitalArray[Life].Change*5"/></c> ед. здоровья в течение <c val="FFFF80">10</c> секунд.<n/><n/>Применение способности <c val="FFFF80">«Обновление»</c> расходует все накопленные эффекты.<n/>
 Button/Tooltip/Repel=Отбрасывает и наносит урон врагам, подошедшим слишком близко.<n/><n/>Дополнительно герой гравитации наносит на 50% больше урона бронированным целям и на 100% больше урона крупным и особым целям.
 Button/Tooltip/ResourceCollector=Каждая единица, убитая после воздействия любой способности героя-зонда, имеет <c val="FFFF80"><d ref="Effect,ResourcesCU,Chance*100"/>%</c> шанс оставить <c val="FFFF80">1</c> минерал.<n/><n/>После получения <c val="FFFF80">100</c> минералов герой-зонд получит на <c val="FFFF80"><d ref="Behavior,ProbeHeroUpgrade,Modification.VitalMaxArray[Shields]"/></c> ед. увеличенный запас максимального здоровья/щитов, <c val="FFFF80"><d ref="Behavior,ProbeHeroUpgrade,Modification.VitalMaxArray[Energy]"/></c> ед. к максимальному запасу энергии, и <c val="FFFF80"><d ref="Effect,SpawnArmyCP,PeriodCount"/></c> <lang rule="plural" val="">случайная единица вызывается,случайные единицы вызываются,случайных единиц вызываются</lang> для союзных протоссов у ближайшего строения.
@@ -1177,7 +1181,7 @@ Button/Tooltip/Stealth=Становление невидимым на <c val="FF
 Button/Tooltip/Steam=Заряд: <c val="FF8000">Огонь</c>.<n/>Выпускает: <c val="0080FF">Воду</c>.<n/><n/>Кипятит внутренности врагов в радиусе <c val="FFFF80"><d ref="Effect,SteamFireSA,AreaArray[0].Radius" precision="1"/></c> вокруг точки цели, нанося <c val="FFFF80"><d ref="Effect,SteamFireInitDMG,Amount"/></c> ед. урона поражённым врагам, а затем дополнительно <c val="FFFF80"><d ref="Effect,SteamFireDMG,Amount*20"/></c> ед. урона в течение <c val="FFFF80">10</c> секунд. Единицы, погибшие под действием пара, имеют <c val="FFFF80">15%</c> шанс вызвать ещё один взрыв пара.
 Button/Tooltip/SteamWater=Заряд: <c val="0080FF">Вода</c>.<n/>Выпускает: <c val="FF8000">Огонь</c>.<n/><n/>Кипятит внутренности врагов в радиусе <c val="FFFF80"><d ref="Effect,SteamWaterSA,AreaArray[0].Radius" precision="1"/></c> вокруг точки цели, нанося <c val="FFFF80"><d ref="Effect,SteamWaterInitDMG,Amount"/></c> ед. урона поражённым врагам, а затем дополнительно <c val="FFFF80"><d ref="Effect,SteamWaterDMG,Amount*20"/></c> ед. урона в течение <c val="FFFF80">10</c> секунд. Единицы, погибшие под действием пара, имеют <c val="FFFF80"><d ref="Effect,SteamWaterExplodeDelay,Chance*100"precision="1"/>%</c> шанс вызвать ещё один взрыв пара.
 Button/Tooltip/StormLord=Даёт зергам 40% снижения урона в радиусе 8, получает 5% снижения урона и теряет 2% урона за каждого зерга в том же радиусе.
-Button/Tooltip/Strafe=Быстро запускает <c val="FFFF80"><d ref="Effect,WarpHeroStrafeDummy,ExpireDelay"/></c> <lang rule="plural" val="">ракету,ракеты,ракет</lang> в случайные цели в радиусе действия, каждая из которых наносит <c val="FFFF80"><d ref="Effect,ImmortalStrafeDamage,Amount"/></c> ед. урона.
+Button/Tooltip/Strafe=Быстро запускает <c val="FFFF80"><d ref="Effect,WarpHeroStrafeDummy,ExpireDelay"/></c> <lang rule="plural" val="">ракету,ракеты,ракет</lang> в случайные цели в радиусе действия, каждая из которых наносит <c val="FFFF80"><d ref="Effect,WarpHeroStrafeDMG,Amount"/></c> ед. урона.
 Button/Tooltip/SubarmorPolymerflow=Полимер высвобождается при попадании атак ближнего и дальнего боя, снижая получаемый урон на <d ref="(Behavior,Polymercrust,DamageResponse.ModifyFraction-1)*(-100)" precision="2"/>%. Эффект накладывается до 10 раз.
 Button/Tooltip/Substitution=Мгновенно восстанавливает <c val="FFFF80"><d ref="Effect,SubstitutionMU,VitalArray[Shields].Change"/></c> ед. щита.
 Button/Tooltip/Superlisk=Тяжёлобронированный зверь, наносящий урон всем противникам, находящимся перед ним.<n/><n/><c val="ffff8a">Атакует только наземные цели.</c>
@@ -1204,10 +1208,11 @@ Button/Tooltip/TwilightHeroMatrix=
 Button/Tooltip/TwistCannon=Выпускает разрушительную ракету в направлении цели, нанося <c val="FFFF80"><d ref="Effect,TwilightCannonDamage,Amount"/></c> ед. урона первому противнику, с которым она соприкасается.
 Button/Tooltip/TyrantLord=Повелитель-тиран получает 1 ед. брони на 3 секунды каждый раз, когда получает урон.
 Button/Tooltip/Ultralisk2=Тяжёлобронированный зверь, наносящий урон всем противникам, находящимся перед ним.<n/><n/><c val="ffff8a">Атакует только наземные цели.</c>
-Button/Tooltip/Upheaval=Вызов из земли <c val="FFFF80"><d ref="Effect,UpheavalOffsets,PeriodCount"/></c> линии шипов, которые проходят на расстояние до <c val="FFFF80"><d ref="12-Effect,UpheavalLM,ImpactRange"/></c>. Каждый шип наносит <c val="FFFF80"><d ref="Effect,UpheavalDMG,Amount"/></c> ед. урона в радиусе <c val="FFFF80"><d ref="Effect,UpheavalSA,AreaArray[0].Radius"/></c>.
+Button/Tooltip/Upheaval=Вызов из земли <c val="FFFF80"><d ref="Effect,UpheavalOffsets,PeriodCount"/></c> линии шипов, которые проходят на расстояние до <c val="FFFF80"><d ref="12-Effect,UpheavalLM,ImpactRange"/></c>. Каждый шип наносит <c val="FFFF80"><d ref="Effect,UpheavalDMG,Amount"/></c> ед. урона в радиусе <c val="FFFF80"><d ref="Effect,UpheavalSA,AreaArray[0].Radius" precision="1"/></c>.
 Button/Tooltip/VoidLord=Повелитель Пустоты с шансом 20% получает снижение урона на 70% на 1 секунду после получения урона.
 Button/Tooltip/WallofDarkness=Получение урона вырабатывает тёмную энергию.<n/><n/>Когда тёмная энергия достигает 100 ед., герой тени выпускает 10 применений способности «Крушение тени» в окружающих врагов.
 Button/Tooltip/WarpHero=Почему-то у него никогда не кончается боезапас.
+Button/Tooltip/WarpHeroTurretDummy=
 Button/Tooltip/Warpout=Телепортирует союзную цель и использует её части и энергию для восстановления исцеления вашего героя на <c val="FFFF80"><d ref="Effect,TwilightHeroWarpoutHeal,VitalArray[Life].Change"/></c> ед. здоровья/щитов, а также маскирует вас на <c val="FFFF80"><d ref="Behavior,Warpout,Duration"/></c> сек. или до следующего применения способности.
 Button/Tooltip/Water=Обладает силой жизни и смерти.
 Button/Tooltip/WaterBlast=Выстреливает водяным взрывом в указанное место, наносящим <c val="FFFF80"><d ref="Effect,WaterBlastDMG,Amount"/></c> ед. урона одной цели при попадании и промакивая всех врагов в радиусе <c val="FFFF80"><d ref="Effect,WaterBlastABSearch,AreaArray[0].Radius" precision="2"/></c>.
@@ -1842,6 +1847,38 @@ DocInfo/PatchNote589=- General
 DocInfo/PatchNote590=  - Fixed difficulty selection and mode selection breaking under certain circumstances
 DocInfo/PatchNote591=  - Fixed Demolisher shield visuals sometimes remaining after death
 DocInfo/PatchNote592=- Fixed Power Field breaking after death
+DocInfo/PatchNote593=- Fixed an issue that could break peoples bank if they overspent rewards with x10 mode
+DocInfo/PatchNote594=- Fire Hero
+DocInfo/PatchNote595=  - Reduced the energy cost of Fireball
+DocInfo/PatchNote596=  - Nerfed Fuel and Hades
+DocInfo/PatchNote597=
+DocInfo/PatchNote598=- Lightning Hero
+DocInfo/PatchNote599=  - Fixed Storm Rage
+DocInfo/PatchNote600=
+DocInfo/PatchNote601=- Particle Hero
+DocInfo/PatchNote602=  - Orbital Link now limited to once per Shockwave
+DocInfo/PatchNote603=  - Fixed damage area of Shockwave being broken/inconsistent
+DocInfo/PatchNote604=  - Buffed Clock, Ripfield, NGR and Dampeners
+DocInfo/PatchNote605=  - Overheal now scales with healing multiplier
+DocInfo/PatchNote606=- General
+DocInfo/PatchNote607=  - Holding right click will make selected units follow your cursor
+DocInfo/PatchNote608=  - Increased the size and hitpoints of Disintegrators
+DocInfo/PatchNote609=  - Linked Spires are now impervious to damage
+DocInfo/PatchNote610=
+DocInfo/PatchNote611=- Earth Hero
+DocInfo/PatchNote612=  - Each talent spent will now increase its unit size, hitpoints and the radius of all spells
+DocInfo/PatchNote613=  - Changed Moon Lord skin
+DocInfo/PatchNote614=  - Fortify now costs less energy and has a cooldown
+DocInfo/PatchNote615=  - Can no longer Fortify yourself
+DocInfo/PatchNote616=  - Altered Fortify and all of its talents
+DocInfo/PatchNote617=  - Boulders will now hit each unit once instead of continuously (damage increased to compensate)
+DocInfo/PatchNote618=  - Nerfed Firewall
+DocInfo/PatchNote619=- General
+DocInfo/PatchNote620=  - All skillshot spells should now take unit radius into consideration when finding a target
+DocInfo/PatchNote621=
+DocInfo/PatchNote622=- Warp Hero
+DocInfo/PatchNote623=  - Visual overhaul
+DocInfo/PatchNote624=  - Removed one level from "Agility" and added a new talent "Cover"
 DocInfo/Screenshot01=Наградные очки переносятся в последующие игры и могут быть полезны различными способами.
 DocInfo/Screenshot02=Находясь рядом с пилоном, вы можете телепортироваться на любую другую базу.
 DocInfo/Screenshot05=Тратьте очки талантов, чтобы увеличить свою силу.
@@ -2412,6 +2449,15 @@ Effect/Name/DummyEffect=DummyEffect
 Effect/Name/DummyEffectTarget=DummyEffectTarget
 Effect/Name/EarthHeroBoulderMoltenAB=Earth Hero - Boulder Molten (AB)
 Effect/Name/EarthHeroBoulderMoltenAB2=Earth Hero - Boulder Molten (AB2)
+Effect/Name/EarthHeroFortify=Earth Hero - Fortify (Init)
+Effect/Name/EarthHeroFortifyDelay=Earth Hero - Fortify (Delay)
+Effect/Name/EarthHeroFortifyDelayHero=Earth Hero - Fortify (DelayHero)
+Effect/Name/EarthHeroFortifyDelayMassive=Earth Hero - Fortify (DelayMassive)
+Effect/Name/EarthHeroFortifyEnemyAB=Earth Hero - Fortify (EnemyAB)
+Effect/Name/EarthHeroFortifyHeal=Earth Hero - Fortify (Heal)
+Effect/Name/EarthHeroFortifyLM=Earth Hero - Fortify (LM)
+Effect/Name/EarthHeroFortifyStonesCP=Earth Hero - Fortify Stones (CP)
+Effect/Name/EarthHeroFortifySwitch=Earth Hero - Fortify (Switch)
 Effect/Name/EarthHeroLandslideAB=Earth Hero - Landslide (AB)
 Effect/Name/EarthHeroLandslideBigSA=Earth Hero - Landslide Big (SA)
 Effect/Name/EarthHeroLandslideMedSA=Earth Hero - Landslide Med (SA)
@@ -2604,8 +2650,7 @@ Effect/Name/FireHeroBlastwaveMU=Fire Hero - Blastwave (MU)
 Effect/Name/FireHeroBlastwaveMUDelay=Fire Hero - Blastwave (MUDelay)
 Effect/Name/FireHeroBlastwaveSA=Fire Hero - Blastwave (SA)
 Effect/Name/FireHeroBlastwaveSet=Fire Hero - Blastwave (Set)
-Effect/Name/FireHeroFuelData=Fire Hero - Fuel (Data)
-Effect/Name/FireHeroFuelDataDecrease=Fire Hero - Fuel (DataDecrease)
+Effect/Name/FireHeroFuelOrphan=Fire Hero - Fuel (Orphan)
 Effect/Name/FireHeroHadesABDMG=Fire Hero - Hades (ABDMG)
 Effect/Name/FireInfusionAB=Fire Infusion (AB)
 Effect/Name/FireInfusionHealthMU=Fire Infusion (HealthMU)
@@ -2663,8 +2708,9 @@ Effect/Name/Forcebolted=Forcebolted
 Effect/Name/FortifyAB=Fortify
 Effect/Name/FortifyABHero=Fortify
 Effect/Name/FortifyABStructure=Fortify
+Effect/Name/FortifyAllySet=Fortify
+Effect/Name/FortifyEnemySet=Fortify
 Effect/Name/FortifySA=Fortify
-Effect/Name/FortifySet=Fortify
 Effect/Name/FortressArmorAB=Fortress Armor
 Effect/Name/ForwardBeamAB=Forward Beam
 Effect/Name/ForwardBeamAnchor=Forward Beam
@@ -2725,7 +2771,6 @@ Effect/Name/FrostshockInitSet3=FrostshockInitSet3
 Effect/Name/FrostshockSpreadSearch=FrostshockSpreadSearch
 Effect/Name/FrostshockSpreadSet=FrostshockSpreadSet
 Effect/Name/FrostshockSpreadSetCoolant=FrostshockSpreadSetCoolant
-Effect/Name/FuelSet=Fuel (Set)
 Effect/Name/FullHealDemolisher=Full Heal
 Effect/Name/FungalAttackCP=Fungal Attack
 Effect/Name/FungalAttackDMG=Fungal Attack
@@ -2830,6 +2875,7 @@ Effect/Name/GatewayHeroSplitterSplitSplitSearchTarget=Gateway Hero - Splitter Sp
 Effect/Name/GatewayHeroWarpInCU=Gateway Hero - WarpIn (CU)
 Effect/Name/GatewayHeroWarpInSet=Gateway Hero - WarpIn (Set)
 Effect/Name/GatewayHeroWarpinMU=Gateway Hero - Warpin (MU)
+Effect/Name/GatewayHeroZealotAttackDMG=Gateway Hero - Zealot Attack (DMG)
 Effect/Name/GlaiveAttackAB=Glaive Attack
 Effect/Name/GlaiveAttackCU=Glaive Attack
 Effect/Name/GlaiveAttackDMG=Glaive Attack
@@ -3037,9 +3083,6 @@ Effect/Name/ImmortalMultiShotDamage=ImmortalMultiShotDamage
 Effect/Name/ImmortalMultiShotFireDamage=ImmortalMultiShotFireDamage
 Effect/Name/ImmortalMultishotSet=ImmortalMultishotSet
 Effect/Name/ImmortalMultishotfire=ImmortalMultishotfire
-Effect/Name/ImmortalStrafeDamage=ImmortalStrafeDamage
-Effect/Name/ImmortalStrafeEndless=ImmortalStrafeEndless
-Effect/Name/ImmortalStrafeImpactSet=ImmortalStrafeImpactSet
 Effect/Name/Impact=Impact
 Effect/Name/ImpalerSpinesAB=Impaler Spines
 Effect/Name/ImpalerSpinesSet=Impaler Spines
@@ -3998,10 +4041,11 @@ Effect/Name/ShockwaveDamage=ShockwaveDamage
 Effect/Name/ShockwaveInit=ShockwaveInit
 Effect/Name/ShockwaveInitLink=ShockwaveInitLink
 Effect/Name/ShockwaveLaunch=ShockwaveLaunch
-Effect/Name/ShockwavePersistent=ShockwavePersistent
+Effect/Name/ShockwaveOrbiAntiRecast=ShockwaveOrbiAntiRecast
 Effect/Name/ShockwaveSearch=ShockwaveSearch
 Effect/Name/ShockwaveSet=ShockwaveSet
 Effect/Name/ShockwaveSuicide=ShockwaveSuicide
+Effect/Name/ShockwaveTravelSet=ShockwaveTravelSet
 Effect/Name/Shockwaved=Shockwaved
 Effect/Name/ShredDMG=Shred
 Effect/Name/SiphonCP=Siphon
@@ -4172,7 +4216,6 @@ Effect/Name/StormStrikeCP=Storm Strike
 Effect/Name/StormStrikeDMG=Storm Strike
 Effect/Name/StormStrikeLM=Storm Strike
 Effect/Name/StormStrikeSA=Storm Strike
-Effect/Name/StrafeImpactSearchArea=StrafeImpactSearchArea
 Effect/Name/SubstitutionBufferAB=Substitution Buffer
 Effect/Name/SubstitutionFrenzyCP=Substitution Frenzy
 Effect/Name/SubstitutionFrenzyOffset=Substitution Frenzy
@@ -4433,7 +4476,28 @@ Effect/Name/WarpHeroDecoyLimitAB=Warp Hero - Decoy Limit (AB)
 Effect/Name/WarpHeroDecoyLimitRB=Warp Hero - Decoy Limit (RB)
 Effect/Name/WarpHeroDecoySet=Warp Hero - Decoy (Set)
 Effect/Name/WarpHeroMultishotDummy=Warp Hero - Multishot Dummy
+Effect/Name/WarpHeroStrafeDMG=Warp Hero - Strafe (DMG)
 Effect/Name/WarpHeroStrafeDummy=Warp Hero - Strafe Dummy
+Effect/Name/WarpHeroStrafeEndless=Warp Hero - Strafe Endless
+Effect/Name/WarpHeroStrafeHeal=Warp Hero - Strafe (Heal)
+Effect/Name/WarpHeroStrafeSA=Warp Hero - Strafe (SA)
+Effect/Name/WarpHeroStrafeSet=Warp Hero - Strafe (Set)
+Effect/Name/WarpHeroTurretATU=Warp Hero - Turret (ATU)
+Effect/Name/WarpHeroTurretAimAB=Warp Hero - Turret Aim (AB)
+Effect/Name/WarpHeroTurretAimBusy=Warp Hero - Turret Aim (Busy)
+Effect/Name/WarpHeroTurretAimBusyTarget=Warp Hero - Turret Aim (BusyTarget)
+Effect/Name/WarpHeroTurretAimETU=Warp Hero - Turret Aim (ETU)
+Effect/Name/WarpHeroTurretAimRB=Warp Hero - Turret Aim (RB)
+Effect/Name/WarpHeroTurretAimSet=Warp Hero - Turret Aim (Set)
+Effect/Name/WarpHeroTurretAimStart=Warp Hero - Turret Aim (Start)
+Effect/Name/WarpHeroTurretAimSwitch=Warp Hero - Turret Aim (Switch)
+Effect/Name/WarpHeroTurretAimTP=Warp Hero - Turret Aim (TP)
+Effect/Name/WarpHeroTurretAimTurretStart=Warp Hero - Turret Aim (TurretStart)
+Effect/Name/WarpHeroTurretAimTurretStop=Warp Hero - Turret Aim (TurretStop)
+Effect/Name/WarpHeroTurretCU=Warp Hero - Turret (CU)
+Effect/Name/WarpHeroTurretCUSet=Warp Hero - Turret (CUSet)
+Effect/Name/WarpHeroTurretFate=Warp Hero - Turret (Fate)
+Effect/Name/WarpHeroTurretKillETU=Warp Hero - Turret Kill (ETU)
 Effect/Name/WarpHeroWarpDroneCD=Warp Hero - Warp Drone CD
 Effect/Name/WarpoutAB=Warpout
 Effect/Name/WarpoutNightwarpDMG=Warpout Nightwarp
@@ -4478,7 +4542,6 @@ Effect/Name/WindstormSet=Windstorm
 Effect/Name/YouFailedKillMissile=YouFailed
 Effect/Name/YouFailedSA=YouFailed
 Effect/Name/ZapSet=Zap
-Effect/Name/ZealotAiurWeapon=Zealot Attack
 Effect/Name/ZealotAttackRendAB=Zealot Attack
 Effect/Name/ZealotAttackRendDMG=Zealot Attack
 Effect/Name/ZealotAttackSet=Zealot Attack
@@ -4751,7 +4814,7 @@ Param/Value/1A24DDA4=Парадокс
 Param/Value/1A329290=Терранские инженеры немного расстроены – следующая версия «Аннигилятора» может стать настоящим испытанием.<n/>+ 50 тыс. единиц опыта и увеличенное здоровье и щиты для союзных войск +
 Param/Value/1A36928A=Вклад в особое:
 Param/Value/1A4C0E6F= <n/>
-Param/Value/1A6AE9E3=Увеличение бонуса к урону по целям (кроме особых) до 50/75/100%.<n/>Увеличение снижения урона особых целей до 30/35/40%.
+Param/Value/1A6AE9E3=Даёт 10/20/30 ед. щитов за каждое попадание по противнику, увеличивает бонус к урону по целям (кроме особых) до 50/75/100% и снижает урон особых целей до 30/35/40%.
 Param/Value/1A7E5F10=Позволяет герою воздуха видеть через уступы и снижает задержку восстановления щита на 25%.
 Param/Value/1AD96787=Каждую секунду выпускает до 5 микроимпульсов в случайные места.
 Param/Value/1ADFEA20=Устраняет некоторые серьёзные недостатки конструкции вашего рекомбулятора, снижая затраты способности на 15 ед. энергии.
@@ -4796,7 +4859,7 @@ Param/Value/1FBDC4BF=Увеличивает длительность дейст�
 Param/Value/1FC02C51=Способность «Токсичные испарения» создаст взрыв в конце, нанося урон врагам в области (урон и область действия зависят от единиц силы комбо).
 Param/Value/1FC83D94=Быстрый вынос «Аннигилятора»
 Param/Value/20230F9B=Босс исчез.
-Param/Value/202D6BD6=Периодически наносит урон всем врагам в радиусе 0/2, пока действует способность «Заряжание огня». Применение способности «Пекло» увеличит урон и радиус действия этого эффекта на 10% на 20 секунд, накладывая эффект до 50 раз. Каждый эффект также уменьшает весь получаемый урон на 0/5%.
+Param/Value/202D6BD6=Периодически наносит урон всем врагам в радиусе 0/2, пока действует способность «Заряжание огня». Применение способности «Пекло» увеличит урон и радиус действия этого эффекта на 10% на 20 секунд, накладывая эффект до 50 раз. Каждый эффект также уменьшает весь получаемый урон на 0/3%.
 Param/Value/20467DEC=Скорость
 Param/Value/20475472=Вызывает ещё 1/2/3 зилотов и увеличивает максимальное количество зилотов на 2/4/6, но увеличивает затраты энергии на 20/40/60.
 Param/Value/204C49B4=Капитан Планета
@@ -4879,7 +4942,7 @@ Param/Value/2A3C3954=Повелитель орды был порождён по�
 Param/Value/2A6E8A1B=Вампиризм
 Param/Value/2ABC29A3=Зилоты получают способность «Рывок теней».
 Param/Value/2AD46311=Жадность
-Param/Value/2AF185B1=Ракеты способности «Обстрел» запускаются на 12/25% быстрее и наносят на 5/10 ед. больше урона.
+Param/Value/2AF185B1=Ракеты способности «Обстрел» наносят на 10 ед. больше урона и запускаются на 25% быстрее.
 Param/Value/2B37DBB3=Метель
 Param/Value/2B3F4E57=Рацион
 Param/Value/2B447AA7=Внимание
@@ -5111,7 +5174,7 @@ Param/Value/478D296C=Королева
 Param/Value/47A812F4=Пушки зонда, направленные на точку, имеют 50/100% шанс выпустить ракету позади себя при каждом запуске ракеты. Пушки зонда, направленные на единицу, выпускают ракеты на 12,5/25% быстрее и запускают 5/10 ракет вокруг себя при применении или повторном применении.
 Param/Value/47AE1F78=Требуется уровень
 Param/Value/47CA58F1=
-Param/Value/47D8A29F=Снижает стоимость на 0/2/4/6 ед.
+Param/Value/47D8A29F=Снижает затраты энергии на способность «Ударная волна» на 0/2/4/6 ед. и увеличивает дальность её действия на 0/1/2/3.
 Param/Value/47DFE016=«Хардкор»
 Param/Value/4812422E=Задача выполнена.
 Param/Value/482403BF=Орбит. связь
@@ -5128,7 +5191,7 @@ Param/Value/49E0D793=Ваши огненные шары поджигают св�
 Param/Value/49E561EF=Зилоты будут появляться с эффектом состояния «Взрывчатка».
 Param/Value/49E722B6=Повреждение
 Param/Value/49FD5CC5=Брызги
-Param/Value/4A15AC34=Каждые 350 ед. полученного урона приведут к выпуску взрыва способности «Пекло».
+Param/Value/4A15AC34=При срабатывании магма-брони, у вас есть 50% шанс создать взрыв способности «Пекло».
 Param/Value/4A2A2ADE=Эволюция предотвращена менее чем за 60 секунд! +1 улучшение.
 Param/Value/4A2CBA9A=Разломы
 Param/Value/4A3640A5=Уменьшает задержку восстановления щита на 0/80% и время, необходимое для создания заряда статического щита, на 0/50%.
@@ -5243,7 +5306,7 @@ Param/Value/57EB7DE5=Каждый поднятый враг, поражённы�
 Param/Value/57FE7810=Телепорт
 Param/Value/580409CF=Ваша способность «Пекло» накладывает на врагов негативный эффект, увеличивающий получаемый урон на 0%/10%/21%/33% в течение 10 секунд.
 Param/Value/580606DB=Увечье
-Param/Value/58100706=Единицы под действием способности «Укрепление» получают 35% шанс запустить мини-валун при получении урона, который нацелится на атакующего, нанося ему урон и немного отбрасывая его назад (талант «Масса» увеличивает урон).
+Param/Value/58100706=Применяя способность «Укрепление», вы запускаете 2 валуна.<n/><n/>Единицы под действием способности «Укрепление» получают 35% шанс запустить мини-валун при получении урона, который нацелится на атакующего, нанося ему урон и немного отбрасывая его назад (талант «Масса» увеличивает урон).
 Param/Value/582CB223=Наши сенсоры только что обнаружили новую форму ультралиска – металиск...<n/>Похоже, он собирается напасть на нас...
 Param/Value/584321A1=Безупречный «Тор», вер. 2
 Param/Value/58530E27=Наши сенсоры засекли королеву Роя.<n/>Королевы Роя обычно защищаются как минимум 1 надзирателем.<n/>Надзиратели умрут, как только королева Роя будет мертва, так что сосредоточьтесь на этом.
@@ -5340,14 +5403,14 @@ Param/Value/6409B4BD=Босс убит
 Param/Value/64153B1E=Молния
 Param/Value/643186AC=Ярость теней
 Param/Value/643A33C0=Увеличивает базовую скорость восстановления щита, здоровья и энергии на 3/6.
-Param/Value/648FEC2F=Валуны получают 3/6/9% шанс расплющить врагов, в которых они попадают. Расплющенные враги получают на 50% больше урона и теряют 5/10/15 брони на 4 секунды.
+Param/Value/648FEC2F=Валуны получают 6/12/18% шанс расплющить врагов, в которых они попадают. Расплющенные враги получают на 50% больше урона и теряют 5/10/15 брони на 4 секунды.
 Param/Value/650D534A=Задача выполнена.
 Param/Value/651B7550=Армагеддон
 Param/Value/65302BE0=При использовании способности, использующей огонь, урон увеличивается на 10% + 5% за изученный талант «Обжигание» на 10 секунд.<n/><n/>При использовании способности, использующей ветер, противники будут периодически получать шок до 8 раз в радиусе 6 + 3 за изученный талант «Небо».<n/><n/>При использовании способности, использующей землю, вызовет метеоритный дождь в целевом месте, длящийся 2 секунды + 2 за изученный талант «Терпение».<n/><n/>При использовании способности, использующей воду применит эффект таланта «Обновление» к себе и всем союзникам в радиусе 6.<n/><n/>(Эти бонусы применяются только в том случае, если был добавлен эффект стихии).
 Param/Value/656BFCDA=Огонёк
 Param/Value/65836A3C=Ложь
 Param/Value/65A495C2=Наши сенсоры только что обнаружили новую форму ультралиска – металиск...
-Param/Value/65A51A40=Пока действует эффект способности «Лечебный реагент», получаемый вами урон уменьшается на 0/10/20/30%.
+Param/Value/65A51A40=Каждый наложенный эффект способности «Лечебный реагент» уменьшает получаемый урон на 0/10/20/30%.
 Param/Value/65B41180=Эволюция завершится через:
 Param/Value/65BA70D0=Лечебные станции получают пушку зонда.
 Param/Value/65D4A1EC=Удача
@@ -5371,7 +5434,7 @@ Param/Value/673E1C3A=Перегрузка
 Param/Value/676BCC38=Враги (кроме особых), поражённые способностью «Сметающий луч», с шансом 2/4/6% будут помещены в стазис на 4 секунды.<n/><n/>Особые единицы имеют замедленную скорость атаки и передвижения на 50%.<n/><n/>Единицы в стазисе вызывают эффект таланта «Пересечение».
 Param/Value/67A33C27=Ещё одно сожжённое гнездо готово!<n/>Награда: +10% к скорости производства зилотов.
 Param/Value/67EF35FF=Применение способности «Сварить» на замороженную цель имеет 10% шанс оставить после себя кипящую лужу, которая применяет эффект «Ошпаренность» на единицы в её радиусе.
-Param/Value/67F37C3E=Нейросетевой диапазон увеличивает время действия ваших ракет способности «Плазменная торпеда» на 0/20/40%.
+Param/Value/67F37C3E=Нейросетевой диапазон увеличивает время действия ваших ракет способности «Плазменная торпеда» на 0/25/50%.
 Param/Value/680060BD= повержен.
 Param/Value/68202F3C=При попаданиях плазменной торпеды с шансом 0/20/40% выделяется энергия, достаточная для создания заряда многофазного щита.
 Param/Value/68407574=Легендарный герой, который настолько силён, что большинство зергов даже не могут выдержать его присутствия.<n/><n/>Чтобы открыть этого героя, требуется заработать 300 достижений и завершить игру на сложности «Хардкор».
@@ -5492,7 +5555,7 @@ Param/Value/782A523F=Попадания способностью «Мульти�
 Param/Value/7838E4DC=
 Param/Value/78532889=Находясь рядом с пилоном, вы получаете за каждый уровень:<n/>На 0,5 эн./сек. увеличенную скорость восст. энергии.<n/>5 ед. к макс. запасу энергии.<n/>3% к урону.<n/>
 Param/Value/785B46D9=Внимание
-Param/Value/78841606=Цели, поражённые способностью «Ударная волна», получают 0/5/10% дополнительного урона в течение 15 секунд.<n/>Эффект накладывается до 30%.
+Param/Value/78841606=Увеличивает урон от способности «Ударная волна», на 0/10/20 ед. и заставляет все цели, поражённые ударной волной, получать 0/5/10% дополнительного урона от всех источников в течение 15 секунд.<n/>Эффект накладывается до 30%.
 Param/Value/789EAFA6=Внимание
 Param/Value/78AB9383=Иллюзия
 Param/Value/78B03836=Тени
@@ -5560,7 +5623,7 @@ Param/Value/7ECA7B98=Ночная буря периодически станов
 Param/Value/7ED26A3A=Разнесение
 Param/Value/7ED62D18=При срабатывании способности «Защитная оболочка» происходит огромный взрыв, наносящий огромный урон в радиусе 20.
 Param/Value/7ED9C50B=, 
-Param/Value/7EEAEE65=Увеличивает скорость атаки целей (кроме особых) до 30/45/60%.<n/>Увеличивает скорость восстановления особых целей до 30/40/50%.
+Param/Value/7EEAEE65=Даёт 1/2/3 ед. энергии за каждое попадание по противнику, увеличивает бонус скорости атаки для целей (кроме особых) до 30/45/60% и увеличивает скорость восстановления особых целей до 30/40/50%.
 Param/Value/7EEF208E=Мощ.взрыв
 Param/Value/7EF15383=Скорость 
 Param/Value/7F267D1C=x1
@@ -5744,7 +5807,7 @@ Param/Value/93DAC90D=Миниатюрное супероружие, предна
 Param/Value/9400CF6A=Способность «Ночная буря» длится на 0/50/100/150% дольше.
 Param/Value/94081D01=Безумие
 Param/Value/94300421=Увеличивает скорость дематериализации на 0/50/100/150%.
-Param/Value/94360B52=Получение исцеления способностью «Дематериализация» при полном запасе щитов увеличивает максимальный запас щитов на 15 секунд (до 2 000 ед.).<n/><n/>Эффект постоянен для обычных единиц (кроме особых).
+Param/Value/94360B52=Получение исцеления способностью «Дематериализация» при полном запасе щитов увеличивает максимальный запас щитов на 15 секунд (до 2000*Healing Multiplier).<n/><n/>Эффект постоянен для обычных единиц (кроме особых).
 Param/Value/94455497=Сколы
 Param/Value/9445CAA6=Повелитель ужаса был порождён повелителем разума.
 Param/Value/945CF6F6=Способности, использующие воду, теперь сбрасывают время восстановления способностей своего аналога, а также больше не получают время восстановления, когда применяется их аналог.
@@ -5838,7 +5901,7 @@ Param/Value/9E8E5D76=<n/>Сейчас убито:
 Param/Value/9EA7A505=<c val="FFFF00">
 Param/Value/9EA83F3D=Применение способности «Перемещение» создаёт взрыв радиусом 3 вокруг цели. Урон и площадь увеличиваются за счёт таланта «Трансвызов».
 Param/Value/9ED03B35=Плотность
-Param/Value/9EDB71AA=Когда из-за врага срабатывает статический заряд, он постоянно наносит герою-молнии на 5% меньше урона, накладывая эффект до 30 раз (умножается).
+Param/Value/9EDB71AA=Когда из-за врага срабатывает статический заряд, он постоянно наносит герою-молнии на 5% меньше урона, накладывая эффект до 25 раз (умножается).
 Param/Value/9F1E7F21=Повелитель грома был порождён повелителем разума.
 Param/Value/9F319E4F=<c val="FF0000">
 Param/Value/9F34B2BD=0/5/10/15% шанс восстановления 15 ед. здоровья/щита при каждом нанесении урона.
@@ -5852,7 +5915,7 @@ Param/Value/A0F792BC=Выполните все эволюционные зада
 Param/Value/A11C877B=Залп
 Param/Value/A143A52F=Обломки
 Param/Value/A17C1A25=Наши сенсоры только что обнаружили новую форму ультралиска – торраск...<n/>Похоже, он собирается напасть на нас...
-Param/Value/A180A6F8=Единицы, погибшие под действием эффекта «Укрепление», выпускают ударную волну, которая оглушает врагов в радиусе 3, 6 или 9 на 5 секунд. Радиус зависит от типа единицы.
+Param/Value/A180A6F8=Эффект «Укрепление» теперь оглушает врагов (кроме особых) на 3 секунды.<n/><n/>Все союзные единицы, которые погибают во время эффекта «Укрепление», теперь оглушают всех врагов (кроме особых) в радиусе 3, 6 или 9, в зависимости от типа единицы.
 Param/Value/A1A7E8B1=Терраны вернулись с последним обновлением текущей конструкции!
 Param/Value/A1CD7FEF=Вражеские единицы, повреждённые способностью «Буря клинков», получают увеличенный на 0,25/0,5% урон и снижают скорость передвижения и атаки на 2/4% на 2 секунды (можно накладывать эффект до 100 раз).
 Param/Value/A1E78CAB=Появился повелитель спор.
@@ -5873,7 +5936,7 @@ Param/Value/A406CEC8=Фрагменты
 Param/Value/A40D7E6A=Зеркала
 Param/Value/A43495B8=Одержите победу в игре со 110 доступными улучшениями.<n/>На сложности <c val="FF0000">«Легенда»</c>, <c val="FF8000">«Безумие»</c>, <c val="FFFF00">сложно</c>, <c val="00FF00">средне</c>, <c val="0000FF">легко</c>.
 Param/Value/A44C3539=</s>
-Param/Value/A45558B0=Когда ваша способность «Ударная волна» поразит 3 или более целей одновременно, орбитальная пушка выстрелит в это место.
+Param/Value/A45558B0=Когда ваша способность «Ударная волна» поразит 3 или более целей одновременно, орбитальная пушка выстрелит в это место.<n/>Может произойти только один раз за одну ударную волну.
 Param/Value/A456ADDC=Когда заражённая единица умирает, начинается новая мутация способности «Чёрная смерть»...
 Param/Value/A46B4179=Избыток
 Param/Value/A46E556C=Поздравляем! Испытания пройдены на сложности 
@@ -5907,6 +5970,7 @@ Param/Value/A6E34EC2=Увеличивает радиус действия спо
 Param/Value/A6F490AC=Грубая сила
 Param/Value/A707556F=Уничтожьте 
 Param/Value/A72E08DD=Длительность перегрузки
+Param/Value/A862B80D=Покрытие
 Param/Value/A88B3D1E=Владыка убит
 Param/Value/A8D8C882=Разведчик
 Param/Value/A8E6F964=
@@ -5961,7 +6025,7 @@ Param/Value/AF7EA54F=Награда: +1 ед. к урону зилотов.
 Param/Value/AF85C4F9=Как пользоваться системой телепортации?<n/>Подойдите достаточно близко к любому пилону, и в правой части вашего экрана появится кнопка «Телепорт». Нажмите эту кнопку, чтобы открыть/закрыть меню телепортации.<n/>Просто нажмите на одну из кнопок в меню, чтобы телепортироваться на соответствующий пилон.
 Param/Value/AFA35A3B=Использование способности «Обновление» добавляет 1 ед. силы комбо к каждой способности.
 Param/Value/AFAEB2B2=Босс убит
-Param/Value/B001B14B=Увеличивает бонус к показателям здоровья для целей (кроме особых) до 100/150/200%.<n/>Увеличивает усиление брони для особых целей до 10/15/20 ед.
+Param/Value/B001B14B=Даёт на 15/30/45 ед. больше здоровья за каждое попадание по противнику, увеличивает бонус к показателям здоровья для целей (кроме особых) до 100/150/200% и увеличивает прибавку к броне для особых целей до 10/15/20 ед.
 Param/Value/B06A4BF4=Увеличивает эффективность лечения, произведённого за одну использованную единицу энергии, на 0/50/100/150%.
 Param/Value/B0A1324D=Увеличивает количество тёмной энергии, получаемой при попадании, на 0/2/4 ед.
 Param/Value/B0F2F941=<s val="DifficultyLegendary">
@@ -5985,7 +6049,7 @@ Param/Value/B328C9A0=Единицы, поражённые способностя
 Param/Value/B32C5BEA=Расширение
 Param/Value/B339E592=Применение способности «Токсичные испарения» заставляет 2 врагов за единицу силы комбо атаковать своих союзников в течение 5 секунд.
 Param/Value/B34ED5AA=Появился повелитель крепости.
-Param/Value/B3B1B46B=Увеличивает пассивное восстановление здоровья/энергии на 1/2/3% от максимального запаса здоровья/энергии и повышает фиксированное восстановления здоровья на 5/10/15 ед. в секунду.
+Param/Value/B3B1B46B=Увеличивает пассивное восстановление здоровья на 0,5/1/1,5% от максимального запаса здоровья, пассивное восстановление энергии на 1/2/3% от максимального запаса энергии и повышает фиксированное восстановления здоровья на 5/10/15 ед. в секунду.
 Param/Value/B3BC7D9A=Выберите режим
 Param/Value/B3BD105E=Внимание
 Param/Value/B3C7ACC3=Врата
@@ -6203,7 +6267,7 @@ Param/Value/CD0DC895=Легко
 Param/Value/CD5F1D15=Награды!
 Param/Value/CD787551=Босс исчез.
 Param/Value/CD78C3CA=Когда мутировавшая единица умирает или её срок существования истекает, она создаёт временную волну.<n/><n/>Может произойти максимум 5 раз за применение при распространении на новых носителей.
-Param/Value/CD897104=Добавляет ещё 1/2 фонтана лавы.
+Param/Value/CD897104=Добавляет ещё 1/2 фонтана лавы за применение, но увеличивает затраты энергии на 10/20 ед.
 Param/Value/CD9DDA4B= через 
 Param/Value/CDA44B00=Излечение
 Param/Value/CDC72AC2=Увеличивает длительность действия эффекта «Ошпаренность» на 50/100% и урон способности «Сварить» на 25/50%.
@@ -6430,6 +6494,7 @@ Param/Value/E7D5055B=Поздравляем.<n/>Награда: 1 врата и�
 Param/Value/E7D8930F=Величие
 Param/Value/E7E6B679=Способности, использующие землю, оглушают на 1/2 секунды дольше.
 Param/Value/E7FC64E2=Шары опустошения могут атаковать на 1 дополнительного врага за 2 использованных шара.
+Param/Value/E8062859=Восстанавливает 10 ед. щитов каждый раз, когда способность «Обстрел» запускает ракету.
 Param/Value/E81098CD=Увеличивает радиус действия вашей способности «Волна времени» на 0/25/50/75%.
 Param/Value/E81BE771=Внимание
 Param/Value/E84895EE=Увеличивает количество замедлений врагов от холода на 5/10% и увеличивает количество щитов, которые даёт замораживание врагов, на 10/20 ед.
@@ -6592,7 +6657,7 @@ Param/Value/FCC52C7E=Запустите 1/2 дополнительных рак�
 Param/Value/FCD95BEC= / 
 Param/Value/FCDD7783=<n/>Личный рекорд: 
 Param/Value/FCE508B2=Победите «Тора», вер. 3, чтобы получить технологию магнето, которая сделает вас невосприимчивым к эффекту отбрасывания!
-Param/Value/FCEAB7C7=Урон, наносимый более 40 ед., снижается на 45/50/55/60%, пока многофазный щит заряжен.
+Param/Value/FCEAB7C7=Урон, наносимый более 40 ед., снижается на 45/55/65/75%, пока многофазный щит заряжен.
 Param/Value/FD12CDCA=Скорость
 Param/Value/FD13A313=/
 Param/Value/FD2BF60A=
@@ -6688,6 +6753,8 @@ Unit/Name/DistributeMissile=Distribute Missile
 Unit/Name/DoomLord=Повелитель судьбы
 Unit/Name/DreadLord=Повелитель ужаса
 Unit/Name/EarthHero=Земля
+Unit/Name/EarthHeroBoulder=Earth Hero - Boulder
+Unit/Name/EarthHeroFortifyMissile=Earth Hero - Fortify Missile
 Unit/Name/ElementalHero=Стихия
 Unit/Name/EruptionMissileEarth=Eruption Missile
 Unit/Name/EruptionMissileFire=Eruption Missile
@@ -6713,7 +6780,6 @@ Unit/Name/FragmentMissile=Fragment Missile
 Unit/Name/FungalAttackMissileBig=Fungal Attack Missile Big
 Unit/Name/FungalAttackMissileSmall=Fungal Attack Missile Small
 Unit/Name/FungalDischargeMissile=Fungal Discharge Missile
-Unit/Name/FungalGrowthMissile=Валун
 Unit/Name/GasBombMissile=Gas Bomb Missile
 Unit/Name/GatewayHero=Врата
 Unit/Name/GatewayHeroZealot=Зилот
@@ -6878,7 +6944,10 @@ Unit/Name/UpheavalMissile=Upheaval Missile
 Unit/Name/VoidLord=Повелитель Пустоты
 Unit/Name/VolatileSporesMissile=Volatile Spores Missile
 Unit/Name/WarpHero=Искривление
-Unit/Name/WarpHeroMissile=Warp Hero Missile
+Unit/Name/WarpHeroGuidedMissile=Warp Hero - Guided Missile
+Unit/Name/WarpHeroMultishot=Warp Hero - Multishot
+Unit/Name/WarpHeroStrafe=Warp Hero - Strafe
+Unit/Name/WarpHeroTurretDummy=Warp Hero - Turret Dummy
 Unit/Name/WaterBlastMissile=Water Blast Missile
 Unit/Name/WaterHero=Вода
 Unit/Name/WaterHeroPuddleUnit=Water Hero - Puddle Unit
@@ -7121,6 +7190,8 @@ Upgrade/Name/Duel=Duel
 Upgrade/Name/Duplicate=Duplicate
 Upgrade/Name/Dynamic=Dynamic
 Upgrade/Name/EarthHeroBonusSkin=Earth Hero Bonus Skin
+Upgrade/Name/EarthHeroPassive=Earth Hero - Passive
+Upgrade/Name/EarthHeroPassive2=Earth Hero - Passive 2
 Upgrade/Name/Echo=Echo
 Upgrade/Name/Effective=Effective
 Upgrade/Name/Efficient=Efficient
@@ -7561,6 +7632,7 @@ Upgrade/Name/Vortex=Vortex
 Upgrade/Name/WarpHeroAgility=Warp Hero - Agility
 Upgrade/Name/WarpHeroAssault=Warp Hero - Assault
 Upgrade/Name/WarpHeroBlaze=Warp Hero - Blaze
+Upgrade/Name/WarpHeroCover=Warp Hero - Cover
 Upgrade/Name/WarpHeroDoubleganger=Warp Hero - Doubleganger
 Upgrade/Name/WarpHeroDrone=Warp Hero - Drone
 Upgrade/Name/WarpHeroDurable=Warp Hero - Durable
@@ -7636,6 +7708,7 @@ Weapon/Name/EssenceSteal=Кража эссенции
 Weapon/Name/Extinction=Вымирание
 Weapon/Name/FireBall=Огненный шар
 Weapon/Name/FungalDischarge=Выброс грибков
+Weapon/Name/GatewayHeroSolariteReaper=Соларитовый жнец
 Weapon/Name/Glaive=Глефа
 Weapon/Name/Horror=Кошмар
 Weapon/Name/HunterKiller=Шипы пронзателя
