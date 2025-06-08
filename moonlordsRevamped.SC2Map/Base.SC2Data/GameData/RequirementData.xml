@@ -133,6 +133,20 @@
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Show" Link="NotCountBehaviorGatewayHeroRecentlyProtectedQueuedOrBetterAtUnit"/>
     </CRequirement>
+    <CRequirement id="GravityHeroHas300Polarity">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountBehaviorGravityHeroPolarityQueuedOrBetterAtUnit259247359"/>
+    </CRequirement>
+    <CRequirement id="GravityHeroIsPositive">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountBehaviorGravityHeroPositiveCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorGravityHeroPositiveCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="GravityHeroNotPositive">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="NotCountBehaviorGravityHeroPositiveCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="NotCountBehaviorGravityHeroPositiveCompleteOnlyAtUnit"/>
+    </CRequirement>
     <CRequirement id="HaveRetribution">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Show" Link="And1CountUpgradeRetributionQueuedOrBetter"/>
@@ -292,6 +306,7 @@
     <CRequirement id="ShadowHeroHasPenumbra">
         <EditorCategories value="Race:Protoss"/>
         <NodeArray index="Use" Link="CountUpgradeShadowHeroPenumbraCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeShadowHeroPenumbraCompleteOnly"/>
     </CRequirement>
     <CRequirement id="ShadowplayLimit">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
@@ -407,7 +422,7 @@
     </CRequirement>
     <CRequirement id="Unstoppable">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUnstoppableCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeUnstoppableoldCompleteOnly"/>
     </CRequirement>
     <CRequirement id="WarpDrone">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>

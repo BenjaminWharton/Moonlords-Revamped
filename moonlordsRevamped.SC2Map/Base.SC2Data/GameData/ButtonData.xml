@@ -38,16 +38,63 @@
         <Icon value="Assets\Textures\btn-upgrade-terran-explosiveshrapnelshells.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
-    <CButton id="ConsumeGravityHero">
-        <Icon value="Assets\Textures\btn-ability-protoss-soulabsorbtion.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
     <CButton id="DeflectorDrone">
         <Icon value="Assets\Textures\btn-ability-protoss-gatewayservitordrone-red.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
+    <CButton id="GravityHeroCrush">
+        <Icon value="Assets\Crush.dds"/>
+        <Hotkey value="Button/Hotkey/GravityHeroW"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/ChargeText/GravityHeroSway"/>
+    </CButton>
+    <CButton id="GravityHeroLift">
+        <Icon value="Assets\Lift.dds"/>
+        <Hotkey value="Button/Hotkey/GravityHeroW"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/ChargeText/GravityHeroSway"/>
+    </CButton>
+    <CButton id="GravityHeroDive">
+        <Icon value="Assets\Dive.dds"/>
+        <Hotkey value="Button/Hotkey/GravityHeroE"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GravityHeroPositive">
+        <Icon value="Assets\Textures\btn-ability-stetmann-garystetelliteovercharge-speed.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GravityHeroNegative">
+        <Icon value="Assets\Textures\btn-ability-alarak-reliquaryofsouls.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GravityHeroShift">
+        <Icon value="Assets\Shift.dds"/>
+        <Hotkey value="Button/Hotkey/GravityHeroE"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GravityHeroPush">
+        <Icon value="Assets\PushEx2.dds"/>
+        <Hotkey value="Button/Hotkey/GravityHeroQ"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GravityHeroPull">
+        <Icon value="Assets\PullEx2.dds"/>
+        <Hotkey value="Button/Hotkey/GravityHeroQ"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="GravityHeroInflate">
+        <Icon value="Assets\Textures\btn-ability-zeratul-warpprism-transferlink.dds"/>
+        <Hotkey value="Button/Hotkey/GravityHeroR"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
     <CButton id="GravityHeroPolarity">
         <Icon value="Assets\Polarity.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/ChargeText/Polarity"/>
+    </CButton>
+    <CButton id="GravityHeroCompress">
+        <Icon value="Assets\CompressEx5.dds"/>
+        <Hotkey value="Button/Hotkey/GravityHeroR"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="TimeHeroChronofield">
@@ -119,10 +166,10 @@
         <Hotkey value="Button/Hotkey/InfuseWater"/>
         <HotkeyAlias value="InfuseWater"/>
     </CButton>
-    <CButton id="EverlastingStorm">
+    <CButton id="ContinentalStorm">
         <Icon value="Assets\EverlastingWindstormEx1.dds"/>
-        <EditorCategories value="Race:Protoss"/>
         <Hotkey value="Button/Hotkey/InfuseWind"/>
+        <EditorCategories value="Race:Protoss"/>
         <HotkeyAlias value="InfuseWind"/>
     </CButton>
     <CButton id="ExplosiveVirus">
@@ -168,18 +215,6 @@
     </CButton>
     <CButton id="GlaiveBarrage">
         <Icon value="Assets\Textures\btn-upgrade-protoss-resonatingglaives.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
-    <CButton id="GravityDash">
-        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-dashrange&amp;cdr.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
-    <CButton id="GravityShot">
-        <Icon value="Assets\Textures\btn-ability-protoss-destructionwave.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
-    <CButton id="GravitySlivers">
-        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-supplicantsacrifice-lightingstrike.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="GuardianShell">
@@ -392,10 +427,6 @@
         <EditorCategories value="Race:Protoss"/>
         <ChargeText value="Renew/ChargeText"/>
     </CButton>
-    <CButton id="Repel">
-        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-empoweraoeattacks.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
     <CButton id="RotatingBeam">
         <Icon value="Assets\Textures\btn-ability-protoss-beambounce.dds"/>
         <EditorCategories value="Race:Protoss"/>
@@ -559,7 +590,7 @@
         <Icon value="Assets\EnergytapEx5.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
-    <CButton id="Decoy">
+    <CButton id="WarpHeroDecoy">
         <Icon value="Assets\Textures\btn-ability-protoss-chronoboost.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
@@ -644,6 +675,7 @@
     </CButton>
     <CButton id="WallofDarkness">
         <Icon value="Assets\WallOfDarknessEx3.dds"/>
+        <EditorCategories value="Race:Protoss"/>
         <ChargeText value="WallOfDarknessChargeCount"/>
     </CButton>
     <CButton id="PowerPlating">

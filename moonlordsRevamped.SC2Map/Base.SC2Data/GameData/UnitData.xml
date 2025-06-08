@@ -19,6 +19,12 @@
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="GravityHeroPullMissile" parent="MISSILE">
+        <Race value="Prot"/>
+        <Sight value="2"/>
+        <Height value="0.6"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
     <CUnit id="Decoy">
         <Race value="Prot"/>
         <Mob value="Multiplayer"/>
@@ -29,13 +35,11 @@
         <FlagArray index="AlwaysThreatens" value="1"/>
         <FlagArray index="ArmySelect" value="1"/>
         <PlaneArray index="Ground" value="1"/>
-        <Collide index="Ground" value="1"/>
-        <Collide index="ForceField" value="1"/>
-        <Collide index="Locust" value="1"/>
-        <Collide index="Small" value="1"/>
+        <Collide index="Phased" value="1"/>
         <Response value="Nothing"/>
         <Attributes index="Armored" value="1"/>
         <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Heroic" value="1"/>
         <LifeStart value="200"/>
         <LifeMax value="200"/>
         <LifeArmor value="1"/>
@@ -80,6 +84,7 @@
             <ChanceArray index="Idle" value="90"/>
         </Fidget>
         <TauntDuration index="Dance" value="5"/>
+        <Mover value="FlyLow"/>
     </CUnit>
     <CUnit id="AirHeroMicroBurstUnit">
         <Race value="Prot"/>
@@ -107,6 +112,12 @@
         <Race value="Prot"/>
         <Mover value="Boulder"/>
         <Sight value="2"/>
+    </CUnit>
+    <CUnit id="GravityHeroPushMissile" parent="MISSILE">
+        <Race value="Prot"/>
+        <Sight value="2"/>
+        <Height value="0.6"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
     </CUnit>
     <CUnit id="NatureHeroFruitExplode">
         <Race value="Prot"/>
@@ -228,6 +239,71 @@
         <Height value="0.5"/>
         <VisionHeight value="4"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="ThorV1">
+        <DeathRevealRadius value="3"/>
+        <Facing value="135"/>
+        <Race value="Terr"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Hero" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TurnBeforeMove" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Colossus" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
+        <LifeArmor value="3"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
+        <EnergyStart value="200"/>
+        <Speed value="1.875"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <TurningRate value="360"/>
+        <Sight value="14"/>
+        <RepairTime value="60"/>
+        <AttackTargetPriority value="20"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="ThorAPMode"/>
+        <BehaviorArray Link="thorlaunchattacksatindicator"/>
+        <BehaviorArray Link="ThorSelfheal"/>
+        <BehaviorArray Link="DefensiveNukeCD"/>
+        <WeaponArray Link="ThorsHammer"/>
+        <WeaponArray/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="ArmorpiercingMode" Type="AbilCmd" AbilCmd="ThorAPMode,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="ThorAPMode,Cancel" Row="2" Column="4"/>
+        </CardLayouts>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <InnerRadius value="1"/>
+        <SubgroupPriority value="10"/>
+        <MinimapRadius value="1"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <TechAliasArray value="Alias_Thor"/>
+        <HotkeyCategory value="Unit/Category/TerranUnits"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="10"/>
+            <ChanceArray index="Idle" value="90"/>
+        </Fidget>
+        <TauntDuration index="Cheer" value="5"/>
+        <TauntDuration index="Dance" value="5"/>
     </CUnit>
     <CUnit id="WarpHeroTurretDummy">
         <Race value="Prot"/>
@@ -530,29 +606,30 @@
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
-        <AbilArray Link="ProgressRally"/>
-        <AbilArray Link="Warpable"/>
-        <AbilArray Link="GravityShot"/>
-        <AbilArray Link="GravitySlivers"/>
-        <AbilArray Link="GravityDash"/>
-        <AbilArray Link="ConsumeGravityHero"/>
-        <BehaviorArray Link="Repel"/>
-        <BehaviorArray Link="SoulAbsorption"/>
-        <BehaviorArray Link="DensityMomentum"/>
-        <BehaviorArray Link="Unstoppable"/>
+        <AbilArray Link="GravityHeroQ"/>
+        <AbilArray Link="GravityHeroW"/>
+        <AbilArray Link="GravityHeroE"/>
+        <AbilArray Link="GravityHeroR"/>
+        <AbilArray Link="GravityHeroPolarity"/>
+        <BehaviorArray Link="GravityHeroPolarity"/>
+        <BehaviorArray Link="GravityHeroNegative"/>
+        <BehaviorArray Link="GravityHeroDevour"/>
         <BehaviorArray Link="FullHeal"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-            <LayoutButtons Face="GravityShot" Type="AbilCmd" AbilCmd="GravityShot,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="Repel" Type="Passive" Row="2" Column="4"/>
-            <LayoutButtons Face="GravitySlivers" Type="AbilCmd" AbilCmd="GravitySlivers,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="GravityDash" Type="AbilCmd" AbilCmd="GravityDash,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="ConsumeGravityHero" Type="AbilCmd" AbilCmd="ConsumeGravityHero,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="GravityHeroPull" Type="AbilCmd" AbilCmd="GravityHeroQ,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="GravityHeroPolarity" Type="AbilCmd" AbilCmd="GravityHeroPolarity,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="GravityHeroCrush" Type="AbilCmd" AbilCmd="GravityHeroW,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="GravityHeroShift" Type="AbilCmd" AbilCmd="GravityHeroE,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="GravityHeroCompress" Type="AbilCmd" AbilCmd="GravityHeroR,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="ChatCommands" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="GravityHeroNegative" Type="Passive" Requirements="GravityHeroNotPositive" Row="1" Column="4"/>
+            <LayoutButtons Face="GravityHeroPositive" Type="Passive" Requirements="GravityHeroIsPositive" Row="1" Column="4"/>
         </CardLayouts>
         <InnerRadius value="0.5"/>
         <SubgroupPriority value="58"/>
@@ -816,6 +893,8 @@
         <BehaviorArray Link="Evasion"/>
         <BehaviorArray Link="AirHeroOverdriveBase"/>
         <BehaviorArray Link="MicroBurstAutocast"/>
+        <BehaviorArray Link="TornadoAutocast"/>
+        <BehaviorArray Link="HurricaneAutocast"/>
         <BehaviorArray Link="FullHeal"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -1930,29 +2009,6 @@
         <SelectAlias value=""/>
         <AIEvaluateAlias value=""/>
     </CUnit>
-    <CUnit id="ShieldUnit">
-        <DeathRevealRadius value="3"/>
-        <Race value="Prot"/>
-        <FlagArray index="Turnable" value="0"/>
-        <FlagArray index="Unradarable" value="1"/>
-        <FlagArray index="UseLineOfSight" value="1"/>
-        <FlagArray index="KillCredit" value="0"/>
-        <FlagArray index="TownAlert" value="1"/>
-        <FlagArray index="Invulnerable" value="1"/>
-        <FlagArray index="NoScore" value="1"/>
-        <EditorFlags index="BlockStructures" value="0"/>
-        <Mover value=""/>
-        <Radius value="0"/>
-        <SeparationRadius value="0"/>
-        <MinimapRadius value="0"/>
-        <EditorCategories value="ObjectType:Other,ObjectFamily:Campaign"/>
-        <LeaderAlias value=""/>
-        <LifeStart value="10000"/>
-        <LifeMax value="10000"/>
-        <LifeArmor value="10000"/>
-        <LifeRegenRate value="10000"/>
-        <BehaviorArray Link="SpellUnit"/>
-    </CUnit>
     <CUnit id="ProjectionUnit">
         <Race value="Prot"/>
         <FlagArray index="Unselectable" value="1"/>
@@ -2494,7 +2550,7 @@
             <LayoutButtons Face="Windstorm" Type="AbilCmd" AbilCmd="Windstorm,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="SandstormEarth" Type="AbilCmd" AbilCmd="SandstormEarth,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="ThunderstormWater" Type="AbilCmd" AbilCmd="ThunderstormWater,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="EverlastingStorm" Type="AbilCmd" AbilCmd="EverlastingStorm,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ContinentalStorm" Type="AbilCmd" AbilCmd="EverlastingStorm,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="ElementalStacks" Type="Passive" Requirements="ButtonUpdater1" Row="2" Column="4"/>
             <LayoutButtons Face="ElementalStacks2" Type="Passive" Requirements="ButtonUpdater2" Row="2" Column="4"/>
             <LayoutButtons Face="ChatCommands" Type="Passive" Row="1" Column="0"/>
@@ -3039,6 +3095,7 @@
         <Race value="Zerg"/>
         <Mob value="Campaign"/>
         <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
         <FlagArray index="PreventDestroy" value="1"/>
         <FlagArray index="UseLineOfSight" value="1"/>
         <Attributes index="Armored" value="1"/>
@@ -4201,7 +4258,6 @@
         <AbilArray Link="Teleport"/>
         <BehaviorArray Link="Demolisher"/>
         <BehaviorArray Link="Autocast"/>
-        <BehaviorArray Link="DemolisherTracker"/>
         <BehaviorArray Link="hpBonus"/>
         <WeaponArray Link="Demolish" Turret="Immortal"/>
         <CardLayouts>
@@ -5680,6 +5736,7 @@
         <AbilArray Link="GuidedMissile"/>
         <AbilArray Link="WarpHeroDecoy"/>
         <BehaviorArray Link="WarpHeroDummyTracker"/>
+        <BehaviorArray Link="WarpHeroDecoyTracker"/>
         <BehaviorArray Link="PowerPlating2"/>
         <BehaviorArray Link="WarpDrone"/>
         <BehaviorArray Link="PowerPlatingbase"/>
@@ -5703,7 +5760,7 @@
                 <Column value="4"/>
             </LayoutButtons>
             <LayoutButtons Face="PowerPlating" Type="Passive" Row="2" Column="4"/>
-            <LayoutButtons Face="Decoy" Type="AbilCmd" AbilCmd="WarpHeroDecoy,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="WarpHeroDecoy" Type="AbilCmd" AbilCmd="WarpHeroDecoy,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="Strafe" Type="AbilCmd" AbilCmd="WarpHeroStrafe,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="ChatCommands" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
@@ -5826,47 +5883,6 @@
         <VisionHeight value="4"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
-    <CUnit id="Thor">
-        <FlagArray index="Movable" value="0"/>
-        <FlagArray index="Hero" value="1"/>
-        <Attributes index="Structure" value="1"/>
-        <Attributes index="Heroic" value="1"/>
-        <LifeStart value="1500"/>
-        <LifeMax value="1500"/>
-        <LifeArmor value="3"/>
-        <EnergyStart value="200"/>
-        <Sight value="14"/>
-        <Food value="0"/>
-        <BehaviorArray Link="thorlaunchattacksatindicator"/>
-        <BehaviorArray Link="Selfheal"/>
-        <BehaviorArray Link="DefensiveNukeCD"/>
-        <WeaponArray index="0" Link="ThorsHammer"/>
-        <WeaponArray index="1" Link=""/>
-    </CUnit>
-    <CUnit id="AnnihilatorV2" parent="Thor">
-        <Name value="Unit/Name/AnnihilatorV2"/>
-        <Description value="Button/Tooltip/AnnihilatorV2"/>
-        <ReviveType value="AnnihilatorV2"/>
-        <EnergyStart value="0"/>
-        <EnergyMax value="500.5"/>
-        <EnergyDamageGain index="Spell" value="0.125"/>
-        <EnergyDamageGain index="Melee" value="0.125"/>
-        <EnergyDamageGain index="Ranged" value="0.125"/>
-        <EnergyDamageGain index="Splash" value="0.125"/>
-        <BehaviorArray index="2" Link="AnnihilatorKilllittleAres"/>
-        <BehaviorArray Link="ProtectionField"/>
-        <BehaviorArray Link="AnnihilatorV2AENUKE"/>
-        <TacticalAI value="AnnihilatorV2"/>
-        <LeaderAlias value="AnnihilatorV2"/>
-        <HotkeyAlias value="AnnihilatorV2"/>
-        <SelectAlias value="AnnihilatorV2"/>
-        <SubgroupAlias value="AnnihilatorV2"/>
-        <AIEvaluateAlias value="AnnihilatorV2"/>
-        <ReviveInfoBase>
-            <Charge Link="AnnihilatorV2/Revive"/>
-            <Cooldown Link="AnnihilatorV2/Revive"/>
-        </ReviveInfoBase>
-    </CUnit>
     <CUnit id="AnnihilatorStopMoveIndicator">
         <DeathRevealRadius value="1"/>
         <Race value="Terr"/>
@@ -5918,83 +5934,108 @@
         <GlossaryWeakArray value="Carrier"/>
         <HotkeyCategory value="Unit/Category/ProtossUnits"/>
     </CUnit>
-    <CUnit id="AnnihilatorV3" parent="Thor">
+    <CUnit id="ThorV2" parent="ThorV1">
+        <Name value="Unit/Name/ThorV2"/>
+        <Description value="Button/Tooltip/ThorV2"/>
+        <ReviveType value="ThorV2"/>
+        <KillXP value="160"/>
+        <BehaviorArray Link="ProtectionField"/>
+    </CUnit>
+    <CUnit id="ThorV3" parent="ThorV1">
+        <Name value="Unit/Name/ThorV3"/>
+        <Description value="Button/Tooltip/ThorV3"/>
+        <ReviveType value="ThorV3"/>
+        <BehaviorArray Link="ProtectionField"/>
+    </CUnit>
+    <CUnit id="AnnihilatorV1">
+        <DeathRevealRadius value="3"/>
+        <Facing value="135"/>
+        <Race value="Terr"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Hero" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TurnBeforeMove" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Colossus" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
+        <LifeArmor value="3"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
+        <Speed value="1.875"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <TurningRate value="360"/>
+        <Sight value="14"/>
+        <RepairTime value="60"/>
+        <AttackTargetPriority value="20"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <BehaviorArray Link="ThorSelfheal"/>
+        <BehaviorArray Link="AnnihilatorKilllittleAres"/>
+        <BehaviorArray Link="AnnihilatorV2AENUKE"/>
+        <BehaviorArray Link="ProtectionField"/>
+        <WeaponArray Link="ThorsHammer"/>
+        <WeaponArray/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+        </CardLayouts>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <InnerRadius value="1"/>
+        <SubgroupPriority value="10"/>
+        <MinimapRadius value="1"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <TechAliasArray value="Alias_Thor"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="10"/>
+            <ChanceArray index="Idle" value="90"/>
+        </Fidget>
+        <TauntDuration index="Cheer" value="5"/>
+        <TauntDuration index="Dance" value="5"/>
+        <EnergyDamageGain index="Spell" value="0.1"/>
+        <EnergyDamageGain index="Melee" value="0.1"/>
+        <EnergyDamageGain index="Ranged" value="0.1"/>
+        <EnergyDamageGain index="Splash" value="0.1"/>
+    </CUnit>
+    <CUnit id="AnnihilatorV2" parent="AnnihilatorV1">
+        <Name value="Unit/Name/AnnihilatorV2"/>
+        <Description value="Button/Tooltip/AnnihilatorV2"/>
+        <ReviveType value="AnnihilatorV2"/>
+        <EnergyMax value="500.5"/>
+        <EnergyDamageGain index="Spell" value="0.125"/>
+        <EnergyDamageGain index="Melee" value="0.125"/>
+        <EnergyDamageGain index="Ranged" value="0.125"/>
+        <EnergyDamageGain index="Splash" value="0.125"/>
+    </CUnit>
+    <CUnit id="AnnihilatorV3" parent="AnnihilatorV1">
         <Name value="Unit/Name/AnnihilatorV3"/>
         <Description value="Button/Tooltip/AnnihilatorV3"/>
         <ReviveType value="AnnihilatorV3"/>
-        <EnergyStart value="0"/>
         <EnergyMax value="500.5"/>
         <EnergyDamageGain index="Spell" value="0.2"/>
         <EnergyDamageGain index="Melee" value="0.2"/>
         <EnergyDamageGain index="Ranged" value="0.2"/>
         <EnergyDamageGain index="Splash" value="0.2"/>
-        <BehaviorArray index="2" Link="AnnihilatorKilllittleAres"/>
-        <BehaviorArray Link="ProtectionField"/>
-        <BehaviorArray Link="AnnihilatorV2AENUKE"/>
-        <TacticalAI value="AnnihilatorV3"/>
-        <LeaderAlias value="AnnihilatorV3"/>
-        <HotkeyAlias value="AnnihilatorV3"/>
-        <SelectAlias value="AnnihilatorV3"/>
-        <SubgroupAlias value="AnnihilatorV3"/>
-        <AIEvaluateAlias value="AnnihilatorV3"/>
-        <ReviveInfoBase>
-            <Charge Link="AnnihilatorV3/Revive"/>
-            <Cooldown Link="AnnihilatorV3/Revive"/>
-        </ReviveInfoBase>
     </CUnit>
-    <CUnit id="ThorV2" parent="Thor">
-        <Name value="Unit/Name/ThorV2"/>
-        <Description value="Button/Tooltip/ThorV2"/>
-        <ReviveType value="ThorV2"/>
-        <BehaviorArray Link="ProtectionField"/>
-        <TacticalAI value="ThorV2"/>
-        <LeaderAlias value="ThorV2"/>
-        <HotkeyAlias value="ThorV2"/>
-        <SelectAlias value="ThorV2"/>
-        <SubgroupAlias value="ThorV2"/>
-        <AIEvaluateAlias value="ThorV2"/>
-        <ReviveInfoBase>
-            <Charge Link="ThorV2/Revive"/>
-            <Cooldown Link="ThorV2/Revive"/>
-        </ReviveInfoBase>
-    </CUnit>
-    <CUnit id="ThorV3" parent="Thor">
-        <Name value="Unit/Name/ThorV3"/>
-        <Description value="Button/Tooltip/ThorV3"/>
-        <ReviveType value="ThorV3"/>
-        <BehaviorArray Link="ProtectionField"/>
-        <TacticalAI value="ThorV3"/>
-        <LeaderAlias value="ThorV3"/>
-        <HotkeyAlias value="ThorV3"/>
-        <SelectAlias value="ThorV3"/>
-        <SubgroupAlias value="ThorV3"/>
-        <AIEvaluateAlias value="ThorV3"/>
-        <ReviveInfoBase>
-            <Charge Link="ThorV3/Revive"/>
-            <Cooldown Link="ThorV3/Revive"/>
-        </ReviveInfoBase>
-    </CUnit>
-    <CUnit id="Annihilator" parent="Thor">
-        <Name value="Unit/Name/Annihilator"/>
-        <Description value="Button/Tooltip/Annihilator"/>
-        <ReviveType value="Annihilator"/>
-        <BehaviorArray index="2" Link="AnnihilatorKilllittleAres"/>
-        <BehaviorArray Link="ProtectionField"/>
-        <TacticalAI value="Annihilator"/>
-        <LeaderAlias value="Annihilator"/>
-        <HotkeyAlias value="Annihilator"/>
-        <SelectAlias value="Annihilator"/>
-        <SubgroupAlias value="Annihilator"/>
-        <AIEvaluateAlias value="Annihilator"/>
-        <ReviveInfoBase>
-            <Charge Link="Annihilator/Revive"/>
-            <Cooldown Link="Annihilator/Revive"/>
-        </ReviveInfoBase>
-    </CUnit>
-    <CUnit id="Odin2" parent="Thor">
-        <Name value="Unit/Name/Odin2"/>
-        <Description value="Button/Tooltip/Odin2"/>
-        <ReviveType value="Odin2"/>
+    <CUnit id="OdinV1" parent="ThorV1">
+        <Name value="Unit/Name/OdinV1"/>
+        <Description value="Button/Tooltip/OdinV1"/>
+        <ReviveType value="OdinV1"/>
         <EnergyStart value="0"/>
         <EnergyMax value="500.75"/>
         <EnergyDamageGain index="Spell" value="0.25"/>
@@ -6004,16 +6045,6 @@
         <BehaviorArray Link="ProtectionField"/>
         <BehaviorArray Link="AnnihilatorKilllittleAres"/>
         <BehaviorArray Link="AnnihilatorV2AENUKE"/>
-        <TacticalAI value="Odin2"/>
-        <LeaderAlias value="Odin2"/>
-        <HotkeyAlias value="Odin2"/>
-        <SelectAlias value="Odin2"/>
-        <SubgroupAlias value="Odin2"/>
-        <AIEvaluateAlias value="Odin2"/>
-        <ReviveInfoBase>
-            <Charge Link="Odin2/Revive"/>
-            <Cooldown Link="Odin2/Revive"/>
-        </ReviveInfoBase>
     </CUnit>
     <CUnit id="TimewaveUnit" parent="MISSILE">
         <Race value="Prot"/>
@@ -6253,6 +6284,7 @@
         <AbilArray Link="ProgressRally"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="ShadowHeroDisintegrate"/>
+        <AbilArray Link="ShadowHeroPenumbra"/>
         <BehaviorArray Link="WallofDarkness"/>
         <BehaviorArray Link="ShadowHeroPenumbra"/>
         <BehaviorArray Link="CloakofFear"/>
@@ -6266,6 +6298,8 @@
             <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="0" Column="4"/>
             <LayoutButtons Face="Shadowcrash" Type="AbilCmd" AbilCmd="ShadowHeroShadowcrash,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="Doom" Type="AbilCmd" AbilCmd="Doom,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="WallofDarkness" Type="AbilCmd" AbilCmd="ShadowHeroPenumbra,Off" Row="2" Column="4"/>
+            <LayoutButtons Face="WallofDarkness" Type="AbilCmd" AbilCmd="ShadowHeroPenumbra,On" Row="2" Column="4"/>
             <LayoutButtons Face="WallofDarkness" Type="Passive" AbilCmd="WallOfDarknessChargeCount,255" Row="2" Column="4"/>
             <LayoutButtons Face="Lifetap" Type="AbilCmd" AbilCmd="ShadowHeroEnergytap,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="Shadowcontrol" Type="AbilCmd" AbilCmd="ShadowHeroShadowplay,Execute" Row="2" Column="2"/>

@@ -25,6 +25,49 @@
             <YawPitchRoll value="5759.6484"/>
         </MotionPhases>
     </CMoverMissile>
+    <CMoverMissile id="GravityHeroPushMissile">
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="8"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-1"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+        <MotionPhases YawPitchRoll="MAX"/>
+        <RespectUnitHeightAtDestination value="1"/>
+    </CMoverMissile>
+    <CMoverMissile id="GravityHeroPullMissile">
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="11"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-1"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+        <MotionPhases YawPitchRoll="MAX"/>
+        <RespectUnitHeightAtDestination value="1"/>
+    </CMoverMissile>
+    <CMoverMissile id="GravityHeroDive">
+        <Flags index="RestoreHeight" value="1"/>
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <Acceleration value="-1"/>
+            <Gravity value="45"/>
+            <RotationActorType value="Upright"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+            <FlightTime value="0.9,-1"/>
+        </MotionPhases>
+        <RotationIgnoredByUnit value="1"/>
+        <RespectUnitHeightAtDestination value="1"/>
+    </CMoverMissile>
     <CMoverMissile id="ParticleHeroDematerializeMover">
         <MotionPhases>
             <Driver value="Throw"/>
@@ -951,21 +994,6 @@
             <Driver value="Guidance"/>
             <Speed value="40"/>
             <MaxSpeed value="15"/>
-            <ThrowBandYaw value="-360,-360,-360,-360"/>
-            <ThrowBandPitch value="-360,-360,-360,-360"/>
-            <YawPitchRoll value="5759.6484"/>
-        </MotionPhases>
-    </CMoverMissile>
-    <CMoverMissile id="GravityDashPullMover">
-        <MotionPhases>
-            <Driver value="Guidance"/>
-            <Acceleration value="-1"/>
-            <MinSpeed value="11"/>
-            <MaxSpeed value="13"/>
-            <Gravity value="30"/>
-            <BlendType value="Linear"/>
-            <RotationLaunchActorType value="LaunchToTarget"/>
-            <RotationActorType value="LookAtTarget"/>
             <ThrowBandYaw value="-360,-360,-360,-360"/>
             <ThrowBandPitch value="-360,-360,-360,-360"/>
             <YawPitchRoll value="5759.6484"/>

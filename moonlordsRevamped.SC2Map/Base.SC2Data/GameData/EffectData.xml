@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CEffectEnumArea default="1" id="BSearchArea">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray/>
+    </CEffectEnumArea>
+    <CEffectEnumArea default="1" id="BSearchAreaReveal" parent="BSearchArea">
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="AnnihilatorFirewallCP">
+        <EditorCategories value="Race:Protoss"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <InitialDelay value="1"/>
+        <PeriodicValidator value="AnnihilatorHasFirewall"/>
+        <PeriodicEffectArray value="AnnihilatorFirewallSA"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="AnnihilatorFirewallDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="500"/>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="AnnihilatorFirewallSA" parent="BSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <DebugTrace value="1"/>
+        <AreaArray index="0" Radius="1" Effect="AnnihilatorFirewallDMG"/>
+    </CEffectEnumArea>
     <CEffectDamage id="AnnihilatorLaserTrackingDamage">
         <EditorCategories value="Race:Protoss"/>
         <DebugTrace value="1"/>
@@ -8,6 +36,26 @@
         <AreaArray Radius="1.5" Fraction="1"/>
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
+    <CEffectRandomPointInCircle id="AnnihilatorSearchRandom">
+        <EditorCategories value="Race:Terran"/>
+        <Effect value="WarbotBLM"/>
+        <Radius value="11"/>
+        <RestrictToCircumference value="1"/>
+    </CEffectRandomPointInCircle>
+    <CEffectDamage id="AnnihilatorV1FlamethrowerDMG">
+        <EditorCategories value="Race:Terran"/>
+        <ArmorReduction value="1"/>
+        <Amount value="50"/>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="AnnihilatorV1FlamethrowerSA" parent="BSearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <DebugTrace value="1"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <AreaArray index="0" RectangleWidth="2.5" RectangleHeight="13" Effect="AnnihilatorV1FlamethrowerDMG"/>
+        <AreaRelativeOffset value="0,-7"/>
+    </CEffectEnumArea>
     <CEffectModifyPlayer id="BladeHeroBloodFanaticalEvisDecreaseEx2">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray Operation="Set" Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="12.5"/>
@@ -128,6 +176,119 @@
         <CaseDefault value="BladeHeroLeapSwitch"/>
         <TargetLocationType value="Point"/>
     </CEffectSwitch>
+    <CEffectApplyBehavior id="GravityHeroClashAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroClash"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GravityHeroCrushClashDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="300"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="GravityHeroCompressSchismSA" parent="BSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <ExcludeArray Value="Target"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <AreaArray index="0" MaxCount="0" Radius="6" Effect="GravityHeroCompressSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GravityHeroCompressSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroCompressAB"/>
+        <EffectArray value="GravityHeroCompressDMG"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GravityHeroCrushAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroCrushed"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GravityHeroInflateAbolishDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectDamage id="GravityHeroLiftClashDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="300"/>
+    </CEffectDamage>
+    <CEffectRemoveBehavior id="GravityHeroCrushRB">
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="GravityHeroElevated"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="GravityHeroCrushClashSet">
+        <ValidatorArray value="GravityHeroIsElevated"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <EffectArray value="GravityHeroCrushClashDMG"/>
+        <EffectArray value="GravityHeroClashAB"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="GravityHeroCrushDiffusionDelay">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <Flags index="RandomPeriod" value="1"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroCrushDiffusionSA"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.1875"/>
+        <PeriodicPeriodArray value="0.25"/>
+        <PeriodicPeriodArray value="0.3125"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="GravityHeroCrushDiffusionSA" parent="BSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <TargetSorts>
+            <SortArray value="NotCrushed"/>
+            <SortArray value="NotElevated"/>
+        </TargetSorts>
+        <AreaArray index="0" MaxCount="1" Radius="5" Effect="GravityHeroCrushDiffusionSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GravityHeroCrushDiffusionSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroCrushStun"/>
+        <EffectArray value="GravityHeroCrushAB"/>
+        <EffectArray value="GravityHeroCrushClashSet"/>
+        <EffectArray value="GravityHeroCrushRB"/>
+        <EffectArray value="GravityHeroCrushRBStun"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="GravityHeroCrushRBStun">
+        <ValidatorArray index="0" value="GravityHeroCrushRBTargetFilters"/>
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="GravityHeroElevatedStun"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="GravityHeroCrushStun">
+        <ValidatorArray index="0" value="NotHeroic"/>
+        <ValidatorArray value="NotMassive"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroCrushedStun"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GravityHeroDevourDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectRemoveBehavior id="GravityHeroDevourRB">
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="GravityHeroPullForce"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="GravityHeroDevourSA" parent="BSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <AreaArray index="0" Radius="0.5" Effect="GravityHeroDevourSet"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GravityHeroDevourSet">
+        <ValidatorArray value="GravityHeroHasPullForce"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroDevourRB"/>
+        <EffectArray value="GravityHeroDevourHeal"/>
+        <EffectArray value="GravityHeroDevourDMG"/>
+    </CEffectSet>
+    <CEffectSwitch id="GravityHeroDiveDistanceSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="GravityHeroDiveTravelValidation" Effect="GravityHeroDiveDistanceOffsetBack"/>
+        <CaseDefault value="GravityHeroDiveDistanceOffset"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSwitch>
     <CEffectCreatePersistent id="BladeHeroLeapDistanceTarget">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Effect="BladeHeroLeap"/>
@@ -184,21 +345,12 @@
         <EffectArray value="MLLeapHeroDMG"/>
         <EffectArray value="ApplyUnitWasStunned"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="DemolisherShieldUnitAB">
+    <CEffectModifyUnit id="CasterFaceTargetPoint">
         <EditorCategories value="Race:Protoss"/>
-        <Behavior value="DemolisherShieldUnit"/>
-    </CEffectApplyBehavior>
-    <CEffectAddTrackedUnit id="DemolisherShieldUnitATU">
-        <EditorCategories value="Race:Protoss"/>
-        <BehaviorLink value="DemolisherTracker"/>
-        <TrackedUnit Value="Target"/>
-    </CEffectAddTrackedUnit>
-    <CEffectSet id="DemolisherShieldUnitCUSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="DemolisherShieldUnitAB"/>
-        <EffectArray value="DemolisherShieldUnitATU"/>
-        <EffectArray value="FollowCasterAK"/>
-    </CEffectSet>
+        <ImpactUnit Value="Caster"/>
+        <FacingLocation Value="TargetPoint"/>
+        <FacingType value="LookAt"/>
+    </CEffectModifyUnit>
     <CEffectCreatePersistent id="EarthHeroFortifyDelayHero">
         <ValidatorArray value="IsHeroic"/>
         <EditorCategories value="Race:Protoss"/>
@@ -674,6 +826,997 @@
         <ImpactEffect value="GatewayHeroSplitterImpactSet"/>
         <AmmoUnit value="SplitterMissile"/>
     </CEffectLaunchMissile>
+    <CEffectDamage id="GravityHeroCrushDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="30"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="GravityHeroDiveSwayAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GravityHeroDiveSway"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="GravityHeroDiveSwayCP">
+        <EditorCategories value="Race:Protoss"/>
+        <PeriodicEffectArray value="GravityHeroDiveSwayAB"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyPlayer id="GravityHeroDiveSwayMPOn">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichPlayer Value="Caster"/>
+        <EffectArray Operation="Set" Reference="Abil,GravityHeroW,Cost[0].Vital[Energy]" Value="0"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GravityHeroDiveSwayMPOff">
+        <ValidatorArray value="GravityHeroNoDiveSway"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichPlayer Value="Caster"/>
+        <EffectArray Operation="Set" Reference="Abil,GravityHeroW,Cost[0].Vital[Energy]" Value="30"/>
+    </CEffectModifyPlayer>
+    <CEffectDamage id="GravityHeroInflateExplodeDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="75"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="GravityHeroInflateExplodeSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <DebugTrace value="1"/>
+        <AreaArray index="0" Radius="2" Effect="GravityHeroInflateExplodeDMG"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="GravityHeroInflateSchismSA" parent="BSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <ExcludeArray Value="Target"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <AreaArray index="0" MaxCount="0" Radius="6" Effect="GravityHeroInflateSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GravityHeroInflateSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroInflateCheckAB"/>
+        <EffectArray value="GravityHeroInflateBloodCP"/>
+        <EffectArray value="GravityHeroInflateAbolishDMG"/>
+        <EffectArray value="GravityHeroInflateDMG"/>
+        <EffectArray value="GravityHeroInflateExecuteAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GravityHeroKillDelayAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="GravityHeroKillDelay"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GravityHeroKillDelayKill">
+        <ValidatorArray value="GravityHeroSourceHasKillDelay"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <Flags index="Kill" value="1"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="GravityHeroLiftAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroElevated"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="GravityHeroLiftClashSet">
+        <ValidatorArray value="GravityHeroIsCrushed"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <EffectArray value="GravityHeroLiftClashDMG"/>
+        <EffectArray value="GravityHeroClashAB"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="GravityHeroLiftDiffusionDelay">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <Flags index="RandomPeriod" value="1"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroLiftDiffusionSA"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.1875"/>
+        <PeriodicPeriodArray value="0.25"/>
+        <PeriodicPeriodArray value="0.3125"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="GravityHeroLiftDiffusionSA" parent="BSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <TargetSorts>
+            <SortArray value="NotElevated"/>
+            <SortArray value="NotCrushed"/>
+        </TargetSorts>
+        <AreaArray index="0" MaxCount="1" Radius="5" Effect="GravityHeroLiftDiffusionSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GravityHeroLiftDiffusionSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroLiftStun"/>
+        <EffectArray value="GravityHeroLiftAB"/>
+        <EffectArray value="GravityHeroLiftClashSet"/>
+        <EffectArray value="GravityHeroLiftRB"/>
+        <EffectArray value="GravityHeroLiftRBStun"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="GravityHeroLiftRB">
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="GravityHeroCrushed"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="GravityHeroLiftRBStun">
+        <ValidatorArray index="0" value="GravityHeroLiftRBTargetFilters"/>
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="GravityHeroCrushedStun"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="GravityHeroLiftStun">
+        <ValidatorArray index="0" value="NotHeroicAndNotStructure"/>
+        <ValidatorArray value="NotMassive"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroElevatedStun"/>
+    </CEffectApplyBehavior>
+    <CEffectUserData id="GravityHeroLiftPolarityData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="30"/>
+        <SourceKey value="Polarity"/>
+        <EffectSuccess value="GravityHeroPolarityCapData"/>
+        <EffectFailure value="GravityHeroPolarityCapData"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CEffectUserData>
+    <CEffectSwitch id="GravityHeroE">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="GravityHeroIsPositive" Effect="GravityHeroDiveInit"/>
+        <CaseDefault value="GravityHeroShiftInit"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSwitch>
+    <CEffectDamage id="GravityHeroLiftDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="30"/>
+    </CEffectDamage>
+    <CEffectSet id="GravityHeroCrushInit">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroFaceTargetPoint"/>
+        <EffectArray value="GravityHeroCrushPolarityData"/>
+        <EffectArray value="GravityHeroCrushSA"/>
+        <EffectArray value="GravityHeroDiveSwayRB"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="GravityHeroCrushSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroCrushStun"/>
+        <EffectArray value="GravityHeroCrushAB"/>
+        <EffectArray value="GravityHeroCrushClashSet"/>
+        <EffectArray value="GravityHeroCrushDMG"/>
+        <EffectArray value="GravityHeroCrushRB"/>
+        <EffectArray value="GravityHeroCrushRBStun"/>
+    </CEffectSet>
+    <CEffectSet id="GravityHeroLiftSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroLiftStun"/>
+        <EffectArray value="GravityHeroLiftAB"/>
+        <EffectArray value="GravityHeroLiftClashSet"/>
+        <EffectArray value="GravityHeroLiftDMG"/>
+        <EffectArray value="GravityHeroLiftRB"/>
+        <EffectArray value="GravityHeroLiftRBStun"/>
+    </CEffectSet>
+    <CEffectSet id="GravityHeroLiftInit">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroFaceTargetPoint"/>
+        <EffectArray value="GravityHeroLiftPolarityData"/>
+        <EffectArray value="GravityHeroLiftSA"/>
+        <EffectArray value="GravityHeroDiveSwayRB"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="GravityHeroFaceTargetPoint">
+        <ValidatorArray value="GravityHeroCasterNoShift"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+        <ModifyFlags index="InterpolateFacing" value="1"/>
+        <FacingLocation Value="TargetPoint"/>
+        <FacingType value="LookAt"/>
+    </CEffectModifyUnit>
+    <CEffectDamage id="GravityHeroDiveDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="150"/>
+    </CEffectDamage>
+    <CEffectUserData id="GravityHeroDiveDistanceData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="DiveDistance"/>
+        <Amount value="0.25"/>
+        <SourceKey value="DiveDistance"/>
+        <Operation value="Subtract"/>
+        <ValidateMax value="500000"/>
+        <EffectSuccess value="GravityHeroDiveDistanceSwitch"/>
+        <EffectFailure value="GravityHeroDiveKBLM"/>
+    </CEffectUserData>
+    <CEffectUserData id="GravityHeroDiveDistanceDataInit">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="DiveDistance"/>
+        <Amount value="0">
+            <AccumulatorArray value="DistanceFromCasterUnittoTargetPoint"/>
+        </Amount>
+        <SourceKey value="DiveDistance"/>
+        <Operation value="Set"/>
+    </CEffectUserData>
+    <CEffectCreatePersistent id="GravityHeroDiveDistanceInit">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="OriginPoint"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroDiveDistanceOffset"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="GravityHeroDiveDistanceOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <OffsetVectorEndLocation Effect="GravityHeroDiveInit"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroDiveDistanceData"/>
+        <PeriodicOffsetArray value="0,-0.25,0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="GravityHeroDiveDistanceOffsetBack">
+        <EditorCategories value="Race:Protoss"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroDiveKBLM"/>
+        <PeriodicOffsetArray value="0,0.25,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="GravityHeroDiveImpactSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroDiveSA"/>
+        <EffectArray value="GravityHeroDiveReverberateCP"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="GravityHeroDiveInit">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="CasterFaceTargetPoint"/>
+        <EffectArray value="GravityHeroDivePolarityData"/>
+        <EffectArray value="GravityHeroDiveDistanceDataInit"/>
+        <EffectArray value="GravityHeroDiveDistanceInit"/>
+        <EffectArray value="GravityHeroDiveSwayCP"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="GravityHeroDiveKBLM">
+        <EditorCategories value="Race:Protoss"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchOffset value="0,0.25,0"/>
+        <ImpactEffect value="GravityHeroDiveImpactSet"/>
+        <Movers Link="GravityHeroDive"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+    <CEffectUserData id="GravityHeroDivePolarityData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="50"/>
+        <SourceKey value="Polarity"/>
+        <EffectSuccess value="GravityHeroPolarityCapData"/>
+        <EffectFailure value="GravityHeroPolarityCapData"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CEffectUserData>
+    <CEffectApplyBehavior id="GravityHeroDiveReverberateAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroBlinded"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="GravityHeroDiveReverberateCP">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <PeriodCount value="20"/>
+        <PeriodicEffectArray value="GravityHeroDiveReverberateSA"/>
+        <PeriodicPeriodArray value="0.25"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="GravityHeroDiveReverberateDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="0.25"/>
+        <Amount value="11.25"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="GravityHeroDiveReverberateSA" parent="BSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <AreaArray index="0" Radius="2.4" Effect="GravityHeroDiveReverberateSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GravityHeroDiveReverberateSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroDiveReverberateAB"/>
+        <EffectArray value="GravityHeroDiveReverberateDMG"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="GravityHeroDiveSwayRB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="GravityHeroDiveSway"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectIssueOrder id="GravityHeroPolarityOrder">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="GravityHeroPolarity"/>
+        <Player Value="Caster"/>
+    </CEffectIssueOrder>
+    <CEffectSwitch id="GravityHeroPullABSwitch">
+        <ValidatorArray value="NotStructureTarget"/>
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="IsHeroic" Effect="GravityHeroPullABHero"/>
+        <CaseArray Validator="IsMassive" Effect="GravityHeroPullABLarge"/>
+        <CaseArray Validator="NotHeroicAndNotMassive" Effect="GravityHeroPullABSmall"/>
+    </CEffectSwitch>
+    <CEffectDamage id="GravityHeroPushCollisionDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ArmorReduction value="1"/>
+        <Amount value="50"/>
+    </CEffectDamage>
+    <!--This effect is only used for preventing an effect overflow-->
+    <CEffectUserData id="GravityHeroPushCollisionDataDummy">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="0"/>
+        <EffectSuccess value="GravityHeroPushCollisionLoop"/>
+        <EffectFailure value="GravityHeroPushCollisionLoop"/>
+        <TargetLocationType value="Point"/>
+    </CEffectUserData>
+    <CEffectCreatePersistent id="GravityHeroPushCollisionLoop">
+        <EditorCategories value="Race:Protoss"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroPushCollisionSwitch"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="GravityHeroPushCollisionOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Effect="GravityHeroPushCollisionSwitch"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <OffsetVectorEndLocation Effect="GravityHeroPushRand"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroPushCollisionDataDummy"/>
+        <PeriodicOffsetArray value="0,-0.125,0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="GravityHeroPushCollisionSA">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <IncludeArray Value="Source"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <AreaArray MaxCount="1" Radius="0.25" Effect="GravityHeroPushCollisionOffset"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GravityHeroPushCollisionSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroPushVivify"/>
+        <EffectArray value="GravityHeroPushCollisionDMG"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSwitch id="GravityHeroPushCollisionSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="TargetPointNotOnPathable" Effect="GravityHeroPushCollisionSet"/>
+        <CaseDefault value="GravityHeroPushCollisionSA"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSwitch>
+    <CEffectEnumArea id="GravityHeroPolarityExplodeSplatDummy" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <AreaArray index="0" Radius="1"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="GravityHeroPolarityData"/>
+            <AccumulatorArray value="GravityHeroPolarityExplodeRadiusMultiplier"/>
+        </ExtraRadiusBonus>
+    </CEffectEnumArea>
+    <CEffectUserData id="GravityHeroPolarityRepelAdd">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="100"/>
+        <SourceKey value="Polarity"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CEffectUserData>
+    <CEffectUserData id="GravityHeroPolarityRepelSubtract">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="-100"/>
+        <SourceKey value="Polarity"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CEffectUserData>
+    <CEffectModifyUnit id="GravityHeroPushVivify">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="GravityHeroShiftAB">
+        <ValidatorArray index="0" value="NotHeroicAndNotStructure"/>
+        <ValidatorArray value="NotMassive"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroShiftForce"/>
+        <Marker>
+            <MismatchFlags index="Id" value="1"/>
+        </Marker>
+    </CEffectApplyBehavior>
+    <CEffectSet id="GravityHeroShiftCollisionSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroShiftCollisionRB"/>
+        <EffectArray value="GravityHeroShiftCollisionSA"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="GravityHeroShiftCollisionStart">
+        <EditorCategories value="Race:Protoss"/>
+        <PeriodCount value="3"/>
+        <PeriodicEffectArray value="GravityHeroShiftCollisionData"/>
+        <PeriodicOffsetArray value="0,-0.6,0"/>
+        <PeriodicOffsetArray value="0.25,-0.5,0"/>
+        <PeriodicOffsetArray value="-0.25,-0.5,0"/>
+    </CEffectCreatePersistent>
+    <CEffectUserData id="GravityHeroShiftCollisionData">
+        <ValidatorArray value="TargetPointNotOnPathable"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ValidateMin value="1"/>
+        <ValidateMax value="1"/>
+        <EffectSuccess value="GravityHeroShiftCollisionSet"/>
+    </CEffectUserData>
+    <CEffectDamage id="GravityHeroShiftCollisionDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="180"/>
+    </CEffectDamage>
+    <CEffectRemoveBehavior id="GravityHeroShiftCollisionRB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="GravityHeroShiftCaster"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="GravityHeroShiftCollisionSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <DebugTrace value="1"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <AreaArray index="0" Radius="2.4" Effect="GravityHeroShiftCollisionDMG"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GravityHeroShiftCasterSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroShiftCasterForceOffset"/>
+        <EffectArray value="GravityHeroShiftSA"/>
+    </CEffectSet>
+    <CEffectApplyForce id="GravityHeroShiftForce">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterUnitOrPoint"/>
+        <WhichUnit Value="Source"/>
+        <Amount value="-1"/>
+    </CEffectApplyForce>
+    <CEffectUserData id="GravityHeroShiftPolarityData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="50"/>
+        <SourceKey value="Polarity"/>
+        <EffectSuccess value="GravityHeroPolarityCapData"/>
+        <EffectFailure value="GravityHeroPolarityCapData"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CEffectUserData>
+    <CEffectSet id="GravityHeroDiveSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroDiveDMG"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GravityHeroShiftCasterAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GravityHeroShiftCaster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyForce id="GravityHeroShiftCasterForce">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetPoint"/>
+        <WhichUnit Value="Caster"/>
+        <Amount value="1"/>
+    </CEffectApplyForce>
+    <CEffectCreatePersistent id="GravityHeroShiftCasterForceOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterUnit"/>
+        <OffsetVectorEndLocation Value="SourceUnit"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroShiftCasterForce"/>
+        <PeriodicOffsetArray value="0,2,0"/>
+        <FinalEffect value="GravityHeroShiftCollisionStart"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="GravityHeroShiftInit">
+        <EditorCategories value="Race:Protoss"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <EffectArray value="CasterFaceTargetPoint"/>
+        <EffectArray value="GravityHeroShiftPolarityData"/>
+        <EffectArray value="GravityHeroShiftCasterAB"/>
+        <EffectArray value="GravityHeroShiftSwayCP"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectEnumArea id="GravityHeroShiftSA" parent="BSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <AreaArray index="0" Radius="1.6" Effect="GravityHeroShiftAB"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GravityHeroPushInit">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroFaceTargetPoint"/>
+        <EffectArray value="GravityHeroPushPolarityData"/>
+        <EffectArray value="GravityHeroPushCP"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="GravityHeroPushCP">
+        <EditorCategories value="Race:Protoss"/>
+        <Flags index="OrphanParams" value="1"/>
+        <PeriodCount value="3"/>
+        <PeriodicEffectArray value="GravityHeroPushRand"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="GravityHeroPushABHero">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroPushForce"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.125"/>
+        <ValidatorArray index="0" value="GravityHeroIsElevated"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GravityHeroPushABSmall">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroPushForce"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GravityHeroPushABLarge">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroPushForce"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.1875"/>
+        <ValidatorArray index="0" value="GravityHeroIsElevated"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GravityHeroPushDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="30"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectApplyForce id="GravityHeroPushForce">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetPoint"/>
+        <WhichUnit Value="Source"/>
+        <Amount value="1"/>
+    </CEffectApplyForce>
+    <CEffectCreatePersistent id="GravityHeroPushForceOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <OffsetVectorEndLocation Effect="GravityHeroPushRand"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroPushForce"/>
+        <PeriodicOffsetArray value="0,2,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="GravityHeroPushImpact">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroPushSA"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="GravityHeroPushLM">
+        <EditorCategories value="Race:Protoss"/>
+        <LaunchLocation Effect="GravityHeroPushOffset" Value="TargetPoint"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="GravityHeroPushPortalData"/>
+        <SearchEffect value="GravityHeroPushSearchTarget"/>
+        <SearchFlags index="DynamicSearchArea" value="1"/>
+        <AmmoUnit value="GravityHeroPushMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="GravityHeroPushOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <OffsetVectorEndLocation Effect="GravityHeroPushRand"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroPushLM"/>
+        <PeriodicOffsetArray value="0,-12,0"/>
+    </CEffectCreatePersistent>
+    <CEffectUserData id="GravityHeroPushPolarityData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="20"/>
+        <SourceKey value="Polarity"/>
+        <EffectSuccess value="GravityHeroPolarityCapData"/>
+        <EffectFailure value="GravityHeroPolarityCapData"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CEffectUserData>
+    <CEffectUserData id="GravityHeroPushPortalData">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectSuccess value="GravityHeroPushPortalDelay"/>
+        <EffectFailure value="GravityHeroPushSA"/>
+    </CEffectUserData>
+    <CEffectCreatePersistent id="GravityHeroPushPortalDelay">
+        <EditorCategories value="Race:Protoss"/>
+        <InitialDelay value="0.5"/>
+        <FinalEffect value="GravityHeroPushLM"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="GravityHeroPullForceOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterUnit"/>
+        <OffsetVectorStartLocation Value="CasterUnit"/>
+        <OffsetVectorEndLocation Value="SourceUnit"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroPullForce"/>
+        <PeriodicOffsetArray value="0,-0.4,0"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="GravityHeroPullABHero">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroPullForce"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.1875"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GravityHeroPullABSmall">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroPullForce"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GravityHeroPullABLarge">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroPullForce"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.25"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyForce id="GravityHeroPullForce">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetPoint"/>
+        <WhichUnit Value="Source"/>
+        <Amount value="-1"/>
+    </CEffectApplyForce>
+    <CEffectModifyUnit id="GravityHeroDevourHeal">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <Change value="25">
+                <AccumulatorArray value="HealingMultiplier"/>
+            </Change>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectUserData id="GravityHeroPullPolarityData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="20"/>
+        <SourceKey value="Polarity"/>
+        <EffectSuccess value="GravityHeroPolarityCapData"/>
+        <EffectFailure value="GravityHeroPolarityCapData"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CEffectUserData>
+    <CEffectRandomPointInCircle id="GravityHeroPushRand">
+        <EditorCategories value="Race:Protoss"/>
+        <Effect value="GravityHeroPushOffset"/>
+        <Radius value="1"/>
+    </CEffectRandomPointInCircle>
+    <CEffectEnumArea id="GravityHeroPushSearchTarget">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="1" RectangleWidth="0.75" Effect="GravityHeroPushImpact"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GravityHeroPushSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroPushABSwitch"/>
+        <EffectArray value="GravityHeroPushDMG"/>
+    </CEffectSet>
+    <CEffectSwitch id="GravityHeroPushABSwitch">
+        <ValidatorArray value="NotStructureTarget"/>
+        <ValidatorArray value="IsNotEgg"/>
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="IsHeroic" Effect="GravityHeroPushABHero"/>
+        <CaseArray Validator="IsMassive" Effect="GravityHeroPushABLarge"/>
+        <CaseArray Validator="NotHeroicAndNotMassive" Effect="GravityHeroPushABSmall"/>
+    </CEffectSwitch>
+    <CEffectSet id="GravityHeroPullInit">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroFaceTargetPoint"/>
+        <EffectArray value="GravityHeroPullPolarityData"/>
+        <EffectArray value="GravityHeroPullOffset"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectDamage id="GravityHeroPullDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="50"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="GravityHeroPullLM">
+        <EditorCategories value="Race:Protoss"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <LaunchLocation Value="TargetPoint"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchEffect value="GravityHeroPullSA"/>
+        <SearchFlags index="DynamicSearchArea" value="1"/>
+        <AmmoUnit value="GravityHeroPullMissile"/>
+        <ImpactEffect value="GravityHeroPullSA"/>
+        <ImpactRange value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="GravityHeroPullOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GravityHeroPullLM"/>
+        <PeriodicOffsetArray value="0,-9,0"/>
+    </CEffectCreatePersistent>
+    <CEffectUserData id="GravityHeroCrushPolarityData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="30"/>
+        <SourceKey value="Polarity"/>
+        <EffectSuccess value="GravityHeroPolarityCapData"/>
+        <EffectFailure value="GravityHeroPolarityCapData"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CEffectUserData>
+    <CEffectCreatePersistent id="GravityHeroInflateBloodCP">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="12"/>
+        <PeriodicEffectArray value="GravityHeroInflateBloodDummy"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="GravityHeroInflateBloodDummy">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="GravityHeroInflateCheckAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroInflateCheck"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GravityHeroInflateDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="400"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="GravityHeroInflateExecuteAB">
+        <ValidatorArray index="0" value="LifeLTOneQuarter"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <Behavior value="GravityHeroInflateKill"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="GravityHeroInflateInit">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroFaceTargetPoint"/>
+        <EffectArray value="GravityHeroInflatePolarityData"/>
+        <EffectArray value="GravityHeroInflateSet"/>
+        <EffectArray value="GravityHeroInflateSchismSA"/>
+        <ValidatorArray value="NotDead"/>
+        <ValidatorArray value="TargetIsVisible"/>
+    </CEffectSet>
+    <CEffectDamage id="GravityHeroInflateKill">
+        <EditorCategories value="Race:Protoss"/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="GravityHeroInflateKillAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="GravityHeroInflateKill"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GravityHeroPolarityAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GravityHeroPositive"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="GravityHeroPolarityExplodeNegativeSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroPolarityRepelAdd"/>
+        <EffectArray value="GravityHeroPolarityExplodeNegativeSA"/>
+        <EffectArray value="GravityHeroPolarityRepelSubtract"/>
+    </CEffectSet>
+    <CEffectEnumArea id="GravityHeroPolarityExplodePositiveSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <AreaArray index="0" Effect="GravityHeroPolarityExplodeDMG"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="GravityHeroPolarityData"/>
+            <AccumulatorArray value="GravityHeroPolarityExplodeRadiusMultiplier"/>
+        </ExtraRadiusBonus>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="GravityHeroPolarityExplodeNegativeSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <AreaArray index="0" Effect="GravityHeroPolarityExplodeDMG"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="GravityHeroPolarityData"/>
+            <AccumulatorArray value="GravityHeroPolarityExplodeRadiusMultiplier"/>
+        </ExtraRadiusBonus>
+    </CEffectEnumArea>
+    <CEffectSet id="GravityHeroPolarityExplodePositiveSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroPolarityRepelAdd"/>
+        <EffectArray value="GravityHeroPolarityExplodePositiveSA"/>
+        <EffectArray value="GravityHeroPolarityRepelSubtract"/>
+    </CEffectSet>
+    <CEffectDamage id="GravityHeroPolarityExplodeDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="0">
+            <AccumulatorArray value="GravityHeroPolarityData"/>
+            <AccumulatorArray value="GravityHeroPolarityExplodeDamageMultiplier"/>
+        </Amount>
+    </CEffectDamage>
+    <CEffectRemoveBehavior id="GravityHeroPolarityRB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="GravityHeroPositive"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="GravityHeroPolarityResetABEnergy">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GravityHeroPolarityEnergy"/>
+        <Count value="0">
+            <AccumulatorArray value="GravityHeroPolarityData"/>
+            <AccumulatorArray value="GravityHeroPolarityEnergyMultiplier"/>
+            <AccumulatorArray value="GravityHeroPolarityOverhealMultiplier"/>
+        </Count>
+        <Chance value="0"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GravityHeroPolarityResetABShields">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GravityHeroPolarityShields"/>
+        <Count value="0">
+            <AccumulatorArray value="GravityHeroPolarityData"/>
+            <AccumulatorArray value="GravityHeroPolarityShieldsMultiplier"/>
+            <AccumulatorArray value="GravityHeroPolarityOverhealMultiplier"/>
+            <AccumulatorArray value="HealingMultiplier"/>
+        </Count>
+        <Chance value="0"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GravityHeroPolarityNegativeR">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCompress,Icon" Value="Assets\CompressEx5.dds"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCompress,Tooltip" Value="Button/Tooltip/GravityHeroCompress"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCompress,Name" Value="Button/Name/GravityHeroCompress"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GravityHeroPolarityPositiveR">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCompress,Icon" Value="Assets\Textures\btn-ability-zeratul-warpprism-transferlink.dds"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCompress,Tooltip" Value="Button/Tooltip/GravityHeroInflate"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCompress,Name" Value="Button/Name/GravityHeroInflate"/>
+    </CEffectModifyPlayer>
+    <CEffectUserData id="GravityHeroPolarityResetData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="0"/>
+        <SourceKey value="Polarity"/>
+        <Operation value="Set"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CEffectUserData>
+    <CEffectModifyUnit id="GravityHeroPolarityResetHeal">
+        <EditorCategories value="Race:Protoss"/>
+        <VitalArray index="Shields">
+            <Change value="0">
+                <AccumulatorArray value="GravityHeroPolarityData"/>
+                <AccumulatorArray value="GravityHeroPolarityShieldsMultiplier"/>
+                <AccumulatorArray value="HealingMultiplier"/>
+            </Change>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <Change value="0">
+                <AccumulatorArray value="GravityHeroPolarityData"/>
+                <AccumulatorArray value="GravityHeroPolarityEnergyMultiplier"/>
+            </Change>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="GravityHeroPolarityResetSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroPolarityResetABEnergy"/>
+        <EffectArray value="GravityHeroPolarityResetABShields"/>
+        <EffectArray value="GravityHeroPolarityResetHeal"/>
+        <EffectArray value="GravityHeroPolarityResetData"/>
+    </CEffectSet>
+    <CEffectSwitch id="GravityHeroPolaritySwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="GravityHeroIsPositive" Effect="GravityHeroPolarityRB"/>
+        <CaseDefault value="GravityHeroPolarityAB"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="GravityHeroCompressAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravityHeroCompressed"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GravityHeroCompressDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="250"/>
+    </CEffectDamage>
+    <CEffectUserData id="GravityHeroCompressPolarityData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="75"/>
+        <SourceKey value="Polarity"/>
+        <EffectSuccess value="GravityHeroPolarityCapData"/>
+        <EffectFailure value="GravityHeroPolarityCapData"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CEffectUserData>
+    <CEffectSet id="GravityHeroPullSet">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroPullABSwitch"/>
+        <EffectArray value="GravityHeroPullDMG"/>
+    </CEffectSet>
+    <CEffectUserData id="GravityHeroPolarityCapData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="0">
+            <AccumulatorArray value="GravityHeroPolarityCapped"/>
+        </Amount>
+        <SourceKey value="Polarity"/>
+        <Operation value="Set"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+        <ValidateMin value="600"/>
+        <ValidateMax value="500000"/>
+        <EffectSuccess value="GravityHeroPolarityOrder"/>
+    </CEffectUserData>
+    <CEffectModifyPlayer id="GravityHeroPolarityPositiveE">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroShift,Icon" Value="Assets\Dive.dds"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroShift,Tooltip" Value="Button/Tooltip/GravityHeroDive"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroShift,Name" Value="Button/Name/GravityHeroDive"/>
+        <EffectArray Operation="Set" Reference="Abil,GravityHeroE,Range[0]" Value="10"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GravityHeroPolarityNegativeW">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCrush,Icon" Value="Assets\Crush.dds"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCrush,Tooltip" Value="Button/Tooltip/GravityHeroCrush"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCrush,Name" Value="Button/Name/GravityHeroCrush"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GravityHeroPolarityNegativeE">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroShift,Icon" Value="Assets\Shift.dds"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroShift,Tooltip" Value="Button/Tooltip/GravityHeroShift"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroShift,Name" Value="Button/Name/GravityHeroShift"/>
+        <EffectArray Operation="Set" Reference="Abil,GravityHeroE,Range[0]" Value="500"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GravityHeroPolarityPositiveW">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCrush,Icon" Value="Assets\Lift.dds"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCrush,Tooltip" Value="Button/Tooltip/GravityHeroLift"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroCrush,Name" Value="Button/Name/GravityHeroLift"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GravityHeroPolarityPositiveQ">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroPull,Icon" Value="Assets\PushEx2.dds"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroPull,Tooltip" Value="Button/Tooltip/GravityHeroPush"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroPull,Name" Value="Button/Name/GravityHeroPush"/>
+        <EffectArray Operation="Set" Reference="Abil,GravityHeroQ,AutoCastRange" Value="10"/>
+        <EffectArray Operation="Set" Reference="Abil,GravityHeroQ,Cost[0].Vital[Energy]" Value="20"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GravityHeroPolarityNegativeQ">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroPull,Icon" Value="Assets\PullEx2.dds"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroPull,Tooltip" Value="Button/Tooltip/GravityHeroPull"/>
+        <EffectArray Operation="Set" Reference="Button,GravityHeroPull,Name" Value="Button/Name/GravityHeroPull"/>
+        <EffectArray Operation="Set" Reference="Abil,GravityHeroQ,AutoCastRange" Value="8"/>
+        <EffectArray Operation="Set" Reference="Abil,GravityHeroQ,Cost[0].Vital[Energy]" Value="20"/>
+    </CEffectModifyPlayer>
+    <CEffectSet id="GravityHeroPolarityPositiveSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroPolarityPositiveQ"/>
+        <EffectArray value="GravityHeroPolarityPositiveW"/>
+        <EffectArray value="GravityHeroPolarityPositiveE"/>
+        <EffectArray value="GravityHeroPolarityPositiveR"/>
+        <EffectArray value="GravityHeroPolarityExplodePositiveSet"/>
+        <EffectArray value="GravityHeroPolarityResetSet"/>
+    </CEffectSet>
+    <CEffectSet id="GravityHeroPolarityNegativeSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroPolarityNegativeQ"/>
+        <EffectArray value="GravityHeroPolarityNegativeW"/>
+        <EffectArray value="GravityHeroPolarityNegativeE"/>
+        <EffectArray value="GravityHeroPolarityNegativeR"/>
+        <EffectArray value="GravityHeroPolarityExplodeNegativeSet"/>
+        <EffectArray value="GravityHeroPolarityResetSet"/>
+    </CEffectSet>
+    <CEffectSwitch id="GravityHeroQ">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="GravityHeroIsPositive" Effect="GravityHeroPushInit"/>
+        <CaseDefault value="GravityHeroPullInit"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="GravityHeroR">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="GravityHeroIsPositive" Effect="GravityHeroInflateInit"/>
+        <CaseArray Validator="GravityHeroIsNegative" Effect="GravityHeroCompressInit"/>
+    </CEffectSwitch>
+    <CEffectSet id="GravityHeroCompressInit">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="GravityHeroFaceTargetPoint"/>
+        <EffectArray value="GravityHeroCompressPolarityData"/>
+        <EffectArray value="GravityHeroCompressSet"/>
+        <EffectArray value="GravityHeroCompressSchismSA"/>
+    </CEffectSet>
+    <CEffectUserData id="GravityHeroInflatePolarityData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Polarity"/>
+        <Amount value="75"/>
+        <SourceKey value="Polarity"/>
+        <EffectSuccess value="GravityHeroPolarityCapData"/>
+        <EffectFailure value="GravityHeroPolarityCapData"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CEffectUserData>
+    <CEffectCreatePersistent id="GravityHeroShiftSwayCP">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterUnit"/>
+        <PeriodicEffectArray value="GravityHeroShiftSwayRand"/>
+    </CEffectCreatePersistent>
+    <CEffectRandomPointInCircle id="GravityHeroShiftSwayRand">
+        <EditorCategories value="Race:Protoss"/>
+        <Effect value="GravityHeroPullLM"/>
+        <Radius value="7"/>
+        <RestrictToCircumference value="1"/>
+    </CEffectRandomPointInCircle>
+    <CEffectSwitch id="GravityHeroW">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="GravityHeroIsPositive" Effect="GravityHeroLiftInit"/>
+        <CaseDefault value="GravityHeroCrushInit"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSwitch>
     <CEffectSet id="LightningHeroThunderfuryWrathZapSet">
         <ValidatorArray value="HasStaticShield"/>
         <EditorCategories value=""/>
@@ -683,6 +1826,29 @@
         <EffectArray value="StaticShieldEnergyRemove"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
+    <CEffectModifyUnit id="SetHealth1Caster">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <Change value="1"/>
+        </VitalArray>
+        <ModifyFlags index="SetVitals" value="1"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="SetHealth1Source">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Life">
+            <Change value="1"/>
+        </VitalArray>
+        <ModifyFlags index="SetVitals" value="1"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="SetHealth1">
+        <EditorCategories value="Race:Protoss"/>
+        <VitalArray index="Life">
+            <Change value="1"/>
+        </VitalArray>
+        <ModifyFlags index="SetVitals" value="1"/>
+    </CEffectModifyUnit>
     <CEffectApplyBehavior id="ShockwaveOrbiAntiRecast">
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
@@ -692,6 +1858,11 @@
         <EffectArray value="OrbitalCannon2"/>
         <EffectArray value="ShockwaveInitLink"/>
     </CEffectSet>
+    <CEffectAddTrackedUnit id="WarpHeroDecoyATU">
+        <EditorCategories value="Race:Protoss"/>
+        <BehaviorLink value="WarpHeroDecoyTracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
     <CEffectModifyUnit id="WarpHeroStrafeHeal">
         <EditorCategories value="Race:Protoss"/>
         <ImpactUnit Value="Caster"/>
@@ -1918,7 +3089,7 @@
     <CEffectEnumArea id="ShadowHeroPenumbraSA">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Neutral,Enemy,Structure,Heroic,Missile,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="6" Effect="ShadowHeroPenumbraAB"/>
+        <AreaArray Radius="9" Effect="ShadowHeroPenumbraAB"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="SpawnArmyGuardianAB">
         <EditorCategories value="Race:Protoss"/>
@@ -1956,9 +3127,8 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="WarpHeroDecoyFate"/>
         <EffectArray value="WarpHeroTurretAimStart"/>
-        <EffectArray value="HallucinatonDecoyBonus"/>
-        <EffectArray value="Doubleganger"/>
         <EffectArray value="WarpHeroDecoyLimitAB"/>
+        <EffectArray value="WarpHeroDecoyATU"/>
     </CEffectSet>
     <CEffectCreateUnit id="WarpHeroDecoyCU">
         <ValidatorArray value="WarpHeroDecoyLimit"/>
@@ -2171,7 +3341,7 @@
     </CEffectDamage>
     <CEffectEnumArea id="TimeHeroKronosSA">
         <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,Stasis,Dead,Hidden"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Stasis,Dead,Hidden"/>
         <AreaArray Radius="12" Effect="TimeHeroKronosSet"/>
         <ImpactLocation Effect="TimeHeroKronosInit" Value="CasterUnitOrPoint"/>
     </CEffectEnumArea>
@@ -2918,15 +4088,6 @@
         <EditorCategories value=""/>
         <Amount value="50"/>
     </CEffectDamage>
-    <CEffectEnumArea id="GravityDashExcessSA">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/ExcessSA"/>
-        <Chance value="0"/>
-        <LaunchLocation Value="CasterUnit"/>
-        <ImpactLocation Value="CasterUnit"/>
-        <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray MaxCount="1" Radius="12" Effect="ExcessOffset"/>
-    </CEffectEnumArea>
     <CEffectApplyBehavior id="FireInfusionAB">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="FireInfusion"/>
@@ -9564,21 +10725,6 @@
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
     </CEffectCreatePersistent>
-    <CEffectCreateUnit id="ShieldUnitCU">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="SourceUnit"/>
-        <SpawnEffect value="DemolisherShieldUnitCUSet"/>
-        <SpawnUnit value="ShieldUnit"/>
-        <SpawnRange value="0"/>
-        <CreateFlags index="OffsetByRadius" value="0"/>
-        <CreateFlags index="Placement" value="0"/>
-        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
-    </CEffectCreateUnit>
-    <CEffectEnumTrackedUnits id="DemolisherShieldUnitETU">
-        <EditorCategories value="Race:Protoss"/>
-        <BehaviorLink value="DemolisherTracker"/>
-        <Effect value="KillRemove"/>
-    </CEffectEnumTrackedUnits>
     <CEffectCreatePersistent id="SiphonCP">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="CasterOuterUnitOrPoint"/>
@@ -10807,6 +11953,7 @@
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Value="CasterUnit"/>
         <Amount value="-1"/>
+        <ValidatorArray value="NotMassive"/>
     </CEffectApplyForce>
     <CEffectSet id="LifeDrainSet">
         <EditorCategories value="Race:Zerg"/>
@@ -11203,8 +12350,9 @@
     </CEffectDamage>
     <CEffectEnumArea id="AnnihilatorAENukeSearch">
         <EditorCategories value=""/>
-        <SearchFilters value="Heroic;Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="Heroic;Player,Ally,Neutral,Missile,Item,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="13" Effect="WarbotBLM"/>
+        <Chance value="0"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="AnnihilatorApplyDematfieldSeekerimmunity">
         <EditorCategories value=""/>
@@ -11301,10 +12449,12 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="Absorber"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="AnnihilatorSearchRandomDummy">
-        <EditorCategories value=""/>
+    <CEffectSet id="AnnihilatorSearchRandomSet">
         <ValidatorArray value="HasNoAnnihilatorRandomNukeSuppressor"/>
+        <EditorCategories value=""/>
+        <Chance value="0"/>
         <EffectArray value="AnnihilatorRandomNukeSuppressorAdd"/>
+        <EffectArray value="AnnihilatorSearchRandom"/>
     </CEffectSet>
     <CEffectApplyBehavior id="Annihilatordematfieldadd">
         <EditorCategories value=""/>
@@ -12204,6 +13354,9 @@
         <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="3" Effect="WarpoutNightwarpSet"/>
         <Chance value="0"/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
     </CEffectEnumArea>
     <CEffectSet id="WarpoutNightwarpSet">
         <EditorCategories value="Race:Protoss"/>
@@ -12309,6 +13462,7 @@
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="ReactiveShields"/>
+        <ValidatorArray index="0" value="DemolisherNotIncapacitated"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="ApplyReplenishAB">
         <EditorCategories value="Race:Protoss"/>
@@ -12328,6 +13482,7 @@
     <CEffectApplyBehavior id="ApplySlimed">
         <EditorCategories value="Race:Zerg"/>
         <Behavior value="SlimeLordSlimed"/>
+        <ValidatorArray index="0" value="NotMassive"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="ApplySpawnBroodlingsAB">
         <EditorCategories value="Race:Zerg"/>
@@ -12363,70 +13518,6 @@
         <SearchFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="7" Effect="ArchonVengeanceDMG"/>
     </CEffectEnumArea>
-    <CEffectCreatePersistent id="AttractionCP">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="CasterUnit"/>
-        <PeriodicEffectArray value="AttractionSet"/>
-        <PeriodicPeriodArray value="0.75"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="AttractionCPDMG">
-        <EditorCategories value="Race:Protoss"/>
-        <PeriodCount value="20"/>
-        <PeriodicEffectArray value="AttractionSADMG"/>
-        <PeriodicPeriodArray value="0.3"/>
-    </CEffectCreatePersistent>
-    <CEffectDamage id="AttractionDMG">
-        <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="0.4"/>
-        <Amount value="15"/>
-        <AttributeFactor index="Armored" value="0.5"/>
-        <AttributeFactor index="Massive" value="1"/>
-        <AttributeFactor index="Heroic" value="1"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="AttractionDummy">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="CasterUnit"/>
-        <OffsetVectorStartLocation Value="CasterUnit"/>
-        <OffsetVectorEndLocation Value="CasterUnit"/>
-        <OffsetFacingFallback Value="CasterUnit"/>
-        <ExpireDelay value="6"/>
-    </CEffectCreatePersistent>
-    <CEffectLaunchMissile id="AttractionKBLM">
-        <ValidatorArray value="NotHeroicAndNotStructure"/>
-        <ValidatorArray value="NotMechanical"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Value="CasterUnit"/>
-        <Flags index="2D" value="1"/>
-        <Flags index="ValidateBenign" value="0"/>
-        <Flags index="ValidateTeleport" value="0"/>
-        <Flags index="ValidateWeapon" value="0"/>
-        <Movers Link="KraithSpineVolleyWeapon"/>
-        <DeathType value="Unknown"/>
-        <ImpactEffect value="PressureSet"/>
-        <FinishEffect value="ExcessSA"/>
-    </CEffectLaunchMissile>
-    <CEffectSet id="AttractionKBSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="AttractionKBLM"/>
-        <EffectArray value="ApplyUnitWasStunned"/>
-    </CEffectSet>
-    <CEffectEnumArea id="AttractionSA">
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,RawResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="4" Effect="AttractionKBSet"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="AttractionSADMG">
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3.5" Effect="AttractionDMG"/>
-    </CEffectEnumArea>
-    <CEffectSet id="AttractionSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="AttractionDummy"/>
-        <EffectArray value="AttractionSA"/>
-        <EffectArray value="AttractionCPDMG"/>
-    </CEffectSet>
     <CEffectIssueOrder id="AutocastMicroBurstOrder">
         <ValidatorArray value="CasterEnergyGE85"/>
         <ValidatorArray value="NotLifted"/>
@@ -12994,22 +14085,6 @@
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="2" Effect="EssenceStealCP"/>
     </CEffectEnumArea>
-    <CEffectLaunchMissile id="ExcessGravSlivPullLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Flags index="2D" value="1"/>
-        <Flags index="ValidateBenign" value="0"/>
-        <Flags index="ValidateTeleport" value="0"/>
-        <Flags index="ValidateWeapon" value="0"/>
-        <Movers Link="PhotonCannonWeapon"/>
-        <DeathType value="Unknown"/>
-        <ValidatorArray value="NotHeroicAndNotStructure"/>
-        <ValidatorArray value="NotMechanical"/>
-        <ValidatorArray value="NotDead"/>
-        <LaunchLocation Effect="ExcessGravSlivImpactSet" Value="TargetUnit"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <ImpactEffect value="PressureSet"/>
-        <FinishEffect value="ExcessGravSlivInitSet"/>
-    </CEffectLaunchMissile>
     <CEffectCreatePersistent id="ExplosiveVolleyBurnCP">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
@@ -13222,42 +14297,6 @@
         <EditorCategories value="Race:Zerg"/>
         <ImpactEffect value="GlaiveImpactSet"/>
         <AmmoUnit value="GlaiveMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="GravityDashPullLm">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactEffect value="PressureSet"/>
-        <Flags index="TravelValidation" value="1"/>
-        <Flags index="ValidateAbil" value="0"/>
-        <Flags index="ValidateBenign" value="0"/>
-        <Flags index="ValidateTeleport" value="0"/>
-        <Flags index="ValidateWeapon" value="0"/>
-        <Movers Link="GravityDashPullMover"/>
-        <DeathType value="Unknown"/>
-        <FinishEffect value="GravityDashExcessSA"/>
-        <ImpactLocation Value="CasterUnit"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="GravityDashPullSA">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="CasterUnit"/>
-        <SearchFilters value="-;Player,Ally,Structure,Heroic,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2" Effect="GravityDashPullLm"/>
-    </CEffectEnumArea>
-    <CEffectLaunchMissile id="GravityShotKBLM">
-        <ValidatorArray value="NotHeroicAndNotStructure"/>
-        <ValidatorArray value="NotMechanical"/>
-        <ValidatorArray value="NotDead"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Value="CasterPoint"/>
-        <ImpactEffect value="PressureSet"/>
-        <FinishEffect value="ExcessSA"/>
-        <Flags index="2D" value="1"/>
-        <Flags index="ValidateBenign" value="0"/>
-        <Flags index="ValidateTeleport" value="0"/>
-        <Flags index="ValidateWeapon" value="0"/>
-        <Movers Link="PhotonCannonWeapon"/>
-        <DeathType value="Unknown"/>
     </CEffectLaunchMissile>
     <CEffectModifyUnit id="HealingBlastHeal">
         <EditorCategories value="Race:Protoss"/>
@@ -13474,22 +14513,6 @@
         <SearchFilters value="-;Neutral,Enemy,Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="20" Effect="LivingWaterHeal"/>
     </CEffectEnumArea>
-    <CEffectLaunchMissile id="MagnetismPullLM">
-        <ValidatorArray index="0" value="NotHeroicAndNotStructure"/>
-        <ValidatorArray value="NotMechanical"/>
-        <ValidatorArray value="NotDead"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="MagnetismSA" Value="TargetPoint"/>
-        <ImpactEffect value="PressureSet"/>
-        <Flags index="2D" value="1"/>
-        <Flags index="ValidateBenign" value="0"/>
-        <Flags index="ValidateTeleport" value="0"/>
-        <Flags index="ValidateWeapon" value="0"/>
-        <Movers Link="GravityDashPullMover"/>
-        <DeathType value="Unknown"/>
-        <FinishEffect value="ExcessGravSlivInitSet"/>
-    </CEffectLaunchMissile>
     <CEffectDamage id="MaulDMG">
         <EditorCategories value="Race:Zerg"/>
         <AttributeFactor index="Summoned" value="0.5"/>
@@ -13681,17 +14704,6 @@
         <SearchFilters value="Light,Biological,Massive,Heroic;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="30" Effect="PlaguedLM"/>
     </CEffectEnumArea>
-    <CEffectApplyBehavior id="PressureABSource">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Source"/>
-        <Behavior value="Pressure"/>
-        <ValidatorArray value="NotHeroicAndNotStructure"/>
-    </CEffectApplyBehavior>
-    <CEffectSet id="PressureSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="PressureABSource"/>
-        <EffectArray value="ApplyUnitWasStunnedSource"/>
-    </CEffectSet>
     <CEffectDamage id="PsiBlades">
         <AttributeFactor index="Heroic" value="-0.75"/>
     </CEffectDamage>
@@ -13775,42 +14787,6 @@
         <ArmorReduction value="1"/>
         <Amount value="70"/>
     </CEffectDamage>
-    <CEffectCreateUnit id="RepelKBCU">
-        <ValidatorArray value="NotHeroicAndNotStructure"/>
-        <ValidatorArray value="NotMechanical"/>
-        <EditorCategories value="Race:Protoss"/>
-        <CreateFlags index="Birth" value="0"/>
-        <CreateFlags index="DropOff" value="0"/>
-        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
-        <CreateFlags index="Precursor" value="1"/>
-        <CreateFlags index="ProvideFood" value="0"/>
-        <CreateFlags index="TechComplete" value="0"/>
-        <CreateFlags index="UseFood" value="0"/>
-        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
-        <SpawnEffect value="RepelKBSet"/>
-        <SpawnRange value="4"/>
-        <SpawnOffset value="0,3"/>
-        <TypeFallbackUnit Value="Target"/>
-    </CEffectCreateUnit>
-    <CEffectLaunchMissile id="RepelKBLM">
-        <ValidatorArray value="NotDead"/>
-        <ValidatorArray value="NotMechanical"/>
-        <ValidatorArray value="NotZergLord"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Effect="RepelKBCU" Value="TargetUnit"/>
-        <Flags index="2D" value="1"/>
-        <Flags index="ValidateBenign" value="0"/>
-        <Flags index="ValidateTeleport" value="0"/>
-        <Movers Link="KnockbackMover"/>
-        <DeathType value="Unknown"/>
-        <ImpactEffect value="PressureSet"/>
-        <FinishEffect value="ExcessSA"/>
-    </CEffectLaunchMissile>
-    <CEffectSet id="RepelKBSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="KD8PrecursorUnitKnockbackAB"/>
-        <EffectArray value="RepelKBLM"/>
-    </CEffectSet>
     <CEffectSet id="RoachCorpserAcidSalivaSet">
         <EffectArray value="RoachPersistent"/>
     </CEffectSet>
@@ -13973,6 +14949,7 @@
     <CEffectApplyBehavior id="SlimeAttackAB">
         <EditorCategories value="Race:Zerg"/>
         <Behavior value="StuckInSlime"/>
+        <ValidatorArray index="0" value="NotMassive"/>
     </CEffectApplyBehavior>
     <CEffectCreatePersistent id="SlimeAttackCP">
         <EditorCategories value="Race:Zerg"/>
@@ -15375,21 +16352,8 @@
     </CEffectEnumArea>
     <CEffectApplyBehavior id="FortifyAB">
         <ValidatorArray index="0" value="NotHeroic"/>
-        <ValidatorArray value="NotStructureTarget"/>
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="Fortify"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="FortifyABHero">
-        <ValidatorArray index="0" value="IsHeroic"/>
-        <ValidatorArray value="NotStructure"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Behavior value="FortifyHero"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="FortifyABStructure">
-        <ValidatorArray index="0" value="NotHeroic"/>
-        <ValidatorArray value="IsStructure"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Behavior value="FortifyStucture"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="FortifySA">
         <EditorCategories value="Race:Protoss"/>
@@ -15404,8 +16368,6 @@
     <CEffectSet id="FortifyAllySet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="FortifyAB"/>
-        <EffectArray value="FortifyABHero"/>
-        <EffectArray value="FortifyABStructure"/>
         <EffectArray value="EarthHeroFortifyDelay"/>
         <EffectArray value="EarthHeroFortifyDelayMassive"/>
         <EffectArray value="EarthHeroFortifyDelayHero"/>
@@ -15542,7 +16504,7 @@
             <ChangeFraction value="0.01"/>
         </VitalArray>
         <VitalArray index="Energy">
-            <ChangeFraction value="0.02"/>
+            <ChangeFraction value="0.01"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectSet id="RecycleSet">
@@ -15584,39 +16546,12 @@
     <CEffectSet id="ChampionDeath">
         <EditorCategories value=""/>
     </CEffectSet>
-    <CEffectApplyBehavior id="ConsumeAB">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <Behavior value="Consumed"/>
-    </CEffectApplyBehavior>
-    <CEffectDamage id="ConsumeDMG">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="TargetUnit"/>
-        <Amount value="300"/>
-        <LeechFraction index="Life" value="0.2"/>
-        <LeechFraction index="Shields" value="0.2"/>
-        <ArmorReduction value="10"/>
-        <AttributeFactor index="Armored" value="0.5"/>
-        <AttributeFactor index="Massive" value="1"/>
-        <AttributeFactor index="Heroic" value="1"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="ConsumeDummy">
-        <EditorCategories value="Race:Protoss"/>
-        <ExpireDelay value="0.5"/>
-    </CEffectCreatePersistent>
-    <CEffectSet id="ConsumeSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ConsumeAB"/>
-        <EffectArray value="VortexCP"/>
-        <EffectArray value="ConsumeDummy"/>
-        <EffectArray value="ConsumeDMG"/>
-    </CEffectSet>
     <CEffectApplyBehavior id="Cripple">
         <EditorCategories value=""/>
         <Chance value="0"/>
         <Behavior value="Crippled"/>
         <Count value="0"/>
-        <ValidatorArray value="Unstoppable"/>
+        <ValidatorArray index="0" value="NotMassive"/>
     </CEffectApplyBehavior>
     <CEffectModifyUnit id="DefensiveMatrixModifyUnit">
         <VitalArray index="Shields">
@@ -15655,138 +16590,6 @@
         <ArmorReduction value="1"/>
         <VitalFractionMax index="Life" value="0.4"/>
     </CEffectDamage>
-    <CEffectApplyBehavior id="ExcessAB">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Source"/>
-        <Behavior value="Excess"/>
-    </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="ExcessGravSlivOffset">
-        <EditorCategories value="Race:Protoss"/>
-        <Flags index="RandomOffset" value="1"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="ExcessGravSlivTarget"/>
-        <PeriodicOffsetArray value="0,12,0"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="ExcessGravSlivPortalCP">
-        <EditorCategories value="Race:Protoss"/>
-        <PeriodCount value="10"/>
-        <PeriodicEffectArray value="ExcessGravSlivPortalSA"/>
-        <PeriodicPeriodArray value="0.5"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="ExcessGravSlivPortalDelay">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <WhichLocation Value="SourceUnitOrPoint"/>
-        <InitialDelay value="0.3"/>
-        <ExpireDelay value="5"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="ExcessGravSlivPortalCP"/>
-        <PeriodicPeriodArray value="0.3"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="ExcessGravSlivPortalSA">
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="0.75" Effect="ExcessGravSlivPortalSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="ExcessGravSlivPortalSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="PortalDamage"/>
-        <EffectArray value="PortalAB"/>
-        <EffectArray value="ExcessGravSlivPortalTP"/>
-    </CEffectSet>
-    <CEffectTeleport id="ExcessGravSlivPortalTP">
-        <ValidatorArray value="NotStructureTarget"/>
-        <ValidatorArray value="NotMechanical"/>
-        <ValidatorArray value="NotHeroic"/>
-        <EditorCategories value="Race:Protoss"/>
-        <ClearQueuedOrders value="0"/>
-        <MinDistance value="0"/>
-        <PlacementArc value="360"/>
-        <PlacementAround Value="SourceUnit"/>
-        <PlacementRange value="3"/>
-        <SourceLocation Value="TargetUnit"/>
-        <TargetLocation Value="SourceUnit"/>
-        <TeleportFlags index="TestFog" value="0"/>
-    </CEffectTeleport>
-    <CEffectSet id="ExcessGravSlivSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ExcessGravSlivSA"/>
-        <EffectArray value="ExcessGravSlivPortalDelay"/>
-    </CEffectSet>
-    <CEffectCreatePersistent id="ExcessGravSlivTarget">
-        <EditorCategories value="Race:Protoss"/>
-        <InitialDelay value="0.1"/>
-        <FinalEffect value="ExcessGravSlivLM"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="ExcessOffset">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="CasterUnit"/>
-        <Flags index="RandomOffset" value="1"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="ExcessTarget"/>
-        <PeriodicOffsetArray value="0,12,0"/>
-    </CEffectCreatePersistent>
-    <CEffectApplyBehavior id="ExcessGravSlivAB">
-        <EditorCategories value="Race:Protoss"/>
-        <Behavior value="ExcessGravSliv"/>
-    </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="ExcessGravSlivCP">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="SourceUnit"/>
-        <PeriodCount value="30"/>
-        <PeriodicEffectArray value="ExcessGravSlivSet"/>
-        <PeriodicPeriodArray value="0.03"/>
-    </CEffectCreatePersistent>
-    <CEffectLaunchMissile id="ExcessGravSlivLM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Effect="ExcessGravSlivTarget" Value="TargetUnitOrPoint"/>
-        <ImpactLocation Effect="MagnetismSA" Value="TargetPoint"/>
-        <LaunchEffect value="ExcessGravSlivCP"/>
-        <AmmoUnit value="AlarakPsiOrbMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectSet id="ExcessGravSlivInitSet">
-        <ValidatorArray value="ExcessGravSlivSetTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <EffectArray value="ExcessGravSlivInitSA"/>
-        <TargetLocationType value="Point"/>
-    </CEffectSet>
-    <CEffectEnumArea id="ExcessGravSlivInitSA">
-        <ValidatorArray value="ExcessGravSlivSATargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray MaxCount="1" Radius="12" Effect="ExcessGravSlivOffset"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="ExcessGravSlivSA">
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1" Effect="ExcessGravSlivImpactSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="ExcessGravSlivImpactSet">
-        <ValidatorArray value="ExcessGravSlivSetTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="GravityShotDMG"/>
-        <EffectArray value="ExcessGravSlivPullLM"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="ExcessLM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Value="CasterUnit"/>
-        <LaunchEffect value="GravityShotCP"/>
-        <AmmoUnit value="AlarakPsiOrbMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="ExcessSA">
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray MaxCount="1" Radius="12" Effect="ExcessOffset"/>
-        <LaunchLocation Value="CasterUnit"/>
-        <ImpactLocation Value="CasterUnit"/>
-        <Chance value="0"/>
-    </CEffectEnumArea>
-    <CEffectSet id="ExcessSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ExcessAB"/>
-    </CEffectSet>
     <CEffectApplyBehavior id="ExploderApplyBehavior">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="GatewayHeroExplosive"/>
@@ -15970,231 +16773,6 @@
         <Flags index="NoBehaviorResponse" value="1"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
-    <CEffectSet id="GravityDash">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="GravityDashPullSA"/>
-        <EffectArray value="GravityDashSA"/>
-        <EffectArray value="GravityDashDummy"/>
-    </CEffectSet>
-    <CEffectCreatePersistent id="GravityDashApplyCasterForce">
-        <EditorCategories value="Race:Protoss"/>
-        <ExpireDelay value="0.1"/>
-        <PeriodCount value="20"/>
-        <PeriodicEffectArray value="GravityDashCasterForce"/>
-        <PeriodicPeriodArray value="0.05"/>
-    </CEffectCreatePersistent>
-    <CEffectApplyForce id="GravityDashApplyForce">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="CasterUnit"/>
-        <Amount value="-10"/>
-        <ValidatorArray value="NotMechanical"/>
-        <ValidatorArray value="NotStructureTarget"/>
-    </CEffectApplyForce>
-    <CEffectApplyBehavior id="GravityDashApplySpeed">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Caster"/>
-    </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="GravityDashCP">
-        <ValidatorArray value="GravityDashCPTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <TimeScaleSource Value="Caster"/>
-        <Flags index="Channeled" value="1"/>
-        <InitialEffect value="GravityDashApplySpeed"/>
-        <ExpireEffect value="GravityDashRemoveSpeed"/>
-        <PeriodCount value="20"/>
-        <PeriodicEffectArray value="GravityDash"/>
-        <PeriodicPeriodArray value="0.05"/>
-        <FinalEffect value="AttractionCP"/>
-        <WhichLocation Value="CasterUnitOrPoint"/>
-    </CEffectCreatePersistent>
-    <CEffectDamage id="GravityDash2">
-        <ValidatorArray value="GravityDash2TargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="15"/>
-        <ArmorReduction value="0.5"/>
-        <AttributeFactor index="Armored" value="0.5"/>
-        <AttributeFactor index="Massive" value="1"/>
-        <AttributeFactor index="Heroic" value="1"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="GravityDashCPForce">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="CasterUnit"/>
-        <PeriodCount value="2"/>
-        <PeriodicEffectArray value="GravityDashSAForce"/>
-        <PeriodicPeriodArray value="0.02"/>
-    </CEffectCreatePersistent>
-    <CEffectApplyForce id="GravityDashCasterForce">
-        <ValidatorArray value="GravityDashForceTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Effect="GravityDashApplyCasterForce" Value="TargetPoint"/>
-        <WhichUnit Value="Caster"/>
-        <Amount value="10"/>
-    </CEffectApplyForce>
-    <CEffectCreatePersistent id="GravityDashDummy">
-        <EditorCategories value="Race:Protoss"/>
-        <ExpireDelay value="0.8"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="GravityDashOffset">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="CasterPoint"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="GravityDashCP"/>
-        <PeriodicOffsetArray value="0,-10,0"/>
-        <ExpireEffect value="GravityDashApplyCasterForce"/>
-        <ExpireOffset value="0,10,0"/>
-    </CEffectCreatePersistent>
-    <CEffectRemoveBehavior id="GravityDashRemoveSpeed">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Caster"/>
-        <BehaviorLink value="GravityDashApplySpeed"/>
-    </CEffectRemoveBehavior>
-    <CEffectEnumArea id="GravityDashSA">
-        <ValidatorArray value="GravityDashSATargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="CasterUnit"/>
-        <ImpactLocation Value="CasterUnit"/>
-        <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1" Effect="GravityDash2"/>
-    </CEffectEnumArea>
-    <CEffectCreatePersistent id="GravityShotCPOffset">
-        <ValidatorArray value="GravityShotCPOffsetTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="CasterPoint"/>
-        <ExpireDelay value="0.1"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="GravityShotLM"/>
-        <PeriodicOffsetArray value="0,-12,0"/>
-    </CEffectCreatePersistent>
-    <CEffectDamage id="GravityShotDMG">
-        <ValidatorArray value="GravityShotTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="2.1"/>
-        <ArmorReduction value="0.05"/>
-        <AttributeFactor index="Armored" value="0.5"/>
-        <AttributeFactor index="Massive" value="1"/>
-        <AttributeFactor index="Heroic" value="1"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="GravityShotCP">
-        <EditorCategories value="Race:Protoss"/>
-        <PeriodCount value="30"/>
-        <PeriodicEffectArray value="GravityShotSet"/>
-        <PeriodicPeriodArray value="0.03"/>
-        <ExpireDelay value="0.5"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="GravityShotSA">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="SourceUnitOrPoint"/>
-        <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1" Effect="GravityShotImpactSet"/>
-    </CEffectEnumArea>
-    <CEffectLaunchMissile id="GravityShotLM">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="OriginUnitOrPoint"/>
-        <LaunchEffect value="GravityShotCP"/>
-        <AmmoUnit value="AlarakPsiOrbMissile"/>
-        <LaunchLocation Value="TargetPoint"/>
-    </CEffectLaunchMissile>
-    <CEffectSet id="GravityShotImpactSet">
-        <ValidatorArray value="GravityShotSetTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="GravityShotDMG"/>
-        <EffectArray value="ExcessGravityShotSet"/>
-        <EffectArray value="GravityShotKBLM"/>
-    </CEffectSet>
-    <CEffectSet id="GravityShotSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="GravityShotSA"/>
-        <EffectArray value="PortalDelay"/>
-    </CEffectSet>
-    <CEffectCreatePersistent id="ExcessTarget">
-        <EditorCategories value="Race:Protoss"/>
-        <InitialDelay value="0.1"/>
-        <FinalEffect value="ExcessLM"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="GravitySliversCP">
-        <ValidatorArray value="GravitySliversCPTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Flags index="RandomOffset" value="1"/>
-        <PeriodCount value="40"/>
-        <PeriodicEffectArray value="GravitySliversImpactSet"/>
-        <PeriodicOffsetArray value="0,0,0"/>
-        <PeriodicOffsetArray value="0,0.3,0"/>
-        <PeriodicOffsetArray value="0.3,0,0"/>
-        <PeriodicOffsetArray value="0,-0.3,0"/>
-        <PeriodicOffsetArray value="-0.3,0,0"/>
-        <PeriodicOffsetArray value="0,0.7,0"/>
-        <PeriodicOffsetArray value="0.5,0.5,0"/>
-        <PeriodicOffsetArray value="0.7,0,0"/>
-        <PeriodicOffsetArray value="0.5,-0.5,0"/>
-        <PeriodicOffsetArray value="0,-0.7,0"/>
-        <PeriodicOffsetArray value="-0.5,-0.5,0"/>
-        <PeriodicOffsetArray value="-0.7,0,0"/>
-        <PeriodicOffsetArray value="-0.5,0.5,0"/>
-        <PeriodicOffsetArray value="0,1.1,0"/>
-        <PeriodicOffsetArray value="0.6,1,0"/>
-        <PeriodicOffsetArray value="1,0.6,0"/>
-        <PeriodicOffsetArray value="1.1,0,0"/>
-        <PeriodicOffsetArray value="1,-0.6,0"/>
-        <PeriodicOffsetArray value="0.6,-1,0"/>
-        <PeriodicOffsetArray value="0,-1.1,0"/>
-        <PeriodicOffsetArray value="-0.6,-1,0"/>
-        <PeriodicOffsetArray value="-1,-0.6,0"/>
-        <PeriodicOffsetArray value="-1.1,0,0"/>
-        <PeriodicOffsetArray value="-1,0.6,0"/>
-        <PeriodicOffsetArray value="-0.6,1,0"/>
-        <PeriodicOffsetArray value="0,1.6,0"/>
-        <PeriodicOffsetArray value="0.6,1.5,0"/>
-        <PeriodicOffsetArray value="1.1,1.1,0"/>
-        <PeriodicOffsetArray value="1.5,0.6,0"/>
-        <PeriodicOffsetArray value="1.6,0,0"/>
-        <PeriodicOffsetArray value="1.5,-0.6,0"/>
-        <PeriodicOffsetArray value="1.1,-1.1,0"/>
-        <PeriodicOffsetArray value="0.6,-1.5,0"/>
-        <PeriodicOffsetArray value="0,-1.6,0"/>
-        <PeriodicOffsetArray value="-0.6,-1.5,0"/>
-        <PeriodicOffsetArray value="-1.1,-1.1,0"/>
-        <PeriodicOffsetArray value="-1.5,-0.6,0"/>
-        <PeriodicOffsetArray value="-1.6,0,0"/>
-        <PeriodicOffsetArray value="-1.5,0.6,0"/>
-        <PeriodicOffsetArray value="-1.1,1.1,0"/>
-        <PeriodicOffsetArray value="-0.6,1.5,0"/>
-        <PeriodicPeriodArray value="0.075"/>
-        <InitialEffect value="MagnetismCP"/>
-        <ExpireDelay value="0.5"/>
-        <RevealRadius value="3"/>
-        <RevealFlags index="Unfog" value="1"/>
-    </CEffectCreatePersistent>
-    <CEffectDamage id="GravitySliversDMG">
-        <ValidatorArray value="GravitySliversDMGTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="8"/>
-        <Death value="Eviscerate"/>
-        <ArmorReduction value="0.5"/>
-        <AttributeFactor index="Armored" value="0.5"/>
-        <AttributeFactor index="Massive" value="1"/>
-        <AttributeFactor index="Heroic" value="1"/>
-    </CEffectDamage>
-    <CEffectSet id="GravitySliversImpactSet">
-        <ValidatorArray value="GravitySliversImpactSetTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="RelentlessSet"/>
-        <EffectArray value="GravitySliversSA"/>
-    </CEffectSet>
-    <CEffectEnumArea id="GravitySliversSA">
-        <ValidatorArray value="GravitySliversSATargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="0.5" Effect="GravitySliversDMG"/>
-        <SearchFlags index="OffsetAreaByAngle" value="0"/>
-        <RevealerParams Duration="0.5">
-            <RevealFlags index="Unfog" value="1"/>
-        </RevealerParams>
-    </CEffectEnumArea>
-    <CEffectSet id="GravitySliversSet">
-        <ValidatorArray value="GravitySliversSetTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="GravitySliversCP"/>
-    </CEffectSet>
     <CEffectCreateHealer id="HealerDroneHealthHeal">
         <ValidatorArray value="HealerDroneTargetFilters"/>
         <EditorCategories value=""/>
@@ -16294,42 +16872,6 @@
         <Death value="Electrocute"/>
         <SearchFilters value="-;Player,Ally,Missile,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
-    <CEffectDamage id="MagnetismDMG">
-        <ValidatorArray value="MagnatismDMGTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <AttributeBonus index="Armored" value="2.5"/>
-        <AttributeBonus index="Massive" value="5"/>
-        <ArmorReduction value="0.5"/>
-        <Amount value="5"/>
-    </CEffectDamage>
-    <CEffectApplyBehavior id="MagnetismApplySpeed">
-        <EditorCategories value="Race:Protoss"/>
-        <Behavior value="Magnetism"/>
-        <ValidatorArray index="0" value="NotMechanical"/>
-        <ValidatorArray value="NotStructureTarget"/>
-    </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="MagnetismCP">
-        <ValidatorArray value="MagnetismCPTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <PeriodCount value="4"/>
-        <PeriodicEffectArray value="MagnetismSA"/>
-        <PeriodicPeriodArray value="1"/>
-        <Chance value="0"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="MagnetismSA">
-        <ValidatorArray value="MagnetismSATargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="OriginUnit"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="4" RadiusBonus="0.01" Effect="MagnetismSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="MagnetismSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ExcessGravSlivInitSet"/>
-        <EffectArray value="MagnetismDMG"/>
-        <EffectArray value="MagnetismPullLM"/>
-    </CEffectSet>
     <CEffectApplyBehavior id="MassacreHelperReapply">
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
@@ -16362,10 +16904,6 @@
         <BehaviorLink value="DecoyLimiter"/>
         <Count value="1"/>
     </CEffectRemoveBehavior>
-    <CEffectApplyBehavior id="Doubleganger">
-        <EditorCategories value=""/>
-        <Count value="0"/>
-    </CEffectApplyBehavior>
     <CEffectDamage id="ArdentDefenderKill">
         <EditorCategories value=""/>
         <Flags index="Kill" value="1"/>
@@ -16426,66 +16964,6 @@
         <Chance value="0"/>
         <Behavior value="PoisonboltPlagueDelay"/>
     </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="PortalAB">
-        <EditorCategories value="Race:Protoss"/>
-        <Behavior value="Portal"/>
-    </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="PortalCP">
-        <EditorCategories value="Race:Protoss"/>
-        <PeriodCount value="10"/>
-        <PeriodicEffectArray value="PortalSA"/>
-        <PeriodicPeriodArray value="0.5"/>
-    </CEffectCreatePersistent>
-    <CEffectDamage id="PortalDamage">
-        <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="1"/>
-        <Amount value="30"/>
-        <AttributeFactor index="Armored" value="0.5"/>
-        <AttributeFactor index="Massive" value="1"/>
-        <AttributeFactor index="Heroic" value="1"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="PortalDelay">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <WhichLocation Value="SourceUnitOrPoint"/>
-        <InitialDelay value="0.3"/>
-        <ExpireDelay value="5"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="PortalCP"/>
-        <PeriodicPeriodArray value="0.3"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="PortalSA">
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="0.75" Effect="PortalSet"/>
-        <RevealerParams Duration="0.5">
-            <RevealFlags index="Unfog" value="1"/>
-        </RevealerParams>
-    </CEffectEnumArea>
-    <CEffectSet id="PortalSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="PortalAB"/>
-        <EffectArray value="PortalDamage"/>
-        <EffectArray value="PortalTP"/>
-    </CEffectSet>
-    <CEffectTeleport id="PortalTP">
-        <ValidatorArray value="NotStructureTarget"/>
-        <ValidatorArray value="NotMechanical"/>
-        <ValidatorArray value="NotHeroic"/>
-        <EditorCategories value="Race:Protoss"/>
-        <ClearQueuedOrders value="0"/>
-        <MinDistance value="0"/>
-        <PlacementArc value="360"/>
-        <PlacementAround Value="CasterUnit"/>
-        <PlacementRange value="3"/>
-        <SourceLocation Value="TargetPoint"/>
-        <TeleportFlags index="TestFog" value="0"/>
-    </CEffectTeleport>
-    <CEffectApplyBehavior id="PressureAB">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <Behavior value="Pressure"/>
-    </CEffectApplyBehavior>
     <CEffectDamage id="PurgeDMG">
         <EditorCategories value="Race:Protoss"/>
         <Amount value="3000"/>
@@ -16534,66 +17012,6 @@
         <SpawnEffect value="ReinforceSet"/>
         <SpawnUnit value="GatewayHeroZealot"/>
     </CEffectCreateUnit>
-    <CEffectEnumArea id="RelentlessSA">
-        <ValidatorArray value="RelentlessTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnitOrPoint"/>
-        <SearchFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray MaxCount="1" Radius="5" Effect="GravitySliversSA"/>
-        <Marker Count="3" Duration="1"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-    </CEffectEnumArea>
-    <CEffectSet id="RelentlessSet">
-        <EditorCategories value=""/>
-        <Chance value="0"/>
-        <EffectArray value="RelentlessSA"/>
-    </CEffectSet>
-    <CEffectApplyBehavior id="RepelAB">
-        <ValidatorArray index="0" removed="1"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Behavior value="RepelDMG"/>
-    </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="RepelCP">
-        <ValidatorArray value="EnemyWithin2Range"/>
-        <EditorCategories value="Race:Protoss"/>
-        <PeriodCount value="3"/>
-        <PeriodicEffectArray value="RepelSA"/>
-        <PeriodicPeriodArray value="0.03"/>
-    </CEffectCreatePersistent>
-    <CEffectDamage id="RepelDMG">
-        <ValidatorArray value="RepelDMGTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="30"/>
-        <ArmorReduction value="0.5"/>
-        <AttributeFactor index="Armored" value="0.5"/>
-        <AttributeFactor index="Massive" value="1"/>
-        <AttributeFactor index="Heroic" value="1"/>
-    </CEffectDamage>
-    <CEffectModifyUnit id="RepelDrop">
-        <EditorCategories value="Race:Protoss"/>
-        <Height value="-0.5"/>
-        <HeightTime value="0.3"/>
-    </CEffectModifyUnit>
-    <CEffectModifyUnit id="RepelLift">
-        <EditorCategories value="Race:Protoss"/>
-        <Height value="0.5"/>
-        <HeightTime value="0.3"/>
-    </CEffectModifyUnit>
-    <CEffectEnumArea id="RepelSA">
-        <ValidatorArray value="RepelSATargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1" RadiusBonus="0.7" Effect="RepelSet"/>
-        <SearchFlags index="ExtendByUnitRadius" value="1"/>
-    </CEffectEnumArea>
-    <CEffectSet id="RepelSet">
-        <ValidatorArray value="RepelSetTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="RepelAB"/>
-        <EffectArray value="RepelKBCU"/>
-    </CEffectSet>
     <CEffectModifyUnit id="ReplenishHeal">
         <EditorCategories value="Race:Protoss"/>
         <VitalArray index="Shields">
@@ -17076,15 +17494,6 @@
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1.5" Effect="VolatileSporesDMG"/>
     </CEffectEnumArea>
-    <CEffectEnumArea id="VolatileSporesSearchTarget">
-        <EditorCategories value="Race:Zerg"/>
-        <ImpactLocation Value="SourceUnitOrPoint"/>
-        <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <TargetSorts>
-            <SortArray value="TSRandom"/>
-        </TargetSorts>
-        <AreaArray MaxCount="1" Radius="9.5" Effect="VolatileSporesLM"/>
-    </CEffectEnumArea>
     <CEffectDamage id="VolatileVolleyDMG">
         <EditorCategories value="Race:Zerg"/>
         <AttributeFactor index="Summoned" value="0.5"/>
@@ -17452,13 +17861,6 @@
         <RechargeVitalRate value="100"/>
         <ValidatorArray value="SOAStrafeAttackRandomTargetInRange"/>
     </CEffectCreateHealer>
-    <CEffectCreatePersistent id="VortexCP">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="MagnetismSA"/>
-        <PeriodicPeriodArray value="0.6"/>
-    </CEffectCreatePersistent>
     <CEffectDamage id="WarbotBDamage">
         <ResponseFlags index="Acquire" value="0"/>
         <ResponseFlags index="Flee" value="0"/>
@@ -17619,7 +18021,7 @@
     </CEffectCreateHealer>
     <CEffectApplyBehavior id="thornuked">
         <ValidatorArray index="0" value="ThorRewardMagneto"/>
-        <ValidatorArray value="Unstoppable"/>
+        <ValidatorArray value="NotMassive"/>
         <EditorCategories value=""/>
         <Behavior value="thornukedforce"/>
     </CEffectApplyBehavior>
@@ -17678,7 +18080,7 @@
     </CEffectLaunchMissile>
     <CEffectApplyBehavior id="Spireballed">
         <ValidatorArray index="0" value="ThorRewardMagneto"/>
-        <ValidatorArray value="Unstoppable"/>
+        <ValidatorArray value="NotMassive"/>
         <EditorCategories value=""/>
         <Marker Link="Effect/Forcebolted"/>
         <Chance value="0"/>
@@ -17689,7 +18091,7 @@
         <Marker Link="Effect/ForceboltForce"/>
         <WhichLocation Value="CasterPoint"/>
         <Amount value="0.5"/>
-        <ValidatorArray value="Unstoppable"/>
+        <ValidatorArray value="NotMassive"/>
     </CEffectApplyForce>
     <CEffectSwitch id="InfernoArmageddonSwitch">
         <EditorCategories value="Race:Protoss"/>
@@ -18357,7 +18759,7 @@
         <EditorCategories value=""/>
         <WhichLocation Value="CasterPoint"/>
         <Amount value="-1"/>
-        <ValidatorArray value="Unstoppable"/>
+        <ValidatorArray value="NotMassive"/>
     </CEffectApplyForce>
     <CEffectEnumArea id="ForceboltForceSearch">
         <EditorCategories value=""/>
@@ -18374,14 +18776,12 @@
         <EditorCategories value=""/>
         <Height value="1"/>
         <HeightTime value="0.5"/>
-        <ValidatorArray value="Unstoppable"/>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="ForceboltDrop">
         <EditorCategories value=""/>
         <Marker Link="Effect/ForceboltLift"/>
         <Height value="-1"/>
         <HeightTime value="0.5"/>
-        <ValidatorArray value="Unstoppable"/>
     </CEffectModifyUnit>
     <CEffectEnumArea id="ForceboltSearch">
         <EditorCategories value=""/>
@@ -18396,7 +18796,7 @@
     </CEffectSet>
     <CEffectApplyBehavior id="Forcebolted">
         <EditorCategories value=""/>
-        <ValidatorArray value="Unstoppable"/>
+        <ValidatorArray index="0" value="NotMassive"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="InfernoDMG">
         <EditorCategories value="Race:Protoss"/>
@@ -18586,10 +18986,6 @@
         <EffectArray value="DematerializeDamage"/>
         <EffectArray value="DematerializeMissile"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="HallucinatonDecoyBonus">
-        <EditorCategories value=""/>
-        <Count value="0"/>
-    </CEffectApplyBehavior>
     <CEffectDamage id="ImmortalMultiShotFireDamage">
         <EditorCategories value=""/>
         <Marker Link="Effect/ImmortalStrafeDamage"/>
@@ -19249,4 +19645,29 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="wallofshadowhidden"/>
     </CEffectApplyBehavior>
+    <CEffectEnumArea id="GravityHeroCrushSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <AreaArray index="0" Radius="2" Effect="GravityHeroCrushSet"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="GravityHeroLiftSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <AreaArray index="0" Radius="2" Effect="GravityHeroLiftSet"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="GravityHeroDiveSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <AreaArray index="0" Radius="2.4" Effect="GravityHeroDiveSet"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="GravityHeroPushSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnitOrPoint"/>
+        <AreaArray index="0" Radius="1.5" Effect="GravityHeroPushSet"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="GravityHeroPullSA" parent="BSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <AreaArray index="0" RectangleWidth="1" RectangleHeight="2" Effect="GravityHeroPullSet"/>
+        <ImpactLocation Value="SourceUnit"/>
+    </CEffectEnumArea>
 </Catalog>

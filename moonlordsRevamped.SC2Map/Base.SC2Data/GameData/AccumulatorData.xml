@@ -65,6 +65,41 @@
             <AccumulatorArray value="GatewayHeroDestroyerCostFactor"/>
         </Parameters>
     </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="GravityHeroPolarityCapped">
+        <MinAccumulation value="0"/>
+        <MaxAccumulation value="600"/>
+        <Parameters value="0">
+            <AccumulatorArray value="GravityHeroPolarityData"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorUserData id="GravityHeroPolarityData">
+        <Key value="Polarity"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CAccumulatorUserData>
+    <CAccumulatorConstant id="GravityHeroPolarityEnergyMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.2"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="GravityHeroPolarityExplodeRadiusMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.01"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="GravityHeroPolarityExplodeDamageMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="1"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="GravityHeroPolarityOverhealMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.5"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="GravityHeroPolarityShieldsMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="1.5"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="GravityHeroWhiplashMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="1"/>
+    </CAccumulatorConstant>
     <CAccumulatorConstant id="LuckHeroDelugeMultiplier">
         <ApplicationRule value="Multiply"/>
         <Amount value="2"/>
@@ -369,6 +404,12 @@
         <Behavior value="GasFireStack"/>
         <UnitSource Value="Target"/>
     </CAccumulatorBehavior>
+    <CAccumulatorConstant id="ShadowHeroEnergytapDrain">
+        <Amount value="-4"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="ShadowHeroEnergytapHeal">
+        <Amount value="6"/>
+    </CAccumulatorConstant>
     <CAccumulatorArithmetic id="ShieldsPercentageCaster">
         <Parameters value="0">
             <AccumulatorArray value="ShieldsCurrentCaster"/>

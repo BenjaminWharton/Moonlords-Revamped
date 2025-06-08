@@ -11,6 +11,10 @@
     <CValidatorUnitType id="AirHeroIsMicroBurstUnit">
         <Value value="AirHeroMicroBurstUnit"/>
     </CValidatorUnitType>
+    <CValidatorUnitOrder id="AirHeroHurricaneAutocast">
+        <AbilLink value="Hurricane"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CValidatorUnitOrder>
     <CValidatorUnitCompareBehaviorCount id="AirHeroNoHurricaneDebrisFate">
         <Behavior value="AirHeroHurricaneDebrisFate"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -24,6 +28,14 @@
     <CValidatorUnitCompareBehaviorCount id="AirHeroNotTornadoLifted">
         <Behavior value="AirHeroTornadoLifted"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitOrder id="AirHeroTornadoAutocast">
+        <AbilLink value="Tornado"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CValidatorUnitOrder>
+    <CValidatorUnitOrder id="AirHeroMicroBurstAutocast">
+        <AbilLink value="MicroBurst"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CValidatorUnitOrder>
     <CValidatorEffectTreeUserData id="AirHeroTornadoDataGT0">
         <Compare value="GT"/>
         <Key value="Tornado"/>
@@ -33,6 +45,11 @@
         <WhichUnit Effect="AirHeroTornadoFate"/>
         <Compare value="GT"/>
         <Behavior value="TornadoFate"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="AnnihilatorHasFirewall">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="AnnihilatorFirewall"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="AttritionOrbCountIs6">
         <WhichUnit Value="Caster"/>
@@ -248,6 +265,136 @@
     <CValidatorUnitType id="GatewayHeroIsDestroyerDrone">
         <Value value="DestroyerDrone"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="GravityHeroCasterNoShift">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GravityHeroShiftCaster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="GravityHeroHas85EnergyOrSway">
+        <CombineArray value="CasterEnergyGE85"/>
+        <CombineArray value="GravityHeroHasDiveSway"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="GravityHeroHasPullForce">
+        <Compare value="GT"/>
+        <Behavior value="GravityHeroPullForce"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="GravityHeroIsElevated">
+        <Compare value="GT"/>
+        <Behavior value="GravityHeroElevated"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="GravityHeroIsCrushed">
+        <Compare value="GT"/>
+        <Behavior value="GravityHeroCrushed"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="GravityHeroIsPositive">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="GravityHeroPositive"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="GravityHeroIsNegative">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="GravityHeroNegative"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="GravityHeroIsPositiveReq">
+        <Find value="1"/>
+        <Value value="GravityHeroIsPositive"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="GravityHeroNoDiveSway">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GravityHeroDiveSway"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="GravityHeroHasDiveSway">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="GravityHeroDiveSway"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="GravityHeroNotPositiveReq">
+        <Find value="1"/>
+        <Value value="GravityHeroNotPositive"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE1100">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="1100"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE1200">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="1200"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE1300">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="1300"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE1400">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="1400"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE1500">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="1500"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE300">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="300"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE400">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="400"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE500">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="500"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE600">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="600"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE700">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="700"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE800">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="800"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE900">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="900"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="GravityHeroPolarityGTE1000">
+        <Compare value="GE"/>
+        <Key value="Polarity"/>
+        <Value value="1000"/>
+        <BehaviorScope Behavior="GravityHeroPolarity"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorUnitCompareBehaviorCount id="GravityHeroSourceHasKillDelay">
+        <WhichUnit Value="Source"/>
+        <Compare value="GT"/>
+        <Behavior value="GravityHeroKillDelay"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="HasNOShockwaveOrbiAntirecast">
         <WhichUnit Value="Source"/>
         <Compare value="LT"/>
@@ -269,9 +416,18 @@
     <CValidatorUnitType id="IsDemolisherShieldDummy">
         <Value value="ShieldUnit"/>
     </CValidatorUnitType>
+    <CValidatorCombine id="NotHeroicAndNotMassive">
+        <Type value="And"/>
+        <CombineArray value="NotHeroic"/>
+        <CombineArray value="NotMassive"/>
+    </CValidatorCombine>
     <CValidatorCombine id="IsHeroicorStructure">
         <CombineArray value="IsHeroic"/>
         <CombineArray value="IsStructure"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GravityHeroDiveTravelValidation">
+        <CombineArray value="TargetPointNotOnPathableAllowsStructure"/>
+        <CombineArray value="NoInvulnerableEnemyStructures"/>
     </CValidatorCombine>
     <CValidatorPlayerRequirement id="LuckHeroHasBoundless">
         <Find value="1"/>
@@ -441,6 +597,14 @@
     <CValidatorUnitCompareBehaviorCount id="NoExplosive">
         <Behavior value="GatewayHeroExplosive"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitFilters id="CasterNotInvulnerable">
+        <WhichUnit Value="Caster"/>
+        <Filters value="-;Invulnerable"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="SourceNotHeroic">
+        <WhichUnit Value="Caster"/>
+        <Filters value="-;Heroic"/>
+    </CValidatorUnitFilters>
     <CValidatorUnitFilters id="NotMissile">
         <Filters value="-;Missile"/>
     </CValidatorUnitFilters>
@@ -773,6 +937,11 @@
         <Find value="1"/>
         <Value value="ExpelCombo0"/>
     </CValidatorPlayerRequirement>
+    <CValidatorLocationPathable id="TargetPointNotOnPathable">
+        <ResultFailed value="MustTargetWalkableLocation"/>
+        <Find value="0"/>
+        <Types index="Building" value="0"/>
+    </CValidatorLocationPathable>
     <CValidatorUnitType id="ThorIsNotStopMoveIndicator">
         <Value value="AnnihilatorStopMoveIndicator"/>
         <Find value="0"/>
@@ -871,9 +1040,6 @@
         <Value value="5"/>
         <Behavior value="AttritionOrbCounter"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareMoverPhase id="AutoCast">
-        <WhichUnit Value="Caster"/>
-    </CValidatorUnitCompareMoverPhase>
     <CValidatorUnitCompareBehaviorCount id="BroodlingDisable">
         <WhichUnit Value="Source"/>
         <Behavior value="BroodlingCarrierDisable"/>
@@ -1708,11 +1874,6 @@
         <Compare value="GT"/>
         <Behavior value="FrozenWater"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="Unstoppable">
-        <Compare value="LT"/>
-        <Value value="1"/>
-        <Behavior value="Unstoppable"/>
-    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="VitalityOrbCountIs1">
         <WhichUnit Value="Caster"/>
         <Value value="1"/>
@@ -1802,6 +1963,26 @@
         <Compare value="NE"/>
         <Behavior value="FrostShock"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareVital id="WarpHeroCanCastMultishot">
+        <Compare value="GE"/>
+        <Value value="35"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="WarpHeroCanCastGuidedMissile">
+        <Compare value="GE"/>
+        <Value value="15"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorCombine id="WarpHeroDecoyCanCastMultishot">
+        <Type value="And"/>
+        <CombineArray value="WarpHeroIsDecoy"/>
+        <CombineArray value="WarpHeroCanCastMultishot"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="WarpHeroDecoyCanCastGuidedMissile">
+        <Type value="And"/>
+        <CombineArray value="WarpHeroIsDecoy"/>
+        <CombineArray value="WarpHeroCanCastGuidedMissile"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="WarpHeroDecoyLimit">
         <ResultFailed value="Error,Too many decoys,UI_GenericError"/>
         <WhichUnit Value="Caster"/>
@@ -1925,6 +2106,25 @@
         <Find value="1"/>
         <Value value="WarpHeroDurableIsLvl1"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitType id="WarpHeroIsDecoy">
+        <Value value="Decoy"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="WarpHeroIsWarpHero">
+        <Value value="WarpHero"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="WarpHeroMultishotSource">
+        <CombineArray value="WarpHeroIsWarpHero"/>
+        <CombineArray value="WarpHeroDecoyCanCastMultishot"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="WarpHeroGuidedMissileSource">
+        <CombineArray value="WarpHeroIsWarpHero"/>
+        <CombineArray value="WarpHeroDecoyCanCastGuidedMissile"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="WarpHeroValidMultishotCaster">
+        <Type value="And"/>
+        <CombineArray value="TargetIsPlayer"/>
+        <CombineArray value="WarpHeroMultishotSource"/>
+    </CValidatorCombine>
     <CValidatorPlayerRequirement id="WarpHeroMultitaskingGTE1">
         <Find value="1"/>
         <Value value="WarpHeroMultitaskingGTE1"/>
@@ -1943,6 +2143,11 @@
     <CValidatorCompareTrackedUnitsCount id="WarpHeroNoTurretDummy">
         <BehaviorLink value="WarpHeroDummyTracker"/>
     </CValidatorCompareTrackedUnitsCount>
+    <CValidatorCombine id="WarpHeroValidGuidedMissileCaster">
+        <Type value="And"/>
+        <CombineArray value="TargetIsPlayer"/>
+        <CombineArray value="WarpHeroGuidedMissileSource"/>
+    </CValidatorCombine>
     <CValidatorPlayerRequirement id="WarpgateIsLvl0">
         <Find value="1"/>
         <Value value="WarpgateIsLvl0"/>

@@ -102,6 +102,14 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="GatewayHeroRecentlyProtected" State="QueuedOrBetterAtUnit"/>
     </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorGravityHeroPolarityQueuedOrBetterAtUnit259247359">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GravityHeroPolarity" State="QueuedOrBetterAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorGravityHeroPositiveCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GravityHeroPositive" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorMagmaArmorQueuedOrBetterAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="MagmaArmor" State="QueuedOrBetterAtUnit"/>
@@ -319,9 +327,9 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="TwilightHeroReflector" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeUnstoppableCompleteOnly">
+    <CRequirementCountUpgrade id="CountUpgradeUnstoppableoldCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="Unstoppable" State="CompleteOnly"/>
+        <Count Link="Unstoppableold" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeWarpHeroBlazeCompleteOnly1346870113TechTreeCheat">
         <Count Link="WarpHeroBlaze" State="CompleteOnly"/>
@@ -335,7 +343,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeWarpHeroMultitaskCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="WarpHeroMultitask" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeWarpgateQueuedOrBetter">
@@ -769,17 +776,14 @@
         <OperandArray index="1" value="1"/>
     </CRequirementGTE>
     <CRequirementGTE id="GTECountUpgradeWarpHeroMultitaskCompleteOnly1">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeWarpHeroMultitaskCompleteOnly"/>
         <OperandArray index="1" value="1"/>
     </CRequirementGTE>
     <CRequirementGTE id="GTECountUpgradeWarpHeroMultitaskCompleteOnly2">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeWarpHeroMultitaskCompleteOnly"/>
         <OperandArray index="1" value="2"/>
     </CRequirementGTE>
     <CRequirementGTE id="GTECountUpgradeWarpHeroMultitaskCompleteOnly3">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeWarpHeroMultitaskCompleteOnly"/>
         <OperandArray index="1" value="3"/>
     </CRequirementGTE>
@@ -838,6 +842,9 @@
     <CRequirementNot id="Not2"/>
     <CRequirementNot id="NotCountBehaviorGatewayHeroRecentlyProtectedQueuedOrBetterAtUnit">
         <OperandArray index="0" value="CountBehaviorGatewayHeroRecentlyProtectedQueuedOrBetterAtUnit"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountBehaviorGravityHeroPositiveCompleteOnlyAtUnit">
+        <OperandArray index="0" value="CountBehaviorGravityHeroPositiveCompleteOnlyAtUnit"/>
     </CRequirementNot>
     <CRequirementOr id="OrEq1CountBehaviorFireInfusedQueuedOrBetterAtUnitEq1CountBehaviorWindInfusedQueuedOrBetterAtUnitEq1CountBehaviorEarthInfusedQueuedOrBetterAtUnitEq1CountBehaviorWaterInfusedQueuedOrBetterAtUnit">
         <OperandArray value="Eq1CountBehaviorFireInfusedQueuedOrBetterAtUnit"/>

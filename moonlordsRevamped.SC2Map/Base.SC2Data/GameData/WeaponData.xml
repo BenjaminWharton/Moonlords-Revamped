@@ -297,7 +297,7 @@
         </AcquireTargetSorts>
         <Range value="9"/>
         <Period value="0.8"/>
-        <Effect value="VolatileSporesSearchTarget"/>
+        <Effect value="VolatileSporesLM"/>
         <AllowedMovement value="Slowing"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="BroodlingStrike">

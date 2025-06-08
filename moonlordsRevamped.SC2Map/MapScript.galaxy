@@ -99,6 +99,8 @@ int[5] gv_zgametime;
 bool gv_zZealotBeamOutS10P2;
 unitgroup gv_alliedUnitsOnMap;
 int[gv_pLAYERCOUNT + 1] gv_hasVoted;
+int gv_modePickDialog;
+int[4] gv_modePickDialogItem;
 int gv_exploreVote;
 int gv_championVote;
 int gv_challengeVote;
@@ -191,6 +193,7 @@ void InitGlobals () {
     gv_zstatsdialog = c_invalidDialogId;
     gv_zcleargroup = PlayerGroupEmpty();
     gv_alliedUnitsOnMap = UnitGroupEmpty();
+    gv_modePickDialog = c_invalidDialogId;
     for (init_i = 0; init_i <= 3; init_i += 1) {
         gv_xpbaritem[init_i] = c_invalidDialogControlId;
     }
@@ -277,19 +280,24 @@ void gf_SpawningBuilding4 (point lp_posbuilding, point lp_spawnpos, int lp_spawn
 void gf_SpawningRandom (point lp_pos1, point lp_pos2, point lp_pos3, point lp_pos4, point lp_pos5, point lp_pos6, point lp_pos7, point lp_pos8, point lp_pos9, point lp_pos10, point lp_pos11, point lp_pos12, point lp_pos13, point lp_pos14, point lp_pos15, point lp_pos16, point lp_pos17, int lp_countbytype1, int lp_countbytype2, int lp_countbytype3, int lp_countbytype4, int lp_countbytype5, int lp_countbytype6, int lp_countbytype7, int lp_countbytype8, int lp_countbytype9, int lp_countbytype10, int lp_countbytype11, int lp_countbytype12, int lp_count, int lp_timer);
 void gf_UpdateOptionalQuestCounter (bool lp_upOrDown);
 void gf_GainReward (int lp_num);
-void gf_thorboss1 (point lp_point);
-void gf_thorboss2 (point lp_point);
-void gf_thorboss3 (point lp_point);
-void gf_thorboss4 (point lp_point);
-void gf_thorboss5 (point lp_point);
-void gf_thorboss6 (point lp_point);
-void gf_thorboss7 (point lp_point);
-void gf_BansheeDropBeam (unit lp_hostunit, fixed lp_delay);
 void gf_EscortAmbush (unit lp_escort);
 void gf_colossiquest ();
 void gf_hiddenbuildingfound ();
 void gf_evolutionspeedcomplete ();
 void gf_SpawningPool2 ();
+void gf_ThorV1 (point lp_point);
+void gf_ThorV2 (point lp_point);
+void gf_ThorV3 (point lp_point);
+void gf_AnnihilatorV1 (point lp_point);
+void gf_AnnihilatorV2 (point lp_point);
+void gf_AnnihilatorV3 (point lp_point);
+void gf_Odin (point lp_point);
+void gf_ScienceVessels (unit lp_caster);
+void gf_TargetDrones (unit lp_caster);
+void gf_Firewall (unit lp_caster, point lp_point);
+void gf_Flamethrower (unit lp_caster);
+void gf_LaserTracking (unit lp_caster);
+void gf_BansheeDropBeam (unit lp_hostunit, fixed lp_delay);
 bool gf_HeroUnlockReq (int lp_winDifficulty, int lp_achievements, int lp_player);
 void gf_CreateHeroPickButton (int lp_row, int lp_column, text lp_name, text lp_descript, int lp_heroNum, int lp_winDifficulty, int lp_achievements);
 void gf_HeroPickDialog ();
@@ -361,9 +369,9 @@ void gf_TalentDialogIllusion (int lp_player);
 void gf_TalentDialogBlade (int lp_player);
 void gf_TalentPressedBlade (int lp_row, int lp_column, int lp_player);
 void gf_TalentDialogLuck (int lp_player);
-void gf_TalentPressedLuck (int lp_row, int lp_column, int lp_player);
 void gf_TalentDialogElemental (int lp_player);
 void gf_TalentDialogGravity (int lp_player);
+void gf_TalentDialogGravityold (int lp_player);
 void gf_TalentDialogGateway (int lp_player);
 text gf_getrewardinfo (int lp_player);
 text gf_getrewardtext (int lp_rewardnum);
@@ -509,7 +517,6 @@ trigger gt_evolutionquest2;
 trigger gt_evolutionquest3;
 trigger gt_zbase51;
 trigger gt_Ultrabros;
-trigger gt_AnnihilatorRandomMissile;
 trigger gt_zbase11;
 trigger gt_zbase112;
 trigger gt_EnragedMetalisk;
@@ -575,8 +582,6 @@ trigger gt_RewardDialogOpenClose;
 trigger gt_PlayerLeaves;
 trigger gt_unitdeath;
 trigger gt_UnitWasStunned;
-trigger gt_AutocastOn;
-trigger gt_AutocastOff;
 trigger gt_SkillPlasmaTorpedoCast;
 trigger gt_PartingGift;
 trigger gt_Assault;
@@ -1172,14 +1177,13 @@ void gf_UpdateVoteButtons () {
     lv_playercount = PlayerGroupCount(PlayerGroupActive());
 
     // Implementation
-    libNtve_gf_SetDialogItemText(gv_rewardButtons[1], (StringExternal("Param/Value/AF2A33AD") + IntToText(gv_exploreVote) + StringExternal("Param/Value/443F8A49") + IntToText(lv_playercount)), PlayerGroupAll());
-    libNtve_gf_SetDialogItemText(gv_rewardButtons[2], (StringExternal("Param/Value/0C3C9E27") + IntToText(gv_challengeVote) + StringExternal("Param/Value/FD13A313") + IntToText(lv_playercount)), PlayerGroupAll());
-    libNtve_gf_SetDialogItemText(gv_rewardButtons[3], (StringExternal("Param/Value/7F5F708F") + IntToText(gv_championVote) + StringExternal("Param/Value/8D669590") + IntToText(lv_playercount)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(gv_modePickDialogItem[1], (StringExternal("Param/Value/AF2A33AD") + IntToText(gv_exploreVote) + StringExternal("Param/Value/443F8A49") + IntToText(lv_playercount)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(gv_modePickDialogItem[2], (StringExternal("Param/Value/0C3C9E27") + IntToText(gv_challengeVote) + StringExternal("Param/Value/FD13A313") + IntToText(lv_playercount)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(gv_modePickDialogItem[3], (StringExternal("Param/Value/7F5F708F") + IntToText(gv_championVote) + StringExternal("Param/Value/8D669590") + IntToText(lv_playercount)), PlayerGroupAll());
 }
 
 void gf_CreateSelectModeDialog () {
     // Variable Declarations
-    int lv_dialog;
     int lv_timer;
     point lv_challengemodepoint;
     int lv_pick;
@@ -1193,7 +1197,6 @@ void gf_CreateSelectModeDialog () {
     fixed autoCDE4A830_val;
 
     // Variable Initialization
-    lv_dialog = c_invalidDialogId;
     lv_timer = 60;
     lv_challengemodepoint = Point(59.0, 47.0);
     lv_pick = 1;
@@ -1201,21 +1204,21 @@ void gf_CreateSelectModeDialog () {
     // Implementation
     if ((gv_hardcore == false)) {
         DialogCreate(700, 200, c_anchorCenter, 0, 0, true);
-        lv_dialog = DialogLastCreated();
+        gv_modePickDialog = DialogLastCreated();
         libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 500, 50, c_anchorTop, 0, 50, StringExternal("Param/Value/B3BC7D9A"), ColorWithAlpha(0,0,0,0), false, 2.0);
         libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLHeaderLarge", PlayerGroupAll());
-        libNtve_gf_CreateDialogItemButton(lv_dialog, 200, 50, c_anchorTopLeft, 50, 100, StringExternal("Param/Value/26573D28"), StringExternal("Param/Value/EB8E016D"), "");
+        libNtve_gf_CreateDialogItemButton(gv_modePickDialog, 200, 50, c_anchorTopLeft, 50, 100, StringExternal("Param/Value/26573D28"), StringExternal("Param/Value/EB8E016D"), "");
         libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLModeSelect", PlayerGroupAll());
-        gv_rewardButtons[1] = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lv_dialog, 200, 50, c_anchorTopLeft, 450, 100, StringExternal("Param/Value/C6A99449"), StringExternal("Param/Value/3A8A9EE3"), "");
+        gv_modePickDialogItem[1] = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_modePickDialog, 200, 50, c_anchorTopLeft, 450, 100, StringExternal("Param/Value/C6A99449"), StringExternal("Param/Value/3A8A9EE3"), "");
         libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLModeSelect", PlayerGroupAll());
-        gv_rewardButtons[2] = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lv_dialog, 200, 50, c_anchorTopLeft, 250, 100, StringExternal("Param/Value/0D087F4F"), StringExternal("Param/Value/8249828B"), "");
+        gv_modePickDialogItem[2] = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_modePickDialog, 200, 50, c_anchorTopLeft, 250, 100, StringExternal("Param/Value/0D087F4F"), StringExternal("Param/Value/8249828B"), "");
         libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLModeSelect", PlayerGroupAll());
-        gv_rewardButtons[3] = DialogControlLastCreated();
+        gv_modePickDialogItem[3] = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 100, 50, c_anchorTopLeft, 33, 25, IntToText(lv_timer), ColorWithAlpha(0,0,0,0), false, 2.0);
         libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLModeSelectTimer", PlayerGroupAll());
-        gv_rewardButtons[4] = DialogControlLastCreated();
+        gv_modePickDialogItem[0] = DialogControlLastCreated();
         gf_UpdateVoteButtons();
         auto723F289B_g = PlayerGroupActive();
         auto723F289B_var = -1;
@@ -1223,17 +1226,17 @@ void gf_CreateSelectModeDialog () {
             auto723F289B_var = PlayerGroupNextPlayer(auto723F289B_g, auto723F289B_var);
             if (auto723F289B_var < 0) { break; }
             if ((gf_bankgetint(gv_zbanks[auto723F289B_var], "3", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[auto723F289B_var], "4", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[auto723F289B_var], "5", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[auto723F289B_var], "6", "completeruns") == 0) && (gf_bankgetint(gv_zbanks[auto723F289B_var], "7", "completeruns") == 0)) {
-                DialogControlSetEnabled(gv_rewardButtons[3], PlayerGroupSingle(auto723F289B_var), false);
+                DialogControlSetEnabled(gv_modePickDialogItem[3], PlayerGroupSingle(auto723F289B_var), false);
             }
 
         }
-        DialogSetVisible(lv_dialog, PlayerGroupAll(), true);
+        DialogSetVisible(gv_modePickDialog, PlayerGroupAll(), true);
         while ((lv_timer > 0) && (gf_AllPlayersVoted() == false)) {
-            libNtve_gf_SetDialogItemText(gv_rewardButtons[4], IntToText(lv_timer), PlayerGroupAll());
+            libNtve_gf_SetDialogItemText(gv_modePickDialogItem[0], IntToText(lv_timer), PlayerGroupAll());
             lv_timer -= 1;
             Wait(1.0, c_timeGame);
         }
-        DialogSetVisible(lv_dialog, PlayerGroupAll(), false);
+        DialogSetVisible(gv_modePickDialog, PlayerGroupAll(), false);
         if ((gv_championVote > gv_exploreVote) && (gv_championVote > gv_challengeVote)) {
             lv_pick = 3;
         }
@@ -1978,1389 +1981,6 @@ void gf_GainReward (int lp_num) {
 
 }
 
-trigger auto_gf_thorboss1_Trigger = null;
-point auto_gf_thorboss1_lp_point;
-
-void gf_thorboss1 (point lp_point) {
-    auto_gf_thorboss1_lp_point = lp_point;
-
-    if (auto_gf_thorboss1_Trigger == null) {
-        auto_gf_thorboss1_Trigger = TriggerCreate("auto_gf_thorboss1_TriggerFunc");
-    }
-
-    TriggerExecute(auto_gf_thorboss1_Trigger, false, false);
-}
-
-bool auto_gf_thorboss1_TriggerFunc (bool testConds, bool runActions) {
-    point lp_point = auto_gf_thorboss1_lp_point;
-
-    // Variable Declarations
-    int lv_tw;
-    timer lv_maxtimer;
-    unit lv_u1;
-    int lv_objective;
-    int lv_ping1;
-    unitgroup lv_defenders;
-    unitgroup lv_targetdrones;
-    int lv_defenderc;
-    int lv_targetdronesc;
-    int lv_restimer;
-    int[13] lv_targettimer;
-    int lv_i;
-    unit[13] lv_targets;
-    fixed[13] lv_angle;
-    point lv_point;
-    int lv_j;
-    fixed lv_targetspeed;
-    int lv_k;
-    int lv_starttime;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_tw = c_timerWindowNone;
-    lv_maxtimer = TimerCreate();
-    lv_objective = c_invalidObjectiveId;
-    lv_ping1 = c_invalidPingId;
-    lv_defenders = UnitGroupEmpty();
-    lv_targetdrones = UnitGroupEmpty();
-    lv_defenderc = FixedToInt(gv_difficulty);
-    lv_targetdronesc = FixedToInt(1+(gv_difficulty/2.5));
-    lv_restimer = (128 * (lv_defenderc-1));
-    lv_point = lp_point;
-    lv_targetspeed = (gv_difficulty*0.03125);
-    lv_starttime = (gv_zgametime[3] + 180);
-
-    // Implementation
-    Wait(3.0, c_timeGame);
-    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
-    if ((gv_mode == 1)) {
-        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/9B861214"), true, false);
-        lv_tw = TimerWindowLastCreated();
-    }
-
-    ObjectiveCreate(StringExternal("Param/Value/5BB79D5F"), StringExternal("Param/Value/D3BA384A"), c_objectiveStateActive, false);
-    lv_objective = ObjectiveLastCreated();
-    UnitCreate(1, "Thor", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
-    lv_u1 = UnitLastCreated();
-    UnitSetPropertyFixed(lv_u1, c_unitPropLifeMax, gv_difficulty*gv_difficulty*700+500);
-    UnitSetPropertyFixed(lv_u1, c_unitPropLife, gv_difficulty*gv_difficulty*700+500);
-    UnitBehaviorAdd(lv_u1, "Dontrushmebro", lv_u1, 1);
-    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
-    PingSetUnit(PingLastCreated(), lv_u1);
-    lv_ping1 = PingLastCreated();
-    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/8D3D5AF9"), StringExternal("Param/Value/1EE362E0"), 0.0, c_transmissionDurationAdd, false);
-    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, lv_point);
-    UnitGroupAddUnitGroup(lv_targetdrones, UnitLastCreatedGroup());
-    while ((UnitIsAlive(lv_u1) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
-        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
-        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
-        if ((UnitGroupCount(lv_defenders, c_unitCountAll) < lv_defenderc)) {
-            if ((((lv_defenderc - UnitGroupCount(lv_defenders, c_unitCountAll)) / 2) < 1)) {
-                lv_k = 1;
-            }
-            else {
-                lv_k = ((lv_defenderc - UnitGroupCount(lv_defenders, c_unitCountAll)) / 2);
-            }
-            while ((lv_k > 0)) {
-                lv_k -= 1;
-                if ((ModI(lv_restimer, 160) == 0)) {
-                    libNtve_gf_CreateUnitsWithDefaultFacing(1, "ScienceVessel", c_unitCreateIgnorePlacement, 6, PointWithOffsetPolar(lv_point, 4.0, libNtve_gf_RandomAngle()));
-                    UnitGroupAdd(lv_defenders, UnitLastCreated());
-                    lv_angle[UnitGroupCount(lv_defenders, c_unitCountAll)] = AngleBetweenPoints(UnitGetPosition(lv_u1), UnitGetPosition(UnitLastCreated()));
-                }
-
-                lv_restimer -= 1;
-            }
-        }
-
-        lv_i = 0;
-        if ((UnitGroupCount(lv_defenders, c_unitCountAll) >= 1)) {
-            while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-                lv_i += 1;
-                if ((UnitIsAlive(UnitGroupUnit(lv_defenders, lv_i)) == true)) {
-                    lv_angle[lv_i] += 1.0;
-                    UnitSetPosition(UnitGroupUnit(lv_defenders, lv_i), PointWithOffsetPolar(lv_point, 4.0, lv_angle[lv_i]), true);
-                }
-                else {
-                    lv_j = lv_i;
-                    while ((lv_j < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-                        lv_angle[lv_j] = lv_angle[lv_j+1];
-                        lv_j += 1;
-                    }
-                    UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
-                    lv_i -= 1;
-                    lv_restimer += 160;
-                }
-            }
-        }
-
-        lv_i = 0;
-        while ((lv_i < UnitGroupCount(lv_targetdrones, c_unitCountAll))) {
-            lv_i += 1;
-            if ((UnitIsAlive(UnitGroupUnit(lv_targetdrones, lv_i)) == false)) {
-                UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, lv_i));
-                lv_i -= 1;
-            }
-            else {
-                if (((lv_targettimer[lv_i] == 0) || (lv_targets[lv_i] == null) || (UnitIsAlive(lv_targets[lv_i]) == false))) {
-                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
-                    if ((lv_targets[lv_i] != null)) {
-                        lv_targettimer[lv_i] = 160;
-                    }
-
-                }
-                else {
-                    lv_targettimer[lv_i] -= 1;
-                }
-                if ((lv_targets[lv_i] != null)) {
-                    UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), lv_targetspeed, (AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_targets[lv_i])) + 0.0)), true);
-                }
-                else {
-                    if ((DistanceBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_u1)) > 10.0)) {
-                        UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), 0.125, AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_u1))), true);
-                    }
-                    else {
-                        UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), 0.125, libNtve_gf_RandomAngle()), true);
-                    }
-                }
-            }
-        }
-        Wait(0.0625, c_timeGame);
-    }
-    lv_i = 0;
-    while ((lv_i < UnitGroupCount(lv_targetdrones, c_unitCountAll))) {
-        UnitRemove(UnitGroupUnit(lv_targetdrones, 1));
-        UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, 1));
-    }
-    while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-        UnitKill(UnitGroupUnit(lv_defenders, 1));
-        UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, 1));
-    }
-    if ((gv_mode == 1)) {
-        TimerWindowDestroy(lv_tw);
-    }
-
-    if ((UnitIsAlive(lv_u1) == true)) {
-        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
-        UnitKill(lv_u1);
-    }
-    else {
-        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
-        libNtve_gf_SetUpgradeLevelForPlayer(6, "thorquestrewardmutagen", 1);
-        if ((libNtve_gf_UnitGetPropertyKills(lv_u1, c_unitPropCurrent) == 0)) {
-            gf_achievements0killaward(13);
-        }
-
-        gf_gainxp(10000.0);
-        gf_GainReward(1);
-        gf_GainReward(1);
-        gf_GainReward(1);
-        gf_GainReward(1);
-        gf_GainReward(1);
-        if ((gv_zgametime[3] <= lv_starttime)) {
-            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/66A15466"), StringExternal("Param/Value/17B805D4"), 0.0, c_transmissionDurationAdd, false);
-            gv_zthormaster += 1;
-        }
-        else {
-            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/DF3091A5"), StringExternal("Param/Value/14ACC866"), 0.0, c_transmissionDurationAdd, false);
-        }
-        gf_achievementherokills();
-    }
-    PingDestroy(lv_ping1);
-    Wait(10.0, c_timeGame);
-    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
-    if ((gv_mode == 0) && (gv_stage < 11)) {
-        Wait(60.0, c_timeGame);
-        gf_thorboss2(lv_point);
-    }
-    else {
-        if ((gv_mode == 0)) {
-            gf_thorboss2(lv_point);
-        }
-
-    }
-    return true;
-}
-
-trigger auto_gf_thorboss2_Trigger = null;
-point auto_gf_thorboss2_lp_point;
-
-void gf_thorboss2 (point lp_point) {
-    auto_gf_thorboss2_lp_point = lp_point;
-
-    if (auto_gf_thorboss2_Trigger == null) {
-        auto_gf_thorboss2_Trigger = TriggerCreate("auto_gf_thorboss2_TriggerFunc");
-    }
-
-    TriggerExecute(auto_gf_thorboss2_Trigger, false, false);
-}
-
-bool auto_gf_thorboss2_TriggerFunc (bool testConds, bool runActions) {
-    point lp_point = auto_gf_thorboss2_lp_point;
-
-    // Variable Declarations
-    int lv_tw;
-    timer lv_maxtimer;
-    unit lv_u1;
-    int lv_objective;
-    int lv_ping1;
-    unitgroup lv_defenders;
-    unitgroup lv_targetdrones;
-    int lv_defenderc;
-    int lv_targetdronesc;
-    int lv_restimer;
-    int[13] lv_targettimer;
-    int lv_i;
-    unit[13] lv_targets;
-    fixed[13] lv_angle;
-    point lv_point;
-    int lv_j;
-    fixed lv_targetspeed;
-    int lv_k;
-    int lv_starttime;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_tw = c_timerWindowNone;
-    lv_maxtimer = TimerCreate();
-    lv_objective = c_invalidObjectiveId;
-    lv_ping1 = c_invalidPingId;
-    lv_defenders = UnitGroupEmpty();
-    lv_targetdrones = UnitGroupEmpty();
-    lv_defenderc = FixedToInt(gv_difficulty);
-    lv_targetdronesc = FixedToInt(2+(gv_difficulty/2.5));
-    lv_restimer = (128 * (lv_defenderc-1));
-    lv_point = lp_point;
-    lv_targetspeed = (gv_difficulty*0.03125);
-    lv_starttime = (gv_zgametime[3] + 180);
-
-    // Implementation
-    Wait(3.0, c_timeGame);
-    ObjectiveCreate(StringExternal("Param/Value/9B741A65"), StringExternal("Param/Value/967F4166"), c_objectiveStateActive, false);
-    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
-    if ((gv_mode == 1)) {
-        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/1EDB2692"), true, false);
-        lv_tw = TimerWindowLastCreated();
-    }
-
-    lv_objective = ObjectiveLastCreated();
-    UnitCreate(1, "ThorV2", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
-    lv_u1 = UnitLastCreated();
-    UnitSetPropertyFixed(lv_u1, c_unitPropLifeMax, gv_difficulty*gv_difficulty*800+500);
-    UnitSetPropertyFixed(lv_u1, c_unitPropLife, gv_difficulty*gv_difficulty*800+500);
-    TechTreeUpgradeAddLevel(6, "WarpHeroBlaze", 1);
-    UnitBehaviorAdd(lv_u1, "Dontrushmebro", lv_u1, 1);
-    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
-    PingSetUnit(PingLastCreated(), lv_u1);
-    lv_ping1 = PingLastCreated();
-    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/D451896B"), StringExternal("Param/Value/DCFA5963"), 0.0, c_transmissionDurationAdd, false);
-    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, lv_point);
-    UnitGroupAddUnitGroup(lv_targetdrones, UnitLastCreatedGroup());
-    while ((UnitIsAlive(lv_u1) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
-        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
-        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
-        if ((UnitGroupCount(lv_defenders, c_unitCountAll) < lv_defenderc)) {
-            if ((((lv_defenderc - UnitGroupCount(lv_defenders, c_unitCountAll)) / 2) < 1)) {
-                lv_k = 1;
-            }
-            else {
-                lv_k = ((lv_defenderc - UnitGroupCount(lv_defenders, c_unitCountAll)) / 2);
-            }
-            while ((lv_k > 0)) {
-                lv_k -= 1;
-                if ((ModI(lv_restimer, 160) == 0)) {
-                    libNtve_gf_CreateUnitsWithDefaultFacing(1, "ScienceVessel", c_unitCreateIgnorePlacement, 6, PointWithOffsetPolar(lv_point, 4.0, libNtve_gf_RandomAngle()));
-                    UnitGroupAdd(lv_defenders, UnitLastCreated());
-                    lv_angle[UnitGroupCount(lv_defenders, c_unitCountAll)] = AngleBetweenPoints(UnitGetPosition(lv_u1), UnitGetPosition(UnitLastCreated()));
-                }
-
-                lv_restimer -= 1;
-            }
-        }
-
-        lv_i = 0;
-        if ((UnitGroupCount(lv_defenders, c_unitCountAll) >= 1)) {
-            while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-                lv_i += 1;
-                if ((UnitIsAlive(UnitGroupUnit(lv_defenders, lv_i)) == true)) {
-                    lv_angle[lv_i] += 1.0;
-                    UnitSetPosition(UnitGroupUnit(lv_defenders, lv_i), PointWithOffsetPolar(lv_point, 4.0, lv_angle[lv_i]), true);
-                }
-                else {
-                    lv_j = lv_i;
-                    while ((lv_j < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-                        lv_angle[lv_j] = lv_angle[lv_j+1];
-                        lv_j += 1;
-                    }
-                    UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
-                    lv_i -= 1;
-                    lv_restimer += 160;
-                }
-            }
-        }
-
-        lv_i = 0;
-        while ((lv_i < UnitGroupCount(lv_targetdrones, c_unitCountAll))) {
-            lv_i += 1;
-            if ((UnitIsAlive(UnitGroupUnit(lv_targetdrones, lv_i)) == false)) {
-                UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, lv_i));
-                lv_i -= 1;
-            }
-            else {
-                if (((lv_targettimer[lv_i] == 0) || (lv_targets[lv_i] == null) || (UnitIsAlive(lv_targets[lv_i]) == false))) {
-                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
-                    if ((lv_targets[lv_i] != null)) {
-                        lv_targettimer[lv_i] = 160;
-                    }
-
-                }
-                else {
-                    lv_targettimer[lv_i] -= 1;
-                }
-                if ((lv_targets[lv_i] != null)) {
-                    UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), lv_targetspeed, (AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_targets[lv_i])) + 0.0)), true);
-                }
-                else {
-                    if ((DistanceBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_u1)) > 10.0)) {
-                        UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), 0.125, AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_u1))), true);
-                    }
-                    else {
-                        UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), 0.125, libNtve_gf_RandomAngle()), true);
-                    }
-                }
-            }
-        }
-        Wait(0.0625, c_timeGame);
-    }
-    lv_i = 0;
-    while ((lv_i < UnitGroupCount(lv_targetdrones, c_unitCountAll))) {
-        UnitRemove(UnitGroupUnit(lv_targetdrones, 1));
-        UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, 1));
-    }
-    while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-        UnitKill(UnitGroupUnit(lv_defenders, 1));
-        UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, 1));
-    }
-    if ((gv_mode == 1)) {
-        TimerWindowDestroy(lv_tw);
-    }
-
-    if ((UnitIsAlive(lv_u1) == true)) {
-        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
-        UnitKill(lv_u1);
-    }
-    else {
-        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
-        if ((libNtve_gf_UnitGetPropertyKills(lv_u1, c_unitPropCurrent) == 0)) {
-            gf_achievements0killaward(14);
-        }
-
-        libNtve_gf_SetUpgradeLevelForPlayer(5, "ThorQuestRewardPhotonDamage", 1);
-        gf_gainxp(20000.0);
-        gf_gainrewardbonusall(FixedToInt(2*gv_difficulty));
-        if ((gv_zgametime[3] <= lv_starttime)) {
-            gv_zthormaster += 1;
-            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/DF6A2A9A"), (StringExternal("Param/Value/7FF392D6") + IntToText(FixedToInt(gv_difficulty*10)) + StringExternal("Param/Value/2BEB1819")), 0.0, c_transmissionDurationAdd, false);
-        }
-        else {
-            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/CAC326A7"), (StringExternal("Param/Value/332C142B") + IntToText(FixedToInt(gv_difficulty*10)) + StringExternal("Param/Value/D4C1746E")), 0.0, c_transmissionDurationAdd, false);
-        }
-        gf_achievementherokills();
-    }
-    PingDestroy(lv_ping1);
-    Wait(10.0, c_timeGame);
-    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
-    if ((gv_mode == 0) && (gv_stage < 11)) {
-        Wait(60.0, c_timeGame);
-        gf_thorboss3(lp_point);
-    }
-    else {
-        if ((gv_mode == 0)) {
-            gf_thorboss3(lp_point);
-        }
-
-    }
-    return true;
-}
-
-trigger auto_gf_thorboss3_Trigger = null;
-point auto_gf_thorboss3_lp_point;
-
-void gf_thorboss3 (point lp_point) {
-    auto_gf_thorboss3_lp_point = lp_point;
-
-    if (auto_gf_thorboss3_Trigger == null) {
-        auto_gf_thorboss3_Trigger = TriggerCreate("auto_gf_thorboss3_TriggerFunc");
-    }
-
-    TriggerExecute(auto_gf_thorboss3_Trigger, false, false);
-}
-
-bool auto_gf_thorboss3_TriggerFunc (bool testConds, bool runActions) {
-    point lp_point = auto_gf_thorboss3_lp_point;
-
-    // Variable Declarations
-    int lv_tw;
-    timer lv_maxtimer;
-    unit lv_u1;
-    int lv_objective;
-    int lv_ping1;
-    unitgroup lv_defenders;
-    unitgroup lv_targetdrones;
-    int lv_defenderc;
-    int lv_targetdronesc;
-    int lv_restimer;
-    int[13] lv_targettimer;
-    int lv_i;
-    unit[13] lv_targets;
-    fixed[13] lv_angle;
-    point lv_point;
-    int lv_j;
-    fixed lv_targetspeed;
-    int lv_k;
-    int lv_starttime;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_tw = c_timerWindowNone;
-    lv_maxtimer = TimerCreate();
-    lv_objective = c_invalidObjectiveId;
-    lv_ping1 = c_invalidPingId;
-    lv_defenders = UnitGroupEmpty();
-    lv_targetdrones = UnitGroupEmpty();
-    lv_defenderc = FixedToInt(gv_difficulty);
-    lv_targetdronesc = FixedToInt(2+(gv_difficulty/2.5));
-    lv_restimer = (128 * (lv_defenderc-1));
-    lv_point = lp_point;
-    lv_targetspeed = (gv_difficulty*0.03125);
-    lv_starttime = (gv_zgametime[3] + 180);
-
-    // Implementation
-    Wait(3.0, c_timeGame);
-    ObjectiveCreate(StringExternal("Param/Value/2C81C18B"), StringExternal("Param/Value/FCE508B2"), c_objectiveStateActive, false);
-    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
-    if ((gv_mode == 1)) {
-        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/FA7B7C8C"), true, false);
-        lv_tw = TimerWindowLastCreated();
-    }
-
-    lv_objective = ObjectiveLastCreated();
-    UnitCreate(1, "ThorV3", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
-    lv_u1 = UnitLastCreated();
-    UnitSetPropertyFixed(lv_u1, c_unitPropLifeMax, gv_difficulty*gv_difficulty*900+500);
-    UnitSetPropertyFixed(lv_u1, c_unitPropLife, gv_difficulty*gv_difficulty*900+500);
-    UnitBehaviorAdd(lv_u1, "Dontrushmebro", lv_u1, 1);
-    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
-    PingSetUnit(PingLastCreated(), lv_u1);
-    lv_ping1 = PingLastCreated();
-    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/49CA1D72"), StringExternal("Param/Value/88900A70"), 0.0, c_transmissionDurationAdd, false);
-    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, lv_point);
-    UnitGroupAddUnitGroup(lv_targetdrones, UnitLastCreatedGroup());
-    while ((UnitIsAlive(lv_u1) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
-        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
-        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
-        if ((UnitGroupCount(lv_defenders, c_unitCountAll) < lv_defenderc)) {
-            if ((((lv_defenderc - UnitGroupCount(lv_defenders, c_unitCountAll)) / 2) < 1)) {
-                lv_k = 1;
-            }
-            else {
-                lv_k = ((lv_defenderc - UnitGroupCount(lv_defenders, c_unitCountAll)) / 2);
-            }
-            while ((lv_k > 0)) {
-                lv_k -= 1;
-                if ((ModI(lv_restimer, 160) == 0)) {
-                    libNtve_gf_CreateUnitsWithDefaultFacing(1, "ScienceVessel", c_unitCreateIgnorePlacement, 6, PointWithOffsetPolar(lv_point, 4.0, libNtve_gf_RandomAngle()));
-                    UnitGroupAdd(lv_defenders, UnitLastCreated());
-                    UnitBehaviorAdd(UnitLastCreated(), "ThorScienceSeekerProduce", UnitLastCreated(), 1);
-                    lv_angle[UnitGroupCount(lv_defenders, c_unitCountAll)] = AngleBetweenPoints(UnitGetPosition(lv_u1), UnitGetPosition(UnitLastCreated()));
-                }
-
-                lv_restimer -= 1;
-            }
-        }
-
-        lv_i = 0;
-        if ((UnitGroupCount(lv_defenders, c_unitCountAll) >= 1)) {
-            while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-                lv_i += 1;
-                if ((UnitIsAlive(UnitGroupUnit(lv_defenders, lv_i)) == true)) {
-                    lv_angle[lv_i] += 1.0;
-                    UnitSetPosition(UnitGroupUnit(lv_defenders, lv_i), PointWithOffsetPolar(lv_point, 4.0, lv_angle[lv_i]), true);
-                }
-                else {
-                    lv_j = lv_i;
-                    while ((lv_j < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-                        lv_angle[lv_j] = lv_angle[lv_j+1];
-                        lv_j += 1;
-                    }
-                    UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
-                    lv_i -= 1;
-                    lv_restimer += 160;
-                }
-            }
-        }
-
-        lv_i = 0;
-        while ((lv_i < UnitGroupCount(lv_targetdrones, c_unitCountAll))) {
-            lv_i += 1;
-            if ((UnitIsAlive(UnitGroupUnit(lv_targetdrones, lv_i)) == false)) {
-                UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, lv_i));
-                lv_i -= 1;
-            }
-            else {
-                if (((lv_targettimer[lv_i] == 0) || (lv_targets[lv_i] == null) || (UnitIsAlive(lv_targets[lv_i]) == false))) {
-                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
-                    if ((lv_targets[lv_i] != null)) {
-                        lv_targettimer[lv_i] = 160;
-                    }
-
-                }
-                else {
-                    lv_targettimer[lv_i] -= 1;
-                }
-                if ((lv_targets[lv_i] != null)) {
-                    UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), lv_targetspeed, (AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_targets[lv_i])) + 0.0)), true);
-                }
-                else {
-                    if ((DistanceBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_u1)) > 10.0)) {
-                        UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), 0.125, AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_u1))), true);
-                    }
-                    else {
-                        UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), 0.125, libNtve_gf_RandomAngle()), true);
-                    }
-                }
-            }
-        }
-        Wait(0.0625, c_timeGame);
-    }
-    lv_i = 0;
-    while ((lv_i < UnitGroupCount(lv_targetdrones, c_unitCountAll))) {
-        UnitRemove(UnitGroupUnit(lv_targetdrones, 1));
-        UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, 1));
-    }
-    while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-        UnitKill(UnitGroupUnit(lv_defenders, 1));
-        UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, 1));
-    }
-    if ((gv_mode == 1)) {
-        TimerWindowDestroy(lv_tw);
-    }
-
-    if ((UnitIsAlive(lv_u1) == true)) {
-        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
-        UnitKill(lv_u1);
-    }
-    else {
-        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
-        if ((libNtve_gf_UnitGetPropertyKills(lv_u1, c_unitPropCurrent) == 0)) {
-            gf_achievements0killaward(24);
-        }
-
-        libNtve_gf_SetUpgradeLevelForPlayer(1, "ThorQuestReward", 1);
-        libNtve_gf_SetUpgradeLevelForPlayer(2, "ThorQuestReward", 1);
-        libNtve_gf_SetUpgradeLevelForPlayer(3, "ThorQuestReward", 1);
-        libNtve_gf_SetUpgradeLevelForPlayer(4, "ThorQuestReward", 1);
-        libNtve_gf_SetUpgradeLevelForPlayer(5, "ThorQuestReward", 1);
-        gf_gainxp(50000.0);
-        gf_gainrewardbonusall(FixedToInt(5*gv_difficulty));
-        if ((gv_zgametime[3] <= lv_starttime)) {
-            gv_zthormaster += 1;
-            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/11C2CF1C"), (StringExternal("Param/Value/127ACF1A") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/56B2A90B")), 0.0, c_transmissionDurationAdd, false);
-        }
-        else {
-            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/CCF47564"), (StringExternal("Param/Value/952D11E4") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/DB35FB1A")), 0.0, c_transmissionDurationAdd, false);
-        }
-        if ((gv_zthormaster == 3)) {
-            gf_achievements0killaward(30);
-        }
-
-        gf_achievementherokills();
-    }
-    PingDestroy(lv_ping1);
-    Wait(10.0, c_timeGame);
-    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
-    if ((gv_mode == 0) && (gv_stage < 11)) {
-        Wait(60.0, c_timeGame);
-        gf_thorboss4(lp_point);
-    }
-    else {
-        if ((gv_mode == 0)) {
-            gf_thorboss4(lp_point);
-        }
-
-    }
-    return true;
-}
-
-trigger auto_gf_thorboss4_Trigger = null;
-point auto_gf_thorboss4_lp_point;
-
-void gf_thorboss4 (point lp_point) {
-    auto_gf_thorboss4_lp_point = lp_point;
-
-    if (auto_gf_thorboss4_Trigger == null) {
-        auto_gf_thorboss4_Trigger = TriggerCreate("auto_gf_thorboss4_TriggerFunc");
-    }
-
-    TriggerExecute(auto_gf_thorboss4_Trigger, false, false);
-}
-
-bool auto_gf_thorboss4_TriggerFunc (bool testConds, bool runActions) {
-    point lp_point = auto_gf_thorboss4_lp_point;
-
-    // Variable Declarations
-    int lv_tw;
-    timer lv_maxtimer;
-    unit lv_u1;
-    int lv_objective;
-    int lv_ping1;
-    unitgroup lv_defenders;
-    unitgroup lv_targetdrones;
-    int lv_defenderc;
-    int lv_targetdronesc;
-    int lv_restimer;
-    int[13] lv_targettimer;
-    int lv_i;
-    unit[13] lv_targets;
-    fixed[13] lv_angle;
-    point lv_point;
-    int lv_j;
-    fixed lv_targetspeed;
-    int lv_k;
-    int lv_starttime;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_tw = c_timerWindowNone;
-    lv_maxtimer = TimerCreate();
-    lv_objective = c_invalidObjectiveId;
-    lv_ping1 = c_invalidPingId;
-    lv_defenders = UnitGroupEmpty();
-    lv_targetdrones = UnitGroupEmpty();
-    lv_defenderc = PowI(2.0, gv_difficulty+1);
-    lv_targetdronesc = FixedToInt(2+(gv_difficulty/2.5));
-    lv_restimer = (1024 / (lv_defenderc));
-    lv_point = lp_point;
-    lv_targetspeed = (gv_difficulty*0.03125);
-    lv_starttime = (gv_zgametime[3] + 180);
-
-    // Implementation
-    if ((lv_defenderc == 4)) {
-        lv_defenderc = 8;
-    }
-
-    Wait(3.0, c_timeGame);
-    ObjectiveCreate(StringExternal("Param/Value/80F70050"), StringExternal("Param/Value/5542327E"), c_objectiveStateActive, false);
-    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
-    if ((gv_mode == 1)) {
-        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/0C514758"), true, false);
-        lv_tw = TimerWindowLastCreated();
-    }
-
-    lv_objective = ObjectiveLastCreated();
-    UnitCreate(1, "Annihilator", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
-    lv_u1 = UnitLastCreated();
-    UnitSetPropertyFixed(lv_u1, c_unitPropLifeMax, gv_difficulty*gv_difficulty*200+9000);
-    UnitSetPropertyFixed(lv_u1, c_unitPropLife, gv_difficulty*gv_difficulty*200+9000);
-    UnitBehaviorAdd(lv_u1, "Dontrushmebro", lv_u1, 1);
-    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
-    PingSetUnit(PingLastCreated(), lv_u1);
-    lv_ping1 = PingLastCreated();
-    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/69F32DE4"), StringExternal("Param/Value/759A0158"), 0.0, c_transmissionDurationAdd, false);
-    while ((UnitIsAlive(lv_u1) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
-        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
-        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
-        UnitGroupIssueOrder(UnitGroup("Warbot", 6, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), OrderTargetingPoint(AbilityCommand("move", 0), lv_point), c_orderQueueReplace);
-        if ((lv_restimer < 1)) {
-            lv_targetdrones = UnitGroup(null, c_playerAny, RegionCircle(lv_point, 14.0), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterSelf) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
-            if ((UnitGroupCount(lv_targetdrones, c_unitCountAll) > 0)) {
-                if ((UnitHasBehavior(lv_u1, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_u1, "annihilatornomovecheck") == false)) {
-                    lv_k = RandomInt(0, 10);
-                    if ((lv_k == 1)) {
-                        lv_restimer = (1024 / lv_defenderc);
-                        UnitBehaviorAdd(lv_u1, "Dematfieldcheck", lv_u1, 1);
-                    }
-                    else {
-                        if ((lv_k == 2)) {
-                            lv_restimer = (1024 / lv_defenderc);
-                            UnitBehaviorAdd(lv_u1, "annihilatornomovecheck", lv_u1, 1);
-                            while ((UnitGroupCount(lv_targetdrones, c_unitCountAll) > 0)) {
-                                libNtve_gf_CreateUnitsWithDefaultFacing(1, "AnnihilatorStopMoveIndicator", c_unitCreateIgnorePlacement, 6, UnitGetPosition(UnitGroupUnit(lv_targetdrones, 1)));
-                                UnitGroupAdd(lv_defenders, UnitLastCreated());
-                                UnitBehaviorAdd(UnitLastCreated(), "ThorStopMoveIndicatorFollow", UnitGroupUnit(lv_targetdrones, 1), 1);
-                                UnitBehaviorAdd(UnitLastCreated(), "ThorStopMoveIndicatorFate", lv_u1, 1);
-                                UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, 1));
-                            }
-                        }
-
-                    }
-                    if ((UnitHasBehavior(lv_u1, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_u1, "annihilatornomovecheck") == false)) {
-                        UnitCreateEffectUnit(lv_u1, "WarbotBLM", UnitGroupRandomUnit(lv_targetdrones, c_unitCountAll));
-                        lv_restimer = (1024 / lv_defenderc);
-                    }
-
-                }
-
-            }
-
-        }
-        else {
-            lv_restimer -= 1;
-        }
-        if ((UnitHasBehavior(lv_u1, "annihilatornomovecheck") == true) && (UnitGroupCount(lv_defenders, c_unitCountAll) > 0)) {
-            lv_i = 0;
-            while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-                lv_i += 1;
-                if ((UnitIsAlive(UnitGroupUnit(lv_defenders, lv_i)) == false)) {
-                    UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
-                    lv_i -= 1;
-                }
-                else {
-                    if ((UnitGroupCount(UnitGroupAlliance(UnitGetOwner(lv_u1), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)), 1.5), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAll) < 1)) {
-                        UnitCreateEffectPoint(lv_u1, "AnnihilatorLaserTrackingDamage", UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)));
-                        UnitRemove(UnitGroupUnit(lv_defenders, lv_i));
-                        UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
-                        lv_i -= 1;
-                    }
-
-                }
-            }
-        }
-
-        Wait(0.0625, c_timeGame);
-    }
-    lv_i = 0;
-    if ((gv_mode == 1)) {
-        TimerWindowDestroy(lv_tw);
-    }
-
-    if ((UnitIsAlive(lv_u1) == true)) {
-        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
-        UnitKill(lv_u1);
-    }
-    else {
-        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
-        if ((libNtve_gf_UnitGetPropertyKills(lv_u1, c_unitPropCurrent) == 0)) {
-            gf_achievements0killaward(35);
-        }
-
-        if ((gv_stage < 7)) {
-            gf_achievements0killaward(34);
-        }
-
-        TechTreeUpgradeAddLevel(5, "hpBonus", ((FixedToInt(gv_champion) + 1) * 5));
-        gf_gainxp(50000.0);
-        gf_gainrewardbonusall(FixedToInt(5*gv_difficulty));
-        if ((gv_zgametime[3] <= lv_starttime)) {
-            gf_achievements0killaward(36);
-            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/E47CD666"), (StringExternal("Param/Value/D481E14E") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/D50E36D7")), 0.0, c_transmissionDurationAdd, false);
-        }
-        else {
-            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/907FEEA9"), (StringExternal("Param/Value/1A329290") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/01A2FEC9")), 0.0, c_transmissionDurationAdd, false);
-        }
-        gf_achievementherokills();
-    }
-    PingDestroy(lv_ping1);
-    Wait(10.0, c_timeGame);
-    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
-    if ((gv_mode == 0) && (gv_stage < 11)) {
-        Wait(60.0, c_timeGame);
-        gf_thorboss5(lp_point);
-    }
-    else {
-        if ((gv_mode == 0)) {
-            gf_thorboss5(lp_point);
-        }
-
-    }
-    return true;
-}
-
-trigger auto_gf_thorboss5_Trigger = null;
-point auto_gf_thorboss5_lp_point;
-
-void gf_thorboss5 (point lp_point) {
-    auto_gf_thorboss5_lp_point = lp_point;
-
-    if (auto_gf_thorboss5_Trigger == null) {
-        auto_gf_thorboss5_Trigger = TriggerCreate("auto_gf_thorboss5_TriggerFunc");
-    }
-
-    TriggerExecute(auto_gf_thorboss5_Trigger, false, false);
-}
-
-bool auto_gf_thorboss5_TriggerFunc (bool testConds, bool runActions) {
-    point lp_point = auto_gf_thorboss5_lp_point;
-
-    // Variable Declarations
-    int lv_tw;
-    timer lv_maxtimer;
-    unit lv_u1;
-    int lv_objective;
-    int lv_ping1;
-    unitgroup lv_defenders;
-    unitgroup lv_targetdrones;
-    int lv_defenderc;
-    int lv_targetdronesc;
-    int lv_restimer;
-    int[13] lv_targettimer;
-    int lv_i;
-    unit[13] lv_targets;
-    fixed[13] lv_angle;
-    point lv_point;
-    int lv_j;
-    fixed lv_targetspeed;
-    int lv_k;
-    int lv_starttime;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_tw = c_timerWindowNone;
-    lv_maxtimer = TimerCreate();
-    lv_objective = c_invalidObjectiveId;
-    lv_ping1 = c_invalidPingId;
-    lv_defenders = UnitGroupEmpty();
-    lv_targetdrones = UnitGroupEmpty();
-    lv_defenderc = PowI(2.0, gv_difficulty+1);
-    lv_targetdronesc = FixedToInt(2+(gv_difficulty/2.5));
-    lv_restimer = (1024 / (lv_defenderc));
-    lv_point = lp_point;
-    lv_targetspeed = (gv_difficulty*0.03125);
-    lv_starttime = (gv_zgametime[3] + 180);
-
-    // Implementation
-    if ((lv_defenderc == 4)) {
-        lv_defenderc = 8;
-    }
-
-    Wait(3.0, c_timeGame);
-    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
-    if ((gv_mode == 1)) {
-        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/33B276C6"), true, false);
-        lv_tw = TimerWindowLastCreated();
-    }
-
-    ObjectiveCreate(StringExternal("Param/Value/6BC14C24"), StringExternal("Param/Value/F906BC0F"), c_objectiveStateActive, false);
-    lv_objective = ObjectiveLastCreated();
-    UnitCreate(1, "AnnihilatorV2", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
-    lv_u1 = UnitLastCreated();
-    UnitSetPropertyFixed(lv_u1, c_unitPropLifeMax, gv_difficulty*gv_difficulty*500+10000);
-    UnitSetPropertyFixed(lv_u1, c_unitPropLife, gv_difficulty*gv_difficulty*500+10000);
-    UnitBehaviorAdd(lv_u1, "Dontrushmebro", lv_u1, 1);
-    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
-    PingSetUnit(PingLastCreated(), lv_u1);
-    lv_ping1 = PingLastCreated();
-    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/834DDDB6"), StringExternal("Param/Value/46EC3781"), 0.0, c_transmissionDurationAdd, false);
-    while ((UnitIsAlive(lv_u1) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
-        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
-        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
-        UnitGroupIssueOrder(UnitGroup("Warbot", 6, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), OrderTargetingPoint(AbilityCommand("move", 0), lv_point), c_orderQueueReplace);
-        if ((lv_restimer < 1)) {
-            lv_targetdrones = UnitGroup(null, c_playerAny, RegionCircle(lv_point, 14.0), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterSelf) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-            if ((UnitGroupCount(lv_targetdrones, c_unitCountAll) > 0)) {
-                if ((UnitHasBehavior(lv_u1, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_u1, "annihilatornomovecheck") == false)) {
-                    lv_k = RandomInt(0, 10);
-                    if ((lv_k == 1)) {
-                        lv_restimer = (1024 / lv_defenderc);
-                        UnitBehaviorAdd(lv_u1, "Dematfieldcheck", lv_u1, 1);
-                    }
-                    else {
-                        if ((lv_k == 2)) {
-                            lv_restimer = (1024 / lv_defenderc);
-                            UnitBehaviorAdd(lv_u1, "annihilatornomovecheck", lv_u1, 1);
-                            while ((UnitGroupCount(lv_targetdrones, c_unitCountAll) > 0)) {
-                                libNtve_gf_CreateUnitsWithDefaultFacing(1, "AnnihilatorStopMoveIndicator", c_unitCreateIgnorePlacement, 6, UnitGetPosition(UnitGroupUnit(lv_targetdrones, 1)));
-                                UnitGroupAdd(lv_defenders, UnitLastCreated());
-                                UnitBehaviorAdd(UnitLastCreated(), "ThorStopMoveIndicatorFollow", UnitGroupUnit(lv_targetdrones, 1), 1);
-                                UnitBehaviorAdd(UnitLastCreated(), "ThorStopMoveIndicatorFate", lv_u1, 1);
-                                UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, 1));
-                            }
-                        }
-
-                    }
-                    if ((UnitHasBehavior(lv_u1, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_u1, "annihilatornomovecheck") == false)) {
-                        UnitCreateEffectUnit(lv_u1, "WarbotBLM", UnitGroupRandomUnit(lv_targetdrones, c_unitCountAll));
-                        lv_restimer = (1024 / lv_defenderc);
-                    }
-
-                }
-
-            }
-
-        }
-        else {
-            lv_restimer -= 1;
-        }
-        if ((UnitHasBehavior(lv_u1, "annihilatornomovecheck") == true) && (UnitGroupCount(lv_defenders, c_unitCountAll) > 0)) {
-            lv_i = 0;
-            while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-                lv_i += 1;
-                if ((UnitIsAlive(UnitGroupUnit(lv_defenders, lv_i)) == false)) {
-                    UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
-                    lv_i -= 1;
-                }
-                else {
-                    if ((UnitGroupCount(UnitGroupAlliance(UnitGetOwner(lv_u1), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)), 1.5), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAll) < 1)) {
-                        UnitCreateEffectPoint(lv_u1, "AnnihilatorLaserTrackingDamage", UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)));
-                        UnitRemove(UnitGroupUnit(lv_defenders, lv_i));
-                        UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
-                        lv_i -= 1;
-                    }
-
-                }
-            }
-        }
-
-        Wait(0.0625, c_timeGame);
-    }
-    lv_i = 0;
-    if ((gv_mode == 1)) {
-        TimerWindowDestroy(lv_tw);
-    }
-
-    if ((UnitIsAlive(lv_u1) == true)) {
-        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
-        UnitKill(lv_u1);
-    }
-    else {
-        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
-        if ((libNtve_gf_UnitGetPropertyKills(lv_u1, c_unitPropCurrent) == 0)) {
-            gf_achievements0killaward(37);
-        }
-
-        TechTreeUpgradeAddLevel(5, "Annihilatorv2RewardUpgrade", 1);
-        gf_gainxp(50000.0);
-        gf_gainrewardbonusall(FixedToInt(5*gv_difficulty));
-        TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/22798DFA"), (StringExternal("Param/Value/2C62435E") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/D9CB7D4E")), 0.0, c_transmissionDurationAdd, false);
-        gf_achievementherokills();
-    }
-    PingDestroy(lv_ping1);
-    Wait(10.0, c_timeGame);
-    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
-    if ((gv_mode == 0) && (gv_stage < 11)) {
-        Wait(60.0, c_timeGame);
-        gf_thorboss6(lp_point);
-    }
-    else {
-        if ((gv_mode == 0)) {
-            gf_thorboss6(lp_point);
-        }
-
-    }
-    return true;
-}
-
-trigger auto_gf_thorboss6_Trigger = null;
-point auto_gf_thorboss6_lp_point;
-
-void gf_thorboss6 (point lp_point) {
-    auto_gf_thorboss6_lp_point = lp_point;
-
-    if (auto_gf_thorboss6_Trigger == null) {
-        auto_gf_thorboss6_Trigger = TriggerCreate("auto_gf_thorboss6_TriggerFunc");
-    }
-
-    TriggerExecute(auto_gf_thorboss6_Trigger, false, false);
-}
-
-bool auto_gf_thorboss6_TriggerFunc (bool testConds, bool runActions) {
-    point lp_point = auto_gf_thorboss6_lp_point;
-
-    // Variable Declarations
-    int lv_tw;
-    timer lv_maxtimer;
-    unit lv_u1;
-    int lv_objective;
-    int lv_ping1;
-    unitgroup lv_defenders;
-    unitgroup lv_targetdrones;
-    int lv_defenderc;
-    int lv_targetdronesc;
-    int lv_restimer;
-    int[13] lv_targettimer;
-    int lv_i;
-    unit[13] lv_targets;
-    fixed[13] lv_angle;
-    point lv_point;
-    int lv_j;
-    fixed lv_targetspeed;
-    int lv_k;
-    int lv_starttime;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_tw = c_timerWindowNone;
-    lv_maxtimer = TimerCreate();
-    lv_objective = c_invalidObjectiveId;
-    lv_ping1 = c_invalidPingId;
-    lv_defenders = UnitGroupEmpty();
-    lv_targetdrones = UnitGroupEmpty();
-    lv_defenderc = PowI(2.0, gv_difficulty+1);
-    lv_targetdronesc = FixedToInt(2+(gv_difficulty/2.5));
-    lv_restimer = (1024 / (lv_defenderc));
-    lv_point = lp_point;
-    lv_targetspeed = (gv_difficulty*0.03125);
-    lv_starttime = (gv_zgametime[3] + 180);
-
-    // Implementation
-    if ((lv_defenderc == 4)) {
-        lv_defenderc = 8;
-    }
-
-    Wait(3.0, c_timeGame);
-    ObjectiveCreate(StringExternal("Param/Value/84BB1F64"), StringExternal("Param/Value/50812D33"), c_objectiveStateActive, false);
-    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
-    if ((gv_mode == 1)) {
-        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/C62C1DC9"), true, false);
-        lv_tw = TimerWindowLastCreated();
-    }
-
-    lv_objective = ObjectiveLastCreated();
-    UnitCreate(1, "AnnihilatorV3", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
-    lv_u1 = UnitLastCreated();
-    UnitSetPropertyFixed(lv_u1, c_unitPropLifeMax, gv_difficulty*gv_difficulty*650+12000);
-    UnitSetPropertyFixed(lv_u1, c_unitPropLife, gv_difficulty*gv_difficulty*650+12000);
-    UnitBehaviorAdd(lv_u1, "Dontrushmebro", lv_u1, 1);
-    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
-    PingSetUnit(PingLastCreated(), lv_u1);
-    lv_ping1 = PingLastCreated();
-    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/517F3294"), StringExternal("Param/Value/A1A7E8B1"), 0.0, c_transmissionDurationAdd, false);
-    gf_BansheeDropBeam(lv_u1, 10-gv_difficulty);
-    while ((UnitIsAlive(lv_u1) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
-        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
-        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
-        UnitGroupIssueOrder(UnitGroup("Warbot", 6, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), OrderTargetingPoint(AbilityCommand("move", 0), lv_point), c_orderQueueReplace);
-        if ((lv_restimer < 1)) {
-            lv_targetdrones = UnitGroup(null, c_playerAny, RegionCircle(lv_point, 14.0), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterSelf) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
-            if ((UnitGroupCount(lv_targetdrones, c_unitCountAll) > 0)) {
-                if ((UnitHasBehavior(lv_u1, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_u1, "annihilatornomovecheck") == false)) {
-                    lv_k = RandomInt(0, 10);
-                    if ((lv_k == 1)) {
-                        lv_restimer = (1024 / lv_defenderc);
-                        UnitBehaviorAdd(lv_u1, "Dematfieldcheck", lv_u1, 1);
-                    }
-                    else {
-                        if ((lv_k == 2)) {
-                            lv_restimer = (1024 / lv_defenderc);
-                            UnitBehaviorAdd(lv_u1, "annihilatornomovecheck", lv_u1, 1);
-                            while ((UnitGroupCount(lv_targetdrones, c_unitCountAll) > 0)) {
-                                libNtve_gf_CreateUnitsWithDefaultFacing(1, "AnnihilatorStopMoveIndicator", c_unitCreateIgnorePlacement, 6, UnitGetPosition(UnitGroupUnit(lv_targetdrones, 1)));
-                                UnitGroupAdd(lv_defenders, UnitLastCreated());
-                                UnitBehaviorAdd(UnitLastCreated(), "ThorStopMoveIndicatorFollow", UnitGroupUnit(lv_targetdrones, 1), 1);
-                                UnitBehaviorAdd(UnitLastCreated(), "ThorStopMoveIndicatorFate", lv_u1, 1);
-                                UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, 1));
-                            }
-                        }
-
-                    }
-                    if ((UnitHasBehavior(lv_u1, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_u1, "annihilatornomovecheck") == false)) {
-                        UnitCreateEffectUnit(lv_u1, "WarbotBLM", UnitGroupRandomUnit(lv_targetdrones, c_unitCountAll));
-                        lv_restimer = (1024 / lv_defenderc);
-                    }
-
-                }
-
-            }
-
-        }
-        else {
-            lv_restimer -= 1;
-        }
-        if ((UnitHasBehavior(lv_u1, "annihilatornomovecheck") == true) && (UnitGroupCount(lv_defenders, c_unitCountAll) > 0)) {
-            lv_i = 0;
-            while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-                lv_i += 1;
-                if ((UnitIsAlive(UnitGroupUnit(lv_defenders, lv_i)) == false)) {
-                    UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
-                    lv_i -= 1;
-                }
-                else {
-                    if ((UnitGroupCount(UnitGroupAlliance(UnitGetOwner(lv_u1), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)), 1.5), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAll) < 1)) {
-                        UnitCreateEffectPoint(lv_u1, "AnnihilatorLaserTrackingDamage", UnitGetPosition(UnitGroupUnit(lv_defenders, lv_i)));
-                        UnitRemove(UnitGroupUnit(lv_defenders, lv_i));
-                        UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
-                        lv_i -= 1;
-                    }
-
-                }
-            }
-        }
-
-        Wait(0.0625, c_timeGame);
-    }
-    lv_i = 0;
-    if ((gv_mode == 1)) {
-        TimerWindowDestroy(lv_tw);
-    }
-
-    if ((UnitIsAlive(lv_u1) == true)) {
-        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
-        UnitKill(lv_u1);
-    }
-    else {
-        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
-        if ((libNtve_gf_UnitGetPropertyKills(lv_u1, c_unitPropCurrent) == 0)) {
-            gf_achievements0killaward(38);
-        }
-
-        gf_gainxp(75000.0);
-        gf_gainrewardbonusall(FixedToInt(5*gv_difficulty));
-        TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/28DF4B12"), (StringExternal("Param/Value/DCA6CC87") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/0C9EA65C")), 0.0, c_transmissionDurationAdd, false);
-        TechTreeUpgradeAddLevel(5, "Ann3Reward", 1);
-        gf_achievementherokills();
-    }
-    PingDestroy(lv_ping1);
-    Wait(10.0, c_timeGame);
-    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
-    if ((gv_mode == 0) && (gv_stage < 11)) {
-        Wait(60.0, c_timeGame);
-        gf_thorboss7(lv_point);
-    }
-    else {
-        if ((gv_mode == 0)) {
-            gf_thorboss7(lv_point);
-        }
-
-    }
-    return true;
-}
-
-trigger auto_gf_thorboss7_Trigger = null;
-point auto_gf_thorboss7_lp_point;
-
-void gf_thorboss7 (point lp_point) {
-    auto_gf_thorboss7_lp_point = lp_point;
-
-    if (auto_gf_thorboss7_Trigger == null) {
-        auto_gf_thorboss7_Trigger = TriggerCreate("auto_gf_thorboss7_TriggerFunc");
-    }
-
-    TriggerExecute(auto_gf_thorboss7_Trigger, false, false);
-}
-
-bool auto_gf_thorboss7_TriggerFunc (bool testConds, bool runActions) {
-    point lp_point = auto_gf_thorboss7_lp_point;
-
-    // Variable Declarations
-    unit lv_u1;
-    int lv_objective;
-    int lv_ping1;
-    unitgroup lv_defenders;
-    unitgroup lv_targetdrones;
-    int lv_defenderc;
-    int lv_targetdronesc;
-    int lv_restimer;
-    int[13] lv_targettimer;
-    int lv_i;
-    unit[13] lv_targets;
-    fixed[13] lv_angle;
-    point lv_point;
-    int lv_j;
-    fixed lv_targetspeed;
-    int lv_k;
-    timer lv_dematimer;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_objective = c_invalidObjectiveId;
-    lv_ping1 = c_invalidPingId;
-    lv_defenders = UnitGroupEmpty();
-    lv_targetdrones = UnitGroupEmpty();
-    lv_defenderc = FixedToInt(gv_difficulty);
-    lv_targetdronesc = FixedToInt(2+(gv_difficulty/2.5));
-    lv_restimer = (128 * (lv_defenderc-1));
-    lv_point = lp_point;
-    lv_targetspeed = (gv_difficulty*0.03125);
-    lv_dematimer = TimerCreate();
-
-    // Implementation
-    Wait(3.0, c_timeGame);
-    ObjectiveCreate(StringExternal("Param/Value/BBF6E325"), StringExternal("Param/Value/B4FAE89B"), c_objectiveStateActive, false);
-    lv_objective = ObjectiveLastCreated();
-    UnitCreate(1, "Odin2", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
-    lv_u1 = UnitLastCreated();
-    UnitSetPropertyFixed(lv_u1, c_unitPropLifeMax, gv_difficulty*gv_difficulty*1250+5000);
-    UnitSetPropertyFixed(lv_u1, c_unitPropLife, gv_difficulty*gv_difficulty*1250+5000);
-    UnitBehaviorAdd(lv_u1, "Dontrushmebro", lv_u1, 1);
-    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
-    PingSetUnit(PingLastCreated(), lv_u1);
-    lv_ping1 = PingLastCreated();
-    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/CC4A03C3"), StringExternal("Param/Value/CEB4D599"), 0.0, c_transmissionDurationAdd, false);
-    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, lv_point);
-    UnitGroupAddUnitGroup(lv_targetdrones, UnitLastCreatedGroup());
-    TimerStart(lv_dematimer, 60.0, false, c_timeGame);
-    gf_BansheeDropBeam(lv_u1, 10-gv_difficulty);
-    while ((UnitIsAlive(lv_u1) == true)) {
-        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
-        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
-        UnitGroupIssueOrder(UnitGroup("Warbot", 6, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), OrderTargetingPoint(AbilityCommand("move", 0), lv_point), c_orderQueueReplace);
-        if ((UnitGroupCount(lv_defenders, c_unitCountAll) < lv_defenderc)) {
-            if ((((lv_defenderc - UnitGroupCount(lv_defenders, c_unitCountAll)) / 2) < 1)) {
-                lv_k = 1;
-            }
-            else {
-                lv_k = ((lv_defenderc - UnitGroupCount(lv_defenders, c_unitCountAll)) / 2);
-            }
-            while ((lv_k > 0)) {
-                lv_k -= 1;
-                if ((ModI(lv_restimer, 160) == 0)) {
-                    libNtve_gf_CreateUnitsWithDefaultFacing(1, "ScienceVessel", c_unitCreateIgnorePlacement, 6, PointWithOffsetPolar(lv_point, 4.0, libNtve_gf_RandomAngle()));
-                    UnitGroupAdd(lv_defenders, UnitLastCreated());
-                    UnitBehaviorAdd(UnitLastCreated(), "ThorScienceSeekerProduce", UnitLastCreated(), 1);
-                    lv_angle[UnitGroupCount(lv_defenders, c_unitCountAll)] = AngleBetweenPoints(UnitGetPosition(lv_u1), UnitGetPosition(UnitLastCreated()));
-                }
-
-                lv_restimer -= 1;
-            }
-        }
-
-        lv_i = 0;
-        if ((UnitGroupCount(lv_defenders, c_unitCountAll) >= 1)) {
-            while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-                lv_i += 1;
-                if ((UnitIsAlive(UnitGroupUnit(lv_defenders, lv_i)) == true)) {
-                    lv_angle[lv_i] += 1.0;
-                    UnitSetPosition(UnitGroupUnit(lv_defenders, lv_i), PointWithOffsetPolar(lv_point, 4.0, lv_angle[lv_i]), true);
-                }
-                else {
-                    lv_j = lv_i;
-                    while ((lv_j < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-                        lv_angle[lv_j] = lv_angle[lv_j+1];
-                        lv_j += 1;
-                    }
-                    UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
-                    lv_i -= 1;
-                    lv_restimer += 160;
-                }
-            }
-        }
-
-        lv_i = 0;
-        while ((lv_i < UnitGroupCount(lv_targetdrones, c_unitCountAll))) {
-            lv_i += 1;
-            if ((UnitIsAlive(UnitGroupUnit(lv_targetdrones, lv_i)) == false)) {
-                UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, lv_i));
-                lv_i -= 1;
-            }
-            else {
-                if (((lv_targettimer[lv_i] == 0) || (lv_targets[lv_i] == null) || (UnitIsAlive(lv_targets[lv_i]) == false))) {
-                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
-                    if ((lv_targets[lv_i] != null)) {
-                        lv_targettimer[lv_i] = 160;
-                    }
-
-                }
-                else {
-                    lv_targettimer[lv_i] -= 1;
-                }
-                if ((lv_targets[lv_i] != null)) {
-                    UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), lv_targetspeed, (AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_targets[lv_i])) + 0.0)), true);
-                }
-                else {
-                    if ((DistanceBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_u1)) > 10.0)) {
-                        UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), 0.125, AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_u1))), true);
-                    }
-                    else {
-                        UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), 0.125, libNtve_gf_RandomAngle()), true);
-                    }
-                }
-            }
-        }
-        if ((TimerGetRemaining(lv_dematimer) < 1.0)) {
-            UnitBehaviorAdd(lv_u1, "Dematfieldcheck", lv_u1, 1);
-            TimerStart(lv_dematimer, 10+(60/gv_difficulty), false, c_timeGame);
-        }
-
-        Wait(0.0625, c_timeGame);
-    }
-    lv_i = 0;
-    while ((lv_i < UnitGroupCount(lv_targetdrones, c_unitCountAll))) {
-        UnitRemove(UnitGroupUnit(lv_targetdrones, 1));
-        UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, 1));
-    }
-    while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
-        UnitKill(UnitGroupUnit(lv_defenders, 1));
-        UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, 1));
-    }
-    ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
-    gf_achievements0killaward(60);
-    gf_gainxp(250000.0);
-    gf_gainrewardbonusall(FixedToInt(15*gv_difficulty));
-    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/AA1A4D43"), (StringExternal("Param/Value/284EEA17") + IntToText(FixedToInt(gv_difficulty*75)) + StringExternal("Param/Value/B241321D")), 0.0, c_transmissionDurationAdd, false);
-    TechTreeUpgradeAddLevel(5, "Vengeance", 1);
-    PingDestroy(lv_ping1);
-    gf_achievementherokills();
-    Wait(10.0, c_timeGame);
-    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
-    return true;
-}
-
-trigger auto_gf_BansheeDropBeam_Trigger = null;
-unit auto_gf_BansheeDropBeam_lp_hostunit;
-fixed auto_gf_BansheeDropBeam_lp_delay;
-
-void gf_BansheeDropBeam (unit lp_hostunit, fixed lp_delay) {
-    auto_gf_BansheeDropBeam_lp_hostunit = lp_hostunit;
-    auto_gf_BansheeDropBeam_lp_delay = lp_delay;
-
-    if (auto_gf_BansheeDropBeam_Trigger == null) {
-        auto_gf_BansheeDropBeam_Trigger = TriggerCreate("auto_gf_BansheeDropBeam_TriggerFunc");
-    }
-
-    TriggerExecute(auto_gf_BansheeDropBeam_Trigger, false, false);
-}
-
-bool auto_gf_BansheeDropBeam_TriggerFunc (bool testConds, bool runActions) {
-    unit lp_hostunit = auto_gf_BansheeDropBeam_lp_hostunit;
-    fixed lp_delay = auto_gf_BansheeDropBeam_lp_delay;
-
-    // Variable Declarations
-    unit lv_banshee;
-    unit lv_target;
-    unitgroup lv_availabletargets;
-    region lv_region;
-    int lv_n;
-    point lv_hostpoint;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_availabletargets = UnitGroupEmpty();
-    lv_region = RegionCircle(UnitGetPosition(lp_hostunit), 12.0);
-    lv_hostpoint = UnitGetPosition(lp_hostunit);
-
-    // Implementation
-    while ((UnitIsAlive(lp_hostunit) == true)) {
-        lv_availabletargets = UnitGroup(null, c_playerAny, lv_region, UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-        lv_n = UnitGroupCount(lv_availabletargets, c_unitCountAll);
-        if ((lv_n > 0)) {
-            lv_target = UnitGroupRandomUnit(lv_availabletargets, c_unitCountAll);
-            if ((UnitIsAlive(lv_banshee) == false)) {
-                libNtve_gf_UnitCreateFacingPoint(1, "Banshee", c_unitCreateIgnorePlacement, 6, PointWithOffsetPolar(lv_hostpoint, 15.0, libNtve_gf_RandomAngle()), lv_hostpoint);
-                lv_banshee = UnitLastCreated();
-            }
-
-            UnitIssueOrder(lv_banshee, OrderTargetingUnit(AbilityCommand("DropBeam", 0), lv_target), c_orderQueueReplace);
-        }
-        else {
-            if ((UnitIsAlive(lv_banshee) == false)) {
-                UnitKill(lv_banshee);
-            }
-
-        }
-        while ((UnitIsAlive(lv_target) == true) && (UnitIsAlive(lv_banshee) == true)) {
-            UnitIssueOrder(lv_banshee, OrderTargetingUnit(AbilityCommand("DropBeam", 0), lv_target), c_orderQueueReplace);
-            Wait(0.125, c_timeGame);
-        }
-        if ((UnitIsAlive(lv_banshee) == false)) {
-            Wait(lp_delay, c_timeGame);
-        }
-        else {
-            Wait(0.125, c_timeGame);
-        }
-    }
-    return true;
-}
-
 trigger auto_gf_EscortAmbush_Trigger = null;
 unit auto_gf_EscortAmbush_lp_escort;
 
@@ -3563,6 +2183,1162 @@ bool auto_gf_SpawningPool2_TriggerFunc (bool testConds, bool runActions) {
     Wait(1.0, c_timeGame);
     Wait(9.0, c_timeGame);
     ObjectiveShow(lv_objective, PlayerGroupAll(), false);
+    return true;
+}
+
+trigger auto_gf_ThorV1_Trigger = null;
+point auto_gf_ThorV1_lp_point;
+
+void gf_ThorV1 (point lp_point) {
+    auto_gf_ThorV1_lp_point = lp_point;
+
+    if (auto_gf_ThorV1_Trigger == null) {
+        auto_gf_ThorV1_Trigger = TriggerCreate("auto_gf_ThorV1_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_ThorV1_Trigger, false, false);
+}
+
+bool auto_gf_ThorV1_TriggerFunc (bool testConds, bool runActions) {
+    point lp_point = auto_gf_ThorV1_lp_point;
+
+    // Variable Declarations
+    int lv_tw;
+    timer lv_maxtimer;
+    unit lv_boss;
+    int lv_objective;
+    int lv_ping1;
+    point lv_point;
+    int lv_starttime;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_tw = c_timerWindowNone;
+    lv_maxtimer = TimerCreate();
+    lv_objective = c_invalidObjectiveId;
+    lv_ping1 = c_invalidPingId;
+    lv_point = lp_point;
+    lv_starttime = (gv_zgametime[3] + 180);
+
+    // Implementation
+    Wait(3.0, c_timeGame);
+    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
+    if ((gv_mode == 1)) {
+        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/9B861214"), true, false);
+        lv_tw = TimerWindowLastCreated();
+    }
+
+    ObjectiveCreate(StringExternal("Param/Value/5BB79D5F"), StringExternal("Param/Value/D3BA384A"), c_objectiveStateActive, false);
+    lv_objective = ObjectiveLastCreated();
+    UnitCreate(1, "ThorV1", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
+    lv_boss = UnitLastCreated();
+    UnitSetPropertyFixed(lv_boss, c_unitPropLifeMax, gv_difficulty*gv_difficulty*700+500);
+    UnitSetPropertyFixed(lv_boss, c_unitPropLife, gv_difficulty*gv_difficulty*700+500);
+    UnitBehaviorAdd(lv_boss, "ThorInvulnerabilityShield", lv_boss, 1);
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
+    PingSetUnit(PingLastCreated(), lv_boss);
+    lv_ping1 = PingLastCreated();
+    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/8D3D5AF9"), StringExternal("Param/Value/1EE362E0"), 0.0, c_transmissionDurationAdd, false);
+    gf_ScienceVessels(lv_boss);
+    gf_TargetDrones(lv_boss);
+    while ((UnitIsAlive(lv_boss) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
+        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
+        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
+        Wait(0.0625, c_timeGame);
+    }
+    if ((gv_mode == 1)) {
+        TimerWindowDestroy(lv_tw);
+    }
+
+    if ((UnitIsAlive(lv_boss) == true)) {
+        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
+        UnitKill(lv_boss);
+    }
+    else {
+        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
+        libNtve_gf_SetUpgradeLevelForPlayer(6, "thorquestrewardmutagen", 1);
+        if ((libNtve_gf_UnitGetPropertyKills(lv_boss, c_unitPropCurrent) == 0)) {
+            gf_achievements0killaward(13);
+        }
+
+        gf_gainxp(10000.0);
+        gf_GainReward(1);
+        gf_GainReward(1);
+        gf_GainReward(1);
+        gf_GainReward(1);
+        gf_GainReward(1);
+        if ((gv_zgametime[3] <= lv_starttime)) {
+            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/66A15466"), StringExternal("Param/Value/17B805D4"), 0.0, c_transmissionDurationAdd, false);
+            gv_zthormaster += 1;
+        }
+        else {
+            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/DF3091A5"), StringExternal("Param/Value/14ACC866"), 0.0, c_transmissionDurationAdd, false);
+        }
+        gf_achievementherokills();
+    }
+    PingDestroy(lv_ping1);
+    Wait(10.0, c_timeGame);
+    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
+    if ((gv_mode == 0) && (gv_stage < 11)) {
+        Wait(60.0, c_timeGame);
+        gf_ThorV2(lv_point);
+    }
+    else {
+        if ((gv_mode == 0)) {
+            gf_ThorV2(lv_point);
+        }
+
+    }
+    return true;
+}
+
+trigger auto_gf_ThorV2_Trigger = null;
+point auto_gf_ThorV2_lp_point;
+
+void gf_ThorV2 (point lp_point) {
+    auto_gf_ThorV2_lp_point = lp_point;
+
+    if (auto_gf_ThorV2_Trigger == null) {
+        auto_gf_ThorV2_Trigger = TriggerCreate("auto_gf_ThorV2_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_ThorV2_Trigger, false, false);
+}
+
+bool auto_gf_ThorV2_TriggerFunc (bool testConds, bool runActions) {
+    point lp_point = auto_gf_ThorV2_lp_point;
+
+    // Variable Declarations
+    int lv_tw;
+    timer lv_maxtimer;
+    unit lv_boss;
+    int lv_objective;
+    int lv_ping1;
+    point lv_point;
+    int lv_starttime;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_tw = c_timerWindowNone;
+    lv_maxtimer = TimerCreate();
+    lv_objective = c_invalidObjectiveId;
+    lv_ping1 = c_invalidPingId;
+    lv_point = lp_point;
+    lv_starttime = (gv_zgametime[3] + 180);
+
+    // Implementation
+    Wait(3.0, c_timeGame);
+    ObjectiveCreate(StringExternal("Param/Value/9B741A65"), StringExternal("Param/Value/967F4166"), c_objectiveStateActive, false);
+    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
+    if ((gv_mode == 1)) {
+        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/1EDB2692"), true, false);
+        lv_tw = TimerWindowLastCreated();
+    }
+
+    lv_objective = ObjectiveLastCreated();
+    UnitCreate(1, "ThorV2", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
+    lv_boss = UnitLastCreated();
+    UnitSetPropertyFixed(lv_boss, c_unitPropLifeMax, gv_difficulty*gv_difficulty*800+500);
+    UnitSetPropertyFixed(lv_boss, c_unitPropLife, gv_difficulty*gv_difficulty*800+500);
+    TechTreeUpgradeAddLevel(6, "WarpHeroBlaze", 1);
+    UnitBehaviorAdd(lv_boss, "ThorInvulnerabilityShield", lv_boss, 1);
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
+    PingSetUnit(PingLastCreated(), lv_boss);
+    lv_ping1 = PingLastCreated();
+    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/D451896B"), StringExternal("Param/Value/DCFA5963"), 0.0, c_transmissionDurationAdd, false);
+    gf_ScienceVessels(lv_boss);
+    gf_TargetDrones(lv_boss);
+    while ((UnitIsAlive(lv_boss) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
+        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
+        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
+        Wait(0.0625, c_timeGame);
+    }
+    if ((gv_mode == 1)) {
+        TimerWindowDestroy(lv_tw);
+    }
+
+    if ((UnitIsAlive(lv_boss) == true)) {
+        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
+        UnitKill(lv_boss);
+    }
+    else {
+        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
+        if ((libNtve_gf_UnitGetPropertyKills(lv_boss, c_unitPropCurrent) == 0)) {
+            gf_achievements0killaward(14);
+        }
+
+        libNtve_gf_SetUpgradeLevelForPlayer(5, "ThorQuestRewardPhotonDamage", 1);
+        gf_gainxp(20000.0);
+        gf_gainrewardbonusall(FixedToInt(2*gv_difficulty));
+        if ((gv_zgametime[3] <= lv_starttime)) {
+            gv_zthormaster += 1;
+            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/DF6A2A9A"), (StringExternal("Param/Value/7FF392D6") + IntToText(FixedToInt(gv_difficulty*10)) + StringExternal("Param/Value/2BEB1819")), 0.0, c_transmissionDurationAdd, false);
+        }
+        else {
+            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/CAC326A7"), (StringExternal("Param/Value/332C142B") + IntToText(FixedToInt(gv_difficulty*10)) + StringExternal("Param/Value/D4C1746E")), 0.0, c_transmissionDurationAdd, false);
+        }
+        gf_achievementherokills();
+    }
+    PingDestroy(lv_ping1);
+    Wait(10.0, c_timeGame);
+    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
+    if ((gv_mode == 0) && (gv_stage < 11)) {
+        Wait(60.0, c_timeGame);
+        gf_ThorV3(lp_point);
+    }
+    else {
+        if ((gv_mode == 0)) {
+            gf_ThorV3(lp_point);
+        }
+
+    }
+    return true;
+}
+
+trigger auto_gf_ThorV3_Trigger = null;
+point auto_gf_ThorV3_lp_point;
+
+void gf_ThorV3 (point lp_point) {
+    auto_gf_ThorV3_lp_point = lp_point;
+
+    if (auto_gf_ThorV3_Trigger == null) {
+        auto_gf_ThorV3_Trigger = TriggerCreate("auto_gf_ThorV3_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_ThorV3_Trigger, false, false);
+}
+
+bool auto_gf_ThorV3_TriggerFunc (bool testConds, bool runActions) {
+    point lp_point = auto_gf_ThorV3_lp_point;
+
+    // Variable Declarations
+    int lv_tw;
+    timer lv_maxtimer;
+    unit lv_boss;
+    int lv_objective;
+    int lv_ping1;
+    point lv_point;
+    int lv_starttime;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_tw = c_timerWindowNone;
+    lv_maxtimer = TimerCreate();
+    lv_objective = c_invalidObjectiveId;
+    lv_ping1 = c_invalidPingId;
+    lv_point = lp_point;
+    lv_starttime = (gv_zgametime[3] + 180);
+
+    // Implementation
+    Wait(3.0, c_timeGame);
+    ObjectiveCreate(StringExternal("Param/Value/2C81C18B"), StringExternal("Param/Value/FCE508B2"), c_objectiveStateActive, false);
+    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
+    if ((gv_mode == 1)) {
+        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/FA7B7C8C"), true, false);
+        lv_tw = TimerWindowLastCreated();
+    }
+
+    lv_objective = ObjectiveLastCreated();
+    UnitCreate(1, "ThorV3", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
+    lv_boss = UnitLastCreated();
+    UnitSetPropertyFixed(lv_boss, c_unitPropLifeMax, gv_difficulty*gv_difficulty*900+500);
+    UnitSetPropertyFixed(lv_boss, c_unitPropLife, gv_difficulty*gv_difficulty*900+500);
+    UnitBehaviorAdd(lv_boss, "ThorInvulnerabilityShield", lv_boss, 1);
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
+    PingSetUnit(PingLastCreated(), lv_boss);
+    lv_ping1 = PingLastCreated();
+    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/49CA1D72"), StringExternal("Param/Value/88900A70"), 0.0, c_transmissionDurationAdd, false);
+    gf_ScienceVessels(lv_boss);
+    gf_TargetDrones(lv_boss);
+    while ((UnitIsAlive(lv_boss) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
+        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
+        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
+        Wait(0.0625, c_timeGame);
+    }
+    if ((gv_mode == 1)) {
+        TimerWindowDestroy(lv_tw);
+    }
+
+    if ((UnitIsAlive(lv_boss) == true)) {
+        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
+        UnitKill(lv_boss);
+    }
+    else {
+        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
+        if ((libNtve_gf_UnitGetPropertyKills(lv_boss, c_unitPropCurrent) == 0)) {
+            gf_achievements0killaward(24);
+        }
+
+        libNtve_gf_SetUpgradeLevelForPlayer(1, "ThorQuestReward", 1);
+        libNtve_gf_SetUpgradeLevelForPlayer(2, "ThorQuestReward", 1);
+        libNtve_gf_SetUpgradeLevelForPlayer(3, "ThorQuestReward", 1);
+        libNtve_gf_SetUpgradeLevelForPlayer(4, "ThorQuestReward", 1);
+        libNtve_gf_SetUpgradeLevelForPlayer(5, "ThorQuestReward", 1);
+        gf_gainxp(50000.0);
+        gf_gainrewardbonusall(FixedToInt(5*gv_difficulty));
+        if ((gv_zgametime[3] <= lv_starttime)) {
+            gv_zthormaster += 1;
+            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/11C2CF1C"), (StringExternal("Param/Value/127ACF1A") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/56B2A90B")), 0.0, c_transmissionDurationAdd, false);
+        }
+        else {
+            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/CCF47564"), (StringExternal("Param/Value/952D11E4") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/DB35FB1A")), 0.0, c_transmissionDurationAdd, false);
+        }
+        if ((gv_zthormaster == 3)) {
+            gf_achievements0killaward(30);
+        }
+
+        gf_achievementherokills();
+    }
+    PingDestroy(lv_ping1);
+    Wait(10.0, c_timeGame);
+    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
+    if ((gv_mode == 0) && (gv_stage < 11)) {
+        Wait(60.0, c_timeGame);
+        gf_AnnihilatorV1(lp_point);
+    }
+    else {
+        if ((gv_mode == 0)) {
+            gf_AnnihilatorV1(lp_point);
+        }
+
+    }
+    return true;
+}
+
+trigger auto_gf_AnnihilatorV1_Trigger = null;
+point auto_gf_AnnihilatorV1_lp_point;
+
+void gf_AnnihilatorV1 (point lp_point) {
+    auto_gf_AnnihilatorV1_lp_point = lp_point;
+
+    if (auto_gf_AnnihilatorV1_Trigger == null) {
+        auto_gf_AnnihilatorV1_Trigger = TriggerCreate("auto_gf_AnnihilatorV1_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_AnnihilatorV1_Trigger, false, false);
+}
+
+bool auto_gf_AnnihilatorV1_TriggerFunc (bool testConds, bool runActions) {
+    point lp_point = auto_gf_AnnihilatorV1_lp_point;
+
+    // Variable Declarations
+    int lv_tw;
+    timer lv_maxtimer;
+    unit lv_boss;
+    int lv_objective;
+    int lv_ping1;
+    unitgroup lv_targets;
+    int lv_cooldownreduction;
+    int lv_cooldown;
+    int lv_i;
+    int lv_k;
+    point lv_point;
+    int lv_starttime;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_tw = c_timerWindowNone;
+    lv_maxtimer = TimerCreate();
+    lv_objective = c_invalidObjectiveId;
+    lv_ping1 = c_invalidPingId;
+    lv_targets = UnitGroupEmpty();
+    lv_cooldownreduction = PowI(2.0, (gv_difficulty + 1.0));
+    lv_cooldown = (1024 / lv_cooldownreduction);
+    lv_point = lp_point;
+    lv_starttime = (gv_zgametime[3] + 180);
+
+    // Implementation
+    if ((lv_cooldownreduction == 4)) {
+        lv_cooldownreduction = 8;
+    }
+
+    Wait(3.0, c_timeGame);
+    ObjectiveCreate(StringExternal("Param/Value/80F70050"), StringExternal("Param/Value/5542327E"), c_objectiveStateActive, false);
+    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
+    if ((gv_mode == 1)) {
+        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/0C514758"), true, false);
+        lv_tw = TimerWindowLastCreated();
+    }
+
+    lv_objective = ObjectiveLastCreated();
+    UnitCreate(1, "AnnihilatorV1", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
+    lv_boss = UnitLastCreated();
+    UnitSetPropertyFixed(lv_boss, c_unitPropLifeMax, gv_difficulty*gv_difficulty*200+9000);
+    UnitSetPropertyFixed(lv_boss, c_unitPropLife, gv_difficulty*gv_difficulty*200+9000);
+    UnitBehaviorAdd(lv_boss, "ThorInvulnerabilityShield", lv_boss, 1);
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
+    PingSetUnit(PingLastCreated(), lv_boss);
+    lv_ping1 = PingLastCreated();
+    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/69F32DE4"), StringExternal("Param/Value/759A0158"), 0.0, c_transmissionDurationAdd, false);
+    while ((UnitIsAlive(lv_boss) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
+        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
+        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
+        UnitGroupIssueOrder(UnitGroup("Warbot", 6, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), OrderTargetingPoint(AbilityCommand("move", 0), lv_point), c_orderQueueReplace);
+        if ((UnitGetPropertyFixed(lv_boss, c_unitPropLifePercent, c_unitPropCurrent) < 75.0)) {
+        }
+
+        if ((lv_cooldown < 1)) {
+            lv_targets = UnitGroup(null, c_playerAny, RegionCircle(lv_point, 14.0), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterSelf) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
+            if ((UnitGroupCount(lv_targets, c_unitCountAll) > 0)) {
+                if ((UnitHasBehavior(lv_boss, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_boss, "annihilatornomovecheck") == false)) {
+                    lv_k = RandomInt(0, 10);
+                    if ((lv_k == 1)) {
+                        lv_cooldown = (1024 / lv_cooldownreduction);
+                        UnitBehaviorAdd(lv_boss, "Dematfieldcheck", lv_boss, 1);
+                    }
+                    else {
+                        if ((lv_k == 2)) {
+                            lv_cooldown = (1024 / lv_cooldownreduction);
+                            gf_LaserTracking(lv_boss);
+                        }
+
+                    }
+                    if ((UnitHasBehavior(lv_boss, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_boss, "annihilatornomovecheck") == false)) {
+                        UnitCreateEffectUnit(lv_boss, "WarbotBLM", UnitGroupRandomUnit(lv_targets, c_unitCountAll));
+                        lv_cooldown = (1024 / lv_cooldownreduction);
+                    }
+
+                }
+
+            }
+
+        }
+        else {
+            lv_cooldown -= 1;
+        }
+        Wait(0.0625, c_timeGame);
+    }
+    lv_i = 0;
+    if ((gv_mode == 1)) {
+        TimerWindowDestroy(lv_tw);
+    }
+
+    if ((UnitIsAlive(lv_boss) == true)) {
+        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
+        UnitKill(lv_boss);
+    }
+    else {
+        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
+        if ((libNtve_gf_UnitGetPropertyKills(lv_boss, c_unitPropCurrent) == 0)) {
+            gf_achievements0killaward(35);
+        }
+
+        if ((gv_stage < 7)) {
+            gf_achievements0killaward(34);
+        }
+
+        TechTreeUpgradeAddLevel(5, "hpBonus", ((FixedToInt(gv_champion) + 1) * 5));
+        gf_gainxp(50000.0);
+        gf_gainrewardbonusall(FixedToInt(5*gv_difficulty));
+        if ((gv_zgametime[3] <= lv_starttime)) {
+            gf_achievements0killaward(36);
+            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/E47CD666"), (StringExternal("Param/Value/D481E14E") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/D50E36D7")), 0.0, c_transmissionDurationAdd, false);
+        }
+        else {
+            TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/907FEEA9"), (StringExternal("Param/Value/1A329290") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/01A2FEC9")), 0.0, c_transmissionDurationAdd, false);
+        }
+        gf_achievementherokills();
+    }
+    PingDestroy(lv_ping1);
+    Wait(10.0, c_timeGame);
+    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
+    if ((gv_mode == 0) && (gv_stage < 11)) {
+        Wait(60.0, c_timeGame);
+        gf_AnnihilatorV2(lp_point);
+    }
+    else {
+        if ((gv_mode == 0)) {
+            gf_AnnihilatorV2(lp_point);
+        }
+
+    }
+    return true;
+}
+
+trigger auto_gf_AnnihilatorV2_Trigger = null;
+point auto_gf_AnnihilatorV2_lp_point;
+
+void gf_AnnihilatorV2 (point lp_point) {
+    auto_gf_AnnihilatorV2_lp_point = lp_point;
+
+    if (auto_gf_AnnihilatorV2_Trigger == null) {
+        auto_gf_AnnihilatorV2_Trigger = TriggerCreate("auto_gf_AnnihilatorV2_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_AnnihilatorV2_Trigger, false, false);
+}
+
+bool auto_gf_AnnihilatorV2_TriggerFunc (bool testConds, bool runActions) {
+    point lp_point = auto_gf_AnnihilatorV2_lp_point;
+
+    // Variable Declarations
+    int lv_tw;
+    timer lv_maxtimer;
+    unit lv_boss;
+    int lv_objective;
+    int lv_ping1;
+    unitgroup lv_targets;
+    int lv_cooldownreduction;
+    int lv_cooldown;
+    int lv_i;
+    int lv_k;
+    point lv_point;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_tw = c_timerWindowNone;
+    lv_maxtimer = TimerCreate();
+    lv_objective = c_invalidObjectiveId;
+    lv_ping1 = c_invalidPingId;
+    lv_targets = UnitGroupEmpty();
+    lv_cooldownreduction = PowI(2.0, (gv_difficulty + 1.0));
+    lv_cooldown = (1024 / lv_cooldownreduction);
+    lv_point = lp_point;
+
+    // Implementation
+    if ((lv_cooldownreduction == 4)) {
+        lv_cooldownreduction = 8;
+    }
+
+    Wait(3.0, c_timeGame);
+    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
+    if ((gv_mode == 1)) {
+        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/33B276C6"), true, false);
+        lv_tw = TimerWindowLastCreated();
+    }
+
+    ObjectiveCreate(StringExternal("Param/Value/6BC14C24"), StringExternal("Param/Value/F906BC0F"), c_objectiveStateActive, false);
+    lv_objective = ObjectiveLastCreated();
+    UnitCreate(1, "AnnihilatorV2", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
+    lv_boss = UnitLastCreated();
+    UnitSetPropertyFixed(lv_boss, c_unitPropLifeMax, gv_difficulty*gv_difficulty*500+10000);
+    UnitSetPropertyFixed(lv_boss, c_unitPropLife, gv_difficulty*gv_difficulty*500+10000);
+    UnitBehaviorAdd(lv_boss, "ThorInvulnerabilityShield", lv_boss, 1);
+    libNtve_gf_SetUpgradeLevelForPlayer(UnitGetOwner(lv_boss), "AnnihilatorV2", 1);
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
+    PingSetUnit(PingLastCreated(), lv_boss);
+    lv_ping1 = PingLastCreated();
+    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/834DDDB6"), StringExternal("Param/Value/46EC3781"), 0.0, c_transmissionDurationAdd, false);
+    while ((UnitIsAlive(lv_boss) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
+        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
+        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
+        UnitGroupIssueOrder(UnitGroup("Warbot", 6, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), OrderTargetingPoint(AbilityCommand("move", 0), lv_point), c_orderQueueReplace);
+        if ((UnitGetPropertyFixed(lv_boss, c_unitPropLifePercent, c_unitPropCurrent) < 75.0)) {
+        }
+
+        if ((lv_cooldown < 1)) {
+            lv_targets = UnitGroup(null, c_playerAny, RegionCircle(lv_point, 14.0), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterSelf) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+            if ((UnitGroupCount(lv_targets, c_unitCountAll) > 0)) {
+                if ((UnitHasBehavior(lv_boss, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_boss, "annihilatornomovecheck") == false)) {
+                    lv_k = RandomInt(0, 10);
+                    if ((lv_k == 1)) {
+                        lv_cooldown = (1024 / lv_cooldownreduction);
+                        UnitBehaviorAdd(lv_boss, "Dematfieldcheck", lv_boss, 1);
+                    }
+                    else {
+                        if ((lv_k == 2)) {
+                            lv_cooldown = (1024 / lv_cooldownreduction);
+                            gf_LaserTracking(lv_boss);
+                        }
+
+                    }
+                    if ((UnitHasBehavior(lv_boss, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_boss, "annihilatornomovecheck") == false)) {
+                        UnitCreateEffectUnit(lv_boss, "WarbotBLM", UnitGroupRandomUnit(lv_targets, c_unitCountAll));
+                        lv_cooldown = (1024 / lv_cooldownreduction);
+                    }
+
+                }
+
+            }
+
+        }
+        else {
+            lv_cooldown -= 1;
+        }
+        Wait(0.0625, c_timeGame);
+    }
+    lv_i = 0;
+    if ((gv_mode == 1)) {
+        TimerWindowDestroy(lv_tw);
+    }
+
+    if ((UnitIsAlive(lv_boss) == true)) {
+        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
+        UnitKill(lv_boss);
+    }
+    else {
+        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
+        if ((libNtve_gf_UnitGetPropertyKills(lv_boss, c_unitPropCurrent) == 0)) {
+            gf_achievements0killaward(37);
+        }
+
+        TechTreeUpgradeAddLevel(5, "Annihilatorv2RewardUpgrade", 1);
+        gf_gainxp(50000.0);
+        gf_gainrewardbonusall(FixedToInt(5*gv_difficulty));
+        TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/22798DFA"), (StringExternal("Param/Value/2C62435E") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/D9CB7D4E")), 0.0, c_transmissionDurationAdd, false);
+        gf_achievementherokills();
+    }
+    PingDestroy(lv_ping1);
+    Wait(10.0, c_timeGame);
+    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
+    if ((gv_mode == 0) && (gv_stage < 11)) {
+        Wait(60.0, c_timeGame);
+        gf_AnnihilatorV3(lp_point);
+    }
+    else {
+        if ((gv_mode == 0)) {
+            gf_AnnihilatorV3(lp_point);
+        }
+
+    }
+    return true;
+}
+
+trigger auto_gf_AnnihilatorV3_Trigger = null;
+point auto_gf_AnnihilatorV3_lp_point;
+
+void gf_AnnihilatorV3 (point lp_point) {
+    auto_gf_AnnihilatorV3_lp_point = lp_point;
+
+    if (auto_gf_AnnihilatorV3_Trigger == null) {
+        auto_gf_AnnihilatorV3_Trigger = TriggerCreate("auto_gf_AnnihilatorV3_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_AnnihilatorV3_Trigger, false, false);
+}
+
+bool auto_gf_AnnihilatorV3_TriggerFunc (bool testConds, bool runActions) {
+    point lp_point = auto_gf_AnnihilatorV3_lp_point;
+
+    // Variable Declarations
+    int lv_tw;
+    timer lv_maxtimer;
+    unit lv_boss;
+    int lv_objective;
+    int lv_ping1;
+    unitgroup lv_targets;
+    int lv_cooldownreduction;
+    int lv_cooldown;
+    int lv_i;
+    int lv_k;
+    point lv_point;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_tw = c_timerWindowNone;
+    lv_maxtimer = TimerCreate();
+    lv_objective = c_invalidObjectiveId;
+    lv_ping1 = c_invalidPingId;
+    lv_targets = UnitGroupEmpty();
+    lv_cooldownreduction = PowI(2.0, (gv_difficulty + 1.0));
+    lv_cooldown = (1024 / lv_cooldownreduction);
+    lv_point = lp_point;
+
+    // Implementation
+    if ((lv_cooldownreduction == 4)) {
+        lv_cooldownreduction = 8;
+        gf_AnnihilatorV3(null);
+    }
+
+    Wait(3.0, c_timeGame);
+    ObjectiveCreate(StringExternal("Param/Value/84BB1F64"), StringExternal("Param/Value/50812D33"), c_objectiveStateActive, false);
+    TimerStart(lv_maxtimer, 360.0, false, c_timeGame);
+    if ((gv_mode == 1)) {
+        TimerWindowCreate(lv_maxtimer, StringExternal("Param/Value/C62C1DC9"), true, false);
+        lv_tw = TimerWindowLastCreated();
+    }
+
+    lv_objective = ObjectiveLastCreated();
+    UnitCreate(1, "AnnihilatorV3", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
+    lv_boss = UnitLastCreated();
+    UnitSetPropertyFixed(lv_boss, c_unitPropLifeMax, gv_difficulty*gv_difficulty*650+12000);
+    UnitSetPropertyFixed(lv_boss, c_unitPropLife, gv_difficulty*gv_difficulty*650+12000);
+    UnitBehaviorAdd(lv_boss, "ThorInvulnerabilityShield", lv_boss, 1);
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
+    PingSetUnit(PingLastCreated(), lv_boss);
+    lv_ping1 = PingLastCreated();
+    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/517F3294"), StringExternal("Param/Value/A1A7E8B1"), 0.0, c_transmissionDurationAdd, false);
+    gf_BansheeDropBeam(lv_boss, 10-gv_difficulty);
+    while ((UnitIsAlive(lv_boss) == true) && ((gv_mode == 0) || (TimerGetRemaining(lv_maxtimer) > 1.0))) {
+        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
+        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
+        UnitGroupIssueOrder(UnitGroup("Warbot", 6, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), OrderTargetingPoint(AbilityCommand("move", 0), lv_point), c_orderQueueReplace);
+        if ((UnitGetPropertyFixed(lv_boss, c_unitPropLifePercent, c_unitPropCurrent) < 75.0)) {
+        }
+
+        if ((lv_cooldown < 1)) {
+            lv_targets = UnitGroup(null, c_playerAny, RegionCircle(lv_point, 14.0), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterSelf) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
+            if ((UnitGroupCount(lv_targets, c_unitCountAll) > 0)) {
+                if ((UnitHasBehavior(lv_boss, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_boss, "annihilatornomovecheck") == false)) {
+                    lv_k = RandomInt(0, 10);
+                    if ((lv_k == 1)) {
+                        lv_cooldown = (1024 / lv_cooldownreduction);
+                        UnitBehaviorAdd(lv_boss, "Dematfieldcheck", lv_boss, 1);
+                    }
+                    else {
+                        if ((lv_k == 2)) {
+                            lv_cooldown = (1024 / lv_cooldownreduction);
+                            gf_LaserTracking(lv_boss);
+                        }
+
+                    }
+                    if ((UnitHasBehavior(lv_boss, "Dematfieldcheck") == false) && (UnitHasBehavior(lv_boss, "annihilatornomovecheck") == false)) {
+                        UnitCreateEffectUnit(lv_boss, "WarbotBLM", UnitGroupRandomUnit(lv_targets, c_unitCountAll));
+                        lv_cooldown = (1024 / lv_cooldownreduction);
+                    }
+
+                }
+
+            }
+
+        }
+        else {
+            lv_cooldown -= 1;
+        }
+        Wait(0.0625, c_timeGame);
+    }
+    lv_i = 0;
+    if ((gv_mode == 1)) {
+        TimerWindowDestroy(lv_tw);
+    }
+
+    if ((UnitIsAlive(lv_boss) == true)) {
+        ObjectiveSetState(lv_objective, c_objectiveStateFailed);
+        UnitKill(lv_boss);
+    }
+    else {
+        ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
+        if ((libNtve_gf_UnitGetPropertyKills(lv_boss, c_unitPropCurrent) == 0)) {
+            gf_achievements0killaward(38);
+        }
+
+        gf_gainxp(75000.0);
+        gf_gainrewardbonusall(FixedToInt(5*gv_difficulty));
+        TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/28DF4B12"), (StringExternal("Param/Value/DCA6CC87") + IntToText(FixedToInt(gv_difficulty*25)) + StringExternal("Param/Value/0C9EA65C")), 0.0, c_transmissionDurationAdd, false);
+        TechTreeUpgradeAddLevel(5, "Ann3Reward", 1);
+        gf_achievementherokills();
+    }
+    PingDestroy(lv_ping1);
+    Wait(10.0, c_timeGame);
+    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
+    if ((gv_mode == 0) && (gv_stage < 11)) {
+        Wait(60.0, c_timeGame);
+        gf_Odin(lv_point);
+    }
+    else {
+        if ((gv_mode == 0)) {
+            gf_Odin(lv_point);
+        }
+
+    }
+    return true;
+}
+
+trigger auto_gf_Odin_Trigger = null;
+point auto_gf_Odin_lp_point;
+
+void gf_Odin (point lp_point) {
+    auto_gf_Odin_lp_point = lp_point;
+
+    if (auto_gf_Odin_Trigger == null) {
+        auto_gf_Odin_Trigger = TriggerCreate("auto_gf_Odin_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_Odin_Trigger, false, false);
+}
+
+bool auto_gf_Odin_TriggerFunc (bool testConds, bool runActions) {
+    point lp_point = auto_gf_Odin_lp_point;
+
+    // Variable Declarations
+    unit lv_boss;
+    int lv_objective;
+    int lv_ping1;
+    point lv_point;
+    timer lv_dematimer;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_objective = c_invalidObjectiveId;
+    lv_ping1 = c_invalidPingId;
+    lv_point = lp_point;
+    lv_dematimer = TimerCreate();
+
+    // Implementation
+    Wait(3.0, c_timeGame);
+    ObjectiveCreate(StringExternal("Param/Value/BBF6E325"), StringExternal("Param/Value/B4FAE89B"), c_objectiveStateActive, false);
+    lv_objective = ObjectiveLastCreated();
+    UnitCreate(1, "OdinV1", c_unitCreateIgnorePlacement, 6, lv_point, 90.0);
+    lv_boss = UnitLastCreated();
+    UnitSetPropertyFixed(lv_boss, c_unitPropLifeMax, gv_difficulty*gv_difficulty*1250+5000);
+    UnitSetPropertyFixed(lv_boss, c_unitPropLife, gv_difficulty*gv_difficulty*1250+5000);
+    UnitBehaviorAdd(lv_boss, "ThorInvulnerabilityShield", lv_boss, 1);
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingObjective", libNtve_gf_PointFromXYZ(0.0, 0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
+    PingSetUnit(PingLastCreated(), lv_boss);
+    lv_ping1 = PingLastCreated();
+    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/CC4A03C3"), StringExternal("Param/Value/CEB4D599"), 0.0, c_transmissionDurationAdd, false);
+    TimerStart(lv_dematimer, 60.0, false, c_timeGame);
+    gf_ScienceVessels(lv_boss);
+    gf_TargetDrones(lv_boss);
+    gf_BansheeDropBeam(lv_boss, 10-gv_difficulty);
+    while ((UnitIsAlive(lv_boss) == true)) {
+        VisRevealArea(6, RegionCircle(lv_point, 15.0), 20.0, false);
+        VisRevealArea(5, RegionCircle(lv_point, 15.0), 20.0, false);
+        UnitGroupIssueOrder(UnitGroup("Warbot", 6, RegionCircle(lv_point, 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), OrderTargetingPoint(AbilityCommand("move", 0), lv_point), c_orderQueueReplace);
+        if ((UnitGetPropertyFixed(lv_boss, c_unitPropLifePercent, c_unitPropCurrent) < 75.0)) {
+        }
+
+        if ((TimerGetRemaining(lv_dematimer) < 1.0)) {
+            UnitBehaviorAdd(lv_boss, "Dematfieldcheck", lv_boss, 1);
+            TimerStart(lv_dematimer, 10+(60/gv_difficulty), false, c_timeGame);
+        }
+
+        Wait(0.0625, c_timeGame);
+    }
+    ObjectiveSetState(lv_objective, c_objectiveStateCompleted);
+    gf_achievements0killaward(60);
+    gf_gainxp(250000.0);
+    gf_gainrewardbonusall(FixedToInt(15*gv_difficulty));
+    TransmissionSend(PlayerGroupAll(), TransmissionSource(), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/AA1A4D43"), (StringExternal("Param/Value/284EEA17") + IntToText(FixedToInt(gv_difficulty*75)) + StringExternal("Param/Value/B241321D")), 0.0, c_transmissionDurationAdd, false);
+    TechTreeUpgradeAddLevel(5, "Vengeance", 1);
+    PingDestroy(lv_ping1);
+    gf_achievementherokills();
+    Wait(10.0, c_timeGame);
+    ObjectiveShow(lv_objective, PlayerGroupAll(), false);
+    return true;
+}
+
+trigger auto_gf_ScienceVessels_Trigger = null;
+unit auto_gf_ScienceVessels_lp_caster;
+
+void gf_ScienceVessels (unit lp_caster) {
+    auto_gf_ScienceVessels_lp_caster = lp_caster;
+
+    if (auto_gf_ScienceVessels_Trigger == null) {
+        auto_gf_ScienceVessels_Trigger = TriggerCreate("auto_gf_ScienceVessels_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_ScienceVessels_Trigger, false, false);
+}
+
+bool auto_gf_ScienceVessels_TriggerFunc (bool testConds, bool runActions) {
+    unit lp_caster = auto_gf_ScienceVessels_lp_caster;
+
+    // Variable Declarations
+    unitgroup lv_defenders;
+    int lv_defenderc;
+    int lv_restimer;
+    int lv_i;
+    int lv_j;
+    fixed[13] lv_angle;
+
+    // Automatic Variable Declarations
+    unitgroup auto050BC371_g;
+    int auto050BC371_u;
+    unit auto050BC371_var;
+
+    // Variable Initialization
+    lv_defenders = UnitGroupEmpty();
+    lv_defenderc = FixedToInt(gv_difficulty);
+    lv_restimer = (160 * (lv_defenderc-1));
+
+    // Implementation
+    while ((UnitIsAlive(lp_caster) == true)) {
+        if ((UnitGroupCount(lv_defenders, c_unitCountAll) < lv_defenderc)) {
+            if ((((lv_defenderc - UnitGroupCount(lv_defenders, c_unitCountAll)) / 2) < 1)) {
+                lv_i = 1;
+            }
+            else {
+                lv_i = ((lv_defenderc - UnitGroupCount(lv_defenders, c_unitCountAll)) / 2);
+            }
+            while ((lv_i > 0)) {
+                lv_i -= 1;
+                if ((ModI(lv_restimer, 160) == 0)) {
+                    libNtve_gf_CreateUnitsWithDefaultFacing(1, "ScienceVessel", c_unitCreateIgnorePlacement, 6, PointWithOffsetPolar(UnitGetPosition(lp_caster), 4.0, libNtve_gf_RandomAngle()));
+                    UnitGroupAdd(lv_defenders, UnitLastCreated());
+                    lv_angle[UnitGroupCount(lv_defenders, c_unitCountAll)] = AngleBetweenPoints(UnitGetPosition(lp_caster), UnitGetPosition(UnitLastCreated()));
+                }
+
+                lv_restimer -= 1;
+            }
+        }
+
+        lv_i = 0;
+        if ((UnitGroupCount(lv_defenders, c_unitCountAll) >= 1)) {
+            while ((lv_i < UnitGroupCount(lv_defenders, c_unitCountAll))) {
+                lv_i += 1;
+                if ((UnitIsAlive(UnitGroupUnit(lv_defenders, lv_i)) == true)) {
+                    lv_angle[lv_i] += 1.0;
+                    UnitSetPosition(UnitGroupUnit(lv_defenders, lv_i), PointWithOffsetPolar(UnitGetPosition(lp_caster), 4.0, lv_angle[lv_i]), true);
+                }
+                else {
+                    lv_j = lv_i;
+                    while ((lv_j < UnitGroupCount(lv_defenders, c_unitCountAll))) {
+                        lv_angle[lv_j] = lv_angle[lv_j+1];
+                        lv_j += 1;
+                    }
+                    UnitGroupRemove(lv_defenders, UnitGroupUnit(lv_defenders, lv_i));
+                    lv_i -= 1;
+                    lv_restimer += 160;
+                }
+            }
+        }
+
+        Wait(0.0625, c_timeGame);
+    }
+    auto050BC371_g = lv_defenders;
+    auto050BC371_u = UnitGroupCount(auto050BC371_g, c_unitCountAll);
+    for (;; auto050BC371_u -= 1) {
+        auto050BC371_var = UnitGroupUnitFromEnd(auto050BC371_g, auto050BC371_u);
+        if (auto050BC371_var == null) { break; }
+        UnitKill(auto050BC371_var);
+    }
+    return true;
+}
+
+trigger auto_gf_TargetDrones_Trigger = null;
+unit auto_gf_TargetDrones_lp_caster;
+
+void gf_TargetDrones (unit lp_caster) {
+    auto_gf_TargetDrones_lp_caster = lp_caster;
+
+    if (auto_gf_TargetDrones_Trigger == null) {
+        auto_gf_TargetDrones_Trigger = TriggerCreate("auto_gf_TargetDrones_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_TargetDrones_Trigger, false, false);
+}
+
+bool auto_gf_TargetDrones_TriggerFunc (bool testConds, bool runActions) {
+    unit lp_caster = auto_gf_TargetDrones_lp_caster;
+
+    // Variable Declarations
+    unitgroup lv_targetdrones;
+    int lv_targetdronesc;
+    int[13] lv_targettimer;
+    fixed lv_targetspeed;
+    unit[13] lv_targets;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    unitgroup auto99CF3495_g;
+    int auto99CF3495_u;
+    unit auto99CF3495_var;
+
+    // Variable Initialization
+    lv_targetdrones = UnitGroupEmpty();
+    lv_targetdronesc = FixedToInt(1+(gv_difficulty/2.5));
+    lv_targetspeed = (gv_difficulty*0.03125);
+
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(lv_targetdronesc, "ThorAttackIndicator", c_unitCreateIgnorePlacement, 6, UnitGetPosition(lp_caster));
+    UnitGroupAddUnitGroup(lv_targetdrones, UnitLastCreatedGroup());
+    while ((UnitIsAlive(lp_caster) == true)) {
+        lv_i = 0;
+        while ((lv_i < UnitGroupCount(lv_targetdrones, c_unitCountAll))) {
+            lv_i += 1;
+            if ((UnitIsAlive(UnitGroupUnit(lv_targetdrones, lv_i)) == false)) {
+                UnitGroupRemove(lv_targetdrones, UnitGroupUnit(lv_targetdrones, lv_i));
+                lv_i -= 1;
+            }
+            else {
+                if (((lv_targettimer[lv_i] == 0) || (lv_targets[lv_i] == null) || (UnitIsAlive(lv_targets[lv_i]) == false))) {
+                    lv_targets[lv_i] = UnitGroupRandomUnit(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(UnitGetPosition(lp_caster), 14.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive);
+                    if ((lv_targets[lv_i] != null)) {
+                        lv_targettimer[lv_i] = 160;
+                    }
+
+                }
+                else {
+                    lv_targettimer[lv_i] -= 1;
+                }
+                if ((lv_targets[lv_i] != null)) {
+                    UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), lv_targetspeed, (AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lv_targets[lv_i])) + 0.0)), true);
+                }
+                else {
+                    if ((DistanceBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lp_caster)) > 10.0)) {
+                        UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), 0.125, AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), UnitGetPosition(lp_caster))), true);
+                    }
+                    else {
+                        UnitSetPosition(UnitGroupUnit(lv_targetdrones, lv_i), PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_targetdrones, lv_i)), 0.125, libNtve_gf_RandomAngle()), true);
+                    }
+                }
+            }
+        }
+        Wait(0.0625, c_timeGame);
+    }
+    auto99CF3495_g = lv_targetdrones;
+    auto99CF3495_u = UnitGroupCount(auto99CF3495_g, c_unitCountAll);
+    for (;; auto99CF3495_u -= 1) {
+        auto99CF3495_var = UnitGroupUnitFromEnd(auto99CF3495_g, auto99CF3495_u);
+        if (auto99CF3495_var == null) { break; }
+        UnitKill(auto99CF3495_var);
+    }
+    return true;
+}
+
+void gf_Firewall (unit lp_caster, point lp_point) {
+    // Variable Declarations
+    fixed lv_angle;
+
+    // Automatic Variable Declarations
+    const int auto51A078BE_ae = 60;
+    int auto51A078BE_var;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((UnitBehaviorCount(lp_caster, "AnnihilatorFirewall") == 0)) {
+        auto51A078BE_var = 1;
+        for ( ; auto51A078BE_var <= auto51A078BE_ae; auto51A078BE_var += 1 ) {
+            UnitCreateEffectPoint(lp_caster, "AnnihilatorFirewallCP", PointWithOffsetPolar(lp_point, 13.0, lv_angle));
+            lv_angle += 6.0;
+        }
+        UnitBehaviorAdd(lp_caster, "AnnihilatorFirewall", lp_caster, 1);
+    }
+
+}
+
+void gf_Flamethrower (unit lp_caster) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((UnitBehaviorCount(lp_caster, "AnnihilatorV1Flamethrower") > 0)) {
+        UnitBehaviorAdd(lp_caster, "AnnihilatorV1Flamethrower", lp_caster, 1);
+    }
+    else {
+        UnitBehaviorAdd(lp_caster, "AnnihilatorV1Flamethrower", lp_caster, 1);
+        while ((UnitBehaviorCount(lp_caster, "AnnihilatorV1Flamethrower") > 0)) {
+            UnitSetFacing(lp_caster, (UnitGetFacing(lp_caster) + 3.0), 0.0625);
+            Wait(0.0625, c_timeGame);
+        }
+    }
+}
+
+trigger auto_gf_LaserTracking_Trigger = null;
+unit auto_gf_LaserTracking_lp_caster;
+
+void gf_LaserTracking (unit lp_caster) {
+    auto_gf_LaserTracking_lp_caster = lp_caster;
+
+    if (auto_gf_LaserTracking_Trigger == null) {
+        auto_gf_LaserTracking_Trigger = TriggerCreate("auto_gf_LaserTracking_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_LaserTracking_Trigger, false, false);
+}
+
+bool auto_gf_LaserTracking_TriggerFunc (bool testConds, bool runActions) {
+    unit lp_caster = auto_gf_LaserTracking_lp_caster;
+
+    // Variable Declarations
+    unitgroup lv_targets;
+    unitgroup lv_trackers;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_targets = UnitGroupEmpty();
+    lv_trackers = UnitGroupEmpty();
+
+    // Implementation
+    lv_targets = UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(lp_caster), 14.0), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterSelf) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
+    if ((UnitGroupCount(lv_targets, c_unitCountAll) > 0)) {
+        UnitBehaviorAdd(lp_caster, "annihilatornomovecheck", lp_caster, 1);
+        while ((UnitGroupCount(lv_targets, c_unitCountAll) > 0)) {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "AnnihilatorStopMoveIndicator", c_unitCreateIgnorePlacement, 6, UnitGetPosition(UnitGroupUnit(lv_targets, 1)));
+            UnitGroupAdd(lv_trackers, UnitLastCreated());
+            UnitBehaviorAdd(UnitLastCreated(), "ThorStopMoveIndicatorFollow", UnitGroupUnit(lv_targets, 1), 1);
+            UnitBehaviorAdd(UnitLastCreated(), "ThorStopMoveIndicatorFate", lp_caster, 1);
+            UnitGroupRemove(lv_targets, UnitGroupUnit(lv_targets, 1));
+        }
+    }
+
+    while ((UnitGroupCount(lv_trackers, c_unitCountAll) > 0)) {
+        lv_i = 0;
+        while ((lv_i < UnitGroupCount(lv_trackers, c_unitCountAll))) {
+            lv_i += 1;
+            if ((UnitIsAlive(UnitGroupUnit(lv_trackers, lv_i)) == false)) {
+                UnitGroupRemove(lv_trackers, UnitGroupUnit(lv_trackers, lv_i));
+                lv_i -= 1;
+            }
+            else {
+                if ((UnitGroupCount(UnitGroupAlliance(UnitGetOwner(lp_caster), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(UnitGroupUnit(lv_trackers, lv_i)), 1.5), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAll) < 1)) {
+                    UnitCreateEffectPoint(lp_caster, "AnnihilatorLaserTrackingDamage", UnitGetPosition(UnitGroupUnit(lv_trackers, lv_i)));
+                    UnitRemove(UnitGroupUnit(lv_trackers, lv_i));
+                    UnitGroupRemove(lv_trackers, UnitGroupUnit(lv_trackers, lv_i));
+                    lv_i -= 1;
+                }
+
+            }
+        }
+        Wait(0.0625, c_timeGame);
+    }
+    return true;
+}
+
+trigger auto_gf_BansheeDropBeam_Trigger = null;
+unit auto_gf_BansheeDropBeam_lp_hostunit;
+fixed auto_gf_BansheeDropBeam_lp_delay;
+
+void gf_BansheeDropBeam (unit lp_hostunit, fixed lp_delay) {
+    auto_gf_BansheeDropBeam_lp_hostunit = lp_hostunit;
+    auto_gf_BansheeDropBeam_lp_delay = lp_delay;
+
+    if (auto_gf_BansheeDropBeam_Trigger == null) {
+        auto_gf_BansheeDropBeam_Trigger = TriggerCreate("auto_gf_BansheeDropBeam_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_BansheeDropBeam_Trigger, false, false);
+}
+
+bool auto_gf_BansheeDropBeam_TriggerFunc (bool testConds, bool runActions) {
+    unit lp_hostunit = auto_gf_BansheeDropBeam_lp_hostunit;
+    fixed lp_delay = auto_gf_BansheeDropBeam_lp_delay;
+
+    // Variable Declarations
+    unit lv_banshee;
+    unit lv_target;
+    unitgroup lv_availabletargets;
+    region lv_region;
+    int lv_n;
+    point lv_hostpoint;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_availabletargets = UnitGroupEmpty();
+    lv_region = RegionCircle(UnitGetPosition(lp_hostunit), 12.0);
+    lv_hostpoint = UnitGetPosition(lp_hostunit);
+
+    // Implementation
+    while ((UnitIsAlive(lp_hostunit) == true)) {
+        lv_availabletargets = UnitGroup(null, c_playerAny, lv_region, UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        lv_n = UnitGroupCount(lv_availabletargets, c_unitCountAll);
+        if ((lv_n > 0)) {
+            lv_target = UnitGroupRandomUnit(lv_availabletargets, c_unitCountAll);
+            if ((UnitIsAlive(lv_banshee) == false)) {
+                libNtve_gf_UnitCreateFacingPoint(1, "Banshee", c_unitCreateIgnorePlacement, 6, PointWithOffsetPolar(lv_hostpoint, 15.0, libNtve_gf_RandomAngle()), lv_hostpoint);
+                lv_banshee = UnitLastCreated();
+            }
+
+            UnitIssueOrder(lv_banshee, OrderTargetingUnit(AbilityCommand("DropBeam", 0), lv_target), c_orderQueueReplace);
+        }
+        else {
+            if ((UnitIsAlive(lv_banshee) == false)) {
+                UnitKill(lv_banshee);
+            }
+
+        }
+        while ((UnitIsAlive(lv_target) == true) && (UnitIsAlive(lv_banshee) == true)) {
+            UnitIssueOrder(lv_banshee, OrderTargetingUnit(AbilityCommand("DropBeam", 0), lv_target), c_orderQueueReplace);
+            Wait(0.125, c_timeGame);
+        }
+        if ((UnitIsAlive(lv_banshee) == false)) {
+            Wait(lp_delay, c_timeGame);
+        }
+        else {
+            Wait(0.125, c_timeGame);
+        }
+    }
     return true;
 }
 
@@ -5636,6 +5412,7 @@ void gf_TalentPressedGeneric (int lp_row, int lp_column, int lp_player) {
         TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
         libNtve_gf_SetDialogItemText(lv_dialogItem, gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
         gv_talentpointsavailable[lp_player] -= 1;
+        gv_talents[lp_row][lp_column][lp_player].lv_req = (gv_talents[lp_row][lp_column][lp_player].lv_req + gv_talents[lp_row][lp_column][lp_player].lv_reqIncrease);
     }
     libNtve_gf_SetDialogItemText(gv_talents[8][0][lp_player].lv_dialogItem, gf_GetTalentPointsTextForPlayer(lp_player), lv_pg);
 }
@@ -5676,6 +5453,7 @@ void gf_TalentPressedFire (int lp_row, int lp_column, int lp_player) {
     string lv_upgrade;
     int lv_upgradeLevel;
     int lv_upgradeMax;
+    int lv_dialogItem;
     int lv_req;
     text lv_name;
     playergroup lv_pg;
@@ -5685,6 +5463,7 @@ void gf_TalentPressedFire (int lp_row, int lp_column, int lp_player) {
     lv_upgrade = gv_talents[lp_row][lp_column][lp_player].lv_upgrade;
     lv_upgradeLevel = TechTreeUpgradeCount(lp_player, gv_talents[lp_row][lp_column][lp_player].lv_upgrade, c_techCountCompleteOnly);
     lv_upgradeMax = CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, lv_upgrade, "MaxLevel", lp_player);
+    lv_dialogItem = gv_talents[lp_row][lp_column][lp_player].lv_dialogItem;
     lv_req = gv_talents[lp_row][lp_column][lp_player].lv_req;
     lv_name = gv_talents[lp_row][lp_column][lp_player].lv_name;
     lv_pg = PlayerGroupSingle(lp_player);
@@ -5692,8 +5471,9 @@ void gf_TalentPressedFire (int lp_row, int lp_column, int lp_player) {
     // Implementation
     if ((gf_Currentlevel() >= lv_req) && (lv_upgradeLevel < lv_upgradeMax)) {
         TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
+        libNtve_gf_SetDialogItemText(lv_dialogItem, gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
         gv_talentpointsavailable[lp_player] -= 1;
+        gv_talents[lp_row][lp_column][lp_player].lv_req = (gv_talents[lp_row][lp_column][lp_player].lv_req + gv_talents[lp_row][lp_column][lp_player].lv_reqIncrease);
         if ((lp_row == 2) && (lp_column == 0) && (lv_upgradeLevel > 0)) {
             TechTreeUpgradeAddLevel(lp_player, "FireHeroBlazingSpeed2", 1);
         }
@@ -5740,6 +5520,7 @@ void gf_TalentPressedLightning (int lp_row, int lp_column, int lp_player) {
     string lv_upgrade;
     int lv_upgradeLevel;
     int lv_upgradeMax;
+    int lv_dialogItem;
     int lv_req;
     text lv_name;
     playergroup lv_pg;
@@ -5749,6 +5530,7 @@ void gf_TalentPressedLightning (int lp_row, int lp_column, int lp_player) {
     lv_upgrade = gv_talents[lp_row][lp_column][lp_player].lv_upgrade;
     lv_upgradeLevel = TechTreeUpgradeCount(lp_player, gv_talents[lp_row][lp_column][lp_player].lv_upgrade, c_techCountCompleteOnly);
     lv_upgradeMax = CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, lv_upgrade, "MaxLevel", lp_player);
+    lv_dialogItem = gv_talents[lp_row][lp_column][lp_player].lv_dialogItem;
     lv_req = gv_talents[lp_row][lp_column][lp_player].lv_req;
     lv_name = gv_talents[lp_row][lp_column][lp_player].lv_name;
     lv_pg = PlayerGroupSingle(lp_player);
@@ -5756,8 +5538,9 @@ void gf_TalentPressedLightning (int lp_row, int lp_column, int lp_player) {
     // Implementation
     if ((gf_Currentlevel() >= lv_req) && (lv_upgradeLevel < lv_upgradeMax)) {
         TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
+        libNtve_gf_SetDialogItemText(lv_dialogItem, gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
         gv_talentpointsavailable[lp_player] -= 1;
+        gv_talents[lp_row][lp_column][lp_player].lv_req = (gv_talents[lp_row][lp_column][lp_player].lv_req + gv_talents[lp_row][lp_column][lp_player].lv_reqIncrease);
         if ((lp_row == 0) && (lp_column == 0)) {
             UnitSetCustomValue(gv_hero[lp_player], 1, (UnitGetCustomValue(gv_hero[lp_player], 1) + 1.0));
         }
@@ -5829,6 +5612,7 @@ void gf_TalentPressedPoison (int lp_row, int lp_column, int lp_player) {
     string lv_upgrade;
     int lv_upgradeLevel;
     int lv_upgradeMax;
+    int lv_dialogItem;
     int lv_req;
     text lv_name;
     playergroup lv_pg;
@@ -5838,6 +5622,7 @@ void gf_TalentPressedPoison (int lp_row, int lp_column, int lp_player) {
     lv_upgrade = gv_talents[lp_row][lp_column][lp_player].lv_upgrade;
     lv_upgradeLevel = TechTreeUpgradeCount(lp_player, gv_talents[lp_row][lp_column][lp_player].lv_upgrade, c_techCountCompleteOnly);
     lv_upgradeMax = CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, lv_upgrade, "MaxLevel", lp_player);
+    lv_dialogItem = gv_talents[lp_row][lp_column][lp_player].lv_dialogItem;
     lv_req = gv_talents[lp_row][lp_column][lp_player].lv_req;
     lv_name = gv_talents[lp_row][lp_column][lp_player].lv_name;
     lv_pg = PlayerGroupSingle(lp_player);
@@ -5845,45 +5630,46 @@ void gf_TalentPressedPoison (int lp_row, int lp_column, int lp_player) {
     // Implementation
     if ((gf_Currentlevel() >= lv_req) && (lv_upgradeLevel < lv_upgradeMax)) {
         TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
+        libNtve_gf_SetDialogItemText(lv_dialogItem, gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
         gv_talentpointsavailable[lp_player] -= 1;
-    }
-    if ((lp_row == 0) && (lp_column == 0)) {
-        UnitSetCustomValue(gv_hero[lp_player], 0, (UnitGetCustomValue(gv_hero[lp_player], 0) + 0.25));
-    }
+        gv_talents[lp_row][lp_column][lp_player].lv_req = (gv_talents[lp_row][lp_column][lp_player].lv_req + gv_talents[lp_row][lp_column][lp_player].lv_reqIncrease);
+        if ((lp_row == 0) && (lp_column == 0)) {
+            UnitSetCustomValue(gv_hero[lp_player], 0, (UnitGetCustomValue(gv_hero[lp_player], 0) + 0.25));
+        }
 
-    if ((lp_row == 1) && (lp_column == 0)) {
-        UnitSetCustomValue(gv_hero[lp_player], 1, (UnitGetCustomValue(gv_hero[lp_player], 1) + 1.0));
-    }
+        if ((lp_row == 1) && (lp_column == 0)) {
+            UnitSetCustomValue(gv_hero[lp_player], 1, (UnitGetCustomValue(gv_hero[lp_player], 1) + 1.0));
+        }
 
-    if ((lp_row == 2) && (lp_column == 0)) {
-        UnitSetCustomValue(gv_hero[lp_player], 2, (UnitGetCustomValue(gv_hero[lp_player], 2) + 5.0));
-    }
+        if ((lp_row == 2) && (lp_column == 0)) {
+            UnitSetCustomValue(gv_hero[lp_player], 2, (UnitGetCustomValue(gv_hero[lp_player], 2) + 5.0));
+        }
 
-    if ((lp_row == 5) && (lp_column == 0)) {
-        UnitSetCustomValue(gv_hero[lp_player], 3, (UnitGetCustomValue(gv_hero[lp_player], 3) + 1.0));
-    }
+        if ((lp_row == 5) && (lp_column == 0)) {
+            UnitSetCustomValue(gv_hero[lp_player], 3, (UnitGetCustomValue(gv_hero[lp_player], 3) + 1.0));
+        }
 
-    if ((lp_row == 0) && (lp_column == 1)) {
-        UnitSetCustomValue(gv_hero[lp_player], 5, (UnitGetCustomValue(gv_hero[lp_player], 5) + 0.25));
-    }
+        if ((lp_row == 0) && (lp_column == 1)) {
+            UnitSetCustomValue(gv_hero[lp_player], 5, (UnitGetCustomValue(gv_hero[lp_player], 5) + 0.25));
+        }
 
-    if ((lp_row == 1) && (lp_column == 1)) {
-        UnitSetCustomValue(gv_hero[lp_player], 6, (UnitGetCustomValue(gv_hero[lp_player], 6) + 0.5));
-    }
+        if ((lp_row == 1) && (lp_column == 1)) {
+            UnitSetCustomValue(gv_hero[lp_player], 6, (UnitGetCustomValue(gv_hero[lp_player], 6) + 0.5));
+        }
 
-    if ((lp_row == 5) && (lp_column == 1)) {
-        UnitSetCustomValue(gv_hero[lp_player], 7, (UnitGetCustomValue(gv_hero[lp_player], 7) + 1.0));
-    }
+        if ((lp_row == 5) && (lp_column == 1)) {
+            UnitSetCustomValue(gv_hero[lp_player], 7, (UnitGetCustomValue(gv_hero[lp_player], 7) + 1.0));
+        }
 
-    if ((lp_row == 1) && (lp_column == 3)) {
-        UnitSetCustomValue(gv_hero[lp_player], 16, (UnitGetCustomValue(gv_hero[lp_player], 16) + 1.0));
-    }
+        if ((lp_row == 1) && (lp_column == 3)) {
+            UnitSetCustomValue(gv_hero[lp_player], 16, (UnitGetCustomValue(gv_hero[lp_player], 16) + 1.0));
+        }
 
-    if ((lp_row == 0) && (lp_column == 4)) {
-        UnitSetCustomValue(gv_hero[lp_player], 20, (UnitGetCustomValue(gv_hero[lp_player], 20) + 1.0));
-    }
+        if ((lp_row == 0) && (lp_column == 4)) {
+            UnitSetCustomValue(gv_hero[lp_player], 20, (UnitGetCustomValue(gv_hero[lp_player], 20) + 1.0));
+        }
 
+    }
     libNtve_gf_SetDialogItemText(gv_talents[8][0][lp_player].lv_dialogItem, gf_GetTalentPointsTextForPlayer(lp_player), lv_pg);
 }
 
@@ -6106,6 +5892,7 @@ void gf_TalentPressedBeam (int lp_row, int lp_column, int lp_player) {
     string lv_upgrade;
     int lv_upgradeLevel;
     int lv_upgradeMax;
+    int lv_dialogItem;
     int lv_req;
     text lv_name;
     playergroup lv_pg;
@@ -6115,6 +5902,7 @@ void gf_TalentPressedBeam (int lp_row, int lp_column, int lp_player) {
     lv_upgrade = gv_talents[lp_row][lp_column][lp_player].lv_upgrade;
     lv_upgradeLevel = TechTreeUpgradeCount(lp_player, gv_talents[lp_row][lp_column][lp_player].lv_upgrade, c_techCountCompleteOnly);
     lv_upgradeMax = CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, lv_upgrade, "MaxLevel", lp_player);
+    lv_dialogItem = gv_talents[lp_row][lp_column][lp_player].lv_dialogItem;
     lv_req = gv_talents[lp_row][lp_column][lp_player].lv_req;
     lv_name = gv_talents[lp_row][lp_column][lp_player].lv_name;
     lv_pg = PlayerGroupSingle(lp_player);
@@ -6122,26 +5910,27 @@ void gf_TalentPressedBeam (int lp_row, int lp_column, int lp_player) {
     // Implementation
     if ((gf_Currentlevel() >= lv_req) && (lv_upgradeLevel < lv_upgradeMax)) {
         TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
+        libNtve_gf_SetDialogItemText(lv_dialogItem, gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
         gv_talentpointsavailable[lp_player] -= 1;
-    }
+        gv_talents[lp_row][lp_column][lp_player].lv_req = (gv_talents[lp_row][lp_column][lp_player].lv_req + gv_talents[lp_row][lp_column][lp_player].lv_reqIncrease);
+        if ((lp_row == 1) && (lp_column == 1)) {
+            if ((lv_upgradeLevel == 0)) {
+                TechTreeUpgradeAddLevel(lp_player, "BeamHeroStretch1", 1);
+            }
+            else {
+                TechTreeUpgradeAddLevel(lp_player, "BeamHeroStretch2", 1);
+            }
+        }
 
-    if ((lp_row == 1) && (lp_column == 1)) {
-        if ((lv_upgradeLevel == 0)) {
-            TechTreeUpgradeAddLevel(lp_player, "BeamHeroStretch1", 1);
+        if ((lp_row == 5) && (lp_column == 1)) {
+            if ((lv_upgradeLevel == 0)) {
+                TechTreeUpgradeAddLevel(lp_player, "BeamHeroLink1", 1);
+            }
+            else {
+                TechTreeUpgradeAddLevel(lp_player, "BeamHeroLink2", 1);
+            }
         }
-        else {
-            TechTreeUpgradeAddLevel(lp_player, "BeamHeroStretch2", 1);
-        }
-    }
 
-    if ((lp_row == 5) && (lp_column == 1)) {
-        if ((lv_upgradeLevel == 0)) {
-            TechTreeUpgradeAddLevel(lp_player, "BeamHeroLink1", 1);
-        }
-        else {
-            TechTreeUpgradeAddLevel(lp_player, "BeamHeroLink2", 1);
-        }
     }
 
     libNtve_gf_SetDialogItemText(gv_talents[8][0][lp_player].lv_dialogItem, gf_GetTalentPointsTextForPlayer(lp_player), lv_pg);
@@ -6212,6 +6001,7 @@ void gf_TalentPressedEarth (int lp_row, int lp_column, int lp_player) {
     string lv_upgrade;
     int lv_upgradeLevel;
     int lv_upgradeMax;
+    int lv_dialogItem;
     int lv_req;
     text lv_name;
     playergroup lv_pg;
@@ -6222,6 +6012,7 @@ void gf_TalentPressedEarth (int lp_row, int lp_column, int lp_player) {
     lv_upgrade = gv_talents[lp_row][lp_column][lp_player].lv_upgrade;
     lv_upgradeLevel = TechTreeUpgradeCount(lp_player, gv_talents[lp_row][lp_column][lp_player].lv_upgrade, c_techCountCompleteOnly);
     lv_upgradeMax = CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, lv_upgrade, "MaxLevel", lp_player);
+    lv_dialogItem = gv_talents[lp_row][lp_column][lp_player].lv_dialogItem;
     lv_req = gv_talents[lp_row][lp_column][lp_player].lv_req;
     lv_name = gv_talents[lp_row][lp_column][lp_player].lv_name;
     lv_pg = PlayerGroupSingle(lp_player);
@@ -6230,8 +6021,9 @@ void gf_TalentPressedEarth (int lp_row, int lp_column, int lp_player) {
     if ((gf_Currentlevel() >= lv_req) && (lv_upgradeLevel < lv_upgradeMax)) {
         TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
         TechTreeUpgradeAddLevel(lp_player, "EarthHeroPassive", 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
+        libNtve_gf_SetDialogItemText(lv_dialogItem, gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
         gv_talentpointsavailable[lp_player] -= 1;
+        gv_talents[lp_row][lp_column][lp_player].lv_req = (gv_talents[lp_row][lp_column][lp_player].lv_req + gv_talents[lp_row][lp_column][lp_player].lv_reqIncrease);
         lv_scale = (1.0 + (TechTreeUpgradeCount(lp_player, "Colossal", c_techCountQueuedOrBetter) * 0.1) + (TechTreeUpgradeCount(lp_player, "EarthHeroPassive", c_techCountQueuedOrBetter) * 0.02));
         libNtve_gf_SendActorMessageToUnit(gv_hero[lp_player], libNtve_gf_SetScale(lv_scale, lv_scale, lv_scale, 1.0));
         if ((lv_scale >= 1.6) && (TechTreeUpgradeCount(lp_player, "EarthHeroPassive2", c_techCountCompleteOnly) == 0)) {
@@ -6309,6 +6101,7 @@ void gf_TalentPressedNature (int lp_row, int lp_column, int lp_player) {
     string lv_upgrade;
     int lv_upgradeLevel;
     int lv_upgradeMax;
+    int lv_dialogItem;
     int lv_req;
     text lv_name;
     playergroup lv_pg;
@@ -6321,6 +6114,7 @@ void gf_TalentPressedNature (int lp_row, int lp_column, int lp_player) {
     lv_upgrade = gv_talents[lp_row][lp_column][lp_player].lv_upgrade;
     lv_upgradeLevel = TechTreeUpgradeCount(lp_player, gv_talents[lp_row][lp_column][lp_player].lv_upgrade, c_techCountCompleteOnly);
     lv_upgradeMax = CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, lv_upgrade, "MaxLevel", lp_player);
+    lv_dialogItem = gv_talents[lp_row][lp_column][lp_player].lv_dialogItem;
     lv_req = gv_talents[lp_row][lp_column][lp_player].lv_req;
     lv_name = gv_talents[lp_row][lp_column][lp_player].lv_name;
     lv_pg = PlayerGroupSingle(lp_player);
@@ -6328,8 +6122,9 @@ void gf_TalentPressedNature (int lp_row, int lp_column, int lp_player) {
     // Implementation
     if ((gf_Currentlevel() >= lv_req) && (lv_upgradeLevel < lv_upgradeMax)) {
         TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
+        libNtve_gf_SetDialogItemText(lv_dialogItem, gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
         gv_talentpointsavailable[lp_player] -= 1;
+        gv_talents[lp_row][lp_column][lp_player].lv_req = (gv_talents[lp_row][lp_column][lp_player].lv_req + gv_talents[lp_row][lp_column][lp_player].lv_reqIncrease);
         if ((lp_row == 5) && (lp_column == 2)) {
             auto147C3982_n = UnitBehaviorCount(gv_hero[lp_player], "ExpelComboCount");
             for (auto147C3982_i = 1; auto147C3982_i <= auto147C3982_n; auto147C3982_i += 1) {
@@ -6405,6 +6200,7 @@ void gf_TalentPressedBlade (int lp_row, int lp_column, int lp_player) {
     string lv_upgrade;
     int lv_upgradeLevel;
     int lv_upgradeMax;
+    int lv_dialogItem;
     int lv_req;
     text lv_name;
     playergroup lv_pg;
@@ -6414,6 +6210,7 @@ void gf_TalentPressedBlade (int lp_row, int lp_column, int lp_player) {
     lv_upgrade = gv_talents[lp_row][lp_column][lp_player].lv_upgrade;
     lv_upgradeLevel = TechTreeUpgradeCount(lp_player, gv_talents[lp_row][lp_column][lp_player].lv_upgrade, c_techCountCompleteOnly);
     lv_upgradeMax = CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, lv_upgrade, "MaxLevel", lp_player);
+    lv_dialogItem = gv_talents[lp_row][lp_column][lp_player].lv_dialogItem;
     lv_req = gv_talents[lp_row][lp_column][lp_player].lv_req;
     lv_name = gv_talents[lp_row][lp_column][lp_player].lv_name;
     lv_pg = PlayerGroupSingle(lp_player);
@@ -6421,8 +6218,9 @@ void gf_TalentPressedBlade (int lp_row, int lp_column, int lp_player) {
     // Implementation
     if ((gf_Currentlevel() >= lv_req) && (lv_upgradeLevel < lv_upgradeMax)) {
         TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
+        libNtve_gf_SetDialogItemText(lv_dialogItem, gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
         gv_talentpointsavailable[lp_player] -= 1;
+        gv_talents[lp_row][lp_column][lp_player].lv_req = (gv_talents[lp_row][lp_column][lp_player].lv_req + gv_talents[lp_row][lp_column][lp_player].lv_reqIncrease);
         if ((lp_row == 5) && (lp_column == 0)) {
             if ((UnitBehaviorCount(gv_hero[lp_player], "Fanatical") > 0)) {
                 UnitCreateEffectUnit(gv_hero[lp_player], "BladeHeroBloodFanaticalEvisStartSwitch", gv_hero[lp_player]);
@@ -6473,39 +6271,6 @@ void gf_TalentDialogLuck (int lp_player) {
     gf_CreateTalentWithReqInc(5, 4, lp_player, StringExternal("Param/Value/CA960EC0"), StringExternal("Param/Value/39DE2B4E"), "Providence", 10, 5);
 }
 
-void gf_TalentPressedLuck (int lp_row, int lp_column, int lp_player) {
-    // Variable Declarations
-    string lv_upgrade;
-    int lv_upgradeLevel;
-    int lv_upgradeMax;
-    int lv_req;
-    text lv_name;
-    playergroup lv_pg;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_upgrade = gv_talents[lp_row][lp_column][lp_player].lv_upgrade;
-    lv_upgradeLevel = TechTreeUpgradeCount(lp_player, gv_talents[lp_row][lp_column][lp_player].lv_upgrade, c_techCountCompleteOnly);
-    lv_upgradeMax = CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, lv_upgrade, "MaxLevel", lp_player);
-    lv_req = gv_talents[lp_row][lp_column][lp_player].lv_req;
-    lv_name = gv_talents[lp_row][lp_column][lp_player].lv_name;
-    lv_pg = PlayerGroupSingle(lp_player);
-
-    // Implementation
-    if ((gf_Currentlevel() >= lv_req) && (lv_upgradeLevel < lv_upgradeMax)) {
-        TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
-        libNtve_gf_SetDialogItemText(EventDialogControl(), gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
-        gv_talentpointsavailable[lp_player] -= 1;
-        if ((lp_row == 5) && (lp_column == 4)) {
-            gv_talents[lp_row][lp_column][lp_player].lv_req = (gv_talents[lp_row][lp_column][lp_player].lv_req + 5);
-            TechTreeUpgradeAddLevel(lp_player, "FireHeroBlazingSpeed2", 1);
-        }
-
-    }
-
-    libNtve_gf_SetDialogItemText(gv_talents[8][0][lp_player].lv_dialogItem, gf_GetTalentPointsTextForPlayer(lp_player), lv_pg);
-}
-
 void gf_TalentDialogElemental (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
@@ -6545,27 +6310,60 @@ void gf_TalentDialogElemental (int lp_player) {
 void gf_TalentDialogGravity (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
-    gf_CreateTalentDialog(lp_player, "Assets\\Textures\\ui_commandertraiticon_alarak.dds", ge_Heroes_Gravity);
-    gf_CreateTalent(0, 0, lp_player, StringExternal("Param/Value/8221D312"), StringExternal("Param/Value/9733D59E"), "Tear", 0);
-    gf_CreateTalent(1, 0, lp_player, StringExternal("Param/Value/8AA1C49A"), StringExternal("Param/Value/17E7E177"), "Whiplash", 0);
-    gf_CreateTalent(2, 0, lp_player, StringExternal("Param/Value/72F31AFF"), StringExternal("Param/Value/6A2BFB9C"), "Portal", 0);
-    gf_CreateTalent(5, 0, lp_player, StringExternal("Param/Value/A46B4179"), StringExternal("Param/Value/62CEFCBB"), "Excess", 10);
-    gf_CreateTalent(0, 1, lp_player, StringExternal("Param/Value/CF0053A9"), StringExternal("Param/Value/F4DA6E95"), "Endless", 0);
-    gf_CreateTalent(1, 1, lp_player, StringExternal("Param/Value/82A5C0E6"), StringExternal("Param/Value/7E7236EB"), "Relentless", 0);
-    gf_CreateTalent(2, 1, lp_player, StringExternal("Param/Value/EA1859ED"), StringExternal("Param/Value/FA0647F4"), "Fissure", 0);
-    gf_CreateTalent(5, 1, lp_player, StringExternal("Param/Value/14C11BE6"), StringExternal("Param/Value/303AF555"), "Magnetism", 10);
-    gf_CreateTalent(0, 2, lp_player, StringExternal("Param/Value/57462C74"), StringExternal("Param/Value/0168F144"), "Amplitude", 0);
-    gf_CreateTalent(1, 2, lp_player, StringExternal("Param/Value/37EA7123"), StringExternal("Param/Value/5E00685D"), "Power", 0);
-    gf_CreateTalent(2, 2, lp_player, StringExternal("Param/Value/D24496D2"), StringExternal("Param/Value/F3C9E62E"), "Leach", 0);
-    gf_CreateTalent(5, 2, lp_player, StringExternal("Param/Value/673E1C3A"), StringExternal("Param/Value/99D9B90C"), "GForce", 10);
-    gf_CreateTalent(0, 3, lp_player, StringExternal("Param/Value/253115DF"), StringExternal("Param/Value/57333ABE"), "Hunger", 0);
-    gf_CreateTalent(1, 3, lp_player, StringExternal("Param/Value/2AD46311"), StringExternal("Param/Value/EAAE55CA"), "Greed", 0);
-    gf_CreateTalent(2, 3, lp_player, StringExternal("Param/Value/8ABAEF3D"), StringExternal("Param/Value/1BBBF43F"), "Vortex", 0);
-    gf_CreateTalent(5, 3, lp_player, StringExternal("Param/Value/B4DB19C6"), StringExternal("Param/Value/B24D81F5"), "Feast", 10);
-    gf_CreateTalent(0, 4, lp_player, StringExternal("Param/Value/9ED03B35"), StringExternal("Param/Value/3106AFBD"), "Density", 0);
-    gf_CreateTalent(1, 4, lp_player, StringExternal("Param/Value/C32CE9DF"), StringExternal("Param/Value/8F182336"), "Momentum", 0);
-    gf_CreateTalent(2, 4, lp_player, StringExternal("Param/Value/77167551"), StringExternal("Param/Value/D6908A63"), "Unstoppable", 0);
-    gf_CreateTalent(5, 4, lp_player, StringExternal("Param/Value/E135132E"), StringExternal("Param/Value/3BC6FAF4"), "Pressure", 10);
+    gf_CreateTalentDialog(lp_player, "Assets\\Textures\\ui_void_loading_taldarim02.dds", ge_Heroes_Gravity);
+    gf_CreateTalent(0, 0, lp_player, StringExternal("Param/Value/72F31AFF"), StringExternal("Param/Value/6A2BFB9C"), "GravityHeroPortal", 0);
+    gf_CreateTalent(1, 0, lp_player, StringExternal("Param/Value/8221D312"), StringExternal("Param/Value/9733D59E"), "GravityHeroTear", 0);
+    gf_CreateTalent(2, 0, lp_player, StringExternal("Param/Value/8AA1C49A"), StringExternal("Param/Value/17E7E177"), "GravityHeroWhiplash", 0);
+    gf_CreateTalent(3, 0, lp_player, StringExternal("Param/Value/C4CEE3BF"), StringExternal("Param/Value/B2BD7EC2"), "GravityHeroVivify", 0);
+    gf_CreateTalent(5, 0, lp_player, StringExternal("Param/Value/A46B4179"), StringExternal("Param/Value/62CEFCBB"), "GravityHeroDevour", 10);
+    gf_CreateTalent(6, 0, lp_player, StringExternal("Param/Value/03F83501"), StringExternal("Param/Value/7AC9B11F"), "GravityHeroCollision", 10);
+    gf_CreateTalent(0, 1, lp_player, StringExternal("Param/Value/CF0053A9"), StringExternal("Param/Value/F4DA6E95"), "GravityHeroRelentless", 0);
+    gf_CreateTalent(1, 1, lp_player, StringExternal("Param/Value/EA1859ED"), StringExternal("Param/Value/FA0647F4"), "GravityHeroFissure", 0);
+    gf_CreateTalent(2, 1, lp_player, StringExternal("Param/Value/82A5C0E6"), StringExternal("Param/Value/7E7236EB"), "GravityHeroTension", 0);
+    gf_CreateTalent(3, 1, lp_player, StringExternal("Param/Value/4BDB65F4"), StringExternal("Param/Value/8AD19123"), "GravityHeroClash", 0);
+    gf_CreateTalent(5, 1, lp_player, StringExternal("Param/Value/14C11BE6"), StringExternal("Param/Value/303AF555"), "GravityHeroDiffusion", 10);
+    gf_CreateTalent(0, 2, lp_player, StringExternal("Param/Value/57462C74"), StringExternal("Param/Value/0168F144"), "GravityHeroAmplitude", 0);
+    gf_CreateTalent(1, 2, lp_player, StringExternal("Param/Value/37EA7123"), StringExternal("Param/Value/5E00685D"), "GravityHeroPower", 0);
+    gf_CreateTalent(2, 2, lp_player, StringExternal("Param/Value/D24496D2"), StringExternal("Param/Value/F3C9E62E"), "GravityHeroSway", 0);
+    gf_CreateTalent(5, 2, lp_player, StringExternal("Param/Value/673E1C3A"), StringExternal("Param/Value/99D9B90C"), "GravityHeroDisplace", 10);
+    gf_CreateTalent(6, 2, lp_player, StringExternal("Param/Value/DA3B3CB9"), StringExternal("Param/Value/DB19E309"), "GravityHeroReverberate", 10);
+    gf_CreateTalent(0, 3, lp_player, StringExternal("Param/Value/253115DF"), StringExternal("Param/Value/57333ABE"), "GravityHeroPressure", 0);
+    gf_CreateTalent(1, 3, lp_player, StringExternal("Param/Value/8ABAEF3D"), StringExternal("Param/Value/1BBBF43F"), "GravityHeroSchism", 0);
+    gf_CreateTalent(2, 3, lp_player, StringExternal("Param/Value/2AD46311"), StringExternal("Param/Value/EAAE55CA"), "GravityHeroAbolish", 0);
+    gf_CreateTalent(5, 3, lp_player, StringExternal("Param/Value/63891783"), StringExternal("Param/Value/EB68B6E3"), "GravityHeroShrink", 10);
+    gf_CreateTalent(6, 3, lp_player, StringExternal("Param/Value/8EB60198"), StringExternal("Param/Value/0BFC36BC"), "GravityHeroExecute", 10);
+    gf_CreateTalent(0, 4, lp_player, StringExternal("Param/Value/9ED03B35"), StringExternal("Param/Value/3106AFBD"), "GravityHeroDensity", 0);
+    gf_CreateTalent(1, 4, lp_player, StringExternal("Param/Value/77167551"), StringExternal("Param/Value/D6908A63"), "GravityHeroConvalesce", 0);
+    gf_CreateTalent(2, 4, lp_player, StringExternal("Param/Value/C32CE9DF"), StringExternal("Param/Value/8F182336"), "GravityHeroMomentum", 0);
+    gf_CreateTalent(3, 4, lp_player, StringExternal("Param/Value/239A4611"), StringExternal("Param/Value/7BD4DA0B"), "GravityHeroRepel", 0);
+    gf_CreateTalent(4, 4, lp_player, StringExternal("Param/Value/C939ADFD"), StringExternal("Param/Value/1FD1678F"), "GravityHeroPolarized", 0);
+    gf_CreateTalent(5, 4, lp_player, StringExternal("Param/Value/E135132E"), StringExternal("Param/Value/3BC6FAF4"), "GravityHeroExcess", 10);
+}
+
+void gf_TalentDialogGravityold (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    gf_CreateTalentDialog(lp_player, "Assets\\Textures\\ui_void_loading_taldarim02.dds", ge_Heroes_Gravity);
+    gf_CreateTalent(0, 0, lp_player, StringExternal("Param/Value/E0C45004"), StringExternal("Param/Value/E3AFC822"), "Tearold", 0);
+    gf_CreateTalent(1, 0, lp_player, StringExternal("Param/Value/8E097518"), StringExternal("Param/Value/F6A87608"), "Whiplashold", 0);
+    gf_CreateTalent(2, 0, lp_player, StringExternal("Param/Value/A9C6A691"), StringExternal("Param/Value/FE729126"), "Portal", 0);
+    gf_CreateTalent(5, 0, lp_player, StringExternal("Param/Value/4E5437F2"), StringExternal("Param/Value/C9AB558C"), "Excess", 10);
+    gf_CreateTalent(0, 1, lp_player, StringExternal("Param/Value/9D536B5A"), StringExternal("Param/Value/E7EA1C60"), "Endless", 0);
+    gf_CreateTalent(1, 1, lp_player, StringExternal("Param/Value/CAE9D632"), StringExternal("Param/Value/A907355D"), "Relentless", 0);
+    gf_CreateTalent(2, 1, lp_player, StringExternal("Param/Value/0D12E924"), StringExternal("Param/Value/F546E0E3"), "GravityHeroFissure", 0);
+    gf_CreateTalent(5, 1, lp_player, StringExternal("Param/Value/5DA9E900"), StringExternal("Param/Value/428A56E5"), "Magnetism", 10);
+    gf_CreateTalent(0, 2, lp_player, StringExternal("Param/Value/FB197EA9"), StringExternal("Param/Value/3E8345E7"), "Amplitude", 0);
+    gf_CreateTalent(1, 2, lp_player, StringExternal("Param/Value/6A363343"), StringExternal("Param/Value/E378A629"), "Power", 0);
+    gf_CreateTalent(2, 2, lp_player, StringExternal("Param/Value/E1650EE7"), StringExternal("Param/Value/973D8C14"), "Leach", 0);
+    gf_CreateTalent(5, 2, lp_player, StringExternal("Param/Value/EBC87F98"), StringExternal("Param/Value/C02F1E84"), "GForce", 10);
+    gf_CreateTalent(0, 3, lp_player, StringExternal("Param/Value/943C57BD"), StringExternal("Param/Value/AD31A87F"), "Hunger", 0);
+    gf_CreateTalent(1, 3, lp_player, StringExternal("Param/Value/FDC62F5B"), StringExternal("Param/Value/AD5C1C5E"), "Greed", 0);
+    gf_CreateTalent(2, 3, lp_player, StringExternal("Param/Value/BFD6522A"), StringExternal("Param/Value/F20B52A8"), "Vortex", 0);
+    gf_CreateTalent(5, 3, lp_player, StringExternal("Param/Value/FBFE46F6"), StringExternal("Param/Value/2F8B4F78"), "Feast", 10);
+    gf_CreateTalent(0, 4, lp_player, StringExternal("Param/Value/41735B4F"), StringExternal("Param/Value/BA786A34"), "Densityold", 0);
+    gf_CreateTalent(1, 4, lp_player, StringExternal("Param/Value/0BA66145"), StringExternal("Param/Value/6D4D2BB0"), "Momentumold", 0);
+    gf_CreateTalent(2, 4, lp_player, StringExternal("Param/Value/E53D51AF"), StringExternal("Param/Value/8E97A4AB"), "Unstoppableold", 0);
+    gf_CreateTalent(5, 4, lp_player, StringExternal("Param/Value/CA3F0BB5"), StringExternal("Param/Value/4B7276A8"), "Pressure", 10);
 }
 
 void gf_TalentDialogGateway (int lp_player) {
@@ -6814,7 +6612,7 @@ void gf_disguiseunit (unit lp_unit, int lp_player) {
         }
 
         if ((UnitGetType(lp_unit) == "GravityHero")) {
-            ActorSend(libNtve_gf_MainActorofUnit(lp_unit), "ModelSwap DarkArchonChampion");
+            ActorSend(libNtve_gf_MainActorofUnit(lp_unit), "ModelSwap GravityHeroUpgrade");
         }
 
         if ((UnitGetType(lp_unit) == "WarpHero")) {
@@ -9748,7 +9546,7 @@ void gf_challengemode () {
                     TechTreeUpgradeAddLevel(6, "difficultyupgrade2", 1);
                 }
 
-                gf_thorboss1(lv_thorpoint);
+                gf_ThorV1(lv_thorpoint);
                 TimerStart(lv_timer, 300.0, false, c_timeGame);
                 Wait(10.0, c_timeGame);
                 while (!(((UnitGroupCount(UnitGroup(null, 6, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure) | (1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1) || (TimerGetRemaining(lv_timer) < 1.0)))) {
@@ -9761,7 +9559,7 @@ void gf_challengemode () {
                     TechTreeUpgradeAddLevel(6, "difficultyupgrade", 1);
                 }
 
-                gf_thorboss2(lv_thorpoint);
+                gf_ThorV2(lv_thorpoint);
                 TimerStart(lv_timer, 300.0, false, c_timeGame);
                 Wait(10.0, c_timeGame);
                 while (!(((UnitGroupCount(UnitGroup(null, 6, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure) | (1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1) || (TimerGetRemaining(lv_timer) < 1.0)))) {
@@ -9774,7 +9572,7 @@ void gf_challengemode () {
                     TechTreeUpgradeAddLevel(6, "difficultyupgrade2", 1);
                 }
 
-                gf_thorboss3(lv_thorpoint);
+                gf_ThorV3(lv_thorpoint);
                 TimerStart(lv_timer, 300.0, false, c_timeGame);
                 Wait(10.0, c_timeGame);
                 while (!(((UnitGroupCount(UnitGroup(null, 6, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure) | (1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1) || (TimerGetRemaining(lv_timer) < 1.0)))) {
@@ -9787,7 +9585,7 @@ void gf_challengemode () {
                     TechTreeUpgradeAddLevel(6, "difficultyupgrade", 1);
                 }
 
-                gf_thorboss4(lv_thorpoint);
+                gf_AnnihilatorV1(lv_thorpoint);
                 TimerStart(lv_timer, 300.0, false, c_timeGame);
                 Wait(10.0, c_timeGame);
                 while (!(((UnitGroupCount(UnitGroup(null, 6, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure) | (1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1) || (TimerGetRemaining(lv_timer) < 1.0)))) {
@@ -9800,7 +9598,7 @@ void gf_challengemode () {
                     TechTreeUpgradeAddLevel(6, "difficultyupgrade2", 1);
                 }
 
-                gf_thorboss5(lv_thorpoint);
+                gf_AnnihilatorV2(lv_thorpoint);
                 TimerStart(lv_timer, 300.0, false, c_timeGame);
                 Wait(10.0, c_timeGame);
                 while (!(((UnitGroupCount(UnitGroup(null, 6, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure) | (1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1) || (TimerGetRemaining(lv_timer) < 1.0)))) {
@@ -9813,7 +9611,7 @@ void gf_challengemode () {
                     TechTreeUpgradeAddLevel(6, "difficultyupgrade", 1);
                 }
 
-                gf_thorboss6(lv_thorpoint);
+                gf_AnnihilatorV3(lv_thorpoint);
                 TimerStart(lv_timer, 300.0, false, c_timeGame);
                 Wait(10.0, c_timeGame);
                 while (!(((UnitGroupCount(UnitGroup(null, 6, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure) | (1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1) || (TimerGetRemaining(lv_timer) < 1.0)))) {
@@ -9893,7 +9691,7 @@ void gf_challengemode () {
             }
 
         }
-        gf_thorboss7(lv_thorpoint);
+        gf_Odin(lv_thorpoint);
         gf_gainrewardbonusall(FixedToInt(100*gv_difficulty));
         TransmissionSend(PlayerGroupAll(), TransmissionSourceFromUnitType("Pylon", false), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), "Talk", null, StringExternal("Param/Value/7E4DD816"), (StringExternal("Param/Value/A46E556C") + gf_difficultytotext() + StringExternal("Param/Value/CD9DDA4B") + gf_gametime(gv_zgametime[3]) + StringToText("") + StringExternal("Param/Value/C0E27429") + StringExternal("Param/Value/5DA3E738") + IntToText(FixedToInt(gv_difficulty*500)) + StringExternal("Param/Value/1C45705C")), 6.0, c_transmissionDurationAdd, false);
         gf_banknewtime();
@@ -14545,7 +14343,7 @@ bool gt_SelectModeClick_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
-        if (!(((EventDialogControl() == gv_rewardButtons[1]) || (EventDialogControl() == gv_rewardButtons[2]) || (EventDialogControl() == gv_rewardButtons[3])))) {
+        if (!((DialogControlGetDialog(EventDialogControl()) == gv_modePickDialog))) {
             return false;
         }
     }
@@ -14559,17 +14357,17 @@ bool gt_SelectModeClick_Func (bool testConds, bool runActions) {
         gf_UndoVote(lv_player, false);
     }
 
-    if ((EventDialogControl() == gv_rewardButtons[1])) {
+    if ((EventDialogControl() == gv_modePickDialogItem[1])) {
         gv_hasVoted[lv_player] = 1;
         gv_exploreVote += 1;
     }
 
-    if ((EventDialogControl() == gv_rewardButtons[2])) {
+    if ((EventDialogControl() == gv_modePickDialogItem[2])) {
         gv_hasVoted[lv_player] = 2;
         gv_challengeVote += 1;
     }
 
-    if ((EventDialogControl() == gv_rewardButtons[3])) {
+    if ((EventDialogControl() == gv_modePickDialogItem[3])) {
         gv_hasVoted[lv_player] = 3;
         gv_championVote += 1;
     }
@@ -15290,32 +15088,6 @@ bool gt_Ultrabros_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_Ultrabros_Init () {
     gt_Ultrabros = TriggerCreate("gt_Ultrabros_Func");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: AnnihilatorRandomMissile
-//--------------------------------------------------------------------------------------------------
-bool gt_AnnihilatorRandomMissile_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_annihilator;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_annihilator = EventPlayerEffectUsedUnit(c_effectUnitCaster);
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitCreateEffectPoint(lv_annihilator, "WarbotBLM", PointWithOffsetPolar(UnitGetPosition(lv_annihilator), 11.0, libNtve_gf_RandomAngle()));
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AnnihilatorRandomMissile_Init () {
-    gt_AnnihilatorRandomMissile = TriggerCreate("gt_AnnihilatorRandomMissile_Func");
-    TriggerAddEventPlayerEffectUsed(gt_AnnihilatorRandomMissile, 6, "AnnihilatorSearchRandomDummy");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16432,6 +16204,10 @@ bool gt_pickhero_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
+        if (!((DialogControlGetDialog(EventDialogControl()) == gv_heroPickDialog))) {
+            return false;
+        }
+
         if (!((gv_hero[lv_player] == null))) {
             return false;
         }
@@ -18441,8 +18217,6 @@ bool gt_TalentButtonPressed_Func (bool testConds, bool runActions) {
     int lv_j;
 
     // Automatic Variable Declarations
-    const int auto4EE9A824_ae = gv_pLAYERCOUNT;
-    int auto4EE9A824_var;
     int autoF99073C8_val;
 
     // Variable Initialization
@@ -18452,6 +18226,10 @@ bool gt_TalentButtonPressed_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
+        if (!((DialogControlGetDialog(EventDialogControl()) == gv_talentDialogs[EventPlayer()].lv_dialog))) {
+            return false;
+        }
+
         if (!((gv_talentpointsavailable[lv_player] >= 1))) {
             return false;
         }
@@ -18462,18 +18240,7 @@ bool gt_TalentButtonPressed_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    auto4EE9A824_var = 1;
-    for ( ; auto4EE9A824_var <= auto4EE9A824_ae; auto4EE9A824_var += 1 ) {
-        if ((DialogControlGetDialog(EventDialogControl()) == gv_talentDialogs[auto4EE9A824_var].lv_dialog)) {
-            lv_condition = true;
-            lv_heroNum = gv_talentDialogs[auto4EE9A824_var].lv_heroNum;
-        }
-
-    }
-    if ((lv_condition == false)) {
-        return true;
-    }
-
+    lv_heroNum = gv_talentDialogs[EventPlayer()].lv_heroNum;
     while ((lv_i < 10)) {
         lv_j = 0;
         while ((lv_j < 5)) {
@@ -18514,9 +18281,6 @@ bool gt_TalentButtonPressed_Func (bool testConds, bool runActions) {
     else if (autoF99073C8_val == ge_Heroes_Blade) {
         gf_TalentPressedBlade(lv_row, lv_column, lv_player);
     }
-    else if (autoF99073C8_val == ge_Heroes_Luck) {
-        gf_TalentPressedLuck(lv_row, lv_column, lv_player);
-    }
     else {
         gf_TalentPressedGeneric(lv_row, lv_column, lv_player);
     }
@@ -18549,7 +18313,7 @@ bool gt_RewardButtonPressed_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
-        if (!(((DialogControlGetDialog(EventDialogControl()) == gv_rewardDialog)))) {
+        if (!((DialogControlGetDialog(EventDialogControl()) == gv_rewardDialog))) {
             return false;
         }
     }
@@ -19015,70 +18779,6 @@ void gt_UnitWasStunned_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Autocast On
-//--------------------------------------------------------------------------------------------------
-bool gt_AutocastOn_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if ((EventUnitAbility() == AbilityCommand("MicroBurst", 0))) {
-        UnitBehaviorAdd(EventUnit(), "MicroBurstAutocast", EventUnit(), 1);
-    }
-    else {
-        if ((EventUnitAbility() == AbilityCommand("Tornado", 0))) {
-            UnitBehaviorAdd(EventUnit(), "TornadoAutocast", EventUnit(), 1);
-        }
-        else {
-            UnitBehaviorAdd(EventUnit(), "HurricaneAutocast", EventUnit(), 1);
-        }
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AutocastOn_Init () {
-    gt_AutocastOn = TriggerCreate("gt_AutocastOn_Func");
-    TriggerAddEventUnitAbilityAutoCastChange(gt_AutocastOn, null, AbilityCommand("MicroBurst", 0), c_unitAbilAutoCastChangeOn, false);
-    TriggerAddEventUnitAbilityAutoCastChange(gt_AutocastOn, null, AbilityCommand("Tornado", 0), c_unitAbilAutoCastChangeOn, false);
-    TriggerAddEventUnitAbilityAutoCastChange(gt_AutocastOn, null, AbilityCommand("Hurricane", 0), c_unitAbilAutoCastChangeOn, false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Autocast Off
-//--------------------------------------------------------------------------------------------------
-bool gt_AutocastOff_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if ((EventUnitAbility() == AbilityCommand("MicroBurst", 0))) {
-        UnitBehaviorRemove(EventUnit(), "MicroBurstAutocast", c_unitBehaviorCountAll);
-    }
-    else {
-        if ((EventUnitAbility() == AbilityCommand("Tornado", 0))) {
-            UnitBehaviorRemove(EventUnit(), "TornadoAutocast", c_unitBehaviorCountAll);
-        }
-        else {
-            UnitBehaviorRemove(EventUnit(), "HurricaneAutocast", c_unitBehaviorCountAll);
-        }
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AutocastOff_Init () {
-    gt_AutocastOff = TriggerCreate("gt_AutocastOff_Func");
-    TriggerAddEventUnitAbilityAutoCastChange(gt_AutocastOff, null, AbilityCommand("MicroBurst", 0), c_unitAbilAutoCastChangeOff, false);
-    TriggerAddEventUnitAbilityAutoCastChange(gt_AutocastOff, null, AbilityCommand("Tornado", 0), c_unitAbilAutoCastChangeOff, false);
-    TriggerAddEventUnitAbilityAutoCastChange(gt_AutocastOff, null, AbilityCommand("Hurricane", 0), c_unitAbilAutoCastChangeOff, false);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: SkillPlasmaTorpedoCast
 //--------------------------------------------------------------------------------------------------
 bool gt_SkillPlasmaTorpedoCast_Func (bool testConds, bool runActions) {
@@ -19088,6 +18788,9 @@ bool gt_SkillPlasmaTorpedoCast_Func (bool testConds, bool runActions) {
     int lv_count;
 
     // Automatic Variable Declarations
+    const int auto7FCDB368_n = 2;
+    int auto7FCDB368_i;
+
     // Variable Initialization
     lv_caster = EventUnit();
     lv_owner = UnitGetOwner(EventUnit());
@@ -19099,8 +18802,10 @@ bool gt_SkillPlasmaTorpedoCast_Func (bool testConds, bool runActions) {
     }
 
     if ((TechTreeUpgradeCount(lv_owner, "ParticleHeroSafeguard", c_techCountQueuedOrBetter) > 0)) {
-        UnitCreateEffectUnit(lv_caster, "MultiphaseShieldreplenishset", lv_caster);
-        UnitCreateEffectUnit(lv_caster, "MultiphaseShieldreplenishset", lv_caster);
+        for (auto7FCDB368_i = 1; auto7FCDB368_i <= auto7FCDB368_n; auto7FCDB368_i += 1) {
+            UnitCreateEffectUnit(lv_caster, "MultiphaseShield", lv_caster);
+            UnitCreateEffectUnit(lv_caster, "MultiphaseShieldrestore", lv_caster);
+        }
     }
 
     if ((UnitIsAlive(lv_caster) == true)) {
@@ -19313,10 +19018,10 @@ bool gt_SkillGuidedMissileCast_Func (bool testConds, bool runActions) {
     UnitCreateEffectPoint(lv_caster, "WarpHeroTurretAimStart", lv_target);
     gf_SkillGuidedMissile(lv_caster, lv_owner, lv_target, UnitGetPosition(lv_caster), TechTreeUpgradeCount(lv_owner, "WarpHeroPierce", c_techCountQueuedOrBetter), TechTreeUpgradeCount(lv_owner, "WarpHeroSplit", c_techCountQueuedOrBetter));
     if ((TechTreeUpgradeCount(lv_owner, "WarpHeroDoubleganger", c_techCountQueuedOrBetter) > 0)) {
-        lv_grp = UnitGroup("Decoy", lv_owner, RegionCircle(UnitGetPosition(EventUnit()), 12.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        lv_grp = UnitGetTrackedUnitGroup(lv_caster, "WarpHeroDecoyTracker");
         while ((UnitGroupCount(lv_grp, c_unitCountAll) > 0)) {
-            if ((UnitHasBehavior(UnitGroupUnit(lv_grp, 1), "Doubleganger") == true)) {
-                UnitBehaviorRemove(UnitGroupUnit(lv_grp, 1), "Doubleganger", 1);
+            if ((UnitGetPropertyFixed(UnitGroupUnit(lv_grp, 1), c_unitPropEnergy, c_unitPropCurrent) >= 15.0) && (UnitIsAlive(UnitGroupUnit(lv_grp, 1)) == true)) {
+                UnitSetPropertyFixed(UnitGroupUnit(lv_grp, 1), c_unitPropEnergy, (UnitGetPropertyFixed(UnitGroupUnit(lv_grp, 1), c_unitPropEnergy, c_unitPropCurrent) - 15.0));
                 UnitCreateEffectPoint(UnitGroupUnit(lv_grp, 1), "WarpHeroTurretAimStart", lv_target);
                 gf_SkillGuidedMissile(lv_caster, lv_owner, lv_target, UnitGetPosition(UnitGroupUnit(lv_grp, 1)), lv_pierce, lv_split);
             }
@@ -19357,11 +19062,11 @@ bool gt_SkillStrafeCast_Func (bool testConds, bool runActions) {
     }
 
     if ((TechTreeUpgradeCount(lv_owner, "WarpHeroDoubleganger", c_techCountQueuedOrBetter) > 0)) {
-        lv_grp = UnitGroup("Decoy", lv_owner, RegionCircle(UnitGetPosition(EventUnit()), 12.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        lv_grp = UnitGetTrackedUnitGroup(lv_caster, "WarpHeroDecoyTracker");
         while ((lv_j < UnitGroupCount(lv_grp, c_unitCountAll))) {
             lv_j += 1;
-            if ((UnitHasBehavior(UnitGroupUnit(lv_grp, lv_j), "Doubleganger") == true) && (UnitIsAlive(UnitGroupUnit(lv_grp, lv_j)) == true)) {
-                UnitBehaviorRemove(UnitGroupUnit(lv_grp, lv_j), "Doubleganger", 1);
+            if ((UnitGetPropertyFixed(UnitGroupUnit(lv_grp, lv_j), c_unitPropEnergy, c_unitPropCurrent) >= 30.0) && (UnitIsAlive(UnitGroupUnit(lv_grp, lv_j)) == true)) {
+                UnitSetPropertyFixed(UnitGroupUnit(lv_grp, lv_j), c_unitPropEnergy, (UnitGetPropertyFixed(UnitGroupUnit(lv_grp, lv_j), c_unitPropEnergy, c_unitPropCurrent) - 30.0));
             }
             else {
                 UnitGroupRemove(lv_grp, UnitGroupUnit(lv_grp, lv_j));
@@ -19411,10 +19116,12 @@ bool gt_SkillMultishotCast_Func (bool testConds, bool runActions) {
     fixed lv_delay;
     int lv_i;
     unit lv_caster;
-    point lv_target;
     int lv_owner;
+    point lv_target;
     unitgroup lv_grp;
     int lv_j;
+    fixed lv_distance;
+    point lv_missiletarget;
 
     // Automatic Variable Declarations
     int autoA1EF4423_n;
@@ -19424,22 +19131,24 @@ bool gt_SkillMultishotCast_Func (bool testConds, bool runActions) {
 
     // Variable Initialization
     lv_caster = EventUnit();
-    lv_target = EventUnitTargetPoint();
     lv_owner = UnitGetOwner(EventUnit());
+    lv_target = EventUnitTargetPoint();
     lv_grp = UnitGroupEmpty();
+    lv_missiletarget = EventUnitTargetPoint();
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    lv_target = PointWithOffsetPolar(lv_target, 2.0, AngleBetweenPoints(UnitGetPosition(lv_caster), lv_target));
+    lv_distance = (MinF(DistanceBetweenPoints(UnitGetPosition(lv_caster), lv_target), 12.0) + 2.0);
+    lv_missiletarget = PointWithOffsetPolar(UnitGetPosition(lv_caster), lv_distance, AngleBetweenPoints(UnitGetPosition(lv_caster), lv_target));
     if ((TechTreeUpgradeCount(lv_owner, "WarpHeroDoubleganger", c_techCountQueuedOrBetter) > 0)) {
-        lv_grp = UnitGroup("Decoy", lv_owner, RegionCircle(UnitGetPosition(EventUnit()), 12.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        lv_grp = UnitGetTrackedUnitGroup(lv_caster, "WarpHeroDecoyTracker");
         while ((lv_j < UnitGroupCount(lv_grp, c_unitCountAll))) {
             lv_j += 1;
-            if ((UnitHasBehavior(UnitGroupUnit(lv_grp, lv_j), "Doubleganger") == true) && (UnitIsAlive(UnitGroupUnit(lv_grp, lv_j)) == true)) {
-                UnitBehaviorRemove(UnitGroupUnit(lv_grp, lv_j), "Doubleganger", 1);
+            if ((UnitGetPropertyFixed(UnitGroupUnit(lv_grp, lv_j), c_unitPropEnergy, c_unitPropCurrent) >= 35.0) && (UnitIsAlive(UnitGroupUnit(lv_grp, lv_j)) == true)) {
+                UnitSetPropertyFixed(UnitGroupUnit(lv_grp, lv_j), c_unitPropEnergy, (UnitGetPropertyFixed(UnitGroupUnit(lv_grp, lv_j), c_unitPropEnergy, c_unitPropCurrent) - 35.0));
             }
             else {
                 UnitGroupRemove(lv_grp, UnitGroupUnit(lv_grp, lv_j));
@@ -19452,24 +19161,26 @@ bool gt_SkillMultishotCast_Func (bool testConds, bool runActions) {
         lv_i += 1;
         lv_j = 0;
         if ((lv_i == 1)) {
-            UnitCreateEffectPoint(lv_caster, "WarpHeroTurretAimStart", lv_target);
-            gf_SkillMultishot(lv_caster, lv_caster, lv_owner, lv_target);
+            UnitCreateEffectPoint(lv_caster, "WarpHeroTurretAimStart", lv_missiletarget);
+            gf_SkillMultishot(lv_caster, lv_caster, lv_owner, lv_missiletarget);
             autoA1EF4423_n = TechTreeUpgradeCount(lv_owner, "WarpHeroFocus", c_techCountQueuedOrBetter);
             for (autoA1EF4423_i = 1; autoA1EF4423_i <= autoA1EF4423_n; autoA1EF4423_i += 1) {
                 lv_delay += 0.25;
-                gf_SkillMultishotTalent(lv_delay, lv_caster, lv_caster, lv_owner, lv_target);
+                gf_SkillMultishotTalent(lv_delay, lv_caster, lv_caster, lv_owner, lv_missiletarget);
             }
             if ((TechTreeUpgradeCount(lv_owner, "WarpHeroDoubleganger", c_techCountQueuedOrBetter) > 0)) {
                 while ((lv_j < UnitGroupCount(lv_grp, c_unitCountAll))) {
                     lv_j += 1;
                     if ((UnitIsAlive(UnitGroupUnit(lv_grp, lv_j)) == true)) {
-                        UnitCreateEffectPoint(UnitGroupUnit(lv_grp, lv_j), "WarpHeroTurretAimStart", lv_target);
-                        gf_SkillMultishot(lv_caster, UnitGroupUnit(lv_grp, lv_j), lv_owner, lv_target);
+                        lv_distance = (MinF(DistanceBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_grp, lv_j)), lv_target), 12.0) + 2.0);
+                        lv_missiletarget = PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_grp, lv_j)), lv_distance, AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_grp, lv_j)), lv_target));
+                        UnitCreateEffectPoint(UnitGroupUnit(lv_grp, lv_j), "WarpHeroTurretAimStart", lv_missiletarget);
+                        gf_SkillMultishot(lv_caster, UnitGroupUnit(lv_grp, lv_j), lv_owner, lv_missiletarget);
                         lv_delay = 0.0;
                         auto41A4407D_n = TechTreeUpgradeCount(lv_owner, "WarpHeroFocus", c_techCountQueuedOrBetter);
                         for (auto41A4407D_i = 1; auto41A4407D_i <= auto41A4407D_n; auto41A4407D_i += 1) {
                             lv_delay += 0.25;
-                            gf_SkillMultishotTalent(lv_delay, lv_caster, UnitGroupUnit(lv_grp, lv_j), lv_owner, lv_target);
+                            gf_SkillMultishotTalent(lv_delay, lv_caster, UnitGroupUnit(lv_grp, lv_j), lv_owner, lv_missiletarget);
                         }
                     }
                     else {
@@ -19481,14 +19192,18 @@ bool gt_SkillMultishotCast_Func (bool testConds, bool runActions) {
 
         }
         else {
-            gf_SkillMultishot(lv_caster, lv_caster, lv_owner, PointWithOffsetPolar(lv_target, (lv_i-1), (90.0 + AngleBetweenPoints(UnitGetPosition(lv_caster), lv_target))));
-            gf_SkillMultishot(lv_caster, lv_caster, lv_owner, PointWithOffsetPolar(lv_target, (lv_i-1), (270.0 + AngleBetweenPoints(UnitGetPosition(lv_caster), lv_target))));
+            lv_distance = (MinF(DistanceBetweenPoints(UnitGetPosition(lv_caster), lv_target), 12.0) + 2.0);
+            lv_missiletarget = PointWithOffsetPolar(UnitGetPosition(lv_caster), lv_distance, AngleBetweenPoints(UnitGetPosition(lv_caster), lv_target));
+            gf_SkillMultishot(lv_caster, lv_caster, lv_owner, PointWithOffsetPolar(lv_missiletarget, (lv_i-1), (90.0 + AngleBetweenPoints(UnitGetPosition(lv_caster), lv_missiletarget))));
+            gf_SkillMultishot(lv_caster, lv_caster, lv_owner, PointWithOffsetPolar(lv_missiletarget, (lv_i-1), (270.0 + AngleBetweenPoints(UnitGetPosition(lv_caster), lv_missiletarget))));
             if ((TechTreeUpgradeCount(lv_owner, "WarpHeroDoubleganger", c_techCountQueuedOrBetter) > 0)) {
                 while ((lv_j < UnitGroupCount(lv_grp, c_unitCountAll))) {
                     lv_j += 1;
                     if ((UnitIsAlive(UnitGroupUnit(lv_grp, lv_j)) == true)) {
-                        gf_SkillMultishot(lv_caster, UnitGroupUnit(lv_grp, lv_j), lv_owner, PointWithOffsetPolar(lv_target, (lv_i-1), (90.0 + AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_grp, lv_j)), lv_target))));
-                        gf_SkillMultishot(lv_caster, UnitGroupUnit(lv_grp, lv_j), lv_owner, PointWithOffsetPolar(lv_target, ((lv_i)*-1)+1, (90.0 + AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_grp, lv_j)), lv_target))));
+                        lv_distance = (MinF(DistanceBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_grp, lv_j)), lv_target), 12.0) + 2.0);
+                        lv_missiletarget = PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(lv_grp, lv_j)), lv_distance, AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_grp, lv_j)), lv_target));
+                        gf_SkillMultishot(lv_caster, UnitGroupUnit(lv_grp, lv_j), lv_owner, PointWithOffsetPolar(lv_missiletarget, (lv_i-1), (90.0 + AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_grp, lv_j)), lv_missiletarget))));
+                        gf_SkillMultishot(lv_caster, UnitGroupUnit(lv_grp, lv_j), lv_owner, PointWithOffsetPolar(lv_missiletarget, ((lv_i)*-1)+1, (90.0 + AngleBetweenPoints(UnitGetPosition(UnitGroupUnit(lv_grp, lv_j)), lv_missiletarget))));
                     }
                     else {
                         UnitGroupRemove(lv_grp, UnitGroupUnit(lv_grp, lv_j));
@@ -19689,8 +19404,8 @@ bool gt_Energytap_Func (bool testConds, bool runActions) {
     // Variable Initialization
     lv_caster = EventUnit();
     lv_owner = EventPlayer();
-    lv_energycost = (-4.0 + (0.66 * IntToFixed(TechTreeUpgradeCount(lv_owner, "ShadowHeroMirrors", c_techCountQueuedOrBetter))));
-    lv_heal = (((IntToFixed(TechTreeUpgradeCount(lv_owner, "ShadowHeroSmoke", c_techCountQueuedOrBetter)) * 3.0) + 6.0) * libNtve_gf_CatalogReferenceGetAsReal("Accumulator,HealingMultiplier,Amount", EventPlayer()));
+    lv_energycost = libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAccumulator, "ShadowHeroEnergytapDrain", "Amount", lv_owner);
+    lv_heal = (libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAccumulator, "ShadowHeroEnergytapHeal", "Amount", lv_owner) * libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAccumulator, "HealingMultiplier", "Amount", lv_owner));
     lv_darkenergygain = (TechTreeUpgradeCount(lv_owner, "ShadowHeroMagic", c_techCountQueuedOrBetter) * 2);
     lv_timer = 40;
 
@@ -21505,7 +21220,7 @@ bool gt_activatebase6_Func (bool testConds, bool runActions) {
         UnitCreate(1, "PhotonCannon", c_unitCreateIgnorePlacement, 5, Point(116.0, 137.0), 270.0);
         UnitCreate(1, "PhotonCannon", c_unitCreateIgnorePlacement, 5, Point(113.0, 137.0), 270.0);
         UnitCreate(1, "PhotonCannon", c_unitCreateIgnorePlacement, 5, Point(119.0, 137.0), 270.0);
-        gf_thorboss1(Point(233.0, 114.0));
+        gf_ThorV1(Point(233.0, 114.0));
     }
     else {
         lv_cannons = UnitGroup("PhotonCannon", 5, RegionCircle(Point(116.0, 137.0), 10.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
@@ -21939,11 +21654,12 @@ bool gt_activateStage8_Func (bool testConds, bool runActions) {
         gv_stage += 1;
         UnitCreate(1, "Pylon", c_unitCreateIgnorePlacement, 5, Point(147.0, 24.0), 270.0);
         libNtve_gf_MakeUnitInvulnerable(UnitLastCreated(), true);
+        lv_j = 0;
         while ((lv_j < gv_pLAYERCOUNT)) {
-            lv_j+=1;
+            lv_j += 1;
             if ((gv_hero[lv_j] != null)) {
                 if ((UnitHasBehavior2(gv_hero[lv_j], "Dodgeball") == true)) {
-                    gf_achievementPossiblyGainedSolo(61, FixedToInt(gv_difficulty), lv_j+1);
+                    gf_achievementPossiblyGainedSolo(61, FixedToInt(gv_difficulty), lv_j);
                 }
 
             }
@@ -22435,7 +22151,7 @@ bool gt_activateStage11_Func (bool testConds, bool runActions) {
     else {
         UnitSetPropertyFixed(lv_z1, c_unitPropLifePercent, 100.0);
     }
-    UnitBehaviorAdd(lv_z1, "Dontrushmebro", lv_z1, 1);
+    UnitBehaviorAdd(lv_z1, "ThorInvulnerabilityShield", lv_z1, 1);
     lv_probe = UnitGroupUnit(UnitGroup("Probe", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1);
     UnitSetPosition(lv_probe, Point(70.0, 196.0), false);
     UnitIssueOrder(lv_probe, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
@@ -22679,7 +22395,6 @@ void InitTriggers () {
     gt_evolutionquest3_Init();
     gt_zbase51_Init();
     gt_Ultrabros_Init();
-    gt_AnnihilatorRandomMissile_Init();
     gt_zbase11_Init();
     gt_zbase112_Init();
     gt_EnragedMetalisk_Init();
@@ -22745,8 +22460,6 @@ void InitTriggers () {
     gt_PlayerLeaves_Init();
     gt_unitdeath_Init();
     gt_UnitWasStunned_Init();
-    gt_AutocastOn_Init();
-    gt_AutocastOff_Init();
     gt_SkillPlasmaTorpedoCast_Init();
     gt_PartingGift_Init();
     gt_Assault_Init();

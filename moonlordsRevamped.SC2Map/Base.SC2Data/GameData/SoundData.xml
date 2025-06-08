@@ -216,7 +216,139 @@
         <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_AttackImpact4.wav" FacialGroup=""/>
         <Pitch value="4.000000,4.000000"/>
     </CSound>
-    <CSound id="GravityShotSound" parent="Spell">
+    <CSound id="GravityHeroClash_Impact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\SOA_SolarBombardment_Impact01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarBombardment_Impact02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarBombardment_Impact03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarBombardment_Impact04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarBombardment_Impact05_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarBombardment_Impact06_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarBombardment_Impact07_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarBombardment_Impact08_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarBombardment_Impact09_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarBombardment_Impact10_1ch.wav" FacialGroup=""/>
+        <Pitch value="6.000000,6.000000"/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="GravityHeroCompress_Impact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Terran\Tosh\Tosh_MindBlastImpact0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\Tosh\Tosh_MindBlastImpact1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\Tosh\Tosh_MindBlastImpact2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\Tosh\Tosh_MindBlastImpact3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\Tosh\Tosh_MindBlastImpact4.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+    </CSound>
+    <CSound id="GravityHeroCrush_Launch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_04a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_06a.wav" FacialGroup=""/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="GravityHeroDive_Impact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact07.wav" FacialGroup=""/>
+        <Pitch value="3.000000,3.000000"/>
+        <Volume value="6.000000,6.000000"/>
+    </CSound>
+    <CSound id="GravityHeroDive_Launch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\StukovInfestedSiegeTank_GrabInfested_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StukovInfestedSiegeTank_GrabInfested_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StukovInfestedSiegeTank_GrabInfested_Launch_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StukovInfestedSiegeTank_GrabInfested_Launch_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StukovInfestedSiegeTank_GrabInfested_Launch_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StukovInfestedSiegeTank_GrabInfested_Launch_06.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-4.000000"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="GravityHeroInflate_Impact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackImpact0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackImpact1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackImpact2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackImpact3.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="GravityHeroLift_Launch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jumps_Long_1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jumps_Long_2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jumps_Long_3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jumps_Long_4.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jumps_Long_5.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jumps_Long_6.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jumps_Long_7.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jumps_Long_8.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jumps_Long_9.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-2.000000"/>
+        <Volume value="5.000000,5.000000"/>
+    </CSound>
+    <CSound id="GravityHeroPush_Collision" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_08.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Pitch value="4.000000,4.000000"/>
+        <Volume value="5.000000,5.000000"/>
+    </CSound>
+    <CSound id="GravityHeroShift_Impact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\VoidZealot_ShadowCharge_AttackLaunch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_ShadowCharge_AttackLaunch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_ShadowCharge_AttackLaunch03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_ShadowCharge_AttackLaunch04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_ShadowCharge_AttackLaunch05_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_ShadowCharge_AttackLaunch06_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_ShadowCharge_AttackLaunch07_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Pitch value="4.000000,4.000000"/>
+        <Volume value="6.000000,6.000000"/>
+    </CSound>
+    <CSound id="GravityHeroPush_Impact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact06.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="GravityHeroPush_Launch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jump_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jump_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jump_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jump_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jump_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jump_06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jump_07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jump_08.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StetmannBaneling_Jump_09.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="GravityHeroPolarity_Explosion" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Hybrid_PsionicShockwaveLaunch1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hybrid_PsionicShockwaveLaunch2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg\Hybrid\Hybrid_PsionicShockwaveLaunch0.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="GravityHeroPull_Launch" parent="Spell">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Alarak_E_DeathCharge_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Alarak_E_DeathCharge_02.wav" FacialGroup=""/>
@@ -225,6 +357,16 @@
         <AssetArray File="Assets\Sounds\Alarak_E_DeathCharge_05.wav" FacialGroup=""/>
         <Pitch value="3.000000,3.000000"/>
         <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="GravityHeroShift_Launch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Alarak_E_DeathCharge_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_E_DeathCharge_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_E_DeathCharge_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_E_DeathCharge_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_E_DeathCharge_05.wav" FacialGroup=""/>
+        <Pitch value="-6.000000,-6.000000"/>
+        <Volume value="6.000000,6.000000"/>
     </CSound>
     <CSound id="HealingStationShellCreation" parent="Spell">
         <EditorCategories value="Race:Protoss"/>

@@ -8,6 +8,16 @@
     <CTargetSortValidator id="Enemy">
         <Validator value="TargetIsEnemy"/>
     </CTargetSortValidator>
+    <CTargetSortBehaviorCount id="NotCrushed">
+        <WhichUnit Value="Target"/>
+        <Descending value="1"/>
+        <Behavior value="GravityHeroCrushed"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortBehaviorCount id="NotElevated">
+        <WhichUnit Value="Target"/>
+        <Descending value="1"/>
+        <Behavior value="GravityHeroElevated"/>
+    </CTargetSortBehaviorCount>
     <CTargetSortValidator id="WaterHeroNotSoakedNotFrozen">
         <WhichUnit Value="Target"/>
         <Descending value="1"/>

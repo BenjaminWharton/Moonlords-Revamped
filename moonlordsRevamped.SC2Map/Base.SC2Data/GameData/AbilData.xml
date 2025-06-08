@@ -205,6 +205,76 @@
         <AutoCastValidatorArray value="GlaiveBarrageLT9"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="GlaiveBarrage"/>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="GravityHeroE">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GravityHeroShift"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="GravityHeroPolarity">
+        <OrderArray index="0" Model="Assets\UI\Cursors\WayPointConfirm_Void\WayPointConfirm_Void.m3"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="GravityHeroPolaritySwitch"/>
+        <Flags index="Transient" value="1"/>
+        <CursorEffect value="GravityHeroPolarityExplodeSplatDummy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GravityHeroPolarity" Requirements="GravityHeroHas300Polarity"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="GravityHeroQ">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="500"/>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GravityHeroPull"/>
+        <Arc value="360"/>
+        <Cost>
+            <Vital index="Energy" value="20"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GravityHeroR">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <TargetFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <IgnoreFilters value="-;Player,Ally,Neutral"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GravityHeroCompress"/>
+        <Arc value="360"/>
+        <CursorEffect value="GravityHeroSingularitySA"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+        </Cost>
+        <Flags index="AutoCast" value="1"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GravityHeroW">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="GravityHeroHas85EnergyOrSway"/>
+        <CursorEffect value="GravityHeroCrushSA"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GravityHeroCrush"/>
+        <Arc value="360"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="HealingStation">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="HealingStationCU"/>
@@ -417,6 +487,21 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
+    <CAbilBehavior id="ShadowHeroPenumbra">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="On" DefaultButtonFace="WallofDarkness" Requirements="ShadowHeroHasPenumbra"/>
+        <CmdButtonArray index="Off" DefaultButtonFace="WallofDarkness" Requirements="ShadowHeroHasPenumbra"/>
+        <Flags index="Toggle" value="1"/>
+        <Flags index="ToggledOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="2"/>
+        </Cost>
+        <OffCost>
+            <Cooldown TimeUse="2"/>
+        </OffCost>
+        <BehaviorArray value="ShadowHeroPenumbra"/>
+    </CAbilBehavior>
     <CAbilEffectTarget id="SweepingBeam">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="SweepingBeamInitLM"/>
@@ -554,7 +639,7 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="PylonOvercharge"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="ResourceCollectorButtonDummy">
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Cost>
             <Charge CountMax="200"/>
         </Cost>
@@ -886,23 +971,6 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="ResearchLocustLifetimeIncrease" Requirements=""/>
         <AutoCastValidatorArray index="0" removed="1"/>
     </CAbilAugment>
-    <CAbilEffectTarget id="ConsumeGravityHero">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="ConsumeSet"/>
-        <Range value="10"/>
-        <IgnoreFilters value="-;Player,Ally,Neutral"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="ConsumeGravityHero"/>
-        <Cost>
-            <Vital index="Energy" value="80"/>
-        </Cost>
-        <Flags index="AutoCast" value="1"/>
-        <TargetFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <TargetSorts>
-            <SortArray value="TSLifeLargestFirst"/>
-        </TargetSorts>
-        <AutoCastRange value="10"/>
-        <AutoCastValidatorArray value="CasterEnergyGE85"/>
-    </CAbilEffectTarget>
     <CAbilEffectInstant id="DefensiveMatrix">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Flags index="AutoCast" value="1"/>
@@ -1122,54 +1190,6 @@
             <Vital index="Energy" value="25"/>
         </Cost>
         <AutoCastRange value="10"/>
-        <AutoCastValidatorArray value="CasterEnergyGE85"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="GravityDash">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="GravityDashOffset"/>
-        <Range value="500"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="GravityDash"/>
-        <Flags index="LineMovement" value="1"/>
-        <Flags index="RequireTargetVision" value="0"/>
-        <Cost>
-            <Vital index="Energy" value="60"/>
-        </Cost>
-        <RangeSlop value="10"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="GravityShot">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="GravityShotCPOffset"/>
-        <Flags index="AllowMovement" value="1"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
-        <Flags index="RequireTargetVision" value="0"/>
-        <Range value="500"/>
-        <IgnoreFilters value="-;Player,Ally,Neutral"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="GravityShot"/>
-        <Cost>
-            <Vital index="Energy" value="30"/>
-        </Cost>
-        <TargetFilters value="-;Player,Ally,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <TargetSorts>
-            <SortArray value="TSFarthestDistance"/>
-        </TargetSorts>
-        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AutoCastRange value="12"/>
-        <AutoCastValidatorArray value="CasterEnergyGE85"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="GravitySlivers">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="GravitySliversCP"/>
-        <Range value="10"/>
-        <IgnoreFilters value="-;Neutral"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="GravitySlivers"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="RequireTargetVision" value="0"/>
-        <Cost>
-            <Vital index="Energy" value="60"/>
-        </Cost>
-        <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="HealingBlast">
@@ -1430,7 +1450,6 @@
             <Cooldown TimeUse="45"/>
         </Cost>
         <Arc value="360"/>
-        <AINotifyEffect value="ReactiveShieldsSA"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="ReactiveShields"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="Recharge">
@@ -1913,8 +1932,9 @@
             <Cooldown Link=""/>
         </Cost>
         <Range value="10"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Decoy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="WarpHeroDecoy"/>
         <Arc value="360"/>
+        <Flags index="RequireTargetVision" value="0"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Doom">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -1956,7 +1976,7 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Vital index="Energy" value="25"/>
+            <Vital index="Energy" value="15"/>
             <Charge Link=""/>
             <Cooldown Link=""/>
         </Cost>
@@ -1972,7 +1992,7 @@
             <Charge Link=""/>
             <Cooldown Link=""/>
         </Cost>
-        <Range value="12"/>
+        <Range value="500"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
@@ -2335,10 +2355,11 @@
         <Marker Link="Abil/Windstorm"/>
         <CursorEffect value="EverlastingStormSA"/>
         <AINotifyEffect value="Windstorm"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="EverlastingStorm" Requirements="IsWindInfusedAndHas3WindStacksAnd3EarthStacks"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ContinentalStorm" Requirements="IsWindInfusedAndHas3WindStacksAnd3EarthStacks"/>
     </CAbilEffectTarget>
     <CAbilAttack id="attack">
         <SupportedFilters value="-;Self,Ally,Outer"/>
+        <Flags index="UpdateTarget" value="1"/>
     </CAbilAttack>
     <CAbilMove id="move">
         <Flags index="UpdateTarget" value="1"/>

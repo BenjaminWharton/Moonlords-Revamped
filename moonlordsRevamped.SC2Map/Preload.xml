@@ -2,13 +2,13 @@
 <Preload>
 <Asset path="assets\textures\ui_void_loading_purifier03.dds" Type="Image"/>
 <Asset path="assets\textures\changelingportrait_static.dds" Type="Image"/>
-<Asset path="assets\textures\ui_commandertraiticon_alarak.dds" Type="Image"/>
 <Asset path="assets\textures\leviathanportrait_static.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_loading_epilogue03.dds" Type="Image"/>
 <Asset path="assets\textures\hybrid_protossadvanced_experimented_portrait_static.dds" Type="Image"/>
 <Asset path="assets\textures\ui_hots_loading_missionselect_zzerus01.dds" Type="Image"/>
 <Asset path="assets\textures\ui_charbaricons_zerg_all.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_loading_purifier01.dds" Type="Image"/>
+<Asset path="assets\textures\ui_void_loading_taldarim02.dds" Type="Image"/>
 <Asset path="assets\textures\sm_pt05_marsaraskypano.dds" Type="Image"/>
 <Asset path="assets\textures\credits_2017_charbattlezone.dds" Type="Image"/>
 <Asset path="assets\textures\voidthrasherportrait_static.dds" Type="Image"/>
@@ -58,6 +58,7 @@
 <Actor id="Slayn_Brambles" Variations="0,1,2,3,4,5"/>
 <Actor id="Slayn_TallGrass" Variations="0,1,2,3,4,5,6,7"/>
 <Behavior id="Enrage"/>
+<Behavior id="AnnihilatorFirewall"/>
 <Behavior id="BladeStorm"/>
 <Behavior id="CastLeftSide"/>
 <Behavior id="ChronoWave"/>
@@ -75,6 +76,7 @@
 <Behavior id="ShadowplayHeroic"/>
 <Behavior id="PylonWeaponDisable"/>
 <Behavior id="InitOrbType"/>
+<Behavior id="WarpHeroDecoyTracker"/>
 <Behavior id="ButtonUpdater1"/>
 <Behavior id="ButtonUpdater2"/>
 <Behavior id="DemonRageStack"/>
@@ -82,7 +84,6 @@
 <Behavior id="KillHatch"/>
 <Behavior id="IsChampionMode"/>
 <Behavior id="IsMainObjective"/>
-<Behavior id="MicroBurstAutocast"/>
 <Behavior id="ArdentDefender"/>
 <Behavior id="Champion"/>
 <Behavior id="Champion2"/>
@@ -98,7 +99,6 @@
 <Behavior id="Gandalfcheck"/>
 <Behavior id="MassacreHelper"/>
 <Behavior id="Stage11HiveInvulnerable"/>
-<Behavior id="TornadoAutocast"/>
 <Behavior id="NinjaCheck"/>
 <Behavior id="NoCollision"/>
 <Behavior id="NoFunds"/>
@@ -124,8 +124,6 @@
 <Behavior id="OverlordBanelingdrop"/>
 <Behavior id="RewardEnergyAura"/>
 <Behavior id="TerminatorHidden"/>
-<Behavior id="ThorScienceSeekerProduce"/>
-<Behavior id="HurricaneAutocast"/>
 <Behavior id="UnitIsInActiveArmyTriggers"/>
 <Behavior id="Shadowcrash"/>
 <Behavior id="Shadowplay"/>
@@ -135,7 +133,7 @@
 <Behavior id="Thunderfury"/>
 <Behavior id="TimedSuicide"/>
 <Behavior id="Youfailed"/>
-<Behavior id="Dontrushmebro"/>
+<Behavior id="ThorInvulnerabilityShield"/>
 <Behavior id="TooLate"/>
 <Behavior id="ZergBossDmgBonusHidden"/>
 <Behavior id="annihilatornomovecheck"/>
@@ -143,19 +141,22 @@
 <Behavior id="plasmacharge"/>
 <Behavior id="rewardarmor"/>
 <Behavior id="rewarddmg"/>
+<Behavior id="AnnihilatorV1Flamethrower"/>
 <Effect id="WarbotBLM"/>
 <Effect id="FullHeal"/>
-<Effect id="MultiphaseShieldreplenishset"/>
 <Effect id="ZapSet"/>
+<Effect id="AnnihilatorFirewallCP"/>
 <Effect id="AnnihilatorLaserTrackingDamage"/>
 <Effect id="BladeHeroBloodFanaticalEvisStartSwitch"/>
 <Effect id="BladeHeroBloodFanaticalEvisEndSwitch"/>
+<Effect id="WarpHeroStrafeHeal"/>
 <Effect id="WarpHeroTurretAimStart"/>
 <Effect id="NatureHeroExpelCostUpMP"/>
 <Effect id="PoisonHeroHealingReagentMU"/>
 <Effect id="PoisonHeroPoisonBoltMU"/>
 <Effect id="PoisonHeroMusclePoisonMU"/>
 <Effect id="DarknessSet"/>
+<Effect id="WarpHeroStrafeSet"/>
 <Effect id="LightningHitDamage"/>
 <Effect id="ShadowplayApplyEntropy"/>
 <Effect id="FireballImpactSearchSpire"/>
@@ -166,6 +167,8 @@
 <Effect id="PoisonBubble"/>
 <Effect id="BossFirespewerSet"/>
 <Effect id="ChampionLightningDamage"/>
+<Effect id="MultiphaseShield"/>
+<Effect id="MultiphaseShieldrestore"/>
 <Effect id="PsnDotDamage"/>
 <Effect id="FireballDamage"/>
 <Effect id="FireDotDamage"/>
@@ -175,8 +178,6 @@
 <Effect id="DoomDetonate"/>
 <Effect id="MultishotImpactSearchArea"/>
 <Effect id="GuidedImpactSearchArea"/>
-<Effect id="WarpHeroStrafeSet"/>
-<Effect id="WarpHeroStrafeHeal"/>
 <Model id="PingBoss"/>
 <Model id="PingObjective"/>
 <Model id="SiegeTankSiegedAttackImpact"/>
@@ -190,7 +191,6 @@
 <Sound id="MegaBossIncomingSound"/>
 <Terrain id="Endion"/>
 <Unit id="Baneling"/>
-<Unit id="Thor"/>
 <Unit id="Banshee"/>
 <Unit id="Pylon"/>
 <Unit id="Forge"/>
@@ -237,6 +237,7 @@
 <Unit id="ProtossAlliesImmortal"/>
 <Unit id="ProtossAlliesHighTemplar"/>
 <Unit id="Metalisk"/>
+<Unit id="ThorV1"/>
 <Unit id="GatewayHero"/>
 <Unit id="GravityHero"/>
 <Unit id="AcidLord"/>
@@ -299,13 +300,13 @@
 <Unit id="WarpHero"/>
 <Unit id="ParasiteLord"/>
 <Unit id="FleshLord"/>
-<Unit id="AnnihilatorV2"/>
 <Unit id="AnnihilatorStopMoveIndicator"/>
-<Unit id="AnnihilatorV3"/>
 <Unit id="ThorV2"/>
 <Unit id="ThorV3"/>
-<Unit id="Annihilator"/>
-<Unit id="Odin2"/>
+<Unit id="AnnihilatorV1"/>
+<Unit id="AnnihilatorV2"/>
+<Unit id="AnnihilatorV3"/>
+<Unit id="OdinV1"/>
 <Unit id="PoisonHero"/>
 <Unit id="ShadowHero"/>
 <Unit id="Firespewer"/>
@@ -332,6 +333,32 @@
 <Upgrade id="Alacrity"/>
 <Upgrade id="BeamHeroLink"/>
 <Upgrade id="BeamHeroStretch"/>
+<Upgrade id="GravityHeroAmplitude"/>
+<Upgrade id="GravityHeroCollision"/>
+<Upgrade id="GravityHeroDensity"/>
+<Upgrade id="GravityHeroDevour"/>
+<Upgrade id="GravityHeroDisplace"/>
+<Upgrade id="GravityHeroAbolish"/>
+<Upgrade id="GravityHeroRelentless"/>
+<Upgrade id="GravityHeroExcess"/>
+<Upgrade id="GravityHeroExecute"/>
+<Upgrade id="GravityHeroMomentum"/>
+<Upgrade id="GravityHeroRepel"/>
+<Upgrade id="GravityHeroPolarized"/>
+<Upgrade id="GravityHeroPortal"/>
+<Upgrade id="GravityHeroPower"/>
+<Upgrade id="GravityHeroPressure"/>
+<Upgrade id="GravityHeroReverberate"/>
+<Upgrade id="GravityHeroSchism"/>
+<Upgrade id="GravityHeroShrink"/>
+<Upgrade id="GravityHeroSway"/>
+<Upgrade id="GravityHeroTear"/>
+<Upgrade id="GravityHeroConvalesce"/>
+<Upgrade id="GravityHeroVivify"/>
+<Upgrade id="GravityHeroTension"/>
+<Upgrade id="GravityHeroClash"/>
+<Upgrade id="GravityHeroDiffusion"/>
+<Upgrade id="GravityHeroWhiplash"/>
 <Upgrade id="TimeHeroVanish"/>
 <Upgrade id="TimeHeroInevitable"/>
 <Upgrade id="TimeHeroConservation"/>
@@ -406,6 +433,7 @@
 <Upgrade id="Expose"/>
 <Upgrade id="Fanatical"/>
 <Upgrade id="Fence"/>
+<Upgrade id="WarpHeroCover"/>
 <Upgrade id="WarpHeroFocus"/>
 <Upgrade id="Frenzy"/>
 <Upgrade id="LightningHeroFrostFury"/>
@@ -556,7 +584,6 @@
 <Upgrade id="Quicken"/>
 <Upgrade id="Entangle"/>
 <Upgrade id="Frailty"/>
-<Upgrade id="GForce"/>
 <Upgrade id="Barrier"/>
 <Upgrade id="PoisonHeroSchadenfreud"/>
 <Upgrade id="BlastRadius"/>
@@ -575,12 +602,10 @@
 <Upgrade id="TwilightHeroCycle"/>
 <Upgrade id="Cyclone"/>
 <Upgrade id="Debris"/>
-<Upgrade id="Density"/>
 <Upgrade id="Draft"/>
 <Upgrade id="Effective"/>
 <Upgrade id="Efficient"/>
 <Upgrade id="Elevate"/>
-<Upgrade id="Endless"/>
 <Upgrade id="ShadowHeroMagic"/>
 <Upgrade id="PoisonHeroSuffering"/>
 <Upgrade id="PoisonHeroPain"/>
@@ -608,10 +633,8 @@
 <Upgrade id="ShadowHeroSmoke"/>
 <Upgrade id="ShadowHeroDeathsEmbrace"/>
 <Upgrade id="ShadowHeroMirrors"/>
-<Upgrade id="Amplitude"/>
 <Upgrade id="ShadowHeroEntropy"/>
 <Upgrade id="Evasion"/>
-<Upgrade id="Excess"/>
 <Upgrade id="Expansion"/>
 <Upgrade id="F5"/>
 <Upgrade id="FaultLines"/>
@@ -643,18 +666,13 @@
 <Upgrade id="Ocean"/>
 <Upgrade id="IceBlast"/>
 <Upgrade id="PoisonHeroDiseased"/>
-<Upgrade id="Portal"/>
-<Upgrade id="Feast"/>
 <Upgrade id="FireHeroWarmth"/>
-<Upgrade id="Fissure"/>
+<Upgrade id="GravityHeroFissure"/>
 <Upgrade id="Fragments"/>
 <Upgrade id="LightningHeroCoolant"/>
 <Upgrade id="Gateway"/>
-<Upgrade id="Greed"/>
 <Upgrade id="Flurry"/>
-<Upgrade id="Hunger"/>
 <Upgrade id="Longevity"/>
-<Upgrade id="Leach"/>
 <Upgrade id="Lifeline"/>
 <Upgrade id="LightningHeroLightningfury"/>
 <Upgrade id="FireHeroFireChannels"/>
@@ -673,8 +691,6 @@
 <Upgrade id="WarpHeroPierce"/>
 <Upgrade id="FireHeroEvilPresent"/>
 <Upgrade id="FireHeroFireMastery"/>
-<Upgrade id="Magnetism"/>
-<Upgrade id="Momentum"/>
 <Upgrade id="ParticleHeroEmitters"/>
 <Upgrade id="ParticleHeroDampeners"/>
 <Upgrade id="ParticleHeroConverter"/>
@@ -705,14 +721,12 @@
 <Upgrade id="TwilightHeroStructure"/>
 <Upgrade id="Potency"/>
 <Upgrade id="Potential"/>
-<Upgrade id="Power"/>
 <Upgrade id="LightningHeroShort"/>
 <Upgrade id="LightningHeroCapacitor"/>
 <Upgrade id="LightningHeroVampirism"/>
 <Upgrade id="WarpHeroGenerators"/>
 <Upgrade id="WarpHeroMicrobots"/>
 <Upgrade id="Preservation"/>
-<Upgrade id="Pressure"/>
 <Upgrade id="Purge"/>
 <Upgrade id="Ration"/>
 <Upgrade id="Reach"/>
@@ -728,7 +742,6 @@
 <Upgrade id="Recycle"/>
 <Upgrade id="Refresh"/>
 <Upgrade id="Release"/>
-<Upgrade id="Relentless"/>
 <Upgrade id="ParticleHeroReload"/>
 <Upgrade id="ParticleHeroRematerialize"/>
 <Upgrade id="Replenish"/>
@@ -786,13 +799,10 @@
 <Upgrade id="Undergrowth"/>
 <Upgrade id="Vaporize"/>
 <Upgrade id="Surge"/>
-<Upgrade id="Tear"/>
 <Upgrade id="Thaw"/>
 <Upgrade id="PoisonHeroTransmission"/>
-<Upgrade id="Unstoppable"/>
 <Upgrade id="Vent"/>
 <Upgrade id="Volley"/>
-<Upgrade id="Vortex"/>
 <Upgrade id="WarpIn"/>
 <Upgrade id="Strike"/>
 <Upgrade id="LightningHeroEnergyflow"/>
@@ -819,7 +829,6 @@
 <Upgrade id="TwilightHeroEnergize"/>
 <Upgrade id="TwilightHeroSurplus"/>
 <Upgrade id="TwilightHeroTranswarp"/>
-<Upgrade id="Whiplash"/>
 <Upgrade id="Whirlwind"/>
 <Upgrade id="Yield"/>
 <Upgrade id="LightningHeroZap"/>
@@ -836,5 +845,4 @@
 <Upgrade id="Jagged"/>
 <Upgrade id="Velocity"/>
 <Upgrade id="Retribution"/>
-<Upgrade id="WarpHeroCover"/>
 </Preload>

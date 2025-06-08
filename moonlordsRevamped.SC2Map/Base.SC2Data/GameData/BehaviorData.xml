@@ -14,7 +14,7 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <DisplayDuration index="Enemy" value="1"/>
         <Duration value="5"/>
-        <DamageResponse Handled="AnnihilatorSearchRandomDummy" Minimum="5" ModifyFraction="0.25">
+        <DamageResponse Handled="AnnihilatorSearchRandomSet" Minimum="5" ModifyFraction="0.25">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -91,6 +91,21 @@
         <PeriodicEffect value="AirHeroHurricaneLiftedForceOffset"/>
         <FinalEffect value="AirHeroHurricaneLiftedEndSet"/>
         <Modification MoveSpeedMinimum="10"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AnnihilatorFirewall">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="MissingHealth"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AnnihilatorV1Flamethrower">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="10"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AnnihilatorV1FlamethrowerSA"/>
+        <Modification>
+            <ModifyFlags index="DisableWeapons" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="Anointed">
         <InfoIcon value="Assets\Textures\btn-upgrade-protoss-fenix-arbiterchampiondetectionresearch.dds"/>
@@ -245,18 +260,6 @@
         <InfoIcon value="Assets\Textures\abilityicon_corrosivespores_square.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="DemolisherShieldUnit">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <RemoveValidatorArray value="DemolisherNotIncapacitated"/>
-        <RemoveValidatorArray value="DemolisherHasReactiveShields"/>
-        <FinalEffect value="KillRemove"/>
-    </CBehaviorBuff>
-    <CBehaviorUnitTracker id="DemolisherTracker">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxTrackedUnits value="1"/>
-        <ReplacedEffect value="KillRemove"/>
-    </CBehaviorUnitTracker>
     <CBehaviorBuff id="GatewayHeroAnoint">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
@@ -301,6 +304,261 @@
     </CBehaviorUnitTracker>
     <CBehaviorBuff id="GiantYetiLeapStun">
         <FinalEffect value="ApplyUnitWasStunned"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroBlinded">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-envision.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="1"/>
+        <Modification WeaponRange="-30"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroClash">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="3"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroCrushed">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="6"/>
+        <Modification MoveSpeedMultiplier="0.5">
+            <AdditiveAttackSpeedFactor value="-0.3"/>
+            <DeathResponse Chance="1" Effect="GravityHeroCrushDiffusionDelay"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroCrushedStun">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <MaxStackCount value="0"/>
+        <Duration value="1.5"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroDevour">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="GravityHeroDevourSA"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroDiveSway">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <MaxStackCount value="10"/>
+        <InitialEffect value="GravityHeroDiveSwayMPOn"/>
+        <FinalEffect value="GravityHeroDiveSwayMPOff"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroElevated">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="6"/>
+        <Modification RangedWeaponRange="-1">
+            <DeathResponse Chance="1" Effect="GravityHeroLiftDiffusionDelay"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroElevatedStun">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="1.5"/>
+        <Modification Height="0.75" MoveSpeedMultiplier="0.01">
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <HeightTime index="Start" value="0.5"/>
+            <HeightTime index="Stop" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroKillDelay">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="1"/>
+        <InitialEffect value="SetHealth1Source"/>
+        <FinalEffect value="Suicide"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <ModifyFlags index="DisableWeapons" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroPolarity">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="GravityHeroPolarityGTE300"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroShiftCaster">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <MaxStackCount value="0"/>
+        <Duration value="1.1"/>
+        <Period value="0.0625"/>
+        <InitialEffect value="GravityHeroShiftCasterForceOffset"/>
+        <PeriodicEffect value="GravityHeroShiftCasterSet"/>
+        <Modification MoveSpeedMinimum="11">
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroShiftForce">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.25"/>
+        <Period value="0.0625"/>
+        <InitialEffect value="GravityHeroShiftForce"/>
+        <PeriodicEffect value="GravityHeroShiftForce"/>
+        <FinalEffect value="ApplyUnitWasStunnedSource"/>
+        <Modification MoveSpeedMinimum="15">
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+        <ExpireEffect value="GravityHeroKillDelayKill"/>
+        <DamageResponse Fatal="1" Handled="GravityHeroKillDelayAB" ModifyFraction="0">
+            <RequireEffectArray value="GravityHeroShiftDMG"/>
+            <ValidatorArray value="SourceNotHeroic"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroPushForce">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.25">
+            <AccumulatorArray value="GravityHeroWhiplashMultiplier"/>
+        </Duration>
+        <Period value="0.0625"/>
+        <InitialEffect value="GravityHeroPushForceOffset"/>
+        <RefreshEffect value="GravityHeroPushCollisionLoop"/>
+        <PeriodicEffect value="GravityHeroPushForceOffset"/>
+        <FinalEffect value="ApplyUnitWasStunned"/>
+        <ExpireEffect value="GravityHeroPushCollisionLoop"/>
+        <Modification MoveSpeedMaximum="15" MoveSpeedMinimum="15">
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroPullForce">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.5">
+            <AccumulatorArray value="GravityHeroWhiplashMultiplier"/>
+        </Duration>
+        <Period value="0.0625"/>
+        <InitialEffect value="GravityHeroPullForceOffset"/>
+        <PeriodicEffect value="GravityHeroPullForceOffset"/>
+        <FinalEffect value="ApplyUnitWasStunned"/>
+        <Modification MoveSpeedMaximum="15" MoveSpeedMinimum="15">
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+        <ExpireEffect value="GravityHeroKillDelayKill"/>
+        <DamageResponse Fatal="1" Handled="GravityHeroKillDelayAB" ModifyFraction="0">
+            <RequireEffectArray value="GravityHeroPullDMG"/>
+            <ValidatorArray value="SourceNotHeroic"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroInflateKill">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="GravityHeroInflateBloodDummy"/>
+        <FinalEffect value="GravityHeroInflateKill"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <ModifyFlags index="DisableWeapons" value="1"/>
+            <ModifyFlags index="Reveal" value="1"/>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="Unselectable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+        <ExpireEffect value="GravityHeroInflateExplodeSA"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroInflateCheck">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+        <DamageResponse>
+            <Fatal value="1"/>
+            <Handled value="GravityHeroInflateKillAB"/>
+            <ModifyFraction value="0"/>
+            <ModifyMinimumDamage value="1"/>
+            <RequireEffectArray value="GravityHeroInflateDMG"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroNegative">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="9"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0.7">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroPolarityEnergy">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <MaxStackCount value="0"/>
+        <Duration value="15"/>
+        <Modification>
+            <VitalMaxIncreaseAffectsCurrentArray index="Life" value="0"/>
+            <VitalMaxIncreaseAffectsCurrentArray index="Shields" value="0"/>
+            <VitalMaxIncreaseAffectsCurrentArray index="Energy" value="0"/>
+            <VitalMaxArray index="Energy" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroPolarityShields">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <MaxStackCount value="0"/>
+        <Duration value="15"/>
+        <Modification>
+            <VitalMaxIncreaseAffectsCurrentArray index="Life" value="0"/>
+            <VitalMaxIncreaseAffectsCurrentArray index="Shields" value="0"/>
+            <VitalMaxIncreaseAffectsCurrentArray index="Energy" value="0"/>
+            <VitalMaxArray index="Shields" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroPositive">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <InitialEffect value="GravityHeroPolarityPositiveSet"/>
+        <FinalEffect value="GravityHeroPolarityNegativeSet"/>
+        <Modification>
+            <VitalMaxIncreaseAffectsCurrentArray index="Life" value="0"/>
+            <VitalMaxIncreaseAffectsCurrentArray index="Shields" value="0"/>
+            <VitalMaxIncreaseAffectsCurrentArray index="Energy" value="0"/>
+            <VitalMaxArray index="Energy" value="50"/>
+            <VitalRegenArray index="Energy" value="6"/>
+            <BehaviorLinkDisableArray value="GravityHeroNegative"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravityHeroCompressed">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="15"/>
+        <Modification RadiusMultiplier="0.6">
+            <StateFlags index="UnitAttrOffMassive" value="1"/>
+            <DamageTotalMultiplier index="Spell" value="-0.5"/>
+            <DamageTotalMultiplier index="Melee" value="-0.5"/>
+            <DamageTotalMultiplier index="Ranged" value="-0.5"/>
+            <DamageTotalMultiplier index="Splash" value="-0.5"/>
+        </Modification>
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-swarm-kerrigan-crushinggrip.dds"/>
+        <DamageResponse ModifyFraction="1.25">
+            <Chance value="1"/>
+        </DamageResponse>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Ironcore">
         <BehaviorFlags index="Permanent" value="1"/>
@@ -1784,6 +2042,10 @@
         <MaxStackCount value="7"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorUnitTracker id="WarpHeroDecoyTracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+    </CBehaviorUnitTracker>
     <CBehaviorBuff id="WarpHeroDummyFate">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="CasterNotDead"/>
@@ -1803,6 +2065,9 @@
         <Duration value="0.25"/>
         <InitialEffect value="WarpHeroTurretAimTurretStart"/>
         <FinalEffect value="WarpHeroTurretAimTurretStop"/>
+        <Modification>
+            <WeaponDisableArray value="PhaseDisruptors"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="WaterHeroIceBlast">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -1830,6 +2095,7 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Period value="0.5"/>
         <PeriodicEffect value="AutocastSet"/>
+        <DisableValidatorArray value="DemolisherNotIncapacitated"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BanelingExplode">
         <DisableValidatorArray value="IsNotInTornado"/>
@@ -2063,6 +2329,7 @@
             <DamageTotalMultiplier index="NoProc" value="0.1"/>
             <VitalMaxAdditiveMultiplierArray index="Life" value="0.2"/>
         </Modification>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="DiseaseBearer">
         <InfoIcon value="Assets\Textures\btn-ability-zerg-defilerplague.dds"/>
@@ -2833,6 +3100,7 @@
         <Period value="0.1"/>
         <PeriodicEffect value="AutocastMicroBurstSA"/>
         <BehaviorFlags index="Permanent" value="1"/>
+        <DisableValidatorArray value="AirHeroMicroBurstAutocast"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Evasion">
         <InfoFlags index="Hidden" value="1"/>
@@ -3043,12 +3311,6 @@
         </Modification>
         <Duration value="15"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Consumed">
-        <InfoIcon value="Assets\Textures\alarakdeath_ingame_heroportrait.dds"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="10"/>
-        <Duration value="90"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="CoopInitdelay">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="60"/>
@@ -3200,13 +3462,6 @@
         <InitialEffect value="AnnihilatorDematfieldAddSet"/>
         <TimeScaleSource Value="Global"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="DensityMomentum">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DamageResponse Handled="PressureAB" Location="Attacker" DamageValue="Original">
-            <Chance value="1"/>
-        </DamageResponse>
-    </CBehaviorBuff>
     <CBehaviorBuff id="DisablePhoenixWeapons2">
         <InfoFlags index="Hidden" value="1"/>
         <BuffFlags index="Channeling" value="1"/>
@@ -3230,12 +3485,6 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <MaxStackCount value="0"/>
         <Duration value="6"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Doubleganger">
-        <Alignment value="Positive"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Easy">
         <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
@@ -3270,20 +3519,6 @@
             <VitalRegenArray index="Life" value="15">
                 <AccumulatorArray value="HealingMultiplier"/>
             </VitalRegenArray>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Excess">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="0.1"/>
-        <FinalEffect value="ExcessSA"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="ExcessGravSliv">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="0.2"/>
-        <ExpireEffect value="ExcessGravSlivInitSA"/>
-        <Modification>
-            <AbilClassDisableArray index="CAbilAttack" value="1"/>
-            <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="GatewayHeroExplosive">
@@ -3325,7 +3560,7 @@
         <Modification>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
-        <DisableValidatorArray value="Unstoppable"/>
+        <DisableValidatorArray value="NotMassive"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Fortify">
         <InfoIcon value="Assets\Textures\btn-upgrade-zerg-organiccarapace.dds"/>
@@ -3344,42 +3579,8 @@
         <DamageResponse Handled="StonesLM">
             <Chance value="1"/>
         </DamageResponse>
-        <Duration value="30"/>
+        <Duration value="60"/>
         <DisplayDuration index="Self" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="FortifyHero">
-        <InfoIcon value="Assets\Textures\btn-upgrade-zerg-organiccarapace.dds"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Modification ShieldArmorBonus="5">
-            <LifeArmorBonus value="5"/>
-            <VitalRegenArray index="Life" value="0.1992"/>
-            <VitalRegenArray index="Shields" value="0.1992"/>
-            <VitalRegenArray index="Energy" value="0.1992"/>
-            <DeathResponse Chance="1" Effect="EarthHeroLandslideBigSA"/>
-        </Modification>
-        <Duration value="30"/>
-        <DamageResponse Handled="StonesLM" ModifyFraction="0.75">
-            <Chance value="1"/>
-        </DamageResponse>
-        <DisplayDuration index="Self" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="FortifyStucture">
-        <InfoIcon value="Assets\Textures\btn-upgrade-zerg-organiccarapace.dds"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Modification AttackSpeedMultiplier="1.15">
-            <DamageDealtAttributeMultiplier index="Heroic" value="-0.1875"/>
-            <UnifiedDamageDealtFraction index="Spell" value="0.25"/>
-            <UnifiedDamageDealtFraction index="Melee" value="0.25"/>
-            <UnifiedDamageDealtFraction index="Ranged" value="0.25"/>
-            <UnifiedDamageDealtFraction index="Splash" value="0.25"/>
-            <UnifiedDamageDealtFraction index="NoProc" value="0.25"/>
-            <VitalMaxFractionArray index="Life" value="0.5"/>
-            <VitalMaxFractionArray index="Shields" value="0.5"/>
-            <DeathResponse Chance="1" Effect="EarthHeroLandslideBigSA"/>
-        </Modification>
-        <DamageResponse Handled="StonesLM">
-            <Chance value="1"/>
-        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="FrozenHeroic">
         <Alignment value="Negative"/>
@@ -3438,21 +3639,12 @@
             <HeightTime index="Start" value="0.75"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="GravityDashApplySpeed">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Modification RadiusMultiplier="0" MoveSpeedMinimum="11">
-            <AbilClassDisableArray index="CAbilAttack" value="1"/>
-            <AbilClassDisableArray index="CAbilMove" value="1"/>
-            <AttributeChangeArray/>
-        </Modification>
-        <Duration value="1.1"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="DecoyFate">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
-        <Duration value="10"/>
+        <Duration value="15"/>
         <FinalEffect value="WarpHeroDecoySet"/>
         <DamageResponse Location="Attacker" ModifyFraction="0" ModifyMinimumDamage="1">
             <Chance value="1"/>
@@ -3496,15 +3688,6 @@
             <HeightTime index="Start" value="1"/>
             <HeightTime index="Stop" value="0.25"/>
         </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Magnetism">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Modification RadiusMultiplier="0" MoveSpeedMinimum="15">
-            <AbilClassDisableArray index="CAbilAttack" value="1"/>
-            <AbilClassDisableArray index="CAbilMove" value="1"/>
-        </Modification>
-        <Duration value="0.4"/>
-        <ExpireEffect value="ApplyUnitWasStunned"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MassacreHelper">
         <InfoFlags index="Hidden" value="1"/>
@@ -3908,8 +4091,6 @@
         <DamageResponse Handled="ReactiveShieldsSA">
             <Chance value="1"/>
         </DamageResponse>
-        <InitialEffect value="ShieldUnitCU"/>
-        <FinalEffect value="DemolisherShieldUnitETU"/>
         <RemoveValidatorArray value="DemolisherNotIncapacitated"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Replenish">
@@ -3951,7 +4132,6 @@
             <AdditiveMoveSpeedFactor value="-0.15"/>
             <AdditiveAttackSpeedFactor value="-0.2"/>
         </Modification>
-        <DisableValidatorArray value="Unstoppable"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Slimy">
         <InfoIcon value="Assets\Textures\btn-ability-zerg-explode-color.dds"/>
@@ -4013,6 +4193,7 @@
         <Period value="0.1"/>
         <PeriodicEffect value="AutocastTornadoSA"/>
         <BehaviorFlags index="Permanent" value="1"/>
+        <DisableValidatorArray value="AirHeroTornadoAutocast"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NinjaCheck">
         <InfoFlags index="Hidden" value="1"/>
@@ -4072,12 +4253,6 @@
         <Duration value="0.6"/>
         <Modification RadiusMultiplier="0"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Pressure">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="0.001"/>
-        <Modification WeaponRange="-10"/>
-        <RemoveValidatorArray value="NotHeroicAndNotStructure"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="ProtectionField">
         <InfoIcon value="Assets\Textures\grad_ripfield1.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -4094,20 +4269,6 @@
             <RequireEffectArray value="BossFirespewerFireball"/>
             <Chance value="1"/>
         </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Repel">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Period value="1"/>
-        <PeriodicEffect value="RepelCP"/>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="RepelDMG">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <MaxStackCount value="20"/>
-        <Duration value="0.5"/>
-        <FinalEffect value="ApplyUnitWasStunned"/>
-        <ExpireEffect value="RepelDMG"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="RestlessPassive">
         <InfoFlags index="Hidden" value="1"/>
@@ -4175,6 +4336,7 @@
         <DamageResponse ModifyFraction="0.25">
             <Chance value="1"/>
         </DamageResponse>
+        <DisableValidatorArray value="CasterNotInvulnerable"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ScienceSeeker">
         <InfoIcon value="Assets\Textures\btn-techupgrade-terran-seekermissile.dds"/>
@@ -4193,9 +4355,11 @@
             <DeathResponse Chance="1" Effect="WaterHeroBoilOverChance"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Selfheal">
-        <EditorCategories value="AbilityorEffectType:Units"/>
+    <CBehaviorBuff id="ThorSelfheal">
+        <InfoIcon value="Assets\Textures\btn-ability-terran-heal-color.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <DisableValidatorArray value="atleast1heroinrange"/>
+        <DisableValidatorArray value="MissingHealth"/>
         <Modification>
             <VitalRegenArray index="Life" value="1000"/>
         </Modification>
@@ -4279,15 +4443,6 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="HallucinationTimedLife">
         <Duration value="10"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="HallucinatonDecoyBonus">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <MaxStackCount value="3"/>
-        <Modification>
-            <VitalMaxArray index="Life" value="100"/>
-            <VitalMaxArray index="Shields" value="100"/>
-        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="HiddenArmageddonINC">
         <InfoFlags index="Hidden" value="1"/>
@@ -4380,6 +4535,7 @@
         <DamageResponse Handled="MultiphaseShieldremoveset" Minimum="40" ModifyFraction="0.55">
             <Chance value="1"/>
         </DamageResponse>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MultiphaseShield">
         <InfoIcon value="Assets\Textures\btn-ability-protoss-shieldcapacitor.dds"/>
@@ -4405,6 +4561,7 @@
         <DamageResponse Handled="MultiphaseShieldremoveset" Minimum="40" ModifyFraction="0.45">
             <Chance value="1"/>
         </DamageResponse>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MultiphaseShieldHidden3">
         <Cost>
@@ -4425,6 +4582,7 @@
         <DamageResponse Handled="MultiphaseShieldremoveset" Minimum="40" ModifyFraction="0.35">
             <Chance value="1"/>
         </DamageResponse>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MultiphaseShieldHidden4">
         <Cost>
@@ -4445,6 +4603,7 @@
         <DamageResponse Handled="MultiphaseShieldremoveset" Minimum="40" ModifyFraction="0.25">
             <Chance value="1"/>
         </DamageResponse>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MultiphaseShieldHiddenreplenish">
         <InfoFlags index="Hidden" value="1"/>
@@ -4452,6 +4611,7 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="10"/>
         <ExpireEffect value="MultiphaseShieldreplenishset"/>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MultiphaseShieldHiddenreplenish2">
         <Cost>
@@ -4460,7 +4620,7 @@
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-hardenedshields-color.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="7.5"/>
+        <Duration value="7"/>
         <ExpireEffect value="MultiphaseShieldreplenishset"/>
         <Modification>
             <DeathResponse>
@@ -4469,6 +4629,7 @@
                 </Cost>
             </DeathResponse>
         </Modification>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MultiphaseShieldHiddenreplenish3">
         <Cost>
@@ -4477,7 +4638,7 @@
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-hardenedshields-color.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="5"/>
+        <Duration value="4"/>
         <ExpireEffect value="MultiphaseShieldreplenishset"/>
         <Modification>
             <DeathResponse>
@@ -4486,6 +4647,7 @@
                 </Cost>
             </DeathResponse>
         </Modification>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MusclePoison">
         <Alignment value="Negative"/>
@@ -4986,6 +5148,7 @@
         <Period value="0.1"/>
         <PeriodicEffect value="AutocastHurricaneSA"/>
         <BehaviorFlags index="Permanent" value="1"/>
+        <DisableValidatorArray value="AirHeroHurricaneAutocast"/>
     </CBehaviorBuff>
     <CBehaviorWander id="TornadoWander">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -5014,10 +5177,6 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="2"/>
         <RemoveValidatorArray value="NotMechanical"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Unstoppable">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Requirements value="Unstoppable"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Vengeance">
         <InfoFlags index="Hidden" value="1"/>
@@ -5351,12 +5510,14 @@
         <PeriodicEffect value="YouFailedSA"/>
         <InfoIcon value="Assets\Textures\decal_terran_0068_01.dds"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Dontrushmebro">
+    <CBehaviorBuff id="ThorInvulnerabilityShield">
         <Cost>
             <Charge Link="Behavior/Youfailed"/>
             <Cooldown Link="Behavior/Youfailed"/>
         </Cost>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\btn-tips-terran-psishield.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <TimeScaleSource Value="Global"/>
         <Duration value="10"/>
         <Modification>
             <VitalDamageGainArray index="Life">
@@ -5379,7 +5540,6 @@
                 <Cooldown Link="Behavior/Youfailed"/>
             </Cost>
         </DamageResponse>
-        <TimeScaleSource Value="Global"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TooLate">
         <InfoIcon value="Assets\Textures\icon-time-zerg.dds"/>
@@ -5484,6 +5644,7 @@
             <ValidatorArray value="IsHeroic"/>
             <Chance value="1"/>
         </DamageResponse>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="rewarddmg">
         <InfoFlags index="Hidden" value="1"/>
@@ -5500,6 +5661,7 @@
                 </Cost>
             </DeathResponse>
         </Modification>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="scienceapplier">
         <InfoFlags index="Hidden" value="1"/>

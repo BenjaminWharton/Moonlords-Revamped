@@ -11,6 +11,207 @@
     <CActorSound id="AirHeroHurricane_Impact" parent="SoundOneShot">
         <On Terms="Behavior.AirHeroHurricaneFate.Off" Send="Create"/>
     </CActorSound>
+    <CActorModel id="AnnihilatorFirewall" parent="ModelAnimationStyleContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="Effect.AnnihilatorFirewallCP.Start" Send="Create"/>
+        <On Terms="Effect.AnnihilatorFirewallCP.Stop" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 Delay"/>
+        <On Terms="TimerExpired; TimerName Delay" Send="AnimGroupApply B"/>
+    </CActorModel>
+    <CActorModel id="AnnihilatorV1FlamethrowerLeft" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="CreepEngulfment" value="0"/>
+        <Inherits index="Decal" value="0"/>
+        <Inherits index="ModelMaterials" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TeamColor" value="0"/>
+        <Inherits index="TimeScale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <Inherits index="WarpGroup" value="0"/>
+        <On Terms="Behavior.AnnihilatorV1Flamethrower.On" Send="Create"/>
+        <On Terms="Behavior.AnnihilatorV1Flamethrower.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachWeapon00 SOpMoveBackByDot5"/>
+        <Model value="AnnihilatorV1Flamethrower"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorModel id="AnnihilatorV1FlamethrowerRight" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="CreepEngulfment" value="0"/>
+        <Inherits index="Decal" value="0"/>
+        <Inherits index="ModelMaterials" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TeamColor" value="0"/>
+        <Inherits index="TimeScale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <Inherits index="WarpGroup" value="0"/>
+        <On Terms="Behavior.AnnihilatorV1Flamethrower.On" Send="Create"/>
+        <On Terms="Behavior.AnnihilatorV1Flamethrower.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachWeapon01 SOpMoveBackByDot5"/>
+        <Model value="AnnihilatorV1Flamethrower"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorRange id="EarthHeroFortifyRange" parent="RangeAbil" abil="Fortify"/>
+    <CActorRange id="EarthHeroLavaRange" parent="RangeAbil" abil="Lava"/>
+    <CActorSound id="GravityHeroClash_Impact" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroCrushClashDMG.Start" Send="Create"/>
+        <On Terms="Effect.GravityHeroLiftClashDMG.Start" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="GravityHeroCompress" parent="ModelAnimationStyleOneShotUNIT">
+        <On Terms="Effect.GravityHeroCompressDMG.Start" Send="Create"/>
+        <Host Scope="Target"/>
+        <HostSiteOps Ops="SOpAttachOverhead" HoldPosition="1" HoldRotation="1"/>
+        <MaxScale value="2.500000"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorSound id="GravityHeroCompress_Impact" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroCompressDMG.Start" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="GravityHeroCrushClash" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.GravityHeroCrushClashDMG.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <Model value="GravityHeroClash"/>
+    </CActorModel>
+    <CActorRange id="GravityHeroCrushRange" parent="RangeAbil" abil="GravityHeroW"/>
+    <CActorRange id="GravityHeroCompressRange" parent="RangeAbil" abil="GravityHeroR"/>
+    <CActorSound id="GravityHeroCrush_Launch" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroCrushSA.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="GravityHeroDive_Impact" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroDiveSA.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="GravityHeroDive_Launch" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroDiveInit.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="GravityHeroInflate_Impact" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroInflateDMG.Start" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="GravityHeroLiftClash" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.GravityHeroLiftClashDMG.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,128,255"/>
+        <Model value="GravityHeroClash"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroCrushed" parent="ModelAddition">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On Terms="Behavior.GravityHeroCrushed.On" Send="Create"/>
+        <On Terms="Behavior.GravityHeroCrushed.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOverhead SOpMoveUpByDot25 SOpMoveUpByDot1 SOpForwardSouth" HoldRotation="1"/>
+        <MaxScale value="2.500000"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroElevated" parent="ModelAddition">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On Terms="Behavior.GravityHeroElevated.On" Send="Create"/>
+        <On Terms="Behavior.GravityHeroElevated.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOverhead SOpMoveUpByDot25 SOpMoveUpByDot1 SOpForwardSouth" HoldRotation="1"/>
+        <MaxScale value="2.500000"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorSimple id="GravityHeroLiftElevatedAnim">
+        <Supporter Subject="_Unit"/>
+        <On Terms="Behavior.GravityHeroElevatedStun.On" Send="Create"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Behavior.GravityHeroElevatedStun.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimPlay Flail Flail PlayForever,RandomStartOffset 0.100000 0.100000"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="AnimClear Flail"/>
+    </CActorSimple>
+    <CActorSplat id="GravityHeroCrushSplat2" parent="ProtossCursorSplat" abil="GravityHeroW">
+        <On index="0" Terms="ActorCreation" Send="Create CursorRegion"/>
+        <On index="1" Terms="ActorDestruction" Target="CursorRegion" Send="Destroy"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <Model value="VoidProtossAOECursorSplatTC"/>
+    </CActorSplat>
+    <CActorSplat id="GravityHeroLiftSplat" parent="ProtossCursorSplat" abil="GravityHeroW">
+        <On index="0" Terms="Abil.GravityHeroW.Cursor; ValidatePlayer GravityHeroIsPositiveReq" Send="Create"/>
+        <Model value="VoidProtossAOECursorSplat"/>
+    </CActorSplat>
+    <CActorModel id="GravityHeroDevour" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.GravityHeroDevourDMG.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpTargetUnit SOpAttachOverhead"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroDiveReverberate" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.GravityHeroDiveReverberateCP.Start" Send="Create"/>
+        <On Terms="Effect.GravityHeroDiveReverberateCP.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor 50,255,255"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorSound id="GravityHeroLift_Launch" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroLiftSA.Start" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="GravityHeroPullMissileDeath" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="CastShadows" value="1"/>
+        <Inherits index="LocalTintColor" value="1"/>
+        <Inherits index="Opacity" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <Inherits index="TintColor" value="1"/>
+        <AcceptedTransfers index="Animator" value="1"/>
+        <AcceptedTransfers index="AnimProps" value="1"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand {} Instant"/>
+        <On index="1" Terms="ActorCreation" Send="SetScale 0.100000 0.500000"/>
+        <On index="2" Terms="ActorCreation" Send="TimerSet 0.500000 Death"/>
+        <On Terms="TimerExpired; TimerName Death" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <Model value="GravityHeroPullMissile"/>
+    </CActorModel>
+    <CActorSound id="GravityHeroPull_Launch" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroPullLM.Start" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="GravityHeroPushCollision" parent="ModelAnimationStyleOneShotUNIT">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.GravityHeroPushCollisionDMG.Start; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,150,255"/>
+        <HostSiteOps Ops="SOpTargetPoint SOpForwardSourcePoint SOp180 SOpMoveByDot25"/>
+        <AutoScaleFromSelectionFactor value="1.000000"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroPushPortal" parent="ModelAnimationStyleOneShot">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD {} Stand {} ContentPlayOnce"/>
+        <On Terms="Effect.GravityHeroPushPortalDelay.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetScale 0.100000 0.750000"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000"/>
+        <On Terms="TimerExpired" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,96,255"/>
+        <HostSiteOps Ops="SOpSourceUnit" HoldPosition="1" HoldRotation="1"/>
+        <Model value="GravityHeroPushMissile"/>
+    </CActorModel>
+    <CActorSound id="GravityHeroPush_Collision" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroPushCollisionDMG.Start" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="GravityHeroInflate" parent="ModelAnimationStyleOneShotUNIT">
+        <On Terms="Effect.GravityHeroInflateSet.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroInflateBloodExplode" parent="ModelAnimationStyleOneShotUNIT">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.GravityHeroInflateKill.Start; At Target" Send="Create"/>
+        <AutoScaleFactor value="0.500000"/>
+    </CActorModel>
+    <CActorSimple id="GravityHeroInflateScale">
+        <On Terms="Behavior.GravityHeroInflateKill.On" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimClear Attack"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimClear AttackReady"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimClear AttackLeft"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimClear AttackRight"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimPlay Spell Flail PlayForever,RandomStartOffset 0.100000 0.100000"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetScale 1.400000 2.000000 Inflate"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="AnimClear Spell"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="ClearScale 0.500000 Inflate"/>
+        <On Terms="Behavior.Lifted.Off" Send="Destroy"/>
+    </CActorSimple>
     <CActorSound id="AirHeroMicroBurst_Impact" parent="SoundOneShot">
         <On Terms="Effect.AirHeroMicroBurstDMG.Start" Send="Create"/>
     </CActorSound>
@@ -56,6 +257,109 @@
         <On Terms="Behavior.TornadoFate.On" Send="Create"/>
         <On Terms="Behavior.TornadoFate.Off" Send="Destroy"/>
     </CActorSound>
+    <CActorModel id="GravityHeroCrush" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.GravityHeroCrushSA.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpMoveUpByDot25" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroCrushAddition" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.GravityHeroCrushSA.Start" Send="Create"/>
+    </CActorModel>
+    <CActorSplat id="GravityHeroCrushSplat" parent="ProtossCursorSplat" abil="GravityHeroW">
+        <On index="0" Terms="Abil.GravityHeroW.Cursor; ValidatePlayer GravityHeroNotPositiveReq" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create GravityHeroCrushSplat2"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <Model value="VoidProtossAOECursorSplat"/>
+    </CActorSplat>
+    <CActorModel id="GravityHeroLift" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.GravityHeroLiftSA.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,150,255"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroLiftAddition" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.GravityHeroLiftSA.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,255,255"/>
+        <HostSiteOps Ops="SOpMoveUpBy1" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroDive" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.GravityHeroDiveSA.Start" Send="Create"/>
+    </CActorModel>
+    <CActorRange id="GravityHeroDiveRange" parent="RangeAbil" abil="GravityHeroE"/>
+    <CActorSplat id="GravityHeroDiveSplat" parent="ProtossCursorSplat" abil="GravityHeroE">
+        <On index="0" Terms="Abil.GravityHeroE.Cursor; ValidatePlayer GravityHeroIsPositiveReq" Send="Create"/>
+        <Model value="VoidProtossAOECursorSplat"/>
+        <Scale value="2.020000"/>
+    </CActorSplat>
+    <CActorModel id="GravityHeroShift" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.GravityHeroShiftSA.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroPushImpact" parent="ModelAnimationStyleOneShot">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD {} {} Death ContentPlayOnce"/>
+        <On Terms="Effect.GravityHeroPushSA.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,96,255"/>
+        <HostSiteOps Ops="SOpSourceUnit" HoldPosition="1" HoldRotation="1"/>
+        <Model value="GravityHeroPushMissile"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroShiftCollision" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.GravityHeroShiftCollisionSA.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <HostSiteOps Ops="SOpCasterUnit" HoldPosition="1" HoldRotation="1"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorQuad id="GravityHeroShiftQuad" parent="GuideVisualQuadDown" abil="GravityHeroE">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="Abil.GravityHeroE.Cursor; ValidatePlayer GravityHeroNotPositiveReq" Send="Create"/>
+        <On Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpMoveBackBy2"/>
+        <LaunchActor value="ProtossGuideVisualQuadLargeLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadLargeCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadLargeImpact"/>
+        <Height value="14.000000"/>
+        <Width value="3.000000"/>
+    </CActorQuad>
+    <CActorModel id="GravityHeroPullAddition" parent="ModelAddition">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD {} Death {} ContentPlayOnce,Instant"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <Host Subject="_Missile"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroShiftAddition" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.GravityHeroShiftCaster.On" Send="Create"/>
+        <On Terms="Behavior.GravityHeroShiftCaster.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetScale 0.100000 0.000000 Scale"/>
+        <On Terms="ActorCreation" Send="ClearScale 0.750000 Scale"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorQuad id="GravityHeroPullQuad" parent="GuideVisualQuadDown" abil="GravityHeroQ">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="Abil.GravityHeroQ.Cursor; ValidatePlayer GravityHeroNotPositiveReq" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOp180"/>
+        <LaunchActor value="ProtossGuideVisualQuadRedLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadRedCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadRedImpact"/>
+        <Quad value="-0.500000,4.500000,0.500000,4.500000"/>
+        <Height value="9.000000"/>
+        <Width value="1.000000"/>
+    </CActorQuad>
+    <CActorMissile id="GravityHeroPullMissile" parent="GenericAttackMissile" unitName="GravityHeroPullMissile">
+        <Macros value="GlobalLoopMacro"/>
+        <On index="1" Terms="UnitBirth" Send="AnimBracketStart Lifetime Birth Stand {} Instant"/>
+        <On index="2" Terms="UnitDeath" Send="TimerSet 0.500000 Death"/>
+        <On index="3" Terms="ActorOrphan" Send="TimerSet 0.500000 Death"/>
+        <On Terms="ActorCreation" Send="SetTintColor 200,0,0"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.000000 Addition"/>
+        <On Terms="TimerExpired; TimerName Addition" Send="TimerSet 0.062500 Addition"/>
+        <On Terms="TimerExpired; TimerName Addition" Send="Create GravityHeroPullAddition"/>
+        <On Terms="TimerExpired; TimerName Death" Send="Destroy"/>
+        <On Terms="ActorDestruction" Send="Create GravityHeroPullMissileDeath"/>
+    </CActorMissile>
+    <CActorSound id="GravityHeroPush_Impact" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroPushSA.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="GravityHeroPush_Launch" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroPushLM.Start" Send="Create"/>
+    </CActorSound>
     <CActorBeamSimple id="AnnihilatorLaserTrackingBeam" parent="BeamSimpleAnimationStyleContinuous">
         <On Terms="Behavior.ThorStopMoveIndicatorFate.On" Send="Create"/>
         <On Terms="Behavior.ThorStopMoveIndicatorFate.Off" Send="Destroy"/>
@@ -86,6 +390,7 @@
         <On Terms="ActorCreation" Send="TimerSet 2.000000"/>
         <On Terms="TimerExpired" Send="SetOpacity 1.000000"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostSiteOps Ops="SOpShadow"/>
     </CActorModel>
     <CActorSound id="AnnihilatorLaserTracking_Impact" parent="SoundOneShot">
         <On Terms="Effect.AnnihilatorLaserTrackingDamage.Start" Send="Create"/>
@@ -112,6 +417,87 @@
         <LocalAxis value="0.000000,0.000000,1.000000"/>
         <InitialAngle value="38.000000"/>
     </CActorSiteOpRotator>
+    <CActorMissile id="GravityHeroPushMissile" parent="GenericAttackMissile" unitName="GravityHeroPushMissile">
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="ActorDestruction" Send="DestroyParticles"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,96,255"/>
+    </CActorMissile>
+    <CActorQuad id="GravityHeroPushQuad" parent="GuideVisualQuadDown" abil="GravityHeroQ">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="Abil.GravityHeroQ.Cursor; ValidatePlayer GravityHeroIsPositiveReq" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="12.000000"/>
+        <Width value="1.500000"/>
+    </CActorQuad>
+    <CActorAction id="GravityHeroInflateBloodAttack" parent="GenericAttack" effectAttack="GravityHeroInflateBloodDummy">
+        <ImpactMap index="None" Model="GravityHeroInflateBlood"/>
+        <ImpactModel value="GravityHeroInflateBloodModel"/>
+    </CActorAction>
+    <CActorModel id="GravityHeroInflateBloodModel" parent="ModelAnimationStyleOneShotUNIT">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <MaxScale value="1.250000"/>
+        <Model value="GravityHeroInflateBlood"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="GravityHeroPolarityExplosion" parent="ModelAnimationStyleOneShot">
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE300" Send="SetScale 3.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE400" Send="SetScale 4.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE500" Send="SetScale 5.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE600" Send="SetScale 6.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE700" Send="SetScale 7.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE800" Send="SetScale 8.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE900" Send="SetScale 9.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE1000" Send="SetScale 10.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE1100" Send="SetScale 11.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE1200" Send="SetScale 12.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE1300" Send="SetScale 13.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE1400" Send="SetScale 14.000000"/>
+        <On Terms="ActorCreation; ValidateEffect GravityHeroPolarityGTE1500" Send="SetScale 15.000000"/>
+        <On Terms="Effect.GravityHeroPolarityExplodeNegativeSA.Start" Send="Create"/>
+        <On Terms="Effect.GravityHeroPolarityExplodePositiveSA.Start" Send="Create"/>
+        <On Terms="Effect.GravityHeroPolarityExplodePositiveSA.Start" Send="ModelSwap GravityHeroPolarityExplosionPositive"/>
+        <Model value="GravityHeroPolarityExplosionNegative"/>
+    </CActorModel>
+    <CActorSplat id="GravityHeroPolaritySplat" parent="ProtossCursorSplat" abil="GravityHeroPolarity">
+        <Model value="VoidProtossAOECursorSplat"/>
+    </CActorSplat>
+    <CActorSound id="GravityHeroPolarity_Explosion" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroPolarityResetSet.Start" Send="Create"/>
+        <On Terms="Effect.GravityHeroPolarityResetSet.Start; ValidateEffect GravityHeroPolarityGTE700" Send="Create"/>
+        <On Terms="Effect.GravityHeroPolarityResetSet.Start; ValidateEffect GravityHeroPolarityGTE1100" Send="Create"/>
+        <On Terms="Effect.GravityHeroPolarityResetSet.Start; ValidateEffect GravityHeroPolarityGTE1500" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="GravityHeroShift_Impact" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroShiftCollisionSA.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="GravityHeroShift_Launch" parent="SoundOneShot">
+        <On Terms="Effect.GravityHeroShiftInit.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSiteOpForward id="SOpForwardQueryDirector">
+        <HostForward Subject="::QueryDirector"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="SOpForwardQueryDirectorInverted">
+        <HostForward Subject="::QueryDirector"/>
+        <Invert value="1"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="SOpForwardQuerySubject">
+        <HostForward Subject="::QuerySubject"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="SOpForwardQuerySubjectInverted">
+        <HostForward Subject="::QuerySubject"/>
+        <Invert value="1"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpHostBearings id="SOpQueryDirector">
+        <HostBearings Subject="::QueryDirector"/>
+    </CActorSiteOpHostBearings>
+    <CActorSiteOpHostBearings id="SOpQuerySubject">
+        <HostBearings Subject="::QuerySubject"/>
+    </CActorSiteOpHostBearings>
     <CActorSiteOpLocalOffset id="SOpMoveLeftBy1">
         <LocalOffset value="-1.000000,0.000000,0.000000"/>
     </CActorSiteOpLocalOffset>
@@ -136,168 +522,267 @@
     <CActorSiteOpLocalOffset id="SOpMoveRightByDot5">
         <LocalOffset value="0.500000,0.000000,0.000000"/>
     </CActorSiteOpLocalOffset>
-    <CActorQuad id="WarpHeroMultishotQuadL2" parent="GuideVisualQuadDown" abil="Upheaval">
+    <CActorSimple id="GravityHeroCompressedSize">
+        <Supporter Subject="_Unit"/>
+        <On Terms="Behavior.GravityHeroCompressed.On" Send="Create"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Behavior.GravityHeroCompressed.Off" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidateUnit IsHeroicorStructure" Target="_Unit" Send="SetScale 0.750000 0.500000 Compressed"/>
+        <On Terms="ActorCreation; ValidateUnit NotHeroicAndNotStructure" Target="_Unit" Send="SetScale 0.600000 0.500000 Compressed"/>
+        <On Terms="ActorDestruction; ValidateUnit NotDead" Target="_Unit" Send="ClearScale 0.500000 Compressed"/>
+    </CActorSimple>
+    <CActorModel id="ThorInvulnerabilityShield" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.ThorInvulnerabilityShield.On" Send="Create"/>
+        <On Terms="Behavior.ThorInvulnerabilityShield.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="ThorSelfheal" parent="ModelAddition">
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.ThorSelfheal.On" Send="Create"/>
+        <On Terms="Behavior.ThorSelfheal.Off" Send="AnimBracketStop Attack"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorUnit id="ThorV1" parent="GenericUnitBase" unitName="ThorV1">
+        <Aliases value="_UnitHuge"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <Macros value="PhysicsDeathsSwarmGround"/>
+        <Macros value="PhysicsDeathsVoidGround"/>
+        <Remove Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
+        <Remove Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="ActorCreation" Send="AnimPlay CoverStand Cover,Stand PlayForever 0.000000"/>
+        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="TimerKill CoverDelay"/>
+        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimClear CoverStand"/>
+        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimPlay Cover Cover PlayForever"/>
+        <On Terms="WeaponStop.JavelinMissileLaunchers.AttackStop" Send="TimerSet 2.500000 CoverDelay"/>
+        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimClear Cover"/>
+        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimPlay CoverStand Cover,Stand PlayForever"/>
+        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
+        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
+        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
+        <On Terms="WeaponStart.ThorsHammer.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On Terms="Abil.250mmStrikeCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
+        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Send="AnimClear Morph"/>
+        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Target="250mmStrikeCannonsMorph" Send="SoundSetMuted 1 0"/>
+        <On Terms="Abil.250mmStrikeCannons.SourceChannelStart" Send="$Spell PlayForever"/>
+        <On Terms="Abil.250mmStrikeCannons.SourceChannelStop" Send="AnimClear Spell"/>
+        <On Terms="Abil.250mmStrikeCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
+        <On Terms="Abil.250mmStrikeCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
+        <On Terms="AbilTransport.MedivacTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
+        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Unload" Send="AnimClear Unload"/>
+        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Unload" Send="AnimClear Unload"/>
+        <On Terms="ModelEvent; ModelEventName SquibStartLeft" Send="Create ThorLeftCheerSquib"/>
+        <On Terms="ModelEvent; ModelEventName SquibStartRight" Send="Create ThorRightCheerSquib"/>
+        <On Terms="AbilTransport.SpecOpsDropshipTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
+        <On Terms="AbilTransport.HerculesTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
+        <On Terms="Abil.330mmBarrageCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
+        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Send="AnimClear Morph"/>
+        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Target="330mmBarrageCannonsMorph" Send="SoundSetMuted 1 0"/>
+        <On Terms="Abil.330mmBarrageCannons.SourceChannelStart" Send="$Spell PlayForever"/>
+        <On Terms="Abil.330mmBarrageCannons.SourceChannelStop" Send="AnimClear Spell"/>
+        <On Terms="Abil.330mmBarrageCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
+        <On Terms="Abil.330mmBarrageCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Thor_Land"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Thor; MorphFrom ThorWreckage" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom Thor; MorphTo ThorWreckage" Send="Destroy"/>
+        <On Terms="UnitBirth.ThorAP" Send="Create"/>
+        <On Terms="UnitBirth.ThorAP" Send="AnimBracketStart Morph IGNORE Morph,Stand Morph,End"/>
+        <On Terms="AbilMorph.*.Start; MorphTo ThorAP; MorphFrom Thor" Send="AnimBracketStart Morph Morph Morph,Stand Morph,End"/>
+        <On Terms="AbilMorph.*.Start; MorphTo Thor; MorphFrom ThorAP" Send="AnimBracketStop Morph"/>
+        <On Terms="AbilMorph.*.Start; MorphTo ThorAP; MorphFrom Thor" Send="Create 250mmStrikeCannonsUnMorph"/>
+        <On Terms="AbilMorph.*.Start; MorphTo Thor; MorphFrom ThorAP" Send="Create 250mmStrikeCannonsMorph"/>
+        <On Terms="Abil.ArmorpiercingMissiles.SourceCastStart" Send="AnimPlay ArmStart Morph 0 0.500000 0.500000 4.050000 AsDuration"/>
+        <On Terms="Abil.ArmorpiercingMissiles.SourceCancel" Send="AnimClear Armed"/>
+        <On Terms="Abil.ArmorpiercingMissiles.SourceCancel" Send="AnimClear ArmStart"/>
+        <On Terms="Abil.ExplosiveMissiles.SourceCastStart" Send="AnimPlay ArmStop Morph,End 0 0.500000 0.500000 4.050000 AsDuration"/>
+        <On Terms="Abil.ExplosiveMissiles.SourceCancel" Send="AnimClear ArmStop"/>
+        <On Terms="ActorCreation" Send="StatusSet WeaponNext 0"/>
+        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster" Send="AnimPlay SpellD Spell,D"/>
+        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster" Send="StatusIncrement WeaponNext"/>
+        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 4" Send="StatusSet WeaponNext 0"/>
+        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 0" Send="AnimClear Attack3"/>
+        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 0" Send="AnimPlay Attack4 Spell,C,02"/>
+        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 1" Send="AnimClear Attack4"/>
+        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 1" Send="AnimPlay Attack1 Spell,C,01"/>
+        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 2" Send="AnimClear Attack1"/>
+        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 2" Send="AnimPlay Attack2 Spell,C,03"/>
+        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 3" Send="AnimClear Attack2"/>
+        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 3" Send="AnimPlay Attack3 Spell,C,00"/>
+        <On Terms="Behavior.SelfRepair.On" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="Behavior.SelfRepair.Off" Send="AnimBracketStop Work"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HaveVoidShade" Send="DeathCustomize Shadow"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HaveTerrazineShadow" Send="DeathCustomize Shadow"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <EventDataFootprint index="0" Actor="" Model=""/>
+        <BuildModel value="Thor"/>
+        <DeathArray index="Normal" ModelLink="ThorDeath" SoundLink=""/>
+        <DeathCustoms ModelLink="ThorDeathLow" Name="AntiGravTerran"/>
+        <DeathCustoms ActorModel="ThorDeathRagdoll" ModelLink="ThorDeathRagdoll" Name="RagdollBasic">
+            <BodySquibs Name="Basic" Model="TerranSquibDeathRagdoll"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollSiegeTank" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="FireHeavy"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="FireHeavy"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollBaneling" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollUltraUnburrow" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms>
+            <ModelLink value="DeathVoidShadowLarge"/>
+            <SoundLink value="ShadowUnit_DeathFX"/>
+            <VoiceLink value="ShadowUnit_DeathVox"/>
+            <Name value="Shadow"/>
+        </DeathCustoms>
+        <PlacementModel value="Thor"/>
+        <PortraitModel value="ThorPortrait"/>
+        <StandAnimTurnTime value="5"/>
+        <StandAnimTurnTimeScaleMin value="0.850000"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.250000,0.500000"/>
+            <RangeDown value="5.000000"/>
+            <RangeDownFade value="1.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMassive2"/>
+        </TerrainSquibs>
+        <WalkAnimMoveSpeed value="1.8671"/>
+        <BarOffset value="120"/>
+        <BarWidth value="140"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-thor.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
+        <NameOffset value="80"/>
+        <SoundArray index="Ready" value="Thor_Ready"/>
+        <SoundArray index="Help" value="Thor_Help"/>
+        <SoundArray index="What" value="Thor_What"/>
+        <SoundArray index="Yes" value="Thor_Yes"/>
+        <SoundArray index="Attack" value="Thor_Attack"/>
+        <SoundArray index="Pissed" value="Thor_Pissed"/>
+        <SoundArray index="Movement" value="Thor_Movement"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-thor.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorRange id="WarpHeroDecoyRange" parent="RangeAbil" abil="WarpHeroDecoy"/>
+    <CActorSiteOpTether id="WarpHeroDoublegangerTether">
+        <HostTether Subject="::QuerySubject"/>
+        <HostTetherSiteOps Ops="SOpForwardQueryDirector"/>
+        <EnableX value="MinMax"/>
+        <EnableY value="MinMax"/>
+        <XMinimum value="-12.000000"/>
+        <XMaximum value="12.000000"/>
+        <YMinimum value="-12.000000"/>
+        <YMaximum value="12.000000"/>
+    </CActorSiteOpTether>
+    <CActorQuad id="WarpHeroMultishotQuad" parent="GuideVisualQuadDown" abil="WarpHeroMultishot">
+        <Supporter Subject="::QueryDirector"/>
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
         <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
         <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
         <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
         <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
-        <On index="4" removed="1"/>
-        <Host Subject="WarpHeroMultishotQuad"/>
-        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadL2Facing"/>
+        <On index="4" Terms="ActorCreation" Send="Create WarpHeroMultishotQuadSegment"/>
+        <On Terms="ActorCreation" Target="::QuerySubject" Send="AttachOffset WarpHeroMultishotQuadSegment {Origin 0} 0.000000,0.000000,0.000000 {} WarpHeroMultishotQuadDLFacing"/>
+        <On Terms="ActorCreation" Send="Create WarpHeroMultishotQuadSegment"/>
+        <On Terms="ActorCreation" Target="::QuerySubject" Send="AttachOffset WarpHeroMultishotQuadSegment {Origin 0} 0.000000,0.000000,0.000000 {} WarpHeroMultishotQuadDRFacing"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE1" Send="Create WarpHeroMultishotQuadSegment"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE1" Target="::QuerySubject" Send="AttachOffset WarpHeroMultishotQuadSegment {Origin 0} 0.000000,0.000000,0.000000 {} WarpHeroMultishotQuadDL2Facing"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE1" Send="Create WarpHeroMultishotQuadSegment"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE1" Target="::QuerySubject" Send="AttachOffset WarpHeroMultishotQuadSegment {Origin 0} 0.000000,0.000000,0.000000 {} WarpHeroMultishotQuadDR2Facing"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE2" Send="Create WarpHeroMultishotQuadSegment"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE2" Target="::QuerySubject" Send="AttachOffset WarpHeroMultishotQuadSegment {Origin 0} 0.000000,0.000000,0.000000 {} WarpHeroMultishotQuadDL3Facing"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE2" Send="Create WarpHeroMultishotQuadSegment"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE2" Target="::QuerySubject" Send="AttachOffset WarpHeroMultishotQuadSegment {Origin 0} 0.000000,0.000000,0.000000 {} WarpHeroMultishotQuadDR3Facing"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE3" Send="Create WarpHeroMultishotQuadSegment"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE3" Target="::QuerySubject" Send="AttachOffset WarpHeroMultishotQuadSegment {Origin 0} 0.000000,0.000000,0.000000 {} WarpHeroMultishotQuadDL4Facing"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE3" Send="Create WarpHeroMultishotQuadSegment"/>
+        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE3" Target="::QuerySubject" Send="AttachOffset WarpHeroMultishotQuadSegment {Origin 0} 0.000000,0.000000,0.000000 {} WarpHeroMultishotQuadDR4Facing"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <On Terms="StatusSet.*.Death" Send="TimerSet 0.125000 Death"/>
+        <On Terms="TimerExpired; TimerName Death" Send="Destroy"/>
+        <On Terms="ActorDestruction" Target="WarpHeroMultishotQuadSegment" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpForwardQueryDirector"/>
         <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
         <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
         <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
         <Height value="12.500000"/>
         <Width value="0.750000"/>
+        <FogVisibility value="Visible"/>
     </CActorQuad>
-    <CActorQuad id="WarpHeroMultishotQuadL3" parent="GuideVisualQuadDown" abil="Upheaval">
-        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
-        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
-        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
-        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
-        <On index="4" removed="1"/>
-        <Host Subject="WarpHeroMultishotQuad"/>
-        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadL3Facing"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="12.500000"/>
-        <Width value="0.750000"/>
-    </CActorQuad>
-    <CActorQuad id="WarpHeroMultishotQuadL4" parent="GuideVisualQuadDown" abil="Upheaval">
-        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
-        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
-        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
-        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
-        <On index="4" removed="1"/>
-        <Host Subject="WarpHeroMultishotQuad"/>
-        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadL4Facing"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="12.500000"/>
-        <Width value="0.750000"/>
-    </CActorQuad>
-    <CActorQuad id="WarpHeroMultishotQuadR2" parent="GuideVisualQuadDown" abil="Upheaval">
-        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
-        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
-        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
-        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
-        <On index="4" removed="1"/>
-        <Host Subject="WarpHeroMultishotQuad"/>
-        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadR2Facing"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="12.500000"/>
-        <Width value="0.750000"/>
-    </CActorQuad>
-    <CActorQuad id="WarpHeroMultishotQuadR3" parent="GuideVisualQuadDown" abil="Upheaval">
-        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
-        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
-        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
-        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
-        <On index="4" removed="1"/>
-        <Host Subject="WarpHeroMultishotQuad"/>
-        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadR3Facing"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="12.500000"/>
-        <Width value="0.750000"/>
-    </CActorQuad>
-    <CActorQuad id="WarpHeroMultishotQuadR4" parent="GuideVisualQuadDown" abil="Upheaval">
-        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
-        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
-        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
-        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
-        <On index="4" removed="1"/>
-        <Host Subject="WarpHeroMultishotQuad"/>
-        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadR4Facing"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="12.500000"/>
-        <Width value="0.750000"/>
-    </CActorQuad>
-    <CActorSiteOpForward id="WarpHeroMultishotQuadR3Facing">
-        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveRightBy3"/>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadDL2Facing">
+        <HostForwardSiteOps Ops="SOpQueryDirector WarpHeroDoublegangerTether SOpForwardQuerySubjectInverted SOpMoveBy2 SOpMoveLeftBy2"/>
     </CActorSiteOpForward>
-    <CActorSiteOpForward id="WarpHeroMultishotQuadR4Facing">
-        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveRightBy4"/>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadDL3Facing">
+        <HostForwardSiteOps Ops="SOpQueryDirector WarpHeroDoublegangerTether SOpForwardQuerySubjectInverted SOpMoveBy2 SOpMoveLeftBy3"/>
     </CActorSiteOpForward>
-    <CActorSiteOpForward id="WarpHeroMultishotQuadRFacing">
-        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveRightBy1"/>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadDL4Facing">
+        <HostForwardSiteOps Ops="SOpQueryDirector WarpHeroDoublegangerTether SOpForwardQuerySubjectInverted SOpMoveBy2 SOpMoveLeftBy4"/>
     </CActorSiteOpForward>
-    <CActorQuad id="WarpHeroMultishotQuadR" parent="GuideVisualQuadDown" abil="Upheaval">
+    <CActorSiteOpForward id="WarpHeroMultishotQuadDR2Facing">
+        <HostForwardSiteOps Ops="SOpQueryDirector WarpHeroDoublegangerTether SOpForwardQuerySubjectInverted SOpMoveBy2 SOpMoveRightBy2"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadDR3Facing">
+        <HostForwardSiteOps Ops="SOpQueryDirector WarpHeroDoublegangerTether SOpForwardQuerySubjectInverted SOpMoveBy2 SOpMoveRightBy3"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadDR4Facing">
+        <HostForwardSiteOps Ops="SOpQueryDirector WarpHeroDoublegangerTether SOpForwardQuerySubjectInverted SOpMoveBy2 SOpMoveRightBy4"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadDLFacing">
+        <HostForwardSiteOps Ops="SOpQueryDirector WarpHeroDoublegangerTether SOpForwardQuerySubjectInverted SOpMoveBy2 SOpMoveLeftBy1"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="WarpHeroMultishotQuadDRFacing">
+        <HostForwardSiteOps Ops="SOpQueryDirector WarpHeroDoublegangerTether SOpForwardQuerySubjectInverted SOpMoveBy2 SOpMoveRightBy1"/>
+    </CActorSiteOpForward>
+    <CActorSite id="WarpHeroGuidedMissileQuadDirector">
+        <On Terms="ActorCreation" Send="TimerSet 0.000000 Region"/>
+        <On Terms="TimerExpired; TimerName Region" Send="TimerSet 0.062500 Region"/>
+        <On Terms="TimerExpired; TimerName Region" Send="QueryRadius 500.000000 WarpHeroGuidedMissileQueryAdd AgainstRadiusGame"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Abil.GuidedMissile.Cursor" Send="Create"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation"/>
+    </CActorSite>
+    <CActorQuad id="WarpHeroMultishotQuadSegment" parent="GuideVisualQuadDown" abil="Upheaval">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
         <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
         <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
         <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
         <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
-        <On index="4" removed="1"/>
+        <On index="4" Terms="SupporterDestruction" Send="Destroy"/>
         <Host Subject="WarpHeroMultishotQuad"/>
-        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadRFacing"/>
         <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
         <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
         <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
         <Height value="12.500000"/>
         <Width value="0.750000"/>
+        <Supporter Subject="::QueryDirector"/>
+        <FogVisibility value="Visible"/>
     </CActorQuad>
-    <CActorSiteOpForward id="WarpHeroMultishotQuadL3Facing">
-        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveLeftBy3"/>
-    </CActorSiteOpForward>
-    <CActorSiteOpForward id="WarpHeroMultishotQuadL4Facing">
-        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveLeftBy4"/>
-    </CActorSiteOpForward>
-    <CActorSiteOpForward id="WarpHeroMultishotQuadLFacing">
-        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveLeftBy1"/>
-    </CActorSiteOpForward>
     <CActorSiteOpRotator id="EarthHeroUpheavalGuideRotR3">
         <EditorCategories value=""/>
         <LocalAxis value="0.000000,0.000000,1.000000"/>
         <InitialAngle value="322.000000"/>
     </CActorSiteOpRotator>
-    <CActorQuad id="WarpHeroMultishotQuadL" parent="GuideVisualQuadDown" abil="Upheaval">
-        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
-        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
-        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
-        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
-        <On index="4" removed="1"/>
-        <Host Subject="WarpHeroMultishotQuad"/>
-        <HostSiteOps Ops="SOpAttachOrigin WarpHeroMultishotQuadLFacing"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="12.500000"/>
-        <Width value="0.750000"/>
-    </CActorQuad>
-    <CActorQuad id="WarpHeroMultishotQuad" parent="GuideVisualQuadDown" abil="WarpHeroMultishot">
-        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="Abil.WarpHeroMultishot.Cursor" Send="Create"/>
-        <On index="4" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
-        <On Terms="ActorCreation" Send="Create WarpHeroMultishotQuadL"/>
-        <On Terms="ActorCreation" Send="Create WarpHeroMultishotQuadR"/>
-        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE1" Send="Create WarpHeroMultishotQuadL2"/>
-        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE1" Send="Create WarpHeroMultishotQuadR2"/>
-        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE2" Send="Create WarpHeroMultishotQuadL3"/>
-        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE2" Send="Create WarpHeroMultishotQuadR3"/>
-        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE3" Send="Create WarpHeroMultishotQuadL4"/>
-        <On Terms="ActorCreation; ValidatePlayer WarpHeroMultitaskingGTE3" Send="Create WarpHeroMultishotQuadR4"/>
-        <HostSiteOps Ops="SOpAttachOrigin"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="12.500000"/>
-        <Width value="0.750000"/>
-    </CActorQuad>
     <CActorQuad id="EarthHeroUpheavalQuadL3" parent="GuideVisualQuadDown" abil="Upheaval">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
         <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
@@ -438,13 +923,36 @@
         <On Terms="Effect.MultishotImpactSearchArea.Start" Send="Create"/>
         <On Terms="Effect.WarpHeroStrafeSA.Start" Send="Create"/>
     </CActorSound>
-    <CActorSiteOpForward id="WarpHeroMultishotQuadL2Facing">
-        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveLeftBy2"/>
-    </CActorSiteOpForward>
-    <CActorSiteOpForward id="WarpHeroMultishotQuadR2Facing">
-        <HostForwardSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpMoveBy2 SOpMoveRightBy2"/>
-    </CActorSiteOpForward>
-    <CActorRange id="WarpHeroMultishotRange" parent="RangeAbil" abil="WarpHeroMultishot"/>
+    <CActorQueryResponse id="WarpHeroMultishotQueryAdd">
+        <Subject Filters="Unit" Terms="ValidateUnit WarpHeroValidMultishotCaster IncludeDerivedSnapshot System_Snapshot_Dummy"/>
+        <OnResponse Send="Create WarpHeroMultishotSwitch"/>
+    </CActorQueryResponse>
+    <CActorSite id="WarpHeroMultishotQuadDirector">
+        <On Terms="ActorCreation" Send="TimerSet 0.000000 Region"/>
+        <On Terms="TimerExpired; TimerName Region" Send="TimerSet 0.062500 Region"/>
+        <On Terms="TimerExpired; TimerName Region" Send="QueryRadius 500.000000 WarpHeroMultishotQueryAdd AgainstRadiusGame"/>
+        <On Terms="Abil.WarpHeroMultishot.Cursor" Send="Create"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation"/>
+    </CActorSite>
+    <CActorQueryResponse id="WarpHeroGuidedMissileQueryAdd">
+        <Subject Filters="Unit" Terms="ValidateUnit WarpHeroValidGuidedMissileCaster IncludeDerivedSnapshot System_Snapshot_Dummy"/>
+        <OnResponse Send="Create WarpHeroGuidedMissileSwitch"/>
+    </CActorQueryResponse>
+    <CActorSimple id="WarpHeroMultishotSwitch">
+        <On Terms="ActorCreation" Send="StatusSet Create 0"/>
+        <On Terms="ActorCreation; ScopeContains WarpHeroMultishotQuad" Send="StatusSet Create 1"/>
+        <On Terms="ActorCreation; IsStatus Create 0" Send="Create WarpHeroMultishotQuad"/>
+        <On Terms="ActorCreation; ScopeContains WarpHeroMultishotQuad" Target="WarpHeroMultishotQuad" Send="StatusSet Death 0"/>
+        <On Terms="ActorCreation" Send="Destroy"/>
+    </CActorSimple>
+    <CActorSimple id="WarpHeroGuidedMissileSwitch">
+        <On Terms="ActorCreation" Send="StatusSet Create 0"/>
+        <On Terms="ActorCreation; ScopeContains WarpHeroGuidedMissileQuad" Send="StatusSet Create 1"/>
+        <On Terms="ActorCreation; IsStatus Create 0" Send="Create WarpHeroGuidedMissileQuad"/>
+        <On Terms="ActorCreation; ScopeContains WarpHeroGuidedMissileQuad" Target="WarpHeroGuidedMissileQuad" Send="StatusSet Death 0"/>
+        <On Terms="ActorCreation" Send="Destroy"/>
+    </CActorSimple>
     <CActorModel id="WarpHeroStrafeImpact" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.WarpHeroStrafeSA.Start" Send="Create"/>
         <HostSiteOps Ops="SOpMoveUpByDot5"/>
@@ -853,8 +1361,11 @@
         <Inherits index="TimeScale" value="0"/>
         <Inherits index="TintColor" value="0"/>
         <Inherits index="WarpGroup" value="0"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
         <On Terms="Behavior.ShadowHeroPenumbra.On" Send="Create"/>
         <On Terms="Behavior.ShadowHeroPenumbra.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetScale 0.100000"/>
+        <On Terms="ActorCreation" Send="SetScale 1.000000 0.500000"/>
         <On Terms="ActorCreation" Send="SetTintColor 60,60,60"/>
         <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
         <ModelFlags index="AllowHitTest" value="0"/>
@@ -1075,28 +1586,6 @@
         <StatusBarFlags index="Workers" value="0"/>
         <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
-    <CActorQuad id="GravityHeroGravityShotQuad" parent="GuideVisualQuadDown" abil="GravityShot">
-        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="Abil.GravityShot.Cursor" Send="Create"/>
-        <On index="4" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
-        <HostSiteOps Ops="SOpAttachOrigin SOp180"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Quad value="-0.500000,6.000000,0.500000,6.000000"/>
-        <Height value="12.000000"/>
-        <Width value="0.750000"/>
-    </CActorQuad>
-    <CActorQuad id="GravityHeroGravityDashQuad" parent="GuideVisualQuadDown" abil="GravityDash">
-        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="Abil.GravityDash.Cursor" Send="Create"/>
-        <On index="4" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="12.000000"/>
-        <Width value="2.020000"/>
-    </CActorQuad>
     <CActorQuad id="GatewayHeroSplitterQuad" parent="GuideVisualQuadDown" abil="PsiSplitter">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
         <On index="0" Terms="Abil.PsiSplitter.Cursor" Send="Create"/>
@@ -1668,17 +2157,6 @@
         <On Terms="Effect.EarthHeroLandslideSmallSA.Start" Send="Create"/>
         <Model value="EarthHeroLandslide"/>
     </CActorModel>
-    <CActorModel id="EarthHeroFortifyOverhead" parent="ModelAddition">
-        <Inherits index="BaseModelScale" value="0"/>
-        <Inherits index="Scale" value="0"/>
-        <On Terms="Behavior.FortifyHero.On" Send="Create"/>
-        <On Terms="Behavior.FortifyHero.Off" Send="AnimBracketStop BSD"/>
-        <On Terms="Behavior.FortifyStucture.On" Send="Create"/>
-        <On Terms="Behavior.FortifyStucture.Off" Send="AnimBracketStop BSD"/>
-        <On Terms="ActorCreation" Send="SetTintColor 160,90,0"/>
-        <HostSiteOps Ops="SOpAttachOverhead"/>
-        <ModelFlags index="AllowHitTest" value="0"/>
-    </CActorModel>
     <CActorSound id="EarthHeroFortify_Cast" parent="SoundOneShot">
         <On Terms="Effect.FortifySA.Start" Send="Create"/>
     </CActorSound>
@@ -1720,13 +2198,21 @@
     </CActorQuad>
     <CActorQuad id="WarpHeroGuidedMissileQuad" parent="GuideVisualQuadDown" abil="GuidedMissile">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="Abil.GuidedMissile.Cursor" Send="Create"/>
-        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On index="4" Terms="SupporterDestruction" Send="Destroy"/>
+        <On Terms="StatusSet.*.Death" Send="TimerSet 0.125000 Death"/>
+        <On Terms="TimerExpired; TimerName Death" Send="Destroy"/>
+        <HostSiteOps Ops="SOpForwardQueryDirector"/>
         <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
         <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
         <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
         <Height value="12.000000"/>
         <Width value="0.750000"/>
+        <FogVisibility value="Visible"/>
+        <Supporter Subject="::QueryDirector"/>
     </CActorQuad>
     <CActorQuad id="TwilightHeroTwilightCannonQuad" parent="ZergGuideVisualQuadDown" abil="TwilightHeroTwilightCannon">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
@@ -1826,37 +2312,25 @@
     </CActorMissile>
     <CActorUnit id="GravityHero" parent="GenericUnitStandard" unitName="GravityHero">
         <Aliases value="_UnitMedium"/>
-        <On Terms="Abil.AlarakPsiOrb.SourceCastStart" Send="AnimPlay Spell Attack NonLooping 0.500000 0.500000 0.500000 AsDuration"/>
-        <On Terms="Abil.AlarakMindBlast.SourceCastStart" Send="AnimPlay Spell Attack NonLooping"/>
-        <On Terms="Abil.EnergyChannel.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.EnergyChannel.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.AlarakKnockback.SourceCastStart; AnimPlaying Spell,A" Send="AnimClear Spell,A"/>
-        <On Terms="Abil.AlarakKnockback.SourceCastStart" Send="$Spell,A"/>
-        <On Terms="Abil.DestructionWaveNoOffset.SourcePrepStart" Send="$Spell,A 0 -1.000000 -1.000000 18.000000 AsDuration"/>
-        <On Terms="Behavior.AlarakAvatar.On" Send="SetTintColor {0,183,0 3.000000} 1.500000 OneShot Avatar"/>
-        <On Terms="Behavior.AlarakAvatar.On" Send="SetScale 1.500000 1.500000 Avatar"/>
-        <On Terms="Behavior.AlarakAvatar.On" Send="HaloStart"/>
-        <On Terms="Behavior.AlarakAvatar.On" Send="HaloSetColor 0,255,0"/>
-        <On Terms="Behavior.AlarakAvatar.Off" Send="ClearTintColor 1.500000 Avatar"/>
-        <On Terms="Behavior.AlarakAvatar.Off" Send="ClearScale 1.500000 Avatar"/>
-        <On Terms="Behavior.AlarakAvatar.Off" Send="HaloStop"/>
-        <On Terms="Behavior.AlarakAvatarPermanent.On" Send="SetTintColor {0,183,0 3.000000} 1.500000 OneShot Avatar"/>
-        <On Terms="Behavior.AlarakAvatarPermanent.On" Send="SetScale 1.500000 1.500000 Avatar"/>
-        <On Terms="Behavior.AlarakAvatarPermanent.On" Send="HaloStart"/>
-        <On Terms="Behavior.AlarakAvatarPermanent.On" Send="HaloSetColor 0,255,0"/>
-        <On Terms="Behavior.AlarakAvatarPermanent.Off" Send="ClearTintColor 1.500000 Avatar"/>
-        <On Terms="Behavior.AlarakAvatarPermanent.Off" Send="ClearScale 1.500000 Avatar"/>
-        <On Terms="Behavior.AlarakAvatarPermanent.Off" Send="HaloStop"/>
-        <On Terms="Abil.GravityDash.SourceCastStart; ModelName DarkArchonChampion" Send="AnimPlay GravityDash Hover,Superior 0 0.500000 -1.000000 1.000000 AsDuration"/>
-        <On Terms="Abil.GravitySlivers.SourceCastStart; ModelName DarkArchonChampion" Send="AnimPlay BSD Spell,A"/>
-        <On Terms="Abil.GravityShot.SourceCastStart; ModelName DarkArchonChampion" Send="AnimPlay BSD Attack"/>
-        <On Terms="Abil.ConsumeGravityHero.SourceCastStart; ModelName DarkArchonChampion" Send="AnimPlay BSD Attack"/>
-        <On Terms="Abil.GravityDash.SourceCastStart; ModelName PrisonZealot" Send="AnimPlay GravityDash Walk,Spell"/>
-        <On Terms="Abil.GravitySlivers.SourceCastStart; ModelName PrisonZealot" Send="AnimPlay BSD Attack"/>
-        <On Terms="Abil.GravityShot.SourceCastStart; ModelName PrisonZealot" Send="AnimPlay BSD Attack"/>
-        <On Terms="Abil.ConsumeGravityHero.SourceCastStart; ModelName PrisonZealot" Send="AnimPlay BSD Attack"/>
+        <On Terms="Behavior.GravityHeroShiftCaster.On; ModelName GravityHeroUpgrade; ValidateUnit GravityHeroNotPositiveReq" Send="AnimPlay Shift Hover,Superior PlayForever 0.500000 -1.000000 1.000000 AsDuration 0.000000 10"/>
+        <On Terms="Abil.GravityHeroW.SourceCastStart; ModelName GravityHeroUpgrade" Send="AnimPlay BSD Spell,A"/>
+        <On Terms="Abil.GravityHeroQ.SourceCastStart; ModelName GravityHeroUpgrade" Send="AnimPlay BSD Attack"/>
+        <On Terms="Abil.GravityHeroR.SourceCastStart; ModelName GravityHeroUpgrade" Send="AnimPlay BSD Attack"/>
+        <On Terms="Behavior.GravityHeroShiftCaster.On; ModelName GravityHero" Send="AnimPlay Shift Walk,Spell PlayForever -1.000000 -1.000000 -1.000000 AsAutomatic 0.000000 10"/>
+        <On Terms="Abil.GravityHeroW.SourceCastStart; ModelName GravityHero" Send="AnimPlay BSD Attack"/>
+        <On Terms="Abil.GravityHeroQ.SourceCastStart; ModelName GravityHero" Send="AnimPlay BSD Attack"/>
+        <On Terms="Abil.GravityHeroR.SourceCastStart; ModelName GravityHero" Send="AnimPlay BSD Attack"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimPlay BSD Walk"/>
         <On Terms="UnitMovementUpdate.*.Stand; AnimPlaying BSD Walk" Send="AnimClear BSD"/>
+        <On Terms="Behavior.GravityHeroPositive.On" Send="SetTintColor 0,50,225"/>
+        <On Terms="Behavior.GravityHeroPositive.Off" Send="SetTintColor 255,0,0"/>
+        <On Terms="Behavior.GravityHeroShiftCaster.Off" Send="AnimClear Shift"/>
+        <On Terms="Abil.GravityHeroE.SourceCastStart; ModelName GravityHeroUpgrade; ValidateUnit GravityHeroIsPositiveReq" Send="AnimPlay Shift Hover,Inferior 0 0.500000 -1.000000 1.000000 AsDuration 0.000000 10"/>
+        <On Terms="Abil.GravityHeroE.SourceCastStart; ModelName GravityHero; ValidateUnit GravityHeroIsPositiveReq" Send="AnimPlay Shift Attack,02 0 0.250000 -1.000000 0.650000 AsTimeScale 0.000000 10"/>
+        <On Terms="Abil.GravityHeroE.SourceCastStart; ValidateUnit GravityHeroIsPositive" Send="TimerSet 0.900000 Dive"/>
+        <On Terms="TimerExpired; TimerName Dive" Send="AnimClear Shift"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <On Terms="ActorCreation; ValidateUnit GravityHeroIsPositive" Send="SetTintColor 0,50,255"/>
         <BuildModel value="DarkArchonChampionWarpIn"/>
         <DeathArray index="Normal" ModelLink="DarkArchonChampionDeath" SoundLink="Alarak_Death_Fx"/>
         <PlacementModel value="DarkArchonChampion"/>
@@ -5580,22 +6054,6 @@
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
         <HostSiteOps Ops="SOpMoveBackByDot5"/>
     </CActorMissile>
-    <CActorUnit id="ShieldUnit" parent="GenericUnitBase" unitName="ShieldUnit">
-        <On Terms="ActorCreation" Send="SetTintColor 0,0,255"/>
-        <On Terms="ActorCreation" Send="TimerSet 0.100000 TintTimer"/>
-        <On Terms="TimerExpired; TimerName TintTimer" Send="SetTintColor 0,0,255"/>
-        <HostSiteOps Ops="SOpMoveUpBy1 ReactiveShieldsRotation"/>
-        <Model value="Invisible"/>
-        <EditorModel value="Pylon"/>
-        <BarOffset value="135"/>
-        <BarWidth value="85"/>
-        <StatusBarFlags index="Shields" value="0"/>
-        <StatusBarFlags index="Life" value="0"/>
-        <StatusBarFlags index="Energy" value="0"/>
-        <StatusBarFlags index="Cargo" value="0"/>
-        <StatusBarFlags index="Progress" value="0"/>
-        <UnitFlags index="ShowBlobShadow" value="0"/>
-    </CActorUnit>
     <CActorSound id="LightningMissileImpactSound" parent="SoundOneShot">
         <On Terms="Effect.LightningHitDamage.Start" Send="Create"/>
         <Sound value="LightningImpactSound"/>
@@ -6961,11 +7419,6 @@
         <Model value="AlarakSoulAbsorptionDummyAttackMissile"/>
         <Scale value="0.400000"/>
     </CActorMissile>
-    <CActorModel id="AttractionImpact" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.AttractionSA.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
-        <Model value="Magnetism"/>
-    </CActorModel>
     <CActorModel id="BoulderTossImpact" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.BoulderTossSA.Start" Send="Create"/>
         <Model value="ZurvanTentacleSlamImpact"/>
@@ -7322,9 +7775,6 @@
         <BarHeight value="1"/>
         <BarWidth value="1"/>
     </CActorMissile>
-    <CActorModel id="GravitySliversImpact" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.GravitySliversSA.Start" Send="Create"/>
-    </CActorModel>
     <CActorUnit id="ChaosOrbRed" parent="GenericUnitStandard" unitName="ChaosOrbRed">
         <On index="19" Terms="ActorCreation; ScopeContains GroundLocalSelection" Send="StatusSet Selected 1"/>
         <On index="20" Terms="SelectionLocalUpdate.*.Start" Send="StatusSet Selected 1"/>
@@ -7622,6 +8072,7 @@
         <On Terms="Behavior.MoonLord.Off" Target="BladeHeroUpgradeAttachment" Send="Destroy"/>
         <On Terms="Behavior.MoonLord.On" Send="Create BladeHeroUpgradeGlaze"/>
         <On Terms="Behavior.MoonLord.Off" Target="BladeHeroUpgradeGlaze" Send="Destroy"/>
+        <On Terms="ActorDestruction" Target="BladeHeroUpgradeAttachment" Send="Destroy"/>
         <Model value="BladeHero"/>
         <DeathArray index="Normal" ModelLink="BladeHeroDeath"/>
         <PortraitModel value="ZealotPurifierPortrait"/>
@@ -8884,6 +9335,7 @@
         <On Terms="Behavior.OnFire.Off" Send="Destroy"/>
         <Model value="FireMedium"/>
         <Scale value="2.000000"/>
+        <Inherits index="TintColor" value="0"/>
     </CActorModel>
     <CActorMissile id="SpewBanelingsMissile" parent="GenericAttackMissile" unitName="SpewBanelingsMissile">
         <BarHeight value="1"/>
@@ -9324,12 +9776,16 @@
         <On Terms="Behavior.ReactiveShields.Off" Send="Destroy"/>
         <Model value="ArchonAttackBeam"/>
         <Scale value="0.200000,0.400000,0.200000"/>
+        <Host Subject="ReactiveShieldsLightningSurround"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CActorModel id="ReactiveShieldsBaseActor2" parent="ModelAddition">
         <On Terms="ActorCreation" Send="SetTintColor 255,200,0"/>
         <On Terms="Behavior.ReactiveShields.Off" Send="Destroy"/>
         <Model value="ArchonAttackBeam"/>
         <Scale value="0.200000,0.475000,0.200000"/>
+        <Host Subject="ReactiveShieldsLightningSurround"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CActorAction id="ReactiveShieldsAttack" parent="GenericAttack" effectAttack="ReactiveShieldsDMG">
         <On Terms="Effect.ReactiveShieldsDMG.Stop" Send="Destroy"/>
@@ -9405,9 +9861,6 @@
         <Model value="ArtanisLightningDashImpact"/>
         <Scale value="0.700000,0.700000,1.800000"/>
     </CActorModel>
-    <CActorMissile id="AlarakPsiOrbLaunchActionMissile">
-        <On Terms="ActorCreation" Send="SetTintColor 196,0,0"/>
-    </CActorMissile>
     <CActorSound id="BoulderSound" parent="SoundOneShot">
         <On Terms="Effect.BoulderLM.Start; At Caster" Send="Create"/>
         <Sound value="BoulderLaunchSound"/>
@@ -9426,91 +9879,91 @@
     <CActorModel id="ReactiveShieldsLightningSurround" parent="ModelAddition">
         <On Terms="ActorCreation" Send="SetOpacity 1.000000"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,0.000000,1.500000 {} RotUp30"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,0.000000,1.500000 {} RotUp30"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,0.000000,1.500000 {} {Rot90 RotUp30}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,0.000000,1.500000 {} {Rot90 RotUp30}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,0.000000,1.500000 {} {SOp270 RotUp30}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,0.000000,1.500000 {} {SOp270 RotUp30}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,0.000000,1.500000 {} {SOp180 RotUp30}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,0.000000,1.500000 {} {SOp180 RotUp30}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,1.000000 {} Rot135"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,1.000000 {} Rot135"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,1.000000 {} Rot225"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,1.000000 {} Rot225"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,1.000000 {} Rot315"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,1.000000 {} Rot315"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,1.000000 {} Rot45"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,1.000000 {} Rot45"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,-0.900000,1.000000 {} RotUp60"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,-0.900000,1.000000 {} RotUp60"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,-1.400000,0.150000 {} {SOp90 Rot150}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,-1.400000,0.150000 {} {SOp90 Rot150}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,-1.400000,0.150000 {} RotUp120"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,-1.400000,0.150000 {} RotUp120"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,-1.400000,0.150000 {} Rot120"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,-1.400000,0.150000 {} Rot120"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.900000,0.000000,1.000000 {} {SOp90 RotUp60}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.900000,0.000000,1.000000 {} {SOp90 RotUp60}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} -0.900000,0.000000,1.000000 {} {SOp90 RotUp120}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} -0.900000,0.000000,1.000000 {} {SOp90 RotUp120}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,0.900000,1.000000 {} RotUp120"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,0.900000,1.000000 {} RotUp120"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 1.400000,0.000000,0.150000 {} Rot330"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 1.400000,0.000000,0.150000 {} Rot330"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 1.400000,0.000000,0.150000 {} Rot210"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 1.400000,0.000000,0.150000 {} Rot210"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 1.400000,0.000000,0.150000 {} SOp270"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 1.400000,0.000000,0.150000 {} SOp270"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 1.400000,0.000000,0.150000 {} {SOp270 RotUp60}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 1.400000,0.000000,0.150000 {} {SOp270 RotUp60}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} -1.400000,0.000000,0.150000 {} Rot30"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} -1.400000,0.000000,0.150000 {} Rot30"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} -1.400000,0.000000,0.150000 {} Rot150"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} -1.400000,0.000000,0.150000 {} Rot150"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} -1.400000,0.000000,0.150000 {} {RotY60 SOp90}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} -1.400000,0.000000,0.150000 {} {RotY60 SOp90}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,1.400000,0.150000 {} Rot60"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,1.400000,0.150000 {} Rot60"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor1"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,1.400000,0.150000 {} Rot300"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor1 {Center 0} 0.000000,1.400000,0.150000 {} Rot300"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,1.000000 {} {RotUp90 Rot45}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,1.000000 {} {RotUp90 Rot45}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,1.000000 {} {RotUp90 Rot315}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,1.000000 {} {RotUp90 Rot315}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,1.000000 {} {RotUp90 Rot315}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,1.000000 {} {RotUp90 Rot315}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,1.000000 {} {RotUp90 Rot45}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,1.000000 {} {RotUp90 Rot45}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.900000,0.000000,1.000000 {} RotUp45"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.900000,0.000000,1.000000 {} RotUp45"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.900000,0.000000,1.000000 {} RotUp135"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.900000,0.000000,1.000000 {} RotUp135"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} -0.900000,0.000000,1.000000 {} RotUp135"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} -0.900000,0.000000,1.000000 {} RotUp135"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} -0.900000,0.000000,1.000000 {} RotUp45"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} -0.900000,0.000000,1.000000 {} RotUp45"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,-0.850000 {} {RotUp270 Rot45}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,-0.850000 {} {RotUp270 Rot45}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,-0.850000 {} {RotUp270 Rot315}"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,-0.900000,-0.850000 {} {RotUp270 Rot315}"/>
         <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,-0.850000 {} {RotUp270 Rot315}"/>
-        <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,-0.850000 {} {RotUp270 Rot45}"/>
-        <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.850000,0.000000,-0.700000 {} RotUp225"/>
-        <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.850000,0.000000,-0.700000 {} RotUp315"/>
-        <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} -0.850000,0.000000,-0.700000 {} RotUp225"/>
-        <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Target="_Unit" Send="Create ReactiveShieldsBaseActor2"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} -0.850000,0.000000,-0.700000 {} RotUp315"/>
-        <On Terms="UnitBirth.ShieldUnit" Send="Create"/>
-        <On Terms="UnitDeath.ShieldUnit" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,-0.850000 {} {RotUp270 Rot315}"/>
+        <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Send="Create ReactiveShieldsBaseActor2"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.000000,0.900000,-0.850000 {} {RotUp270 Rot45}"/>
+        <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Send="Create ReactiveShieldsBaseActor2"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.850000,0.000000,-0.700000 {} RotUp225"/>
+        <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Send="Create ReactiveShieldsBaseActor2"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} 0.850000,0.000000,-0.700000 {} RotUp315"/>
+        <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Send="Create ReactiveShieldsBaseActor2"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} -0.850000,0.000000,-0.700000 {} RotUp225"/>
+        <On Terms="ActorCreation.ReactiveShieldsLightningSurround" Send="Create ReactiveShieldsBaseActor2"/>
+        <On Terms="ActorCreation" Send="AttachOffset ReactiveShieldsBaseActor2 {Center 0} -0.850000,0.000000,-0.700000 {} RotUp315"/>
+        <On Terms="Behavior.ReactiveShields.On" Send="Create"/>
+        <On Terms="Behavior.ReactiveShields.Off" Send="Destroy"/>
         <Model value="Invisible"/>
+        <HostSiteOps Ops="SOpMoveUpBy1Dot5 ReactiveShieldsRotation"/>
     </CActorModel>
     <CActorSiteOpRotator id="ReactiveShieldsRotation">
-        <Sharing value="Always"/>
         <EditorCategories value=""/>
         <LocalAxis value="0.000000,0.000000,1.000000"/>
         <Rate value="100.000000"/>
@@ -9741,8 +10194,8 @@
     </CActorMissile>
     <CActorSimple id="FortifiedFX">
         <On Terms="Behavior.Fortify.On" Send="Create"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="SetScale 1.200000 0.000000 Size"/>
-        <On Terms="Behavior.Fortify.Off" Target="_Unit" Send="ClearScale 0.000000 Size"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetScale 1.200000 0.500000 Size"/>
+        <On Terms="Behavior.Fortify.Off" Target="_Unit" Send="ClearScale 1.000000 Size"/>
         <On Terms="Behavior.Fortify.Off" Send="Destroy"/>
     </CActorSimple>
     <CActorModel id="UpheavalFX" parent="ModelAnimationStyleOneShot">
@@ -9804,6 +10257,7 @@
         <On index="66" Terms="ModelEvent; ModelEventName Footstep; ValidateUnit EarthHeroHasPassive2" Send="Create EarthHero_Footstep"/>
         <On index="67" Terms="Behavior.MoonLord.On" Send="Create EarthHeroUpgradeAttachment"/>
         <On index="68" Terms="Behavior.MoonLord.Off" Target="EarthHeroUpgradeAttachment" Send="Destroy"/>
+        <On Terms="ActorDestruction" Target="EarthHeroUpgradeAttachment" Send="Destroy"/>
         <On Terms="Abil.Fortify.SourceCastStart; !AnimPlayingName Spell" Send="$Spell,B"/>
         <PortraitModel value="FenixEx2Portrait"/>
         <HeroIcon value="Assets\Textures\btn-unit-protoss-stonezealot.dds"/>
@@ -9871,16 +10325,6 @@
     <CActorSplat id="AlteredTimelineSplat" parent="ProtossCursorSplat" abil="TimeHeroAlterTimeline">
         <Model value="VoidProtossAOECursorSplat"/>
     </CActorSplat>
-    <CActorModel id="Attraction" parent="ModelAnimationStyleOneShot">
-        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
-        <On index="1" Terms="ActorOrphan" Send="Destroy"/>
-        <On index="2" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
-        <On Terms="Effect.AttractionDummy.Start" Send="Create"/>
-        <On Terms="Effect.AttractionDummy.Stop" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="SetTintColor {255,0,0 2.000000}"/>
-        <On Terms="ActorCreation" Send="TimerSet 4.000000 GForce"/>
-        <On Terms="TimerExpired; TimerName GForce" Send="SetOpacity 0.100000 1.000000"/>
-    </CActorModel>
     <CActorSplat id="BlackDeath" parent="ZergCursorSplat" abil="BlackDeath"/>
     <CActorSplat id="Blastwave" parent="ProtossCursorSplat" abil="FireHeroBlastwave">
         <Model value="VoidProtossAOECursorSplat"/>
@@ -10012,35 +10456,16 @@
         <On index="5" Send="SetOpacity 0.900000 0.400000"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,32,0"/>
     </CActorModel>
-    <CActorSound id="PortalSound" parent="SoundOneShot">
-        <On Terms="Effect.PortalTP.Start" Send="Create"/>
-        <Sound value="Zeratul_Blink"/>
-    </CActorSound>
     <CActorModel id="DestroyerDroneEnergyRestore" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.GatewayHeroSplitterDestroyerMU.Start" Send="Create"/>
         <On Terms="Effect.GatewayHeroExploderDestroyerMU.Start" Send="Create"/>
         <On Terms="Effect.GatewayHeroReinforceDestroyerMU.Start" Send="Create"/>
         <Model value="FeedbackLaunch"/>
     </CActorModel>
-    <CActorSound id="GravityShotSound" parent="SoundOneShot">
-        <On Terms="Effect.GravityShotCP.Start" Send="Create"/>
-    </CActorSound>
-    <CActorSound id="GravityShotExcessSound" parent="SoundOneShot">
-        <On Terms="Effect.ExcessGravSlivCP.Start" Send="Create"/>
-        <Sound value="GravityShotSound"/>
-    </CActorSound>
     <CActorSound id="ConsumeSound" parent="SoundOneShot">
         <On Terms="Effect.ConsumeDMG.Start" Send="Create"/>
         <Sound value="PrimalZergling_AttackImpact"/>
     </CActorSound>
-    <CActorSound id="GravitySliversSound" parent="SoundOneShot">
-        <On Terms="Effect.GravitySliversSA.Start" Send="Create"/>
-        <Sound value="Alarak_BaneBlade_AttackImpactSound"/>
-    </CActorSound>
-    <CActorSplat id="GravitySliversSplat" parent="ProtossCursorSplat" abil="GravitySlivers">
-        <Scale value="1.600000"/>
-        <Model value="VoidProtossAOECursorSplat"/>
-    </CActorSplat>
     <CActorUnit id="HotSNoxious">
         <On index="63" Terms="WeaponStart.Omegalisk.AttackStart; !ValidateUnit HaveHotSMonarchBlades" Send="AnimPlay Attack Spell,A"/>
         <On index="64" Terms="WeaponStart.Omegalisk.AttackStart; ValidateUnit HaveHotSMonarchBlades" Send="AnimPlay Attack Spell,D"/>
@@ -10233,18 +10658,6 @@
         <Model value="ExploderImpact"/>
         <Scale value="0.500000"/>
     </CActorModel>
-    <CActorModel id="GravityDashForce" parent="ModelAnimationStyleContinuous">
-        <Flags index="SuppressSaveLoad" value="1"/>
-        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
-        <On index="1" Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
-        <On index="2" Terms="ActorOrphan" Send="AnimBracketStop BSD"/>
-        <On Terms="Effect.GravityDashDummy.Start" Send="Create"/>
-        <On Terms="Effect.GravityDashDummy.Stop" Send="AnimBracketStop BSD"/>
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
-        <Host Subject="_Selectable"/>
-        <Model value="Magnetism"/>
-        <Scale value="0.300000"/>
-    </CActorModel>
     <CActorUnit id="HealerDrone" parent="GenericUnitMorph" DeflectorDrone="" unitName="HealerDrone">
         <Aliases value="_UnitSmall"/>
         <On index="19" Terms="ActorCreation; ScopeContains GroundLocalSelection" Send="StatusSet Selected 1"/>
@@ -10417,10 +10830,6 @@
         </WireframeShield>
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorUnit>
-    <CActorModel id="Magnetism" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.MagnetismSA.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
-    </CActorModel>
     <CActorModel id="MusclePoisonImpact" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.MusclePoisonDummy.Start" Send="Create"/>
     </CActorModel>
@@ -10435,33 +10844,6 @@
         <On Terms="Effect.Bogus.Start; At Caster" Send="Create"/>
         <Scale value="1.750000"/>
     </CActorSplat>
-    <CActorModel id="Portal" parent="ModelAnimationStyleContinuous">
-        <Flags index="SuppressSaveLoad" value="1"/>
-        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 7.000000 AsDuration"/>
-        <On Terms="Effect.PortalDelay.Start" Send="Create"/>
-        <On Terms="Effect.PortalDelay.Stop" Send="AnimBracketStop BSD"/>
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
-    </CActorModel>
-    <CActorModel id="PortalGravSliv" parent="ModelAnimationStyleContinuous">
-        <Flags index="SuppressSaveLoad" value="1"/>
-        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 7.000000 AsDuration"/>
-        <On Terms="Effect.ExcessGravSlivPortalDelay.Start" Send="Create"/>
-        <On Terms="Effect.ExcessGravSlivPortalDelay.Stop" Send="AnimBracketStop BSD"/>
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
-        <Model value="Portal"/>
-    </CActorModel>
-    <CActorModel id="PortalImpact" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.PortalTP.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
-        <Model value="WarpGateWarpCast"/>
-        <Scale value="0.700000"/>
-    </CActorModel>
-    <CActorModel id="PortalGravSlivImpact" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.ExcessGravSlivPortalTP.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
-        <Model value="WarpGateWarpCast"/>
-        <Scale value="0.700000"/>
-    </CActorModel>
     <CActorModel id="ConsumeImpact" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.ConsumeDMG.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
@@ -10506,17 +10888,6 @@
     </CActorModel>
     <CActorModel id="ReinforcePlacement" parent="ModelAnimationStyleContinuous">
         <Model value="ZealotAiurPlacement"/>
-    </CActorModel>
-    <CActorModel id="GravitySliversMissile" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.GravitySliversSA.Start" Send="Create"/>
-        <Model value="GravitySlivers"/>
-        <Scale value="0.090000,0.090000,0.140000"/>
-    </CActorModel>
-    <CActorModel id="Repel" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.RepelCP.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
-        <Model value="ZHybridPsionicShockwave"/>
-        <Scale value="0.400000"/>
     </CActorModel>
     <CActorMissile id="SOAGravitonBombMissile">
         <On Terms="ActorCreation" Send="SetTintColor 238,45,11"/>
@@ -10643,13 +11014,6 @@
         <Model value="VoidProtossAOECursorSplat"/>
         <Scale value="1.800000"/>
     </CActorSplat>
-    <CActorModel id="Vortex" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.VortexCP.Start" Send="Create"/>
-        <On Terms="Effect.VortexCP.Stop" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
-        <Model value="VortexModel"/>
-        <Scale value="1.300000"/>
-    </CActorModel>
     <CActorModel id="WarpDroneActive" parent="ModelAnimationStyleContinuous">
         <On Terms="Behavior.WarpDrone.On" Send="Create"/>
         <On Terms="Behavior.WarpDrone.On" Send="Create FireSuppressionBots_Loop"/>
@@ -10931,7 +11295,7 @@
         <HostSiteOps Ops="SOpShadow"/>
         <Scale value="0.250000,0.250000,0.400000"/>
     </CActorModel>
-    <CActorMissile id="AnnihilatorStopMoveIndicator" parent="GenericAttackMissile" unitName="AnnihilatorStopMoveIndicator">
+    <CActorMissile id="AnnihilatorLaserTrackingDot" parent="GenericAttackMissile" unitName="AnnihilatorStopMoveIndicator">
         <Model value="GhostNukeTarget"/>
         <Scale value="7.000000"/>
     </CActorMissile>
@@ -11119,8 +11483,6 @@
         <On Terms="Abil.330mmBarrageCannons.SourceChannelStop" Send="AnimClear Spell"/>
         <On Terms="Abil.330mmBarrageCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
         <On Terms="Abil.330mmBarrageCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="UnitBirth.ThorV2" Send="SetScale 0.650000"/>
-        <Model value="Odin"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
         <DeathArray index="Normal" ModelLink="ThorDeath" SoundLink=""/>
@@ -11189,8 +11551,6 @@
         <On Terms="Abil.330mmBarrageCannons.SourceChannelStop" Send="AnimClear Spell"/>
         <On Terms="Abil.330mmBarrageCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
         <On Terms="Abil.330mmBarrageCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="UnitBirth.ThorV3" Send="SetScale 0.650000"/>
-        <Model value="Odin"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
         <DeathArray index="Normal" ModelLink="ThorDeath" SoundLink=""/>
@@ -11219,47 +11579,15 @@
             <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
         </Wireframe>
     </CActorUnit>
-    <CActorUnit id="Annihilator" parent="GenericUnitBase" unitName="Annihilator">
-        <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
+    <CActorUnit id="AnnihilatorV1" parent="GenericUnitBase" unitName="AnnihilatorV1">
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="ActorCreation" Send="AnimPlay CoverStand Cover,Stand PlayForever 0.000000"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="TimerKill CoverDelay"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimClear CoverStand"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimPlay Cover Cover PlayForever"/>
-        <On Terms="WeaponStop.JavelinMissileLaunchers.AttackStop" Send="TimerSet 2.500000 CoverDelay"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimClear Cover"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimPlay CoverStand Cover,Stand PlayForever"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Target="250mmStrikeCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="AbilTransport.MedivacTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartLeft" Send="Create ThorLeftCheerSquib"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartRight" Send="Create ThorRightCheerSquib"/>
-        <On Terms="UnitDeathCustomize; PlayerHasReward ThorCE" Send="DeathCustomize Variation0"/>
-        <On Terms="AbilTransport.SpecOpsDropshipTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="AbilTransport.HerculesTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Target="330mmBarrageCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="UnitBirth.Annihilator" Send="SetScale"/>
-        <Model value="Warbot"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply C"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
         <DeathArray index="Normal" ModelLink="WarbotDeath" SoundLink=""/>
@@ -11278,6 +11606,7 @@
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <NameOffset value="80"/>
         <SoundArray index="Ready" value="Thor_Ready"/>
+        <SoundArray index="Help" value="Annihilator_Help"/>
         <SoundArray index="What" value="Thor_What"/>
         <SoundArray index="Yes" value="Thor_Yes"/>
         <SoundArray index="Attack" value="Thor_Attack"/>
@@ -11292,43 +11621,16 @@
         <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
         <On Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="ActorCreation" Send="AnimPlay CoverStand Cover,Stand PlayForever 0.000000"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="TimerKill CoverDelay"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimClear CoverStand"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimPlay Cover Cover PlayForever"/>
-        <On Terms="WeaponStop.JavelinMissileLaunchers.AttackStop" Send="TimerSet 2.500000 CoverDelay"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimClear Cover"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimPlay CoverStand Cover,Stand PlayForever"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Target="250mmStrikeCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="AbilTransport.MedivacTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
         <On Terms="WeaponStart.*.AttackStart; AnimPlaying Unload" Send="AnimClear Unload"/>
         <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartLeft" Send="Create ThorLeftCheerSquib"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartRight" Send="Create ThorRightCheerSquib"/>
-        <On Terms="UnitDeathCustomize; PlayerHasReward ThorCE" Send="DeathCustomize Variation0"/>
-        <On Terms="AbilTransport.SpecOpsDropshipTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="AbilTransport.HerculesTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Target="330mmBarrageCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="UnitBirth.AnnihilatorV2" Send="SetScale"/>
-        <Model value="Warbot"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply A"/>
+        <Model value="AnnihilatorV1"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
         <DeathArray index="Normal" ModelLink="WarbotDeath" SoundLink=""/>
@@ -11370,43 +11672,16 @@
         <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
         <On Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="ActorCreation" Send="AnimPlay CoverStand Cover,Stand PlayForever 0.000000"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="TimerKill CoverDelay"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimClear CoverStand"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimPlay Cover Cover PlayForever"/>
-        <On Terms="WeaponStop.JavelinMissileLaunchers.AttackStop" Send="TimerSet 2.500000 CoverDelay"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimClear Cover"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimPlay CoverStand Cover,Stand PlayForever"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Target="250mmStrikeCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="AbilTransport.MedivacTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
         <On Terms="WeaponStart.*.AttackStart; AnimPlaying Unload" Send="AnimClear Unload"/>
         <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartLeft" Send="Create ThorLeftCheerSquib"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartRight" Send="Create ThorRightCheerSquib"/>
-        <On Terms="UnitDeathCustomize; PlayerHasReward ThorCE" Send="DeathCustomize Variation0"/>
-        <On Terms="AbilTransport.SpecOpsDropshipTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="AbilTransport.HerculesTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Target="330mmBarrageCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="UnitBirth.AnnihilatorV3" Send="SetScale"/>
-        <Model value="Warbot"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply B"/>
+        <Model value="AnnihilatorV1"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
         <DeathArray index="Normal" ModelLink="WarbotDeath" SoundLink=""/>
@@ -11435,7 +11710,7 @@
             <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
         </Wireframe>
     </CActorUnit>
-    <CActorUnit id="TerranOdin" parent="GenericUnitBase" unitName="Odin2">
+    <CActorUnit id="OdinV1" parent="GenericUnitBase" unitName="OdinV1">
         <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
         <On Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
@@ -11475,8 +11750,6 @@
         <On Terms="Abil.330mmBarrageCannons.SourceChannelStop" Send="AnimClear Spell"/>
         <On Terms="Abil.330mmBarrageCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
         <On Terms="Abil.330mmBarrageCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="UnitBirth.Odin2" Send="SetScale 0.650000"/>
-        <Model value="Odin"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
         <DeathArray index="Normal" ModelLink="ThorDeath" SoundLink=""/>
@@ -11492,7 +11765,6 @@
             <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-terran-thor.dds"/>
-        <HighlightTooltip value="Unit/Name/TerranOdin"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <NameOffset value="80"/>
         <SoundArray index="Ready" value="Thor_Ready"/>

@@ -64,6 +64,10 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
+    <CUpgrade id="AnnihilatorV2">
+        <EffectArray Operation="Set" Reference="Effect,AnnihilatorAENukeSearch,Chance" Value="1"/>
+        <EffectArray Operation="Set" Reference="Effect,AnnihilatorSearchRandomSet,Chance" Value="1"/>
+    </CUpgrade>
     <CUpgrade id="BeamHeroLink">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
@@ -112,6 +116,170 @@
         <EffectArray Reference="Unit,EarthHero,VisionHeight" Value="4"/>
         <EffectArray Operation="Set" Reference="Behavior,Massive,Modification.StateFlags[UnitAttrOnMassive]" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroAmplitude">
+        <EffectArray Reference="Effect,GravityHeroDiveSA,AreaArray[0].Radius" Value="0.6"/>
+        <EffectArray Reference="Effect,GravityHeroShiftSA,AreaArray[0].Radius" Value="0.4"/>
+        <EffectArray Reference="Actor,GravityHeroShift,Scale" Value="0.250000"/>
+        <EffectArray Reference="Actor,GravityHeroShiftAddition,Scale" Value="0.250000"/>
+        <EffectArray Reference="Actor,GravityHeroShiftQuad,Width" Value="0.800000"/>
+        <EffectArray Reference="Effect,GravityHeroShiftCollisionSA,AreaArray[0].Radius" Value="0.6"/>
+        <EffectArray Reference="Actor,GravityHeroShiftCollision,Scale" Value="0.250000"/>
+        <EffectArray Reference="Effect,GravityHeroDiveReverberateSA,AreaArray[0].Radius" Value="0.6"/>
+        <EffectArray Reference="Actor,GravityHeroDive,Scale" Value="0.250000"/>
+        <EffectArray Reference="Actor,GravityHeroDiveReverberate,Scale" Value="0.250000"/>
+        <EffectArray Reference="Actor,GravityHeroDiveSplat,Scale" Value="0.600000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroCollision">
+        <EffectArray Reference="Effect,GravityHeroPushCollisionDMG,Amount" Value="50"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroDensity">
+        <EffectArray Reference="Accumulator,GravityHeroPolarityCapped,MaxAccumulation" Value="200"/>
+        <EffectArray Reference="Effect,GravityHeroPolarityCapData,ValidateMin" Value="200"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroDevour">
+        <EffectArray Reference="Effect,GravityHeroDevourDMG,Amount" Value="50"/>
+        <EffectArray Reference="Effect,GravityHeroDevourHeal,VitalArray[Life].Change" Value="25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroDisplace">
+        <EffectArray Operation="Set" Reference="Behavior,GravityHeroShiftCaster,Modification.StateFlags[Cloak]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroAbolish">
+        <EffectArray Reference="Behavior,GravityHeroCompressed,Modification.LifeArmorBonus" Value="-10"/>
+        <EffectArray Reference="Effect,GravityHeroInflateAbolishDMG,VitalFractionCurrent[Life]" Value="0.05"/>
+        <EffectArray Operation="Set" Reference="Effect,GravityHeroInflateAbolishDMG,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroRelentless">
+        <EffectArray Reference="Behavior,GravityHeroElevatedStun,Duration" Value="0.500000"/>
+        <EffectArray Reference="Behavior,GravityHeroCrushed,Duration" Value="2.000000"/>
+        <EffectArray Reference="Behavior,GravityHeroCrushedStun,Duration" Value="0.500000"/>
+        <EffectArray Reference="Behavior,GravityHeroElevated,Duration" Value="2.000000"/>
+        <EffectArray Reference="Behavior,GravityHeroClash,Duration" Value="1.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroExcess">
+        <EffectArray Operation="Set" Reference="Effect,GravityHeroPolarityResetABEnergy,Chance" Value="1"/>
+        <EffectArray Operation="Set" Reference="Effect,GravityHeroPolarityResetABShields,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroExecute">
+        <EffectArray Operation="Set" Reference="Effect,GravityHeroInflateExecuteAB,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroMomentum">
+        <EffectArray Reference="Accumulator,GravityHeroPolarityEnergyMultiplier,Amount" Value="0.1"/>
+        <EffectArray Reference="Behavior,GravityHeroPositive,Modification.VitalRegenArray[Energy]" Value="2.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroRepel">
+        <EffectArray Reference="Effect,GravityHeroPolarityExplodeSplatDummy,AreaArray[0].Radius" Value="2"/>
+        <EffectArray Reference="Effect,GravityHeroPolarityRepelAdd,Amount" Value="200"/>
+        <EffectArray Operation="Subtract" Reference="Effect,GravityHeroPolarityRepelSubtract,Amount" Value="200"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroPolarized">
+        <EffectArray Reference="Effect,GravityHeroPolarityResetData,Amount" Value="100"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <LeaderAlias value="GravityHeroRepel"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroPortal">
+        <EffectArray Reference="Effect,GravityHeroPushPortalData,ValidateMax" Value="1"/>
+        <EffectArray Reference="Effect,GravityHeroPullOffset,PeriodicOffsetArray[0]" Value="0.000000,-1.000000,0.000000"/>
+        <EffectArray Reference="Actor,GravityHeroPullQuad,Height" Value="1.000000"/>
+        <EffectArray Reference="Actor,GravityHeroPullQuad,Quad" Value="0.000000,0.500000,0.000000,0.500000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroPower">
+        <EffectArray Reference="Effect,GravityHeroDiveDMG,Amount" Value="50"/>
+        <EffectArray Reference="Effect,GravityHeroShiftCollisionDMG,Amount" Value="60"/>
+        <EffectArray Reference="Effect,GravityHeroDiveReverberateDMG,Amount" Value="2.5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroPressure">
+        <EffectArray Reference="Effect,GravityHeroInflateDMG,Amount" Value="100"/>
+        <EffectArray Reference="Behavior,GravityHeroCompressed,DamageResponse.ModifyFraction" Value="0.25"/>
+        <EffectArray Reference="Effect,GravityHeroInflateExplodeDMG,Amount" Value="25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroReverberate">
+        <EffectArray Operation="Set" Reference="Effect,GravityHeroDiveReverberateCP,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroSchism">
+        <EffectArray Reference="Effect,GravityHeroInflateSchismSA,AreaArray[0].MaxCount" Value="1"/>
+        <EffectArray Reference="Effect,GravityHeroCompressSchismSA,AreaArray[0].MaxCount" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroShrink">
+        <EffectArray Operation="Subtract" Reference="Behavior,GravityHeroCompressed,Modification.VitalMaxFractionArray[Life]" Value="0.25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroSway">
+        <EffectArray Reference="Effect,GravityHeroShiftSwayCP,PeriodCount" Value="2"/>
+        <EffectArray Reference="Effect,GravityHeroDiveSwayCP,PeriodCount" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroTear">
+        <EffectArray Reference="Effect,GravityHeroPushCP,PeriodCount" Value="1"/>
+        <EffectArray Reference="Effect,GravityHeroPullSA,AreaArray[0].RectangleWidth" Value="0.5"/>
+        <EffectArray Reference="Effect,GravityHeroPushRand,Radius" Value="0.2"/>
+        <EffectArray Reference="Actor,GravityHeroPushQuad,Width" Value="0.300000"/>
+        <EffectArray Reference="Actor,GravityHeroPullQuad,Width" Value="0.500000"/>
+        <EffectArray Reference="Actor,GravityHeroPullMissile,Scale" Value="0.500000"/>
+        <EffectArray Reference="Actor,GravityHeroPullAddition,Scale" Value="0.500000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroConvalesce">
+        <EffectArray Reference="Accumulator,GravityHeroPolarityShieldsMultiplier,Amount" Value="0.75"/>
+        <EffectArray Reference="Behavior,GravityHeroNegative,Modification.VitalRegenArray[Life]" Value="3.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroVivify">
+        <EffectArray Reference="Effect,GravityHeroDevourHeal,VitalArray[Energy].Change" Value="3"/>
+        <EffectArray Reference="Effect,GravityHeroPushVivify,VitalArray[Energy].Change" Value="3"/>
+        <EffectArray Reference="Effect,GravityHeroDevourHeal,VitalArray[Shields].Change" Value="15"/>
+        <EffectArray Reference="Effect,GravityHeroPushVivify,VitalArray[Shields].Change" Value="15"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroTension">
+        <EffectArray Reference="Behavior,GravityHeroElevated,Modification.RangedWeaponRange" Value="-1"/>
+        <EffectArray Reference="Behavior,GravityHeroCrushed,Modification.AdditiveAttackSpeedFactor" Value="-0.15"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroClash">
+        <EffectArray Operation="Set" Reference="Effect,GravityHeroCrushClashSet,Chance" Value="1"/>
+        <EffectArray Operation="Set" Reference="Effect,GravityHeroLiftClashSet,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroDiffusion">
+        <EffectArray Reference="Effect,GravityHeroLiftDiffusionDelay,Chance" Value="0.5"/>
+        <EffectArray Reference="Effect,GravityHeroCrushDiffusionDelay,Chance" Value="0.5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="GravityHeroWhiplash">
+        <EffectArray Reference="Accumulator,GravityHeroWhiplashMultiplier,Amount" Value="0.25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="TimeHeroVanish">
         <EffectArray Reference="Effect,AlteredTimeDMG,Amount[0]" Value="8"/>
@@ -1685,11 +1853,6 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="GForce">
-        <EffectArray Reference="Effect,AttractionCP,PeriodCount" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
     <CUpgrade id="Barrier">
         <EffectArray Operation="Subtract" Reference="Behavior,Barrier,Modification.DamageTakenFraction[Melee]" Value="0.25"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Barrier,Modification.DamageTakenFraction[NoProc]" Value="0.25"/>
@@ -1723,10 +1886,6 @@
     <CUpgrade id="Bulwark">
         <EffectArray Reference="Behavior,Fortify,Modification.VitalMaxFractionArray[Life]" Value="0.5"/>
         <EffectArray Reference="Behavior,Fortify,Modification.VitalMaxFractionArray[Shields]" Value="0.5"/>
-        <EffectArray Reference="Behavior,FortifyHero,Modification.ShieldArmorBonus" Value="5"/>
-        <EffectArray Reference="Behavior,FortifyHero,Modification.LifeArmorBonus" Value="5"/>
-        <EffectArray Reference="Behavior,FortifyStucture,Modification.VitalMaxFractionArray[Life]" Value="0.5"/>
-        <EffectArray Reference="Behavior,FortifyStucture,Modification.VitalMaxFractionArray[Shields]" Value="0.5"/>
         <EffectArray Reference="Effect,EarthHeroFortifyHeal,VitalArray[Life].Change" Value="15"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
@@ -1851,17 +2010,6 @@
         <MaxLevel value="10"/>
         <LeaderAlias value="Demolisher"/>
     </CUpgrade>
-    <CUpgrade id="Density">
-        <EffectArray Operation="Subtract" Reference="Behavior,DensityMomentum,Modification.DamageTakenFraction[Melee]" Value="0.1"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,DensityMomentum,Modification.DamageTakenFraction[NoProc]" Value="0.1"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,DensityMomentum,Modification.DamageTakenFraction[Ranged]" Value="0.1"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,DensityMomentum,Modification.DamageTakenFraction[Spell]" Value="0.1"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,DensityMomentum,Modification.DamageTakenFraction[Splash]" Value="0.1"/>
-        <EffectArray Reference="Effect,RepelDMG,Amount" Value="6"/>
-        <EffectArray Reference="Effect,RepelDMG,ArmorReduction" Value="0.1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
     <CUpgrade id="Draft">
         <EffectArray Operation="Set" Reference="Effect,AirHeroOverdriveDraftCP,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -1889,12 +2037,6 @@
     <CUpgrade id="Elevate">
         <EffectArray Reference="Effect,AirHeroMicroBurstElevateSA,AreaArray[0].Radius" Value="0.5"/>
         <EffectArray Reference="Effect,AirHeroMicroBurstElevateSA,AreaArray[0].MaxCount" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Endless">
-        <EffectArray Reference="Effect,GravitySliversCP,PeriodCount" Value="20"/>
-        <EffectArray Reference="Effect,MagnetismCP,PeriodCount" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -1981,14 +2123,17 @@
         <EffectArray Reference="Unit,Ultralisk2,LifeArmorLevel[0]" Value="2"/>
     </CUpgrade>
     <CUpgrade id="WarpHeroHallucination">
-        <EffectArray Reference="Effect,HallucinatonDecoyBonus,Count[0]" Value="1"/>
         <EffectArray Reference="Accumulator,WarpHeroDecoyLimit,Amount" Value="1"/>
+        <EffectArray Reference="Unit,Decoy,LifeMax" Value="100"/>
+        <EffectArray Reference="Unit,Decoy,LifeStart" Value="100"/>
+        <EffectArray Reference="Unit,Decoy,ShieldsMax" Value="100"/>
+        <EffectArray Reference="Unit,Decoy,ShieldsStart" Value="100"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="WarpHero"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="WarpHeroNull">
-        <EffectArray Operation="Subtract" Reference="Abil,WarpHeroDecoy,Cost[0].Vital[Energy]" Value="25"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WarpHeroDecoy,Cost[0].Vital[Energy]" Value="20"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="WarpHero"/>
     </CUpgrade>
@@ -2110,17 +2255,19 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="WarpHeroDoubleganger">
-        <EffectArray Reference="Effect,Doubleganger,Count[0]" Value="1"/>
+        <EffectArray Reference="Unit,Decoy,EnergyMax" Value="40"/>
+        <EffectArray Reference="Unit,Decoy,EnergyStart" Value="40"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="ShadowHeroDevelopment">
-        <EffectArray Operation="Subtract" Reference="Abil,ShadowHeroEnergytap,Cost[0].Vital[Energy]" Value="25"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ShadowHeroEnergytap,Cost[0].Vital[Energy]" Value="15"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="ShadowHeroSmoke">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
+        <EffectArray Reference="Accumulator,ShadowHeroEnergytapHeal,Amount" Value="3"/>
     </CUpgrade>
     <CUpgrade id="ShadowHeroDeathsEmbrace">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -2129,14 +2276,7 @@
     <CUpgrade id="ShadowHeroMirrors">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Amplitude">
-        <EffectArray Reference="Effect,GravityDashSA,AreaArray[0].Radius" Value="0.33"/>
-        <EffectArray Reference="Effect,GravityDashPullSA,AreaArray[0].Radius" Value="0.66"/>
-        <EffectArray Reference="Actor,GravityDashForce,Scale" Value="0.100000"/>
-        <EffectArray Reference="Actor,GravityHeroGravityDashQuad,Width" Value="0.660000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
+        <EffectArray Reference="Accumulator,ShadowHeroEnergytapDrain,Amount" Value="0.666"/>
     </CUpgrade>
     <CUpgrade id="ShadowHeroEntropy">
         <EffectArray Reference="Effect,ShadowplayApplyEntropy,Count[0]" Value="1"/>
@@ -2147,12 +2287,6 @@
         <EffectArray Reference="Behavior,Evasion,DamageResponse.Chance" Value="0.1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Excess">
-        <EffectArray Operation="Set" Reference="Effect,ExcessSA,Chance" Value="0.03"/>
-        <EffectArray Operation="Set" Reference="Effect,ExcessGravSlivInitSet,Chance" Value="0.06"/>
-        <EffectArray Operation="Set" Reference="Effect,GravityDashExcessSA,Chance" Value="0.08"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Expansion">
         <EffectArray Operation="Set" Reference="Abil,DefensiveMatrix,Cost[0].VitalFraction[Energy]" Value="0"/>
@@ -2443,28 +2577,19 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Portal">
-        <EffectArray Reference="Effect,PortalDelay,Chance" Value="0.02"/>
-        <EffectArray Reference="Effect,ExcessGravSlivPortalDelay,Chance" Value="0.02"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Feast">
-        <EffectArray Operation="Set" Reference="Effect,SoulAbsorptionAB,Chance" Value="1"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,Consumed,Modification.LifeArmorBonus" Value="1"/>
-        <EffectArray Operation="Set" Reference="Effect,ConsumeAB,Chance" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
     <CUpgrade id="FireHeroWarmth">
         <EffectArray Operation="Subtract" Reference="Abil,FireInfusion,Cost[0].Vital[Energy]" Value="10"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Fissure">
-        <EffectArray Reference="Effect,GravitySliversSA,AreaArray[0].Radius" Value="0.25"/>
-        <EffectArray Reference="Actor,GravitySliversMissile,Scale" Value="0.020000"/>
-        <EffectArray Reference="Actor,GravitySliversImpact,Scale" Value="0.100000"/>
+    <CUpgrade id="GravityHeroFissure">
+        <EffectArray Reference="Effect,GravityHeroCrushSA,AreaArray[0].Radius" Value="0.5"/>
+        <EffectArray Reference="Effect,GravityHeroLiftSA,AreaArray[0].Radius" Value="0.5"/>
+        <EffectArray Reference="Actor,GravityHeroCrush,Scale" Value="0.250000"/>
+        <EffectArray Reference="Actor,GravityHeroCrushAddition,Scale" Value="0.250000"/>
+        <EffectArray Reference="Actor,GravityHeroLift,Scale" Value="0.250000"/>
+        <EffectArray Reference="Actor,GravityHeroLiftAddition,Scale" Value="0.250000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
+        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Fragments">
         <EffectArray Reference="Effect,GatewayHeroSplitterSplitSplitSearchTarget,AreaArray[0].MaxCount" Value="1"/>
@@ -2482,36 +2607,16 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Greed">
-        <EffectArray Reference="Effect,ConsumeDMG,LeechFraction[Life]" Value="0.1"/>
-        <EffectArray Reference="Effect,ConsumeDMG,LeechFraction[Shields]" Value="0.1"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,Consumed,Modification.LifeArmorBonus" Value="0.5"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
     <CUpgrade id="Flurry">
         <EffectArray Operation="Subtract" Reference="Weapon,GatewayHeroSolariteReaper,Period" Value="0.180000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="ZealotAiur"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Hunger">
-        <EffectArray Reference="Effect,ConsumeDMG,Amount" Value="100"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,Consumed,Modification.LifeArmorBonus" Value="0.5"/>
-        <EffectArray Reference="Effect,ConsumeDMG,ArmorReduction" Value="5"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
     <CUpgrade id="Longevity">
         <EffectArray Reference="Behavior,ReinforceTimedLife,Duration" Value="5.000000"/>
         <EffectArray Reference="Behavior,GatewayHeroZealotTracker,MaxTrackedUnits" Value="2"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Leach">
-        <EffectArray Reference="Effect,GravityDash2,LeechFraction[Life]" Value="0.1"/>
-        <EffectArray Reference="Effect,GravityDash2,LeechFraction[Shields]" Value="0.1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Lifeline">
         <EffectArray Reference="Effect,Lifeline,Chance" Value="1"/>
@@ -2710,17 +2815,6 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Magnetism">
-        <EffectArray Operation="Set" Reference="Effect,MagnetismCP,Chance" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Momentum">
-        <EffectArray Reference="Behavior,DensityMomentum,Modification.MoveSpeedMultiplier" Value="0.1"/>
-        <EffectArray Reference="Effect,RepelDMG,Amount" Value="6"/>
-        <EffectArray Reference="Effect,RepelDMG,ArmorReduction" Value="0.1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
     <CUpgrade id="ParticleHeroEmitters">
         <EffectArray Operation="Subtract" Reference="Behavior,MultiphaseShieldHiddenreplenish,Duration[0]" Value="3.000000"/>
         <EffectArray Reference="Behavior,MultiphaseShield,Modification.ShieldArmorBonus" Value="0.5"/>
@@ -2883,12 +2977,6 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="5"/>
     </CUpgrade>
-    <CUpgrade id="Power">
-        <EffectArray Reference="Effect,GravityDash2,Amount" Value="7.5"/>
-        <EffectArray Reference="Effect,AttractionDMG,Amount" Value="7.5"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
     <CUpgrade id="LightningHeroShort">
         <EffectArray Operation="Subtract" Reference="Abil,PowerDrain,Cost[0].Vital[Energy]" Value="25"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -2929,14 +3017,6 @@
     <CUpgrade id="Preservation">
         <EffectArray Operation="Subtract" Reference="Abil,TimberLance,Cost[0].Vital[Life]" Value="25"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Pressure">
-        <EffectArray Reference="Behavior,Pressure,Duration" Value="1.000000"/>
-        <EffectArray Operation="Set" Reference="Effect,PressureAB,Chance" Value="1"/>
-        <EffectArray Reference="Effect,RepelDMG,Amount" Value="6"/>
-        <EffectArray Reference="Effect,RepelDMG,ArmorReduction" Value="0.1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="ProtossAlliesCannonUpgrade">
         <EffectArray Reference="Unit,PhotonCannon,LifeMax" Value="50"/>
@@ -3139,11 +3219,6 @@
         <EffectArray Operation="Set" Reference="Effect,ReleaseEarthCP,Chance" Value="1"/>
         <EffectArray Operation="Set" Reference="Effect,ReleaseWaterSA,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Relentless">
-        <EffectArray Reference="Effect,RelentlessSet,Chance" Value="0.2"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="ParticleHeroReload">
         <EffectArray Reference="Effect,OrbitalCannon,PeriodCount" Value="1"/>
@@ -3613,18 +3688,6 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="Tear">
-        <EffectArray Reference="Effect,GravityShotSA,AreaArray[0].Radius" Value="0.3"/>
-        <EffectArray Reference="Actor,Portal,Scale" Value="0.300000"/>
-        <EffectArray Reference="Effect,ExcessGravSlivSA,AreaArray[0].Radius" Value="0.3"/>
-        <EffectArray Reference="Actor,AlarakPsiOrbLaunchActionMissile,Scale" Value="0.300000"/>
-        <EffectArray Reference="Effect,PortalSA,AreaArray[0].Radius" Value="0.25"/>
-        <EffectArray Reference="Effect,ExcessGravSlivPortalSA,AreaArray[0].Radius" Value="0.25"/>
-        <EffectArray Reference="Actor,PortalGravSliv,Scale" Value="0.300000"/>
-        <EffectArray Reference="Actor,GravityHeroGravityShotQuad,Width" Value="0.250000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
     <CUpgrade id="Thaw">
         <EffectArray Reference="Effect,ThawSA,AreaArray[0].MaxCount" Value="2"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -3639,12 +3702,6 @@
         <EffectArray Reference="Effect,CorruptionSA,AreaArray[0].Radius" Value="0.5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Unstoppable">
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <EffectArray Reference="Effect,RepelDMG,Amount" Value="6"/>
-        <EffectArray Operation="Set" Reference="Behavior,Repel,Modification.RadiusMultiplier" Value="0"/>
-        <EffectArray Reference="Effect,RepelDMG,ArmorReduction" Value="0.1"/>
     </CUpgrade>
     <CUpgrade id="Vengeance">
         <EffectArray Operation="Set" Reference="Effect,VengeanceSA,Chance" Value="1"/>
@@ -3680,13 +3737,6 @@
         <EffectArray Reference="Effect,Expel8VolleyCP,PeriodCount" Value="8"/>
         <EffectArray Reference="Effect,Expel9VolleyCP,PeriodCount" Value="9"/>
         <EffectArray Reference="Effect,Expel10VolleyCP,PeriodCount" Value="10"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="2"/>
-    </CUpgrade>
-    <CUpgrade id="Vortex">
-        <EffectArray Operation="Set" Reference="Effect,VortexCP,Chance" Value="1"/>
-        <EffectArray Reference="Effect,VortexCP,PeriodCount" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,Consumed,Modification.LifeArmorBonus" Value="0.5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -3864,14 +3914,6 @@
         <EffectArray Reference="Actor,NightwarpImpact,Scale" Value="0.330000"/>
         <EffectArray Reference="Effect,TwilightHeroWarpoutDistributeHeal,VitalArray[Life].Change" Value="100"/>
         <EffectArray Reference="Effect,TwilightHeroWarpoutDistributeHeal,VitalArray[Shields].Change" Value="100"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Whiplash">
-        <EffectArray Reference="Effect,GravityShotDMG,Amount" Value="0.7"/>
-        <EffectArray Reference="Effect,PortalDamage,Amount" Value="10"/>
-        <EffectArray Reference="Effect,GravityShotDMG,ArmorReduction" Value="0.05"/>
-        <EffectArray Reference="Effect,PortalDamage,ArmorReduction" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -4196,24 +4238,13 @@
         <EffectArray Reference="Behavior,Fortify,Modification.UnifiedDamageDealtFraction[Ranged]" Value="0.25"/>
         <EffectArray Reference="Behavior,Fortify,Modification.UnifiedDamageDealtFraction[Spell]" Value="0.25"/>
         <EffectArray Reference="Behavior,Fortify,Modification.UnifiedDamageDealtFraction[Splash]" Value="0.25"/>
-        <EffectArray Reference="Behavior,FortifyStucture,Modification.UnifiedDamageDealtFraction[Melee]" Value="0.25"/>
-        <EffectArray Reference="Behavior,FortifyStucture,Modification.UnifiedDamageDealtFraction[NoProc]" Value="0.25"/>
-        <EffectArray Reference="Behavior,FortifyStucture,Modification.UnifiedDamageDealtFraction[Ranged]" Value="0.25"/>
-        <EffectArray Reference="Behavior,FortifyStucture,Modification.UnifiedDamageDealtFraction[Spell]" Value="0.25"/>
-        <EffectArray Reference="Behavior,FortifyStucture,Modification.UnifiedDamageDealtFraction[Splash]" Value="0.25"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,FortifyHero,DamageResponse.ModifyFraction" Value="0.05"/>
         <EffectArray Operation="Subtract" Reference="Behavior,Fortify,Modification.DamageDealtAttributeMultiplier[Heroic]" Value="0.1875"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,FortifyStucture,Modification.DamageDealtAttributeMultiplier[Heroic]" Value="0.1875"/>
         <EffectArray Reference="Effect,EarthHeroFortifyHeal,VitalArray[Shields].Change" Value="10"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Velocity">
         <EffectArray Reference="Behavior,Fortify,Modification.AttackSpeedMultiplier" Value="0.15"/>
-        <EffectArray Reference="Behavior,FortifyStucture,Modification.AttackSpeedMultiplier" Value="0.15"/>
-        <EffectArray Reference="Behavior,FortifyHero,Modification.VitalRegenArray[Energy]" Value="0.101500"/>
-        <EffectArray Reference="Behavior,FortifyHero,Modification.VitalRegenArray[Life]" Value="0.101500"/>
-        <EffectArray Reference="Behavior,FortifyHero,Modification.VitalRegenArray[Shields]" Value="0.101500"/>
         <EffectArray Reference="Effect,EarthHeroFortifyHeal,VitalArray[Energy].Change" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
