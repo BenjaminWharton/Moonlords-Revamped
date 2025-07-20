@@ -405,10 +405,10 @@
         <UnitSource Value="Target"/>
     </CAccumulatorBehavior>
     <CAccumulatorConstant id="ShadowHeroEnergytapDrain">
-        <Amount value="-4"/>
+        <Amount value="-5"/>
     </CAccumulatorConstant>
     <CAccumulatorConstant id="ShadowHeroEnergytapHeal">
-        <Amount value="6"/>
+        <Amount value="8"/>
     </CAccumulatorConstant>
     <CAccumulatorArithmetic id="ShieldsPercentageCaster">
         <Parameters value="0">

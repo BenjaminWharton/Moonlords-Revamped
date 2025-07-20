@@ -119,6 +119,20 @@
         <Height value="0.6"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
     </CUnit>
+    <CUnit id="ThorThunderOrbsMissile" parent="MISSILE">
+        <Race value="Terr"/>
+        <Sight value="2"/>
+        <Height value="0.6"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="ThorRavenSeekerMissile" parent="MISSILE_INVULNERABLE">
+        <Race value="Terr"/>
+        <FlagArray index="Missile" value="0"/>
+        <FlagArray index="Invulnerable" value="0"/>
+        <BehaviorArray Link="ThorRavenSeekerFate"/>
+        <Radius value="0.25"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
     <CUnit id="NatureHeroFruitExplode">
         <Race value="Prot"/>
         <FlagArray index="Unselectable" value="1"/>
@@ -240,6 +254,84 @@
         <VisionHeight value="4"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
+    <CUnit id="ThorRaven">
+        <DeathRevealRadius value="3"/>
+        <Race value="Terr"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="AlwaysThreatens" value="1"/>
+        <FlagArray index="AIThreatGround" value="1"/>
+        <FlagArray index="AIThreatAir" value="1"/>
+        <FlagArray index="AICaster" value="1"/>
+        <FlagArray index="AISupport" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <LifeArmor value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
+        <Mover value="Fly"/>
+        <Speed value="2.25"/>
+        <Acceleration value="2"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <Sight value="11"/>
+        <Height value="1"/>
+        <VisionHeight value="4"/>
+        <Food value="-2"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="100"/>
+        <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="45"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="attack"/>
+        <BehaviorArray Link="Detector11"/>
+        <WeaponArray Link="RavenSeekerMissile"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+        </CardLayouts>
+        <Radius value="0.625"/>
+        <SeparationRadius value="0.625"/>
+        <ScoreMake value="300"/>
+        <ScoreKill value="300"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="20"/>
+        <MinimapRadius value="0.625"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <TacticalAIThink value="AIThinkRaven"/>
+        <GlossaryCategory value="Unit/Category/TerranUnits"/>
+        <GlossaryPriority value="190"/>
+        <GlossaryStrongArray value="Banshee"/>
+        <GlossaryStrongArray value="Roach"/>
+        <GlossaryStrongArray value="DarkTemplar"/>
+        <GlossaryWeakArray value="Ghost"/>
+        <GlossaryWeakArray value="Corruptor"/>
+        <GlossaryWeakArray value="Phoenix"/>
+        <HotkeyCategory value="Unit/Category/TerranUnits"/>
+        <KillDisplay value="Always"/>
+        <RankDisplay value="Always"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="33"/>
+            <ChanceArray index="Idle" value="33"/>
+        </Fidget>
+    </CUnit>
+    <CUnit id="ThorRocketBlitzMissile" parent="MISSILE">
+        <Race value="Terr"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
     <CUnit id="ThorV1">
         <DeathRevealRadius value="3"/>
         <Facing value="135"/>
@@ -264,7 +356,6 @@
         <LifeMax value="1500"/>
         <LifeArmor value="3"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
-        <EnergyStart value="200"/>
         <Speed value="1.875"/>
         <Acceleration value="1000"/>
         <LateralAcceleration value="46.0625"/>
@@ -275,20 +366,17 @@
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
-        <AbilArray Link="ThorAPMode"/>
-        <BehaviorArray Link="thorlaunchattacksatindicator"/>
+        <BehaviorArray Link="TerranTargetTracker"/>
         <BehaviorArray Link="ThorSelfheal"/>
-        <BehaviorArray Link="DefensiveNukeCD"/>
+        <BehaviorArray Link="ThorRocketBlitz"/>
+        <BehaviorArray Link="ThorDefensiveNukeBase"/>
         <WeaponArray Link="ThorsHammer"/>
-        <WeaponArray/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-            <LayoutButtons Face="ArmorpiercingMode" Type="AbilCmd" AbilCmd="ThorAPMode,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="ThorAPMode,Cancel" Row="2" Column="4"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
@@ -304,6 +392,49 @@
         </Fidget>
         <TauntDuration index="Cheer" value="5"/>
         <TauntDuration index="Dance" value="5"/>
+        <AlliedPushPriority value="100"/>
+        <Response value="AcquireNoFlee"/>
+    </CUnit>
+    <CUnit id="AnnihilatorV3RocketLauncherMissile" parent="MISSILE">
+        <Race value="Terr"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="AnnihilatorSupportBot">
+        <Race value="Terr"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
+        <Speed value="0.75"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <Sight value="11"/>
+        <RepairTime value="41.667"/>
+        <AttackTargetPriority value="20"/>
+        <KillXP value="30"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+        </CardLayouts>
+        <CargoSize value="2"/>
+        <SubgroupPriority value="15"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <GlossaryPriority value="345"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="33"/>
+            <ChanceArray index="Idle" value="33"/>
+            <ChanceArray index="Turn" value="33"/>
+        </Fidget>
     </CUnit>
     <CUnit id="WarpHeroTurretDummy">
         <Race value="Prot"/>
@@ -719,11 +850,20 @@
     </CUnit>
     <CUnit id="Banshee">
         <Food value="0"/>
-        <AbilArray Link="DropBeam"/>
+        <AbilArray index="3" Link="BansheeDropBeam"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="PowerDrain" Type="AbilCmd" AbilCmd="DropBeam,Execute" Row="2" Column="2"/>
+            <LayoutButtons index="5" Face="" Type="Undefined" AbilCmd="" Row="0"/>
+            <LayoutButtons index="6" Face="PowerDrain" AbilCmd="BansheeDropBeam,255" Column="0"/>
+            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="8" removed="1"/>
         </CardLayouts>
-        <BehaviorArray Link="AnnihilatorAresRestoreHPonDeath"/>
+        <Speed value="2"/>
+        <Height value="1"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
+        <EnergyStart value="0"/>
+        <EnergyMax value="0"/>
+        <EnergyRegenRate value="0"/>
     </CUnit>
     <CUnit id="BroodLord">
         <PlaneArray index="Ground" value="1"/>
@@ -1126,9 +1266,6 @@
         <LifeMax value="1000"/>
         <LifeArmor value="1000"/>
         <LifeRegenRate value="500"/>
-        <EnergyStart value="1000"/>
-        <EnergyMax value="1000"/>
-        <EnergyRegenRate value="1000"/>
         <Sight value="2"/>
         <VisionHeight value="4"/>
         <AbilArray Link="move"/>
@@ -4127,7 +4264,7 @@
         <FlagArray index="AIPressForwardDisabled" value="1"/>
         <FlagArray index="ArmySelect" value="1"/>
         <PlaneArray index="Ground" value="1"/>
-        <PushPriority value="200"/>
+        <PushPriority value="101"/>
         <Collide index="Colossus" value="1"/>
         <Collide index="Structure" value="1"/>
         <Response value="Nothing"/>
@@ -5361,9 +5498,6 @@
             <VitalFraction index="Energy" value="2"/>
         </PowerupCost>
     </CUnit>
-    <CUnit id="HunterSeekerWeapon">
-        <FlagArray index="Invulnerable" value="0"/>
-    </CUnit>
     <CUnit id="HealerDrone">
         <Race value="Prot"/>
         <Mob value="Campaign"/>
@@ -5467,7 +5601,7 @@
     <CUnit id="ScienceVessel">
         <Response value="Nothing"/>
         <EnergyRegenRate value="5"/>
-        <BehaviorArray Link="scienceapplier"/>
+        <BehaviorArray Link="ScienceVesselScienceBase"/>
         <Attributes index="Heroic" value="1"/>
         <Height value="1"/>
     </CUnit>
@@ -5484,7 +5618,7 @@
         </CardLayouts>
         <BehaviorArray Link="TimedSuicideZergUnits"/>
     </CUnit>
-    <CUnit id="ThorAttackIndicator">
+    <CUnit id="ThorTargetDrone">
         <Race value="Prot"/>
         <Mob value="Multiplayer"/>
         <FlagArray index="Uncommandable" value="1"/>
@@ -5492,7 +5626,6 @@
         <FlagArray index="Untargetable" value="1"/>
         <FlagArray index="Hero" value="1"/>
         <FlagArray index="PreventDestroy" value="1"/>
-        <FlagArray index="Missile" value="1"/>
         <FlagArray index="Unradarable" value="1"/>
         <FlagArray index="UseLineOfSight" value="1"/>
         <FlagArray index="KillCredit" value="0"/>
@@ -5938,25 +6071,31 @@
         <Name value="Unit/Name/ThorV2"/>
         <Description value="Button/Tooltip/ThorV2"/>
         <ReviveType value="ThorV2"/>
-        <KillXP value="160"/>
-        <BehaviorArray Link="ProtectionField"/>
     </CUnit>
     <CUnit id="ThorV3" parent="ThorV1">
         <Name value="Unit/Name/ThorV3"/>
         <Description value="Button/Tooltip/ThorV3"/>
         <ReviveType value="ThorV3"/>
-        <BehaviorArray Link="ProtectionField"/>
+        <EnergyMax value="500.5"/>
+        <EnergyDamageGain index="Spell" value="0.2"/>
+        <EnergyDamageGain index="Melee" value="0.2"/>
+        <EnergyDamageGain index="Ranged" value="0.2"/>
+        <EnergyDamageGain index="Splash" value="0.2"/>
+        <BehaviorArray index="2" Link="ThorAbsorptionShield"/>
+        <BehaviorArray index="3" Link="ThorLightningBarrage"/>
+        <WeaponArray index="0" removed="1"/>
+        <EquipmentArray Weapon="ThorLightningBarrage"/>
+        <EnergyRegenRate value="-25"/>
     </CUnit>
     <CUnit id="AnnihilatorV1">
         <DeathRevealRadius value="3"/>
         <Facing value="135"/>
         <Race value="Terr"/>
         <Mob value="Multiplayer"/>
-        <FlagArray index="Movable" value="0"/>
         <FlagArray index="Hero" value="1"/>
         <FlagArray index="PreventDestroy" value="1"/>
         <FlagArray index="UseLineOfSight" value="1"/>
-        <FlagArray index="TurnBeforeMove" value="1"/>
+        <FlagArray index="Unstoppable" value="1"/>
         <FlagArray index="ArmySelect" value="1"/>
         <PlaneArray index="Ground" value="1"/>
         <Collide index="Ground" value="1"/>
@@ -5971,22 +6110,24 @@
         <LifeMax value="1500"/>
         <LifeArmor value="3"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
-        <Speed value="1.875"/>
+        <Speed value="2.25"/>
         <Acceleration value="1000"/>
         <LateralAcceleration value="46.0625"/>
-        <TurningRate value="360"/>
+        <TurningRate value="270"/>
         <Sight value="14"/>
         <RepairTime value="60"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
+        <BehaviorArray Link="TerranTargetTracker"/>
         <BehaviorArray Link="ThorSelfheal"/>
-        <BehaviorArray Link="AnnihilatorKilllittleAres"/>
-        <BehaviorArray Link="AnnihilatorV2AENUKE"/>
-        <BehaviorArray Link="ProtectionField"/>
-        <WeaponArray Link="ThorsHammer"/>
-        <WeaponArray/>
+        <BehaviorArray Link="AnnihilatorSupportBotSearch"/>
+        <BehaviorArray Link="AnnihilatorAbsorptionField"/>
+        <BehaviorArray Link="ThorDefensiveNukeBase"/>
+        <BehaviorArray Link="AnnihilatorV1MovementSpeed"/>
+        <BehaviorArray Link="AnnihilatorV1Flamethrower"/>
+        <WeaponArray Turret="AnnihilatorTurret"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -6007,44 +6148,53 @@
         </Fidget>
         <TauntDuration index="Cheer" value="5"/>
         <TauntDuration index="Dance" value="5"/>
-        <EnergyDamageGain index="Spell" value="0.1"/>
-        <EnergyDamageGain index="Melee" value="0.1"/>
-        <EnergyDamageGain index="Ranged" value="0.1"/>
-        <EnergyDamageGain index="Splash" value="0.1"/>
-    </CUnit>
-    <CUnit id="AnnihilatorV2" parent="AnnihilatorV1">
-        <Name value="Unit/Name/AnnihilatorV2"/>
-        <Description value="Button/Tooltip/AnnihilatorV2"/>
-        <ReviveType value="AnnihilatorV2"/>
-        <EnergyMax value="500.5"/>
-        <EnergyDamageGain index="Spell" value="0.125"/>
-        <EnergyDamageGain index="Melee" value="0.125"/>
-        <EnergyDamageGain index="Ranged" value="0.125"/>
-        <EnergyDamageGain index="Splash" value="0.125"/>
-    </CUnit>
-    <CUnit id="AnnihilatorV3" parent="AnnihilatorV1">
-        <Name value="Unit/Name/AnnihilatorV3"/>
-        <Description value="Button/Tooltip/AnnihilatorV3"/>
-        <ReviveType value="AnnihilatorV3"/>
         <EnergyMax value="500.5"/>
         <EnergyDamageGain index="Spell" value="0.2"/>
         <EnergyDamageGain index="Melee" value="0.2"/>
         <EnergyDamageGain index="Ranged" value="0.2"/>
         <EnergyDamageGain index="Splash" value="0.2"/>
+        <PushPriority value="200"/>
+        <StationaryTurningRate value="270"/>
+        <AlliedPushPriority value="100"/>
+        <EquipmentArray Weapon="AnnihilatorV1Flamethrower"/>
+        <Response value="Nothing"/>
+        <EnergyRegenRate value="-25"/>
+    </CUnit>
+    <CUnit id="AnnihilatorV2" parent="AnnihilatorV1">
+        <Name value="Unit/Name/AnnihilatorV2"/>
+        <Description value="Button/Tooltip/AnnihilatorV2"/>
+        <ReviveType value="AnnihilatorV2"/>
+        <BehaviorArray index="4" Link="AnnihilatorV2MovementSpeed"/>
+        <BehaviorArray index="5" Link="AnnihilatorV2Railgun"/>
+        <BehaviorArray index="6" removed="1"/>
+        <EquipmentArray index="0" Weapon="AnnihilatorV2Railgun"/>
+        <Speed value="2.75"/>
+    </CUnit>
+    <CUnit id="AnnihilatorV3" parent="AnnihilatorV1">
+        <Name value="Unit/Name/AnnihilatorV3"/>
+        <Description value="Button/Tooltip/AnnihilatorV3"/>
+        <ReviveType value="AnnihilatorV3"/>
+        <BehaviorArray index="4" Link="AnnihilatorV3RocketLauncher"/>
+        <BehaviorArray index="5" removed="1"/>
+        <BehaviorArray index="6" removed="1"/>
+        <FlagArray index="Movable" value="0"/>
+        <EquipmentArray index="0" Weapon="AnnihilatorV3RocketLauncher"/>
     </CUnit>
     <CUnit id="OdinV1" parent="ThorV1">
         <Name value="Unit/Name/OdinV1"/>
         <Description value="Button/Tooltip/OdinV1"/>
         <ReviveType value="OdinV1"/>
-        <EnergyStart value="0"/>
-        <EnergyMax value="500.75"/>
+        <EnergyMax value="500.5"/>
         <EnergyDamageGain index="Spell" value="0.25"/>
         <EnergyDamageGain index="Melee" value="0.25"/>
         <EnergyDamageGain index="Ranged" value="0.25"/>
         <EnergyDamageGain index="Splash" value="0.25"/>
-        <BehaviorArray Link="ProtectionField"/>
-        <BehaviorArray Link="AnnihilatorKilllittleAres"/>
-        <BehaviorArray Link="AnnihilatorV2AENUKE"/>
+        <BehaviorArray index="1" Link="ThorRocketBlitz"/>
+        <BehaviorArray index="2" Link="ThorSelfheal"/>
+        <BehaviorArray Link="AnnihilatorSupportBotSearch"/>
+        <BehaviorArray Link="AnnihilatorAbsorptionField"/>
+        <WeaponArray index="0" Link="Odin"/>
+        <EnergyRegenRate value="-25"/>
     </CUnit>
     <CUnit id="TimewaveUnit" parent="MISSILE">
         <Race value="Prot"/>
@@ -7190,16 +7340,6 @@
         <AlliedPushPriority value="20"/>
         <Radius value="1"/>
         <InnerRadius value="1"/>
-    </CUnit>
-    <CUnit id="Warbot">
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
-        <Speed value="0.75"/>
-        <MinimapRadius value="0.5"/>
-        <Collide index="Ground" value="0"/>
-    </CUnit>
-    <CUnit id="WarbotBMissile">
-        <Mover value="AnnihilatorMissile"/>
     </CUnit>
     <CUnit id="WingedHorror" parent="Roach">
         <Name value="Unit/Name/WingedHorror"/>

@@ -73,6 +73,53 @@
         <AssetArray File="Assets\Sounds\Eradicator_RailGun_TargetSweep_06.wav" FacialGroup=""/>
         <Volume value="2.000000,2.000000"/>
     </CSound>
+    <CSound id="AnnihilatorTransform_Start" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Thor_MorphOn_Main.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="AnnihilatorTransform_End" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Thor_MorphOff_Main.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="AnnihilatorV1Flamethrower_Launch" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_FlameTurret_Launch_Start_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_FlameTurret_Launch_Start_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_FlameTurret_Launch_Start_03.wav" FacialGroup=""/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
+    <CSound id="AnnihilatorV1Flamethrower_Loop" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\FlameTurret_Loop_04.wav" FacialGroup=""/>
+        <Pitch value="-3.000000,-3.000000"/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="AnnihilatorV2Railgun_Launch" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\RailGun_Attack_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\RailGun_Attack_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\RailGun_Attack_Launch_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\RailGun_Attack_Launch_04.wav" FacialGroup=""/>
+        <Pitch value="5.000000,5.000000"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="AnnihilatorV2Railgun_Impact" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Launch_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Launch_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Launch_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Launch_06.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="AnnihilatorV3RocketLauncher_Launch" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\MissileTurret\MissileTurret_AttackLaunch0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\MissileTurret\MissileTurret_AttackLaunch1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\MissileTurret\MissileTurret_AttackLaunch2.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,-1.000000"/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
     <CSound id="BlastwaveSound" parent="Spell">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray>
@@ -559,6 +606,31 @@
     <CSound id="MegaBossIncomingSound">
         <AssetArray File="Assets\Music\UI_Stinger_Hit03.ogg" FacialGroup=""/>
         <Volume value="6.000000,6.000000"/>
+    </CSound>
+    <CSound id="ThorLightningBarrage_Impact" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact2.wav" FacialGroup=""/>
+        <Pitch value="5.000000,5.000000"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="ThorThunderstep_Charge" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\PirateCapitalShip_YamatoAttackChargeUp_00.wav" Volume="6.000000,6.000000" FacialGroup=""/>
+        <Pitch value="2.000000,2.000000"/>
+        <Volume value="6.000000,6.000000"/>
+    </CSound>
+    <CSound id="ThorThunderstep_Launch" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Spell_Kerrigan_Lightning0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Kerrigan_Lightning1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Kerrigan_Lightning2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Kerrigan_Lightning3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Kerrigan_Lightning4.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Kerrigan_Lightning5.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-2.000000"/>
+        <Volume value="3.000000,3.000000"/>
     </CSound>
     <CSound id="ThunderfurySound" parent="Spell">
         <EditorCategories value="Race:Protoss"/>

@@ -219,6 +219,9 @@
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Use" Link="CountUpgradeCultivateCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="NoBehaviorForceMovementAlias">
+        <NodeArray index="Use" Link="NotCountBehaviorAlias_BehaviorForceMovementQueuedOrBetterAtUnit"/>
+    </CRequirement>
     <CRequirement id="NotInfused">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Show" Link="AndEq0CountBehaviorEarthInfusedQueuedOrBetterAtUnitEq0CountBehaviorFireInfusedQueuedOrBetterAtUnitEq0CountBehaviorWaterInfusedQueuedOrBetterAtUnitEq0CountBehaviorWindInfusedQueuedOrBetterAtUnit"/>
@@ -438,7 +441,7 @@
     </CRequirement>
     <CRequirement id="UseThorupgrade1">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="LTCountUpgradeThorQuestRewardCompleteOnlyTechTreeCheat1"/>
+        <NodeArray index="Use" Link="LTCountUpgradeThorQuestRewardV3CompleteOnlyTechTreeCheat1"/>
     </CRequirement>
     <CRequirement id="UseMeteor1">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>

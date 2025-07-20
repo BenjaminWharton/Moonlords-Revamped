@@ -51,6 +51,10 @@
         <Compare value="GT"/>
         <Behavior value="AnnihilatorFirewall"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="AnnihilatorHasHealOnDeath">
+        <Compare value="GT"/>
+        <Behavior value="AnnihilatorHealOnDeath"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="AttritionOrbCountIs6">
         <WhichUnit Value="Caster"/>
         <Value value="6"/>
@@ -416,6 +420,11 @@
     <CValidatorUnitType id="IsDemolisherShieldDummy">
         <Value value="ShieldUnit"/>
     </CValidatorUnitType>
+    <CValidatorPlayerRequirement id="NoBehaviorForceMovementAlias">
+        <Find value="1"/>
+        <Value value="NoBehaviorForceMovementAlias"/>
+        <WhichUnit Value="Target"/>
+    </CValidatorPlayerRequirement>
     <CValidatorCombine id="NotHeroicAndNotMassive">
         <Type value="And"/>
         <CombineArray value="NotHeroic"/>
@@ -942,13 +951,26 @@
         <Find value="0"/>
         <Types index="Building" value="0"/>
     </CValidatorLocationPathable>
+    <CValidatorUnitCompareBehaviorCount id="ThorHasInCombat">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="ThorInCombat"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="ThorNoInCombat">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ThorInCombat"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="ThorHasRavenSeekerTargetable">
+        <Compare value="GT"/>
+        <Behavior value="ThorRavenSeekerTargetable"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitType id="ThorIsNotStopMoveIndicator">
         <Value value="AnnihilatorStopMoveIndicator"/>
         <Find value="0"/>
     </CValidatorUnitType>
     <CValidatorUnitCompareBehaviorCount id="ThorNoMoveCheckE0">
         <WhichUnit Value="Caster"/>
-        <Behavior value="annihilatornomovecheck"/>
+        <Behavior value="AnnihilatorLaserTracking"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="TimeHeroCasterHasTimerift">
         <WhichUnit Value="Caster"/>
@@ -1953,11 +1975,11 @@
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareBehaviorCount id="Has0Dematerialize">
         <Value value="1"/>
-        <Behavior value="Dematfieldcheck"/>
+        <Behavior value="AnnihilatorDematerializationFieldBase"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="CasterHas0Dematcheck">
+    <CValidatorUnitCompareBehaviorCount id="AnnihilatorNoDematerializationField">
         <WhichUnit Value="Caster"/>
-        <Behavior value="Dematfieldcheck"/>
+        <Behavior value="AnnihilatorDematerializationFieldBase"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="HasFrostshock">
         <Compare value="NE"/>
@@ -2014,9 +2036,9 @@
         <Value value="1"/>
         <Behavior value="StaticArmor"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="HasNoAnnihilatorRandomNukeSuppressor">
+    <CValidatorUnitCompareBehaviorCount id="AnnihilatorAbsoptionRocketsNotOnCooldown">
         <WhichUnit Value="Caster"/>
-        <Behavior value="AnnihilatorRandomNukeSuppressor"/>
+        <Behavior value="AnnihilatorAbsorptionFieldRocketCooldown"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="ThorRewardMagneto">
         <WhichPlayer Value="Target"/>
@@ -2224,14 +2246,6 @@
         <Value value="3"/>
         <Behavior value="WindStack"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorLocationEnumArea id="atleast1heroinrange">
-        <WhichLocation Value="CasterUnitOrPoint"/>
-        <AreaArray Radius="12"/>
-        <SearchFlags index="ExtendByUnitRadius" value="1"/>
-        <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden"/>
-        <Compare value="LT"/>
-        <Count value="1"/>
-    </CValidatorLocationEnumArea>
     <CValidatorUnitFilters id="TargetNotDead"/>
     <CValidatorUnitFilters id="SourceNotDead"/>
     <CValidatorUnitCompareBehaviorCount id="HasMultiphaseShield">
@@ -2318,10 +2332,8 @@
         <WhichUnit Effect="TimewaveSet"/>
     </CValidatorUnitCompareMarkerCount>
     <CValidatorLocationEnumArea id="atleast1heroincloserange">
-        <WhichLocation Value="CasterUnitOrPoint"/>
-        <AreaArray Radius="5"/>
-        <Compare value="LT"/>
-        <Count value="1"/>
+        <WhichLocation Value="CasterUnit"/>
+        <AreaArray Radius="4"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>

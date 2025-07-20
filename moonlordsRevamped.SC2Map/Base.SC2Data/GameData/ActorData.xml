@@ -11,11 +11,64 @@
     <CActorSound id="AirHeroHurricane_Impact" parent="SoundOneShot">
         <On Terms="Behavior.AirHeroHurricaneFate.Off" Send="Create"/>
     </CActorSound>
+    <CActorModel id="AnnihilatorSupportBotHeal" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.AnnihilatorSupportBotSearchMU.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
+        <HostSiteOps Ops="SOpCasterUnit SOpAttachOverhead SOpRandomPointInCircle1" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="ThorLightningBarrage" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.ThorLightningBarrageSA.Start" Send="Create"/>
+        <On Terms="Effect.ThorThunderstepOrbsSA.Start" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="ThorLightningBarrageSlow" parent="ModelAddition">
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.ThorLightningBarrageSlow.On" Send="Create"/>
+        <On Terms="Behavior.ThorLightningBarrageSlow.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+    </CActorModel>
+    <CActorSound id="ThorLightningBarrage_Impact" parent="SoundOneShot">
+        <On Terms="Effect.ThorLightningBarrageSA.Start" Send="Create"/>
+        <On Terms="Effect.ThorThunderstepOrbsSA.Start" Send="Create"/>
+    </CActorSound>
+    <CActorAction id="ThorThunderOrbsAttack" parent="GenericAttack" effectImpact="ThorThunderstepOrbsSet" effectLaunch="ThorWreckage">
+        <LaunchAttachQuery Methods="AMPatternThorThunderOrbs"/>
+        <Missile value="ThorThunderOrbsMissile"/>
+    </CActorAction>
+    <CActorMissile id="ThorThunderOrbsMissile" parent="GenericAttackMissile" unitName="ThorThunderOrbsMissile">
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="ActorDestruction" Send="DestroyParticles"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,0"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.850000"/>
+        <On Terms="ActorCreation" Send="Create ThorThunderOrbsMissileAddition"/>
+    </CActorMissile>
+    <CActorModel id="ThorAbsorptionShield" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.ThorAbsorberShield.On" Send="Create"/>
+        <On Terms="Behavior.ThorAbsorberShield.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor {0,75,255 1.500000}"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="AnnihilatorDematerializationFieldSafeZone" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.AnnihilatorDematerializationFieldBase.On" Send="Create"/>
+        <On Terms="Behavior.AnnihilatorDematerializationFieldBase.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,13,255"/>
+        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+        <Model value="AnnihilatorDematerializationField"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
     <CActorModel id="AnnihilatorFirewall" parent="ModelAnimationStyleContinuous">
         <Flags index="SuppressSaveLoad" value="1"/>
         <On Terms="Effect.AnnihilatorFirewallCP.Start" Send="Create"/>
         <On Terms="Effect.AnnihilatorFirewallCP.Stop" Send="AnimBracketStop BSD"/>
-        <On Terms="ActorCreation" Send="TimerSet 1.000000 Delay"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.500000 Delay"/>
         <On Terms="TimerExpired; TimerName Delay" Send="AnimGroupApply B"/>
     </CActorModel>
     <CActorModel id="AnnihilatorV1FlamethrowerLeft" parent="ModelAddition">
@@ -34,6 +87,8 @@
         <Inherits index="WarpGroup" value="0"/>
         <On Terms="Behavior.AnnihilatorV1Flamethrower.On" Send="Create"/>
         <On Terms="Behavior.AnnihilatorV1Flamethrower.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetScale 0.250000"/>
+        <On Terms="ActorCreation" Send="SetScale 1.000000 0.250000"/>
         <HostSiteOps Ops="SOpAttachWeapon00 SOpMoveBackByDot5"/>
         <Model value="AnnihilatorV1Flamethrower"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
@@ -54,10 +109,42 @@
         <Inherits index="WarpGroup" value="0"/>
         <On Terms="Behavior.AnnihilatorV1Flamethrower.On" Send="Create"/>
         <On Terms="Behavior.AnnihilatorV1Flamethrower.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetScale 0.250000"/>
+        <On Terms="ActorCreation" Send="SetScale 1.000000 0.250000"/>
         <HostSiteOps Ops="SOpAttachWeapon01 SOpMoveBackByDot5"/>
         <Model value="AnnihilatorV1Flamethrower"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
+    <CActorSound id="AnnihilatorV1Flamethrower_Launch" parent="SoundOneShot">
+        <On Terms="Behavior.AnnihilatorV1Flamethrower.On" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="AnnihilatorV1Flamethrower_Loop" parent="SoundContinuous">
+        <On Terms="Behavior.AnnihilatorV1Flamethrower.On" Send="Create"/>
+        <On Terms="Behavior.AnnihilatorV1Flamethrower.Off" Send="Destroy"/>
+    </CActorSound>
+    <CActorBeamSimple id="AnnihilatorV2RailgunBeamLeft" parent="BeamSimpleAnimationStyleOneShot">
+        <On Terms="Effect.AnnihilatorV2RailgunSALeft.Start" Send="Create"/>
+        <Model value="AnnihilatorV2RailgunBeam"/>
+        <HostLaunchSiteOps Ops="SOpCasterUnit SOpAttachWeapon00" HoldPosition="1" HoldRotation="1"/>
+        <HostImpactSiteOps Ops="SOpCasterUnit SOpAttachTurret SOpShadow SOpMoveBy7 SOpMoveBy7 SOpMoveBy7 SOpMoveBy3 SOpMoveUpByDot5" HoldPosition="1" HoldRotation="1"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="AnnihilatorV2RailgunBeamRight" parent="BeamSimpleAnimationStyleOneShot">
+        <On Terms="Effect.AnnihilatorV2RailgunSARight.Start" Send="Create"/>
+        <Model value="AnnihilatorV2RailgunBeam"/>
+        <HostLaunchSiteOps Ops="SOpCasterUnit SOpAttachWeapon01" HoldPosition="1" HoldRotation="1"/>
+        <HostImpactSiteOps Ops="SOpCasterUnit SOpAttachTurret SOpShadow SOpMoveBy7 SOpMoveBy7 SOpMoveBy7 SOpMoveBy3 SOpMoveUpByDot5" HoldPosition="1" HoldRotation="1"/>
+    </CActorBeamSimple>
+    <CActorSound id="AnnihilatorV2Railgun_Launch" parent="SoundOneShot">
+        <On Terms="Effect.AnnihilatorV2RailgunCP.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="AnnihilatorV2Railgun_Impact" parent="SoundOneShot">
+        <On Terms="Effect.AnnihilatorV2RailgunCP.Start" Send="Create"/>
+    </CActorSound>
+    <CActorAction id="AnnihilatorV3RocketLauncherAttack" parent="GenericAttack" effectImpact="AnnihilatorV3RocketLauncherDMG" effectLaunch="AnnihilatorV3RocketLauncherLM">
+        <LaunchAttachQuery Methods="WarbotBFilter PatternAnnihilatorRocketLauncher"/>
+        <LaunchAssets Sound="AnnihilatorV3RocketLauncher_Launch"/>
+        <Missile value="AnnihilatorV3RocketLauncherMissile"/>
+    </CActorAction>
     <CActorRange id="EarthHeroFortifyRange" parent="RangeAbil" abil="Fortify"/>
     <CActorRange id="EarthHeroLavaRange" parent="RangeAbil" abil="Lava"/>
     <CActorSound id="GravityHeroClash_Impact" parent="SoundOneShot">
@@ -361,15 +448,15 @@
         <On Terms="Effect.GravityHeroPushLM.Start" Send="Create"/>
     </CActorSound>
     <CActorBeamSimple id="AnnihilatorLaserTrackingBeam" parent="BeamSimpleAnimationStyleContinuous">
-        <On Terms="Behavior.ThorStopMoveIndicatorFate.On" Send="Create"/>
-        <On Terms="Behavior.ThorStopMoveIndicatorFate.Off" Send="Destroy"/>
+        <On Terms="Behavior.AnnihilatorLaserTrackingFate.On" Send="Create"/>
+        <On Terms="Behavior.AnnihilatorLaserTrackingFate.Off" Send="Destroy"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
         <HostLaunchSiteOps Ops="SOpCasterUnit SOpAttachCenter"/>
         <HostImpactSiteOps Ops="SOpTargetUnit SOpAttachCenter"/>
     </CActorBeamSimple>
     <CActorText id="AnnihilatorLaserTrackingIcon">
-        <On Terms="Behavior.annihilatornomovecheck.On" Send="Create"/>
-        <On Terms="Behavior.annihilatornomovecheck.Off" Send="Destroy"/>
+        <On Terms="Behavior.AnnihilatorLaserTracking.On" Send="Create"/>
+        <On Terms="Behavior.AnnihilatorLaserTracking.Off" Send="Destroy"/>
         <Host Subject="_Unit"/>
         <HostSiteOps Ops="SOpAttachOverhead SOpMoveUpBy2 SOpMoveUpByDot5"/>
         <ScopeBearingsTracking value="ForceOff"/>
@@ -380,12 +467,12 @@
         <Text value="Actor/Text/AnnihilatorLaserTrackingIcon"/>
     </CActorText>
     <CActorModel id="AnnihilatorLaserTrackingImpact" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.AnnihilatorLaserTrackingDamage.Start" Send="Create"/>
+        <On Terms="Effect.AnnihilatorLaserTrackingDMG.Start" Send="Create"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CActorModel id="AnnihilatorLaserTrackingLocked" parent="ModelAnimationStyleContinuous">
-        <On Terms="Behavior.ThorStopMoveIndicatorFate.On" Send="Create"/>
-        <On Terms="Behavior.ThorStopMoveIndicatorFate.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.AnnihilatorLaserTrackingFate.On" Send="Create"/>
+        <On Terms="Behavior.AnnihilatorLaserTrackingFate.Off" Send="AnimBracketStop BSD"/>
         <On Terms="ActorCreation" Send="SetOpacity"/>
         <On Terms="ActorCreation" Send="TimerSet 2.000000"/>
         <On Terms="TimerExpired" Send="SetOpacity 1.000000"/>
@@ -393,10 +480,10 @@
         <HostSiteOps Ops="SOpShadow"/>
     </CActorModel>
     <CActorSound id="AnnihilatorLaserTracking_Impact" parent="SoundOneShot">
-        <On Terms="Effect.AnnihilatorLaserTrackingDamage.Start" Send="Create"/>
+        <On Terms="Effect.AnnihilatorLaserTrackingDMG.Start" Send="Create"/>
     </CActorSound>
     <CActorSound id="AnnihilatorLaserTracking_Launch" parent="SoundOneShot">
-        <On Terms="Behavior.annihilatornomovecheck.On" Send="Create"/>
+        <On Terms="Behavior.AnnihilatorLaserTracking.On" Send="Create"/>
     </CActorSound>
     <CActorModel id="BladeHeroUpgradeAttachment" parent="ModelAddition"/>
     <CActorModel id="EarthHeroUpgradeAttachment" parent="ModelAddition">
@@ -478,6 +565,128 @@
     <CActorSound id="GravityHeroShift_Launch" parent="SoundOneShot">
         <On Terms="Effect.GravityHeroShiftInit.Start" Send="Create"/>
     </CActorSound>
+    <CActorMissile id="ThorRavenSeekerMissile" parent="GenericAttackMissile" unitName="ThorRavenSeekerMissile">
+        <Remove Terms="MotionPhaseStart; MotionPhase 3" Send="Create HunterSeekerHappySound"/>
+        <On Terms="MotionPhaseStart; MotionPhase 1" Send="Create HunterSeekerTrackingBeam"/>
+        <On Terms="MotionPhaseStart; MotionPhase 3" Send="Create HunterSeekerHappySound"/>
+        <On Terms="MotionPhaseStart; MotionPhase" Send="Create HunterSeekerLaunchSound"/>
+        <On Terms="MotionPhaseStart; MotionPhase 2" Target="HunterSeekerLaunchSound" Send="Destroy"/>
+        <On Terms="UnitDeath" Target="HunterSeekerLaunchSound" Send="Destroy"/>
+        <On Terms="MotionPhaseStart; MotionPhase 2" Send="Create HunterSeekerHappySound"/>
+        <BarDistance value="34"/>
+        <BarHeight value="7"/>
+        <BarOffset value="10"/>
+        <BarWidth value="35"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-techupgrade-terran-seekermissile.dds"/>
+        </GroupIcon>
+        <StatusBarFlags index="Shields" value="1"/>
+        <StatusBarFlags index="Life" value="1"/>
+        <StatusBarFlags index="Energy" value="1"/>
+        <StatusBarGroups index="Owner" value="1"/>
+        <StatusBarGroups index="Allied" value="1"/>
+        <StatusBarGroups index="Enemy" value="1"/>
+        <StatusBarGroups index="All" value="1"/>
+        <StatusColors index="Shields" BackgroundColor="255,0,0,0" EmptyColor="255,80,80,80">
+            <ColorArray value="255,0,0,255"/>
+        </StatusColors>
+        <StatusColors index="Life" BackgroundColor="255,0,0,0" EmptyColor="255,80,80,80">
+            <ColorArray value="255,208,34,0"/>
+            <ColorArray value="255,208,34,0"/>
+            <ColorArray value="255,229,129,0"/>
+            <ColorArray value="255,229,129,0"/>
+            <ColorArray value="255,229,221,0"/>
+            <ColorArray value="255,229,221,0"/>
+            <ColorArray value="255,22,229,0"/>
+            <ColorArray value="255,22,229,0"/>
+        </StatusColors>
+        <StatusColors index="Energy" BackgroundColor="255,0,0,0" EmptyColor="255,80,80,80">
+            <ColorArray value="255,150,40,220"/>
+        </StatusColors>
+        <StatusColors index="Cargo" BackgroundColor="255,0,0,0" EmptyColor="255,77,60,15">
+            <ColorArray value="255,255,255,255"/>
+        </StatusColors>
+        <StatusColors index="Progress" BackgroundColor="255,0,0,0" EmptyColor="255,80,80,80">
+            <ColorArray value="255,0,200,200"/>
+        </StatusColors>
+        <StatusColors index="Duration" BackgroundColor="255,0,0,0" EmptyColor="255,40,40,40">
+            <ColorArray value="255,120,120,120"/>
+        </StatusColors>
+        <StatusColors index="Magazine" BackgroundColor="255,0,0,0" EmptyColor="255,77,60,15">
+            <ColorArray value="255,128,128,64"/>
+        </StatusColors>
+        <Wireframe>
+            <Image value="Assets\Textures\btn-techupgrade-terran-seekermissile.dds"/>
+        </Wireframe>
+    </CActorMissile>
+    <CActorUnit id="ThorRaven" parent="GenericUnitStandard" unitName="ThorRaven">
+        <Aliases value="_UnitLarge"/>
+        <Macros value="BuildAnim"/>
+        <Macros value="RavenSpellAnim"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Raven_Land"/>
+        <HostSiteOps Ops="SOpBankerRaven"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <DeathArray index="Normal" ModelLink="RavenDeath" SoundLink="Raven_Explode"/>
+        <DeathCustoms>
+            <ActorModel value="RavenDeathRagdoll"/>
+            <ModelLink value="RavenDeathRagdoll"/>
+            <Name value="RagdollBasic"/>
+            <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+            <BodySquibs Name="Basic" Model="TerranSquibDeathRagdoll"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms>
+            <ModelLink value="DeathVoidShadowSmall"/>
+            <SoundLink value="ShadowUnit_DeathFX"/>
+            <VoiceLink value="ShadowUnit_DeathVox"/>
+            <Name value="Shadow"/>
+        </DeathCustoms>
+        <DeathActorModel value="UnitDeathModelWithDeathMotionFlier"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <PortraitModel value="RavenPortrait"/>
+        <StandAnimTurnTime value="3"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.250000,0.500000"/>
+            <RangeDown value="5.000000"/>
+            <RangeDownFade value="1.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMassive15"/>
+        </TerrainSquibs>
+        <BarOffset value="55"/>
+        <ErrorArray Error="CantBuildLocationInvalid" Sound="e_cmdBuildTechRequirementsNotMet_Terr"/>
+        <ErrorArray Error="CantFindPlacementLocation" Sound="e_cmdBuildTechRequirementsNotMet_Terr"/>
+        <ErrorArray Error="CantBuildOnThat" Sound="e_cmdBuildTechRequirementsNotMet_Terr"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Raven.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-raven.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <SoundArray index="Ready" value="Raven_Ready"/>
+        <SoundArray index="Help" value="Raven_Help"/>
+        <SoundArray index="What" value="Raven_What"/>
+        <SoundArray index="Yes" value="Raven_Yes"/>
+        <SoundArray index="Pissed" value="Raven_Pissed"/>
+        <SoundArray index="Movement" value="Raven_Movement"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-raven.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Raven.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorSiteOpForward id="SOpForwardQueryDirector">
         <HostForward Subject="::QueryDirector"/>
     </CActorSiteOpForward>
@@ -527,99 +736,80 @@
         <On Terms="Behavior.GravityHeroCompressed.On" Send="Create"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="Behavior.GravityHeroCompressed.Off" Send="Destroy"/>
-        <On Terms="ActorCreation; ValidateUnit IsHeroicorStructure" Target="_Unit" Send="SetScale 0.750000 0.500000 Compressed"/>
+        <On Terms="ActorCreation; ValidateUnit IsHeroicorStructure" Target="_Unit" Send="SetScale 0.800000 0.500000 Compressed"/>
         <On Terms="ActorCreation; ValidateUnit NotHeroicAndNotStructure" Target="_Unit" Send="SetScale 0.600000 0.500000 Compressed"/>
         <On Terms="ActorDestruction; ValidateUnit NotDead" Target="_Unit" Send="ClearScale 0.500000 Compressed"/>
     </CActorSimple>
+    <CActorMissile id="ThorRocketBlitzMissile" parent="GenericAttackMissile" unitName="ThorRocketBlitzMissile"/>
     <CActorModel id="ThorInvulnerabilityShield" parent="ModelAddition">
         <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="Opacity" value="0"/>
         <Inherits index="TintColor" value="0"/>
         <On Terms="Behavior.ThorInvulnerabilityShield.On" Send="Create"/>
         <On Terms="Behavior.ThorInvulnerabilityShield.Off" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
         <AutoScaleFactor value="1.000000"/>
     </CActorModel>
+    <CActorAction id="ThorRocketBlitzAttack" parent="GenericAttack" effectImpact="ThorRocketBlitzImpact" effectLaunch="ThorRocketBlitzLM">
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA1 PatternThorRocketBlitz"/>
+        <LaunchAssets Model="ThorRocketBlitzLaunch" Sound="Thor_AntiAirAttackLaunch"/>
+        <Missile value="ThorRocketBlitzMissile"/>
+        <ImpactMap index="None" Model="ThorRocketBlitzImpact" Sound="Thor_AntiAirAttackImpact"/>
+    </CActorAction>
     <CActorModel id="ThorSelfheal" parent="ModelAddition">
         <Inherits index="TintColor" value="0"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD {} Birth Death ContentForceLooping,Instant"/>
         <On Terms="Behavior.ThorSelfheal.On" Send="Create"/>
-        <On Terms="Behavior.ThorSelfheal.Off" Send="AnimBracketStop Attack"/>
+        <On Terms="Behavior.ThorSelfheal.Off" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpAttachOverhead"/>
         <AutoScaleFactor value="1.000000"/>
     </CActorModel>
+    <CActorModel id="ThorThunderOrbsMissileAddition" parent="ModelAddition">
+        <Inherits index="Opacity" value="0"/>
+        <Host Subject="_Missile"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Model value="ThorLightningBarrageSlow"/>
+    </CActorModel>
+    <CActorModel id="ThorThunderstepShadow" parent="ModelAddition">
+        <On Terms="Effect.ThorThunderstepOffset.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.200000"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.000000 0.250000"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.250000"/>
+        <On Terms="TimerExpired" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <On Terms="ActorCreation" Send="AnimSetPausedAll"/>
+        <HostSiteOps Ops="SOpTargetPoint SOpForwardCasterPoint SOp180" HoldPosition="1" HoldRotation="1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorModel id="ThorThunderstepStart" parent="ModelAddition">
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.ThorThunderstep.On" Send="Create"/>
+        <On Terms="Behavior.ThorThunderstep.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,0"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="ThorLightningBarrageSlow"/>
+        <Scale value="5.000000"/>
+    </CActorModel>
+    <CActorSound id="ThorThunderstep_Charge" parent="SoundOneShot">
+        <On Terms="Behavior.ThorThunderstep.On" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="ThorThunderstep_Launch" parent="SoundOneShot">
+        <On Terms="Effect.ThorThunderstepTP.Start" Send="Create"/>
+    </CActorSound>
     <CActorUnit id="ThorV1" parent="GenericUnitBase" unitName="ThorV1">
         <Aliases value="_UnitHuge"/>
-        <Macros value="TerrainSquibAnimations"/>
-        <Macros value="PhysicsDeathsSwarmGround"/>
-        <Macros value="PhysicsDeathsVoidGround"/>
-        <Remove Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
-        <Remove Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
-        <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="ActorCreation" Send="AnimPlay CoverStand Cover,Stand PlayForever 0.000000"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="TimerKill CoverDelay"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimClear CoverStand"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimPlay Cover Cover PlayForever"/>
-        <On Terms="WeaponStop.JavelinMissileLaunchers.AttackStop" Send="TimerSet 2.500000 CoverDelay"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimClear Cover"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimPlay CoverStand Cover,Stand PlayForever"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Target="250mmStrikeCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="AbilTransport.MedivacTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartLeft" Send="Create ThorLeftCheerSquib"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartRight" Send="Create ThorRightCheerSquib"/>
-        <On Terms="AbilTransport.SpecOpsDropshipTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="AbilTransport.HerculesTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Target="330mmBarrageCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Thor_Land"/>
-        <On Terms="AbilMorph.*.Finish; MorphTo Thor; MorphFrom ThorWreckage" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom Thor; MorphTo ThorWreckage" Send="Destroy"/>
-        <On Terms="UnitBirth.ThorAP" Send="Create"/>
-        <On Terms="UnitBirth.ThorAP" Send="AnimBracketStart Morph IGNORE Morph,Stand Morph,End"/>
-        <On Terms="AbilMorph.*.Start; MorphTo ThorAP; MorphFrom Thor" Send="AnimBracketStart Morph Morph Morph,Stand Morph,End"/>
-        <On Terms="AbilMorph.*.Start; MorphTo Thor; MorphFrom ThorAP" Send="AnimBracketStop Morph"/>
-        <On Terms="AbilMorph.*.Start; MorphTo ThorAP; MorphFrom Thor" Send="Create 250mmStrikeCannonsUnMorph"/>
-        <On Terms="AbilMorph.*.Start; MorphTo Thor; MorphFrom ThorAP" Send="Create 250mmStrikeCannonsMorph"/>
-        <On Terms="Abil.ArmorpiercingMissiles.SourceCastStart" Send="AnimPlay ArmStart Morph 0 0.500000 0.500000 4.050000 AsDuration"/>
-        <On Terms="Abil.ArmorpiercingMissiles.SourceCancel" Send="AnimClear Armed"/>
-        <On Terms="Abil.ArmorpiercingMissiles.SourceCancel" Send="AnimClear ArmStart"/>
-        <On Terms="Abil.ExplosiveMissiles.SourceCastStart" Send="AnimPlay ArmStop Morph,End 0 0.500000 0.500000 4.050000 AsDuration"/>
-        <On Terms="Abil.ExplosiveMissiles.SourceCancel" Send="AnimClear ArmStop"/>
-        <On Terms="ActorCreation" Send="StatusSet WeaponNext 0"/>
-        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster" Send="AnimPlay SpellD Spell,D"/>
-        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster" Send="StatusIncrement WeaponNext"/>
-        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 4" Send="StatusSet WeaponNext 0"/>
-        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 0" Send="AnimClear Attack3"/>
-        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 0" Send="AnimPlay Attack4 Spell,C,02"/>
-        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 1" Send="AnimClear Attack4"/>
-        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 1" Send="AnimPlay Attack1 Spell,C,01"/>
-        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 2" Send="AnimClear Attack1"/>
-        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 2" Send="AnimPlay Attack2 Spell,C,03"/>
-        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 3" Send="AnimClear Attack2"/>
-        <On Terms="Effect.LanceMissileLaunchersDamage.Start; At Caster; IsStatus WeaponNext 3" Send="AnimPlay Attack3 Spell,C,00"/>
-        <On Terms="Behavior.SelfRepair.On" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
-        <On Terms="Behavior.SelfRepair.Off" Send="AnimBracketStop Work"/>
-        <On Terms="UnitDeathCustomize; ValidateUnit HaveVoidShade" Send="DeathCustomize Shadow"/>
-        <On Terms="UnitDeathCustomize; ValidateUnit HaveTerrazineShadow" Send="DeathCustomize Shadow"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart CoverStand {} Cover,Stand"/>
+        <On Terms="Behavior.ThorInCombat.On" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="Behavior.ThorInCombat.Off" Send="AnimBracketStop Cover"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
@@ -682,6 +872,68 @@
         <UnitIcon value="Assets\Textures\btn-unit-terran-thor.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorTurret id="AnnihilatorTurret">
+        <On Terms="TurretEnable.AnnihilatorTurret" Send="Create"/>
+    </CActorTurret>
+    <CActorMissile id="AnnihilatorV3RocketLauncherMissile" parent="GenericAttackMissile" unitName="AnnihilatorV3RocketLauncherMissile">
+        <BarHeight value="1"/>
+        <BarWidth value="1"/>
+    </CActorMissile>
+    <CActorUnit id="AnnihilatorSupportBot" parent="GenericUnitBase" unitName="AnnihilatorSupportBot">
+        <Aliases value="_UnitLarge"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsWarbotB" Send="DeathCustomize Variation2"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsWarbotC" Send="DeathCustomize Variation3"/>
+        <On Terms="Effect.WarbotARight.Start; At Caster" Send="AnimPlay Attack Attack,Right"/>
+        <On Terms="Effect.WarbotALeft.Start; At Caster" Send="AnimPlay Attack Attack,Left"/>
+        <On Terms="Effect.WarbotBPersistent.Start" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.WarbotB.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="WeaponStart.WarbotC.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.WarbotC.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="WeaponStart.WarbotC.AttackStart" Send="TimerSet 1.000000 KillBeam"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Work"/>
+        <On Terms="AnimBracketState.*.BeforeOpening; AnimName Morph" Send="AnimGroupRemove Work"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Send="TimerSet 0.250000 KillBeam"/>
+        <On Terms="TimerExpired; TimerName KillBeam" Target="WarbotCAttackBeam" Send="Destroy"/>
+        <On Terms="Behavior.WarbotA.On" Send="AnimGroupApply A"/>
+        <On Terms="Behavior.WarbotA.On" Send="AnimBracketStart Morph Stand,Work,End IGNORE Stand,Work,Start"/>
+        <On Terms="Behavior.WarbotA.Off" Send="AnimBracketStop Morph"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName Morph" Send="AnimGroupRemove A"/>
+        <On Terms="Behavior.WarbotB.On" Send="AnimGroupApply B"/>
+        <On Terms="Behavior.WarbotB.On" Send="AnimBracketStart Morph Stand,Work,End IGNORE Stand,Work,Start"/>
+        <On Terms="Behavior.WarbotB.Off" Send="AnimBracketStop Morph"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName Morph" Send="AnimGroupRemove B"/>
+        <On Terms="Behavior.WarbotC.On" Send="AnimGroupApply C"/>
+        <On Terms="Behavior.WarbotC.On" Send="AnimBracketStart Morph Stand,Work,End IGNORE Stand,Work,Start"/>
+        <On Terms="Behavior.WarbotC.Off" Send="AnimBracketStop Morph"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName Morph" Send="AnimGroupRemove C"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName Morph" Send="AnimGroupApply Work"/>
+        <DeathArray index="Normal" ModelLink="WarbotDeath" SoundLink="Terran_ExplosionLarge"/>
+        <DeathCustoms ModelLink="WarbotDeathB" Name="Variation2"/>
+        <DeathCustoms ModelLink="WarbotDeathC" Name="Variation3"/>
+        <DeathActorModelLow value="UnitDeathModel"/>
+        <PortraitModel value="ARESPortrait"/>
+        <BarOffset value="180"/>
+        <BarWidth value="220"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
+        <NameOffset value="40"/>
+        <SoundArray index="Ready" value="Warbot_Ready"/>
+        <SoundArray index="What" value="Warbot_What"/>
+        <SoundArray index="Yes" value="Warbot_Yes"/>
+        <SoundArray index="Attack" value="Warbot_Attack"/>
+        <SoundArray index="Pissed" value="Warbot_Pissed"/>
+        <UnitBorderNormalColor value="150,150,150"/>
+        <UnitBorderSubgroupColor value="255,255,255"/>
+        <UnitFlags index="SuppressStandIntro" value="1"/>
+        <UnitFlags index="SuppressWalkIntro" value="1"/>
+        <UnitFlags index="SuppressWalkOutro" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-ares.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
         </Wireframe>
     </CActorUnit>
     <CActorRange id="WarpHeroDecoyRange" parent="RangeAbil" abil="WarpHeroDecoy"/>
@@ -1074,9 +1326,9 @@
         <Missile value="SplitterMissile"/>
         <ImpactMap index="None" Sound="GatewayHeroSplitter_Impact"/>
     </CActorAction>
-    <CActorText id="ThorNukeIcon">
-        <On Terms="Behavior.DefensiveNuke.On" Send="Create"/>
-        <On Terms="Behavior.DefensiveNuke.Off" Send="Destroy"/>
+    <CActorText id="ThorDefensiveNukeIcon">
+        <On Terms="Behavior.ThorDefensiveNuke.On" Send="Create"/>
+        <On Terms="Behavior.ThorDefensiveNuke.Off" Send="Destroy"/>
         <Host Subject="_Unit"/>
         <HostSiteOps Ops="SOpAttachOverhead SOpMoveUpBy2 SOpMoveUpByDot5"/>
         <ScopeBearingsTracking value="ForceOff"/>
@@ -1084,7 +1336,7 @@
         <AlignV value="Bottom"/>
         <HeightOffset value="1.000000"/>
         <Color value="255,255,255,0"/>
-        <Text value="Actor/Text/ThorNukeIcon"/>
+        <Text value="Actor/Text/ThorDefensiveNukeIcon"/>
     </CActorText>
     <CActorUnit id="Gateway">
         <Macros index="3" value="QueueAnim"/>
@@ -1299,8 +1551,8 @@
         <MinimapRenderPriority value=""/>
     </CActorUnit>
     <CActorText id="AnnihilatorDematerializationFieldIcon">
-        <On Terms="Behavior.Dematerializationfield.On" Send="Create"/>
-        <On Terms="Behavior.Dematerializationfield.Off" Send="Destroy"/>
+        <On Terms="Behavior.AnnihilatorDematerializationFieldDelay.On" Send="Create"/>
+        <On Terms="Behavior.AnnihilatorDematerializationFieldDelay.Off" Send="Destroy"/>
         <Host Subject="_Unit"/>
         <HostSiteOps Ops="SOpAttachOverhead SOpMoveUpBy2 SOpMoveUpByDot5"/>
         <ScopeBearingsTracking value="ForceOff"/>
@@ -2370,13 +2622,13 @@
         <BarOffset value="55"/>
         <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
-    <CActorModel id="AnnihilatorAresImpact" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.AnnihilatorAresImpact.Start" Send="Create"/>
+    <CActorModel id="AnnihilatorV3RocketLauncherImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.AnnihilatorV3RocketLauncherDMG.Start" Send="Create"/>
         <Model value="C4Explosion"/>
         <Scale value="0.750000"/>
     </CActorModel>
-    <CActorSound id="AnnihilatorAresImpactSound" parent="SoundOneShot">
-        <On Terms="Effect.AnnihilatorAresImpact.Start" Send="Create"/>
+    <CActorSound id="AnnihilatorV3RocketLauncher_Impact" parent="SoundOneShot">
+        <On Terms="Effect.AnnihilatorV3RocketLauncherDMG.Start" Send="Create"/>
     </CActorSound>
     <CActorModel id="AnointedAttachmentSentry" parent="ModelAddition">
         <Terms value="ValidateUnit IsSentry"/>
@@ -2750,9 +3002,9 @@
         <StatusBarFlags index="Workers" value="0"/>
         <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
-    <CActorModel id="ThorV2Fire" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.ThorV2Fire.Start" Send="Create"/>
-        <On Terms="Effect.ThorV2Fire.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
+    <CActorModel id="ThorRocketBlitzFire" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.ThorRocketBlitzFireCP.Start" Send="Create"/>
+        <On Terms="Effect.ThorRocketBlitzFireCP.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpShadow"/>
         <Model value="WarpHeroMultishotBlaze"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
@@ -4222,6 +4474,7 @@
         <On Terms="ActorCreation" Send="SetOpacity 1.000000"/>
         <HostSiteOps Ops="SOpAttachOverhead SOpRotationSmooth ProbeCannonAllyRotator"/>
         <Model value="ProbeCannon"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CActorAction id="ProbeCannonAllyBlitzAttack" parent="GenericAttack" effectImpact="ProbeCannonDMG" effectLaunch="ProbeCannonAllyTailgunLM">
@@ -4329,6 +4582,7 @@
         <PlacementModel value=""/>
         <HighlightTooltip value="Unit/Name/Bogus"/>
         <MinimapRenderPriority value=""/>
+        <ModelFlags index="AllowHitTest" value="0"/>
     </CActorUnit>
     <CActorAction id="OrbOfHavocBounceAttack7" parent="GenericAttack" effectAttack="OrbOfHavoc7BounceDMG">
         <LaunchAssets Model="ThunderstormAttackWindLaunch" Sound="Archon_AttackLaunch"/>
@@ -6178,8 +6432,8 @@
         <Model value="ArchonAttackBeam"/>
         <Scale value="0.400000"/>
     </CActorBeamSimple>
-    <CActorModel id="ThorScienceSeekerImpact" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.ThorScienceSeekerImpact.Start" Send="Create"/>
+    <CActorModel id="ThorRavenSeekerImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.ThorRavenSeekerDMG.Start" Send="Create"/>
     </CActorModel>
     <CActorSound id="ThunderfurySound" parent="SoundOneShot">
         <On Terms="Abil.LightningHeroThunderfury.SourceCastStop" Send="Create"/>
@@ -11064,28 +11318,27 @@
         <HostSiteOps Ops="SOpShadow"/>
         <Model value="CoolantSearchModel"/>
     </CActorModel>
-    <CActorBeamSimple id="GravitonBeam3" parent="BeamSimpleAnimationStyleContinuous">
-        <On Terms="Effect.GravitonBeam5.Start" Send="Create"/>
-        <On Terms="Effect.GravitonBeam5.Stop" Send="Destroy"/>
+    <CActorBeamSimple id="BansheeDropBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.BansheeDropBeamCP.Start" Send="Create"/>
+        <On Terms="Effect.BansheeDropBeamCP.Stop" Send="Destroy"/>
         <Model value="GravitonBeam"/>
         <HostLaunch Subject="_Unit" Scope="Caster" Actor="Find"/>
         <HostLaunchSiteOps Ops="SOpAttachWeapon09"/>
         <HostImpact Subject="_Unit" Scope="Target" Actor="Find"/>
         <HostImpactSiteOps Ops="SOpAttachCenter"/>
     </CActorBeamSimple>
-    <CActorModel id="GravitonBeamImpact2" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.GravitonBeam5.Start; At Target" Send="Create"/>
-        <On Terms="Effect.GravitonBeam5.Stop; At Target" Send="Create GravitonBeamImpactDeath"/>
-        <On Terms="Effect.GravitonBeam5.Stop; At Target" Send="Destroy"/>
+    <CActorModel id="BansheeDropBeamImpact" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.BansheeDropBeamCP.Start; At Target" Send="Create"/>
+        <On Terms="Effect.BansheeDropBeamCP.Stop; At Target" Send="Create GravitonBeamImpactDeath"/>
+        <On Terms="Effect.BansheeDropBeamCP.Stop; At Target" Send="Destroy"/>
         <Host Subject="_Unit"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
         <Model value="GravitonBeamImpact"/>
         <AutoScaleFactor value="0.700000"/>
     </CActorModel>
-    <CActorRange id="GravitonBeamRange2" parent="RangeAbil" abil="DropBeam"/>
-    <CActorModel id="GravitonBeamRocks2" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.GravitonBeam5.Start; At Target" Send="Create"/>
-        <On Terms="Effect.GravitonBeam5.Stop" Send="AnimBracketStop BSD"/>
+    <CActorModel id="BansheeDropBeamRocks" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.BansheeDropBeamCP.Start; At Target" Send="Create"/>
+        <On Terms="Effect.BansheeDropBeamCP.Stop" Send="AnimBracketStop BSD"/>
         <Host Subject="_Unit"/>
         <HostSiteOps Ops="SOpAttachOrigin SOpShadow"/>
         <Model value="GravitonBeamRocks"/>
@@ -11304,26 +11557,15 @@
         <HostSiteOps Ops="SOpTargetPointStationary SOpShadow"/>
         <Map index="None" Model="C4Explosion" Scale="3.000000,3.000000,1.000000" Sound="AnnihilatorNukeSound"/>
     </CActorSquib>
-    <CActorAction id="ThorScienceSeekerAttack" parent="GenericAttack" effectImpact="ThorScienceSeekerImpact" effectLaunch="ThorScienceSeekerLaunch">
-        <Missile value="HunterSeekerAttackMissile2"/>
-        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOp2DRotation" HoldPosition="1"/>
+    <CActorAction id="ThorRavenSeekerAttack" parent="GenericAttack" effectImpact="ThorRavenSeekerDMG" effectLaunch="ThorRavenSeekerLM">
+        <Missile value="ThorRavenSeekerMissile"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOp2DRotation"/>
         <ImpactAttachQuery Methods="Origin"/>
         <ImpactMap index="None" Model="" Sound="Raven_HunterSeekerAttackImpact"/>
         <ShieldFlashType value="Full"/>
     </CActorAction>
-    <CActorModel id="ProtectionField" parent="ModelAddition">
-        <EditorCategories value=""/>
-        <On Terms="Behavior.ProtectionField.On" Send="Create"/>
-        <On Terms="Behavior.ProtectionField.Off" Send="Destroy"/>
-        <On Terms="ActorCreation.ProtectionField" Send="SetScale 9.000000"/>
-        <Inherits index="BaseModelScale" value="0"/>
-        <Inherits index="Opacity" value="0"/>
-        <Inherits index="Scale" value="0"/>
-        <Inherits index="TintColor" value="0"/>
-        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
-    </CActorModel>
-    <CActorMissile id="Fireball5" parent="GenericAttackMissile" unitName="Fireball">
-        <On index="0" Terms="UnitBirth.ThorAttackIndicator" Send="Create"/>
+    <CActorMissile id="ThorTargetDrone" parent="GenericAttackMissile" unitName="Fireball">
+        <On index="0" Terms="UnitBirth.ThorTargetDrone" Send="Create"/>
         <Model value="GhostNukeTarget"/>
         <Scale value="1.750000"/>
         <BarHeight value="1"/>
@@ -11344,7 +11586,7 @@
         <ShieldFlashType value="Full"/>
     </CActorAction>
     <CActorSquib id="GhostNukeExplode2">
-        <On Terms="Effect.ThorselfNuke.Start; At Effect" Send="Create"/>
+        <On Terms="Effect.ThorDefensiveNukeDMG.Start; At Effect" Send="Create"/>
         <HostSiteOps Ops="SOpTargetPointStationary SOpShadow"/>
         <Map index="None" Model="GhostNukeExplode" Sound="Ghost_NukeExplode2"/>
     </CActorSquib>
@@ -11414,75 +11656,41 @@
         <StatusBarFlags index="Workers" value="0"/>
         <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
-    <CActorModel id="DematerializationField" parent="ModelAddition">
-        <EditorCategories value=""/>
-        <On Terms="Behavior.Dematerializationfield2.On" Send="Create"/>
-        <On Terms="Behavior.Dematerializationfield2.Off" Send="Destroy"/>
-        <On Terms="ActorCreation.DematerializationField" Send="SetScale 4.000000"/>
-        <On Terms="ActorCreation.DematerializationField" Send="SetScale 14.000000 1.500000"/>
-        <On Terms="ActorCreation.DematerializationField" Send="TimerSet 1.500000 dematfieldanimtimer"/>
-        <On Terms="TimerExpired; TimerName dematfieldanimtimer" Send="SetScale 4.000000 1.500000"/>
-        <On Terms="ActorCreation" Send="SetTintColor 13,0,255"/>
-        <Model value="ProtectionField"/>
+    <CActorModel id="AnnihilatorDematerializationField" parent="ModelAddition">
         <Inherits index="BaseModelScale" value="0"/>
         <Inherits index="Opacity" value="0"/>
         <Inherits index="Scale" value="0"/>
         <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.AnnihilatorDematerializationField.On" Send="Create"/>
+        <On Terms="Behavior.AnnihilatorDematerializationField.Off" Send="Destroy"/>
+        <On Terms="ActorCreation.AnnihilatorDematerializationField" Send="SetScale 4.000000 1.500000"/>
+        <On Terms="ActorCreation.AnnihilatorDematerializationField" Send="TimerSet 1.500000 dematfieldanimtimer"/>
+        <On Terms="TimerExpired; TimerName dematfieldanimtimer" Send="SetScale 1.000000 1.500000"/>
+        <On Terms="ActorCreation" Send="SetTintColor 13,0,255"/>
         <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
     </CActorModel>
-    <CActorModel id="AbsorberField" parent="ModelAddition">
+    <CActorModel id="AnnihilatorAbsorptionField" parent="ModelAddition">
         <Inherits index="BaseModelScale" value="0"/>
         <Inherits index="Opacity" value="0"/>
-        <Inherits index="Scale" value="0"/>
         <Inherits index="TintColor" value="0"/>
-        <EditorCategories value=""/>
         <On Terms="Behavior.Absorber.On" Send="Create"/>
         <On Terms="Behavior.Absorber.Off" Send="Destroy"/>
-        <On Terms="ActorCreation.AbsorberField" Send="SetScale 2.000000,2.000000,4.000000"/>
-        <On Terms="ActorCreation.AbsorberField" Send="SetTintColor {255,128,255 2.000000}"/>
-        <Model value="ProtectionField"/>
-        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+        <On Terms="ActorCreation.AnnihilatorAbsorptionField" Send="SetTintColor {255,128,255 2.000000}"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
     </CActorModel>
     <CActorUnit id="ThorV2" parent="GenericUnitBase" unitName="ThorV2">
-        <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="ActorCreation" Send="AnimPlay CoverStand Cover,Stand PlayForever 0.000000"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="TimerKill CoverDelay"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimClear CoverStand"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimPlay Cover Cover PlayForever"/>
-        <On Terms="WeaponStop.JavelinMissileLaunchers.AttackStop" Send="TimerSet 2.500000 CoverDelay"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimClear Cover"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimPlay CoverStand Cover,Stand PlayForever"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Target="250mmStrikeCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="AbilTransport.MedivacTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartLeft" Send="Create ThorLeftCheerSquib"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartRight" Send="Create ThorRightCheerSquib"/>
-        <On Terms="ActorCreation; PlayerHasReward ThorCE" Send="ModelSwap ThorCE"/>
-        <On Terms="UnitDeathCustomize; PlayerHasReward ThorCE" Send="DeathCustomize Variation0"/>
-        <On Terms="AbilTransport.SpecOpsDropshipTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="AbilTransport.HerculesTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Target="330mmBarrageCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Thor_Land"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart CoverStand {} Cover,Stand"/>
+        <On Terms="Behavior.ThorInCombat.On" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="Behavior.ThorInCombat.Off" Send="AnimBracketStop Cover"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
         <DeathArray index="Normal" ModelLink="ThorDeath" SoundLink=""/>
@@ -11512,45 +11720,24 @@
         </Wireframe>
     </CActorUnit>
     <CActorUnit id="ThorV3" parent="GenericUnitBase" unitName="ThorV3">
-        <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="ActorCreation" Send="AnimPlay CoverStand Cover,Stand PlayForever 0.000000"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="TimerKill CoverDelay"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimClear CoverStand"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimPlay Cover Cover PlayForever"/>
-        <On Terms="WeaponStop.JavelinMissileLaunchers.AttackStop" Send="TimerSet 2.500000 CoverDelay"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimClear Cover"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimPlay CoverStand Cover,Stand PlayForever"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
         <On Terms="WeaponStart.ThorsHammer.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Target="250mmStrikeCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="AbilTransport.MedivacTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartLeft" Send="Create ThorLeftCheerSquib"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartRight" Send="Create ThorRightCheerSquib"/>
-        <On Terms="ActorCreation; PlayerHasReward ThorCE" Send="ModelSwap ThorCE"/>
-        <On Terms="UnitDeathCustomize; PlayerHasReward ThorCE" Send="DeathCustomize Variation0"/>
-        <On Terms="AbilTransport.SpecOpsDropshipTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="AbilTransport.HerculesTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Target="330mmBarrageCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Thor_Land"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart CoverStand {} Cover,Stand"/>
+        <On Terms="Behavior.ThorInCombat.On" Send="AnimBracketStart Morph Morph Morph,Stand Morph,End"/>
+        <On Terms="Behavior.ThorInCombat.Off" Send="AnimBracketStop Morph"/>
+        <On Terms="ActorCreation" Send="StatusSet Barrage 0"/>
+        <On Terms="Effect.ThorLightningBarrageSA.Start; IsStatus Barrage 0" Send="AnimPlay Attack Spell,C,00 VariationMatch"/>
+        <On Terms="Effect.ThorLightningBarrageSA.Start; IsStatus Barrage 1" Send="AnimPlay Attack Spell,C,03 VariationMatch"/>
+        <On Terms="Effect.ThorLightningBarrageSA.Start; IsStatus Barrage 2" Send="AnimPlay Attack Spell,C,01 VariationMatch"/>
+        <On Terms="Effect.ThorLightningBarrageSA.Start; IsStatus Barrage 3" Send="AnimPlay Attack Spell,C,02 VariationMatch"/>
+        <On Terms="Effect.ThorLightningBarrageSA.Start" Send="StatusIncrement Barrage"/>
+        <On Terms="Effect.ThorLightningBarrageSA.Start; IsStatus Barrage 4" Send="StatusSet Barrage 0"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
         <DeathArray index="Normal" ModelLink="ThorDeath" SoundLink=""/>
@@ -11580,14 +11767,8 @@
         </Wireframe>
     </CActorUnit>
     <CActorUnit id="AnnihilatorV1" parent="GenericUnitBase" unitName="AnnihilatorV1">
-        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart" Send="AnimBracketStart Attack Attack"/>
-        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
-        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On Terms="ActorCreation" Send="AnimGroupApply C"/>
+        <On Terms="Behavior.ThorInCombat.On" Send="AnimGroupApply C Stand,Work,End,C Stand,Work,Start,C"/>
+        <On Terms="Behavior.ThorInCombat.Off" Send="AnimGroupRemove C"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
         <DeathArray index="Normal" ModelLink="WarbotDeath" SoundLink=""/>
@@ -11600,9 +11781,9 @@
         <BarOffset value="120"/>
         <BarWidth value="140"/>
         <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+            <Image value="Assets\Textures\wireframe-terran-warbot.dds"/>
         </GroupIcon>
-        <HeroIcon value="Assets\Textures\btn-unit-terran-thor.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-ares.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <NameOffset value="80"/>
         <SoundArray index="Ready" value="Thor_Ready"/>
@@ -11612,24 +11793,14 @@
         <SoundArray index="Attack" value="Thor_Attack"/>
         <SoundArray index="Pissed" value="Thor_Pissed"/>
         <SoundArray index="Movement" value="Thor_Movement"/>
-        <UnitIcon value="Assets\Textures\btn-unit-terran-thor.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-ares.dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+            <Image value="Assets\Textures\wireframe-terran-warbot.dds"/>
         </Wireframe>
     </CActorUnit>
     <CActorUnit id="AnnihilatorV2" parent="GenericUnitBase" unitName="AnnihilatorV2">
-        <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
-        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart" Send="AnimBracketStart Attack Attack"/>
-        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
-        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="ActorCreation" Send="AnimGroupApply A"/>
+        <On Terms="Behavior.ThorInCombat.On" Send="AnimGroupApply A Stand,Work,End,A Stand,Work,Start,A"/>
+        <On Terms="Behavior.ThorInCombat.Off" Send="AnimGroupRemove A"/>
         <Model value="AnnihilatorV1"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
@@ -11643,9 +11814,9 @@
         <BarOffset value="120"/>
         <BarWidth value="140"/>
         <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+            <Image value="Assets\Textures\wireframe-terran-warbot.dds"/>
         </GroupIcon>
-        <HeroIcon value="Assets\Textures\btn-unit-terran-thor.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-ares.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <NameOffset value="80"/>
         <SoundArray index="Ready" value="Thor_Ready"/>
@@ -11654,9 +11825,9 @@
         <SoundArray index="Attack" value="Thor_Attack"/>
         <SoundArray index="Pissed" value="Thor_Pissed"/>
         <SoundArray index="Movement" value="Thor_Movement"/>
-        <UnitIcon value="Assets\Textures\btn-unit-terran-thor.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-ares.dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+            <Image value="Assets\Textures\wireframe-terran-warbot.dds"/>
         </Wireframe>
     </CActorUnit>
     <CActorModel id="BlastwaveImpact" parent="ModelAnimationStyleContinuous">
@@ -11669,18 +11840,9 @@
         <Model value="Blastwave"/>
     </CActorModel>
     <CActorUnit id="AnnihilatorV3" parent="GenericUnitBase" unitName="AnnihilatorV3">
-        <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
-        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart" Send="AnimBracketStart Attack Attack"/>
-        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
-        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="ActorCreation" Send="AnimGroupApply B"/>
+        <On Terms="Behavior.ThorInCombat.On" Send="AnimGroupApply B Stand,Work,End,B Stand,Work,Start,B"/>
+        <On Terms="Behavior.ThorInCombat.Off" Send="AnimGroupRemove B"/>
+        <On Terms="Effect.AnnihilatorV3RocketLauncherLM.Start" Send="AnimPlay Attack Attack"/>
         <Model value="AnnihilatorV1"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
@@ -11694,9 +11856,9 @@
         <BarOffset value="120"/>
         <BarWidth value="140"/>
         <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+            <Image value="Assets\Textures\wireframe-terran-warbot.dds"/>
         </GroupIcon>
-        <HeroIcon value="Assets\Textures\btn-unit-terran-thor.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-ares.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <NameOffset value="80"/>
         <SoundArray index="Ready" value="Thor_Ready"/>
@@ -11705,51 +11867,17 @@
         <SoundArray index="Attack" value="Thor_Attack"/>
         <SoundArray index="Pissed" value="Thor_Pissed"/>
         <SoundArray index="Movement" value="Thor_Movement"/>
-        <UnitIcon value="Assets\Textures\btn-unit-terran-thor.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-ares.dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+            <Image value="Assets\Textures\wireframe-terran-warbot.dds"/>
         </Wireframe>
     </CActorUnit>
     <CActorUnit id="OdinV1" parent="GenericUnitBase" unitName="OdinV1">
-        <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom Thor" Send="Destroy"/>
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="ActorCreation" Send="AnimPlay CoverStand Cover,Stand PlayForever 0.000000"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="TimerKill CoverDelay"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimClear CoverStand"/>
-        <On Terms="WeaponStart.JavelinMissileLaunchers.AttackStart" Send="AnimPlay Cover Cover PlayForever"/>
-        <On Terms="WeaponStop.JavelinMissileLaunchers.AttackStop" Send="TimerSet 2.500000 CoverDelay"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimClear Cover"/>
-        <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimPlay CoverStand Cover,Stand PlayForever"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
-        <On Terms="WeaponStart.ThorsHammer.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceCastStop" Target="250mmStrikeCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.250mmStrikeCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
-        <On Terms="AbilTransport.MedivacTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Unload" Send="AnimClear Unload"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartLeft" Send="Create ThorLeftCheerSquib"/>
-        <On Terms="ModelEvent; ModelEventName SquibStartRight" Send="Create ThorRightCheerSquib"/>
-        <On Terms="ActorCreation; PlayerHasReward ThorCE" Send="ModelSwap ThorCE"/>
-        <On Terms="UnitDeathCustomize; PlayerHasReward ThorCE" Send="DeathCustomize Variation0"/>
-        <On Terms="AbilTransport.SpecOpsDropshipTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="AbilTransport.HerculesTransport.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStart" Send="AnimPlay Morph Morph NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Send="AnimClear Morph"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceCastStop" Target="330mmBarrageCannonsMorph" Send="SoundSetMuted 1 0"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStart" Send="AnimPlay MorphEnd Morph,End NonLooping"/>
-        <On Terms="Abil.330mmBarrageCannons.SourceFinishStop" Send="AnimClear MorphEnd"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Thor_Land"/>
         <EventDataFootprint index="0" Actor="" Model=""/>
         <BuildModel value="Thor"/>
         <DeathArray index="Normal" ModelLink="ThorDeath" SoundLink=""/>
@@ -11778,17 +11906,6 @@
             <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
         </Wireframe>
     </CActorUnit>
-    <!--                                                                                         -->
-    <!-- Warbot ................................................................................ -->
-    <!--                                                                                         -->
-    <CActorUnit id="Warbot">
-        <Scale value="0.500000"/>
-    </CActorUnit>
-    <CActorMissile id="WarbotBMissile">
-        <Scale value="2.000000"/>
-        <BarHeight value="1"/>
-        <BarWidth value="1"/>
-    </CActorMissile>
     <CActorUnit id="DemonLord" parent="Zergling" unitName="DemonLord">
         <On index="0" Terms="UnitBirth.DemonLord"/>
         <On index="1" Terms="UnitBirth.DemonLord"/>
@@ -11843,18 +11960,18 @@
         <ShieldFlashType value="Header"/>
     </CActorAction>
     <CActorSound id="_ThorScienceSeekerImpactSound" parent="SoundOneShot">
-        <On Terms="Effect.ThorScienceSeekerImpact.Start" Send="Create"/>
+        <On Terms="Effect.ThorRavenSeekerDMG.Start" Send="Create"/>
         <Sound value="Raven_HunterSeekerAttackImpact"/>
     </CActorSound>
-    <CActorSimple id="thorselfnukered">
-        <On Terms="Behavior.DefensiveNuke.On" Send="Create"/>
+    <CActorSimple id="ThorDefensiveNukeTint">
+        <On Terms="Behavior.ThorDefensiveNuke.On" Send="Create"/>
         <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 255,0,0 2.000000 OneShot ThorNukeTint"/>
-        <On Terms="Behavior.DefensiveNuke.Off" Target="_Unit" Send="ClearTintColor 0.250000 ThorNukeTint"/>
-        <On Terms="Behavior.DefensiveNuke.Off" Send="Destroy"/>
+        <On Terms="Behavior.ThorDefensiveNuke.Off" Target="_Unit" Send="ClearTintColor 0.250000 ThorNukeTint"/>
+        <On Terms="Behavior.ThorDefensiveNuke.Off" Send="Destroy"/>
     </CActorSimple>
-    <CActorModel id="ThorImpact" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.thorimpact.Start" Send="Create"/>
-        <On Terms="Effect.thorimpact.Stop" Send="AnimBracketStop BSD"/>
+    <CActorModel id="ThorRocketBlitzImpact" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.SelfRepairApplyBehavior" Send="Create"/>
+        <On Terms="Effect.SelfRepairApplyBehavior" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpShadow"/>
         <Model value="HunterSeekerAttackImpact"/>
     </CActorModel>
@@ -11916,7 +12033,6 @@
         <On Terms="Effect.InfernoSA.Stop" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpShadow"/>
     </CActorModel>
-    <CActorAction id="HunterSeekerAttack"/>
     <!--                                                                                         -->
     <!-- Infestor .............................................................................. -->
     <!--                                                                                         -->
@@ -12272,6 +12388,7 @@
         <Scale value="0.300000"/>
         <BarHeight value="1"/>
         <BarWidth value="1"/>
+        <HostSiteOps Ops="RotUp90"/>
     </CActorMissile>
     <CActorMissile id="Fireball3" parent="GenericAttackMissile" unitName="Fireball">
         <On index="0" Terms="UnitBirth.RedFireball" Send="Create"/>
@@ -12392,7 +12509,7 @@
         <PlacementModel value="HighTemplarPlacement"/>
         <PlacementSound value="Protoss_BuildingPlacementSmall"/>
         <PortraitModel value="ShadowHeroPortrait"/>
-        <WalkAnimMoveSpeed value="2.25"/>
+        <WalkAnimMoveSpeed value="3.25"/>
         <AbilSoundArray AbilCmd="PsiStorm,Execute" Sound="HighTemplar_PsionicStormVO"/>
         <AbilSoundArray AbilCmd="ArchonWarp,SelectedUnits" Sound="HighTemplar_ArchonWarpVO"/>
         <AbilSoundArray AbilCmd="TemporalRift,Execute" Sound="HighTemplar_Attack"/>
@@ -13256,7 +13373,7 @@
         <On Terms="UnitCreation.Extractor" Send="Create"/>
     </CActorStateMonitor>
     <CActorSimple id="dematfieldblue">
-        <On Terms="Behavior.Dematerializationfield.On" Send="Create"/>
+        <On Terms="Behavior.AnnihilatorDematerializationFieldDelay.On" Send="Create"/>
         <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 13,0,255 2.000000 OneShot DematBlue"/>
         <On Terms="ActorCreation" Send="TimerSet 10.000000 DematBlue"/>
         <On Terms="TimerExpired; TimerName DematBlue" Send="Destroy"/>

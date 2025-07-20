@@ -64,9 +64,9 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
-    <CUpgrade id="AnnihilatorV2">
-        <EffectArray Operation="Set" Reference="Effect,AnnihilatorAENukeSearch,Chance" Value="1"/>
-        <EffectArray Operation="Set" Reference="Effect,AnnihilatorSearchRandomSet,Chance" Value="1"/>
+    <CUpgrade id="AnnihilatorV3">
+        <EffectArray Operation="Set" Reference="Effect,AnnihilatorAbsorptionFieldRocketSA,Chance" Value="1"/>
+        <EffectArray Operation="Set" Reference="Effect,AnnihilatorAbsorptionFieldRocketSet,Chance" Value="1"/>
     </CUpgrade>
     <CUpgrade id="BeamHeroLink">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -82,7 +82,7 @@
         <EffectArray Reference="Unit,EarthHero,ShieldsMax" Value="30"/>
         <EffectArray Reference="Unit,EarthHero,ShieldsStart" Value="30"/>
         <EffectArray Reference="Actor,EarthHero,Scale" Value="0.020000"/>
-        <EffectArray Reference="Behavior,Massive,Modification.RadiusMultiplier" Value="0.02"/>
+        <EffectArray Reference="Behavior,Massive,Modification.RadiusMultiplier" Value="0.0175"/>
         <EffectArray Reference="Actor,LavaFX,Scale" Value="0.020000"/>
         <EffectArray Reference="Effect,LavaSA,AreaArray[0].Radius" Value="0.034"/>
         <EffectArray Reference="Effect,EarthHeroLavaMoltenSA,AreaArray[0].Radius" Value="0.034"/>
@@ -1422,7 +1422,7 @@
         <EffectArray Reference="Behavior,hpBonus,Modification.VitalRegenMultiplier[Shields]" Value="0.05"/>
         <MaxLevel value="100"/>
     </CUpgrade>
-    <CUpgrade id="Ann3Reward">
+    <CUpgrade id="AnnihilatorV3Reward">
         <EffectArray Operation="Subtract" Reference="Abil,WarpGateTrain,InfoArray[Train1].Charge.TimeUse" Value="2.500000"/>
         <EffectArray Operation="Subtract" Reference="Abil,WarpGateTrain,InfoArray[Train7].Charge.TimeUse" Value="2.500000"/>
         <EffectArray Operation="Subtract" Reference="Abil,WarpGateTrain,InfoArray[Train2].Charge.TimeUse" Value="2.500000"/>
@@ -1432,7 +1432,7 @@
         <EffectArray Operation="Subtract" Reference="Abil,WarpGateTrain,InfoArray[Train9].Cooldown.TimeUse" Value="10.000000"/>
         <EditorCategories value="Race:Protoss"/>
     </CUpgrade>
-    <CUpgrade id="Annihilatorv2RewardUpgrade">
+    <CUpgrade id="AnnihilatorV2Reward">
         <EffectArray Operation="Subtract" Reference="Abil,ProtossBuild,InfoArray[Build8].Time[0]" Value="5.000000"/>
         <EffectArray Operation="Subtract" Reference="Abil,WarpGateTrain,InfoArray[Train1].Time[0]" Value="2.500000"/>
         <EffectArray Operation="Subtract" Reference="Abil,WarpGateTrain,InfoArray[Train2].Time" Value="2.500000"/>
@@ -2267,7 +2267,7 @@
     <CUpgrade id="ShadowHeroSmoke">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
-        <EffectArray Reference="Accumulator,ShadowHeroEnergytapHeal,Amount" Value="3"/>
+        <EffectArray Reference="Accumulator,ShadowHeroEnergytapHeal,Amount" Value="4"/>
     </CUpgrade>
     <CUpgrade id="ShadowHeroDeathsEmbrace">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -2276,7 +2276,7 @@
     <CUpgrade id="ShadowHeroMirrors">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
-        <EffectArray Reference="Accumulator,ShadowHeroEnergytapDrain,Amount" Value="0.666"/>
+        <EffectArray Reference="Accumulator,ShadowHeroEnergytapDrain,Amount" Value="0.833"/>
     </CUpgrade>
     <CUpgrade id="ShadowHeroEntropy">
         <EffectArray Reference="Effect,ShadowplayApplyEntropy,Count[0]" Value="1"/>
@@ -3789,8 +3789,8 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="WarpHero"/>
     </CUpgrade>
-    <CUpgrade id="ThorQuestReward"/>
-    <CUpgrade id="ThorQuestRewardPhotonDamage">
+    <CUpgrade id="ThorQuestRewardV3"/>
+    <CUpgrade id="ThorQuestRewardV2">
         <EffectArray Reference="Effect,PhotonCannonU,Amount[0]" Value="10"/>
     </CUpgrade>
     <CUpgrade id="LightningHeroStormRage">
@@ -3863,24 +3863,39 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="UnknownUpgrade">
-        <EffectArray Reference="Effect,thorimpact,Amount[0]" Value="90"/>
+        <EffectArray Reference="Effect,ThorRocketBlitzDMG,Amount[0]" Value="30"/>
         <EffectArray Reference="Effect,ThorsHammerDamage,Amount[0]" Value="15"/>
         <EffectArray Reference="Unit,ScienceVessel,LifeStart[0]" Value="350"/>
         <EffectArray Reference="Unit,ScienceVessel,LifeMax[0]" Value="350"/>
-        <EffectArray Reference="Effect,ThorselfNuke,Amount[0]" Value="250"/>
-        <EffectArray Operation="Subtract" Reference="Behavior,DefensiveNukeCD2,Duration[0]" Value="0.500000"/>
-        <EffectArray Operation="Multiply" Reference="Effect,ThorV2Firedamage,Amount[0]" Value="2"/>
-        <EffectArray Reference="Effect,ThorV2ProtectionFieldDamage,Amount[0]" Value="250"/>
+        <EffectArray Reference="Effect,ThorDefensiveNukeDMG,Amount[0]" Value="250"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,ThorDefensiveNukeCD,Duration[0]" Value="0.500000"/>
+        <EffectArray Reference="Effect,ThorRocketBlitzFireDMG,Amount[0]" Value="2"/>
         <EffectArray Reference="Effect,NanoRepair,RechargeVitalRate[0]" Value="1.000000"/>
-        <EffectArray Operation="Multiply" Reference="Effect,ThorScienceSeekerImpact,Amount[0]" Value="1.8"/>
+        <EffectArray Reference="Effect,ThorRavenSeekerDMG,Amount[0]" Value="75"/>
         <EffectArray Reference="Effect,AnnihilatorNuke,Amount[0]" Value="350"/>
-        <EffectArray Reference="Unit,Warbot,LifeMax[0]" Value="50"/>
-        <EffectArray Reference="Unit,Warbot,LifeStart[0]" Value="50"/>
-        <EffectArray Reference="Unit,Banshee,LifeMax[0]" Value="60"/>
-        <EffectArray Reference="Unit,Banshee,LifeStart[0]" Value="60"/>
-        <EffectArray Reference="Effect,DropBeamDamage,VitalFractionMax[Life]" Value="0.2"/>
-        <EffectArray Reference="Unit,Banshee,Speed[0]" Value="0.250000"/>
-        <EffectArray Reference="Unit,Warbot,Speed[0]" Value="0.062500"/>
+        <EffectArray Reference="Unit,AnnihilatorSupportBot,LifeMax" Value="50"/>
+        <EffectArray Reference="Unit,AnnihilatorSupportBot,LifeStart" Value="50"/>
+        <EffectArray Reference="Unit,Banshee,LifeMax[0]" Value="50"/>
+        <EffectArray Reference="Unit,Banshee,LifeStart[0]" Value="50"/>
+        <EffectArray Reference="Unit,Banshee,Speed[0]" Value="0.125000"/>
+        <EffectArray Reference="Unit,AnnihilatorSupportBot,Speed" Value="0.062500"/>
+        <EffectArray Reference="Effect,AnnihilatorV1FlamethrowerDMG,Amount" Value="10"/>
+        <EffectArray Reference="Effect,AnnihilatorFirewallDMG,Amount" Value="80"/>
+        <EffectArray Reference="Effect,AnnihilatorV2RailgunDMG,Amount" Value="300"/>
+        <EffectArray Reference="Unit,AnnihilatorV2,Speed" Value="0.250000"/>
+        <EffectArray Reference="Behavior,AnnihilatorV2MovementSpeed,Modification.MoveSpeedMinimum" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,AnnihilatorV3RocketLauncher,Period" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Weapon,AnnihilatorV3RocketLauncher,Period" Value="0.250000"/>
+        <EffectArray Reference="Unit,ThorRaven,LifeMax" Value="150"/>
+        <EffectArray Reference="Unit,ThorRaven,LifeStart" Value="150"/>
+        <EffectArray Reference="Unit,ThorRavenSeekerMissile,LifeMax" Value="15"/>
+        <EffectArray Reference="Unit,ThorRavenSeekerMissile,LifeStart" Value="15"/>
+        <EffectArray Reference="Effect,AnnihilatorV3RocketLauncherDMG,Amount" Value="50"/>
+        <EffectArray Reference="Effect,OdinDamageLeft,Amount" Value="20"/>
+        <EffectArray Reference="Effect,OdinDamageRight,Amount" Value="20"/>
+        <EffectArray Reference="Effect,OdinDamage,Amount" Value="20"/>
+        <EffectArray Reference="Effect,ThorLightningBarrageDMG,Amount" Value="25"/>
+        <EffectArray Reference="Effect,BacklashRocketsU,Amount" Value="4"/>
         <MaxLevel value="5"/>
     </CUpgrade>
     <CUpgrade id="WarpHeroDrone">
@@ -4258,5 +4273,5 @@
         <EffectArray Operation="Set" Reference="Effect,ExploderAllyAB,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="thorquestrewardmutagen"/>
+    <CUpgrade id="ThorQuestRewardV1"/>
 </Catalog>

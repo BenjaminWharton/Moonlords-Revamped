@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAttachMethodPattern id="AMPatternThorThunderOrbs">
+        <Keyword value="Weapon"/>
+        <Driver value="ThorThunderOrbsLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodPattern id="PatternThorRocketBlitz">
+        <Keyword value="Weapon"/>
+        <Driver value="ThorRocketBlitzLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodPattern id="PatternAnnihilatorRocketLauncher">
+        <Keyword value="Weapon"/>
+        <Driver value="AnnihilatorV3RocketLauncherLM"/>
+    </CAttachMethodPattern>
+</Catalog>

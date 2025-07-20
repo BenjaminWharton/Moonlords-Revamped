@@ -58,6 +58,10 @@
         <OperandArray value="Eq1CountBehaviorWindInfusedQueuedOrBetterAtUnit"/>
         <OperandArray value="OrNE3CountBehaviorWindStackQueuedOrBetterAtUnitNE3CountBehaviorEarthStackQueuedOrBetterAtUnit"/>
     </CRequirementAnd>
+    <CRequirementCountBehavior id="CountBehaviorAlias_BehaviorForceMovementQueuedOrBetterAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Alias_BehaviorForceMovement" State="QueuedOrBetterAtUnit"/>
+    </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorBufferQueuedOrBetterAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Buffer" State="QueuedOrBetterAtUnit"/>
@@ -307,6 +311,10 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="TailGun" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeThorQuestRewardV3CompleteOnlyTechTreeCheat">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="ThorQuestRewardV3" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeTimeHeroDimensionCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="TimeHeroDimension" State="CompleteOnly"/>
@@ -351,9 +359,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountWarpDrone">
         <Count Link="WarpHeroDrone" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeThorQuestRewardCompleteOnlyTechTreeCheat">
-        <Count Link="ThorQuestReward" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementEq id="Eq0CountBehaviorEarthInfusedQueuedOrBetterAtUnit">
         <OperandArray index="0" value="0"/>
@@ -803,8 +808,9 @@
         <OperandArray index="0" value="CountUnitBroodlingEscortQueuedOrBetterAtUnit"/>
         <OperandArray index="1" value="8"/>
     </CRequirementLT>
-    <CRequirementLT id="LTCountUpgradeThorQuestRewardCompleteOnlyTechTreeCheat1">
-        <OperandArray index="0" value="CountUpgradeThorQuestRewardCompleteOnlyTechTreeCheat"/>
+    <CRequirementLT id="LTCountUpgradeThorQuestRewardV3CompleteOnlyTechTreeCheat1">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeThorQuestRewardV3CompleteOnlyTechTreeCheat"/>
         <OperandArray index="1" value="1"/>
     </CRequirementLT>
     <CRequirementMul id="Mul"/>
@@ -840,6 +846,9 @@
         <OperandArray index="0" value="1"/>
     </CRequirementNot>
     <CRequirementNot id="Not2"/>
+    <CRequirementNot id="NotCountBehaviorAlias_BehaviorForceMovementQueuedOrBetterAtUnit">
+        <OperandArray index="0" value="CountBehaviorAlias_BehaviorForceMovementQueuedOrBetterAtUnit"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorGatewayHeroRecentlyProtectedQueuedOrBetterAtUnit">
         <OperandArray index="0" value="CountBehaviorGatewayHeroRecentlyProtectedQueuedOrBetterAtUnit"/>
     </CRequirementNot>

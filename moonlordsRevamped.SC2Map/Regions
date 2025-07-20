@@ -69,7 +69,7 @@
     <region id="12">
         <name value="SpawningpoolQuest"/>
         <shape type="rect">
-            <quad value="244.6118,113.4997,248.1877,119.089"/>
+            <quad value="246.5017,108.5014,251.5014,111.5014"/>
         </shape>
     </region>
     <region id="14">

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTurret id="AnnihilatorTurret">
+        <YawArc value="360"/>
+        <YawRate value="1440"/>
+        <YawIdleRate value="360"/>
+    </CTurret>
+</Catalog>

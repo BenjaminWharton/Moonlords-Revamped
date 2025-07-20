@@ -10,52 +10,177 @@
             <RevealFlags index="Unfog" value="1"/>
         </RevealerParams>
     </CEffectEnumArea>
+    <CEffectSet id="AnnihilatorSupportBotSearchSet">
+        <ValidatorArray value="NoBehaviorForceMovementAlias"/>
+        <ValidatorArray value="AnnihilatorHasHealOnDeath"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="AnnihilatorSupportBotSearchMU"/>
+        <EffectArray value="Kill"/>
+    </CEffectSet>
+    <CEffectDamage id="BacklashRocketsU">
+        <Amount value="8"/>
+    </CEffectDamage>
+    <CEffectDamage id="OdinDamage">
+        <AttributeBonus index="Structure" value="0"/>
+        <Amount value="20"/>
+    </CEffectDamage>
+    <CEffectDamage id="OdinDamageLeft">
+        <AttributeBonus index="Structure" value="0"/>
+        <Amount value="20"/>
+    </CEffectDamage>
+    <CEffectDamage id="OdinDamageRight">
+        <AttributeBonus index="Structure" value="0"/>
+        <Amount value="20"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="ThorAbsorptionShieldAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ThorAbsorberShield"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="ThorAbsorptionShieldRB">
+        <ValidatorArray index="0" value="OutOfShields"/>
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="ThorAbsorberShield"/>
+    </CEffectRemoveBehavior>
+    <CEffectModifyUnit id="ThorAbsorptionShieldReset">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Energy">
+            <ChangeFraction value="-1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="ThorAbsorptionShieldRestore">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Shields">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="ThorAbsorptionShieldSet">
+        <ValidatorArray value="CasterEnergyGE500"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ThorAbsorptionShieldAB"/>
+        <EffectArray value="ThorAbsorptionShieldReset"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="AnnihilatorFirewallCP">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Terran"/>
         <Flags index="PersistUntilDestroyed" value="1"/>
-        <InitialDelay value="1"/>
+        <InitialDelay value="1.5"/>
         <PeriodicValidator value="AnnihilatorHasFirewall"/>
         <PeriodicEffectArray value="AnnihilatorFirewallSA"/>
         <PeriodicPeriodArray value="0.0625"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="AnnihilatorFirewallDMG">
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="500"/>
+        <EditorCategories value="Race:Terran"/>
+        <Amount value="200"/>
         <Death value="Fire"/>
     </CEffectDamage>
     <CEffectEnumArea id="AnnihilatorFirewallSA" parent="BSearchArea">
-        <EditorCategories value="Race:Protoss"/>
-        <DebugTrace value="1"/>
+        <EditorCategories value="Race:Terran"/>
         <AreaArray index="0" Radius="1" Effect="AnnihilatorFirewallDMG"/>
     </CEffectEnumArea>
-    <CEffectDamage id="AnnihilatorLaserTrackingDamage">
-        <EditorCategories value="Race:Protoss"/>
+    <CEffectDamage id="AnnihilatorLaserTrackingDMG">
+        <EditorCategories value="Race:Terran"/>
         <DebugTrace value="1"/>
         <ImpactLocation Value="TargetPoint"/>
         <Flags index="Kill" value="1"/>
         <AreaArray Radius="1.5" Fraction="1"/>
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
-    <CEffectRandomPointInCircle id="AnnihilatorSearchRandom">
+    <CEffectRandomPointInCircle id="AnnihilatorV3RocketLauncherRandom">
         <EditorCategories value="Race:Terran"/>
-        <Effect value="WarbotBLM"/>
+        <Effect value="AnnihilatorV3RocketLauncherLM"/>
         <Radius value="11"/>
         <RestrictToCircumference value="1"/>
     </CEffectRandomPointInCircle>
+    <CEffectApplyBehavior id="AnnihilatorV1FlamethrowerAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="AnnihilatorV1FlamethrowerDamageBonus"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="AnnihilatorV1FlamethrowerDMG">
         <EditorCategories value="Race:Terran"/>
         <ArmorReduction value="1"/>
-        <Amount value="50"/>
+        <Amount value="10"/>
         <Death value="Fire"/>
     </CEffectDamage>
+    <CEffectEnumTrackedUnits id="AnnihilatorV1FlamethrowerETU">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="TerranTargetTracker"/>
+        <Effect value="AnnihilatorV1FlamethrowerSA"/>
+    </CEffectEnumTrackedUnits>
     <CEffectEnumArea id="AnnihilatorV1FlamethrowerSA" parent="BSearchArea">
         <EditorCategories value="Race:Terran"/>
-        <DebugTrace value="1"/>
-        <LaunchLocation Value="CasterUnit"/>
+        <LaunchLocation Value="TargetUnit"/>
         <ImpactLocation Value="CasterUnit"/>
-        <AreaArray index="0" RectangleWidth="2.5" RectangleHeight="13" Effect="AnnihilatorV1FlamethrowerDMG"/>
-        <AreaRelativeOffset value="0,-7"/>
+        <AreaArray index="0" RectangleWidth="2.5" RectangleHeight="13" Effect="AnnihilatorV1FlamethrowerSet"/>
+        <AreaRelativeOffset value="0,7"/>
+        <DebugTrace value="1"/>
     </CEffectEnumArea>
+    <CEffectSet id="AnnihilatorV1FlamethrowerSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="AnnihilatorV1FlamethrowerDMG"/>
+        <EffectArray value="AnnihilatorV1FlamethrowerAB"/>
+    </CEffectSet>
+    <CEffectEnumTrackedUnits id="AnnihilatorTurretETU">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="TerranTargetTracker"/>
+        <Effect value="AnnihilatorTurretFollow"/>
+    </CEffectEnumTrackedUnits>
+    <CEffectModifyUnit id="AnnihilatorTurretFollow">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactUnit Value="Caster"/>
+        <ModifyTurret Turret="AnnihilatorTurret">
+            <Target Value="TargetUnit"/>
+            <Flags index="Tracking" value="1"/>
+        </ModifyTurret>
+    </CEffectModifyUnit>
+    <CEffectDamage id="AnnihilatorV2RailgunDMG">
+        <EditorCategories value="Race:Terran"/>
+        <ArmorReduction value="10"/>
+        <Amount value="500"/>
+    </CEffectDamage>
+    <CEffectEnumTrackedUnits id="AnnihilatorV2RailgunETU">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="TerranTargetTracker"/>
+        <Effect value="AnnihilatorV2RailgunCP"/>
+    </CEffectEnumTrackedUnits>
+    <CEffectEnumTrackedUnits id="AnnihilatorV3RocketLauncherETU">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="TerranTargetTracker"/>
+        <Effect value="AnnihilatorV3RocketLauncherLM"/>
+    </CEffectEnumTrackedUnits>
+    <CEffectEnumArea id="AnnihilatorV2RailgunSARight" parent="BSearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <LaunchLocation Effect="AnnihilatorV2RailgunCP" Value="TargetUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <AreaArray index="0">
+            <RectangleWidth value="0.5"/>
+            <RectangleHeight value="24"/>
+            <FacingAdjustment value="1.1865"/>
+            <Effect value="AnnihilatorV2RailgunDMG"/>
+        </AreaArray>
+        <AreaRelativeOffset value="0.5,12"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="AnnihilatorV2RailgunSALeft" parent="BSearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <LaunchLocation Effect="AnnihilatorV2RailgunCP" Value="TargetUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <AreaArray index="0">
+            <RectangleWidth value="0.5"/>
+            <RectangleHeight value="24"/>
+            <FacingAdjustment value="358.7915"/>
+            <Effect value="AnnihilatorV2RailgunDMG"/>
+        </AreaArray>
+        <AreaRelativeOffset value="-0.5,12"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="AnnihilatorV2RailgunCP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="AnnihilatorV2RailgunSALeft"/>
+        <PeriodicEffectArray value="AnnihilatorV2RailgunSARight"/>
+    </CEffectCreatePersistent>
     <CEffectModifyPlayer id="BladeHeroBloodFanaticalEvisDecreaseEx2">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray Operation="Set" Reference="Abil,Eviscerate,Cost[0].Vital[Energy]" Value="12.5"/>
@@ -1858,6 +1983,143 @@
         <EffectArray value="OrbitalCannon2"/>
         <EffectArray value="ShockwaveInitLink"/>
     </CEffectSet>
+    <CEffectAddTrackedUnit id="TerranTargetTrackerAdd">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="TerranTargetTracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectLaunchMissile id="AnnihilatorV3RocketLauncherLM">
+        <ValidatorArray index="0" value="DistanceFromCasterLT14"/>
+        <ValidatorArray value="AnnihilatorNoDematerializationField"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="AnnihilatorV3RocketLauncherImpact"/>
+        <AmmoUnit value="AnnihilatorV3RocketLauncherMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="ThorLightningBarrageAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="ThorLightningBarrageSlow"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="ThorLightningBarrageDMG">
+        <EditorCategories value="Race:Terran"/>
+        <ArmorReduction value="1"/>
+        <Amount value="75"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="ThorLightningBarrageMU">
+        <EditorCategories value="Race:Terran"/>
+        <VitalArray index="Energy">
+            <Change value="-50"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectRandomPointInCircle id="ThorLightningBarrageRand">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <Effect value="ThorLightningBarrageSA"/>
+        <Radius value="1"/>
+    </CEffectRandomPointInCircle>
+    <CEffectEnumArea id="ThorLightningBarrageSA" parent="BSearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <DebugTrace value="1"/>
+        <AreaArray index="0" Radius="1" Effect="ThorLightningBarrageSet"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ThorThunderstepOrbsSA" parent="BSearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <DebugTrace value="1"/>
+        <ImpactLocation Value="SourceUnitOrPoint"/>
+        <AreaArray index="0" Radius="1" Effect="ThorLightningBarrageSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="ThorLightningBarrageSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ThorLightningBarrageAB"/>
+        <EffectArray value="ThorLightningBarrageMU"/>
+        <EffectArray value="ThorLightningBarrageDMG"/>
+    </CEffectSet>
+    <CEffectSet id="ThorRavenSeekerExpireSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ThorRavenSeekerDMG"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectRandomPointInCircle id="ThorRocketBlitzRand">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <Effect value="ThorRocketBlitzLM"/>
+        <Count value="2"/>
+        <Radius value="0.75"/>
+    </CEffectRandomPointInCircle>
+    <CEffectEnumTrackedUnits id="ThorLightningBarrageETU">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="TerranTargetTracker"/>
+        <Effect value="ThorLightningBarrageRand"/>
+    </CEffectEnumTrackedUnits>
+    <CEffectLaunchMissile id="ThorThunderstepOrbsLM">
+        <EditorCategories value="Race:Terran"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchEffect value="ThorThunderstepOrbsSearchTarget"/>
+        <SearchFlags index="DynamicSearchArea" value="1"/>
+        <AmmoUnit value="ThorThunderOrbsMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="ThorThunderstepOrbsSearchTarget" parent="BSearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <DebugTrace value="1"/>
+        <AreaArray index="0" MaxCount="1" RectangleWidth="0.5" Effect="ThorThunderstepOrbsSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="ThorThunderstepOrbsSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ThorThunderstepOrbsSA"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectSet id="ThorThunderstep">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="CasterFaceTargetPoint"/>
+        <EffectArray value="ThorThunderstepDataInit"/>
+        <EffectArray value="ThorThunderstepOffsetStart"/>
+        <EffectArray value="ThorThunderstepTP"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectUserData id="ThorThunderstepData">
+        <EditorCategories value="Race:Terran"/>
+        <Amount value="2"/>
+        <Operation value="Subtract"/>
+        <ValidateMax value="500000"/>
+        <EffectSuccess value="ThorThunderstepOffset"/>
+    </CEffectUserData>
+    <CEffectUserData id="ThorThunderstepDataInit">
+        <EditorCategories value="Race:Terran"/>
+        <Amount value="0">
+            <AccumulatorArray value="DistanceFromCasterUnittoTargetPoint"/>
+        </Amount>
+        <Operation value="Set"/>
+    </CEffectUserData>
+    <CEffectCreatePersistent id="ThorThunderstepOffset">
+        <EditorCategories value="Race:Terran"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <OffsetVectorEndLocation Effect="ThorThunderstep"/>
+        <InitialEffect value="ThorThundersteptest"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="ThorThunderstepData"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="ThorThunderstepOffsetStart">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="CasterPoint"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="ThorThunderstepData"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+    </CEffectCreatePersistent>
+    <CEffectTeleport id="ThorThunderstepTP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <MinDistance value="0"/>
+        <TargetLocation Value="TargetPoint"/>
+    </CEffectTeleport>
+    <CEffectEnumArea id="ThorThundersteptest">
+        <EditorCategories value=""/>
+        <DebugTrace value="1"/>
+        <AreaArray Radius="0.5"/>
+    </CEffectEnumArea>
     <CEffectAddTrackedUnit id="WarpHeroDecoyATU">
         <EditorCategories value="Race:Protoss"/>
         <BehaviorLink value="WarpHeroDecoyTracker"/>
@@ -2746,14 +3008,14 @@
         <EffectSuccess value="AirHeroTornadoTempestRand"/>
         <EffectFailure value="AirHeroTornadoTempestRand"/>
     </CEffectUserData>
-    <CEffectDamage id="AnnihilatorAresImpact">
+    <CEffectDamage id="AnnihilatorV3RocketLauncherDMG">
         <EditorCategories value="Race:Terran"/>
         <Marker Link="Effect/AnnihilatorNuke"/>
         <AINotifyFlags index="HurtEnemy" value="1"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
         <ImpactLocation Value="TargetPoint"/>
-        <Amount value="300"/>
+        <Amount value="250"/>
         <Death value="Fire"/>
         <AreaArray Radius="1" Fraction="1"/>
         <AreaArray Radius="2" Fraction="0.5"/>
@@ -6225,8 +6487,6 @@
         <ValidatorArray value="HiddenCompareAB"/>
         <ValidatorArray value="HiddenCompareBA"/>
         <EditorCategories value="Race:Protoss"/>
-        <DrainVital value="Energy"/>
-        <DrainVitalCostFactor value="0.33"/>
         <RechargeVitalRate value="20">
             <AccumulatorArray value="HealingMultiplier"/>
         </RechargeVitalRate>
@@ -6236,8 +6496,6 @@
         <ValidatorArray value="HiddenCompareAB"/>
         <ValidatorArray value="HiddenCompareBA"/>
         <EditorCategories value="Race:Protoss"/>
-        <DrainVital value="Energy"/>
-        <DrainVitalCostFactor value="0.33"/>
         <RechargeVital value="Shields"/>
         <RechargeVitalRate value="20">
             <AccumulatorArray value="HealingMultiplier"/>
@@ -12348,124 +12606,100 @@
         <ArmorReduction value="1"/>
         <Amount value="2"/>
     </CEffectDamage>
-    <CEffectEnumArea id="AnnihilatorAENukeSearch">
-        <EditorCategories value=""/>
-        <SearchFilters value="Heroic;Player,Ally,Neutral,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="13" Effect="WarbotBLM"/>
+    <CEffectEnumArea id="AnnihilatorAbsorptionFieldRocketSA">
+        <EditorCategories value="Race:Terran"/>
         <Chance value="0"/>
+        <SearchFilters value="Heroic;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="13" Effect="AnnihilatorV3RocketLauncherLM"/>
     </CEffectEnumArea>
-    <CEffectApplyBehavior id="AnnihilatorApplyDematfieldSeekerimmunity">
-        <EditorCategories value=""/>
-        <Behavior value="DematfieldSeekerImmunity"/>
-    </CEffectApplyBehavior>
-    <CEffectDamage id="AnnihilatorAresKill">
-        <EditorCategories value=""/>
-        <Amount value="50000"/>
-        <ValidatorArray value="NotLifted"/>
-    </CEffectDamage>
-    <CEffectEnumArea id="AnnihilatorAresKillSearch">
-        <EditorCategories value=""/>
+    <CEffectEnumArea id="AnnihilatorSupportBotSearchSA">
+        <EditorCategories value="Race:Terran"/>
         <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.5" Effect="AnnihilatorAresKill"/>
+        <AreaArray Radius="0.25" Effect="AnnihilatorSupportBotSearchSet"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
-    <CEffectModifyUnit id="AnnihilatorAresRestoreHP">
-        <EditorCategories value=""/>
-        <VitalArray index="Life">
-            <ChangeFraction value="0.25"/>
-        </VitalArray>
-        <VitalArray index="Shields">
-            <ChangeFraction value="0.25"/>
-        </VitalArray>
-    </CEffectModifyUnit>
-    <CEffectModifyUnit id="AnnihilatorAresRestoreHPonGetHit">
-        <EditorCategories value=""/>
-        <Marker Link="Effect/AnnihilatorAresRestoreHP"/>
+    <CEffectModifyUnit id="AnnihilatorSupportBotSearchMU">
+        <EditorCategories value="Race:Terran"/>
         <ImpactUnit Value="Caster"/>
         <VitalArray index="Life">
-            <ChangeFraction value="0.02"/>
+            <Change value="100"/>
+            <ChangeFraction value="0.1"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="100"/>
+            <ChangeFraction value="0.1"/>
         </VitalArray>
     </CEffectModifyUnit>
-    <CEffectApplyBehavior id="AnnihilatorAresRestoreHPEffectadd">
-        <EditorCategories value=""/>
-        <Behavior value="AnnihilatorAresRestoreHPonDeath"/>
+    <CEffectApplyBehavior id="AnnihilatorV3RocketLauncherAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="AnnihilatorHealOnDeath"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="AnnihilatorAresSpawnEffectset">
-        <EditorCategories value=""/>
+    <CEffectSet id="AnnihilatorV3RocketLauncherCUSet">
+        <EditorCategories value="Race:Terran"/>
         <EffectArray value="MoveToCaster"/>
-        <EffectArray value="AnnihilatorAresRestoreHPEffectadd"/>
+        <EffectArray value="AnnihilatorV3RocketLauncherAB"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="AnnihilatorDematFieldApply">
-        <EditorCategories value=""/>
+    <CEffectApplyBehavior id="AnnihilatorDematerializationFieldAB">
+        <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
-        <Behavior value="Dematerializationfield2"/>
+        <Behavior value="AnnihilatorDematerializationField"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="AnnihilatorDematfieldAddSet">
-        <EditorCategories value=""/>
-        <EffectArray value="Annihilatordematfieldadd"/>
-        <EffectArray value="AnnihilatorDematfieldHeroSearch"/>
+    <CEffectSet id="AnnihilatorDematerializationFieldSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="AnnihilatorDematerializationFieldABDelay"/>
     </CEffectSet>
-    <CEffectEnumArea id="AnnihilatorDematfieldHeroSearch">
-        <EditorCategories value=""/>
-        <SearchFilters value="Heroic;Player,Ally,Neutral,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="16" Effect="AnnihilatorApplyDematfieldSeekerimmunity"/>
-    </CEffectEnumArea>
-    <CEffectSet id="AnnihilatorDropBeamFinalSet">
-        <EditorCategories value=""/>
-        <EffectArray value="DropBeamDamage"/>
-        <EffectArray value="AnnihillatorDropBeamSuicide"/>
+    <CEffectSet id="BansheeDropBeamSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="BansheeDropBeamDMG"/>
+        <EffectArray value="Suicide"/>
     </CEffectSet>
-    <CEffectSet id="AnnihilatorEnergySet">
+    <CEffectSet id="AnnihilatorAbsorptionFieldSet">
         <ValidatorArray value="CasterEnergyGE500"/>
-        <EditorCategories value=""/>
-        <EffectArray value="AnnihilatorRestoreAdd"/>
-        <EffectArray value="AnnihilatorAENukeSearch"/>
-        <EffectArray value="AnnihilatorResetEnergy"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="AnnihilatorAbsorptionFieldAB"/>
+        <EffectArray value="AnnihilatorAbsorptionFieldRocketSA"/>
+        <EffectArray value="AnnihilatorAbsorptionFieldReset"/>
     </CEffectSet>
-    <CEffectCreateUnit id="AnnihilatorMissileImpactCreateAres">
-        <EditorCategories value=""/>
+    <CEffectCreateUnit id="AnnihilatorV3RocketLauncherCU">
+        <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetPoint"/>
-        <SpawnEffect value="AnnihilatorAresSpawnEffectset"/>
-        <SpawnUnit value="Warbot"/>
+        <SpawnEffect value="AnnihilatorV3RocketLauncherCUSet"/>
+        <SpawnUnit value="AnnihilatorSupportBot"/>
     </CEffectCreateUnit>
-    <CEffectSet id="AnnihilatorMissileImpactSet">
-        <EditorCategories value=""/>
-        <EffectArray value="AnnihilatorAresImpact"/>
-        <EffectArray value="AnnihilatorMissileImpactCreateAres"/>
+    <CEffectSet id="AnnihilatorV3RocketLauncherImpact">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="AnnihilatorV3RocketLauncherDMG"/>
+        <EffectArray value="AnnihilatorV3RocketLauncherCU"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="AnnihilatorRandomNukeSuppressorAdd">
-        <EditorCategories value=""/>
+    <CEffectApplyBehavior id="AnnihilatorAbsorptionFieldRocketCDAB">
+        <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
-        <Behavior value="AnnihilatorRandomNukeSuppressor"/>
+        <Behavior value="AnnihilatorAbsorptionFieldRocketCooldown"/>
     </CEffectApplyBehavior>
-    <CEffectModifyUnit id="AnnihilatorResetEnergy">
-        <EditorCategories value=""/>
+    <CEffectModifyUnit id="AnnihilatorAbsorptionFieldReset">
+        <EditorCategories value="Race:Terran"/>
         <ImpactUnit Value="Caster"/>
         <VitalArray index="Energy">
             <ChangeFraction value="-1"/>
         </VitalArray>
     </CEffectModifyUnit>
-    <CEffectApplyBehavior id="AnnihilatorRestoreAdd">
-        <EditorCategories value=""/>
+    <CEffectApplyBehavior id="AnnihilatorAbsorptionFieldAB">
+        <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="Absorber"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="AnnihilatorSearchRandomSet">
-        <ValidatorArray value="HasNoAnnihilatorRandomNukeSuppressor"/>
-        <EditorCategories value=""/>
+    <CEffectSet id="AnnihilatorAbsorptionFieldRocketSet">
+        <ValidatorArray value="AnnihilatorAbsoptionRocketsNotOnCooldown"/>
+        <EditorCategories value="Race:Terran"/>
         <Chance value="0"/>
-        <EffectArray value="AnnihilatorRandomNukeSuppressorAdd"/>
-        <EffectArray value="AnnihilatorSearchRandom"/>
+        <EffectArray value="AnnihilatorAbsorptionFieldRocketCDAB"/>
+        <EffectArray value="AnnihilatorV3RocketLauncherRandom"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="Annihilatordematfieldadd">
-        <EditorCategories value=""/>
+    <CEffectApplyBehavior id="AnnihilatorDematerializationFieldABDelay">
+        <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
-        <Behavior value="Dematerializationfield"/>
+        <Behavior value="AnnihilatorDematerializationFieldDelay"/>
     </CEffectApplyBehavior>
-    <CEffectDamage id="AnnihillatorDropBeamSuicide">
-        <EditorCategories value=""/>
-        <ImpactLocation Value="CasterUnit"/>
-        <Flags index="Kill" value="1"/>
-    </CEffectDamage>
     <CEffectApplyBehavior id="ApplyBeastsCall">
         <EditorCategories value="Race:Zerg"/>
         <Behavior value="BeastsCall"/>
@@ -16584,8 +16818,8 @@
         <EffectArray value="DodgeballApplyFull"/>
         <EffectArray value="DodgeballRefresh"/>
     </CEffectSet>
-    <CEffectDamage id="DropBeamDamage">
-        <EditorCategories value=""/>
+    <CEffectDamage id="BansheeDropBeamDMG">
+        <EditorCategories value="Race:Terran"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ArmorReduction value="1"/>
         <VitalFractionMax index="Life" value="0.4"/>
@@ -16750,7 +16984,7 @@
         <SpawnEffect value="GatewayHeroGatewayCUSet"/>
         <SpawnUnit value="GatewayHeroZealot"/>
     </CEffectCreateUnit>
-    <CEffectCreatePersistent id="GravitonBeam5">
+    <CEffectCreatePersistent id="BansheeDropBeamCP">
         <ValidatorArray value="NoGravitonBeamInProgress"/>
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnit"/>
@@ -16758,8 +16992,8 @@
         <Flags index="Channeled" value="1"/>
         <InitialEffect value="GravitonBeamInitialSet"/>
         <ExpireDelay value="0.25"/>
-        <ExpireEffect value="AnnihilatorDropBeamFinalSet"/>
-        <PeriodCount value="6"/>
+        <ExpireEffect value="BansheeDropBeamSet"/>
+        <PeriodCount value="8"/>
         <PeriodicValidator value="GravitonBeamValidators"/>
         <PeriodicEffectArray value="GravitonBeamPeriodicSet"/>
         <PeriodicPeriodArray value="0.125"/>
@@ -17587,78 +17821,57 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="Terminator"/>
     </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="ThorScienceSeekerCreate">
-        <EditorCategories value=""/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="ScienceSeeker"/>
-    </CEffectApplyBehavior>
-    <CEffectDamage id="ThorScienceSeekerImpact">
+    <CEffectDamage id="ThorRavenSeekerDMG">
         <EditorCategories value="Race:Terran"/>
+        <DebugTrace value="1"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
+        <ImpactLocation Value="SourceUnitOrPoint"/>
+        <ArmorReduction value="1"/>
         <Visibility value="Visible"/>
         <Flags index="Notification" value="1"/>
-        <Amount value="100"/>
-        <AreaArray Radius="0.6" Fraction="1"/>
-        <AreaArray Radius="1.2" Fraction="0.5"/>
-        <AreaArray Radius="2.4" Fraction="0.25"/>
+        <Amount value="25"/>
+        <AreaArray Radius="0.5" Fraction="1"/>
+        <AreaArray Radius="1" Fraction="0.75"/>
+        <AreaArray Radius="2" Fraction="0.5"/>
         <ExcludeArray Value="Target"/>
-        <SearchFilters value="-;Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <ArmorReduction value="1"/>
-        <DebugTrace value="1"/>
-        <ImpactLocation Value="SourceUnitOrPoint"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
-    <CEffectLaunchMissile id="ThorScienceSeekerLaunch">
-        <ValidatorArray index="0" removed="1"/>
+    <CEffectLaunchMissile id="ThorRavenSeekerLM">
         <EditorCategories value="Race:Terran"/>
-        <ImpactEffect value="ThorScienceSeekerImpact"/>
-        <AmmoUnit value="HunterSeekerWeapon"/>
+        <AmmoUnit value="ThorRavenSeekerMissile"/>
     </CEffectLaunchMissile>
-    <CEffectRemoveBehavior id="ThorScienceSeekerRemove">
-        <EditorCategories value=""/>
-        <WhichUnit Value="Caster"/>
-        <BehaviorLink value="ScienceSeeker"/>
-        <Count value="1"/>
-    </CEffectRemoveBehavior>
-    <CEffectSet id="ThorScienceSeekerSet">
-        <EditorCategories value=""/>
-        <EffectArray value="ThorScienceSeekerRemove"/>
-        <EffectArray value="ThorScienceSeekerLaunch"/>
+    <CEffectSet id="ThorRavenSeeker">
+        <ValidatorArray value="ThorHasRavenSeekerTargetable"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ThorRavenSeekerLM"/>
     </CEffectSet>
-    <CEffectDamage id="ThorV2ProtectionFieldDamage">
-        <EditorCategories value=""/>
-        <ImpactLocation Value="CasterPoint"/>
-        <Amount value="500"/>
-        <Death value="Fire"/>
-        <AreaArray Radius="11"/>
-        <AreaArray Radius="12" Fraction="1"/>
-        <SearchFilters value="-;Player,Ally,Structure,Missile,Dead,Hidden,Invulnerable"/>
-    </CEffectDamage>
-    <CEffectSet id="ThorMissileImpactSet">
-        <EditorCategories value=""/>
-        <EffectArray value="thorimpact"/>
-        <EffectArray value="ThorV2Fire"/>
+    <CEffectSet id="ThorRocketBlitzImpact">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ThorRocketBlitzDMG"/>
+        <EffectArray value="ThorRocketBlitzFireCP"/>
+        <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
-    <CEffectDamage id="ThorV2Firedamage">
-        <EditorCategories value=""/>
-        <Flags index="Notification" value="1"/>
-        <Amount value="5"/>
-        <Death value="Fire"/>
+    <CEffectDamage id="ThorRocketBlitzFireDMG">
+        <EditorCategories value="Race:Terran"/>
         <ArmorReduction value="0.5"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="4"/>
+        <Death value="Fire"/>
     </CEffectDamage>
-    <CEffectCreatePersistent id="ThorV2Fire">
+    <CEffectCreatePersistent id="ThorRocketBlitzFireCP">
         <ValidatorArray value="ImmortalMultishotFireResearched"/>
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Terran"/>
         <PeriodCount value="24"/>
-        <PeriodicEffectArray value="ThorV2FireSearch"/>
+        <PeriodicEffectArray value="ThorRocketBlitzFireSA"/>
         <PeriodicPeriodArray value="0.125"/>
     </CEffectCreatePersistent>
-    <CEffectEnumArea id="ThorV2FireSearch">
-        <EditorCategories value=""/>
+    <CEffectEnumArea id="ThorRocketBlitzFireSA">
+        <EditorCategories value="Race:Terran"/>
         <Marker Link="Effect/StrafeSearchArea"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.25" Effect="ThorV2Firedamage"/>
         <DebugTrace value="1"/>
+        <SearchFilters value="-;Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.25" Effect="ThorRocketBlitzFireDMG"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="ShadowplayApplyEntropy">
         <EditorCategories value=""/>
@@ -17770,15 +17983,15 @@
         <SearchFlags index="CallForHelp" value="1"/>
         <SearchFlags index="SameCliff" value="0"/>
     </CEffectDamage>
-    <CEffectDamage id="AnnihilatorDematDamage">
-        <EditorCategories value=""/>
-        <Marker Link="Effect/ThorV2ProtectionFieldDamage"/>
+    <CEffectDamage id="AnnihilatorDematerializationFieldDMG">
+        <EditorCategories value="Race:Terran"/>
+        <DebugTrace value="1"/>
         <ImpactLocation Value="CasterPoint"/>
         <Amount value="500"/>
         <Death value="Fire"/>
-        <AreaArray Radius="3"/>
-        <AreaArray Radius="12" Fraction="1"/>
-        <SearchFilters value="-;Player,Ally,Structure,Missile,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3.5"/>
+        <AreaArray Radius="13" Fraction="1"/>
+        <SearchFilters value="-;Structure,Missile,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
     <CEffectSet id="LightningHeroThunderfurySet">
         <EditorCategories value=""/>
@@ -17861,15 +18074,6 @@
         <RechargeVitalRate value="100"/>
         <ValidatorArray value="SOAStrafeAttackRandomTargetInRange"/>
     </CEffectCreateHealer>
-    <CEffectDamage id="WarbotBDamage">
-        <ResponseFlags index="Acquire" value="0"/>
-        <ResponseFlags index="Flee" value="0"/>
-    </CEffectDamage>
-    <CEffectLaunchMissile id="WarbotBLM">
-        <ImpactLocation Value="TargetPoint"/>
-        <ImpactEffect value="AnnihilatorMissileImpactSet"/>
-        <ValidatorArray index="0" value="DistanceFromCasterLT14"/>
-    </CEffectLaunchMissile>
     <CEffectModifyUnit id="WarpDroneRestore">
         <EditorCategories value=""/>
         <ImpactUnit Value="Caster"/>
@@ -18019,13 +18223,13 @@
             <AccumulatorArray value="HealingMultiplier"/>
         </RechargeVitalRate>
     </CEffectCreateHealer>
-    <CEffectApplyBehavior id="thornuked">
+    <CEffectApplyBehavior id="ThorDefensiveNukeKBAB">
         <ValidatorArray index="0" value="ThorRewardMagneto"/>
         <ValidatorArray value="NotMassive"/>
-        <EditorCategories value=""/>
-        <Behavior value="thornukedforce"/>
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="ThorDefensiveNukeKB"/>
     </CEffectApplyBehavior>
-    <CEffectDamage id="ThorselfNuke">
+    <CEffectDamage id="ThorDefensiveNukeDMG">
         <EditorCategories value="Race:Terran"/>
         <AINotifyFlags index="HurtEnemy" value="1"/>
         <ResponseFlags index="Acquire" value="1"/>
@@ -18041,42 +18245,38 @@
         <SearchFlags index="CallForHelp" value="1"/>
         <SearchFlags index="SameCliff" value="0"/>
     </CEffectDamage>
-    <CEffectApplyBehavior id="Thorapplyselfnukerdy">
-        <EditorCategories value=""/>
+    <CEffectApplyBehavior id="ThorDefensiveNukeAB">
+        <ValidatorArray index="0" value="ComboHeroNearbyAndNoDematfield"/>
+        <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
-        <Behavior value="DefensiveNuke"/>
+        <Behavior value="ThorDefensiveNuke"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="Thorselfnukeset">
-        <EditorCategories value=""/>
-        <EffectArray value="ThorselfNuke"/>
-        <EffectArray value="thorapplyselfnukecd2"/>
-        <EffectArray value="thorselfnukesearch"/>
+    <CEffectSet id="ThorDefensiveNukeSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ThorDefensiveNukeDMG"/>
+        <EffectArray value="ThorDefensiveNukeCDAB"/>
+        <EffectArray value="ThorDefensiveNukeKBSA"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="applyScience">
-        <EditorCategories value=""/>
+    <CEffectApplyBehavior id="ScienceVesselScienceAB">
+        <EditorCategories value="Race:Terran"/>
         <Behavior value="Science"/>
     </CEffectApplyBehavior>
-    <CEffectEnumArea id="searchapplyscience">
-        <EditorCategories value=""/>
-        <SearchFilters value="Structure,Heroic;Neutral,Enemy,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="8" Effect="applyScience"/>
-    </CEffectEnumArea>
-    <CEffectApplyBehavior id="thorapplyselfnukecd">
-        <EditorCategories value=""/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="DefensiveNukeCD"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="thorapplyselfnukecd2">
-        <ValidatorArray index="0" value="thorapplyselfnukecdTargetFilters"/>
-        <EditorCategories value=""/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="DefensiveNukeCD2"/>
-    </CEffectApplyBehavior>
-    <CEffectLaunchMissile id="thormissilelaunch">
-        <ValidatorArray index="0" value="ThorIsNotStopMoveIndicator"/>
+    <CEffectEnumArea id="ScienceVesselScienceSA">
         <EditorCategories value="Race:Terran"/>
-        <ImpactEffect value="ThorMissileImpactSet"/>
-        <AmmoUnit value="ThorAAWeapon"/>
+        <DebugTrace value="1"/>
+        <SearchFilters value="Structure,Heroic;Neutral,Enemy,Missile,Item,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="5" Effect="ScienceVesselScienceAB"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="ThorDefensiveNukeCDAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ThorDefensiveNukeCD"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="ThorRocketBlitzLM">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactEffect value="ThorRocketBlitzImpact"/>
+        <AmmoUnit value="ThorRocketBlitzMissile"/>
+        <ImpactLocation Value="TargetPoint"/>
     </CEffectLaunchMissile>
     <CEffectApplyBehavior id="Spireballed">
         <ValidatorArray index="0" value="ThorRewardMagneto"/>
@@ -19414,24 +19614,6 @@
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Ground;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
-    <CEffectDamage id="FireEnchantedDamage">
-        <EditorCategories value="Race:Terran"/>
-        <Marker Link="Effect/SeekerMissileDamage"/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
-        <Visibility value="Visible"/>
-        <Flags index="Notification" value="1"/>
-        <Amount value="100"/>
-        <AreaArray Radius="0.6" Fraction="1"/>
-        <AreaArray Radius="1.2" Fraction="0.5"/>
-        <AreaArray Radius="2.4" Fraction="0.25"/>
-        <AreaArray Radius="0.5" Fraction="1"/>
-        <AreaArray Radius="1" Fraction="0.5"/>
-        <AreaArray Radius="2" Fraction="0.25"/>
-        <ExcludeArray Value="Target"/>
-        <ExcludeArray Value="Target"/>
-        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-    </CEffectDamage>
     <CEffectDamage id="PsnDMGDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/FireballDamage"/>
@@ -19617,28 +19799,27 @@
             <ChangeFraction value="1"/>
         </VitalArray>
     </CEffectModifyUnit>
-    <CEffectDamage id="thorimpact">
-        <EditorCategories value=""/>
+    <CEffectDamage id="ThorRocketBlitzDMG">
+        <EditorCategories value="Race:Terran"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
+        <ImpactLocation Value="TargetPoint"/>
         <ArmorReduction value="1"/>
         <Kind value="Splash"/>
-        <Amount value="100"/>
-        <AreaArray Radius="1.5" Fraction="1"/>
+        <Amount value="50"/>
+        <AreaArray Radius="1.25" Fraction="1"/>
         <SearchFilters value="-;Player,Ally,Missile,Dead,Hidden,Invulnerable"/>
         <SearchFlags index="SameCliff" value="0"/>
-        <ImpactLocation Value="TargetPoint"/>
     </CEffectDamage>
-    <CEffectEnumArea id="thorsearchindicators">
-        <EditorCategories value=""/>
-        <SearchFilters value="Missile,Invulnerable;Ally,Neutral,Enemy"/>
-        <AreaArray Radius="14" Effect="thormissilelaunch"/>
-        <ValidatorArray value="ThorNoMoveCheckE0"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="thorselfnukesearch">
-        <EditorCategories value=""/>
+    <CEffectEnumTrackedUnits id="ThorRocketBlitzETU">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="TerranTargetTracker"/>
+        <Effect value="ThorRocketBlitzRand"/>
+    </CEffectEnumTrackedUnits>
+    <CEffectEnumArea id="ThorDefensiveNukeKBSA">
+        <EditorCategories value="Race:Terran"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="5" Effect="thornuked"/>
+        <AreaArray Radius="5" Effect="ThorDefensiveNukeKBAB"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="wallofshadowhiddenadd">
         <EditorCategories value=""/>

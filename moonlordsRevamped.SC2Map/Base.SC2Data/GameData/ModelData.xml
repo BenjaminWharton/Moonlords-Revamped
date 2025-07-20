@@ -16,6 +16,69 @@
         <Model value="Assets\Effects\Glaze\SOA_Reconstruction_Beam_Glaze\SOA_Reconstruction_Beam_Glaze.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
+    <CModel id="AnnihilatorSupportBotHeal">
+        <Model value="Assets\Effects\Zerg\MendBuff\MendBuff.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="2.250000,2.250000,2.250000"/>
+        <ScaleMin value="2.250000,2.250000,2.250000"/>
+    </CModel>
+    <CModel id="ThorThunderOrbsMissile" parent="MissileFX">
+        <Model value="Assets\GravityShotEx14.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="ThorAbsorptionShield">
+        <Model value="Assets\Effects\Terran\ArcadeVikingShield\ArcadeVikingShield.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.400000,0.400000,0.400000"/>
+        <ScaleMin value="0.400000,0.400000,0.400000"/>
+    </CModel>
+    <CModel id="AnnihilatorDematerializationField">
+        <Model value="Assets\Effects\Terran\ArcadeVikingShield\ArcadeVikingShield.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="2.500000,2.500000,2.500000"/>
+        <ScaleMin value="2.500000,2.500000,2.500000"/>
+    </CModel>
+    <CModel id="AnnihilatorV3RocketLauncherMissile2" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\BansheeMissile\BansheeMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value="AnnihilatorV3RocketLauncherMissile"/>
+        <ScaleMax value="1.750000,1.750000,1.750000"/>
+        <ScaleMin value="1.750000,1.750000,1.750000"/>
+        <SelectionRadius value="0.285600"/>
+        <ShadowRadius value="0.285600"/>
+    </CModel>
+    <CModel id="ThorRavenSeekerMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\HunterKillerMissile\HunterKillerMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <PhysicsMaterialOverride value="MetalLight"/>
+    </CModel>
+    <CModel id="ThorRaven" parent="RavenBase">
+        <Model value="Assets\Units\Terran\Raven\Raven.m3"/>
+    </CModel>
+    <CModel id="ThorLightningBarrageSlow" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Adept_Collection_Purifier_RicochetGlaive_Debuff\Adept_Collection_Purifier_RicochetGlaive_Debuff.m3"/>
+        <AnimSpeed value="2.000000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.750000,1.750000,1.750000"/>
+        <ScaleMin value="1.750000,1.750000,1.750000"/>
+    </CModel>
+    <CModel id="ThorThunderstepShadow" Prefix="Units\" Race="Terran">
+        <Model value="Assets\COOP\Mengsk\Units\Thor_Mengsk_COOP\Thor_Mengsk_COOP.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Radius value="1.400000"/>
+        <ScaleMax value="0.550000,0.550000,0.550000"/>
+        <ScaleMin value="0.550000,0.550000,0.550000"/>
+        <SelectionRadius value="1.845700"/>
+        <ShadowRadius value="1.845700"/>
+    </CModel>
+    <CModel id="ThorLightningBarrage">
+        <Model value="Assets\Effects\Terran\Nova_FlashGrenade\Nova_FlashGrenade.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
     <CModel id="AnnihilatorFirewall">
         <Model value="Assets\Effects\Neutral\LavaBurst_Coop\LavaBurst_Coop.m3"/>
         <EditorCategories value="Race:Protoss"/>
@@ -27,6 +90,12 @@
         <EditorCategories value="Race:Terran"/>
         <ScaleMax value="2.000000,2.000000,2.000000"/>
         <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="AnnihilatorV2RailgunBeam">
+        <Model value="Assets\Effects\Terran\WarHoundRailGunMissile\WarHoundRailGunMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="6.000000,6.000000,6.000000"/>
+        <ScaleMin value="6.000000,6.000000,6.000000"/>
     </CModel>
     <CModel id="GravityHeroClash">
         <Model value="Assets\Effects\Protoss\SOA_SolarBombardment_Beam\SOA_SolarBombardment_Beam.m3"/>
@@ -288,7 +357,7 @@
         <ScaleMin value="0.500000,0.500000,0.500000"/>
     </CModel>
     <CModel id="OdinV1" parent="Unit" Race="Terran">
-        <Model value="Assets\COOP\Tychus\Units\Odin_Heavens_COOP\Odin_Heavens_COOP.m3"/>
+        <Model value="Assets\Units\Terran\Odin\Odin.m3"/>
         <AttachProps Id="Ref_Weapon 05">
             <Keys index="CustomA" value="0"/>
         </AttachProps>
@@ -300,6 +369,12 @@
         </AttachProps>
         <AttachProps Id="Ref_Weapon 08">
             <Keys index="CustomB" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 09">
+            <Keys index="SetA" value="1"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 12">
+            <Keys index="SetA" value="1"/>
         </AttachProps>
         <AttachProps Id="Ref_Center">
             <Keys index="Turret" value="0"/>
@@ -433,8 +508,25 @@
         <TechPurchaseCamera value="Star2CameraHigher16"/>
         <UnitGlossaryCamera value="Star2CameraHigher16"/>
     </CModel>
+    <CModel id="ThorRocketBlitzImpact">
+        <Model value="Assets\Effects\Terran\ThorShoulderMissileImpact\ThorShoulderMissileImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+    </CModel>
+    <CModel id="ThorRocketBlitzLaunch">
+        <Model value="Assets\Effects\Terran\ThorShoulderMissileLaunch\ThorShoulderMissileLaunch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value="ThorRocketBlitzImpact"/>
+    </CModel>
+    <CModel id="ThorRocketBlitzMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\ThorShoulderMissile\ThorShoulderMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
     <CModel id="ThorV1" parent="ThorBase">
         <Model value="Assets\Units\Terran\ThorEx1\ThorEx1.m3"/>
+        <ScaleMax value="0.550000,0.550000,0.550000"/>
+        <ScaleMin value="0.550000,0.550000,0.550000"/>
     </CModel>
     <CModel id="ThorInvulnerabilityShield">
         <Model value="Assets\Effects\Terran\BattlecruiserDefensiveMatrix\BattlecruiserDefensiveMatrix.m3"/>
@@ -450,9 +542,14 @@
     </CModel>
     <CModel id="ThorV2" parent="ThorBase">
         <Model value="Assets\Units\Terran\Thor_Merc_Collection\Thor_Merc_Collection.m3"/>
+        <ScaleMax value="0.550000,0.550000,0.550000"/>
+        <ScaleMin value="0.550000,0.550000,0.550000"/>
     </CModel>
     <CModel id="ThorV3" parent="ThorBase">
-        <Model value="Assets\Units\Terran\Thor_CovertOps_Collection\Thor_CovertOps_Collection.m3"/>
+        <Model value="Assets\COOP\Mengsk\Units\Thor_Mengsk_COOP\Thor_Mengsk_COOP.m3"/>
+        <AttachProps Id="Ref_Center" SquibType="Shield" RadiusShield="2.500000"/>
+        <ScaleMax value="0.550000,0.550000,0.550000"/>
+        <ScaleMin value="0.550000,0.550000,0.550000"/>
     </CModel>
     <CModel id="VoidProtossAOECursorSplatTC" parent="UI">
         <Model value="Assets\UI\ProtossCursorEx2_Small_TC\ProtossCursorEx2_Small_TC.m3"/>
@@ -473,6 +570,28 @@
         <ShadowRadius value="1.999500"/>
         <TechPurchaseCamera value="Star2CameraHigher10"/>
         <UnitGlossaryCamera value="Star2CameraHigher10"/>
+        <Events Anim="Stand,Work,End,A" Type="Sound" Payload="AnnihilatorTransform_Start"/>
+        <Events Anim="Stand,Work,End,B" Type="Sound" Payload="AnnihilatorTransform_Start"/>
+        <Events Anim="Stand,Work,End,C" Type="Sound" Payload="AnnihilatorTransform_Start"/>
+        <Events Anim="Stand,Work,Start,A" Type="Sound" Payload="AnnihilatorTransform_End"/>
+        <Events Anim="Stand,Work,Start,B" Type="Sound" Payload="AnnihilatorTransform_End"/>
+        <Events Anim="Stand,Work,Start,C" Type="Sound" Payload="AnnihilatorTransform_End"/>
+    </CModel>
+    <CModel id="AnnihilatorV3RocketLauncherMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\ArcadeVikingMissileHoming\ArcadeVikingMissileHoming.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+        <SelectionRadius value="0.285600"/>
+        <ShadowRadius value="0.285600"/>
+    </CModel>
+    <CModel id="AnnihilatorSupportBot" parent="Unit" Race="Terran">
+        <Model value="Assets\Units\Terran\ARES\ARES.m3"/>
+        <Radius value="1.200000"/>
+        <ScaleMax value="0.400000,0.400000,0.400000"/>
+        <ScaleMin value="0.400000,0.400000,0.400000"/>
+        <SelectionRadius value="1.999500"/>
+        <ShadowRadius value="1.999500"/>
     </CModel>
     <CModel id="WarpHeroGuidedMissileImpact">
         <Model value="Assets\Effects\Protoss\MotherShipCoreMissileImpact\MotherShipCoreMissileImpact.m3"/>
@@ -1910,7 +2029,7 @@
         <Model value="Assets\Effects\Protoss\Fenix_ShieldCapacitor\Fenix_ShieldCapacitor.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
-    <CModel id="ThorScienceSeekerImpact">
+    <CModel id="ThorRavenSeekerImpact">
         <Model value="Assets\Effects\Terran\HunterKillerMissileImpact\HunterKillerMissileImpact.m3"/>
         <EditorCategories value="Race:Terran"/>
     </CModel>
@@ -3518,8 +3637,11 @@
     <CModel id="Nova">
         <AttachProps Id="Ref_Origin" SquibType="Shield" RadiusShield="1.000000"/>
     </CModel>
-    <CModel id="ProtectionField">
+    <CModel id="AnnihilatorAbsorptionField">
         <Model value="Assets\Effects\Terran\ArcadeVikingShield\ArcadeVikingShield.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.400000,0.400000,0.400000"/>
+        <ScaleMin value="0.400000,0.400000,0.400000"/>
     </CModel>
     <CModel id="Hydralisk">
         <AttachProps Id="Ref_Origin" SquibType="Shield" RadiusShield="1.500000"/>
@@ -3730,93 +3852,6 @@
         <Model value="Assets\Buildings\Zerg\SporeCrawler\SporeCrawler.m3"/>
         <EditorCategories value="Race:Zerg"/>
         <AnimSpeed value="0.001000"/>
-    </CModel>
-    <CModel id="Ultralisk2" parent="Unit" Race="Zerg">
-        <Occlusion value="Show"/>
-        <Radius value="1.250000"/>
-        <SquibTypeDefault value="Flesh"/>
-        <TechPurchaseCamera value="Star2CameraHigh13"/>
-        <UnitGlossaryCamera value="Star2CameraHigh13"/>
-        <PlanetPanelCamera value="Star2CameraHigh13"/>
-        <Events>
-            <Anim value="Attack,00"/>
-            <Name value="UltraliskAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.010000"/>
-        </Events>
-        <Events>
-            <Anim value="Attack,00"/>
-            <Name value="UltraliskAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.160000"/>
-        </Events>
-        <Events>
-            <Anim value="Attack,01"/>
-            <Name value="UltraliskAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.040000"/>
-        </Events>
-        <Events>
-            <Anim value="Attack,01"/>
-            <Name value="UltraliskAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.160000"/>
-        </Events>
-        <Events>
-            <Anim value="Spell,A"/>
-            <Name value="UltraliskAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.020000"/>
-        </Events>
-        <Events>
-            <Anim value="Spell,A"/>
-            <Name value="UltraliskAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.190000"/>
-        </Events>
-        <Events>
-            <Anim value="Spell,00"/>
-            <Name value="UltraliskHeadAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.550000"/>
-        </Events>
-        <Events>
-            <Anim value="Spell,00"/>
-            <Name value="UltraliskAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.350000"/>
-        </Events>
-        <Events>
-            <Anim value="Spell,00"/>
-            <Name value="UltraliskAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.490000"/>
-        </Events>
-        <Events>
-            <Anim value="Spell,01"/>
-            <Name value="UltraliskHeadAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.450000"/>
-        </Events>
-        <Events>
-            <Anim value="Spell,01"/>
-            <Name value="UltraliskAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.400000"/>
-        </Events>
-        <Events>
-            <Anim value="Spell,01"/>
-            <Name value="UltraliskAttack"/>
-            <Type value="Sound"/>
-            <Time value="0.490000"/>
-        </Events>
-        <ScaleMax value="0.850000,0.850000,0.850000"/>
-        <ScaleMin value="0.850000,0.850000,0.850000"/>
-        <SelectionRadius value="1.176200"/>
-        <ShadowRadius value="1.176200"/>
-        <Tipability value="0.750000"/>
-        <TipabilityLength value="1.000000"/>
-        <TipabilityWidth value="1.000000"/>
     </CModel>
     <CModel id="DemonLord" parent="ZerglingBase">
         <Model value="Assets\Units\Zerg\Zergling_CollectionSkin_Webby\Zergling_CollectionSkin_Webby.m3"/>

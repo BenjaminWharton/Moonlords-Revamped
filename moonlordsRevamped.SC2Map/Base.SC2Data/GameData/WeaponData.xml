@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CWeaponLegacy id="ThorLightningBarrage">
+        <EditorCategories value="Race:Terran"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel0.dds"/>
+        <DisplayEffect value="ThorLightningBarrageDMG"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <Range value="24"/>
+        <Period value="0.25"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <Effect value="AnnihilatorV1Flamethrower"/>
+        <LegacyOptions index="LockTurretWhileFiring" value="1"/>
+        <LegacyOptions index="KeepChanneling" value="1"/>
+        <AllowedMovement value="Moving"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AnnihilatorV2Railgun">
+        <EditorCategories value="Race:Terran"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <DisplayEffect value="AnnihilatorV2RailgunDMG"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <Range value="24"/>
+        <Period value="2.5"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <LegacyOptions index="LockTurretWhileFiring" value="1"/>
+        <LegacyOptions index="KeepChanneling" value="1"/>
+        <AllowedMovement value="Moving"/>
+        <DisplayAttackCount value="2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AnnihilatorV3RocketLauncher">
+        <EditorCategories value="Race:Terran"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <DisplayEffect value="AnnihilatorV3RocketLauncherDMG"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <Range value="13"/>
+        <Period value="2.25"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <LegacyOptions index="LockTurretWhileFiring" value="1"/>
+        <LegacyOptions index="KeepChanneling" value="1"/>
+        <AllowedMovement value="Moving"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Odin">
+        <Range value="13"/>
+        <Period value="1.75"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="OrbOfHavocWispWeapon">
         <EditorCategories value="Race:Protoss"/>
         <Icon value="Assets\Textures\ui_tipicon_campaign_zerus03-zurvanlightning.dds"/>
@@ -26,6 +83,15 @@
         <Period value="1.2"/>
         <DamagePoint value="0"/>
         <Effect value="ZealotAttackSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RavenSeekerMissile">
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-seekermissile.dds"/>
+        <DisplayEffect value="ThorRavenSeekerDMG"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="14"/>
+        <Period value="3"/>
+        <Effect value="ThorRavenSeeker"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="SporeDefense">
         <EditorCategories value="Race:Zerg"/>
@@ -766,6 +832,28 @@
     <CWeaponLegacy id="ThorsHammer">
         <Range value="13"/>
         <Period value="1.5"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <LegacyOptions index="LockTurretWhileFiring" value="1"/>
+        <AllowedMovement value="Moving"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AnnihilatorV1Flamethrower">
+        <EditorCategories value="Race:Terran"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-twin-linkedflamethrower.dds"/>
+        <DisplayEffect value="AnnihilatorV1FlamethrowerDMG"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <Range value="13"/>
+        <Period value="0.0625"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <LegacyOptions index="LockTurretWhileFiring" value="1"/>
+        <LegacyOptions index="KeepChanneling" value="1"/>
+        <AllowedMovement value="Moving"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="VolatileBurst">
         <AcquireFilters value="Ground,Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>

@@ -10,13 +10,26 @@
         <InfoIcon value="Assets\Textures\energyplane1.dds"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Absorber">
-        <InfoIcon value="Assets\Textures\reflection_belshir.dds"/>
+        <InfoIcon value="Assets\Textures\btn-shield-protoss-plasmashields.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <DisplayDuration index="Enemy" value="1"/>
         <Duration value="5"/>
-        <DamageResponse Handled="AnnihilatorSearchRandomSet" Minimum="5" ModifyFraction="0.25">
+        <DamageResponse Handled="AnnihilatorAbsorptionFieldRocketSet" ModifyFraction="0.25">
             <Chance value="1"/>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThorAbsorberShield">
+        <InfoIcon value="Assets\Textures\btn-shield-protoss-plasmashields.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <Duration value="5"/>
+        <Period value="0.0625"/>
+        <InitialEffect value="ThorAbsorptionShieldRestore"/>
+        <RefreshEffect value="ThorAbsorptionShieldRestore"/>
+        <PeriodicEffect value="ThorAbsorptionShieldRB"/>
+        <Modification>
+            <VitalMaxArray index="Shields" value="4000"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AirHeroHurricaneFate">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -82,6 +95,7 @@
             <HeightTime index="Start" value="5"/>
             <HeightTime index="Stop" value="0.25"/>
         </Modification>
+        <TechAliasArray value="Alias_BehaviorForceMovement"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AirHeroHurricaneLifted">
         <InfoFlags index="Hidden" value="1"/>
@@ -91,20 +105,90 @@
         <PeriodicEffect value="AirHeroHurricaneLiftedForceOffset"/>
         <FinalEffect value="AirHeroHurricaneLiftedEndSet"/>
         <Modification MoveSpeedMinimum="10"/>
+        <TechAliasArray value="Alias_BehaviorForceMovement"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThorAbsorptionShield">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <DamageResponse Handled="ThorAbsorptionShieldSet" ModifyFraction="0.25">
+            <ValidatorArray value="CasterEnergyGE500"/>
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="AnnihilatorFirewall">
         <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="MissingHealth"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AnnihilatorV1Flamethrower">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Duration value="10"/>
         <Period value="0.0625"/>
-        <PeriodicEffect value="AnnihilatorV1FlamethrowerSA"/>
+        <PeriodicEffect value="AnnihilatorV1FlamethrowerETU"/>
+        <TimeScaleSource Value="Global"/>
+        <InitialEffect value="AnnihilatorTurretETU"/>
+        <DisableValidatorArray value="CasterNotStunned"/>
+        <DisableValidatorArray value="ThorHasInCombat"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AnnihilatorV2MovementSpeed">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Modification MoveSpeedMinimum="2.75">
+            <AbilClassEnableArray index="CAbilAttack" value="1"/>
+            <AbilClassEnableArray index="CAbilMove" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AnnihilatorV2Railgun">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Period value="2.5"/>
+        <InitialEffect value="AnnihilatorTurretETU"/>
+        <PeriodicEffect value="AnnihilatorV2RailgunETU"/>
+        <DisableValidatorArray value="CasterNotStunned"/>
+        <DisableValidatorArray value="ThorHasInCombat"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AnnihilatorV1FlamethrowerDamageBonus">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <MaxStackCount value="0"/>
+        <Duration value="1"/>
+        <DamageResponse ModifyFraction="1.2">
+            <RequireEffectArray value="AnnihilatorV1FlamethrowerDMG"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AnnihilatorV3RocketLauncher">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Period value="2.25"/>
+        <InitialEffect value="AnnihilatorTurretETU"/>
+        <PeriodicEffect value="AnnihilatorV3RocketLauncherETU"/>
+        <DisableValidatorArray value="CasterNotStunned"/>
+        <DisableValidatorArray value="ThorHasInCombat"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AnnihilatorWeaponDisable">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="2"/>
         <Modification>
-            <ModifyFlags index="DisableWeapons" value="1"/>
+            <BehaviorLinkDisableArray value="ThorRocketBlitz"/>
+            <BehaviorLinkDisableArray value="ThorLightningBarrage"/>
+            <BehaviorLinkDisableArray value="AnnihilatorV1Flamethrower"/>
+            <BehaviorLinkDisableArray value="AnnihilatorV2Railgun"/>
+            <BehaviorLinkDisableArray value="AnnihilatorV3RocketLauncher"/>
+        </Modification>
+        <BuffFlags index="Extend" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AnnihilatorV1MovementSpeed">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Modification MoveSpeedMinimum="2.25">
+            <AbilClassEnableArray index="CAbilAttack" value="1"/>
+            <AbilClassEnableArray index="CAbilMove" value="1"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="Anointed">
@@ -316,9 +400,14 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="3"/>
-        <Modification>
-            <StateFlags index="Stun" value="1"/>
+        <Modification MoveSpeedMultiplier="0.01">
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilAugment" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
+        <FinalEffect value="ApplyUnitWasStunnedSource"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GravityHeroCrushed">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -334,9 +423,14 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <MaxStackCount value="0"/>
         <Duration value="1.5"/>
-        <Modification>
-            <StateFlags index="Stun" value="1"/>
+        <Modification MoveSpeedMultiplier="0.01">
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilAugment" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
+        <FinalEffect value="ApplyUnitWasStunnedSource"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GravityHeroDevour">
         <BehaviorFlags index="Permanent" value="1"/>
@@ -366,11 +460,16 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="1.5"/>
         <Modification Height="0.75" MoveSpeedMultiplier="0.01">
-            <StateFlags index="Stun" value="1"/>
             <StateFlags index="SuppressCollision" value="1"/>
             <HeightTime index="Start" value="0.5"/>
             <HeightTime index="Stop" value="0.5"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilAugment" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
+        <FinalEffect value="ApplyUnitWasStunnedSource"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GravityHeroKillDelay">
         <InfoFlags index="Hidden" value="1"/>
@@ -420,6 +519,7 @@
             <ValidatorArray value="SourceNotHeroic"/>
             <Chance value="1"/>
         </DamageResponse>
+        <TechAliasArray value="Alias_BehaviorForceMovement"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GravityHeroPushForce">
         <InfoFlags index="Hidden" value="1"/>
@@ -436,6 +536,7 @@
         <Modification MoveSpeedMaximum="15" MoveSpeedMinimum="15">
             <StateFlags index="SuppressCollision" value="1"/>
         </Modification>
+        <TechAliasArray value="Alias_BehaviorForceMovement"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GravityHeroPullForce">
         <InfoFlags index="Hidden" value="1"/>
@@ -456,6 +557,7 @@
             <ValidatorArray value="SourceNotHeroic"/>
             <Chance value="1"/>
         </DamageResponse>
+        <TechAliasArray value="Alias_BehaviorForceMovement"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GravityHeroInflateKill">
         <InfoFlags index="Hidden" value="1"/>
@@ -738,29 +840,73 @@
     <CBehaviorBuff id="ShockwaveOrbiAntiRecast">
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="ThorStopMoveIndicatorFate">
+    <CBehaviorUnitTracker id="TerranTargetTracker">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <RemoveValidatorArray value="DistanceFromCasterLT14"/>
+    </CBehaviorUnitTracker>
+    <CBehaviorBuff id="AnnihilatorLaserTrackingFate">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="DistanceFromCasterLT25"/>
         <RemoveValidatorArray value="CasterNotDead"/>
         <TimeScaleSource Value="Global"/>
         <Duration value="7"/>
         <FinalEffect value="Suicide"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="ThorStopMoveIndicatorFollow">
+    <CBehaviorBuff id="AnnihilatorLasterTackingFollow">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Duration value="2"/>
         <InitialEffect value="FollowCasterAK"/>
         <FinalEffect value="FollowCasterRK"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ThorInCombat">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThorLightningBarrageSlow">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="NotMassive"/>
+        <Duration value="1.5"/>
+        <Modification MoveSpeedMultiplier="0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThorRavenFate">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <FinalEffect value="Suicide"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThorRavenSeekerTargetable">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThorLightningBarrage">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="CasterNotStunned"/>
+        <DisableValidatorArray value="ThorHasInCombat"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="ThorLightningBarrageETU"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThorThunderstep">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="2"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="ThorLightningBarrage"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="TimeHeroKronosCooldown">
         <Cost>
-            <Cooldown TimeStart="30"/>
+            <Cooldown TimeStart="45"/>
         </Cost>
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="30"/>
+        <Duration value="45"/>
         <Modification>
             <BehaviorLinkDisableArray value="TimeHeroKronos"/>
         </Modification>
@@ -830,8 +976,10 @@
         <FinalEffect value="ApplyUnitWasStunned"/>
         <Modification MoveSpeedMultiplier="0.01">
             <ModifyFlags index="SuppressMoving" value="1"/>
-            <StateFlags index="Stun" value="1"/>
             <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilAugment" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
         <InitialEffect value="SweepingBeamPerforateAB"/>
@@ -889,8 +1037,12 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="3"/>
         <FinalEffect value="ApplyUnitWasStunned"/>
-        <Modification>
-            <StateFlags index="Stun" value="1"/>
+        <Modification MoveSpeedMultiplier="0.01">
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilAugment" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="EmpoweringRoar">
@@ -978,8 +1130,12 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="1"/>
         <FinalEffect value="ApplyUnitWasStunned"/>
-        <Modification>
-            <StateFlags index="Stun" value="1"/>
+        <Modification MoveSpeedMultiplier="0.01">
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilAugment" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="FireHeroHadesDamage">
@@ -1223,9 +1379,13 @@
         <InitialEffect value="WaterHeroRecycleMU"/>
         <RefreshEffect value="WaterHeroRecycleMU"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="SeekerMissileTimeout">
+    <CBehaviorBuff id="ThorRavenSeekerFate">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="NotInLastMotionPhase"/>
         <Duration value="6"/>
-        <ExpireEffect value="ThorScienceSeekerImpact"/>
+        <FinalEffect value="ThorRavenSeekerExpireSet"/>
+        <Modification MoveSpeedMaximum="0"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ShadowplayDummy">
         <InfoFlags index="Hidden" value="1"/>
@@ -1342,6 +1502,9 @@
     <CBehaviorBuff id="SpellUnit">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <StateFlags index="Benign" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="StonesKB">
         <InfoFlags index="Hidden" value="1"/>
@@ -2247,6 +2410,7 @@
         <FinalEffect value="ApplyUnitWasStunned"/>
         <Modification MoveSpeedMultiplier="0.01">
             <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilAugment" value="1"/>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
     </CBehaviorBuff>
@@ -2434,9 +2598,11 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="0.1"/>
         <FinalEffect value="ApplyUnitWasStunned"/>
-        <Modification>
-            <StateFlags index="Stun" value="1"/>
+        <Modification MoveSpeedMultiplier="0.01">
             <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilAugment" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
         <Period value="0.2"/>
@@ -3139,27 +3305,25 @@
         <PeriodicEffect value="AlteredTimeDMGhaste"/>
         <TimeScaleSource Value="Global"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AnnihilatorAresRestoreHPonDeath">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <DamageResponse Fatal="1" Handled="AnnihilatorAresRestoreHP">
-            <Chance value="1"/>
-        </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AnnihilatorKilllittleAres">
+    <CBehaviorBuff id="AnnihilatorHealOnDeath">
         <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AnnihilatorSupportBotSearch">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Period value="0.0625"/>
-        <PeriodicEffect value="AnnihilatorAresKillSearch"/>
+        <PeriodicEffect value="AnnihilatorSupportBotSearchSA"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AnnihilatorRandomNukeSuppressor">
+    <CBehaviorBuff id="AnnihilatorAbsorptionFieldRocketCooldown">
         <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Duration value="0.5"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AnnihilatorV2AENUKE">
+    <CBehaviorBuff id="AnnihilatorAbsorptionField">
         <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <DamageResponse Handled="AnnihilatorEnergySet">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <DamageResponse Handled="AnnihilatorAbsorptionFieldSet">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -3342,44 +3506,33 @@
         </Modification>
         <Duration value="15"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="DefensiveNuke">
+    <CBehaviorBuff id="ThorDefensiveNuke">
         <InfoIcon value="Assets\Textures\nukeicon5a.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <TimeScaleSource Value="Global"/>
         <Duration value="2"/>
-        <ExpireEffect value="Thorselfnukeset"/>
-        <TimeScaleSource Value="Global"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="DefensiveNukeCD">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <RemoveValidatorArray value="ComboHeroNearbyAndNoDematfield"/>
-        <FinalEffect value="Thorapplyselfnukerdy"/>
-        <TimeScaleSource Value="Global"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="DefensiveNukeCD2">
-        <Cost>
-            <Charge Link="Behavior/DefensiveNukeCD"/>
-            <Cooldown Link="Behavior/DefensiveNukeCD"/>
-        </Cost>
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="10"/>
-        <FinalEffect value="thorapplyselfnukecd"/>
+        <ExpireEffect value="ThorDefensiveNukeSet"/>
         <Modification>
-            <DeathResponse>
-                <Cost>
-                    <Charge Link="Behavior/DefensiveNukeCD"/>
-                    <Cooldown Link="Behavior/DefensiveNukeCD"/>
-                </Cost>
-            </DeathResponse>
+            <BehaviorLinkDisableArray value="ThorDefensiveNukeBase"/>
         </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/DefensiveNukeCD"/>
-                <Cooldown Link="Behavior/DefensiveNukeCD"/>
-            </Cost>
-        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThorDefensiveNukeBase">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <DisableValidatorArray value="CasterNotStunned"/>
+        <DisableValidatorArray value="AnnihilatorNoDematerializationField"/>
         <TimeScaleSource Value="Global"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="ThorDefensiveNukeAB"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThorDefensiveNukeCD">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="10"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="ThorDefensiveNukeBase"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="TimeHeroChronofield">
         <InfoFlags index="Hidden" value="1"/>
@@ -3398,40 +3551,21 @@
             <BehaviorLinkDisableArray value="TimeHeroChronofield3"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Dematerializationfield">
+    <CBehaviorBuff id="AnnihilatorDematerializationFieldDelay">
         <InfoIcon value="Assets\Textures\plasmafield1_blue.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="5"/>
-        <ExpireEffect value="AnnihilatorDematFieldApply"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <TimeScaleSource Value="Global"/>
+        <Duration value="5"/>
+        <ExpireEffect value="AnnihilatorDematerializationFieldAB"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Dematerializationfield2">
-        <Cost>
-            <Charge Link="Behavior/Dematerializationfield"/>
-            <Cooldown Link="Behavior/Dematerializationfield"/>
-        </Cost>
+    <CBehaviorBuff id="AnnihilatorDematerializationField">
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\plasmafield1_blue.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <TimeScaleSource Value="Global"/>
         <Duration value="3"/>
         <Period value="0.125"/>
-        <PeriodCount value="24"/>
-        <PeriodicEffect value="AnnihilatorDematDamage"/>
-        <Modification>
-            <DeathResponse>
-                <Cost>
-                    <Charge Link="Behavior/Dematerializationfield"/>
-                    <Cooldown Link="Behavior/Dematerializationfield"/>
-                </Cost>
-            </DeathResponse>
-        </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/Dematerializationfield"/>
-                <Cooldown Link="Behavior/Dematerializationfield"/>
-            </Cost>
-        </DamageResponse>
-        <TimeScaleSource Value="Global"/>
+        <PeriodicEffect value="AnnihilatorDematerializationFieldDMG"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Dematerialize">
         <Alignment value="Negative"/>
@@ -3445,22 +3579,12 @@
         <InitialEffect value="DematerializeSet"/>
         <RefreshEffect value="DematerializeSet"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="DematfieldSeekerImmunity">
+    <CBehaviorBuff id="AnnihilatorDematerializationFieldBase">
         <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="10"/>
-        <DamageResponse ClampMaximum="1">
-            <RequireEffectArray value="ThorScienceSeekerImpact"/>
-            <Chance value="1"/>
-        </DamageResponse>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <TimeScaleSource Value="Global"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Dematfieldcheck">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="10"/>
-        <InitialEffect value="AnnihilatorDematfieldAddSet"/>
-        <TimeScaleSource Value="Global"/>
+        <InitialEffect value="AnnihilatorDematerializationFieldSet"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="DisablePhoenixWeapons2">
         <InfoFlags index="Hidden" value="1"/>
@@ -3590,8 +3714,7 @@
         <InitialEffect value="FrostshockApplyShatter"/>
         <RefreshEffect value="FrostshockApplyShatter"/>
         <ExpireEffect value="FrostshockInitSet3"/>
-        <Modification>
-            <ModifyFlags index="SuppressMoving" value="1"/>
+        <Modification MoveSpeedMultiplier="0.01">
             <DeathResponse Chance="1" Effect="FrostshockCoolantSearch"/>
         </Modification>
         <FinalEffect value="ApplyUnitWasStunned"/>
@@ -3600,8 +3723,9 @@
         <InfoIcon value="Assets\Textures\ui_hots_icon_flashfreeze.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="10"/>
-        <Modification MoveSpeedMaximum="0">
+        <Modification MoveSpeedMaximum="0" MoveSpeedMultiplier="0.01">
             <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilAugment" value="1"/>
             <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
             <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
@@ -3688,6 +3812,7 @@
             <HeightTime index="Start" value="1"/>
             <HeightTime index="Stop" value="0.25"/>
         </Modification>
+        <TechAliasArray value="Alias_BehaviorForceMovement"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MassacreHelper">
         <InfoFlags index="Hidden" value="1"/>
@@ -4253,13 +4378,6 @@
         <Duration value="0.6"/>
         <Modification RadiusMultiplier="0"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="ProtectionField">
-        <InfoIcon value="Assets\Textures\grad_ripfield1.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="CasterLifeLT50Percent"/>
-        <Period value="0.125"/>
-        <PeriodicEffect value="ThorV2ProtectionFieldDamage"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="CloakofFire">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\fireballtendril1.dds"/>
@@ -4329,19 +4447,19 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Science">
         <InfoIcon value="Assets\Textures\btn-research-terran-sciencevessel.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <DisableValidatorArray value="CasterNotInvulnerable"/>
         <MaxStackCount value="0"/>
         <MaxStackCountPerCaster value="1"/>
         <Duration value="1"/>
         <DamageResponse ModifyFraction="0.25">
             <Chance value="1"/>
         </DamageResponse>
-        <DisableValidatorArray value="CasterNotInvulnerable"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ScienceSeeker">
         <InfoIcon value="Assets\Textures\btn-techupgrade-terran-seekermissile.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DamageResponse Handled="ThorScienceSeekerSet">
+        <DamageResponse Handled="ThorRavenSeeker">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -4358,11 +4476,14 @@
     <CBehaviorBuff id="ThorSelfheal">
         <InfoIcon value="Assets\Textures\btn-ability-terran-heal-color.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
-        <DisableValidatorArray value="atleast1heroinrange"/>
         <DisableValidatorArray value="MissingHealth"/>
+        <DisableValidatorArray value="ThorNoInCombat"/>
         <Modification>
             <VitalRegenArray index="Life" value="1000"/>
         </Modification>
+        <DamageResponse ModifyFraction="0.25">
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="ShadowCharging">
         <Modification MoveSpeedMaximum="20" MoveSpeedMultiplier="3"/>
@@ -4812,7 +4933,7 @@
         <InfoIcon value="Assets\Textures\icon-energy-protoss.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="4"/>
-        <Modification>
+        <Modification MoveSpeedMultiplier="0.01">
             <ModifyFlags index="SuppressMoving" value="1"/>
             <ModifyFlags index="SuppressTurning" value="1"/>
             <AbilClassDisableArray index="CAbilAttack" value="1"/>
@@ -5063,13 +5184,10 @@
         <InfoFlags index="Hidden" value="1"/>
         <TimeScaleSource Value="Global"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="thornukedforce">
+    <CBehaviorBuff id="ThorDefensiveNukeKB">
         <Alignment value="Negative"/>
-        <Cost>
-            <Charge Link="Behavior/Forcebolted"/>
-            <Cooldown Link="Behavior/Forcebolted"/>
-        </Cost>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Duration value="2.5"/>
         <Period value="0.0625"/>
         <InitialEffect value="ForceboltLift"/>
@@ -5112,12 +5230,6 @@
             <Chance value="1"/>
         </DamageResponse>
         <BehaviorFlags index="Permanent" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="ThorScienceSeekerProduce">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Period value="5"/>
-        <PeriodicEffect value="ThorScienceSeekerCreate"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TimedSuicideNOSHOW">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -5511,10 +5623,6 @@
         <InfoIcon value="Assets\Textures\decal_terran_0068_01.dds"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ThorInvulnerabilityShield">
-        <Cost>
-            <Charge Link="Behavior/Youfailed"/>
-            <Cooldown Link="Behavior/Youfailed"/>
-        </Cost>
         <InfoIcon value="Assets\Textures\btn-tips-terran-psishield.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <TimeScaleSource Value="Global"/>
@@ -5535,10 +5643,6 @@
         </Modification>
         <DamageResponse ClampMaximum="0">
             <Chance value="1"/>
-            <Cost>
-                <Charge Link="Behavior/Youfailed"/>
-                <Cooldown Link="Behavior/Youfailed"/>
-            </Cost>
         </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="TooLate">
@@ -5614,11 +5718,11 @@
             <DamageDealtScaled index="Splash" value="20"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="annihilatornomovecheck">
+    <CBehaviorBuff id="AnnihilatorLaserTracking">
         <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="8"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <TimeScaleSource Value="Global"/>
+        <Duration value="8"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="levelup">
         <InfoFlags index="Hidden" value="1"/>
@@ -5663,18 +5767,19 @@
         </Modification>
         <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="scienceapplier">
+    <CBehaviorBuff id="ScienceVesselScienceBase">
         <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Period value="0.5"/>
-        <PeriodicEffect value="searchapplyscience"/>
+        <PeriodicEffect value="ScienceVesselScienceSA"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="thorlaunchattacksatindicator">
+    <CBehaviorBuff id="ThorRocketBlitz">
         <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <DisableValidatorArray value="CasterNotStunned"/>
+        <DisableValidatorArray value="ThorHasInCombat"/>
         <Period value="2"/>
-        <PeriodicEffect value="thorsearchindicators"/>
-        <DisableValidatorArray value="CasterHas0Dematcheck"/>
+        <PeriodicEffect value="ThorRocketBlitzETU"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="wallofshadowhidden">
         <InfoFlags index="Hidden" value="1"/>
