@@ -175,6 +175,7 @@ Button/Hotkey/ToxicVapor=W
 Button/Hotkey/Trickery=W
 Button/Hotkey/TwistCannon=Q
 Button/Hotkey/TwistCannonz=Y
+Button/Hotkey/UpgradeProtossForces=Q
 Button/Hotkey/Upheaval=W
 Button/Hotkey/WallofDarkness=T
 Button/Hotkey/WarpHeroDecoy=R

@@ -549,6 +549,10 @@
         <Icon value="Assets\Textures\btn-ability-terran-emp-color.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
+    <CButton id="UpgradeProtossForces">
+        <Icon value="Assets\Textures\btn-ability-spearofadun-warpinreinforcements.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
     <CButton id="Upheaval">
         <Icon value="Assets\btn-upgrade-zerg-upheaval.dds"/>
         <EditorCategories value="Race:Protoss"/>

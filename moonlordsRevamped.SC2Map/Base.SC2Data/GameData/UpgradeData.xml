@@ -153,8 +153,8 @@
     </CUpgrade>
     <CUpgrade id="GravityHeroAbolish">
         <EffectArray Reference="Behavior,GravityHeroCompressed,Modification.LifeArmorBonus" Value="-10"/>
-        <EffectArray Reference="Effect,GravityHeroInflateAbolishDMG,VitalFractionCurrent[Life]" Value="0.05"/>
-        <EffectArray Operation="Set" Reference="Effect,GravityHeroInflateAbolishDMG,Chance" Value="1"/>
+        <EffectArray Reference="Accumulator,GravityHeroInflateAbolish,Ratio" Value="0.05"/>
+        <EffectArray Reference="Accumulator,GravityHeroInflateAbolish,MaxAccumulation" Value="500"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -397,8 +397,8 @@
     </CUpgrade>
     <CUpgrade id="Boundless">
         <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityRadiusMultiplier,Amount" Value="0.3"/>
-        <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityDamageMultiplier,Amount" Value="15"/>
-        <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityHealMultiplier,Amount" Value="25"/>
+        <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityDamageMultiplier,Amount" Value="30"/>
+        <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityHealMultiplier,Amount" Value="50"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Broaden">
@@ -747,6 +747,21 @@
         <EffectArray Operation="Set" Reference="Effect,ForwardBeamAB,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="Vanquish2">
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality1DMG,VitalFractionCurrent[Life]" Value="0.02"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitalityEnervateDMG,VitalFractionCurrent[Life]" Value="0.005"/>
+        <EffectArray Reference="Effect,OrbOfVitalityHealMU,VitalArray[Life].ChangeFraction" Value="0.02"/>
+        <EffectArray Reference="Effect,OrbOfVitalityHealMU,VitalArray[Shields].ChangeFraction" Value="0.02"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality2DMG,VitalFractionCurrent[Life]" Value="0.04"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality3DMG,VitalFractionCurrent[Life]" Value="0.06"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality4DMG,VitalFractionCurrent[Life]" Value="0.08"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality5DMG,VitalFractionCurrent[Life]" Value="0.1"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality6DMG,VitalFractionCurrent[Life]" Value="0.12"/>
+        <EffectArray Reference="Effect,LuckHeroOrbOfVitality7DMG,VitalFractionCurrent[Life]" Value="0.14"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+        <LeaderAlias value="Vanquish"/>
     </CUpgrade>
     <CUpgrade id="WarpHeroCover">
         <EffectArray Reference="Effect,WarpHeroStrafeHeal,VitalArray[Shields].Change" Value="10"/>
@@ -1361,16 +1376,12 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Vanquish">
-        <EffectArray Reference="Effect,LuckHeroOrbOfVitality1DMG,VitalFractionCurrent[Life]" Value="0.02"/>
-        <EffectArray Reference="Effect,LuckHeroOrbOfVitalityEnervateDMG,VitalFractionCurrent[Life]" Value="0.005"/>
         <EffectArray Reference="Effect,OrbOfVitalityHealMU,VitalArray[Life].ChangeFraction" Value="0.02"/>
         <EffectArray Reference="Effect,OrbOfVitalityHealMU,VitalArray[Shields].ChangeFraction" Value="0.02"/>
-        <EffectArray Reference="Effect,LuckHeroOrbOfVitality2DMG,VitalFractionCurrent[Life]" Value="0.04"/>
-        <EffectArray Reference="Effect,LuckHeroOrbOfVitality3DMG,VitalFractionCurrent[Life]" Value="0.06"/>
-        <EffectArray Reference="Effect,LuckHeroOrbOfVitality4DMG,VitalFractionCurrent[Life]" Value="0.08"/>
-        <EffectArray Reference="Effect,LuckHeroOrbOfVitality5DMG,VitalFractionCurrent[Life]" Value="0.1"/>
-        <EffectArray Reference="Effect,LuckHeroOrbOfVitality6DMG,VitalFractionCurrent[Life]" Value="0.12"/>
-        <EffectArray Reference="Effect,LuckHeroOrbOfVitality7DMG,VitalFractionCurrent[Life]" Value="0.14"/>
+        <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityVanquishBase,MaxAccumulation" Value="200"/>
+        <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityVanquishBase,Ratio" Value="0.02"/>
+        <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityEnervateBonusDMGBase,MaxAccumulation" Value="200"/>
+        <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityEnervateBonusDMGBase,Ratio" Value="0.02"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -3853,7 +3864,8 @@
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="TwilightHeroRecursion">
-        <EffectArray Reference="Effect,TwilightCannonDamage,VitalFractionCurrent[Life]" Value="0.025"/>
+        <EffectArray Reference="Accumulator,TwilightHeroRecursion,Ratio" Value="0.025"/>
+        <EffectArray Reference="Accumulator,TwilightHeroRecursion,MaxAccumulation" Value="100"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>

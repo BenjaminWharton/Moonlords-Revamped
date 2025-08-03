@@ -20,6 +20,44 @@
     <CEffectDamage id="BacklashRocketsU">
         <Amount value="8"/>
     </CEffectDamage>
+    <CEffectSet id="BroodlingEscortLaunchB">
+        <EffectArray value="ZergBossApplyDifficultyBuffFromBossPower"/>
+    </CEffectSet>
+    <CEffectSet id="HordeLordBroodlingCarrierCUSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="BroodlingTimedLife"/>
+        <EffectArray value="ZergBossApplyDifficultyBuffFromBossPower"/>
+    </CEffectSet>
+    <CEffectUserData id="DefaultDataSet0">
+        <EditorCategories value=""/>
+        <Amount value="0"/>
+        <Operation value="Set"/>
+    </CEffectUserData>
+    <CEffectDamage id="FireEnchantedDamage">
+        <EditorCategories value="Race:Zerg"/>
+        <DebugTrace value="1"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <ArmorReduction value="1"/>
+        <Visibility value="Visible"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="100"/>
+        <AreaArray Radius="0.5" Fraction="1"/>
+        <AreaArray Radius="1" Fraction="0.5"/>
+        <AreaArray Radius="2" Fraction="0.25"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="ForgeUpgradesDummy">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="ZergBossApplyDifficultyBuffFromCaster">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="DifficultyBuff"/>
+        <Count value="0">
+            <AccumulatorArray value="ZergBossDifficultyBuffCaster"/>
+        </Count>
+    </CEffectApplyBehavior>
     <CEffectDamage id="OdinDamage">
         <AttributeBonus index="Structure" value="0"/>
         <Amount value="20"/>
@@ -32,6 +70,15 @@
         <AttributeBonus index="Structure" value="0"/>
         <Amount value="20"/>
     </CEffectDamage>
+    <CEffectSet id="ScienceVesselScienceSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ScienceVesselScienceAB"/>
+    </CEffectSet>
+    <CEffectSet id="SwarmLordImplantEggsCUSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="ApplyUnitWasStunned"/>
+        <EffectArray value="ZergBossApplyDifficultyBuffFromCaster"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="ThorAbsorptionShieldAB">
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
@@ -327,11 +374,6 @@
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="GravityHeroCrushed"/>
     </CEffectApplyBehavior>
-    <CEffectDamage id="GravityHeroInflateAbolishDMG">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <Death value="Blast"/>
-    </CEffectDamage>
     <CEffectDamage id="GravityHeroLiftClashDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="1"/>
@@ -999,7 +1041,6 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="GravityHeroInflateCheckAB"/>
         <EffectArray value="GravityHeroInflateBloodCP"/>
-        <EffectArray value="GravityHeroInflateAbolishDMG"/>
         <EffectArray value="GravityHeroInflateDMG"/>
         <EffectArray value="GravityHeroInflateExecuteAB"/>
     </CEffectSet>
@@ -1656,7 +1697,9 @@
     <CEffectDamage id="GravityHeroInflateDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="1"/>
-        <Amount value="400"/>
+        <Amount value="300">
+            <AccumulatorArray value="GravityHeroInflateAbolish"/>
+        </Amount>
         <Death value="Blast"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="GravityHeroInflateExecuteAB">
@@ -2095,7 +2138,6 @@
         <EditorCategories value="Race:Terran"/>
         <OffsetVectorStartLocation Value="OriginPoint"/>
         <OffsetVectorEndLocation Effect="ThorThunderstep"/>
-        <InitialEffect value="ThorThundersteptest"/>
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="ThorThunderstepData"/>
         <PeriodicOffsetArray value="0,-2,0"/>
@@ -2115,11 +2157,6 @@
         <MinDistance value="0"/>
         <TargetLocation Value="TargetPoint"/>
     </CEffectTeleport>
-    <CEffectEnumArea id="ThorThundersteptest">
-        <EditorCategories value=""/>
-        <DebugTrace value="1"/>
-        <AreaArray Radius="0.5"/>
-    </CEffectEnumArea>
     <CEffectAddTrackedUnit id="WarpHeroDecoyATU">
         <EditorCategories value="Race:Protoss"/>
         <BehaviorLink value="WarpHeroDecoyTracker"/>
@@ -2230,6 +2267,30 @@
         <Amount value="30"/>
         <Death value="Eviscerate"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="ZergBossApplyDifficultyBuffFromBossPower">
+        <ValidatorArray index="0" value="ZergBossApplyDifficultyBuffFromCasterTargetFilters"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="DifficultyBuff"/>
+        <Count value="0">
+            <AccumulatorArray value="BossPower"/>
+        </Count>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="ZergBuildingSpawnBroodling6">
+        <SpawnEffect value="ZergBuildingSpawnBroodlingCUSet"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="ZergBuildingSpawnBroodling9">
+        <SpawnEffect value="ZergBuildingSpawnBroodlingCUSet"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="ZergBuildingSpawnBroodlingCUSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="BroodlingTimedLife"/>
+        <EffectArray value="ZergBossApplyDifficultyBuffFromBossPower"/>
+    </CEffectSet>
+    <CEffectSet id="BroodLordSpawnBroodlingsCUSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="BroodlingTimedLife"/>
+        <EffectArray value="ZergBossApplyDifficultyBuffFromBossPower"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="ZergLordGlaiveAttackCP">
         <EditorCategories value="Race:Zerg"/>
         <Flags index="RandomOffset" value="1"/>
@@ -2376,77 +2437,6 @@
             <AccumulatorArray value="LuckHeroOrbOfHavocRadiusUI"/>
         </ExtraRadiusBonus>
     </CEffectEnumArea>
-    <CEffectDamage id="LuckHeroOrbOfVitality2DMG">
-        <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="1"/>
-        <Amount value="0">
-            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
-        </Amount>
-        <VitalFractionCurrent index="Life" value="0.02"/>
-        <LeechFraction index="Life" value="0.1"/>
-        <Death value="Disintegrate"/>
-    </CEffectDamage>
-    <CEffectDamage id="LuckHeroOrbOfVitality3DMG">
-        <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="1"/>
-        <Amount value="0">
-            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
-        </Amount>
-        <VitalFractionCurrent index="Life" value="0.03"/>
-        <LeechFraction index="Life" value="0.1"/>
-        <Death value="Disintegrate"/>
-    </CEffectDamage>
-    <CEffectDamage id="LuckHeroOrbOfVitality4DMG">
-        <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="1"/>
-        <Amount value="0">
-            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
-        </Amount>
-        <VitalFractionCurrent index="Life" value="0.04"/>
-        <LeechFraction index="Life" value="0.1"/>
-        <Death value="Disintegrate"/>
-    </CEffectDamage>
-    <CEffectDamage id="LuckHeroOrbOfVitality5DMG">
-        <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="1"/>
-        <Amount value="0">
-            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
-        </Amount>
-        <VitalFractionCurrent index="Life" value="0.05"/>
-        <LeechFraction index="Life" value="0.1"/>
-        <Death value="Disintegrate"/>
-    </CEffectDamage>
-    <CEffectDamage id="LuckHeroOrbOfVitality6DMG">
-        <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="1"/>
-        <Amount value="0">
-            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
-        </Amount>
-        <VitalFractionCurrent index="Life" value="0.06"/>
-        <LeechFraction index="Life" value="0.1"/>
-        <Death value="Disintegrate"/>
-    </CEffectDamage>
-    <CEffectDamage id="LuckHeroOrbOfVitality7DMG">
-        <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="1"/>
-        <Amount value="0">
-            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
-        </Amount>
-        <VitalFractionCurrent index="Life" value="0.07"/>
-        <LeechFraction index="Life" value="0.1"/>
-        <Death value="Disintegrate"/>
-    </CEffectDamage>
-    <CEffectSwitch id="LuckHeroOrbOfVitalityDMGSwitch">
-        <EditorCategories value="Race:Protoss"/>
-        <CaseArray Validator="DefaultDataE1" Effect="LuckHeroOrbOfVitality1DMG"/>
-        <CaseArray Validator="DefaultDataE2" Effect="LuckHeroOrbOfVitality2DMG"/>
-        <CaseArray Validator="DefaultDataE3" Effect="LuckHeroOrbOfVitality3DMG"/>
-        <CaseArray Validator="DefaultDataE4" Effect="LuckHeroOrbOfVitality4DMG"/>
-        <CaseArray Validator="DefaultDataE5" Effect="LuckHeroOrbOfVitality5DMG"/>
-        <CaseArray Validator="DefaultDataE6" Effect="LuckHeroOrbOfVitality6DMG"/>
-        <CaseArray Validator="DefaultDataE7" Effect="LuckHeroOrbOfVitality7DMG"/>
-        <CaseDefault value="LuckHeroOrbOfVitality0DMG"/>
-    </CEffectSwitch>
     <CEffectUserData id="LuckHeroOrbOfVitalityData">
         <EditorCategories value="Race:Protoss"/>
         <Amount value="0">
@@ -2470,7 +2460,7 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="LuckHeroOrbOfVitalityRecurCU"/>
         <EffectArray value="LuckHeroOrbOfVitalityDynamicABEnemy"/>
-        <EffectArray value="LuckHeroOrbOfVitality0DMG"/>
+        <EffectArray value="LuckHeroOrbOfVitalityEnervateDMG"/>
     </CEffectSet>
     <CEffectCreatePersistent id="LuckHeroOrbOfVitalityRecurImpactCP">
         <EditorCategories value="Race:Protoss"/>
@@ -3226,11 +3216,12 @@
         <EffectArray value="LuckHeroOrbOfVitalityPervadeEnemySA"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
-    <CEffectDamage id="LuckHeroOrbOfVitality0DMG">
+    <CEffectDamage id="LuckHeroOrbOfVitalityDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="1"/>
         <Amount value="0">
-            <AccumulatorArray value="LuckHeroOrbOfVitalityDamageBase"/>
+            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
+            <AccumulatorArray value="LuckHeroOrbOfVitalityVanquish"/>
         </Amount>
         <LeechFraction index="Life" value="0.1"/>
         <Death value="Disintegrate"/>
@@ -3985,7 +3976,7 @@
     <CEffectDamage id="OrbOfHavocWispDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="1"/>
-        <Amount value="35"/>
+        <Amount value="40"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectSet id="OrbOfHavocWispCUSet">
@@ -6548,7 +6539,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
         <ArmorReduction value="1"/>
-        <Amount value="280"/>
+        <Amount value="320"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="OrbOfHavoc7BounceDelay">
@@ -6571,9 +6562,10 @@
     </CEffectEnumArea>
     <CEffectDamage id="LuckHeroOrbOfVitalityEnervateDMG">
         <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="0.1"/>
-        <Amount value="10"/>
-        <VitalFractionCurrent index="Life" value="0.05"/>
+        <ArmorReduction value="0.25"/>
+        <Amount value="10">
+            <AccumulatorArray value="LuckHeroOrbOfVitalityEnervateBonusDMG"/>
+        </Amount>
         <LeechFraction index="Life" value="0.1"/>
         <Death value="Disintegrate"/>
     </CEffectDamage>
@@ -6967,7 +6959,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
         <ArmorReduction value="1"/>
-        <Amount value="245"/>
+        <Amount value="280"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="OrbOfHavoc6BounceDelay">
@@ -7080,7 +7072,7 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="LuckHeroOrbOfVitalityRecurCU"/>
         <EffectArray value="LuckHeroOrbOfVitalityDynamicABEnemy"/>
-        <EffectArray value="LuckHeroOrbOfVitalityDMGSwitch"/>
+        <EffectArray value="LuckHeroOrbOfVitalityDMG"/>
     </CEffectSet>
     <CEffectEnumArea id="LuckHeroOrbOfVitalityPervadeAllySA">
         <EditorCategories value="Race:Protoss"/>
@@ -7447,7 +7439,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
         <ArmorReduction value="1"/>
-        <Amount value="105"/>
+        <Amount value="120"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="OrbOfHavoc3BounceDelay">
@@ -7472,7 +7464,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
         <ArmorReduction value="1"/>
-        <Amount value="140"/>
+        <Amount value="160"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="OrbOfHavoc2BounceDelay">
@@ -7531,14 +7523,14 @@
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
         <ArmorReduction value="1"/>
-        <Amount value="175"/>
+        <Amount value="200"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectDamage id="OrbOfHavoc5BounceDMG">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/OrbOfHavoc1BounceDMG"/>
         <ArmorReduction value="1"/>
-        <Amount value="210"/>
+        <Amount value="240"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="LuckHeroOrbOfHavocPrecursorAB">
@@ -7564,13 +7556,13 @@
     <CEffectDamage id="OrbOfHavoc1BounceDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="1"/>
-        <Amount value="70"/>
+        <Amount value="80"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectDamage id="OrbOfHavocDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="1"/>
-        <Amount value="35"/>
+        <Amount value="40"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectSwitch id="OrbOfHavocSwitch">
@@ -7592,16 +7584,6 @@
             <AccumulatorArray value="LuckHeroOrbOfVitalityRadius"/>
         </ExtraRadiusBonus>
     </CEffectEnumArea>
-    <CEffectDamage id="LuckHeroOrbOfVitality1DMG">
-        <EditorCategories value="Race:Protoss"/>
-        <ArmorReduction value="1"/>
-        <Amount value="0">
-            <AccumulatorArray value="LuckHeroOrbOfVitalityDamage"/>
-        </Amount>
-        <VitalFractionCurrent index="Life" value="0.01"/>
-        <LeechFraction index="Life" value="0.1"/>
-        <Death value="Disintegrate"/>
-    </CEffectDamage>
     <CEffectApplyBehavior id="LuckHeroOrbOfVitalityDynamicABAlly">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
@@ -8050,7 +8032,7 @@
     <CEffectCreateUnit id="BroodlingCarrierCU">
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Value="SourceUnitOrPoint"/>
-        <SpawnEffect value="BroodlingTimedLife"/>
+        <SpawnEffect value="HordeLordBroodlingCarrierCUSet"/>
         <SpawnUnit value="Broodling"/>
     </CEffectCreateUnit>
     <CEffectSet id="BroodlingCarrierSet">
@@ -8239,13 +8221,9 @@
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="FungalDischargeOffsetPara">
         <EditorCategories value="Race:Zerg"/>
-        <PeriodCount value="4"/>
+        <PeriodCount value="1"/>
         <PeriodicEffectArray value="FungalDischargeLMPara"/>
-        <PeriodicOffsetArray value="3,0,0"/>
-        <PeriodicOffsetArray value="0,3,0"/>
-        <PeriodicOffsetArray value="-3,0,0"/>
-        <PeriodicOffsetArray value="0,-3,0"/>
-        <PeriodicPeriodArray value="0.15"/>
+        <PeriodicOffsetArray value="0,0,0"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="FungalDischargeSearchTarget">
         <EditorCategories value="Race:Zerg"/>
@@ -8453,10 +8431,11 @@
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Value="TargetPoint"/>
         <SpawnUnit value="HorrorZergling"/>
+        <SpawnEffect value="ZergBossApplyDifficultyBuffFromCaster"/>
     </CEffectCreateUnit>
     <CEffectDamage id="HorrorZerglingDMG">
         <EditorCategories value="Race:Zerg"/>
-        <ArmorReduction value="0.7"/>
+        <ArmorReduction value="1"/>
         <Amount value="75"/>
         <Death value="Eviscerate"/>
     </CEffectDamage>
@@ -8582,8 +8561,8 @@
     <CEffectDamage id="MindRendDMG">
         <EditorCategories value="Race:Zerg"/>
         <AttributeFactor index="Summoned" value="0.5"/>
-        <ArmorReduction value="2"/>
-        <Amount value="300"/>
+        <ArmorReduction value="5"/>
+        <Amount value="250"/>
     </CEffectDamage>
     <CEffectEnumArea id="MindRendSA">
         <EditorCategories value="Race:Zerg"/>
@@ -8712,6 +8691,7 @@
         <EditorCategories value="Race:Protoss"/>
         <InitialDelay value="0.125"/>
         <InitialEffect value="PsiShockSA"/>
+        <ValidatorArray value="CasterNotDead"/>
     </CEffectCreatePersistent>
     <CEffectSet id="PsiShockInit">
         <EditorCategories value="Race:Protoss"/>
@@ -14587,7 +14567,7 @@
     <CEffectCreateUnit id="ImplantEggSpawn">
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
-        <SpawnEffect value="WarpRiftApplyTimedLife"/>
+        <SpawnEffect value="SwarmLordImplantEggsCUSet"/>
         <SpawnUnit value="SwarmSpawn"/>
         <SpawnCount value="2"/>
     </CEffectCreateUnit>
@@ -15545,7 +15525,7 @@
     <CEffectCreateUnit id="SpawnBroodlingsCU">
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Value="TargetPoint"/>
-        <SpawnEffect value="BroodlingTimedLife"/>
+        <SpawnEffect value="BroodLordSpawnBroodlingsCUSet"/>
         <SpawnUnit value="Broodling"/>
         <SpawnCount value="2"/>
     </CEffectCreateUnit>
@@ -17435,6 +17415,7 @@
         <EditorCategories value="Race:Zerg"/>
         <SpawnUnit value="HotSRaptor"/>
         <SpawnCount value="5"/>
+        <SpawnEffect value="ApplyUnitWasStunned"/>
     </CEffectCreateUnit>
     <CEffectEnumArea id="ThawSA">
         <EditorCategories value="Race:Protoss"/>
@@ -17931,15 +17912,6 @@
         <ImpactLocation Value="CasterUnit"/>
         <Flags index="Kill" value="1"/>
     </CEffectDamage>
-    <CEffectCreateHealer id="NanoRepair">
-        <ValidatorArray index="0" value="NotHidden"/>
-        <ValidatorArray index="1" value="NotWarpingIn"/>
-        <ValidatorArray index="2" value="NotThorWreckage"/>
-        <ValidatorArray index="3" value="NotOdinWreckage"/>
-        <ValidatorArray index="4" value="NotVortexd"/>
-        <ValidatorArray index="5" removed="1"/>
-        <ValidatorArray index="6" removed="1"/>
-    </CEffectCreateHealer>
     <CEffectModifyUnit id="ShadowplayEntropyEnergy">
         <EditorCategories value=""/>
         <ImpactUnit Value="Caster"/>
@@ -18265,7 +18237,7 @@
         <EditorCategories value="Race:Terran"/>
         <DebugTrace value="1"/>
         <SearchFilters value="Structure,Heroic;Neutral,Enemy,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="5" Effect="ScienceVesselScienceAB"/>
+        <AreaArray Radius="5" Effect="ScienceVesselScienceSet"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="ThorDefensiveNukeCDAB">
         <EditorCategories value="Race:Terran"/>
@@ -19386,7 +19358,9 @@
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
         <ArmorReduction value="1"/>
-        <Amount value="40"/>
+        <Amount value="40">
+            <AccumulatorArray value="TwilightHeroRecursion"/>
+        </Amount>
         <SearchFilters value="-;Missile,Dead,Hidden,Invulnerable"/>
         <Total value="Combine"/>
     </CEffectDamage>
@@ -19590,12 +19564,13 @@
         <EditorCategories value=""/>
         <SearchFilters value="-;Neutral,Enemy,Missile,Dead,Hidden"/>
         <AreaArray Radius="6" Effect="HasteAuraApply"/>
+        <ExcludeArray Value="Source"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="MightAuraSearch">
         <EditorCategories value=""/>
-        <Marker Link="Effect/HasteAuraSearch"/>
         <SearchFilters value="-;Neutral,Enemy,Missile,Dead,Hidden"/>
         <AreaArray Radius="6" Effect="MightAuraApply"/>
+        <ExcludeArray Value="Source"/>
     </CEffectEnumArea>
     <CEffectDamage id="LightningDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>

@@ -18,6 +18,9 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="QueenSpawnLarvaTimer">
+        <Duration value="12"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ThorAbsorberShield">
         <InfoIcon value="Assets\Textures\btn-shield-protoss-plasmashields.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
@@ -3336,12 +3339,13 @@
     <CBehaviorBuff id="ArdentDefender">
         <Alignment value="Positive"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification AttackSpeedMultiplier="2" ShieldArmorMultiplier="0">
+        <Modification AttackSpeedMultiplier="2">
             <DamageDealtFraction index="Spell" value="2"/>
             <DamageDealtFraction index="Melee" value="2"/>
             <DamageDealtFraction index="Ranged" value="2"/>
             <DamageDealtFraction index="Splash" value="2"/>
-            <VitalMaxArray index="Life" value="1500"/>
+            <VitalMaxArray index="Life" value="1000"/>
+            <VitalMaxArray index="Shields" value="1000"/>
         </Modification>
         <DamageResponse Handled="ArdentDefenderSet">
             <Chance value="1"/>
@@ -3624,6 +3628,7 @@
         <DamageResponse Handled="Easydefenseset">
             <Chance value="1"/>
         </DamageResponse>
+        <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Energytap">
         <InfoIcon value="Assets\Textures\btn-ability-terran-microfiltering.dds"/>
@@ -3984,9 +3989,11 @@
         <InfoIcon value="Assets\Textures\btn-upgrade-zagara-increasebilelauncherrange.dds"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Stage11HiveInvulnerable">
+    <CBehaviorBuff id="LastHive">
+        <InfoIcon value="Assets\Textures\btn-building-zerg-hive.dds"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <Duration value="2"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="0.5"/>
         <Modification>
             <StateFlags index="Invulnerable" value="1"/>
         </Modification>
@@ -4806,36 +4813,15 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="HasteAura">
         <Alignment value="Positive"/>
-        <Cost>
-            <Charge Link="Behavior/Champion"/>
-            <Cooldown Link="Behavior/Champion"/>
-        </Cost>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <MaxStackCount value="0"/>
         <MaxStackCountPerCaster value="1"/>
         <Duration value="1"/>
-        <Modification AttackSpeedMultiplier="1.15">
-            <DeathResponse>
-                <Cost>
-                    <Charge Link="Behavior/Champion"/>
-                    <Cooldown Link="Behavior/Champion"/>
-                </Cost>
-            </DeathResponse>
-        </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/Champion"/>
-                <Cooldown Link="Behavior/Champion"/>
-            </Cost>
-        </DamageResponse>
+        <Modification AttackSpeedMultiplier="1.15"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MightAura">
         <Alignment value="Positive"/>
-        <Cost>
-            <Charge Link="Behavior/Champion"/>
-            <Cooldown Link="Behavior/Champion"/>
-        </Cost>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <MaxStackCount value="0"/>
@@ -4846,45 +4832,20 @@
             <DamageDealtFraction index="Melee" value="0.15"/>
             <DamageDealtFraction index="Ranged" value="0.15"/>
             <DamageDealtFraction index="Splash" value="0.15"/>
-            <DeathResponse>
-                <Cost>
-                    <Charge Link="Behavior/Champion"/>
-                    <Cooldown Link="Behavior/Champion"/>
-                </Cost>
-            </DeathResponse>
         </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/Champion"/>
-                <Cooldown Link="Behavior/Champion"/>
-            </Cost>
-        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="MightAuraChampion">
         <Alignment value="Positive"/>
-        <Cost>
-            <Charge Link="Behavior/Champion"/>
-            <Cooldown Link="Behavior/Champion"/>
-        </Cost>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
         <Period value="0.5"/>
         <PeriodicEffect value="MightAuraSearch"/>
         <Modification>
-            <DeathResponse>
-                <Cost>
-                    <Charge Link="Behavior/Champion"/>
-                    <Cooldown Link="Behavior/Champion"/>
-                </Cost>
-            </DeathResponse>
+            <DamageDealtFraction index="Spell" value="0.15"/>
+            <DamageDealtFraction index="Melee" value="0.15"/>
+            <DamageDealtFraction index="Ranged" value="0.15"/>
+            <DamageDealtFraction index="Splash" value="0.15"/>
         </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/Champion"/>
-                <Cooldown Link="Behavior/Champion"/>
-            </Cost>
-        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="Enrage">
         <Alignment value="Positive"/>
@@ -4896,6 +4857,7 @@
             <DamageDealtFraction index="Ranged" value="1"/>
             <DamageDealtFraction index="Splash" value="1"/>
         </Modification>
+        <Duration value="0"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="EvilPresent">
         <Alignment value="Negative"/>
@@ -4913,6 +4875,10 @@
         <InfoIcon value="Assets\Textures\btn-ability-terran-weaponsfree.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Modification>
+            <DamageDealtFraction index="Spell" value="0.5"/>
+            <DamageDealtFraction index="Melee" value="0.5"/>
+            <DamageDealtFraction index="Ranged" value="0.5"/>
+            <DamageDealtFraction index="Splash" value="0.5"/>
             <DeathResponse Chance="1" Effect="FireEnchantedDamage"/>
         </Modification>
     </CBehaviorBuff>
@@ -4973,29 +4939,11 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="HasteAuraChampion">
         <Alignment value="Positive"/>
-        <Cost>
-            <Charge Link="Behavior/Champion"/>
-            <Cooldown Link="Behavior/Champion"/>
-        </Cost>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
         <Period value="0.5"/>
         <PeriodicEffect value="HasteAuraSearch"/>
-        <Modification>
-            <DeathResponse>
-                <Cost>
-                    <Charge Link="Behavior/Champion"/>
-                    <Cooldown Link="Behavior/Champion"/>
-                </Cost>
-            </DeathResponse>
-        </Modification>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/Champion"/>
-                <Cooldown Link="Behavior/Champion"/>
-            </Cost>
-        </DamageResponse>
+        <Modification AttackSpeedMultiplier="1.15"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MagmaArmor">
         <InfoIcon value="Assets\MagmaArmorex1.dds"/>
@@ -5413,7 +5361,7 @@
     <CBehaviorSpawn id="SpawnLarva">
         <InfoArray index="0" Delay="5"/>
     </CBehaviorSpawn>
-    <CBehaviorSpawn id="SpawnLarva2">
+    <CBehaviorSpawn id="SpawnLarvaeFast">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
         <InfoArray Unit="Larva" Requirements="HatcherySpawnLarva" Delay="2"/>
@@ -5504,6 +5452,7 @@
         <DisplayDuration index="Ally" value="1"/>
         <Duration value="5"/>
         <FinalEffect value="Suicide"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TwilightCannonEnergy">
         <Alignment value="Negative"/>

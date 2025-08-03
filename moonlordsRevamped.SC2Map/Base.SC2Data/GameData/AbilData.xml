@@ -17,6 +17,12 @@
         <CursorEffect value="BlackDeathSpread2SpreadSearch"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="BlackDeath"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="DeepTunnel">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeStart="5" TimeUse="5"/>
+        </Cost>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="Eviscerate">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="EviscerateCP"/>
@@ -159,6 +165,12 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="EternalLife" Requirements="IsWaterInfusedAndHas3WaterStacksAnd3WindStacks"/>
         <CursorEffect value="EternalLifeSA"/>
     </CAbilEffectInstant>
+    <CAbilSpecialize id="ForgeUpgrades">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <InfoArray index="Specialize1" Time="30" Effect="ForgeUpgradesDummy">
+            <Button DefaultButtonFace="UpgradeProtossForces"/>
+        </InfoArray>
+    </CAbilSpecialize>
     <CAbilEffectTarget id="ForwardBeam">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="ForwardBeamInit"/>
@@ -502,6 +514,20 @@
         </OffCost>
         <BehaviorArray value="ShadowHeroPenumbra"/>
     </CAbilBehavior>
+    <CAbilEffectTarget id="SpawnLarva">
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+        </Cost>
+        <TargetFilters index="0" value="Visible;Neutral,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <TargetSorts>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <Range index="0" value="1.5"/>
+        <AutoCastRange value="6"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="SweepingBeam">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="SweepingBeamInitLM"/>

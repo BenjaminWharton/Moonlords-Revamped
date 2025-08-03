@@ -104,7 +104,7 @@
 <Behavior id="Flying"/>
 <Behavior id="Gandalfcheck"/>
 <Behavior id="MassacreHelper"/>
-<Behavior id="Stage11HiveInvulnerable"/>
+<Behavior id="LastHive"/>
 <Behavior id="NinjaCheck"/>
 <Behavior id="NoCollision"/>
 <Behavior id="NoFunds"/>
@@ -442,6 +442,7 @@
 <Upgrade id="Expose"/>
 <Upgrade id="Fanatical"/>
 <Upgrade id="Fence"/>
+<Upgrade id="Vanquish"/>
 <Upgrade id="WarpHeroCover"/>
 <Upgrade id="WarpHeroFocus"/>
 <Upgrade id="Frenzy"/>
@@ -535,7 +536,6 @@
 <Upgrade id="UnitShieldRegeneration"/>
 <Upgrade id="UnitHealthRegeneration"/>
 <Upgrade id="Unstable"/>
-<Upgrade id="Vanquish"/>
 <Upgrade id="Variety"/>
 <Upgrade id="Vast"/>
 <Upgrade id="Vigor"/>

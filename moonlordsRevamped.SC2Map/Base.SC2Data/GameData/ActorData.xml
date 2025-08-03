@@ -16,6 +16,14 @@
         <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
         <HostSiteOps Ops="SOpCasterUnit SOpAttachOverhead SOpRandomPointInCircle1" HoldPosition="1" HoldRotation="1"/>
     </CActorModel>
+    <CActorModel id="FireEnchantedExplosion" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.FireEnchantedDamage.Start" Send="Create"/>
+        <Model value="ThorRavenSeekerImpact"/>
+    </CActorModel>
+    <CActorSound id="FireEnchanted_Explosion" parent="SoundOneShot">
+        <On Terms="Effect.FireEnchantedDamage.Start" Send="Create"/>
+        <Sound value="Raven_HunterSeekerAttackImpact"/>
+    </CActorSound>
     <CActorModel id="ThorLightningBarrage" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.ThorLightningBarrageSA.Start" Send="Create"/>
         <On Terms="Effect.ThorThunderstepOrbsSA.Start" Send="Create"/>
@@ -935,6 +943,12 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
         </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="WarpGate">
+        <Macros index="3" value="QueueAnim"/>
+        <Macros index="4" value="GlobalLoopMacro"/>
+        <Macros index="5" removed="1"/>
+        <Macros index="6" removed="1"/>
     </CActorUnit>
     <CActorRange id="WarpHeroDecoyRange" parent="RangeAbil" abil="WarpHeroDecoy"/>
     <CActorSiteOpTether id="WarpHeroDoublegangerTether">
@@ -2682,7 +2696,7 @@
     </CActorModelMaterial>
     <CActorModel id="Apocalypse" parent="ModelAnimationStyleContinuous">
         <On Terms="Effect.ApocalypseCP.Start" Send="Create"/>
-        <On Terms="Effect.ApocalypseCP.Stop" Send="Destroy"/>
+        <On Terms="Effect.ApocalypseCP.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
         <Model value="Flames"/>
         <Scale value="1.250000"/>
     </CActorModel>
@@ -3724,9 +3738,9 @@
         <On Terms="Behavior.DrainingBeamStasis.Off" Send="Destroy"/>
     </CActorSimple>
     <CActorBeamSimple id="ForwardBeamBeam" parent="BeamSimpleAnimationStyleOneShot">
-        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death OpeningPlayForever"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
         <On Terms="Effect.ForwardBeamLifetime.Start" Send="Create"/>
-        <On Terms="Effect.ForwardBeamLifetime.Stop" Send="Destroy"/>
+        <On Terms="Effect.ForwardBeamLifetime.Stop" Send="AnimBracketStop BSD"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
         <HostLaunchSiteOps Ops="SOpSourceUnit"/>
         <HostImpactSiteOps Ops="SOpTargetUnit"/>
@@ -3751,9 +3765,9 @@
         <Model value="ForwardBeamMissile"/>
     </CActorModel>
     <CActorBeamSimple id="ForwardBeamCrossBeam" parent="BeamSimpleAnimationStyleOneShot">
-        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death OpeningPlayForever"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
         <On Terms="Effect.ForwardBeamCrossAnchorDeathSuicide.Start" Send="Create"/>
-        <On Terms="Effect.ForwardBeamCrossAnchorDeathSuicide.Stop" Send="Destroy"/>
+        <On Terms="Effect.ForwardBeamCrossAnchorDeathSuicide.Stop" Send="AnimBracketStop BSD"/>
         <Model value="ForwardBeamBeam"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
         <HostLaunchSiteOps Ops="SOpTargetUnit SOpMoveUpByDot5"/>
@@ -6022,7 +6036,7 @@
     </CActorMissile>
     <CActorModel id="HellfireApocalypse" parent="ModelAnimationStyleContinuous">
         <On Terms="Effect.HellfireApocalypseCP.Start" Send="Create"/>
-        <On Terms="Effect.HellfireApocalypseCP.Stop" Send="Destroy"/>
+        <On Terms="Effect.HellfireApocalypseCP.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,128,0"/>
         <Model value="Flames"/>
         <Scale value="1.250000"/>
@@ -6271,7 +6285,7 @@
     </CActorModel>
     <CActorModel id="IcefireApocalypse" parent="ModelAnimationStyleContinuous">
         <On Terms="Effect.IcefireApocalypseCP.Start" Send="Create"/>
-        <On Terms="Effect.IcefireApocalypseCP.Stop" Send="Destroy"/>
+        <On Terms="Effect.IcefireApocalypseCP.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
         <Model value="IcefireFlames"/>
         <Scale value="1.250000"/>
     </CActorModel>
@@ -9850,10 +9864,7 @@
         <On Terms="UnitHeightUpdate.*.Land" Send="Create SwarmHost_Land"/>
         <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Birth" Send="AnimClear Birth"/>
         <On Terms="WeaponStart.ImplantEgg" Send="AnimPlay BSD Attack"/>
-        <DeathArray index="Normal" ModelLink="SwarmLordDeath" SoundLink="BroodLord_Explode"/>
-        <DeathArray index="Disintegrate" ModelLink="SwarmHostDeathAcid" SoundLink="Uni_DeathFXAcid"/>
-        <DeathArray index="Fire" ModelLink="SwarmHostDeathFire" SoundLink="Uni_DeathFXFire"/>
-        <DeathCustoms ModelLink="ZergLargeUnitDeathLow" Name="AntiGravZerg"/>
+        <DeathArray index="Normal" ModelLink="SwarmLordDeath"/>
         <PlacementSound value="Zerg_BuildingPlacement"/>
         <PortraitModel value="SwarmHostSplitAPortrait"/>
         <TerrainSquibs>
@@ -9875,7 +9886,6 @@
             <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleLargeSilent"/>
         </TerrainSquibs>
         <WalkAnimMoveSpeed value="0.707"/>
-        <AbilSoundArray AbilCmd="LocustFlyingLaunch,Execute" Sound="Swarm_Silent"/>
         <BarOffset value="60"/>
         <BarWidth value="100"/>
         <GroupIcon>
@@ -11492,7 +11502,6 @@
         <On Terms="Abil.TwilightHeroWarpout.SourceCastStop" Send="AnimPlay Spell Attack"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
         <On Terms="ActorCreation" Send="SetTeamColor 175,0,175 255,100,255"/>
-        <Model value="DarkTemplarShakuras"/>
         <AnimBlendTime value="0.450000"/>
         <BuildModel value="DarkTemplarWarpIn"/>
         <PlacementModel value="DarkTemplarPlacement"/>
@@ -11559,8 +11568,6 @@
     </CActorSquib>
     <CActorAction id="ThorRavenSeekerAttack" parent="GenericAttack" effectImpact="ThorRavenSeekerDMG" effectLaunch="ThorRavenSeekerLM">
         <Missile value="ThorRavenSeekerMissile"/>
-        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOp2DRotation"/>
-        <ImpactAttachQuery Methods="Origin"/>
         <ImpactMap index="None" Model="" Sound="Raven_HunterSeekerAttackImpact"/>
         <ShieldFlashType value="Full"/>
     </CActorAction>
@@ -13113,9 +13120,6 @@
         <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
         <Model value="FireMedium"/>
     </CActorModel>
-    <CActorAction id="LarvaRelease2" parent="GenericAttack" effectImpact="RemovePrecursor" effectLaunch="LarvaReleaseLM">
-        <LaunchAttachQuery Methods="AMFilterHardpoint AMRandom"/>
-    </CActorAction>
     <CActorSiteOpAttach id="SopSporelisk">
         <EditorCategories value=""/>
         <AttachQuery Methods="Target 7"/>
@@ -13361,7 +13365,7 @@
             <Image value="Assets\Textures\Wireframe-Zerg-UltraliskCavern.dds"/>
         </Wireframe>
     </CActorUnit>
-    <CActorStateMonitor id="ZergBloodMediumBuilding2" parent="ZergBlood">
+    <CActorStateMonitor id="ZergBloodMediumBuildingML" parent="ZergBlood">
         <On Terms="UnitCreation.NydusCanal" Send="Create"/>
         <On Terms="UnitCreation.MetaliskCavern" Send="Create"/>
         <On Terms="UnitCreation.BanelingNest" Send="Create"/>

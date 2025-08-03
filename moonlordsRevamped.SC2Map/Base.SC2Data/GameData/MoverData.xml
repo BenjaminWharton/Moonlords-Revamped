@@ -752,6 +752,7 @@
             <Driver value="Guidance"/>
             <Acceleration value="3200"/>
             <MaxSpeed value="1.5"/>
+            <ClearanceLookahead value="0"/>
             <IgnoresTerrain value="1"/>
             <Outro value="-1"/>
             <ThrowBandYaw value="-360,-360,-360,-360"/>
@@ -759,50 +760,7 @@
             <YawPitchRoll value="719.2968"/>
         </MotionPhases>
         <MotionPhases>
-            <IgnoresTerrain value="1"/>
-            <ThrowBandYaw value="-360,-360,-360,-360"/>
-            <ThrowBandPitch value="-360,-360,-360,-360"/>
-            <YawPitchRoll value="5759.6484"/>
-        </MotionPhases>
-    </CMoverMissile>
-    <CMoverMissile id="ThorThunderOrbsMissile2">
-        <MotionPhases>
-            <Driver value="Throw"/>
-            <Acceleration value="3200"/>
-            <MaxSpeed value="4"/>
-            <IgnoresTerrain value="1"/>
-            <Outro value="1.5,2.5"/>
-            <ThrowRotationType value="LookAtTarget"/>
-            <ThrowVector value="0,-1,0"/>
-            <ThrowBandYaw value="14.9963,-14.9963,-360,-360"/>
-            <ThrowBandPitch value="69.95,69.95,-360,-360"/>
-            <Overlays/>
-            <Overlays/>
-        </MotionPhases>
-        <MotionPhases>
-            <Driver value="Throw"/>
-            <Acceleration value="3200"/>
-            <MaxSpeed value="4"/>
-            <IgnoresTerrain value="1"/>
-            <Outro value="2.5,4.5"/>
-            <ThrowRotationType value="LookAtTarget"/>
-            <ThrowVector value="0,-1,0"/>
-            <ThrowBandYaw value="14.9963,-14.9963,-360,-360"/>
-            <ThrowBandPitch value="289.995,289.995,-360,-360"/>
-            <Overlays/>
-            <Overlays/>
-        </MotionPhases>
-        <MotionPhases>
-            <Driver value="Guidance"/>
-            <Acceleration value="3200"/>
-            <MaxSpeed value="4"/>
-            <IgnoresTerrain value="1"/>
-            <Outro value="-1"/>
-            <ThrowBandYaw value="-360,-360,-360,-360"/>
-            <ThrowBandPitch value="-360,-360,-360,-360"/>
-            <YawPitchRoll value="719.2968"/>
-        </MotionPhases>
-        <MotionPhases>
+            <ClearanceLookahead value="0"/>
             <IgnoresTerrain value="1"/>
             <ThrowBandYaw value="-360,-360,-360,-360"/>
             <ThrowBandPitch value="-360,-360,-360,-360"/>

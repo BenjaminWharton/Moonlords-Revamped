@@ -195,12 +195,6 @@
             <quad value="105.4792,47.621,115.3151,53.681"/>
         </shape>
     </region>
-    <region id="33">
-        <name value="lostzealotbeamout"/>
-        <shape type="rect">
-            <quad value="141.8642,99.5168,152.9096,122.6777"/>
-        </shape>
-    </region>
     <region id="34">
         <name value="archive2"/>
         <shape type="rect">
@@ -223,12 +217,6 @@
         <name value="hiddenshrine2"/>
         <shape type="rect">
             <quad value="146.8488,132.9697,150.92,140.5393"/>
-        </shape>
-    </region>
-    <region id="38">
-        <name value="Stage10 lost zealots"/>
-        <shape type="rect">
-            <quad value="91.0268,218.528,106.2653,241.833"/>
         </shape>
     </region>
     <region id="39">
