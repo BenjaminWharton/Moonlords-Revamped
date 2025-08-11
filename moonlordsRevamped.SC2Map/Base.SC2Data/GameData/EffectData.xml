@@ -13561,7 +13561,9 @@
     <CEffectDamage id="WarpoutNightwarpDMG">
         <EditorCategories value="Race:Protoss"/>
         <ArmorReduction value="1"/>
-        <Amount value="400"/>
+        <Amount value="400">
+            <AccumulatorArray value="TwilightHeroNightwarpBonusDMG"/>
+        </Amount>
     </CEffectDamage>
     <CEffectEnumArea id="WarpoutNightwarpSA">
         <EditorCategories value="Race:Protoss"/>
@@ -16978,15 +16980,6 @@
         <PeriodicEffectArray value="GravitonBeamPeriodicSet"/>
         <PeriodicPeriodArray value="0.125"/>
     </CEffectCreatePersistent>
-    <CEffectDamage id="GravitonBeamDummy2">
-        <EditorCategories value="Race:Protoss"/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
-        <Visibility value="Visible"/>
-        <Flags index="Notification" value="1"/>
-        <Flags index="NoBehaviorResponse" value="1"/>
-        <SearchFlags index="CallForHelp" value="1"/>
-    </CEffectDamage>
     <CEffectCreateHealer id="HealerDroneHealthHeal">
         <ValidatorArray value="HealerDroneTargetFilters"/>
         <EditorCategories value=""/>

@@ -581,6 +581,13 @@
         <UnitSource Value="Target"/>
         <ModificationType value="PerUnit"/>
     </CAccumulatorVitals>
+    <CAccumulatorVitals id="TwilightHeroNightwarpBonusDMG">
+        <MinAccumulation value="0"/>
+        <MaxAccumulation value="800"/>
+        <Ratio value="0.04"/>
+        <UnitSource Value="Target"/>
+        <ModificationType value="PerUnit"/>
+    </CAccumulatorVitals>
     <CAccumulatorConstant id="WarpHeroDecoyLimit">
         <Amount value="3"/>
     </CAccumulatorConstant>

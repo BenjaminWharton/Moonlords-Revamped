@@ -10452,9 +10452,9 @@
         <On Terms="Effect.BoilSA.Start" Send="Create"/>
         <Sound value="Immortal_Explode_Legs_Impact"/>
     </CActorSound>
-    <CActorMissile id="FungalGrowthAttackMissile2" parent="GenericAttackMissile" unitName="UpheavalMissile">
+    <CActorMissile id="EarthHeroUpheavalMissile" parent="GenericAttackMissile" unitName="UpheavalMissile">
         <On Terms="ActorCreation" Send="SetOpacity"/>
-        <Model value="FungalGrowthMissile"/>
+        <Model value="Invisible"/>
     </CActorMissile>
     <CActorSimple id="FortifiedFX">
         <On Terms="Behavior.Fortify.On" Send="Create"/>
@@ -11443,7 +11443,7 @@
         <On Terms="ActorCreation" Send="SetTeamColor 255,175,0 255,255,0"/>
         <AnimBlendTime value="0.450000"/>
         <BuildModel value="DarkTemplarWarpIn"/>
-        <DeathArray index="Normal" AnimProps=""/>
+        <DeathArray index="Normal" ModelLink="ParticleHeroDeath"/>
         <DeathArray index="Eat" AnimProps=""/>
         <DeathArray index="Eviscerate" AnimProps=""/>
         <DeathArray index="Fire" AnimProps=""/>
@@ -11548,6 +11548,7 @@
         <StatusBarFlags index="Magazine" value="0"/>
         <StatusBarFlags index="Workers" value="0"/>
         <StatusBarOn index="Custom" value="1"/>
+        <DeathArray index="Normal" ModelLink="TwilightHeroDeath"/>
     </CActorUnit>
     <CActorModel id="Timerift" parent="ModelAnimationStyleContinuous">
         <On Terms="Effect.TimeriftIndicator.Start" Send="Create"/>

@@ -3941,6 +3941,8 @@
         <EffectArray Reference="Actor,NightwarpImpact,Scale" Value="0.330000"/>
         <EffectArray Reference="Effect,TwilightHeroWarpoutDistributeHeal,VitalArray[Life].Change" Value="100"/>
         <EffectArray Reference="Effect,TwilightHeroWarpoutDistributeHeal,VitalArray[Shields].Change" Value="100"/>
+        <EffectArray Reference="Accumulator,TwilightHeroNightwarpBonusDMG,MaxAccumulation" Value="400"/>
+        <EffectArray Reference="Accumulator,TwilightHeroNightwarpBonusDMG,Ratio" Value="0.02"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>

@@ -9835,7 +9835,7 @@ void gf_ChampionBuff (unit lp_unit, int lp_type, bool lp_changeColor) {
         lv_type = RandomInt(1, 6);
     }
 
-    if ((UnitBehaviorCount(lp_unit, "Champion") == 0) && (UnitTypeTestAttribute(UnitGetType(lp_unit), c_unitAttributeStructure) == false)) {
+    if ((UnitBehaviorCount(lp_unit, "Champion") == 0) && (UnitTypeTestAttribute(UnitGetType(lp_unit), c_unitAttributeStructure) == false) && (UnitTypeTestAttribute(UnitGetType(lp_unit), c_unitAttributeHeroic) == false)) {
         UnitBehaviorAdd(UnitLastCreated(), "Champion", UnitLastCreated(), 1);
     }
 

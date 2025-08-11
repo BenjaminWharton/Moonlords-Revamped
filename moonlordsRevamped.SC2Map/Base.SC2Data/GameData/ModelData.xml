@@ -22,6 +22,9 @@
         <ScaleMax value="2.250000,2.250000,2.250000"/>
         <ScaleMin value="2.250000,2.250000,2.250000"/>
     </CModel>
+    <CModel id="TwilightHeroDeath" parent="DarkTemplarDeathBase">
+        <Model value="Assets\Units\Protoss\DarkTemplarDeath\DarkTemplarDeath_00.m3"/>
+    </CModel>
     <CModel id="ThorThunderOrbsMissile" parent="MissileFX">
         <Model value="Assets\GravityShotEx14.m3"/>
         <EditorCategories value="Race:Protoss"/>
@@ -550,6 +553,9 @@
         <AttachProps Id="Ref_Center" SquibType="Shield" RadiusShield="2.500000"/>
         <ScaleMax value="0.550000,0.550000,0.550000"/>
         <ScaleMin value="0.550000,0.550000,0.550000"/>
+    </CModel>
+    <CModel id="ParticleHeroDeath" parent="DarkTemplarDeathBase">
+        <Model value="Assets\Units\Protoss\DarkTemplarDeath\DarkTemplarDeath_01.m3"/>
     </CModel>
     <CModel id="VoidProtossAOECursorSplatTC" parent="UI">
         <Model value="Assets\UI\ProtossCursorEx2_Small_TC\ProtossCursorEx2_Small_TC.m3"/>

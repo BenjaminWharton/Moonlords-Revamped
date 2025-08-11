@@ -1883,6 +1883,7 @@
             <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
+        <DisableValidatorArray value="NotMassive"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NaturalSelection">
         <InfoIcon value="Assets\Textures\btn-ability-zerg-consume.dds"/>
@@ -3431,10 +3432,10 @@
             <DamageDealtScaled index="Melee" value="9"/>
             <DamageDealtScaled index="Ranged" value="9"/>
             <DamageDealtScaled index="Splash" value="9"/>
-            <DamageDealtFraction index="Spell" value="1"/>
-            <DamageDealtFraction index="Melee" value="1"/>
-            <DamageDealtFraction index="Ranged" value="1"/>
-            <DamageDealtFraction index="Splash" value="1"/>
+            <DamageTotalMultiplier index="Spell" value="1"/>
+            <DamageTotalMultiplier index="Melee" value="1"/>
+            <DamageTotalMultiplier index="Ranged" value="1"/>
+            <DamageTotalMultiplier index="Splash" value="1"/>
             <LifeArmorBonus value="1"/>
             <VitalMaxArray index="Life" value="100"/>
             <VitalMaxFractionArray index="Life" value="0.5"/>
@@ -4852,10 +4853,11 @@
         <InfoIcon value="Assets\Textures\btn-ability-zerg-plague.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Modification AttackSpeedMultiplier="1.5">
-            <DamageDealtFraction index="Spell" value="1"/>
-            <DamageDealtFraction index="Melee" value="1"/>
-            <DamageDealtFraction index="Ranged" value="1"/>
-            <DamageDealtFraction index="Splash" value="1"/>
+            <DamageDealtUnscaled index="Melee" value="0"/>
+            <DamageTotalMultiplier index="Spell" value="1"/>
+            <DamageTotalMultiplier index="Melee" value="1"/>
+            <DamageTotalMultiplier index="Ranged" value="1"/>
+            <DamageTotalMultiplier index="Splash" value="1"/>
         </Modification>
         <Duration value="0"/>
     </CBehaviorBuff>
@@ -4875,10 +4877,10 @@
         <InfoIcon value="Assets\Textures\btn-ability-terran-weaponsfree.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Modification>
-            <DamageDealtFraction index="Spell" value="0.5"/>
-            <DamageDealtFraction index="Melee" value="0.5"/>
-            <DamageDealtFraction index="Ranged" value="0.5"/>
-            <DamageDealtFraction index="Splash" value="0.5"/>
+            <DamageTotalMultiplier index="Spell" value="0.5"/>
+            <DamageTotalMultiplier index="Melee" value="0.5"/>
+            <DamageTotalMultiplier index="Ranged" value="0.5"/>
+            <DamageTotalMultiplier index="Splash" value="0.5"/>
             <DeathResponse Chance="1" Effect="FireEnchantedDamage"/>
         </Modification>
     </CBehaviorBuff>
