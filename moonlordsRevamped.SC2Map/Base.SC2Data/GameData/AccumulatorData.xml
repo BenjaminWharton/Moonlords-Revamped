@@ -4,10 +4,90 @@
     <CAccumulatorConstant id="AirHeroDebrisRotationDistance">
         <Amount value="1.2"/>
     </CAccumulatorConstant>
+    <CAccumulatorConstant id="BeamHeroInterceptCap"/>
+    <CAccumulatorConstant id="BeamHeroIntersectDamageMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.2"/>
+    </CAccumulatorConstant>
+    <CAccumulatorArithmetic id="BeamHeroLaserFenceDamage">
+        <Parameters value="0">
+            <AccumulatorArray value="DamageDataAdd"/>
+            <AccumulatorArray value="BeamHeroLaserFenceDamageMultiplier"/>
+            <AccumulatorArray value="MultiplyDot125"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="BeamHeroIntersectDamage">
+        <Parameters value="0">
+            <AccumulatorArray value="DamageDataAdd"/>
+            <AccumulatorArray value="BeamHeroIntersectDamageMultiplier"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="BeamHeroRazorBeamDamage">
+        <Parameters value="0">
+            <AccumulatorArray value="DamageDataAdd"/>
+            <AccumulatorArray value="BeamHeroRazorBeamDamageMultiplier"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="BeamHeroLaserFenceDamageMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.08"/>
+    </CAccumulatorConstant>
+    <CAccumulatorArithmetic id="BeamHeroRazorBeamDoTDamage">
+        <Parameters value="0">
+            <AccumulatorArray value="DamageDataAdd"/>
+            <AccumulatorArray value="BeamHeroRazorBeamDamageMultiplier"/>
+            <AccumulatorArray value="MultiplyDot125"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="BeamHeroRazorBeamDamageMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.24"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="BeamHeroRepulsionCap"/>
+    <CAccumulatorArithmetic id="BeamHeroSuperchargeChargeBonus">
+        <Parameters value="0">
+            <AccumulatorArray value="DefaultDataAdd"/>
+            <AccumulatorArray value="BeamHeroSuperchargeChargeMultiplier"/>
+        </Parameters>
+        <Parameters value="1">
+            <AccumulatorArray value="Add0"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="BeamHeroSuperchargeChargeMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.01"/>
+    </CAccumulatorConstant>
+    <CAccumulatorArithmetic id="BeamHeroSuperchargeDamage">
+        <Parameters value="0">
+            <AccumulatorArray value="DamageDataAdd"/>
+            <AccumulatorArray value="BeamHeroSuperchargeDamageMultiplier"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="BeamHeroSuperchargeChargeBonus"/>
+        </Parameters>
+        <Operation value="Multiply"/>
+    </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="BeamHeroSuperchargeDamageMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="1"/>
+    </CAccumulatorConstant>
+    <CAccumulatorUserData id="BeamHeroSuperchargeData">
+        <MinAccumulation value="0"/>
+        <MaxAccumulation value="100"/>
+        <Key value="Supercharge"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CAccumulatorUserData>
     <CAccumulatorConstant id="BossPower"/>
+    <CAccumulatorUserData id="DamageDataMultiply">
+        <ApplicationRule value="Multiply"/>
+        <Key value="Damage"/>
+    </CAccumulatorUserData>
     <CAccumulatorEffectAmount id="DamageInherited">
         <AmountType value="DamageInherited"/>
     </CAccumulatorEffectAmount>
+    <CAccumulatorUserData id="DamageDataAdd">
+        <Key value="Damage"/>
+    </CAccumulatorUserData>
     <CAccumulatorUserData id="DataEnergy">
         <Key value="Energy"/>
     </CAccumulatorUserData>
@@ -330,6 +410,10 @@
     </CAccumulatorConstant>
     <CAccumulatorConstant id="LuckHeroOrbOfHavocRadiusBase">
         <Amount value="3"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="MultiplyDot125">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.125"/>
     </CAccumulatorConstant>
     <CAccumulatorConstant id="MultiplyNeg1">
         <ApplicationRule value="Multiply"/>

@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CButton id="BeamHeroAnchorCancel">
+        <Icon value="Assets\Textures\btn-command-cancel.dds"/>
+        <Hotkey value="Button/Hotkey/BeamHeroAnchor"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Tooltip value="Button/Tooltip/BeamHeroAnchor"/>
+        <TooltipAppender Text="Button/Tooltip/Append/ToggleOff"/>
+        <AlertTooltip value="Button/Tooltip/BeamHeroAnchor"/>
+    </CButton>
+    <CButton id="BeamHeroLaserFence">
+        <Icon value="Assets\Textures\btn-ability-protoss-beambounce.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="BeamHeroPowerSupply">
+        <Icon value="Assets\Textures\btn-ability-protoss-prismaticrange.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="BeamHeroAnchor">
+        <Icon value="Assets\Textures\btn-ability-protoss-stasistrap.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <TooltipAppender Text="Button/Tooltip/Append/ToggleOn"/>
+    </CButton>
+    <CButton id="BeamHeroRazorBeam">
+        <Icon value="Assets\Textures\btn-ability-protoss-voidrayprismaticalignment.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="BeamHeroSupercharge">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-dragoongroundattack.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/ChargeText/BeamHeroSupercharge"/>
+    </CButton>
     <CButton id="Eviscerate">
         <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-zealotcleave.dds"/>
         <EditorCategories value="Race:Protoss"/>
@@ -142,6 +172,8 @@
         <Icon value="Assets\Textures\btn-blank.dds"/>
         <EditorCategories value="Race:Protoss"/>
         <ChargeText value="ElementalStacks2"/>
+        <Tooltip value="Button/Tooltip/ElementalStacks"/>
+        <AlertTooltip value="Button/Tooltip/ElementalStacks"/>
     </CButton>
     <CButton id="EmergencyRecall">
         <TooltipImage value="Assets\Textures\btn-ability-protoss-recall.dds"/>
@@ -160,10 +192,10 @@
         <Hotkey value="Button/Hotkey/InfuseEarth"/>
         <HotkeyAlias value="InfuseEarth"/>
     </CButton>
-    <CButton id="EternalLife">
+    <CButton id="ThunderingSiphon">
         <Icon value="Assets\EternalLifeEx1.dds"/>
-        <EditorCategories value="Race:Protoss"/>
         <Hotkey value="Button/Hotkey/InfuseWater"/>
+        <EditorCategories value="Race:Protoss"/>
         <HotkeyAlias value="InfuseWater"/>
     </CButton>
     <CButton id="ContinentalStorm">
@@ -199,10 +231,6 @@
     </CButton>
     <CButton id="Fortify">
         <Icon value="Assets\Textures\btn-upgrade-zerg-organiccarapace.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
-    <CButton id="ForwardBeam">
-        <Icon value="Assets\ForwardBeamEx2.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="Freeze">
@@ -334,17 +362,9 @@
         <Icon value="Assets\Textures\btn-upgrade-protoss-resonatingglaives.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
-    <CButton id="MobileBeam">
-        <Icon value="Assets\MobileBeam.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
     <CButton id="MusclePoison">
         <Icon value="Assets\MusclePoison.dds"/>
         <AlertIcon value="Assets\MusclePoison.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
-    <CButton id="RapidRepairs">
-        <Icon value="Assets\Textures\btn-ability-protoss-prismaticbeam.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="ResourceCollector">
@@ -427,10 +447,6 @@
         <EditorCategories value="Race:Protoss"/>
         <ChargeText value="Renew/ChargeText"/>
     </CButton>
-    <CButton id="RotatingBeam">
-        <Icon value="Assets\Textures\btn-ability-protoss-beambounce.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
     <CButton id="SandstormEarth">
         <Icon value="Assets\SandstormEx3.dds"/>
         <EditorCategories value="Race:Protoss"/>
@@ -472,10 +488,6 @@
         <EditorCategories value="Race:Protoss"/>
         <Hotkey value="Button/Hotkey/InfuseFire"/>
         <HotkeyAlias value="InfuseFire"/>
-    </CButton>
-    <CButton id="SweepingBeam">
-        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-colossuschampionslowbeam.dds"/>
-        <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="SystemsReset">
         <Icon value="Assets\Textures\btn-ability-zeratul-immortal-enternitybarrier.dds"/>

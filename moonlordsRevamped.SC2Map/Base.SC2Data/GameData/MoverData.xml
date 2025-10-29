@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CMoverMissile id="SporeLordVolatileSporesMissile" parent="WizSimpleMissile">
+        <MotionPhases index="0">
+            <Driver value="Guidance"/>
+            <Acceleration value="6"/>
+            <Speed value="8"/>
+            <MaxSpeed value="24"/>
+            <RotationLaunchActorType value="LaunchToTarget"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+        </MotionPhases>
+    </CMoverMissile>
     <CMoverMissile id="EarthHeroFortifyMissile">
         <MotionPhases>
             <Driver value="Throw"/>
@@ -24,6 +36,28 @@
             <ThrowBandPitch value="-360,-360,-360,-360"/>
             <YawPitchRoll value="5759.6484"/>
         </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="BeamHeroSuperchargeMissile" parent="WizSimpleMissile">
+        <MotionPhases index="0">
+            <Driver value="Guidance"/>
+            <Speed value="24"/>
+            <RotationLaunchActorType value="LaunchToTarget"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="BeamHeroRazorBeamMissile" parent="WizSimpleMissile">
+        <MotionPhases index="0">
+            <Driver value="Guidance"/>
+            <Speed value="10"/>
+            <Clearance value="0.75"/>
+            <RotationLaunchActorType value="LaunchToTarget"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+        </MotionPhases>
+        <RespectUnitHeightAtDestination value="1"/>
     </CMoverMissile>
     <CMoverMissile id="GravityHeroPushMissile">
         <MotionPhases>
@@ -299,26 +333,6 @@
             <AdaptableParabolaAccels index="Land" value="0"/>
         </MotionPhases>
         <MotionPhases index="1" removed="1"/>
-    </CMoverMissile>
-    <CMoverMissile id="SweepingBeamMissile" parent="WizSimpleMissile">
-        <MotionPhases index="0">
-            <Driver value="Guidance"/>
-            <Speed value="6"/>
-            <RotationLaunchActorType value="LaunchToTarget"/>
-            <ThrowBandYaw value="-360,-360,-360,-360"/>
-            <ThrowBandPitch value="-360,-360,-360,-360"/>
-            <YawPitchRoll value="5759.6484"/>
-        </MotionPhases>
-    </CMoverMissile>
-    <CMoverMissile id="RotatingBeamMissile" parent="WizSimpleMissile">
-        <MotionPhases index="0">
-            <Driver value="Guidance"/>
-            <Speed value="10"/>
-            <RotationLaunchActorType value="LaunchToTarget"/>
-            <ThrowBandYaw value="-360,-360,-360,-360"/>
-            <ThrowBandPitch value="-360,-360,-360,-360"/>
-            <YawPitchRoll value="5759.6484"/>
-        </MotionPhases>
     </CMoverMissile>
     <CMoverMissile id="Gravitate" parent="WizSimpleMissile">
         <MotionPhases index="0">
@@ -1416,16 +1430,6 @@
             <AdaptableParabolaAccels index="Land" value="2"/>
         </MotionPhases>
         <MotionPhases Driver="Guidance" MaxSpeed="6" YawPitchRoll="MAX"/>
-    </CMoverMissile>
-    <CMoverMissile id="ForwardBeamMissile" parent="WizSimpleMissile">
-        <MotionPhases index="0">
-            <Driver value="Guidance"/>
-            <Speed value="10"/>
-            <RotationLaunchActorType value="LaunchToTarget"/>
-            <ThrowBandYaw value="-360,-360,-360,-360"/>
-            <ThrowBandPitch value="-360,-360,-360,-360"/>
-            <YawPitchRoll value="5759.6484"/>
-        </MotionPhases>
     </CMoverMissile>
     <CMoverMissile id="HealingBlast" parent="WizSimpleMissile">
         <MotionPhases index="0">

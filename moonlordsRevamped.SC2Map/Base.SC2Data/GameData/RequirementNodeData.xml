@@ -154,6 +154,26 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="WindStack" State="QueuedOrBetterAtUnit"/>
     </CRequirementCountBehavior>
+    <CRequirementCountUpgrade id="CountUpgradeBeamHeroCrossCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="BeamHeroCross" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeBeamHeroDepotCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="BeamHeroDepot" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeBeamHeroLinkCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="BeamHeroLink" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeBeamHeroRadarCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="BeamHeroRadar" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeBeamHeroStretchCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="BeamHeroStretch" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBlackDeathHostsCompleteOnlyTechTreeCheat">
         <Count Link="PoisonHeroSuffering" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
@@ -180,10 +200,6 @@
     <CRequirementCountUpgrade id="CountUpgradeCondensationQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Condensation" State="QueuedOrBetter"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeCrossCompleteOnly">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="Cross" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCultivateCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
@@ -312,7 +328,6 @@
         <Count Link="TailGun" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeThorQuestRewardV3CompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="ThorQuestRewardV3" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeTimeHeroDimensionCompleteOnly">
@@ -692,6 +707,26 @@
         <OperandArray index="0" value="9"/>
         <OperandArray index="1" value="CountBehaviorToxicVaporComboCountQueuedOrBetterAtUnit"/>
     </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeBeamHeroLinkCompleteOnly0">
+        <OperandArray index="0" value="CountUpgradeBeamHeroLinkCompleteOnly"/>
+        <OperandArray index="1" value="0"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeBeamHeroLinkCompleteOnly1">
+        <OperandArray index="0" value="CountUpgradeBeamHeroLinkCompleteOnly"/>
+        <OperandArray index="1" value="1"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeBeamHeroStretchCompleteOnly1">
+        <OperandArray index="0" value="CountUpgradeBeamHeroStretchCompleteOnly"/>
+        <OperandArray index="1" value="1"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeBeamHeroStretchCompleteOnly2">
+        <OperandArray index="0" value="CountUpgradeBeamHeroStretchCompleteOnly"/>
+        <OperandArray index="1" value="2"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeBeamHeroStretchCompleteOnly3">
+        <OperandArray index="0" value="CountUpgradeBeamHeroStretchCompleteOnly"/>
+        <OperandArray index="1" value="3"/>
+    </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeBladeHeroExcaliburCompleteOnly1">
         <OperandArray index="0" value="CountUpgradeBladeHeroExcaliburCompleteOnly"/>
         <OperandArray index="1" value="1"/>
@@ -747,6 +782,14 @@
     <CRequirementGT id="GT106576107SumMulCountUpgradeShadowHeroDarkArtCompleteOnly24CountBehaviorShadowplayStackQueuedOrBetterAtUnit">
         <OperandArray index="0" value="SumMulCountUpgradeShadowHeroDarkArtCompleteOnly24"/>
         <OperandArray index="1" value="CountBehaviorShadowplayStackQueuedOrBetterAtUnit"/>
+    </CRequirementGT>
+    <CRequirementGT id="GTCountUpgradeBeamHeroDepotCompleteOnly0">
+        <OperandArray index="0" value="CountUpgradeBeamHeroDepotCompleteOnly"/>
+        <OperandArray index="1" value="0"/>
+    </CRequirementGT>
+    <CRequirementGT id="GTCountUpgradeBeamHeroDepotCompleteOnly1">
+        <OperandArray index="0" value="CountUpgradeBeamHeroDepotCompleteOnly"/>
+        <OperandArray index="1" value="1"/>
     </CRequirementGT>
     <CRequirementGT id="GTCountUpgradeDuplicateCompleteOnly1">
         <OperandArray index="0" value="CountUpgradeDuplicateCompleteOnly"/>
@@ -809,7 +852,6 @@
         <OperandArray index="1" value="8"/>
     </CRequirementLT>
     <CRequirementLT id="LTCountUpgradeThorQuestRewardV3CompleteOnlyTechTreeCheat1">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeThorQuestRewardV3CompleteOnlyTechTreeCheat"/>
         <OperandArray index="1" value="1"/>
     </CRequirementLT>

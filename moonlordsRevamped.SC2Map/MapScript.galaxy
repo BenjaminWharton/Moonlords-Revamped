@@ -365,8 +365,6 @@ void gf_TalentDialogTime (int lp_player);
 void gf_TalentDialogTwilight (int lp_player);
 void gf_TalentDialogShadow (int lp_player);
 void gf_TalentDialogProbe (int lp_player);
-void gf_TalentDialogBeam (int lp_player);
-void gf_TalentPressedBeam (int lp_row, int lp_column, int lp_player);
 void gf_TalentDialogWater (int lp_player);
 void gf_TalentDialogEarth (int lp_player);
 void gf_TalentPressedEarth (int lp_row, int lp_column, int lp_player);
@@ -376,6 +374,7 @@ void gf_TalentPressedNature (int lp_row, int lp_column, int lp_player);
 void gf_TalentDialogIllusion (int lp_player);
 void gf_TalentDialogBlade (int lp_player);
 void gf_TalentPressedBlade (int lp_row, int lp_column, int lp_player);
+void gf_TalentDialogBeam (int lp_player);
 void gf_TalentDialogLuck (int lp_player);
 void gf_TalentDialogElemental (int lp_player);
 void gf_TalentDialogGravity (int lp_player);
@@ -475,6 +474,7 @@ void gf_stagetimer (fixed lp_time);
 text gf_gametime (int lp_seconds);
 text gf_difficultytotext ();
 text gf_difficultytotextExtra (int lp_diff, text lp_extraText);
+text gf_difficultytotextNoStyle (int lp_diff, text lp_extraText);
 void gf_zergbase1 (unit lp_basebuilding, point lp_attackpoint);
 void gf_tossbase1 (unit lp_basebuilding, unit lp_basebuilding2, point lp_attackpoint, unit lp_probe);
 void gf__2pathbase (unit lp_zbase1, unit lp_zbase2, point lp_protosssbase, point lp_waypoint11, point lp_waypoint12, order lp_zattackertype1, order lp_zattackertype2, order lp_zattackertype3, order lp_zattackertype4, order lp_zattackertype5, int lp_zarmysize, bool lp_isQuest);
@@ -3843,14 +3843,41 @@ bool gf_HeroUnlockReq (int lp_winDifficulty, int lp_achievements, int lp_player)
 }
 
 void gf_CreateHeroPickButton (int lp_row, int lp_column, text lp_name, text lp_descript, int lp_heroNum, int lp_winDifficulty, int lp_achievements) {
+    // Variable Declarations
+    text lv_descript;
+    text lv_reqtext;
+
     // Automatic Variable Declarations
     const int autoCA986C8B_ae = gv_pLAYERCOUNT;
     int autoCA986C8B_var;
 
+    // Variable Initialization
+    lv_descript = lp_descript;
+
     // Implementation
     gv_heroPickButtons[(lp_heroNum)].lv_winDifficulty = lp_winDifficulty;
     gv_heroPickButtons[(lp_heroNum)].lv_achievements = lp_achievements;
-    libNtve_gf_CreateDialogItemButton(gv_heroPickDialog, 200, 50, c_anchorTopLeft, (50 + (lp_column * 200)), (50 + (lp_row * 50)), lp_descript, lp_name, "");
+    if (((lp_achievements > 0) || (lp_winDifficulty > 0))) {
+        lv_descript = (lv_descript + StringExternal("Param/Value/1A5FF3AD") + StringExternal("Param/Value/B116F9F8"));
+        if ((lp_achievements > 0)) {
+            lv_descript = (lv_descript + StringExternal("Param/Value/1937BCBB") + IntToText(lp_achievements) + StringExternal("Param/Value/14C579F9"));
+            if ((lp_winDifficulty > 0)) {
+                lv_descript = (lv_descript + StringExternal("Param/Value/F3B75E87"));
+            }
+
+        }
+
+        if ((lp_winDifficulty > 0)) {
+            lv_descript = (lv_descript + StringExternal("Param/Value/285F793D") + gf_difficultytotextNoStyle(lp_winDifficulty, StringToText("")));
+            if ((lp_winDifficulty < 5)) {
+                lv_descript = (lv_descript + StringExternal("Param/Value/3C2F4FA1"));
+            }
+
+        }
+
+    }
+
+    libNtve_gf_CreateDialogItemButton(gv_heroPickDialog, 200, 50, c_anchorTopLeft, (50 + (lp_column * 200)), (50 + (lp_row * 50)), lv_descript, lp_name, "");
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLHeroPick", PlayerGroupAll());
     gv_heroPickButtons[(lp_heroNum)].lv_dialogItem = DialogControlLastCreated();
     autoCA986C8B_var = 1;
@@ -3876,13 +3903,13 @@ void gf_HeroPickDialog () {
     gf_CreateHeroPickButton(3, 0, StringExternal("Param/Value/5378D1C7"), StringExternal("Param/Value/3B3D5CA8"), ge_Heroes_Twilight, 4, 0);
     gf_CreateHeroPickButton(3, 1, StringExternal("Param/Value/09DA4D78"), StringExternal("Param/Value/46167A58"), ge_Heroes_Shadow, 5, 0);
     gf_CreateHeroPickButton(4, 0, StringExternal("Param/Value/7F9D6028"), StringExternal("Param/Value/DC1CE5FE"), ge_Heroes_Probe, 0, 50);
-    gf_CreateHeroPickButton(4, 1, StringExternal("Param/Value/95183A42"), StringExternal("Param/Value/93DAC90D"), ge_Heroes_Beam, 0, 75);
-    gf_CreateHeroPickButton(5, 0, StringExternal("Param/Value/7AFACD25"), StringExternal("Param/Value/3FE3D6F6"), ge_Heroes_Water, 0, 100);
-    gf_CreateHeroPickButton(5, 1, StringExternal("Param/Value/875D4DB6"), StringExternal("Param/Value/85B28B11"), ge_Heroes_Earth, 0, 125);
-    gf_CreateHeroPickButton(6, 0, StringExternal("Param/Value/29F5E31C"), StringExternal("Param/Value/4DF15D48"), ge_Heroes_Air, 0, 150);
-    gf_CreateHeroPickButton(6, 1, StringExternal("Param/Value/769FDEE3"), StringExternal("Param/Value/798F7E17"), ge_Heroes_Nature, 0, 175);
-    gf_CreateHeroPickButton(7, 0, StringExternal("Param/Value/BFA91F18"), StringExternal("Param/Value/AC11AB66"), ge_Heroes_Illusion, 0, 200);
-    gf_CreateHeroPickButton(7, 1, StringExternal("Param/Value/FC24F47A"), StringExternal("Param/Value/3884B267"), ge_Heroes_Blade, 0, 225);
+    gf_CreateHeroPickButton(4, 1, StringExternal("Param/Value/7AFACD25"), StringExternal("Param/Value/3FE3D6F6"), ge_Heroes_Water, 0, 75);
+    gf_CreateHeroPickButton(5, 0, StringExternal("Param/Value/875D4DB6"), StringExternal("Param/Value/85B28B11"), ge_Heroes_Earth, 0, 100);
+    gf_CreateHeroPickButton(5, 1, StringExternal("Param/Value/29F5E31C"), StringExternal("Param/Value/4DF15D48"), ge_Heroes_Air, 0, 125);
+    gf_CreateHeroPickButton(6, 0, StringExternal("Param/Value/769FDEE3"), StringExternal("Param/Value/798F7E17"), ge_Heroes_Nature, 0, 150);
+    gf_CreateHeroPickButton(6, 1, StringExternal("Param/Value/BFA91F18"), StringExternal("Param/Value/AC11AB66"), ge_Heroes_Illusion, 0, 175);
+    gf_CreateHeroPickButton(7, 0, StringExternal("Param/Value/FC24F47A"), StringExternal("Param/Value/3884B267"), ge_Heroes_Blade, 0, 200);
+    gf_CreateHeroPickButton(7, 1, StringExternal("Param/Value/95183A42"), StringExternal("Param/Value/93DAC90D"), ge_Heroes_Beam, 0, 225);
     gf_CreateHeroPickButton(8, 0, StringExternal("Param/Value/65D4A1EC"), StringExternal("Param/Value/E2BFB6A7"), ge_Heroes_Luck, 0, 250);
     gf_CreateHeroPickButton(8, 1, StringExternal("Param/Value/5F05A936"), StringExternal("Param/Value/D26541DB"), ge_Heroes_Elemental, 0, 275);
     gf_CreateHeroPickButton(9, 0, StringExternal("Param/Value/6EA73102"), StringExternal("Param/Value/68407574"), ge_Heroes_Gravity, 6, 300);
@@ -4431,7 +4458,7 @@ text gf_achievementgettext (bool lp_title, int lp_number) {
             return StringExternal("Param/Value/5DB5A66F");
         }
         else if (auto774847E8_val == 10) {
-            return StringExternal("Param/Value/73F09363");
+            return StringExternal("Param/Value/4DF4DF88");
         }
         else if (auto774847E8_val == 11) {
             return StringExternal("Param/Value/E58D6B69");
@@ -4671,6 +4698,7 @@ void gf_achievementopen (int lp_player, int lp_targetplayer) {
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[7], (gf_achievementgettext(false, 7) + StringExternal("Param/Value/9E8E5D76") + IntToText(gf_bankgetint(gv_zbanks[lp_targetplayer], "7", "acm"))), lv_pg);
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[8], (gf_achievementgettext(false, 8) + StringExternal("Param/Value/AED0DA70") + IntToText(gf_bankgetint(gv_zbanks[lp_targetplayer], "8", "acm"))), lv_pg);
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[9], (gf_achievementgettext(false, 9) + StringExternal("Param/Value/E07194F6") + IntToText(gv_zquestssolved)), lv_pg);
+    libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[10], (gf_achievementgettext(false, 10) + StringExternal("Param/Value/E1CE9CDE") + IntToText(gv_killsThisGame[lp_targetplayer])), lv_pg);
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[33], (gf_achievementgettext(false, 33) + StringExternal("Param/Value/E681394C") + IntToText(gv_zstageslostinmax)), lv_pg);
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[45], (gf_achievementgettext(false, 45) + StringExternal("Param/Value/FCDD7783") + IntToText(gf_bankgetint(gv_zbanks[lp_targetplayer], "m", "acm"))), lv_pg);
     libNtve_gf_SetDialogItemTooltip(gv_zachievementObjects[46], (gf_achievementgettext(false, 46) + StringExternal("Param/Value/9190B4D5") + IntToText(gf_bankgetint(gv_zbanks[lp_targetplayer], "h", "acm"))), lv_pg);
@@ -6298,86 +6326,6 @@ void gf_TalentDialogProbe (int lp_player) {
     gf_CreateTalent(5, 4, lp_player, StringExternal("Param/Value/38E4C064"), StringExternal("Param/Value/910A3A6C"), "Guardian", 10);
 }
 
-void gf_TalentDialogBeam (int lp_player) {
-    // Automatic Variable Declarations
-    // Implementation
-    gf_CreateTalentDialog(lp_player, "Assets\\Textures\\ui_hots_loading_missionselect_zhybrid03.dds", ge_Heroes_Beam);
-    gf_CreateTalent(0, 0, lp_player, StringExternal("Param/Value/638C8209"), StringExternal("Param/Value/BDF879C5"), "Prolong", 0);
-    gf_CreateTalent(1, 0, lp_player, StringExternal("Param/Value/2BDCB193"), StringExternal("Param/Value/887D5C29"), "Bore", 0);
-    gf_CreateTalent(2, 0, lp_player, StringExternal("Param/Value/B9C1AC3D"), StringExternal("Param/Value/D22B2255"), "Fence", 0);
-    gf_CreateTalent(3, 0, lp_player, StringExternal("Param/Value/607FE359"), StringExternal("Param/Value/2979E410"), "Intersection", 0);
-    gf_CreateTalent(5, 0, lp_player, StringExternal("Param/Value/9D520523"), StringExternal("Param/Value/FF461A8D"), "Cross", 10);
-    gf_CreateTalent(0, 1, lp_player, StringExternal("Param/Value/1091F097"), StringExternal("Param/Value/32CFC6D0"), "Constant", 0);
-    gf_CreateTalent(1, 1, lp_player, StringExternal("Param/Value/D121E6A2"), StringExternal("Param/Value/57B01186"), "BeamHeroStretch", 0);
-    gf_CreateTalent(2, 1, lp_player, StringExternal("Param/Value/BD6A77C0"), StringExternal("Param/Value/8E785C49"), "Empower", 0);
-    gf_CreateTalent(3, 1, lp_player, StringExternal("Param/Value/860B6010"), StringExternal("Param/Value/48EA3138"), "Dispatch", 0);
-    gf_CreateTalent(5, 1, lp_player, StringExternal("Param/Value/F6030EDA"), StringExternal("Param/Value/AE178527"), "BeamHeroLink", 10);
-    gf_CreateTalent(0, 2, lp_player, StringExternal("Param/Value/4E18123E"), StringExternal("Param/Value/CABD9DD4"), "Swiftness", 0);
-    gf_CreateTalent(1, 2, lp_player, StringExternal("Param/Value/AF3461D7"), StringExternal("Param/Value/16515A14"), "Perpetual", 0);
-    gf_CreateTalent(2, 2, lp_player, StringExternal("Param/Value/7EC2CAF2"), StringExternal("Param/Value/B63AF30D"), "Vast", 0);
-    gf_CreateTalent(3, 2, lp_player, StringExternal("Param/Value/693ED578"), StringExternal("Param/Value/38F113EF"), "Cremate", 0);
-    gf_CreateTalent(5, 2, lp_player, StringExternal("Param/Value/1CFCE710"), StringExternal("Param/Value/F944002F"), "Remote", 10);
-    gf_CreateTalent(0, 3, lp_player, StringExternal("Param/Value/9788F356"), StringExternal("Param/Value/814CD280"), "Reiterate", 0);
-    gf_CreateTalent(1, 3, lp_player, StringExternal("Param/Value/1D0C1781"), StringExternal("Param/Value/676BCC38"), "MLStasis", 0);
-    gf_CreateTalent(2, 3, lp_player, StringExternal("Param/Value/7B5FEE48"), StringExternal("Param/Value/1A1680D2"), "Perforate", 0);
-    gf_CreateTalent(3, 3, lp_player, StringExternal("Param/Value/E354AB9E"), StringExternal("Param/Value/25A86A5B"), "Profusion", 0);
-    gf_CreateTalent(5, 3, lp_player, StringExternal("Param/Value/2F3CF7A7"), StringExternal("Param/Value/76F3CC60"), "Reciprocal", 10);
-    gf_CreateTalent(0, 4, lp_player, StringExternal("Param/Value/7595AB55"), StringExternal("Param/Value/9079B7F7"), "Celerity", 0);
-    gf_CreateTalent(1, 4, lp_player, StringExternal("Param/Value/B210BCFA"), StringExternal("Param/Value/17A96571"), "Overhaul", 0);
-    gf_CreateTalent(2, 4, lp_player, StringExternal("Param/Value/92E4C927"), StringExternal("Param/Value/113B4834"), "Energize", 0);
-    gf_CreateTalent(3, 4, lp_player, StringExternal("Param/Value/E899BBBD"), StringExternal("Param/Value/0703B6F1"), "Block", 0);
-    gf_CreateTalent(5, 4, lp_player, StringExternal("Param/Value/231D84BA"), StringExternal("Param/Value/2C5041D9"), "Bypass", 10);
-}
-
-void gf_TalentPressedBeam (int lp_row, int lp_column, int lp_player) {
-    // Variable Declarations
-    string lv_upgrade;
-    int lv_upgradeLevel;
-    int lv_upgradeMax;
-    int lv_dialogItem;
-    int lv_req;
-    text lv_name;
-    playergroup lv_pg;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_upgrade = gv_talents[lp_row][lp_column][lp_player].lv_upgrade;
-    lv_upgradeLevel = TechTreeUpgradeCount(lp_player, gv_talents[lp_row][lp_column][lp_player].lv_upgrade, c_techCountCompleteOnly);
-    lv_upgradeMax = CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, lv_upgrade, "MaxLevel", lp_player);
-    lv_dialogItem = gv_talents[lp_row][lp_column][lp_player].lv_dialogItem;
-    lv_req = gv_talents[lp_row][lp_column][lp_player].lv_req;
-    lv_name = gv_talents[lp_row][lp_column][lp_player].lv_name;
-    lv_pg = PlayerGroupSingle(lp_player);
-
-    // Implementation
-    if ((gf_Currentlevel() >= lv_req) && (lv_upgradeLevel < lv_upgradeMax)) {
-        TechTreeUpgradeAddLevel(lp_player, lv_upgrade, 1);
-        libNtve_gf_SetDialogItemText(lv_dialogItem, gf_GetTalentName(lv_name, lv_upgrade, lp_player), lv_pg);
-        gv_talentpointsavailable[lp_player] -= 1;
-        gv_talents[lp_row][lp_column][lp_player].lv_req = (gv_talents[lp_row][lp_column][lp_player].lv_req + gv_talents[lp_row][lp_column][lp_player].lv_reqIncrease);
-        if ((lp_row == 1) && (lp_column == 1)) {
-            if ((lv_upgradeLevel == 0)) {
-                TechTreeUpgradeAddLevel(lp_player, "BeamHeroStretch1", 1);
-            }
-            else {
-                TechTreeUpgradeAddLevel(lp_player, "BeamHeroStretch2", 1);
-            }
-        }
-
-        if ((lp_row == 5) && (lp_column == 1)) {
-            if ((lv_upgradeLevel == 0)) {
-                TechTreeUpgradeAddLevel(lp_player, "BeamHeroLink1", 1);
-            }
-            else {
-                TechTreeUpgradeAddLevel(lp_player, "BeamHeroLink2", 1);
-            }
-        }
-
-    }
-
-    libNtve_gf_SetDialogItemText(gv_talents[8][0][lp_player].lv_dialogItem, gf_GetTalentPointsTextForPlayer(lp_player), lv_pg);
-}
-
 void gf_TalentDialogWater (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
@@ -6675,6 +6623,37 @@ void gf_TalentPressedBlade (int lp_row, int lp_column, int lp_player) {
     }
 
     libNtve_gf_SetDialogItemText(gv_talents[8][0][lp_player].lv_dialogItem, gf_GetTalentPointsTextForPlayer(lp_player), lv_pg);
+}
+
+void gf_TalentDialogBeam (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    gf_CreateTalentDialog(lp_player, "Assets\\Textures\\ui_hots_loading_missionselect_zhybrid03.dds", ge_Heroes_Beam);
+    gf_CreateTalent(0, 0, lp_player, StringExternal("Param/Value/638C8209"), StringExternal("Param/Value/BDF879C5"), "BeamHeroProlong", 0);
+    gf_CreateTalent(1, 0, lp_player, StringExternal("Param/Value/607FE359"), StringExternal("Param/Value/2979E410"), "BeamHeroIntersect", 0);
+    gf_CreateTalent(2, 0, lp_player, StringExternal("Param/Value/B9C1AC3D"), StringExternal("Param/Value/D22B2255"), "BeamHeroGlean", 0);
+    gf_CreateTalent(3, 0, lp_player, StringExternal("Param/Value/2BDCB193"), StringExternal("Param/Value/887D5C29"), "BeamHeroBore", 0);
+    gf_CreateTalent(5, 0, lp_player, StringExternal("Param/Value/9D520523"), StringExternal("Param/Value/FF461A8D"), "BeamHeroCross", 10);
+    gf_CreateTalent(0, 1, lp_player, StringExternal("Param/Value/D121E6A2"), StringExternal("Param/Value/57B01186"), "BeamHeroStretch", 0);
+    gf_CreateTalent(1, 1, lp_player, StringExternal("Param/Value/1091F097"), StringExternal("Param/Value/32CFC6D0"), "BeamHeroConstant", 0);
+    gf_CreateTalent(2, 1, lp_player, StringExternal("Param/Value/BD6A77C0"), StringExternal("Param/Value/8E785C49"), "BeamHeroStall", 0);
+    gf_CreateTalent(3, 1, lp_player, StringExternal("Param/Value/860B6010"), StringExternal("Param/Value/48EA3138"), "BeamHeroDispatch", 0);
+    gf_CreateTalent(4, 1, lp_player, StringExternal("Param/Value/18FD0EBB"), StringExternal("Param/Value/FB66B7E4"), "BeamHeroMaim", 0);
+    gf_CreateTalent(5, 1, lp_player, StringExternal("Param/Value/F6030EDA"), StringExternal("Param/Value/AE178527"), "BeamHeroLink", 10);
+    gf_CreateTalent(0, 2, lp_player, StringExternal("Param/Value/4E18123E"), StringExternal("Param/Value/CABD9DD4"), "BeamHeroCelerity", 0);
+    gf_CreateTalent(1, 2, lp_player, StringExternal("Param/Value/AF3461D7"), StringExternal("Param/Value/16515A14"), "BeamHeroDepot", 0);
+    gf_CreateTalent(2, 2, lp_player, StringExternal("Param/Value/693ED578"), StringExternal("Param/Value/38F113EF"), "BeamHeroCremate", 0);
+    gf_CreateTalent(3, 2, lp_player, StringExternal("Param/Value/7EC2CAF2"), StringExternal("Param/Value/B63AF30D"), "BeamHeroOverthrow", 0);
+    gf_CreateTalent(5, 2, lp_player, StringExternal("Param/Value/1CFCE710"), StringExternal("Param/Value/F944002F"), "BeamHeroPersist", 10);
+    gf_CreateTalent(0, 3, lp_player, StringExternal("Param/Value/9788F356"), StringExternal("Param/Value/814CD280"), "BeamHeroStabilize", 0);
+    gf_CreateTalent(1, 3, lp_player, StringExternal("Param/Value/1D0C1781"), StringExternal("Param/Value/676BCC38"), "BeamHeroRepulsion", 0);
+    gf_CreateTalent(2, 3, lp_player, StringExternal("Param/Value/7B5FEE48"), StringExternal("Param/Value/1A1680D2"), "BeamHeroBallast", 0);
+    gf_CreateTalent(3, 3, lp_player, StringExternal("Param/Value/E354AB9E"), StringExternal("Param/Value/25A86A5B"), "BeamHeroCruise", 0);
+    gf_CreateTalent(5, 3, lp_player, StringExternal("Param/Value/2F3CF7A7"), StringExternal("Param/Value/76F3CC60"), "BeamHeroIntercept", 10);
+    gf_CreateTalent(0, 4, lp_player, StringExternal("Param/Value/7595AB55"), StringExternal("Param/Value/9079B7F7"), "BeamHeroStockpile", 0);
+    gf_CreateTalent(1, 4, lp_player, StringExternal("Param/Value/B210BCFA"), StringExternal("Param/Value/17A96571"), "BeamHeroKickstart", 0);
+    gf_CreateTalent(2, 4, lp_player, StringExternal("Param/Value/E899BBBD"), StringExternal("Param/Value/0703B6F1"), "BeamHeroRadar", 0);
+    gf_CreateTalent(5, 4, lp_player, StringExternal("Param/Value/231D84BA"), StringExternal("Param/Value/2C5041D9"), "BeamHeroSkyrocket", 10);
 }
 
 void gf_TalentDialogLuck (int lp_player) {
@@ -11498,6 +11477,43 @@ text gf_difficultytotextExtra (int lp_diff, text lp_extraText) {
     }
     else {
         return (StringExternal("Param/Value/0144DB44") + StringExternal("Param/Value/D6462385") + lp_extraText + StringExternal("Param/Value/F0944574"));
+    }
+}
+
+text gf_difficultytotextNoStyle (int lp_diff, text lp_extraText) {
+    // Variable Declarations
+    text lv_text;
+
+    // Automatic Variable Declarations
+    int auto393E8FE4_val;
+
+    // Variable Initialization
+
+    // Implementation
+    auto393E8FE4_val = lp_diff;
+    if (auto393E8FE4_val == 1) {
+        return (StringExternal("Param/Value/A1110E7A") + lp_extraText);
+    }
+    else if (auto393E8FE4_val == 2) {
+        return (StringExternal("Param/Value/366364B7") + lp_extraText);
+    }
+    else if (auto393E8FE4_val == 3) {
+        return (StringExternal("Param/Value/FAEB32BC") + lp_extraText);
+    }
+    else if (auto393E8FE4_val == 4) {
+        return (StringExternal("Param/Value/95D59F36") + lp_extraText);
+    }
+    else if (auto393E8FE4_val == 5) {
+        return (StringExternal("Param/Value/826542D4") + lp_extraText);
+    }
+    else if (auto393E8FE4_val == 6) {
+        return (StringExternal("Param/Value/B36CB5C3") + lp_extraText);
+    }
+    else if (auto393E8FE4_val == 7) {
+        return (StringExternal("Param/Value/534A57A7") + lp_extraText);
+    }
+    else {
+        return (StringExternal("Param/Value/4F66810E") + lp_extraText);
     }
 }
 
@@ -18913,19 +18929,19 @@ bool gt_initstatwindow_Func (bool testConds, bool runActions) {
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 300, StringExternal("Param/Value/14D1660D"), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 325, StringExternal("Param/Value/5F99A612"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 325, StringExternal("Param/Value/728BCA60"), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 350, StringExternal("Param/Value/728BCA60"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 350, StringExternal("Param/Value/6396B7FF"), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 375, StringExternal("Param/Value/6396B7FF"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 375, StringExternal("Param/Value/594CD4DA"), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 400, StringExternal("Param/Value/594CD4DA"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 400, StringExternal("Param/Value/BA557C98"), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 425, StringExternal("Param/Value/BA557C98"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 425, StringExternal("Param/Value/78AB9383"), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 450, StringExternal("Param/Value/78AB9383"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 450, StringExternal("Param/Value/FBD7F74E"), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 475, StringExternal("Param/Value/FBD7F74E"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 475, StringExternal("Param/Value/5F99A612"), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
     libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 100, 50, c_anchorTopLeft, 50, 500, StringExternal("Param/Value/21CFFE57"), ColorWithAlpha(0,0,0,0), false, 2.0);
     libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
@@ -18967,19 +18983,19 @@ bool gt_initstatwindow_Func (bool testConds, bool runActions) {
             libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 300, IntToText(gf_bankgetint(gv_zbanks[lv_i], "probehero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
             libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 325, IntToText(gf_bankgetint(gv_zbanks[lv_i], "beamhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 325, IntToText(gf_bankgetint(gv_zbanks[lv_i], "waterhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
             libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 350, IntToText(gf_bankgetint(gv_zbanks[lv_i], "waterhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 350, IntToText(gf_bankgetint(gv_zbanks[lv_i], "earthhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
             libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 375, IntToText(gf_bankgetint(gv_zbanks[lv_i], "earthhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 375, IntToText(gf_bankgetint(gv_zbanks[lv_i], "airhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
             libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 400, IntToText(gf_bankgetint(gv_zbanks[lv_i], "airhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 400, IntToText(gf_bankgetint(gv_zbanks[lv_i], "naturehero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
             libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 425, IntToText(gf_bankgetint(gv_zbanks[lv_i], "naturehero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 425, IntToText(gf_bankgetint(gv_zbanks[lv_i], "illusionhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
             libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 450, IntToText(gf_bankgetint(gv_zbanks[lv_i], "illusionhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 450, IntToText(gf_bankgetint(gv_zbanks[lv_i], "bladehero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
             libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
-            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 475, IntToText(gf_bankgetint(gv_zbanks[lv_i], "bladehero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 475, IntToText(gf_bankgetint(gv_zbanks[lv_i], "beamhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
             libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
             libNtve_gf_CreateDialogItemLabel(gv_zstatsdialog, 75, 50, c_anchorTopLeft, 50+(150*lv_i), 500, IntToText(gf_bankgetint(gv_zbanks[lv_i], "luckhero", "statscounter")), ColorWithAlpha(0,0,0,0), false, 2.0);
             libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLStats", PlayerGroupAll());
@@ -19147,9 +19163,6 @@ bool gt_TalentButtonPressed_Func (bool testConds, bool runActions) {
     }
     else if (autoF99073C8_val == ge_Heroes_Poison) {
         gf_TalentPressedPoison(lv_row, lv_column, lv_player);
-    }
-    else if (autoF99073C8_val == ge_Heroes_Beam) {
-        gf_TalentPressedBeam(lv_row, lv_column, lv_player);
     }
     else if (autoF99073C8_val == ge_Heroes_Earth) {
         gf_TalentPressedEarth(lv_row, lv_column, lv_player);
@@ -19400,7 +19413,7 @@ bool gt_unitdeath_Func (bool testConds, bool runActions) {
                     gf_achievementnew(lv_killplayer, 7);
                 }
 
-                if ((gv_killsThisGame[lv_killplayer] > gf_achievementgetvalueofnextlevel(10, lv_killplayer))) {
+                if ((gv_killsThisGame[lv_killplayer] >= gf_achievementgetvalueofnextlevel(10, lv_killplayer))) {
                     gf_achievementnew(lv_killplayer, 10);
                 }
 

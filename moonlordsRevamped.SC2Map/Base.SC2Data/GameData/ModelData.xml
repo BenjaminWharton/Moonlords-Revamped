@@ -22,6 +22,95 @@
         <ScaleMax value="2.250000,2.250000,2.250000"/>
         <ScaleMin value="2.250000,2.250000,2.250000"/>
     </CModel>
+    <CModel id="BeamHeroAnchorHeal">
+        <Model value="Assets\Effects\Zerg\MendBuff\MendBuff.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="BeamHeroAnchored">
+        <Model value="Assets\Effects\Protoss\StasisTomb\StasisTomb.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+    </CModel>
+    <CModel id="BeamHeroChargeAddition">
+        <Model value="Assets\COOP\Stetmann\Effects\GARY_Stetmann_COOP_TechnoOrbMissile\GARY_Stetmann_COOP_TechnoOrbMissile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="BeamHeroInterceptBeam">
+        <Model value="Assets\Effects\Zerg\HybridGravitronPrisonBeam\HybridGravitronPrisonBeam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="BeamHeroLaserFenceBeam">
+        <Model value="Assets\Effects\Protoss\ColossusTaldarim_Beam\ColossusTaldarim_Beam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="BeamHeroLaserFenceDebuff">
+        <Model value="Assets\Effects\Protoss\PsiStormImpact\PsiStormImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.700000,0.700000,0.700000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
+    </CModel>
+    <CModel id="BeamHeroLaserFenceEndpoint">
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_Sacrifice_Missile\HighTemplarTaldarim_Sacrifice_Missile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="BeamHeroLaserFenceIntersect">
+        <Model value="Assets\Effects\Protoss\Disruptor_PurificationNova\Disruptor_PurificationNova.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="BeamHeroRepulsionBeam">
+        <Model value="Assets\Effects\Protoss\TractorBeam\TractorBeam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+    </CModel>
+    <CModel id="BeamHeroSkyrocket">
+        <Model value="Assets\Effects\Protoss\FeedbackLaunch\FeedbackLaunch.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+    </CModel>
+    <CModel id="BeamHeroSuperchargeBeam">
+        <Model value="Assets\Effects\Terran\Swann_MegaGlobal_Beam\Swann_MegaGlobal_Beam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="BeamHeroSuperchargeTrail">
+        <Model value="Assets\Effects\Zerg\Dehaka_MammothBreath_Ground_Trail\Dehaka_MammothBreath_Ground_Trail.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="BeamHeroSuperchargeMissile">
+        <Model value="Assets\Effects\Protoss\Dragoon_Purifier_Coop_SolarBeam_Charged\Dragoon_Purifier_Coop_SolarBeam_Charged.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.000000,0.800000,0.400000"/>
+        <ScaleMin value="1.000000,0.800000,0.400000"/>
+    </CModel>
+    <CModel id="BeamHeroLaserFenceCenter">
+        <Model value="Assets\Effects\Protoss\DisruptionBlast_ChargeUp\DisruptionBlast_ChargeUp.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="BeamHeroRazorBeamMissile">
+        <Model value="Assets\Buildings\Protoss\Pylon\Pylon.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.200000,0.200000,0.200000"/>
+        <ScaleMin value="0.200000,0.200000,0.200000"/>
+    </CModel>
+    <CModel id="BeamHeroRazorBeam">
+        <Model value="Assets\Effects\Protoss\MothershipPhotonBeam\MothershipPhotonBeam.m3"/>
+        <AnimSpeed value="2.000000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+    </CModel>
     <CModel id="TwilightHeroDeath" parent="DarkTemplarDeathBase">
         <Model value="Assets\Units\Protoss\DarkTemplarDeath\DarkTemplarDeath_00.m3"/>
     </CModel>
@@ -940,10 +1029,6 @@
         <EditorCategories value="Race:Zerg"/>
         <Lighting value="SporeCrawlerMissileImpact"/>
     </CModel>
-    <CModel id="SweepingBeamStasis">
-        <Model value="Assets\Effects\Protoss\Colossus_Purifier_Coop_TimeBeam_Capsule\Colossus_Purifier_Coop_TimeBeam_Capsule.m3"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CModel>
     <CModel id="EviscerateMissile">
         <Model value="Assets\Effects\Protoss\Zealot_Purifier_Collection_Cleave_Swipe\Zealot_Purifier_Collection_Cleave_Swipe.m3"/>
         <EditorCategories value="Race:Protoss"/>
@@ -995,40 +1080,10 @@
         <ScaleMax value="2.250000,2.250000,2.250000"/>
         <ScaleMin value="2.250000,2.250000,2.250000"/>
     </CModel>
-    <CModel id="ForwardBeamBeam">
-        <Model value="Assets\Effects\Protoss\MothershipPhotonBeam\MothershipPhotonBeam.m3"/>
-        <AnimSpeed value="2.000000"/>
-        <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="0.750000,0.750000,0.750000"/>
-        <ScaleMin value="0.750000,0.750000,0.750000"/>
-    </CModel>
-    <CModel id="SweepingBeamMissile">
-        <Model value="Assets\COOP\Zeratul\Effects\Disruptor_Zeratul_COOP_Missile\Disruptor_Zeratul_COOP_Missile.m3"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CModel>
-    <CModel id="Intersection">
-        <Model value="Assets\Effects\Protoss\StalkerMissileImpact\StalkerMissileImpact.m3"/>
-        <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="3.000000,3.000000,3.000000"/>
-        <ScaleMin value="3.000000,3.000000,3.000000"/>
-    </CModel>
-    <CModel id="SweepingBeamBeam">
-        <Model value="Assets\Effects\Protoss\Colossus_Purifier_Coop_TimeBeam\Colossus_Purifier_Coop_TimeBeam.m3"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CModel>
-    <CModel id="MobileBeamBeam">
-        <Model value="Assets\Effects\Protoss\Carrier_Purifier_Coop_Beam\Carrier_Purifier_Coop_Beam.m3"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CModel>
-    <CModel id="MobileBeamSelectionModel">
-        <Model value="Assets\Units\Protoss\VoidRay\VoidRay.m3"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CModel>
     <CModel id="RotatingBeam">
         <Model value="Assets\Effects\Protoss\VoidRayBeamBounceMissile\VoidRayBeamBounceMissile.m3"/>
         <AnimSpeed value="0.500000"/>
         <EditorCategories value="Race:Protoss"/>
-        <Lighting value="ForwardBeam"/>
     </CModel>
     <CModel id="GasBombGlaze">
         <Model value="Assets\Effects\Glaze\Glaze_TychusFirebat_OilSpill\Glaze_TychusFirebat_OilSpill.m3"/>
@@ -1080,12 +1135,6 @@
         <EditorCategories value="Race:Protoss"/>
         <ScaleMax value="2.600000,2.600000,2.600000"/>
         <ScaleMin value="2.600000,2.600000,2.600000"/>
-    </CModel>
-    <CModel id="ForwardBeamMissile">
-        <Model value="Assets\Buildings\Protoss\Pylon\Pylon.m3"/>
-        <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="0.200000,0.200000,0.200000"/>
-        <ScaleMin value="0.200000,0.200000,0.200000"/>
     </CModel>
     <CModel id="CrystalRain">
         <Model value="Assets\Doodads\Aiur_PowerCrystal\Aiur_PowerCrystal.m3"/>

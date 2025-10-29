@@ -120,6 +120,73 @@
         <Pitch value="-1.000000,-1.000000"/>
         <Volume value="1.000000,1.000000"/>
     </CSound>
+    <CSound id="BeamHeroAnchor_On" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Oracle_Stasis_Beam_Start01.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="BeamHeroAnchor_Off" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Oracle_Stasis_Beam_Finished01.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="BeamHeroLaserFence_Launch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\HybridThrasher_ImpactElectric_Short_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridThrasher_ImpactElectric_Short_02.wav" FacialGroup=""/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
+    <CSound id="BeamHeroSkyrocket_Impact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Obelisk\Obelisk_ArgusLinkLaunch0.wav" FacialGroup=""/>
+        <Pitch value="5.000000,5.000000"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="BeamHeroSupercharge_Travel" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\SOA_SolarLance_Launch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarLance_Launch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarLance_Launch03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarLance_Launch04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarLance_Launch05_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SOA_SolarLance_Launch06_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Pitch value="5.000000,5.000000"/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="BeamHeroSupercharge_Launch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_Death_Laser_End_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_Death_Laser_End_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_Death_Laser_End_03.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="BeamHeroSuperchargeBig_Launch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_Death_Laser_End_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_Death_Laser_End_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_Death_Laser_End_03.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Volume value="6.000000,6.000000"/>
+    </CSound>
+    <CSound id="BeamHeroSuperchargeBig_Travel" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\BG_Explosion_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BG_Explosion_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BG_Explosion_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BG_Explosion_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BG_Explosion_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BG_Explosion_06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BG_Explosion_07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BG_Explosion_08.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BG_Explosion_09.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BG_Explosion_10.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BG_Explosion_12.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Pitch value="5.000000,5.000000"/>
+        <Volume value="6.000000,6.000000"/>
+    </CSound>
     <CSound id="BlastwaveSound" parent="Spell">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray>
@@ -522,7 +589,7 @@
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\UI_PayNow01.wav" FacialGroup=""/>
     </CSound>
-    <CSound id="IntersectionSound" parent="Spell">
+    <CSound id="BeamHeroIntersect_Launch" parent="Spell">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SparkBurstShort0.wav"/>
         <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SparkBurstShort1.wav"/>
@@ -533,7 +600,8 @@
         <DupeDestroyCount value="2"/>
         <DupeMaximumMethod value="Replace"/>
         <DupeMuteCount value="50"/>
-        <Pitch value="0.000000,2.000000"/>
+        <Pitch value="2.000000,2.000000"/>
+        <Volume value="5.000000,5.000000"/>
     </CSound>
     <CSound id="CrystalRainImpactSound" parent="Spell">
         <EditorCategories value="Race:Protoss"/>
@@ -641,7 +709,7 @@
         <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormImpact4.wav" FacialGroup=""/>
         <Flags index="Purgable" value="0"/>
     </CSound>
-    <CSound id="ForwardBeamLaunchSound" parent="Spell">
+    <CSound id="BeamHeroRazorBeam_Launch" parent="Spell">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\VoidRay\VoidRay_WeaponStart.wav"/>
         <DupeMaximumMethod value="Replace"/>

@@ -20,6 +20,581 @@
     <CEffectDamage id="BacklashRocketsU">
         <Amount value="8"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="BeamHeroAnchorInterceptAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="BeamHeroIntercept"/>
+    </CEffectApplyBehavior>
+    <CEffectUserData id="BeamHeroAnchorInterceptDataInit">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Intercept"/>
+        <Amount value="0"/>
+        <SourceKey value="Intercept"/>
+        <Operation value="Set"/>
+        <BehaviorScope Behavior="BeamHeroAnchored"/>
+    </CEffectUserData>
+    <CEffectModifyUnit id="BeamHeroAnchorInterceptMU">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.05"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectRedirectMissile id="BeamHeroAnchorInterceptRedirect">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactFilters value="-;-"/>
+    </CEffectRedirectMissile>
+    <CEffectSet id="BeamHeroAnchorInterceptSet">
+        <ValidatorArray value="BeamHeroInterceptDataLTCap"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BeamHeroAnchorInterceptDataInc"/>
+        <EffectArray value="BeamHeroAnchorInterceptRedirect"/>
+        <EffectArray value="NullifyMissile"/>
+        <EffectArray value="BeamHeroAnchorInterceptAB"/>
+        <EffectArray value="BeamHeroAnchorInterceptMU"/>
+    </CEffectSet>
+    <CEffectSet id="BeamHeroAnchorInitSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BeamHeroAnchorRepulsionDataIniit"/>
+        <EffectArray value="BeamHeroAnchorInterceptDataInit"/>
+        <EffectArray value="BeamHeroAnchorMU"/>
+    </CEffectSet>
+    <CEffectUserData id="BeamHeroAnchorInterceptDataDec">
+        <ValidatorArray value="BeamHeroInterceptDataGT0"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Intercept"/>
+        <Amount value="0"/>
+        <SourceKey value="Intercept"/>
+        <Operation value="Subtract"/>
+        <BehaviorScope Behavior="BeamHeroAnchored"/>
+    </CEffectUserData>
+    <CEffectUserData id="BeamHeroAnchorInterceptDataInc">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Intercept"/>
+        <SourceKey value="Intercept"/>
+        <BehaviorScope Behavior="BeamHeroAnchored"/>
+    </CEffectUserData>
+    <CEffectDamage id="BeamHeroLaserFenceIntersectDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="0">
+            <AccumulatorArray value="BeamHeroIntersectDamage"/>
+        </Amount>
+    </CEffectDamage>
+    <!--Adds a marker to the missile so it won't get found more than once by a single fence-->
+    <CEffectDamage id="BeamHeroLaserFenceIntersectDummy">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="BeamHeroLaserFenceIntersectSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <DebugTrace value="1"/>
+        <AreaArray index="0" Radius="0.5" Effect="BeamHeroLaserFenceIntersectDMG"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BeamHeroLaserFenceIntersectSearchMissile" parent="BSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <DebugTrace value="1"/>
+        <LaunchLocation Value="OriginPoint"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="Missile;Neutral,Enemy,Stasis,Dead,Hidden"/>
+        <AreaArray index="0" RectangleWidth="5" RectangleHeight="1" Effect="BeamHeroLaserFenceIntersectSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BeamHeroLaserFenceIntersectSet">
+        <ValidatorArray value="BeamHeroIsRazorBeamMissile"/>
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BeamHeroLaserFenceIntersectDummy"/>
+        <EffectArray value="BeamHeroLaserFenceIntersectSA"/>
+    </CEffectSet>
+    <CEffectSet id="BeamHeroLaserFenceSASet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BeamHeroLaserFenceSA"/>
+        <EffectArray value="BeamHeroLaserFenceIntersectSearchMissile"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="BeamHeroPowerSupplySkyrocketAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="BeamHeroSkyrocket"/>
+    </CEffectApplyBehavior>
+    <CEffectUserData id="BeamHeroPowerSupplySkyrocketDataDec">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Skyrocket"/>
+        <Amount value="100"/>
+        <SourceKey value="Skyrocket"/>
+        <Operation value="Subtract"/>
+        <BehaviorScope Behavior="BeamHeroPowerSupply"/>
+    </CEffectUserData>
+    <CEffectUserData id="BeamHeroPowerSupplySkyrocketSCData">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <Key value="Skyrocket"/>
+        <Amount value="100"/>
+        <SourceKey value="Skyrocket"/>
+        <ValidateMax value="99.9"/>
+        <EffectFailure value="BeamHeroPowerSupplySkyrocketSet"/>
+        <BehaviorScope Behavior="BeamHeroPowerSupply"/>
+    </CEffectUserData>
+    <CEffectUserData id="BeamHeroPowerSupplySkyrocketRBData">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <Key value="Skyrocket"/>
+        <Amount value="15"/>
+        <SourceKey value="Skyrocket"/>
+        <ValidateMax value="99.9"/>
+        <EffectFailure value="BeamHeroPowerSupplySkyrocketSet"/>
+        <BehaviorScope Behavior="BeamHeroPowerSupply"/>
+    </CEffectUserData>
+    <CEffectUserData id="BeamHeroPowerSupplySkyrocketLFData">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <Key value="Skyrocket"/>
+        <Amount value="25"/>
+        <SourceKey value="Skyrocket"/>
+        <ValidateMax value="99.9"/>
+        <EffectFailure value="BeamHeroPowerSupplySkyrocketSet"/>
+        <BehaviorScope Behavior="BeamHeroPowerSupply"/>
+    </CEffectUserData>
+    <CEffectSet id="BeamHeroPowerSupplySkyrocketSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BeamHeroPowerSupplySkyrocketDataDec"/>
+        <EffectArray value="BeamHeroPowerSupplySkyrocketAB"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="BeamHeroRazorBeamCrossCenterDummy">
+        <EditorCategories value="Race:Protoss"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicValidator value="FateDataE0OrNull"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="BeamHeroRazorBeamCrossLM">
+        <EditorCategories value="Race:Protoss"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <LaunchLocation Effect="BeamHeroRazorBeamCrossOffset" Value="TargetPoint"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchEffect value="BeamHeroRazorBeamCrossCP"/>
+        <SearchEffect value="BeamHeroRazorBeamSA"/>
+        <SearchFlags index="DynamicSearchArea" value="1"/>
+        <AmmoUnit value="BeamHeroRazorBeamMissile"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="BeamHeroRazorBeamCrossOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <OffsetVectorEndLocation Effect="BeamHeroRazorBeam"/>
+        <InitialEffect value="BeamHeroRazorBeamCrossCenterDummy"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="BeamHeroRazorBeamCrossTarget"/>
+        <PeriodicOffsetArray value="3,0,0"/>
+        <PeriodicOffsetArray value="-3,0,0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="BeamHeroRazorBeamCrossRange">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="OriginPoint"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="BeamHeroRazorBeamCrossDelay"/>
+        <PeriodicOffsetArray value="0,-6,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="BeamHeroRazorBeamCrossSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <CaseArray Validator="RangeCheckLE6" Effect="BeamHeroRazorBeamCrossDelay"/>
+        <CaseDefault value="BeamHeroRazorBeamCrossRange"/>
+    </CEffectSwitch>
+    <CEffectCreatePersistent id="BeamHeroRazorBeamCrossTarget">
+        <EditorCategories value="Race:Protoss"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="BeamHeroRazorBeamCrossLM"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="BeamHeroRazorBeamDMG">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="0">
+            <AccumulatorArray value="BeamHeroRazorBeamDamage"/>
+        </Amount>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="BeamHeroRazorBeamCrossDelay">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LaunchLocation Value="OriginPoint"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchOffset value="0,-0.1,0"/>
+        <ImpactEffect value="BeamHeroRazorBeamCrossOffset"/>
+        <AmmoUnit value="InvisibleMissile"/>
+        <Movers Link="BeamHeroRazorBeamMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="BeamHeroRazorBeamDeathSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="FateDataAdd1"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectDamage id="BeamHeroRazorBeamDoTDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="0">
+            <AccumulatorArray value="BeamHeroRazorBeamDoTDamage"/>
+        </Amount>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="BeamHeroRazorBeamDoTSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <DebugTrace value="1"/>
+        <LaunchLocation Effect="BeamHeroRazorBeam" Value="TargetPoint"/>
+        <ImpactLocation Value="OriginPoint"/>
+        <IncludeArray Value="Source"/>
+        <TargetSorts>
+            <SortArray value="TSDistanceToOriginPoint"/>
+        </TargetSorts>
+        <AreaArray index="0" RectangleWidth="0.5" RectangleHeight="12" Effect="BeamHeroRazorBeamDoTSwitch"/>
+        <AreaRelativeOffset value="0,6"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BeamHeroRazorBeamCrossDoTSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <DebugTrace value="1"/>
+        <LaunchLocation Effect="BeamHeroRazorBeamCrossTarget" Value="TargetPoint"/>
+        <ImpactLocation Effect="BeamHeroRazorBeamCrossOffset" Value="SourcePoint"/>
+        <TargetSorts>
+            <SortArray value="TSDistanceToSourcePoint"/>
+        </TargetSorts>
+        <AreaArray index="0" RectangleWidth="0.5" RectangleHeight="3" Effect="BeamHeroRazorBeamDoTDMG"/>
+        <AreaRelativeOffset value="0,1.5"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BeamHeroRazorBeamDoTSASet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="DefaultDataSet0"/>
+        <EffectArray value="BeamHeroRazorBeamDoTSA"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="BeamHeroRazorBeamCrossDoTSASet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="DefaultDataSet0"/>
+        <EffectArray value="BeamHeroRazorBeamCrossDoTSA"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSwitch id="BeamHeroRazorBeamDoTSwitch">
+        <ValidatorArray value="DefaultDataE0OrNull"/>
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="TargetIsAllyorPlayer" Effect="DefaultDataAdd1"/>
+        <CaseDefault value="BeamHeroRazorBeamDoTDMG"/>
+    </CEffectSwitch>
+    <CEffectUserData id="BeamHeroRazorBeamGleanData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Supercharge"/>
+        <Amount value="0"/>
+        <SourceKey value="Supercharge"/>
+        <EffectSuccess value="BeamHeroSuperchargeDataLimit"/>
+        <EffectFailure value="BeamHeroSuperchargeDataLimit"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CEffectUserData>
+    <CEffectCreatePersistent id="BeamHeroRazorBeamCrossCP">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="SourceUnit"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <FinalEffect value="Suicide"/>
+        <PeriodicValidator value="FateDataE0OrNull"/>
+        <PeriodicEffectArray value="BeamHeroRazorBeamCrossDoTSASet"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="BeamHeroRazorBeamSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <DebugTrace value="1"/>
+        <AreaArray index="0" RectangleWidth="0.5" Effect="BeamHeroRazorBeamDMG"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="BeamHeroSuperchargeChannelAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BeamHeroSuperchargeChannel"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="BeamHeroSuperchargeSizeDummy">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="SourceUnit"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="BeamHeroRazorBeam">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BeamHeroPowerSupplyDataDMG"/>
+        <EffectArray value="BeamHeroPowerSupplySkyrocketRBData"/>
+        <EffectArray value="BeamHeroRazorBeamGleanData"/>
+        <EffectArray value="BeamHeroRazorBeamOffset"/>
+        <EffectArray value="BeamHeroRazorBeamCrossSwitch"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="BeamHeroRazorBeamOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="BeamHeroRazorBeamLM"/>
+        <PeriodicOffsetArray value="0,-12,0"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="BeamHeroRazorBeamLM">
+        <EditorCategories value="Race:Protoss"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchEffect value="BeamHeroRazorBeamLifetime"/>
+        <SearchEffect value="BeamHeroRazorBeamSA"/>
+        <SearchFlags index="DynamicSearchArea" value="1"/>
+        <AmmoUnit value="BeamHeroRazorBeamMissile"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="BeamHeroRazorBeamLifetime">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <FinalEffect value="BeamHeroRazorBeamDeathSet"/>
+        <PeriodCount value="12"/>
+        <PeriodicEffectArray value="BeamHeroRazorBeamDoTSASet"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectUserData id="FateDataAdd1">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Fate"/>
+        <SourceKey value="Fate"/>
+    </CEffectUserData>
+    <CEffectModifyUnit id="NullifyMissile">
+        <EditorCategories value="Race:Protoss"/>
+        <ModifyFlags index="NullifyMissile" value="1"/>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="BeamHeroAnchorInterceptSA" parent="BSearchArea">
+        <ValidatorArray value="BeamHeroInterceptDataLTCap"/>
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="Missile;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray index="0" Radius="5" Effect="BeamHeroAnchorInterceptSet"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="BeamHeroAnchorMU">
+        <EditorCategories value="Race:Protoss"/>
+        <VitalArray index="Life">
+            <Change value="3.75">
+                <AccumulatorArray value="HealingMultiplier"/>
+            </Change>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="3.75">
+                <AccumulatorArray value="HealingMultiplier"/>
+            </Change>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <Change value="0.25"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="BeamHeroAnchorRepulsionAB">
+        <ValidatorArray index="0" value="BeamHeroRepulsionDataLTCap"/>
+        <ValidatorArray value="BeamHeroNoRepulsion"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="BeamHeroRepulsion"/>
+    </CEffectApplyBehavior>
+    <CEffectUserData id="BeamHeroAnchorRepulsionDataInc">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Repulsion"/>
+        <SourceKey value="Repulsion"/>
+        <BehaviorScope Behavior="BeamHeroAnchored"/>
+    </CEffectUserData>
+    <CEffectUserData id="BeamHeroAnchorRepulsionDataDec">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Repulsion"/>
+        <SourceKey value="Repulsion"/>
+        <Operation value="Subtract"/>
+        <BehaviorScope Behavior="BeamHeroAnchored"/>
+    </CEffectUserData>
+    <CEffectUserData id="BeamHeroAnchorRepulsionDataIniit">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Repulsion"/>
+        <Amount value="0"/>
+        <SourceKey value="Repulsion"/>
+        <Operation value="Set"/>
+        <BehaviorScope Behavior="BeamHeroAnchored"/>
+    </CEffectUserData>
+    <CEffectApplyForce id="BeamHeroAnchorRepulsionForce">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterUnit"/>
+        <Amount value="1"/>
+    </CEffectApplyForce>
+    <CEffectEnumArea id="BeamHeroAnchorRepulsionSA" parent="BSearchArea">
+        <ValidatorArray value="BeamHeroRepulsionDataLTCap"/>
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Massive,Structure,Hover,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray index="0" Radius="5" Effect="BeamHeroAnchorRepulsionAB"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BeamHeroAnchorPeriodicSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BeamHeroAnchorMU"/>
+        <EffectArray value="BeamHeroAnchorRepulsionSA"/>
+        <EffectArray value="BeamHeroAnchorInterceptDataDec"/>
+        <EffectArray value="BeamHeroAnchorInterceptSA"/>
+    </CEffectSet>
+    <CEffectSet id="BeamHeroLaserFence">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BeamHeroPowerSupplyDataDMG"/>
+        <EffectArray value="BeamHeroPowerSupplySkyrocketLFData"/>
+        <EffectArray value="BeamHeroLaserFenceLink0"/>
+        <EffectArray value="BeamHeroLaserFenceLink1"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="BeamHeroLaserFenceAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="BeamHeroLaserFence"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="BeamHeroLaserFenceCP">
+        <EditorCategories value="Race:Protoss"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <PeriodCount value="32"/>
+        <PeriodicEffectArray value="BeamHeroLaserFenceSASet"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="BeamHeroLaserFenceDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="0">
+            <AccumulatorArray value="BeamHeroLaserFenceDamage"/>
+        </Amount>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="BeamHeroLaserFenceLink0">
+        <ValidatorArray value="BeamHeroLinkLvl0"/>
+        <EditorCategories value="Race:Protoss"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="BeamHeroLaserFenceCP"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="BeamHeroLaserFenceLink1">
+        <ValidatorArray value="BeamHeroLinkLvl1"/>
+        <EditorCategories value="Race:Protoss"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="BeamHeroLaserFenceCP"/>
+        <PeriodicOffsetArray value="0,0.75,0"/>
+        <PeriodicOffsetArray value="0,-0.75,0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="BeamHeroLaserFenceSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <DebugTrace value="1"/>
+        <LaunchLocation Value="OriginPoint"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <AreaArray index="0" RectangleWidth="5" RectangleHeight="1" Effect="BeamHeroLaserFenceSet"/>
+        <RevealerParams ShapeExpansion="0.5"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BeamHeroLaserFenceSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BeamHeroLaserFenceAB"/>
+        <EffectArray value="BeamHeroLaserFenceDMG"/>
+    </CEffectSet>
+    <CEffectSet id="BeamHeroSupercharge">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BeamHeroPowerSupplyDataDMG"/>
+        <EffectArray value="BeamHeroPowerSupplySkyrocketSCData"/>
+        <EffectArray value="BeamHeroSuperchargeDataCopy"/>
+        <EffectArray value="BeamHeroSuperchargeDataDec"/>
+        <EffectArray value="BeamHeroSuperchargeChannelAB"/>
+        <EffectArray value="BeamHeroSuperchargeOffsetStart"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectDamage id="BeamHeroSuperchargeDMG">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="0">
+            <AccumulatorArray value="BeamHeroSuperchargeDamage"/>
+        </Amount>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectUserData id="BeamHeroPowerSupplyDataDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Damage"/>
+        <Amount value="0">
+            <AccumulatorArray value="EnergyMaxCaster"/>
+        </Amount>
+        <SourceKey value="Damage"/>
+        <Operation value="Set"/>
+    </CEffectUserData>
+    <CEffectUserData id="BeamHeroSuperchargeDataCopy">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="0">
+            <AccumulatorArray value="BeamHeroSuperchargeData"/>
+        </Amount>
+        <Operation value="Set"/>
+    </CEffectUserData>
+    <CEffectUserData id="BeamHeroSuperchargeDataInc">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Supercharge"/>
+        <Amount value="0.25"/>
+        <SourceKey value="Supercharge"/>
+        <EffectSuccess value="BeamHeroSuperchargeDataLimit"/>
+        <EffectFailure value="BeamHeroSuperchargeDataLimit"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+        <ValidatorArray value="BeamHeroNotChannelingSupercharge"/>
+    </CEffectUserData>
+    <CEffectUserData id="BeamHeroSuperchargeDataDec">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Supercharge"/>
+        <Amount value="0"/>
+        <SourceKey value="Supercharge"/>
+        <Operation value="Multiply"/>
+        <EffectSuccess value="BeamHeroSuperchargeDataLimit"/>
+        <EffectFailure value="BeamHeroSuperchargeDataLimit"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CEffectUserData>
+    <CEffectUserData id="BeamHeroSuperchargeDataLimit">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Supercharge"/>
+        <Amount value="0">
+            <AccumulatorArray value="BeamHeroSuperchargeData"/>
+        </Amount>
+        <SourceKey value="Supercharge"/>
+        <Operation value="Set"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CEffectUserData>
+    <CEffectLaunchMissile id="BeamHeroSuperchargeLM">
+        <EditorCategories value="Race:Protoss"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <ImpactLocation Value="TargetPoint"/>
+        <AmmoUnit value="BeamHeroSuperchargeMissile"/>
+        <PeriodicEffect value="BeamHeroSuperchargeSA"/>
+        <LaunchEffect value="BeamHeroSuperchargeSizeDummy"/>
+        <LaunchLocation Value="OriginPoint"/>
+        <ImpactEffect value="BeamHeroSuperchargeSA"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="BeamHeroSuperchargeOffsetStart">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterUnitOrPoint"/>
+        <InitialEffect value="BeamHeroSuperchargeRangeDataInit"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="BeamHeroSuperchargeRangeData"/>
+        <ValidatorArray value="NotCasterIsDead"/>
+        <OffsetVectorEndLocation Effect="BeamHeroSupercharge"/>
+    </CEffectCreatePersistent>
+    <CEffectUserData id="BeamHeroSuperchargeRangeData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Range"/>
+        <Amount value="5"/>
+        <SourceKey value="Range"/>
+        <Operation value="Subtract"/>
+        <ValidateMax value="500000"/>
+        <EffectSuccess value="BeamHeroSuperchargeRangeOffset"/>
+        <EffectFailure value="BeamHeroSuperchargeLM"/>
+    </CEffectUserData>
+    <CEffectUserData id="BeamHeroSuperchargeRangeDataInit">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Range"/>
+        <Amount value="100"/>
+    </CEffectUserData>
+    <CEffectCreatePersistent id="BeamHeroSuperchargeRangeOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="BeamHeroSuperchargeRangeData"/>
+        <PeriodicOffsetArray value="0,-0.6,0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <OffsetVectorStartLocation Value="OriginPoint"/>
+        <OffsetVectorEndLocation Effect="BeamHeroSupercharge"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="BeamHeroSuperchargeSA" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <DebugTrace value="1"/>
+        <AreaArray index="0" Radius="1.5" Effect="BeamHeroSuperchargeDMG"/>
+        <RevealerParams Duration="2" ShapeExpansion="1"/>
+        <ExtraRadiusBonus value="0.015">
+            <AccumulatorArray value="DefaultDataMultiply"/>
+        </ExtraRadiusBonus>
+        <ImpactLocation Value="SourceUnit"/>
+    </CEffectEnumArea>
     <CEffectSet id="BroodlingEscortLaunchB">
         <EffectArray value="ZergBossApplyDifficultyBuffFromBossPower"/>
     </CEffectSet>
@@ -50,6 +625,19 @@
     </CEffectDamage>
     <CEffectCreatePersistent id="ForgeUpgradesDummy">
         <EditorCategories value="Race:Protoss"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="LuckHeroOrbOfVitalityPervadeDMG">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="30"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <!--Triggering a damage effect directly from a damage response can cause a duplicated kill credit, so give it a delay of one game tick-->
+    <CEffectCreatePersistent id="NatureHeroFrailtyDelay">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="SourceUnit"/>
+        <InitialDelay value="0.0625"/>
+        <InitialEffect value="FrailtyDMG"/>
     </CEffectCreatePersistent>
     <CEffectApplyBehavior id="ZergBossApplyDifficultyBuffFromCaster">
         <EditorCategories value="Race:Zerg"/>
@@ -2460,7 +3048,7 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="LuckHeroOrbOfVitalityRecurCU"/>
         <EffectArray value="LuckHeroOrbOfVitalityDynamicABEnemy"/>
-        <EffectArray value="LuckHeroOrbOfVitalityEnervateDMG"/>
+        <EffectArray value="LuckHeroOrbOfVitalityPervadeDMG"/>
     </CEffectSet>
     <CEffectCreatePersistent id="LuckHeroOrbOfVitalityRecurImpactCP">
         <EditorCategories value="Race:Protoss"/>
@@ -5161,59 +5749,6 @@
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="TeleportBackToCaster"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="ForwardBeamBoreSet">
-        <ValidatorArray value="ForwardBeamBoreSetTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ForwardBeamIntersectionStasis"/>
-        <EffectArray value="ForwardBeamBoreDMG"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="ForwardBeamDMGLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker>
-            <MatchFlags index="Id" value="1"/>
-        </Marker>
-        <PeriodicEffect value="ForwardBeamDMGTravelSet"/>
-        <AmmoUnit value="InvisibleMissile"/>
-        <Movers Link="ForwardBeamMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="ForwardBeamCrossDMGLM">
-        <ValidatorArray index="0" value="ForwardBeamDMGLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/ForwardBeamDMGLM">
-            <MatchFlags index="Id" value="1"/>
-        </Marker>
-        <LaunchLocation Effect="ForwardBeamCrossOffset" Value="TargetPoint"/>
-        <PeriodicEffect value="ForwardBeamDMGSA"/>
-        <AmmoUnit value="InvisibleMissile"/>
-        <Movers Link="ForwardBeamMissile"/>
-        <Flags index="2D" value="1"/>
-    </CEffectLaunchMissile>
-    <CEffectSet id="ForwardBeamDMGTravelSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ForwardBeamDMGSuicide"/>
-        <EffectArray value="ForwardBeamDMGSA"/>
-    </CEffectSet>
-    <CEffectDamage id="ForwardBeamDMGSuicide">
-        <ValidatorArray value="IsDead"/>
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="SourceUnit"/>
-        <Flags index="Kill" value="1"/>
-    </CEffectDamage>
-    <CEffectDamage id="ForwardBeamIntersectionMDMG">
-        <ValidatorArray value="ForwardBeamIntersectionDDMGTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/ForwardBeamIntersectionDDMG"/>
-        <Amount value="10"/>
-        <Death value="Fire"/>
-    </CEffectDamage>
-    <CEffectEnumArea id="ForwardBeamIntersectionStasis">
-        <ValidatorArray value="MLHasStasisorHeroStasis"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <ImpactLocation Value="SourceUnitOrPoint"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.5" Effect="ForwardBeamIntersectionSDMG"/>
-    </CEffectEnumArea>
     <CEffectSet id="GasBombDousedSet">
         <ValidatorArray value="HasGasFire"/>
         <EditorCategories value="Race:Protoss"/>
@@ -5291,33 +5826,6 @@
         <PeriodicPeriodArray value="0.1875"/>
         <PeriodCount value="3"/>
     </CEffectCreatePersistent>
-    <CEffectDamage id="MobileBeamCremateDMG">
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="6"/>
-        <Death value="Fire"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="MobileBeamCremateInitCP">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <WhichLocation Value="TargetUnit"/>
-        <PeriodCount value="6"/>
-        <PeriodicEffectArray value="MobileBeamCremateCP"/>
-        <PeriodicPeriodArray value="0.95"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="MobileBeamCremateCP">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/MobileBeamCremateInitCP"/>
-        <WhichLocation Effect="MobileBeamCremateInitCP"/>
-        <PeriodCount value="10"/>
-        <PeriodicEffectArray value="MobileBeamCremateSA"/>
-        <PeriodicPeriodArray value="0.3"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="MobileBeamCremateSA">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1" Effect="MobileBeamCremateDMG"/>
-    </CEffectEnumArea>
     <CEffectApplyBehavior id="OrbOfDestructionResoundAB">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="OrbOfDestructionResoundBounce"/>
@@ -5379,22 +5887,6 @@
         <EffectArray value="GasBombAB"/>
         <EffectArray value="GasBombMuckAB"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="RapidRepairsDisableAB">
-        <ValidatorArray index="0" removed="1"/>
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="RapidRepairsDisable"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="RapidRepairsAB">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="RapidRepairs"/>
-    </CEffectApplyBehavior>
-    <CEffectRemoveBehavior id="RapidRepairsRB">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Caster"/>
-        <BehaviorLink value="RapidRepairs"/>
-    </CEffectRemoveBehavior>
     <CEffectModifyUnit id="RematerializeRefund">
         <EditorCategories value="Race:Protoss"/>
         <ImpactUnit Value="Caster"/>
@@ -5504,52 +5996,6 @@
         <EditorCategories value="Race:Protoss"/>
         <ImpactUnit Value="Caster"/>
     </CEffectModifyUnit>
-    <CEffectApplyBehavior id="SweepingBeamAB">
-        <ValidatorArray index="0" value="NotHeroic"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <Behavior value="DrainingBeamStasis"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="SweepingBeamABHeroic">
-        <ValidatorArray index="0" value="IsHeroic"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/DrainingBeamAB"/>
-        <Chance value="0"/>
-        <Behavior value="DrainingBeamStasisHeroic"/>
-    </CEffectApplyBehavior>
-    <CEffectDamage id="SweepingBeamDMG">
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="3"/>
-        <Death value="Disintegrate"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="SweepingBeamDummy">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Effect="SweepingBeamImpactSet"/>
-    </CEffectCreatePersistent>
-    <CEffectDamage id="ForwardBeamIntersectionDDMG">
-        <ValidatorArray value="ForwardBeamIntersectionDDMGTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="10"/>
-        <Death value="Disintegrate"/>
-    </CEffectDamage>
-    <CEffectEnumArea id="ForwardBeamIntersectionDSA">
-        <ValidatorArray value="IsSweepingBeam"/>
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.5" Effect="ForwardBeamIntersectionDDMG"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="SweepingBeamSA">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="SourceUnit"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="0.75" Effect="SweepingBeamSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="SweepingBeamSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="SweepingBeamAB"/>
-        <EffectArray value="SweepingBeamABHeroic"/>
-        <EffectArray value="SweepingBeamDMG"/>
-    </CEffectSet>
     <CEffectCreatePersistent id="EviscerateCP">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="CasterPoint"/>
@@ -5728,181 +6174,6 @@
         <EffectArray value="EviscerateSeverCU"/>
         <Chance value="0"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="ForwardBeamAB">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <Behavior value="Fenced"/>
-    </CEffectApplyBehavior>
-    <CEffectDamage id="ForwardBeamBoreDMG">
-        <EditorCategories value="Race:Protoss"/>
-        <Death value="Eviscerate"/>
-        <ValidatorArray value="noMarkers"/>
-    </CEffectDamage>
-    <CEffectEnumArea id="ForwardBeamBoreSA">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="SourceUnit"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="0.5" Effect="ForwardBeamBoreSet"/>
-    </CEffectEnumArea>
-    <CEffectCreatePersistent id="ForwardBeamCrossAnchorDeathSuicide">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="SourceUnit"/>
-        <Flags index="PersistUntilDestroyed" value="1"/>
-        <FinalEffect value="Suicide"/>
-        <PeriodicValidator value="ForwardBeamCrossAnchornotDead"/>
-        <PeriodicEffectArray value="ForwardBeamCrossDMGLM"/>
-        <PeriodicPeriodArray value="0.125"/>
-    </CEffectCreatePersistent>
-    <CEffectLaunchMissile id="ForwardBeamCrossAnchorLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <LaunchEffect value="ForwardBeamCrossLifetime"/>
-        <ImpactEffect value="ForwardBeamCrossOffset"/>
-        <AmmoUnit value="InvisibleMissile"/>
-        <Movers Link="ForwardBeamMissile"/>
-        <DeathType value="Unknown"/>
-    </CEffectLaunchMissile>
-    <CEffectCreatePersistent id="ForwardBeamCrossLifetime">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="SourceUnit"/>
-        <InitialDelay value="1.5"/>
-        <FinalEffect value="SuicideTarget"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="ForwardBeamCrossOffset">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="SourceUnit"/>
-        <OffsetVectorEndLocation Value="SourceUnit"/>
-        <PeriodCount value="2"/>
-        <PeriodicEffectArray value="ForwardBeamCrossLM"/>
-        <PeriodicOffsetArray value="3,0,0"/>
-        <PeriodicOffsetArray value="-3,0,0"/>
-    </CEffectCreatePersistent>
-    <CEffectLaunchMissile id="ForwardBeamCrossLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker>
-            <MatchFlags index="Id" value="1"/>
-        </Marker>
-        <LaunchLocation Effect="ForwardBeamCrossOffset" Value="TargetUnit"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <LaunchEffect value="ForwardBeamCrossAnchorDeathSuicide"/>
-        <PeriodicEffect value="ForwardBeamTravelSet"/>
-        <AmmoUnit value="ForwardBeamMissile"/>
-        <DeathType value="Unknown"/>
-    </CEffectLaunchMissile>
-    <CEffectDamage id="ForwardBeamDMG">
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="2.4"/>
-        <Death value="Eviscerate"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="ForwardBeamDelay">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="TargetUnit"/>
-        <InitialDelay value="0.1875"/>
-        <InitialEffect value="ForwardBeamAnchor"/>
-    </CEffectCreatePersistent>
-    <CEffectDamage id="ForwardBeamIntersectionSDMG">
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="10"/>
-        <Death value="Eviscerate"/>
-    </CEffectDamage>
-    <CEffectEnumArea id="ForwardBeamIntersectionSSA">
-        <ValidatorArray value="IsRotatingBeamUnitorMissile"/>
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="SourceUnitOrPoint"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="ForwardBeamIntersectionMSA">
-        <ValidatorArray value="IsMobileBeam"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/ForwardBeamIntersectionRSA"/>
-        <ImpactLocation Effect="ForwardBeamTravelSet" Value="SourceUnit"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.5" Effect="ForwardBeamIntersectionMDMG"/>
-    </CEffectEnumArea>
-    <CEffectEnumArea id="ForwardBeamIntersectionSearchTarget">
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <ImpactLocation Value="SourceUnit"/>
-        <SearchFilters value="-;Neutral,Enemy,Item,Dead,Hidden"/>
-        <AreaArray Radius="0.6" Effect="ForwardBeamIntersectionSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="ForwardBeamIntersectionSet">
-        <ValidatorArray value="IsIntersectable"/>
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ForwardBeamIntersectionSSA"/>
-        <EffectArray value="ForwardBeamIntersectionMSA"/>
-        <EffectArray value="ForwardBeamIntersectionDSA"/>
-    </CEffectSet>
-    <CEffectEnumArea id="ForwardBeamDMGSA">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="SourceUnit"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="0.3" Effect="ForwardBeamDMGSet"/>
-    </CEffectEnumArea>
-    <CEffectSet id="ForwardBeamInit">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ForwardBeamOffset"/>
-        <EffectArray value="ForwardBeamCrossAnchorLM"/>
-        <TargetLocationType value="Point"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="ForwardBeamLM">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <LaunchEffect value="ForwardBeamDelay"/>
-        <PeriodicEffect value="ForwardBeamTravelSet"/>
-        <AmmoUnit value="ForwardBeamMissile"/>
-        <DeathType value="Unknown"/>
-        <Marker>
-            <MatchFlags index="Id" value="1"/>
-        </Marker>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="ForwardBeamAnchor">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/ForwardBeamLM"/>
-        <ImpactLocation Value="CasterPoint"/>
-        <LaunchEffect value="ForwardBeamLifetime"/>
-        <AmmoUnit value="InvisibleMissile"/>
-        <DeathType value="Unknown"/>
-        <Movers Link="ForwardBeamMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectDamage id="ForwardBeamLMKill">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Effect="ForwardBeamAnchor" Value="SourceUnit"/>
-        <Flags index="Kill" value="1"/>
-    </CEffectDamage>
-    <CEffectDamage id="ForwardBeamAnchorKill">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/ForwardBeamLMKill"/>
-        <ImpactLocation Value="SourceUnit"/>
-        <Flags index="Kill" value="1"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="ForwardBeamLifetime">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="TargetUnit"/>
-        <ExpireEffect value="ForwardBeamLMKill"/>
-        <FinalEffect value="ForwardBeamAnchorKill"/>
-        <PeriodCount value="12"/>
-        <PeriodicEffectArray value="ForwardBeamDMGLM"/>
-        <PeriodicPeriodArray value="0.125"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="ForwardBeamOffset">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="CasterPoint"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="ForwardBeamLM"/>
-        <PeriodicOffsetArray value="0,-12,0"/>
-    </CEffectCreatePersistent>
-    <CEffectSet id="ForwardBeamDMGSet">
-        <ValidatorArray value="noMarkers"/>
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ForwardBeamAB"/>
-        <EffectArray value="ForwardBeamDMG"/>
-    </CEffectSet>
-    <CEffectSet id="ForwardBeamTravelSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="ForwardBeamIntersectionSearchTarget"/>
-        <EffectArray value="ForwardBeamBoreSA"/>
-    </CEffectSet>
     <CEffectApplyBehavior id="GasBombFireABStack">
         <ValidatorArray index="0" removed="1"/>
         <EditorCategories value="Race:Protoss"/>
@@ -6071,131 +6342,6 @@
         <Chance value="0"/>
         <Behavior value="Expose"/>
     </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="SweepingBeamAlternatingAB">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="SweepingBeamAlternatingSides"/>
-    </CEffectApplyBehavior>
-    <CEffectRemoveBehavior id="SweepingBeamAlternatingRB">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Caster"/>
-        <BehaviorLink value="SweepingBeamAlternatingSides"/>
-    </CEffectRemoveBehavior>
-    <CEffectUserData id="SweepingBeamRightData">
-        <EditorCategories value="Race:Protoss"/>
-        <Key value="Right"/>
-        <SourceKey value="Right"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="SweepingBeamRightReiterateLM"/>
-        <EffectFailure value="SweepingBeamSuicide"/>
-    </CEffectUserData>
-    <CEffectLaunchMissile id="SweepingBeamRightReiterateLM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="SourcePoint"/>
-        <ImpactLocation Effect="SweepingBeamSwitch" Value="TargetPoint"/>
-        <ImpactOffset value="0,-4,0"/>
-        <LaunchEffect value="SweepingBeamDummy"/>
-        <FinishEffect value="SweepingBeamRightData"/>
-        <PeriodicEffect value="SweepingBeamSA"/>
-        <AmmoUnit value="InvisibleMissile"/>
-        <Movers Link="SweepingBeamMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectSet id="SweepingBeamImpactSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="SweepingBeamAlternatingAB"/>
-        <EffectArray value="SweepingBeamSwitch"/>
-        <TargetLocationType value="UnitOrPoint"/>
-    </CEffectSet>
-    <CEffectUserData id="SweepingBeamLeftData">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/LeachingBeamRightData"/>
-        <Key value="Left"/>
-        <SourceKey value="Left"/>
-        <ValidateMax value="1"/>
-        <EffectSuccess value="SweepingBeamLeftReiterateLM"/>
-        <EffectFailure value="SweepingBeamSuicide"/>
-    </CEffectUserData>
-    <CEffectLaunchMissile id="SweepingBeamLeftReiterateLM">
-        <ValidatorArray index="0" value="LeachingBeamRightExtraLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/LeachingBeamRightExtraLM"/>
-        <LaunchLocation Value="SourcePoint"/>
-        <ImpactLocation Effect="SweepingBeamSwitch" Value="TargetPoint"/>
-        <ImpactOffset value="0,-4,0"/>
-        <LaunchEffect value="SweepingBeamDummy"/>
-        <FinishEffect value="SweepingBeamLeftData"/>
-        <PeriodicEffect value="SweepingBeamSA"/>
-        <AmmoUnit value="InvisibleMissile"/>
-        <Movers Link="SweepingBeamMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="SweepingBeamRightLM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Value="SourcePoint"/>
-        <ImpactOffset value="0,-4,0"/>
-        <LaunchEffect value="SweepingBeamDummy"/>
-        <FinishEffect value="SweepingBeamRightData"/>
-        <PeriodicEffect value="SweepingBeamSA"/>
-        <AmmoUnit value="InvisibleMissile"/>
-        <Movers Link="SweepingBeamMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="SweepingBeamLeftLM">
-        <ValidatorArray index="0" value="LeachingBeamRightLMTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/LeachingBeamRightLM"/>
-        <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Value="SourcePoint"/>
-        <ImpactOffset value="0,-4,0"/>
-        <LaunchEffect value="SweepingBeamDummy"/>
-        <FinishEffect value="SweepingBeamLeftData"/>
-        <PeriodicEffect value="SweepingBeamSA"/>
-        <AmmoUnit value="InvisibleMissile"/>
-        <Movers Link="SweepingBeamMissile"/>
-    </CEffectLaunchMissile>
-    <CEffectDamage id="SweepingBeamSuicide">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Effect="SweepingBeamImpactSet" Value="SourceUnit"/>
-        <Flags index="Kill" value="1"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="SweepingBeamSuicideDelay">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="TargetUnitOrPoint"/>
-        <InitialDelay value="1"/>
-        <InitialEffect value="SweepingBeamSuicide"/>
-    </CEffectCreatePersistent>
-    <CEffectSwitch id="SweepingBeamSwitch">
-        <EditorCategories value="Race:Protoss"/>
-        <CaseArray Validator="CasterHasAlternatingSides" Effect="SweepingBeamRightOffset"/>
-        <CaseArray Effect="SweepingBeamLeftOffset"/>
-        <TargetLocationType value="UnitOrPoint"/>
-    </CEffectSwitch>
-    <CEffectLaunchMissile id="SweepingBeamInitLM">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <ImpactEffect value="SweepingBeamImpactSet"/>
-        <AmmoUnit value="SweepingBeamMissile"/>
-        <ImpactRange value="0.25"/>
-        <DeathType value="Unknown"/>
-    </CEffectLaunchMissile>
-    <CEffectCreatePersistent id="SweepingBeamRightOffset">
-        <EditorCategories value="Race:Protoss"/>
-        <OffsetVectorStartLocation Value="SourcePoint"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="SweepingBeamRightLM"/>
-        <PeriodicEffectArray value="SweepingBeamLeftLM"/>
-        <PeriodicOffsetArray value="-4,0,0"/>
-        <PeriodicOffsetArray value="4,0,0"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="SweepingBeamLeftOffset">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/LeachingBeamRightOffset"/>
-        <OffsetVectorStartLocation Value="SourcePoint"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="SweepingBeamLeftLM"/>
-        <PeriodicEffectArray value="SweepingBeamRightLM"/>
-        <PeriodicOffsetArray value="4,0,0"/>
-        <PeriodicOffsetArray value="-4,0,0"/>
-    </CEffectCreatePersistent>
     <CEffectSet id="BladeHeroLeapCrashSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="BloodSwitch"/>
@@ -6330,38 +6476,6 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="Vigor"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="MobileBeamCUSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="MobileBeamAB"/>
-        <EffectArray value="MobileBeamLifetime"/>
-        <EffectArray value="MobileBeamCremateInitCP"/>
-    </CEffectSet>
-    <CEffectCreateUnit id="MobileBeamCU">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="TargetPoint"/>
-        <SpawnEffect value="MobileBeamCUSet"/>
-        <SpawnUnit value="MobileBeam"/>
-    </CEffectCreateUnit>
-    <CEffectApplyBehavior id="MobileBeamAB">
-        <EditorCategories value="Race:Protoss"/>
-        <Behavior value="MobileBeam"/>
-    </CEffectApplyBehavior>
-    <CEffectDamage id="MobileBeamDMG">
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="3"/>
-        <Death value="Fire"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="MobileBeamLifetime">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="TargetUnit"/>
-        <ExpireDelay value="6"/>
-        <ExpireEffect value="SuicideTarget"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="MobileBeamSA">
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1" Effect="MobileBeamDMG"/>
-    </CEffectEnumArea>
     <CEffectApplyBehavior id="ResourcesJackpotRichAB">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
@@ -8953,133 +9067,6 @@
         <EffectArray value="ResourcesAB"/>
         <EffectArray value="ResourcesSpareSet"/>
     </CEffectSet>
-    <CEffectApplyForce id="RotatingBeamAF">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="TargetPoint"/>
-        <WhichUnit Value="Source"/>
-        <Amount value="1"/>
-    </CEffectApplyForce>
-    <CEffectCreatePersistent id="RotatingBeamCP">
-        <EditorCategories value="Race:Protoss"/>
-        <PeriodCount value="2"/>
-        <PeriodicEffectArray value="RotatingBeamOffset"/>
-        <PeriodicOffsetArray value="0,2,0"/>
-        <PeriodicOffsetArray value="0,-2,0"/>
-        <PeriodicOffsetArray value="2,0,0"/>
-        <PeriodicOffsetArray value="-2,0,0"/>
-    </CEffectCreatePersistent>
-    <CEffectCreateUnit id="RotatingBeamCU">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Effect="RotatingBeamInit" Value="TargetPoint"/>
-        <CreateFlags index="Placement" value="0"/>
-        <CreateFlags index="ProvideFood" value="0"/>
-        <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="RotatingBeamCUSet"/>
-        <SpawnUnit value="RotatingBeamUnit"/>
-    </CEffectCreateUnit>
-    <CEffectSet id="RotatingBeamCUSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="RotatingBeamLM"/>
-        <EffectArray value="RotatingBeamDMGCP"/>
-    </CEffectSet>
-    <CEffectDamage id="RotatingBeamDMG">
-        <ValidatorArray value="noMarkers"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Amount value="3"/>
-        <Death value="Eviscerate"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="RotatingBeamDMGCP">
-        <ValidatorArray value="RotatingBeamDMGCPTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="TargetUnit"/>
-        <Flags index="PersistUntilDestroyed" value="1"/>
-        <PeriodicValidator value="TargetNotDead"/>
-        <PeriodicEffectArray value="RotatingBeamDMGLM"/>
-        <PeriodicPeriodArray value="0.125"/>
-    </CEffectCreatePersistent>
-    <CEffectLaunchMissile id="RotatingBeamDMGLM">
-        <EditorCategories value="Race:Protoss"/>
-        <Marker>
-            <MatchFlags index="Id" value="1"/>
-        </Marker>
-        <LaunchLocation Effect="RotatingBeamInit" Value="TargetPoint"/>
-        <PeriodicEffect value="RotatingBeamDMGSet"/>
-        <AmmoUnit value="InvisibleMissile"/>
-        <Movers Link="RotatingBeamMissile"/>
-        <Flags index="2D" value="1"/>
-    </CEffectLaunchMissile>
-    <CEffectEnumArea id="RotatingBeamDMGSA">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="SourceUnit"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="0.3" Effect="RotatingBeamDMG"/>
-    </CEffectEnumArea>
-    <CEffectSet id="RotatingBeamDMGSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="RotatingBeamDMGSuicide"/>
-        <EffectArray value="RotatingBeamDMGSA"/>
-    </CEffectSet>
-    <CEffectDamage id="RotatingBeamDMGSuicide">
-        <ValidatorArray value="RotatingBeamBeamEndIsDead"/>
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="SourceUnit"/>
-        <Flags index="Kill" value="1"/>
-    </CEffectDamage>
-    <CEffectCreatePersistent id="RotatingBeamLink1CP">
-        <ValidatorArray value="RotatingBeamEnhance1CPTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
-        <PeriodCount value="3"/>
-        <PeriodicEffectArray value="RotatingBeamOffset"/>
-        <PeriodicOffsetArray value="-1.73,1,0"/>
-        <PeriodicOffsetArray value="0,-2,0"/>
-        <PeriodicOffsetArray value="1.73,1,0"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="RotatingBeamForceCP">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="SourceUnit"/>
-        <OffsetVectorStartLocation Effect="RotatingBeamInit" Value="TargetPoint"/>
-        <OffsetVectorEndLocation Value="SourceUnit"/>
-        <Flags index="PersistUntilDestroyed" value="1"/>
-        <PeriodicEffectArray value="RotatingBeamAF"/>
-        <PeriodicOffsetArray value="1,-0.268,0"/>
-        <PeriodicPeriodArray value="0.0625"/>
-        <PeriodicValidator value="SourceNotDead"/>
-    </CEffectCreatePersistent>
-    <CEffectSet id="RotatingBeamInit">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="RotatingBeamCP"/>
-        <EffectArray value="RotatingBeamLink1CP"/>
-        <TargetLocationType value="Point"/>
-    </CEffectSet>
-    <CEffectLaunchMissile id="RotatingBeamLM">
-        <EditorCategories value="Race:Protoss"/>
-        <LaunchLocation Value="TargetUnit"/>
-        <ImpactLocation Effect="RotatingBeamOffset" Value="TargetPoint"/>
-        <LaunchEffect value="RotatingBeamLifetime"/>
-        <ImpactEffect value="RotatingBeamForceCP"/>
-        <AmmoUnit value=""/>
-        <Movers Link="ForwardBeamMissile"/>
-        <DeathType value="Unknown"/>
-        <Flags index="2D" value="1"/>
-    </CEffectLaunchMissile>
-    <CEffectCreatePersistent id="RotatingBeamLifetime">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="TargetUnit"/>
-        <ExpireDelay value="3"/>
-        <ExpireEffect value="Suicide"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="RotatingBeamOffset">
-        <EditorCategories value="Race:Protoss"/>
-        <OffsetVectorStartLocation Effect="RotatingBeamInit" Value="TargetPoint"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="RotatingBeamCU"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="RotatingBeamSplatSA">
-        <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2"/>
-    </CEffectEnumArea>
     <CEffectApplyBehavior id="SpawnArmyGuardianABCannon">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="ProbeCannon"/>
@@ -13269,9 +13256,7 @@
         <Behavior value="Frail"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="FrailtyDMG">
-        <ValidatorArray value="FrailtyABTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
-        <Marker Link="Effect/FrailtyAB"/>
         <ImpactLocation Value="SourceUnit"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="FungalAttackCP">

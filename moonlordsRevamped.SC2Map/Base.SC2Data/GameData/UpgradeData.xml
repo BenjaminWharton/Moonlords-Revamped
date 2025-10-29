@@ -68,13 +68,150 @@
         <EffectArray Operation="Set" Reference="Effect,AnnihilatorAbsorptionFieldRocketSA,Chance" Value="1"/>
         <EffectArray Operation="Set" Reference="Effect,AnnihilatorAbsorptionFieldRocketSet,Chance" Value="1"/>
     </CUpgrade>
-    <CUpgrade id="BeamHeroLink">
+    <CUpgrade id="BeamHeroBallast">
+        <EffectArray Operation="Subtract" Reference="Behavior,BeamHeroAnchored,DamageResponse.ModifyFraction" Value="0.15"/>
+        <EffectArray Reference="Behavior,BeamHeroAnchored,Modification.DamageTotalMultiplier[Melee]" Value="0.15"/>
+        <EffectArray Reference="Behavior,BeamHeroAnchored,Modification.DamageTotalMultiplier[Ranged]" Value="0.15"/>
+        <EffectArray Reference="Behavior,BeamHeroAnchored,Modification.DamageTotalMultiplier[Spell]" Value="0.15"/>
+        <EffectArray Reference="Behavior,BeamHeroAnchored,Modification.DamageTotalMultiplier[Splash]" Value="0.15"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="BeamHeroStretch">
+    <CUpgrade id="BeamHeroCelerity">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+        <EffectArray Reference="Effect,BeamHeroSuperchargeDataInc,Amount" Value="0.125"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroCruise">
+        <EffectArray Reference="Behavior,BeamHeroAnchored,Modification.MoveSpeedMaximum" Value="0.500000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroDepot">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <EffectArray Reference="Accumulator,BeamHeroSuperchargeData,MaxAccumulation" Value="50"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroGlean">
+        <EffectArray Reference="Effect,BeamHeroRazorBeamGleanData,Amount" Value="5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroIntersect">
+        <EffectArray Reference="Effect,BeamHeroLaserFenceIntersectSA,AreaArray[0].Radius" Value="0.5"/>
+        <EffectArray Reference="Accumulator,BeamHeroIntersectDamageMultiplier,Amount" Value="0.1"/>
+        <EffectArray Operation="Set" Reference="Effect,BeamHeroLaserFenceIntersectSearchMissile,Chance" Value="1"/>
+        <EffectArray Reference="Actor,BeamHeroLaserFenceIntersect,Scale" Value="0.500000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroKickstart">
+        <EffectArray Reference="Behavior,BeamHeroPowerSupply,Modification.VitalDamageGainArray[Energy].KindArray[Melee]" Value="0.04"/>
+        <EffectArray Reference="Behavior,BeamHeroPowerSupply,Modification.VitalDamageGainArray[Energy].KindArray[Ranged]" Value="0.04"/>
+        <EffectArray Reference="Behavior,BeamHeroPowerSupply,Modification.VitalDamageGainArray[Energy].KindArray[Spell]" Value="0.04"/>
+        <EffectArray Reference="Behavior,BeamHeroPowerSupply,Modification.VitalDamageGainArray[Energy].KindArray[Splash]" Value="0.04"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroLink">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroMaim">
+        <EffectArray Reference="Behavior,BeamHeroLaserFence,DamageResponse.ModifyFraction" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,BeamHeroLaserFence,Modification.RangedWeaponRange" Value="2"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroOverthrow">
+        <EffectArray Reference="Accumulator,BeamHeroSuperchargeDamageMultiplier,Amount" Value="0.25"/>
+        <EffectArray Reference="Effect,BeamHeroSuperchargeDMG,AttributeFactor[Massive]" Value="0.5"/>
+        <EffectArray Reference="Effect,BeamHeroSuperchargeDMG,AttributeFactor[Structure]" Value="0.5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroPersist">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+        <EffectArray Reference="Effect,BeamHeroSuperchargeDataDec,Amount" Value="0.15"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroProlong">
+        <EffectArray Reference="Effect,BeamHeroRazorBeamLifetime,PeriodCount" Value="4"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroRadar">
+        <EffectArray Reference="Behavior,BeamHeroPowerSupply,Modification.Radar" Value="40"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroRepulsion">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+        <EffectArray Reference="Accumulator,BeamHeroRepulsionCap,Amount" Value="4"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroIntercept">
+        <EffectArray Reference="Accumulator,BeamHeroInterceptCap,Amount" Value="10"/>
+        <EffectArray Reference="Effect,BeamHeroAnchorInterceptDataDec,Amount" Value="0.0625"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroSkyrocket">
+        <EffectArray Reference="Behavior,BeamHeroSkyrocket,Modification.VitalMaxAdditiveMultiplierArray[Energy]" Value="0.05"/>
+        <EffectArray Reference="Behavior,BeamHeroSkyrocket,Modification.VitalRegenMultiplier[Energy]" Value="0.1"/>
+        <EffectArray Operation="Set" Reference="Effect,BeamHeroPowerSupplySkyrocketLFData,Chance" Value="1"/>
+        <EffectArray Operation="Set" Reference="Effect,BeamHeroPowerSupplySkyrocketRBData,Chance" Value="1"/>
+        <EffectArray Operation="Set" Reference="Effect,BeamHeroPowerSupplySkyrocketSCData,Chance" Value="1"/>
+        <EffectArray Reference="Actor,BeamHeroSkyrocket,Scale" Value="0.500000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroStabilize">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+        <EffectArray Reference="Effect,BeamHeroAnchorMU,VitalArray[Life].Change" Value="1.875"/>
+        <EffectArray Reference="Effect,BeamHeroAnchorMU,VitalArray[Shields].Change" Value="1.875"/>
+        <EffectArray Reference="Effect,BeamHeroAnchorMU,VitalArray[Energy].Change" Value="0.125"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroStall">
+        <EffectArray Operation="Subtract" Reference="Behavior,BeamHeroLaserFence,Modification.MoveSpeedMultiplier" Value="0.15"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroStockpile">
+        <EffectArray Reference="Unit,BeamHero,EnergyRegenRate" Value="2.500000"/>
+        <EffectArray Reference="Unit,BeamHero,EnergyMax" Value="25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="4"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroStretch">
+        <EffectArray Reference="Effect,BeamHeroLaserFenceSA,AreaArray[0].RectangleWidth" Value="1"/>
+        <EffectArray Operation="Subtract" Reference="Actor,BeamHeroLaserFenceQuad,Quad" Value="0.000000,0.250000,0.000000,0.250000"/>
+        <EffectArray Reference="Actor,BeamHeroLaserFenceQuad,Height" Value="0.500000"/>
+        <EffectArray Reference="Effect,BeamHeroLaserFenceIntersectSearchMissile,AreaArray[0].RectangleWidth" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="3"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroCremate">
+        <EffectArray Reference="Accumulator,BeamHeroSuperchargeChargeMultiplier,Amount" Value="0.01"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroConstant">
+        <EffectArray Reference="Effect,BeamHeroLaserFenceCP,PeriodCount" Value="16"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroDispatch">
+        <EffectArray Reference="Effect,BeamHeroLaserFenceDMG,AttributeFactor[Light]" Value="0.5"/>
+        <EffectArray Reference="Accumulator,BeamHeroLaserFenceDamageMultiplier,Amount" Value="0.02"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroBore">
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <EffectArray Reference="Accumulator,BeamHeroRazorBeamDamageMultiplier,Amount" Value="0.06"/>
+        <EffectArray Reference="Effect,BeamHeroRazorBeamDMG,AttributeFactor[Armored]" Value="0.5"/>
+        <EffectArray Reference="Effect,BeamHeroRazorBeamDoTDMG,AttributeFactor[Armored]" Value="0.5"/>
+    </CUpgrade>
+    <CUpgrade id="BeamHeroCross">
+        <EffectArray Operation="Set" Reference="Effect,BeamHeroRazorBeamCrossSwitch,Chance" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <LeaderAlias value="Crossold"/>
     </CUpgrade>
     <CUpgrade id="EarthHeroPassive">
         <EffectArray Reference="Unit,EarthHero,LifeMax" Value="30"/>
@@ -382,18 +519,9 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Block">
-        <EffectArray Operation="Subtract" Reference="Behavior,RapidRepairsController,DamageResponse.ModifyFraction" Value="0.8"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
     <CUpgrade id="BoilOver">
         <EffectArray Operation="Set" Reference="Effect,WaterHeroBoilOverChance,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Bore">
-        <EffectArray Reference="Effect,ForwardBeamBoreDMG,Amount" Value="10"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="Boundless">
         <EffectArray Reference="Accumulator,LuckHeroOrbOfVitalityRadiusMultiplier,Amount" Value="0.3"/>
@@ -422,11 +550,6 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
-    <CUpgrade id="Bypass">
-        <EffectArray Operation="Subtract" Reference="Effect,RapidRepairsDisableAB,Chance" Value="0.3"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
     <CUpgrade id="Cannon">
         <EffectArray Operation="Set" Reference="Effect,HealingStationCannonAB,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -441,11 +564,6 @@
         <EffectArray Reference="Effect,FireInfusionShieldMU,VitalArray[Shields].Change" Value="3.25"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Celerity">
-        <EffectArray Operation="Subtract" Reference="Behavior,RapidRepairsDisable,Duration" Value="2.500000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="ChallengePylonBuff">
         <EffectArray Reference="Unit,Pylon,LifeMax" Value="100"/>
@@ -484,11 +602,6 @@
     <CUpgrade id="ShadowHeroCondemnation">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Constant">
-        <EffectArray Reference="Effect,RotatingBeamLifetime,ExpireDelay" Value="1.000000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
     <CUpgrade id="PoisonHeroContainment">
         <EffectArray Reference="Behavior,PoisonCloud,Modification.DamageTotalMultiplier[Melee]" Value="0.05"/>
         <EffectArray Reference="Behavior,PoisonCloud,Modification.DamageTotalMultiplier[NoProc]" Value="0.05"/>
@@ -507,14 +620,6 @@
         <EffectArray Operation="Set" Reference="Effect,BladeHeroLeapCrashSA,AreaArray[0].MaxCount" Value="4294967295"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Cremate">
-        <EffectArray Operation="Set" Reference="Effect,MobileBeamCremateInitCP,Chance" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Cross">
-        <EffectArray Operation="Set" Reference="Effect,ForwardBeamCrossAnchorLM,Chance" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="ShadowHeroDarkness">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -543,11 +648,6 @@
     <CUpgrade id="Deviance">
         <EffectArray Reference="Effect,LuckHeroOrbOfAttritionDevianceRand,Chance" Value="0.4"/>
         <EffectArray Operation="Set" Reference="Effect,LuckHeroOrbOfAttritionDevianceCP,Chance" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Dispatch">
-        <EffectArray Reference="Effect,RotatingBeamDMG,Amount" Value="0.75"/>
-        <EffectArray Reference="Effect,RotatingBeamDMG,AttributeFactor[Light]" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Divination">
@@ -608,18 +708,7 @@
         <EffectArray Operation="Set" Reference="Accumulator,LuckHeroOrbOfHavocElectric,MaxAccumulation" Value="7"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="Empower">
-        <EffectArray Reference="Actor,RotatingBeamBeam,Scale" Value="0.350000"/>
-        <EffectArray Reference="Effect,RotatingBeamDMGSA,AreaArray[0].Radius" Value="0.15"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="2"/>
-    </CUpgrade>
     <CUpgrade id="Encompass">
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="2"/>
-    </CUpgrade>
-    <CUpgrade id="Energize">
-        <EffectArray Reference="Behavior,RapidRepairs,Modification.VitalRegenMultiplier[Energy]" Value="0.25"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -693,19 +782,6 @@
         <EffectArray Operation="Set" Reference="Effect,IllusionHeroProjectionStealthCooldown,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="BeamHeroLink1">
-        <EffectArray Operation="Subtract" Reference="Effect,RotatingBeamCP,Chance" Value="1"/>
-        <EffectArray Reference="Effect,RotatingBeamLink1CP,Chance" Value="1"/>
-        <EffectArray Reference="Effect,RotatingBeamCP,PeriodCount" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="BeamHeroLink2">
-        <EffectArray Reference="Effect,RotatingBeamCP,Chance" Value="1"/>
-        <EffectArray Operation="Subtract" Reference="Effect,RotatingBeamLink1CP,Chance" Value="1"/>
-        <EffectArray Reference="Effect,RotatingBeamCP,PeriodCount" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <LeaderAlias value="BeamHeroLink1"/>
-    </CUpgrade>
     <CUpgrade id="ProbeHeroEquip">
         <EffectArray Operation="Set" Reference="Effect,EquipAB,Chance" Value="1"/>
         <EffectArray Reference="Effect,EquipSA,AreaArray[0].MaxCount" Value="1"/>
@@ -739,12 +815,6 @@
     <CUpgrade id="Fanatical">
         <EffectArray Operation="Set" Reference="Effect,BloodFanaticalAB,Chance" Value="1"/>
         <EffectArray Reference="Behavior,Fanatical,Duration" Value="5.000000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="2"/>
-    </CUpgrade>
-    <CUpgrade id="Fence">
-        <EffectArray Operation="Subtract" Reference="Behavior,Fenced,Modification.MoveSpeedMultiplier" Value="0.25"/>
-        <EffectArray Operation="Set" Reference="Effect,ForwardBeamAB,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -812,11 +882,6 @@
         <EffectArray Reference="Effect,WaterHeroFloodCP,PeriodCount" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
-    </CUpgrade>
-    <CUpgrade id="Intersection">
-        <EffectArray Operation="Set" Reference="Effect,ForwardBeamIntersectionSearchTarget,Chance" Value="1"/>
-        <EffectArray Operation="Set" Reference="Effect,ForwardBeamIntersectionStasis,Chance" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Jackpot">
         <EffectArray Reference="Effect,ResourcesJackpotSet,Chance" Value="0.04"/>
@@ -947,61 +1012,6 @@
         <EffectArray Reference="Effect,ResourcesSpareMU,VitalArray[Shields].Change" Value="5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
-    </CUpgrade>
-    <CUpgrade id="MLStasis">
-        <EffectArray Reference="Effect,SweepingBeamAB,Chance" Value="0.02"/>
-        <EffectArray Reference="Effect,SweepingBeamABHeroic,Chance" Value="0.02"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Overhaul">
-        <EffectArray Reference="Behavior,RapidRepairs,Modification.VitalRegenMultiplier[Life]" Value="2.5"/>
-        <EffectArray Reference="Behavior,RapidRepairs,Modification.VitalRegenMultiplier[Shields]" Value="2.5"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="2"/>
-    </CUpgrade>
-    <CUpgrade id="Perforate">
-        <EffectArray Reference="Effect,SweepingBeamDMG,Amount" Value="0.6"/>
-        <EffectArray Reference="Behavior,DrainingBeamStasis,DamageResponse.ModifyFraction" Value="0.1"/>
-        <EffectArray Reference="Behavior,DrainingBeamStasisHeroic,DamageResponse.ModifyFraction" Value="0.1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="2"/>
-    </CUpgrade>
-    <CUpgrade id="Perpetual">
-        <EffectArray Reference="Effect,MobileBeamLifetime,ExpireDelay" Value="2.000000"/>
-        <EffectArray Reference="Effect,MobileBeamCremateInitCP,PeriodCount" Value="2"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Profusion">
-        <EffectArray Reference="Effect,SweepingBeamSA,AreaArray[0].Radius" Value="0.25"/>
-        <EffectArray Reference="Behavior,DrainingBeamStasis,Duration" Value="2.000000"/>
-        <EffectArray Reference="Behavior,DrainingBeamStasisHeroic,Duration" Value="2.000000"/>
-        <EffectArray Reference="Actor,SweepingBeamBeam,Scale" Value="0.250000"/>
-        <EffectArray Reference="Actor,SweepingBeamMissile,Scale" Value="0.250000"/>
-        <EffectArray Reference="Actor,SweepingBeamGuide,Width" Value="0.250000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Prolong">
-        <EffectArray Reference="Effect,ForwardBeamLifetime,PeriodCount" Value="4"/>
-        <EffectArray Reference="Effect,ForwardBeamCrossLifetime,InitialDelay" Value="0.500000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Reciprocal">
-        <EffectArray Reference="Effect,SweepingBeamRightOffset,PeriodCount" Value="1"/>
-        <EffectArray Reference="Effect,SweepingBeamLeftOffset,PeriodCount" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Reiterate">
-        <EffectArray Reference="Effect,SweepingBeamRightData,ValidateMax" Value="1"/>
-        <EffectArray Reference="Effect,SweepingBeamLeftData,ValidateMax" Value="1"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
-    </CUpgrade>
-    <CUpgrade id="Remote">
-        <EffectArray Operation="Set" Reference="Behavior,MobileBeam,Modification.StateFlags[Unselectable]" Value="0"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Rich">
         <EffectArray Reference="Effect,CrystalRainRichCU,Chance" Value="0.025"/>
@@ -1213,26 +1223,10 @@
     <CUpgrade id="LightningHeroStaticEnergy">
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
-    <CUpgrade id="BeamHeroStretch1">
-        <EffectArray Operation="Set" Reference="Effect,RotatingBeamForceCP,PeriodicOffsetArray[0]" Value="1.000000,-0.188000,0.000000"/>
-        <EffectArray Reference="Unit,RotatingBeamUnit,Speed" Value="0.500000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="BeamHeroStretch2">
-        <EffectArray Operation="Set" Reference="Effect,RotatingBeamForceCP,PeriodicOffsetArray[0]" Value="1.000000,-0.146000,0.000000"/>
-        <EffectArray Reference="Unit,RotatingBeamUnit,Speed" Value="0.500000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <LeaderAlias value="BeamHeroStretch1"/>
-    </CUpgrade>
     <CUpgrade id="Supplement">
         <EffectArray Operation="Set" Reference="Effect,OrbOfDestructionSupplimentChance,Chance" Value="1"/>
         <EffectArray Reference="Effect,OrbOfDestructionSupplimentData,Chance" Value="0.5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Swiftness">
-        <EffectArray Reference="Unit,MobileBeam,Speed" Value="0.398400"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="TailGun">
         <EffectArray Reference="Effect,ProbeCannonTailGunOffset,Chance" Value="0.5"/>
@@ -1388,15 +1382,6 @@
     <CUpgrade id="Variety">
         <EffectArray Operation="Set" Reference="Effect,NatureHeroFruitVarietySet,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-    </CUpgrade>
-    <CUpgrade id="Vast">
-        <EffectArray Reference="Effect,MobileBeamSA,AreaArray[0].Radius" Value="0.25"/>
-        <EffectArray Reference="Actor,MobileBeamBeam,Scale" Value="0.250000"/>
-        <EffectArray Reference="Unit,MobileBeam,Radius" Value="0.125"/>
-        <EffectArray Reference="Effect,MobileBeamCremateSA,AreaArray[0].Radius" Value="0.25"/>
-        <EffectArray Reference="Actor,MobileBeamCremate,Scale" Value="0.250000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="Vigor">
         <EffectArray Operation="Subtract" Reference="Behavior,Vigor,DamageResponse.ModifyFraction" Value="0.15"/>

@@ -18,6 +18,12 @@
         <Descending value="1"/>
         <Behavior value="GravityHeroElevated"/>
     </CTargetSortBehaviorCount>
+    <CTargetSortDistance id="TSDistanceToOriginPoint">
+        <WhichLocation Value="OriginPoint"/>
+    </CTargetSortDistance>
+    <CTargetSortDistance id="TSDistanceToSourcePoint">
+        <WhichLocation Value="SourcePoint"/>
+    </CTargetSortDistance>
     <CTargetSortValidator id="WaterHeroNotSoakedNotFrozen">
         <WhichUnit Value="Target"/>
         <Descending value="1"/>

@@ -65,10 +65,208 @@
         <Value value="7"/>
         <Behavior value="AttritionOrbCounter"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="BeamHeroCasterIsAnchored">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="BeamHeroAnchored"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitType id="BeamHeroIsRazorBeamMissile">
+        <Value value="BeamHeroRazorBeamMissile"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="BeamHeroNotChannelingSupercharge">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BeamHeroSuperchargeChannel"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="BeamHeroStretchLvl1">
+        <Find value="1"/>
+        <Value value="BeamHeroStretchLvl1"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="BeamHeroDepotGT1">
+        <Find value="1"/>
+        <Value value="BeamHeroDepotGT1"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="BeamHeroHasRadar">
+        <Find value="1"/>
+        <Value value="BeamHeroHasRadar"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="BeamHeroHasCross">
         <Find value="1"/>
         <Value value="BeamHeroHasCross"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitAbil id="BeamHeroHasSuperchargeAbility">
+        <Find value="1"/>
+        <AbilLink value="BeamHeroSupercharge"/>
+    </CValidatorUnitAbil>
+    <CValidatorPlayerRequirement id="BeamHeroLinkLvl0">
+        <Find value="1"/>
+        <Value value="BeamHeroLinkLvl0"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorEffectTreeUserData id="BeamHeroInterceptDataGT0">
+        <Compare value="GT"/>
+        <Key value="Intercept"/>
+        <BehaviorScope Behavior="BeamHeroAnchored"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroInterceptDataLTCap">
+        <Compare value="LT"/>
+        <Key value="Intercept"/>
+        <Value value="0">
+            <AccumulatorArray value="BeamHeroInterceptCap"/>
+        </Value>
+        <BehaviorScope Behavior="BeamHeroAnchored"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorPlayerRequirement id="BeamHeroDepotGT0">
+        <Find value="1"/>
+        <Value value="BeamHeroDepotGT0"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="BeamHeroLinkLvl1">
+        <Find value="1"/>
+        <Value value="BeamHeroLinkLvl1"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorEffectTreeUserData id="BeamHeroRepulsionDataLTCap">
+        <Compare value="LT"/>
+        <Key value="Repulsion"/>
+        <Value value="0">
+            <AccumulatorArray value="BeamHeroRepulsionCap"/>
+        </Value>
+        <BehaviorScope Behavior="BeamHeroAnchored"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorUnitCompareBehaviorCount id="BeamHeroNoRepulsion">
+        <Behavior value="BeamHeroRepulsion"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="BeamHeroStretchLvl2">
+        <Find value="1"/>
+        <Value value="BeamHeroStretchLvl2"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="BeamHeroStretchLvl3">
+        <Find value="1"/>
+        <Value value="BeamHeroStretchLvl3"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE10">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="10"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE110">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="110"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE120">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="120"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE130">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="130"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE140">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="140"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE150">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="150"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE160">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="160"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE170">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="170"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE180">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="180"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE190">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="190"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE200">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="200"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataLT10">
+        <Compare value="LT"/>
+        <Key value="Supercharge"/>
+        <Value value="10"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE20">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="20"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE30">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="30"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE40">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="40"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE50">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="50"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE60">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="60"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE70">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="70"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE80">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="80"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE90">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="90"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="BeamHeroSuperchargeDataGTE100">
+        <Compare value="GE"/>
+        <Key value="Supercharge"/>
+        <Value value="100"/>
+        <BehaviorScope Behavior="BeamHeroSupercharge"/>
+    </CValidatorEffectTreeUserData>
     <CValidatorUnitCompareBehaviorCount id="BladeHeroBloodHPLT500">
         <WhichUnit Value="Caster"/>
         <Compare value="LT"/>
@@ -102,6 +300,14 @@
     </CValidatorUnitCompareVital>
     <CValidatorEffectTreeUserData id="DefaultDataE0">
         <Key value="Default"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataEDot5">
+        <Key value="Default"/>
+        <Value value="0.5"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataE1Dot5">
+        <Key value="Default"/>
+        <Value value="1.5"/>
     </CValidatorEffectTreeUserData>
     <CValidatorEffectTreeUserData id="DefaultDataGT0">
         <Compare value="GT"/>
@@ -151,6 +357,106 @@
         <Key value="Default"/>
         <Value value="10"/>
     </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE10">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="10"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE110">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="110"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE120">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="120"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE130">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="130"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE140">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="140"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE150">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="150"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE160">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="160"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE170">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="170"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE180">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="180"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE190">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="190"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE200">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="200"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE20">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="20"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE30">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="30"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE40">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="40"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE50">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="50"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE60">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="60"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE70">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="70"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE80">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="80"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE90">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="90"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE100">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="100"/>
+    </CValidatorEffectTreeUserData>
     <CValidatorUnitCompareBehaviorCount id="DemolisherHasReactiveShields">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
@@ -172,6 +478,11 @@
         <WhichLocation Value="TargetUnitOrPoint"/>
         <Compare value="LT"/>
         <Range value="14"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="DistanceFromCasterLT7">
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <Compare value="LT"/>
+        <Range value="7"/>
     </CValidatorLocationCompareRange>
     <CValidatorLocationCompareRange id="DistanceFromCasterLT25">
         <WhichLocation Value="TargetUnitOrPoint"/>
@@ -212,6 +523,13 @@
         <Find value="1"/>
         <Value value="EarthHeroHasPassive2"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareVital id="CasterEnergyGE80Percent">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.8"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
     <CValidatorPlayerRequirement id="ExpelComboReq1">
         <Find value="1"/>
         <Value value="ExpelCombo1"/>
@@ -252,6 +570,10 @@
         <Find value="1"/>
         <Value value="ExpelCombo10"/>
     </CValidatorPlayerRequirement>
+    <CValidatorEffectTreeUserData id="FateDataE0OrNull">
+        <CheckExistence value="0"/>
+        <Key value="Fate"/>
+    </CValidatorEffectTreeUserData>
     <CValidatorUnitCompareBehaviorCount id="GatewayHeroCasterHasEquipHealer">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
@@ -610,6 +932,18 @@
         <WhichUnit Value="Caster"/>
         <Filters value="-;Invulnerable"/>
     </CValidatorUnitFilters>
+    <CValidatorCombine id="NotIsDead">
+        <CombineArray value="IsDead"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="NotSourceIsDead">
+        <CombineArray value="SourceIsDead"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="NotCasterIsDead">
+        <CombineArray value="CasterIsDead"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
     <CValidatorUnitFilters id="SourceNotHeroic">
         <WhichUnit Value="Caster"/>
         <Filters value="-;Heroic"/>
@@ -704,14 +1038,6 @@
         <Range value="5"/>
         <Value Value="SourceUnit"/>
     </CValidatorLocationCompareRange>
-    <CValidatorUnitCompareBehaviorCount id="MLHasStasis">
-        <Value value="1"/>
-        <Behavior value="DrainingBeamStasis"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitFilters id="ForwardBeamCrossAnchornotDead">
-        <WhichUnit Effect="ForwardBeamCrossLM" Value="Source"/>
-        <Filters value="-;Dead"/>
-    </CValidatorUnitFilters>
     <CValidatorUnitType id="IsMobileBeam">
         <Value value="MobileBeam"/>
     </CValidatorUnitType>
@@ -719,11 +1045,6 @@
         <Value value="RotatingBeamMissile"/>
         <Find value="1"/>
     </CValidatorUnitMover>
-    <CValidatorCombine id="IsIntersectable">
-        <CombineArray value="IsRotatingBeamUnitorMissile"/>
-        <CombineArray value="IsMobileBeam"/>
-        <CombineArray value="IsSweepingBeam"/>
-    </CValidatorCombine>
     <CValidatorUnitMover id="IsSweepingBeam">
         <Value value="SweepingBeamMissile"/>
         <Find value="1"/>
@@ -735,14 +1056,6 @@
     <CValidatorCombine id="IsRotatingBeamUnitorMissile">
         <CombineArray value="IsRotatingBeamUnit"/>
         <CombineArray value="IsRotatingBeamMissile"/>
-    </CValidatorCombine>
-    <CValidatorUnitCompareBehaviorCount id="MLHasHeroStasis">
-        <Value value="1"/>
-        <Behavior value="DrainingBeamStasisHeroic"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorCombine id="MLHasStasisorHeroStasis">
-        <CombineArray value="MLHasStasis"/>
-        <CombineArray value="MLHasHeroStasis"/>
     </CValidatorCombine>
     <CValidatorUnitType id="NotMobileBeamUnit">
         <Value value="MobileBeam"/>
@@ -919,15 +1232,6 @@
         <Compare value="GE"/>
         <Value value="100"/>
         <Behavior value="ResourceCollector"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitFilters id="RotatingBeamBeamEndIsDead">
-        <WhichUnit Effect="RotatingBeamCUSet"/>
-        <Filters value="Dead;-"/>
-    </CValidatorUnitFilters>
-    <CValidatorUnitCompareBehaviorCount id="CasterHasAlternatingSides">
-        <WhichUnit Value="Caster"/>
-        <Value value="1"/>
-        <Behavior value="SweepingBeamAlternatingSides"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorLocationPathable id="TargetPointNotOnPathableAllowsStructure">
         <ResultFailed value="MustTargetWalkableLocation"/>
@@ -2338,7 +2642,7 @@
         <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="guardianakaclosetopylon">
-        <AreaArray Compare="GE" Radius="12" Validator="NotHoloShield"/>
+        <AreaArray Compare="GE" Radius="12" Validator="IsPylon"/>
         <SearchFilters value="Structure;Neutral,Enemy,Missile,Dead,Hidden"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="coopcheck">

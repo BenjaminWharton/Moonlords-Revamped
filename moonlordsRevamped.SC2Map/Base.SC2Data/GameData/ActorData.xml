@@ -16,6 +16,340 @@
         <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
         <HostSiteOps Ops="SOpCasterUnit SOpAttachOverhead SOpRandomPointInCircle1" HoldPosition="1" HoldRotation="1"/>
     </CActorModel>
+    <CActorModel id="BeamHeroAnchorHeal" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.BeamHeroAnchorMU.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
+        <HostSiteOps Ops="SOpTargetPoint SOpRandomPointInCircle1"/>
+    </CActorModel>
+    <CActorSound id="BeamHeroAnchor_On" parent="SoundOneShot">
+        <On Terms="Behavior.BeamHeroAnchored.On" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="BeamHeroAnchor_Off" parent="SoundOneShot">
+        <On Terms="Behavior.BeamHeroAnchored.Off" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="BeamHeroAnchored" parent="ModelAddition">
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.BeamHeroAnchored.On" Send="Create"/>
+        <On Terms="Behavior.BeamHeroAnchored.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOp2DRotation SOpForwardNorth" HoldRotation="1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorModel id="BeamHeroLaserFenceDebuff" parent="ModelAddition">
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.BeamHeroLaserFence.On" Send="Create"/>
+        <On Terms="Behavior.BeamHeroLaserFence.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <AutoScaleFactor value="1.000000"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorAction id="BeamHeroRazorBeamAttack" parent="GenericAttack" effectLaunch="BeamHeroRazorBeamLM">
+        <On index="6" Terms="Effect.##effectLaunch##.Start; At Caster" Send="Create"/>
+        <Missile value="BeamHeroRazorBeamMissile"/>
+        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpShadow SOpMoveUpByDot5 SOpMoveUpByDot25"/>
+    </CActorAction>
+    <CActorAction id="BeamHeroRazorBeamCrossAttack" parent="GenericAttack" effectLaunch="BeamHeroRazorBeamCrossLM">
+        <On index="6" Terms="Effect.##effectLaunch##.Start; At Caster" Send="Create"/>
+        <LaunchSiteOps Ops="SOpSourcePoint SOpShadow SOpMoveUpByDot5 SOpMoveUpByDot25"/>
+        <Missile value="BeamHeroRazorBeamMissile"/>
+        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpShadow SOpMoveUpByDot5 SOpMoveUpByDot25"/>
+    </CActorAction>
+    <CActorSiteOpTether id="BeamHeroRazorBeamCrossRangeLimit">
+        <HostTether Subject="BeamHeroRazorBeamQuad"/>
+        <EnableX value="MinMax"/>
+        <EnableY value="MinMax"/>
+        <XMinimum value="-6.000000"/>
+        <XMaximum value="6.000000"/>
+        <YMinimum value="-6.000000"/>
+        <YMaximum value="6.000000"/>
+    </CActorSiteOpTether>
+    <CActorModel id="BeamHeroSkyrocket" parent="ModelAnimationStyleOneShotUNIT">
+        <On Terms="Effect.BeamHeroPowerSupplySkyrocketSet.Start; At Caster" Send="Create"/>
+        <Scale value="0.500000"/>
+    </CActorModel>
+    <CActorSound id="BeamHeroSkyrocket_Impact" parent="SoundOneShot">
+        <On Terms="Effect.BeamHeroPowerSupplySkyrocketSet.Start" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="BeamHeroSuperchargeAddition" parent="ModelAddition">
+        <On Terms="ActorCreation" Send="TimerSet 0.000000 Scale"/>
+        <On Terms="TimerExpired; TimerName Scale" Send="TimerSet 0.062500 Scale"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE200; IsStatus Pass 0" Send="SetScale 2.000000 1.000000"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE200; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE180; IsStatus Pass 0" Send="SetScale 1.800000 1.000000"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE180; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE160; IsStatus Pass 0" Send="SetScale 1.600000 1.000000"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE160; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE140; IsStatus Pass 0" Send="SetScale 1.400000 1.000000"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE140; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE120; IsStatus Pass 0" Send="SetScale 1.200000 1.000000"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE120; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE100; IsStatus Pass 0" Send="SetScale 1.000000 1.000000"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE100; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; TimerName Scale; ValidateUnit BeamHeroSuperchargeDataGTE100; ModelName Invisible" Send="ModelSwap BeamHeroChargeAddition"/>
+        <On Terms="TimerExpired; TimerName Scale; !ValidateUnit BeamHeroSuperchargeDataGTE100; ModelName BeamHeroChargeAddition" Send="ModelSwap Invisible"/>
+        <On Terms="ModelSwap" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="TimerExpired; TimerName Scale; !ValidateUnit BeamHeroSuperchargeDataGTE100" Send="SetScale 0.100000"/>
+        <On Terms="TimerExpired; TimerName Scale" Send="StatusSet Pass 0"/>
+        <On Terms="ActorCreation" Send="SetTintColor 200,150,0"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachWeapon"/>
+        <Model value="BeamHeroChargeAddition"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Supporter Subject="_Selectable"/>
+    </CActorModel>
+    <CActorModel id="BeamHeroLaserFenceEndpoint" parent="ModelAnimationStyleContinuous">
+        <Supporter Subject="_LaserFenceBeam"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroStretchLvl1" Send="HostSiteOpsSet ::Host {SOp2DRotation SOpMoveBy3 SOpShadow SOpMoveUpByDot5}"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroStretchLvl2" Send="HostSiteOpsSet ::Host {SOp2DRotation SOpMoveBy3Dot5 SOpShadow SOpMoveUpByDot5}"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroStretchLvl3" Send="HostSiteOpsSet ::Host {SOp2DRotation SOpMoveBy4 SOpShadow SOpMoveUpByDot5}"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <Host Subject="_LaserFenceBeam"/>
+        <HostSiteOps Ops="SOp2DRotation SOpMoveBy2Dot5 SOpShadow SOpMoveUpByDot5"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorModel id="BeamHeroLaserFenceIntersect" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.BeamHeroLaserFenceIntersectSA.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <Scale value="0.500000"/>
+    </CActorModel>
+    <CActorSound id="BeamHeroLaserFence_Launch" parent="SoundOneShot">
+        <On Terms="Effect.BeamHeroLaserFenceCP.Start" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="BeamHeroRazorBeamQuadSite" parent="ModelAddition">
+        <Host Subject="BeamHeroRazorBeamQuad"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation BeamHeroRazorBeamCrossRangeLimit"/>
+        <Model value="Invisible"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorQuad id="BeamHeroRazorBeamCrossQuad" parent="GuideVisualQuadPerpendicular" abil="ForwardBeam">
+        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadPerpendicular"/>
+        <On index="4" removed="1"/>
+        <Host Subject="BeamHeroRazorBeamQuad"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Quad value="-0.500000,-1.500000,0.500000,-1.500000"/>
+        <Height value="3.000000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
+    <CActorQuad id="BeamHeroRazorBeamQuad" parent="GuideVisualQuadDown" abil="BeamHeroRazorBeam">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="Abil.BeamHeroRazorBeam.Cursor" Send="Create"/>
+        <On index="4" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroHasCross" Send="Create BeamHeroRazorBeamQuadSite"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroHasCross" Send="Create BeamHeroRazorBeamCrossQuad"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroHasCross" Target="BeamHeroRazorBeamQuadSite" Send="AttachOffset BeamHeroRazorBeamCrossQuad {Origin 0} 0.000000,0.000000,0.000000 {} Rot90"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroHasCross" Send="Create BeamHeroRazorBeamCrossQuad"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroHasCross" Target="BeamHeroRazorBeamQuadSite" Send="AttachOffset BeamHeroRazorBeamCrossQuad {Origin 0} 0.000000,0.000000,0.000000 {} SOp270"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="12.000000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
+    <CActorRange id="BeamHeroRadarRange" parent="RangeBehavior" behavior="BeamHeroPowerSupply">
+        <On Terms="ActorCreation" Send="TimerSet 0.000000 Visibility"/>
+        <On Terms="TimerExpired; TimerName Visibility" Send="TimerSet 0.500000 Visibility"/>
+        <On Terms="TimerExpired; TimerName Visibility; !ValidateUnit BeamHeroHasRadar" Send="SetVisibility"/>
+        <On Terms="TimerExpired; TimerName Visibility; ValidateUnit BeamHeroHasRadar" Send="SetVisibility 1"/>
+        <Behavior value=""/>
+        <Range value="40.000000"/>
+        <RangeFlags index="Minimap" value="1"/>
+    </CActorRange>
+    <CActorBeamSimple id="BeamHeroRazorBeamCross" parent="BeamSimpleAnimationStyleContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="Effect.BeamHeroRazorBeamCrossCP.Start" Send="Create"/>
+        <On Terms="Effect.BeamHeroRazorBeamCrossCP.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
+        <Model value="BeamHeroRazorBeam"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostLaunchSiteOps Ops="SOp2DRotation SOpTargetPoint SOpShadow SOpMoveUpByDot5 SOpMoveUpByDot25" HoldPosition="1"/>
+        <HostImpactSiteOps Ops="SOpSourceUnit"/>
+    </CActorBeamSimple>
+    <CActorModel id="BeamHeroRazorBeamCrossCenter" parent="ModelAnimationStyleContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="Effect.BeamHeroRazorBeamCrossCenterDummy.Start" Send="Create"/>
+        <On Terms="Effect.BeamHeroRazorBeamCrossCenterDummy.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpTargetPoint SOpForwardOriginPoint SOpShadow SOpMoveUpByDot5 SOpMoveUpByDot25 SOpMoveLeftByDot25 RotY90" HoldPosition="1" HoldRotation="1"/>
+        <Model value="BeamHeroRazorBeamMissile"/>
+    </CActorModel>
+    <CActorQuad id="BeamHeroSuperchargeQuad" parent="GuideVisualQuadDown" abil="BeamHeroSupercharge">
+        <FogVisibility value="Visible"/>
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <Remove Terms="ActorDestruction" Send="Destroy"/>
+        <On index="4" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.000000 FindCaster"/>
+        <On Terms="TimerExpired; TimerName FindCaster" Send="TimerSet 0.062500 FindCaster"/>
+        <On Terms="TimerExpired; TimerName FindCaster; IsStatus CasterFound 0" Send="QueryRadius 0.100000 BeamHeroSuperchargeQueryAdd AgainstRadiusGame"/>
+        <On Terms="TimerExpired; TimerName FindCaster" Target="_GuideQuadSegment" Send="AnimSetPausedAll"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Height value="14.000000"/>
+        <Width value="3.000000"/>
+        <QuadFlags index="RespectWidthScaling" value="1"/>
+        <Quad value="-0.500000,-1.000000,0.500000,0.750000"/>
+    </CActorQuad>
+    <CActorQuad id="BeamHeroLaserFenceQuadBase" parent="GuideVisualQuadDown" abil="BeamHeroLaserFence">
+        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On index="0" Terms="Abil.BeamHeroLaserFence.Cursor" Send="Create"/>
+        <On index="4" Terms="ActorCreation" Send="Create GuideRegionQuadNoVis"/>
+        <On Terms="ActorCreation" Send="Create BeamHeroLaserFenceQuadSite"/>
+        <On Terms="ActorCreation" Send="Create BeamHeroLaserFenceQuad"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroLinkLvl0" Target="BeamHeroLaserFenceQuadSite" Send="AttachOffset BeamHeroLaserFenceQuad {Origin 0} 0.000000,0.000000,0.000000 {} Rot90"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroLinkLvl1" Target="BeamHeroLaserFenceQuadSite" Send="AttachOffset BeamHeroLaserFenceQuad {Origin 0} 0.000000,0.750000,0.000000 {} Rot90"/>
+        <On Terms="ActorCreation" Send="Create BeamHeroLaserFenceQuad"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroLinkLvl0" Target="BeamHeroLaserFenceQuadSite" Send="AttachOffset BeamHeroLaserFenceQuad {Origin 0} 0.000000,0.000000,0.000000 {} SOp270"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroLinkLvl1" Target="BeamHeroLaserFenceQuadSite" Send="AttachOffset BeamHeroLaserFenceQuad {Origin 0} 0.000000,0.750000,0.000000 {} SOp270"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroLinkLvl1" Send="Create BeamHeroLaserFenceQuad"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroLinkLvl1" Target="BeamHeroLaserFenceQuadSite" Send="AttachOffset BeamHeroLaserFenceQuad {Origin 0} 0.000000,-0.750000,0.000000 {} Rot90"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroLinkLvl1" Send="Create BeamHeroLaserFenceQuad"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroLinkLvl1" Target="BeamHeroLaserFenceQuadSite" Send="AttachOffset BeamHeroLaserFenceQuad {Origin 0} 0.000000,-0.750000,0.000000 {} SOp270"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <LaunchActor value=""/>
+        <CenterActor value=""/>
+        <ImpactActor value=""/>
+    </CActorQuad>
+    <CActorBeamSimple id="BeamHeroInterceptBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.BeamHeroAnchorInterceptAB.Start; At Target" Send="Create"/>
+        <On Terms="Behavior.BeamHeroIntercept.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,255,255"/>
+        <On Terms="ActorCreation" Target="_Missile" Send="SetScale 0.100000 1.500000 Intercept"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostLaunchSiteOps Ops="SOpCasterUnit SOpAttachCenter"/>
+        <HostImpactSiteOps Ops="SOpTargetUnit"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="BeamHeroLaserFenceBeamRight" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.BeamHeroLaserFenceCP.Start" Send="Create"/>
+        <On Terms="Effect.BeamHeroLaserFenceCP.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroStretchLvl1" Send="HostSiteOpsSet ::HostImpact {SOpTargetPoint SOpForwardOriginPoint SOpMoveRightBy3 SOpShadow SOpMoveUpByDot5}"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroStretchLvl2" Send="HostSiteOpsSet ::HostImpact {SOpTargetPoint SOpForwardOriginPoint SOpMoveRightBy3 SOpMoveRightByDot5 SOpShadow SOpMoveUpByDot5}"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroStretchLvl3" Send="HostSiteOpsSet ::HostImpact {SOpTargetPoint SOpForwardOriginPoint SOpMoveRightBy4 SOpShadow SOpMoveUpByDot5}"/>
+        <On Terms="ActorCreation" Send="Create BeamHeroLaserFenceEndpoint"/>
+        <On Terms="Effect.BeamHeroLaserFenceCP.Stop; FromEffectTreeDescendant" Target="BeamHeroLaserFenceEndpoint" Send="Destroy"/>
+        <Model value="BeamHeroLaserFenceBeam"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostLaunchSiteOps Ops="SOpTargetPoint SOpForwardOriginPoint SOpShadow SOpMoveUpByDot5"/>
+        <HostImpactSiteOps Ops="SOpTargetPoint SOpForwardOriginPoint SOpMoveRightBy2 SOpMoveRightByDot5 SOpShadow SOpMoveUpByDot5"/>
+        <Aliases value="_LaserFenceBeam"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="BeamHeroLaserFenceBeamLeft" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.BeamHeroLaserFenceCP.Start" Send="Create"/>
+        <On Terms="Effect.BeamHeroLaserFenceCP.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroStretchLvl1" Send="HostSiteOpsSet ::HostImpact {SOpTargetPoint SOpForwardOriginPoint SOpMoveLeftBy3 SOpShadow SOpMoveUpByDot5}"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroStretchLvl2" Send="HostSiteOpsSet ::HostImpact {SOpTargetPoint SOpForwardOriginPoint SOpMoveLeftBy3 SOpMoveLeftByDot5 SOpShadow SOpMoveUpByDot5}"/>
+        <On Terms="ActorCreation; ValidatePlayer BeamHeroStretchLvl3" Send="HostSiteOpsSet ::HostImpact {SOpTargetPoint SOpForwardOriginPoint SOpMoveLeftBy4 SOpShadow SOpMoveUpByDot5}"/>
+        <On Terms="ActorCreation" Send="Create BeamHeroLaserFenceEndpoint"/>
+        <On Terms="Effect.BeamHeroLaserFenceCP.Stop; FromEffectTreeDescendant" Target="BeamHeroLaserFenceEndpoint" Send="Destroy"/>
+        <Model value="BeamHeroLaserFenceBeam"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostLaunchSiteOps Ops="SOpTargetPoint SOpForwardOriginPoint SOpShadow SOpMoveUpByDot5"/>
+        <HostImpactSiteOps Ops="SOpTargetPoint SOpForwardOriginPoint SOpMoveLeftBy2 SOpMoveLeftByDot5 SOpShadow SOpMoveUpByDot5"/>
+        <Aliases value="_LaserFenceBeam"/>
+    </CActorBeamSimple>
+    <CActorModel id="BeamHeroLaserFenceCenter" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.BeamHeroLaserFenceCP.Start" Send="Create"/>
+        <On Terms="Effect.BeamHeroLaserFenceCP.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <HostSiteOps Ops="SOpTargetPoint SOpForwardOriginPoint SOpShadow SOpMoveUpByDot5"/>
+    </CActorModel>
+    <CActorQuad id="BeamHeroLaserFenceQuad" parent="GuideVisualQuadPerpendicular" abil="ForwardBeam">
+        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
+        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
+        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadPerpendicular"/>
+        <On index="4" removed="1"/>
+        <Host Subject="BeamHeroLaserFenceQuadBase"/>
+        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
+        <Quad value="-0.500000,-1.250000,0.500000,-1.250000"/>
+        <Height value="2.500000"/>
+        <Width value="0.750000"/>
+    </CActorQuad>
+    <CActorModel id="BeamHeroLaserFenceQuadSite" parent="ModelAddition">
+        <Host Subject="BeamHeroLaserFenceQuadBase"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation"/>
+        <Model value="Invisible"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorRange id="BeamHeroLaserFenceRange" parent="RangeAbil" abil="BeamHeroLaserFence"/>
+    <CActorBeamSimple id="BeamHeroRepulsionBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.BeamHeroAnchorRepulsionAB.Start; At Target" Send="Create"/>
+        <On Terms="Behavior.BeamHeroRepulsion.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Selectable"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostLaunchSiteOps Ops="SOpCasterUnit SOpAttachCenter"/>
+        <HostImpactSiteOps Ops="SOpTargetUnit SOpAttachCenter"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="BeamHeroSuperchargeBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On Terms="Effect.BeamHeroSuperchargeSizeDummy.Start; At Source" Send="Create"/>
+        <Host Subject="_Missile"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostLaunchSiteOps Ops="SOpOriginPoint"/>
+        <HostImpactSiteOps Ops="SOpSourceUnit SOpMoveUpBy1"/>
+    </CActorBeamSimple>
+    <CActorSimple id="BeamHeroSuperchargeSize">
+        <On Terms="Effect.BeamHeroSuperchargeSizeDummy.Start; At Source" Send="Create"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE10" Target="_Missile" Send="SetScale 1.100000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE20" Target="_Missile" Send="SetScale 1.200000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE30" Target="_Missile" Send="SetScale 1.300000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE40" Target="_Missile" Send="SetScale 1.400000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE50" Target="_Missile" Send="SetScale 1.500000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE60" Target="_Missile" Send="SetScale 1.600000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE70" Target="_Missile" Send="SetScale 1.700000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE80" Target="_Missile" Send="SetScale 1.800000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE90" Target="_Missile" Send="SetScale 1.900000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE100" Target="_Missile" Send="SetScale 2.000000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE110" Target="_Missile" Send="SetScale 2.100000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE120" Target="_Missile" Send="SetScale 2.200000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE130" Target="_Missile" Send="SetScale 2.300000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE140" Target="_Missile" Send="SetScale 2.400000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE150" Target="_Missile" Send="SetScale 2.500000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE160" Target="_Missile" Send="SetScale 2.600000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE170" Target="_Missile" Send="SetScale 2.700000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE180" Target="_Missile" Send="SetScale 2.800000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE190" Target="_Missile" Send="SetScale 2.900000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DefaultDataGTE200" Target="_Missile" Send="SetScale 3.000000 0.000000 Charge"/>
+        <On Terms="ActorCreation" Send="Destroy"/>
+    </CActorSimple>
+    <CActorModel id="BeamHeroSuperchargeTrail" parent="ModelAnimationStyleOneShot">
+        <Inherits index="Scale" value="1"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth {} Death ContentPlayOnce,Instant"/>
+        <On Terms="Effect.BeamHeroSuperchargeSA.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Work Start End"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 Death"/>
+        <On Terms="TimerExpired; TimerName Death" Send="AnimGroupRemove Work"/>
+        <On Terms="TimerExpired; TimerName Death" Send="AnimBracketStop BSD"/>
+        <HostForProps Subject="_Missile"/>
+        <HostSiteOps Ops="SOpSourceUnit SOpShadow" HoldPosition="1" HoldRotation="1"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorSound id="BeamHeroSupercharge_Launch" parent="SoundOneShot">
+        <On Terms="Effect.BeamHeroSuperchargeSizeDummy.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpSourceUnit"/>
+    </CActorSound>
+    <CActorSound id="BeamHeroSuperchargeBig_Launch" parent="SoundOneShot">
+        <On Terms="Effect.BeamHeroSuperchargeSizeDummy.Start; ValidateEffect DefaultDataGTE100" Send="Create"/>
+        <HostSiteOps Ops="SOpSourceUnit"/>
+    </CActorSound>
+    <CActorSound id="BeamHeroSupercharge_Travel" parent="SoundOneShot">
+        <On Terms="Effect.BeamHeroSuperchargeSA.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpSourceUnit" HoldPosition="1" HoldRotation="1"/>
+    </CActorSound>
+    <CActorSound id="BeamHeroSuperchargeBig_Travel" parent="SoundOneShot">
+        <On Terms="Effect.BeamHeroSuperchargeSA.Start; ValidateEffect DefaultDataGTE100" Send="Create"/>
+        <HostSiteOps Ops="SOpSourceUnit" HoldPosition="1" HoldRotation="1"/>
+    </CActorSound>
     <CActorModel id="FireEnchantedExplosion" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.FireEnchantedDamage.Start" Send="Create"/>
         <Model value="ThorRavenSeekerImpact"/>
@@ -24,6 +358,43 @@
         <On Terms="Effect.FireEnchantedDamage.Start" Send="Create"/>
         <Sound value="Raven_HunterSeekerAttackImpact"/>
     </CActorSound>
+    <CActorSimple id="BeamHeroRepulsionAnim">
+        <Supporter Subject="_Unit"/>
+        <On Terms="Behavior.BeamHeroRepulsion.On" Send="Create"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Behavior.BeamHeroRepulsion.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimPlay Flail Flail PlayForever,RandomStartOffset 0.100000 0.100000"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="AnimClear Flail"/>
+    </CActorSimple>
+    <CActorMissile id="BeamHeroSuperchargeMissile" parent="WizSimpleMissile" unitName="BeamHeroSuperchargeMissile">
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.250000 Trail"/>
+        <On Terms="TimerExpired; TimerName Trail" Send="TimerSet 0.250000 Trail"/>
+        <On Terms="TimerExpired; TimerName Trail" Send="CombatRevealComplete"/>
+    </CActorMissile>
+    <CActorMissile id="BeamHeroRazorBeamMissile" parent="WizSimpleMissile" unitName="BeamHeroRazorBeamMissile">
+        <HostSiteOps Ops="SOpForwardTargetPoint RotUp90" HoldRotation="1"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorMissile>
+    <CActorBeamSimple id="BeamHeroRazorBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="Effect.BeamHeroRazorBeamLifetime.Start" Send="Create"/>
+        <On Terms="Effect.BeamHeroRazorBeamLifetime.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="Create BeamHeroRazorBeamSource"/>
+        <On Terms="Effect.BeamHeroRazorBeamLifetime.Stop; FromEffectTreeDescendant" Target="BeamHeroRazorBeamSource" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpOriginPoint"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostLaunchSiteOps Ops="SOpOriginPoint"/>
+        <HostImpactSiteOps Ops="SOpSourceUnit"/>
+    </CActorBeamSimple>
+    <CActorModel id="BeamHeroRazorBeamSource" parent="ModelAnimationStyleContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Supporter Subject="BeamHeroRazorBeam"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <Host Subject="BeamHeroRazorBeam"/>
+        <HostSiteOps Ops="RotUp90"/>
+        <Model value="BeamHeroRazorBeamMissile"/>
+    </CActorModel>
     <CActorModel id="ThorLightningBarrage" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.ThorLightningBarrageSA.Start" Send="Create"/>
         <On Terms="Effect.ThorThunderstepOrbsSA.Start" Send="Create"/>
@@ -1205,6 +1576,10 @@
         <Subject Filters="Unit" Terms="ValidateUnit WarpHeroValidGuidedMissileCaster IncludeDerivedSnapshot System_Snapshot_Dummy"/>
         <OnResponse Send="Create WarpHeroGuidedMissileSwitch"/>
     </CActorQueryResponse>
+    <CActorQueryResponse id="BeamHeroSuperchargeQueryAdd">
+        <Subject Filters="Unit" Terms="ValidateUnit BeamHeroHasSuperchargeAbility IncludeDerivedSnapshot System_Snapshot_Dummy"/>
+        <OnResponse Send="Create BeamHeroSuperchargeScale"/>
+    </CActorQueryResponse>
     <CActorSimple id="WarpHeroMultishotSwitch">
         <On Terms="ActorCreation" Send="StatusSet Create 0"/>
         <On Terms="ActorCreation; ScopeContains WarpHeroMultishotQuad" Send="StatusSet Create 1"/>
@@ -1218,6 +1593,98 @@
         <On Terms="ActorCreation; IsStatus Create 0" Send="Create WarpHeroGuidedMissileQuad"/>
         <On Terms="ActorCreation; ScopeContains WarpHeroGuidedMissileQuad" Target="WarpHeroGuidedMissileQuad" Send="StatusSet Death 0"/>
         <On Terms="ActorCreation" Send="Destroy"/>
+    </CActorSimple>
+    <CActorSimple id="BeamHeroSuperchargeScale">
+        <On Terms="ActorCreation" Target="::QueryDirector" Send="StatusSet CasterFound 1"/>
+        <On Terms="ActorDestruction" Target="::QueryDirector" Send="StatusSet CasterFound 0"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE200; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 3.000000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE200; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE190; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 2.900000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE190; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE180; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 2.800000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE180; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE170; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 2.700000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE170; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE160; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 2.600000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE160; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE150; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 2.500000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE150; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE140; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 2.400000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE140; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE130; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 2.300000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE130; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE120; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 2.200000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE120; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE110; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 2.100000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE110; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE100; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 2.000000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE100; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE90; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 1.900000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE90; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE80; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 1.800000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE80; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE70; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 1.700000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE70; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE60; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 1.600000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE60; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE50; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 1.500000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE50; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE40; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 1.400000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE40; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE30; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 1.300000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE30; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE20; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 1.200000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE20; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE10; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 1.100000 0.000000 Charge"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataGTE10; IsStatus Pass 0" Send="StatusSet Pass 1"/>
+        <On Terms="ActorCreation; ValidateUnit BeamHeroSuperchargeDataLT10; IsStatus Pass 0" Target="::QueryDirector" Send="SetScale 1.000000 0.000000 Charge"/>
+        <On Terms="ActorCreation" Send="StatusSet Pass 0"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.062500 Scale"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE200; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 3.000000 1.250000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE200; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE190; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 3.000000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE190; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE180; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 2.900000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE180; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE170; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 2.800000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE170; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE160; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 2.700000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE160; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE150; IsStatus Pass 0; TimerName Scale; ValidatePlayer BeamHeroDepotGT1" Target="::QueryDirector" Send="SetScale 2.600000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE150; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE140; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 2.500000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE140; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE130; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 2.400000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE130; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE120; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 2.300000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE120; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE110; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 2.200000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE110; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE100; IsStatus Pass 0; TimerName Scale; ValidatePlayer BeamHeroDepotGT0" Target="::QueryDirector" Send="SetScale 2.100000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE100; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE90; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 2.000000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE90; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE80; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 1.900000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE80; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE70; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 1.800000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE70; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE60; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 1.700000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE60; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE50; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 1.600000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE50; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE40; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 1.500000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE40; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE30; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 1.400000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE30; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE20; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 1.300000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE20; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE10; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 1.200000 2.500000 Charge"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataGTE10; IsStatus Pass 0; TimerName Scale" Send="StatusSet Pass 1"/>
+        <On Terms="TimerExpired; ValidateUnit BeamHeroSuperchargeDataLT10; IsStatus Pass 0; TimerName Scale" Target="::QueryDirector" Send="SetScale 1.100000 2.500000 Charge"/>
+        <On Terms="TimerExpired; TimerName Scale" Send="StatusSet Pass 0"/>
+        <On Terms="TimerExpired; TimerName Scale" Send="TimerSet 0.062500 Scale"/>
+        <Supporter Subject="::QueryDirector"/>
     </CActorSimple>
     <CActorModel id="WarpHeroStrafeImpact" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.WarpHeroStrafeSA.Start" Send="Create"/>
@@ -1994,26 +2461,13 @@
         <On Terms="ActorCreation; ValidatePlayer ExpelComboReq10" Send="SetScale 13.000000"/>
         <Scale value="3.000000"/>
     </CActorSplat>
-    <CActorQuad id="ForwardBeamQuad3" parent="GuideVisualQuadPerpendicular" abil="ForwardBeam">
-        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
-        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
-        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
-        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadPerpendicular"/>
-        <On index="4" removed="1"/>
-        <Host Subject="BeamHeroForwardBeamQuad"/>
-        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOp270 SOpMoveBy2"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="4.000000"/>
-        <Width value="0.750000"/>
-    </CActorQuad>
     <CActorRegionQuad id="GuideRegionQuadNoVis" parent="GuideRegionNormal">
         <On index="1" removed="1"/>
         <On index="2" removed="1"/>
         <On index="3" removed="1"/>
         <HostSiteOps Ops="SOp2DRotation"/>
         <RegionFlags index="UseEffectRange" value="1"/>
+        <FogVisibility value="Visible"/>
     </CActorRegionQuad>
     <CActorSiteOpRotator id="IllusionHeroDistortionGuideRotR">
         <LocalAxis value="0.000000,0.000000,1.000000"/>
@@ -2201,32 +2655,6 @@
         <Model value="VoidProtossAOECursorSplat"/>
         <Scale value="2.400000"/>
     </CActorSplat>
-    <CActorQuad id="BeamHeroForwardBeamQuad" parent="GuideVisualQuadDown" abil="ForwardBeam">
-        <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
-        <On index="0" Terms="Abil.ForwardBeam.Cursor" Send="Create"/>
-        <On Terms="ActorCreation; ValidatePlayer BeamHeroHasCross" Send="Create ForwardBeamQuad2"/>
-        <On Terms="ActorCreation; ValidatePlayer BeamHeroHasCross" Send="Create ForwardBeamQuad3"/>
-        <HostSiteOps Ops="SOpAttachOrigin"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="12.000000"/>
-        <Width value="0.750000"/>
-    </CActorQuad>
-    <CActorQuad id="ForwardBeamQuad2" parent="GuideVisualQuadPerpendicular" abil="ForwardBeam">
-        <On index="0" Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
-        <On index="1" Terms="ActorDestruction" Target="_GuideQuadSegment" Send="AnimBracketStop BSD"/>
-        <On index="2" Terms="ActorOrphan" Target="" Send="Destroy"/>
-        <On index="3" Terms="ActorCreation" Send="Create GuideRegionQuadPerpendicular"/>
-        <On index="4" removed="1"/>
-        <Host Subject="BeamHeroForwardBeamQuad"/>
-        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation Rot90 SOpMoveBy2"/>
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="4.000000"/>
-        <Width value="0.750000"/>
-    </CActorQuad>
     <CActorQuad id="AirHeroMicroBurstQuad" parent="GuideVisualQuadDown" abil="MicroBurst">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
         <On index="0" Terms="Abil.MicroBurst.Cursor" Send="Create"/>
@@ -3186,15 +3614,6 @@
         <On Terms="TimerExpired; TimerName PDeath" Send="Destroy"/>
         <Model value="NatureHeroFruitExplode"/>
     </CActorModel>
-    <CActorModel id="MobileBeamCremate" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.MobileBeamCremateCP.Start; At Effect" Send="Create"/>
-        <On Terms="ActorCreation" Send="TimerSet 3.000000"/>
-        <On Terms="TimerExpired" Send="Destroy"/>
-        <Model value="GenericFire_Medium"/>
-    </CActorModel>
-    <CActorSplat id="MobileBeamSplat" parent="ProtossCursorSplat" abil="MobileBeam">
-        <Model value="VoidProtossAOECursorSplat"/>
-    </CActorSplat>
     <CActorUnit id="LeakageUnit" parent="GenericUnitStandard" unitName="LeakageUnit">
         <On index="0" Send="Create"/>
         <On index="1" Terms="ActorCreation" Send="AnimBracketStart Attack Birth Stand Death"/>
@@ -3643,33 +4062,6 @@
     <CActorAction id="StonesAttack" parent="GenericAttack" effectImpact="StonesDMG" effectLaunch="StonesLM">
         <LaunchAttachQuery Methods="AMFilterCenter"/>
     </CActorAction>
-    <CActorQuad id="SweepingBeamGuide" parent="GuideVisualQuadPerpendicular" abil="SweepingBeam">
-        <LaunchActor value="ProtossGuideVisualQuadSolarLanceLaunch"/>
-        <CenterActor value="ProtossGuideVisualQuadSolarLanceCenter"/>
-        <ImpactActor value="ProtossGuideVisualQuadSolarLanceImpact"/>
-        <Height value="8.000000"/>
-        <Width value="0.750000"/>
-        <On index="0" Terms="Abil.SweepingBeam.Cursor" Send="Create"/>
-    </CActorQuad>
-    <CActorSound id="SweepingBeamSound" parent="SoundOneShot">
-        <On Terms="Effect.SweepingBeamRightLM.Start" Send="Create"/>
-        <On Terms="Effect.SweepingBeamRightReiterateLM.Start" Send="Create"/>
-        <On Terms="Effect.SweepingBeamLeftLM.Start" Send="Create"/>
-        <On Terms="Effect.SweepingBeamLeftReiterateLM.Start" Send="Create"/>
-        <Sound value="Colossus_AttackLaunch"/>
-    </CActorSound>
-    <CActorModel id="SweepingBeamStasisModel" parent="ModelAddition">
-        <On Terms="Behavior.DrainingBeamStasis.On" Send="Create"/>
-        <On Terms="Behavior.DrainingBeamStasis.Off" Send="Destroy"/>
-        <Model value="SweepingBeamStasis"/>
-        <AutoScaleFactor value="1.000000"/>
-    </CActorModel>
-    <CActorModel id="SweepingBeamStasisModelHeroic" parent="ModelAddition">
-        <On Terms="Behavior.DrainingBeamStasisHeroic.On" Send="Create"/>
-        <On Terms="Behavior.DrainingBeamStasisHeroic.Off" Send="Destroy"/>
-        <Model value="SweepingBeamStasis"/>
-        <AutoScaleFactor value="1.000000"/>
-    </CActorModel>
     <CActorAction id="EviscerateAttack" parent="GenericAttack" effectAttack="EviscerateDMG" effectLaunch="EviscerateLM">
         <LaunchAssets Model="BladeStormAttackLaunch" Sound="NovaPsiBlade_Launch_C_Inferior"/>
         <Beam value="BladeStormAttackBeam"/>
@@ -3731,125 +4123,18 @@
         <On Terms="TimerExpired; TimerName Fade" Send="SetOpacity 0.000000 0.400000"/>
         <HostSiteOps Ops="Rot Move"/>
     </CActorMissile>
-    <CActorSimple id="SweepingBeamStasisFreezeAnim">
-        <On Terms="Behavior.DrainingBeamStasis.On" Send="Create"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="AnimSetPausedAll"/>
-        <On Terms="Behavior.DrainingBeamStasis.Off" Target="_Unit" Send="AnimSetPausedAll 0"/>
-        <On Terms="Behavior.DrainingBeamStasis.Off" Send="Destroy"/>
-    </CActorSimple>
-    <CActorBeamSimple id="ForwardBeamBeam" parent="BeamSimpleAnimationStyleOneShot">
-        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
-        <On Terms="Effect.ForwardBeamLifetime.Start" Send="Create"/>
-        <On Terms="Effect.ForwardBeamLifetime.Stop" Send="AnimBracketStop BSD"/>
-        <ModelFlags index="AutomateGlobalLoops" value="1"/>
-        <HostLaunchSiteOps Ops="SOpSourceUnit"/>
-        <HostImpactSiteOps Ops="SOpTargetUnit"/>
-    </CActorBeamSimple>
-    <CActorBeamSimple id="SweepingBeamBeam" parent="BeamSimpleAnimationStyleOneShot">
-        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death OpeningPlayForever"/>
-        <On Terms="Effect.SweepingBeamDummy.Start; At Source" Send="Create"/>
-        <ModelFlags index="AutomateGlobalLoops" value="1"/>
-        <HostLaunchSiteOps Ops="SOpMoveUpBy4"/>
-        <HostImpactSiteOps Ops="SOpSourceUnit"/>
-    </CActorBeamSimple>
-    <CActorModel id="ForwardBeamCrossAnchor" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.ForwardBeamCrossOffset.Start" Send="Create"/>
-        <On Terms="Effect.ForwardBeamCrossAnchorDeathSuicide.Stop" Send="Destroy"/>
-        <HostSiteOps Ops="SOpSourceUnit SOpAttachCenter RotY90 SOpMoveDownByDot15 SOpMoveDownByDot1" HoldPosition="1" HoldRotation="1"/>
-        <Model value="ForwardBeamMissile"/>
-    </CActorModel>
-    <CActorModel id="ForwardBeamAnchor" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.ForwardBeamLifetime.Start; At Source" Send="Create"/>
-        <On Terms="Effect.ForwardBeamLifetime.Stop" Send="Destroy"/>
-        <HostSiteOps Ops="SOpForwardImpactGuide RotUp90" HoldRotation="1"/>
-        <Model value="ForwardBeamMissile"/>
-    </CActorModel>
-    <CActorBeamSimple id="ForwardBeamCrossBeam" parent="BeamSimpleAnimationStyleOneShot">
-        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
-        <On Terms="Effect.ForwardBeamCrossAnchorDeathSuicide.Start" Send="Create"/>
-        <On Terms="Effect.ForwardBeamCrossAnchorDeathSuicide.Stop" Send="AnimBracketStop BSD"/>
-        <Model value="ForwardBeamBeam"/>
-        <ModelFlags index="AutomateGlobalLoops" value="1"/>
-        <HostLaunchSiteOps Ops="SOpTargetUnit SOpMoveUpByDot5"/>
-        <HostImpactSiteOps Ops="SOpSourceUnit"/>
-    </CActorBeamSimple>
-    <CActorAction id="ForwardBeamCrossMissileAttack" parent="GenericAttack" effectLaunch="ForwardBeamCrossLM">
-        <LaunchSiteOps Ops="SOpForwardTargetPoint SOpSourceUnit"/>
-        <LaunchAttachQuery Methods=""/>
-        <Missile value="ForwardBeamMissile"/>
-        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpMoveUpByDot5"/>
-    </CActorAction>
-    <CActorAction id="ForwardBeamCrossAnchorMissileAttack" parent="GenericAttack" effectLaunch="ForwardBeamCrossAnchorLM">
-        <LaunchAttachQuery Methods="AMFilterWeapon01"/>
-        <Beam value="ForwardBeamCrossMissileAttackBeam"/>
-        <Missile value="InvisibleMissile"/>
-        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpMoveUpByDot5"/>
-        <ImpactMap index="None" Model="ForwardBeamCrossMissileAttackImpact" Sound="ForwardBeamCrossMissileAttackImpact" ModelReaction="ForwardBeamCrossMissileAttackImpactReaction"/>
-        <ImpactMap index="Shield" Sound="ForwardBeamCrossMissileAttackImpactShield" ModelReaction="ForwardBeamCrossMissileAttackImpactReactionShield"/>
-        <DamageMap index="None" Model="ForwardBeamCrossMissileAttackDamage" Sound="ForwardBeamCrossMissileAttackDamage" ModelReaction="ForwardBeamCrossMissileAttackDamageReaction"/>
-        <DamageMap index="Shield" Sound="ForwardBeamCrossMissileAttackDamageShield" ModelReaction="ForwardBeamCrossMissileAttackDamageReactionShield"/>
-    </CActorAction>
-    <CActorSound id="ForwardBeamLaunchSound" parent="SoundOneShot">
-        <On Terms="Effect.ForwardBeamLM.Start" Send="Create"/>
+    <CActorSound id="BeamHeroRazorBeam_Launch" parent="SoundOneShot">
+        <On Terms="Effect.BeamHeroRazorBeamLM.Start" Send="Create"/>
+        <On Terms="Effect.BeamHeroRazorBeamCrossLM.Start" Send="Create"/>
     </CActorSound>
-    <CActorMissile id="SweepingBeamMissile" parent="WizSimpleMissile" unitName="SweepingBeamMissile">
-        <ModelFlags index="AutomateGlobalLoops" value="1"/>
-    </CActorMissile>
-    <CActorSound id="ForwardBeamSoundLoop" parent="SoundContinuous">
-        <On Terms="Effect.ForwardBeamLifetime.Start" Send="Create"/>
-        <On Terms="Effect.ForwardBeamLifetime.Stop" Send="Destroy"/>
+    <CActorSound id="BeamHeroRazorBeam_Loop" parent="SoundContinuous">
+        <On Terms="Effect.BeamHeroRazorBeamLifetime.Start" Send="Create"/>
+        <On Terms="Effect.BeamHeroRazorBeamLifetime.Stop; FromEffectTreeDescendant" Send="Destroy"/>
         <Sound value="VoidRay_WeaponLoop"/>
     </CActorSound>
-    <CActorModel id="IntersectionRotatingBeam" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.ForwardBeamIntersectionSSA.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
-        <Model value="Intersection"/>
-    </CActorModel>
-    <CActorModel id="IntersectionMobileBeam" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.ForwardBeamIntersectionMSA.Start; At Source" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 255,128,0"/>
-        <Model value="Intersection"/>
-    </CActorModel>
-    <CActorModel id="IntersectionSweepingBeam" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.ForwardBeamIntersectionDSA.Start" Send="Create"/>
-        <On Terms="Effect.ForwardBeamIntersectionStasis.Start; At Source" Send="Create"/>
-        <On Terms="ActorCreation" Send="SetTintColor 0,128,0"/>
-        <Model value="Intersection"/>
-    </CActorModel>
-    <CActorSound id="IntersectionSound" parent="SoundOneShot">
-        <On Terms="Effect.ForwardBeamIntersectionSet.Start" Send="Create"/>
-        <On Terms="Effect.ForwardBeamIntersectionStasis.Start" Send="Create"/>
+    <CActorSound id="BeamHeroIntersect_Launch" parent="SoundOneShot">
+        <On Terms="Effect.BeamHeroLaserFenceIntersectSA.Start" Send="Create"/>
     </CActorSound>
-    <CActorAction id="SweepingBeamMissileAttack" parent="GenericAttack" effectLaunch="SweepingBeamInitLM">
-        <LaunchAttachQuery Methods="AMFilterWeapon01"/>
-        <Missile value="SweepingBeamMissile"/>
-        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpMoveUpBy3 SOpMoveUpBy1"/>
-    </CActorAction>
-    <CActorBeamSimple id="MobileBeamBeam" parent="BeamSimpleAnimationStyleContinuous">
-        <On Terms="Effect.MobileBeamLifetime.Start" Send="Create"/>
-        <On Terms="Effect.MobileBeamLifetime.Stop" Send="Destroy"/>
-        <ModelFlags index="AutomateGlobalLoops" value="1"/>
-        <HostLaunchSiteOps Ops="SOpTargetUnit SOpMoveUpBy5"/>
-        <HostImpactSiteOps Ops="SOpTargetUnit"/>
-    </CActorBeamSimple>
-    <CActorSound id="MobileBeamSoundLoop" parent="SoundContinuous">
-        <On Terms="Effect.MobileBeamLifetime.Start" Send="Create"/>
-        <On Terms="Effect.MobileBeamLifetime.Stop" Send="Destroy"/>
-        <Sound value="Kerrigan_CelestialBeam_Loop"/>
-    </CActorSound>
-    <CActorBeamSimple id="RotatingBeamBeam" parent="BeamSimpleAnimationStyleOneShot">
-        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death OpeningPlayForever"/>
-        <On Terms="Effect.RotatingBeamCUSet.Start" Send="Create"/>
-        <On Terms="Effect.RotatingBeamLifetime.Stop" Send="Destroy"/>
-        <Model value="RotatingBeam"/>
-        <ModelFlags index="AutomateGlobalLoops" value="1"/>
-        <HostLaunchSiteOps Ops="SOpTargetPoint"/>
-        <HostImpactSiteOps Ops="SOpTargetUnit"/>
-    </CActorBeamSimple>
-    <CActorAction id="ForwardBeamMissileAttack" parent="GenericAttack" effectLaunch="ForwardBeamLM">
-        <LaunchAttachQuery Methods="AMFilterWeapon01"/>
-        <Missile value="ForwardBeamMissile"/>
-    </CActorAction>
     <CActorModel id="GasBombFire" parent="ModelAddition">
         <On Terms="Behavior.GasFire.On" Send="Create"/>
         <On Terms="Behavior.GasFire.Off" Send="Destroy"/>
@@ -3883,56 +4168,23 @@
     <CActorUnit id="BeamHero" parent="GenericUnitStandard" unitName="BeamHero">
         <Aliases value="_UnitMedium"/>
         <On index="0" Send="Create SoundEmitter Sentry_Ambience"/>
-        <On index="64" Terms="Abil.ForceField.SourceCastStart" Send="$Spell"/>
-        <On index="65" Terms="Abil.NullVoid.SourceCastStart" Send="$Spell"/>
-        <On index="66" Terms="Effect.GuardianShieldPersistent.Start" Send="AnimBracketStart Guardian Stand,Work,Start Stand,Work Stand,Work,End"/>
-        <On index="67" Terms="Effect.GuardianShieldPersistent.Stop" Send="AnimBracketStop Guardian"/>
-        <On index="68" Terms="Upgrade.DarkProtoss.Add" Send="ModelSwap DarkSentry"/>
-        <On Terms="UnitBirth; ValidateUnit NoDarkProtoss" Send="ModelSwap DarkSentry"/>
-        <On Terms="UnitDeathCustomize; ValidateUnit NoDarkProtoss" Send="DeathCustomize DarkProtoss"/>
-        <On Terms="UnitHeightUpdate.*.Land" Send="Create Sentry_Land"/>
-        <On Terms="Upgrade.DarkProtoss.Add" Send="DeathCustomsEnablePhysics 0"/>
-        <On Terms="UnitBirth; ValidateUnit NoDarkProtoss" Send="DeathCustomsEnablePhysics 0"/>
-        <On Terms="UnitBirth; ValidateUnit HasPurifierProtoss" Send="TextureSelectById PurifierHackDiffuse"/>
-        <On Terms="Upgrade.PurifierProtoss.Add" Send="TextureSelectById PurifierHackDiffuse"/>
-        <On Terms="Signal.*.PurifierHack" Send="TextureSelectById PurifierHackDiffuse"/>
-        <On Terms="UnitDeathCustomize; ValidateUnit HaveVoidShade" Send="DeathCustomize Shadow"/>
-        <On Terms="UnitDeathCustomize; ValidateUnit HaveTerrazineShadow" Send="DeathCustomize Shadow"/>
-        <On Terms="Signal.*.CampaignBeamCreated" Send="RefSetFromMsg ::actor.MyAttackBeam ::Sender"/>
-        <On Terms="Signal.*.UnitRemoved" Target="::actor.MyAttackBeam" Send="Destroy Immediate"/>
         <On Terms="ActorCreation" Send="SetTeamColor 0,80,220 0,255,255"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.062500 Anim"/>
+        <On Terms="TimerExpired; TimerName Anim" Send="TimerSet 0.062500 Anim"/>
+        <On Terms="TimerExpired; TimerName Anim; IsStatus Anim 0; ValidateUnit BeamHeroSuperchargeDataGTE80" Send="AnimPlay Cover Stand,Channel PlayForever"/>
+        <On Terms="TimerExpired; TimerName Anim; ValidateUnit BeamHeroSuperchargeDataGTE80; IsStatus Anim 0" Send="StatusSet Anim 1"/>
+        <On Terms="Effect.BeamHeroSupercharge.Start" Send="AnimClear Cover"/>
+        <On Terms="Effect.BeamHeroSupercharge.Start" Send="StatusSet Anim 0"/>
+        <On Terms="ActorCreation" Send="Create BeamHeroSuperchargeAddition"/>
+        <On Terms="Abil.BeamHeroRazorBeam.SourceCastStop" Send="AnimPlay Attack Attack"/>
+        <On Terms="Abil.BeamHeroLaserFence.SourceCastStop" Send="AnimPlay Attack Attack"/>
+        <On Terms="Behavior.BeamHeroSuperchargeChannel.On" Send="AnimBracketStart Attack {} Stand,Channel Attack,End Instant"/>
+        <On Terms="Behavior.BeamHeroSuperchargeChannel.Off" Send="AnimBracketStop Attack"/>
         <HostSiteOps Ops="SOpBankerVoidRay"/>
         <AnimBlendTime value="0.650000"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <Baselines index="Walk" BlendIn="1.500000" BlendOut="2.000000"/>
-        <DeathArray index="Normal" ModelLink="BeamHeroDeath" SoundLink="Sentry_Explode" VoiceLink="SentryDeathVoice"/>
-        <DeathCustoms ModelLink="DarkSentryDeath" Name="DarkProtoss"/>
-        <DeathCustoms ModelLink="SentryDeathRagdoll" Name="RagdollBasic">
-            <BodySquibs Name="Basic" Model="ProtossRobotSquibDeathRagdoll"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollSiegeTank" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Fire"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Fire"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Acid"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollBaneling" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Acid"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollUltraUnburrow" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms>
-            <ModelLink value="DeathVoidShadowSmall"/>
-            <SoundLink value="ShadowUnit_DeathFX"/>
-            <VoiceLink value="ShadowUnit_DeathVox"/>
-            <Name value="Shadow"/>
-        </DeathCustoms>
+        <DeathArray index="Normal" ModelLink="BeamHeroDeath" SoundLink="VoidRay_Explode" VoiceLink=""/>
         <PlacementSound value="Protoss_BuildingPlacementSmall"/>
         <PortraitModel value="VoidRayStandardPortrait"/>
         <TerrainSquibs>
@@ -3949,10 +4201,6 @@
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-protoss-voidray.dds"/>
         </GroupIcon>
-        <GroupSoundArray index="What" value="Sentry_GroupWhat"/>
-        <GroupSoundArray index="Yes" value="Sentry_GroupYes"/>
-        <GroupSoundArray index="Attack" value="Sentry_GroupAttack"/>
-        <GroupSoundArray index="Board" value="Sentry_GroupBoard"/>
         <HeroIcon value="Assets\Textures\btn-unit-protoss-warpray.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
         <SoundArray index="Birth" value="Sentry_Birth"/>
@@ -3992,94 +4240,11 @@
         <AddToProximitySystem value="0"/>
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorMissile>
-    <CActorSound id="RotatingBeamSoundLoop" parent="SoundContinuous">
-        <On Terms="Effect.RotatingBeamLifetime.Start" Send="Create"/>
-        <On Terms="Effect.RotatingBeamLifetime.Stop" Send="Destroy"/>
+    <CActorSound id="BeamHeroLaserFence_Loop" parent="SoundContinuous">
+        <On Terms="Effect.BeamHeroLaserFenceCP.Start" Send="Create"/>
+        <On Terms="Effect.BeamHeroLaserFenceCP.Stop; FromEffectTreeDescendant" Send="Destroy"/>
         <Sound value="Kerrigan_QuantumRay_BeamLoop"/>
     </CActorSound>
-    <CActorSplat id="RotatingBeamSplat" parent="ProtossCursorSplat" abil="RotatingBeam">
-        <Model value="VoidProtossAOECursorSplat"/>
-    </CActorSplat>
-    <CActorUnit id="RotatingBeamUnit" parent="GenericUnitStandard" unitName="RotatingBeamUnit">
-        <On index="0" Send="Create"/>
-        <On index="1" Terms="UnitDeath" Send="Destroy"/>
-        <On index="2" Terms="ActorOrphan" Send="Destroy"/>
-        <On index="3" removed="1"/>
-        <On index="4" removed="1"/>
-        <On index="5" removed="1"/>
-        <On index="6" removed="1"/>
-        <On index="7" removed="1"/>
-        <On index="8" removed="1"/>
-        <On index="9" removed="1"/>
-        <On index="10" removed="1"/>
-        <On index="11" removed="1"/>
-        <On index="12" removed="1"/>
-        <On index="13" removed="1"/>
-        <On index="14" removed="1"/>
-        <On index="15" removed="1"/>
-        <On index="16" removed="1"/>
-        <On index="17" removed="1"/>
-        <On index="18" removed="1"/>
-        <On index="19" removed="1"/>
-        <On index="20" removed="1"/>
-        <On index="21" removed="1"/>
-        <On index="22" removed="1"/>
-        <On index="23" removed="1"/>
-        <On index="24" removed="1"/>
-        <On index="25" removed="1"/>
-        <On index="26" removed="1"/>
-        <On index="27" removed="1"/>
-        <On index="28" removed="1"/>
-        <On index="29" removed="1"/>
-        <On index="30" removed="1"/>
-        <On index="31" removed="1"/>
-        <On index="32" removed="1"/>
-        <On index="33" removed="1"/>
-        <On index="34" removed="1"/>
-        <On index="35" removed="1"/>
-        <On index="36" removed="1"/>
-        <On index="37" removed="1"/>
-        <On index="38" removed="1"/>
-        <On index="39" removed="1"/>
-        <On index="40" removed="1"/>
-        <On index="41" removed="1"/>
-        <On index="42" removed="1"/>
-        <On index="43" removed="1"/>
-        <On index="44" removed="1"/>
-        <On index="45" removed="1"/>
-        <On index="46" removed="1"/>
-        <On index="47" removed="1"/>
-        <On index="48" removed="1"/>
-        <On index="49" removed="1"/>
-        <On index="50" removed="1"/>
-        <On index="51" removed="1"/>
-        <On index="52" removed="1"/>
-        <On index="53" removed="1"/>
-        <On index="54" removed="1"/>
-        <On index="55" removed="1"/>
-        <On index="56" removed="1"/>
-        <On index="57" removed="1"/>
-        <On index="58" removed="1"/>
-        <On index="59" removed="1"/>
-        <On index="60" removed="1"/>
-        <On index="61" removed="1"/>
-        <On index="62" removed="1"/>
-        <On index="63" removed="1"/>
-        <On index="64" removed="1"/>
-        <On index="65" removed="1"/>
-        <On index="66" removed="1"/>
-        <On index="67" removed="1"/>
-        <On index="68" removed="1"/>
-        <Model value="Invisible"/>
-        <BuildModel value=""/>
-        <DeathArray index="Normal" ModelLink=""/>
-        <PlacementModel value=""/>
-        <PlacementActorModel value=""/>
-        <PlaceholderActorModel value=""/>
-        <HighlightTooltip value="Unit/Name/Bogus"/>
-        <ModelFlags index="AllowHitTest" value="0"/>
-        <UnitFlags index="ShowBlobShadow" value="0"/>
-    </CActorUnit>
     <CActorModel id="JackpotImpact" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.ResourcesJackpotMU.Start" Send="Create"/>
         <On Terms="Effect.ResourcesJackpotRichMU.Start" Send="Create"/>
@@ -4090,10 +4255,6 @@
         <On Terms="Effect.ResourcesJackpotRichMU.Start" Send="Create"/>
         <Sound value="JackpotPickupSound"/>
     </CActorSound>
-    <CActorMissile id="ForwardBeamMissile" parent="WizSimpleMissile" unitName="ForwardBeamMissile">
-        <HostSiteOps Ops="SOpForwardTargetPoint RotUp90" HoldRotation="1"/>
-        <ModelFlags index="AutomateGlobalLoops" value="1"/>
-    </CActorMissile>
     <CActorModel id="CrystalRainImpact" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.CrystalRainSASet.Start" Send="Create"/>
     </CActorModel>
@@ -6502,25 +6663,6 @@
     <CActorMissile id="PylonOverchargeMissile" parent="WizSimpleMissile" unitName="PylonOverchargeMissile">
         <On Terms="ActorCreation" Send="SetTintColor 0,255,255"/>
     </CActorMissile>
-    <CActorUnit id="MobileBeam" parent="GenericUnitStandard" unitName="MobileBeam">
-        <On Terms="ActorCreation" Send="SetOpacity"/>
-        <Model value="MobileBeamSelectionModel"/>
-        <BuildModel value=""/>
-        <DeathArray index="Normal" ModelLink=""/>
-        <PlacementModel value=""/>
-        <HeroIcon value="Assets\Textures\wireframe-protoss-purifierbeam.dds"/>
-        <HighlightTooltip value="Unit/Name/Bogus"/>
-        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
-        <UnitIcon value="Assets\Textures\wireframe-protoss-purifierbeam.dds"/>
-        <Wireframe>
-            <Image value="Assets\Textures\wireframe-protoss-purifierbeam.dds"/>
-        </Wireframe>
-        <WireframeShield>
-            <Image value="Assets\Textures\wireframe-protoss-purifierbeam-shield01.dds"/>
-            <Image value="Assets\Textures\wireframe-protoss-purifierbeam-shield02.dds"/>
-            <Image value="Assets\Textures\wireframe-protoss-purifierbeam-shield03.dds"/>
-        </WireframeShield>
-    </CActorUnit>
     <CActorAction id="EternalThunderstormAttack" parent="GenericAttack" effectAttack="EternalThunderstormDMG">
         <LaunchAttachQuery Methods=""/>
         <LaunchAssets Model="ThunderstormAttackWaterLaunch" Sound="Archon_AttackLaunch"/>

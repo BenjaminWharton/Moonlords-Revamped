@@ -19,6 +19,15 @@
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="BeamHeroSuperchargeMissile" parent="WizSimpleMissile" abil="">
+        <Race value="Prot"/>
+        <Sight value="4"/>
+    </CUnit>
+    <CUnit id="BeamHeroRazorBeamMissile" parent="WizSimpleMissile" abil="">
+        <Race value="Prot"/>
+        <Sight value="2"/>
+        <Radius value="0.5"/>
+    </CUnit>
     <CUnit id="GravityHeroPullMissile" parent="MISSILE">
         <Race value="Prot"/>
         <Sight value="2"/>
@@ -132,6 +141,8 @@
         <BehaviorArray Link="ThorRavenSeekerFate"/>
         <Radius value="0.25"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Hover" value="1"/>
     </CUnit>
     <CUnit id="NatureHeroFruitExplode">
         <Race value="Prot"/>
@@ -367,6 +378,7 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
         <BehaviorArray Link="TerranTargetTracker"/>
+        <BehaviorArray Link="NotInCombat"/>
         <BehaviorArray Link="ThorSelfheal"/>
         <BehaviorArray Link="ThorRocketBlitz"/>
         <BehaviorArray Link="ThorDefensiveNukeBase"/>
@@ -956,10 +968,6 @@
         <Height value="0.4"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
     </CUnit>
-    <CUnit id="ForwardBeamMissile" parent="WizSimpleMissile" abil="">
-        <Race value="Prot"/>
-        <Sight value="2"/>
-    </CUnit>
     <CUnit id="CrystalRainMissile" parent="MISSILE">
         <Race value="Prot"/>
         <Sight value="1"/>
@@ -1206,41 +1214,11 @@
         <Mover value="SporeCrawlerMissileMover"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
-    <CUnit id="SweepingBeamMissile" parent="WizSimpleMissile" abil="">
-        <Race value="Prot"/>
-        <Mover value="ForwardBeamMissile"/>
-        <Sight value="2"/>
-    </CUnit>
     <CUnit id="InvisibleMissile" parent="WizSimpleMissile" abil="">
         <Mover value="MissileDefault"/>
         <Sight value="2"/>
         <Height value="0.75"/>
         <MinimapRadius value="0.125"/>
-    </CUnit>
-    <CUnit id="RotatingBeamUnit">
-        <Race value="Prot"/>
-        <FlagArray index="Unselectable" value="1"/>
-        <FlagArray index="Untargetable" value="1"/>
-        <FlagArray index="Invulnerable" value="1"/>
-        <FlagArray index="Unstoppable" value="1"/>
-        <LifeStart value="1000"/>
-        <LifeMax value="1000"/>
-        <LifeArmor value="1000"/>
-        <LifeRegenRate value="1000"/>
-        <Mover value="Fly"/>
-        <Speed value="6"/>
-        <Acceleration value="1000"/>
-        <Deceleration value="1"/>
-        <Height value="0.5"/>
-        <AbilArray Link="move"/>
-        <AbilArray Link="attack"/>
-        <CardLayouts>
-            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
-            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-        </CardLayouts>
-        <SeparationRadius value="0"/>
-        <BehaviorArray Link="SpellUnit"/>
-        <MinimapRadius value="0"/>
     </CUnit>
     <CUnit id="CrystalRainShardMissile" parent="MISSILE">
         <Race value="Prot"/>
@@ -2681,7 +2659,7 @@
             <LayoutButtons Face="ThunderstormWind" Type="AbilCmd" AbilCmd="ThunderstormWind,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="QuicksandEarth" Type="AbilCmd" AbilCmd="QuicksandEarth,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="ElementalHeroSiphon" Type="AbilCmd" AbilCmd="ElementalHeroSiphon,Execute" Row="2" Column="3"/>
-            <LayoutButtons Face="EternalLife" Type="AbilCmd" AbilCmd="EternalLife,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="ThunderingSiphon" Type="AbilCmd" AbilCmd="EternalLife,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="InfuseWind" Type="AbilCmd" AbilCmd="InfuseWind,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="FirestormFire" Type="AbilCmd" AbilCmd="FirestormFire,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="Windstorm" Type="AbilCmd" AbilCmd="Windstorm,Execute" Row="2" Column="1"/>
@@ -2897,43 +2875,6 @@
         <Sight value="2"/>
         <Height value="0.5"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
-    </CUnit>
-    <CUnit id="MobileBeam">
-        <Race value="Prot"/>
-        <FlagArray index="Unhighlightable" value="0"/>
-        <FlagArray index="Untargetable" value="1"/>
-        <FlagArray index="UseLineOfSight" value="1"/>
-        <FlagArray index="Invulnerable" value="1"/>
-        <LifeStart value="1000"/>
-        <LifeMax value="1000"/>
-        <LifeArmor value="1000"/>
-        <LifeRegenRate value="1000"/>
-        <Mover value="Fly"/>
-        <Speed value="1.3007"/>
-        <Acceleration value="1000"/>
-        <Deceleration value="0.5"/>
-        <Sight value="2"/>
-        <VisionHeight value="4"/>
-        <AbilArray Link="move"/>
-        <AbilArray Link="stop"/>
-        <AbilArray Link="attack"/>
-        <WeaponArray Link="MobileBeamWeaponDummy"/>
-        <CardLayouts>
-            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
-            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
-            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
-            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-        </CardLayouts>
-        <SeparationRadius value="0"/>
-        <SubgroupPriority value="1"/>
-        <KillDisplay value="Never"/>
-        <RankDisplay value="Never"/>
-        <AcquireMovementLimit value="50"/>
-        <AcquireLeashRadius value="50"/>
-        <AcquireLeashResetRadius value="50"/>
-        <BehaviorArray Link="MobileBeamUnpathable"/>
-        <BehaviorArray Link="SpellUnit"/>
     </CUnit>
     <CUnit id="WaterBlastMissile" parent="WizSimpleMissile" abil="NovaWeaponPlasmaBlastNew">
         <Race value="Terr"/>
@@ -3357,7 +3298,7 @@
     </CUnit>
     <CUnit id="VolatileSporesMissile" parent="MISSILE">
         <Race value="Zerg"/>
-        <Mover value="ForwardBeamMissile"/>
+        <Mover value="SporeLordVolatileSporesMissile"/>
         <EditorCategories value="ObjectFamily:Campaign,ObjectType:Projectile"/>
         <FlagArray index="Invulnerable" value="1"/>
     </CUnit>
@@ -4653,13 +4594,13 @@
         <AbilArray Link="Warpable"/>
         <AbilArray Link="ProgressRally"/>
         <AbilArray Link="BuildInProgress"/>
-        <AbilArray Link="ForwardBeam"/>
-        <AbilArray Link="RotatingBeam"/>
-        <AbilArray Link="MobileBeam"/>
-        <AbilArray Link="SweepingBeam"/>
+        <AbilArray Link="BeamHeroRazorBeam"/>
+        <AbilArray Link="BeamHeroLaserFence"/>
+        <AbilArray Link="BeamHeroSupercharge"/>
+        <AbilArray Link="BeamHeroAnchor"/>
         <BehaviorArray Link="FullHeal"/>
-        <BehaviorArray Link="RapidRepairsController"/>
-        <BehaviorArray Link="RapidRepairs"/>
+        <BehaviorArray Link="BeamHeroPowerSupply"/>
+        <BehaviorArray Link="BeamHeroSupercharge"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -4667,11 +4608,13 @@
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="ChatCommands" Type="Passive" Row="1" Column="0"/>
-            <LayoutButtons Face="ForwardBeam" Type="AbilCmd" AbilCmd="ForwardBeam,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="RotatingBeam" Type="AbilCmd" AbilCmd="RotatingBeam,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="MobileBeam" Type="AbilCmd" AbilCmd="MobileBeam,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="SweepingBeam" Type="AbilCmd" AbilCmd="SweepingBeam,Execute" Row="2" Column="3"/>
-            <LayoutButtons Face="RapidRepairs" Type="Passive" Row="2" Column="4"/>
+            <LayoutButtons Face="BeamHeroRazorBeam" Type="AbilCmd" AbilCmd="BeamHeroRazorBeam,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="BeamHeroLaserFence" Type="AbilCmd" AbilCmd="BeamHeroLaserFence,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="BeamHeroSupercharge" Type="AbilCmd" AbilCmd="BeamHeroSupercharge,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="BeamHeroAnchor" Type="AbilCmd" AbilCmd="BeamHeroAnchor,On" Row="2" Column="3"/>
+            <LayoutButtons Face="BeamHeroAnchorCancel" Type="AbilCmd" AbilCmd="BeamHeroAnchor,Off" Row="2" Column="3"/>
+            <LayoutButtons Row="0" Column="0"/>
+            <LayoutButtons Face="BeamHeroPowerSupply" Type="Passive" Row="2" Column="4"/>
         </CardLayouts>
         <InnerRadius value="0.375"/>
         <ScoreMake value="150"/>
@@ -6078,8 +6021,8 @@
         <EnergyDamageGain index="Melee" value="0.2"/>
         <EnergyDamageGain index="Ranged" value="0.2"/>
         <EnergyDamageGain index="Splash" value="0.2"/>
-        <BehaviorArray index="2" Link="ThorAbsorptionShield"/>
-        <BehaviorArray index="3" Link="ThorLightningBarrage"/>
+        <BehaviorArray index="3" Link="ThorAbsorptionShield"/>
+        <BehaviorArray index="4" Link="ThorLightningBarrage"/>
         <WeaponArray index="0" removed="1"/>
         <EquipmentArray Weapon="ThorLightningBarrage"/>
         <EnergyRegenRate value="-25"/>
@@ -6118,6 +6061,7 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
         <BehaviorArray Link="TerranTargetTracker"/>
+        <BehaviorArray Link="NotInCombat"/>
         <BehaviorArray Link="ThorSelfheal"/>
         <BehaviorArray Link="AnnihilatorSupportBotSearch"/>
         <BehaviorArray Link="AnnihilatorAbsorptionField"/>
@@ -6161,9 +6105,9 @@
         <Name value="Unit/Name/AnnihilatorV2"/>
         <Description value="Button/Tooltip/AnnihilatorV2"/>
         <ReviveType value="AnnihilatorV2"/>
-        <BehaviorArray index="4" Link="AnnihilatorV2MovementSpeed"/>
-        <BehaviorArray index="5" Link="AnnihilatorV2Railgun"/>
-        <BehaviorArray index="6" removed="1"/>
+        <BehaviorArray index="5" Link="AnnihilatorV2MovementSpeed"/>
+        <BehaviorArray index="6" Link="AnnihilatorV2Railgun"/>
+        <BehaviorArray index="7" removed="1"/>
         <EquipmentArray index="0" Weapon="AnnihilatorV2Railgun"/>
         <Speed value="2.75"/>
     </CUnit>
@@ -6171,9 +6115,9 @@
         <Name value="Unit/Name/AnnihilatorV3"/>
         <Description value="Button/Tooltip/AnnihilatorV3"/>
         <ReviveType value="AnnihilatorV3"/>
-        <BehaviorArray index="4" Link="AnnihilatorV3RocketLauncher"/>
-        <BehaviorArray index="5" removed="1"/>
+        <BehaviorArray index="5" Link="AnnihilatorV3RocketLauncher"/>
         <BehaviorArray index="6" removed="1"/>
+        <BehaviorArray index="7" removed="1"/>
         <FlagArray index="Movable" value="0"/>
         <EquipmentArray index="0" Weapon="AnnihilatorV3RocketLauncher"/>
     </CUnit>
@@ -6186,8 +6130,6 @@
         <EnergyDamageGain index="Melee" value="0.25"/>
         <EnergyDamageGain index="Ranged" value="0.25"/>
         <EnergyDamageGain index="Splash" value="0.25"/>
-        <BehaviorArray index="1" Link="ThorRocketBlitz"/>
-        <BehaviorArray index="2" Link="ThorSelfheal"/>
         <BehaviorArray Link="AnnihilatorSupportBotSearch"/>
         <BehaviorArray Link="AnnihilatorAbsorptionField"/>
         <WeaponArray index="0" Link="Odin"/>

@@ -18,6 +18,92 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BeamHeroAnchored">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Period value="0.0625"/>
+        <InitialEffect value="BeamHeroAnchorInitSet"/>
+        <PeriodicEffect value="BeamHeroAnchorPeriodicSet"/>
+        <Modification MoveSpeedMaximum="1">
+            <DamageTotalMultiplier index="Spell" value="0.2"/>
+            <DamageTotalMultiplier index="Melee" value="0.2"/>
+            <DamageTotalMultiplier index="Ranged" value="0.2"/>
+            <DamageTotalMultiplier index="Splash" value="0.2"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0.8">
+            <Chance value="1"/>
+        </DamageResponse>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BeamHeroIntercept">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="1.5"/>
+        <FinalEffect value="Suicide"/>
+        <Modification TimeScale="0.25">
+            <StateFlags index="Invulnerable" value="1"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BeamHeroLaserFence">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-beambounce.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.5"/>
+        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+        <DamageResponse>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BeamHeroPowerSupply">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Modification RadarFilters="-;Player,Ally,Neutral,Missile,Dead,Hidden">
+            <VitalDamageGainArray index="Energy">
+                <KindArray index="Spell" value="0.02"/>
+                <KindArray index="Melee" value="0.02"/>
+                <KindArray index="Ranged" value="0.02"/>
+                <KindArray index="Splash" value="0.02"/>
+            </VitalDamageGainArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BeamHeroSkyrocket">
+        <InfoIcon value="Assets\Textures\btn-ability-stetmann-stetelliteoverloadenergy.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <MaxStackCount value="0"/>
+        <Duration value="20"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BeamHeroSupercharge">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <PeriodicEffect value="BeamHeroSuperchargeDataInc"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BeamHeroRepulsion">
+        <BehaviorCategories index="Stun" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="BeamHeroCasterIsAnchored"/>
+        <RemoveValidatorArray value="DistanceFromCasterLT7"/>
+        <Period value="0.0625"/>
+        <InitialEffect value="BeamHeroAnchorRepulsionDataInc"/>
+        <PeriodicEffect value="BeamHeroAnchorRepulsionForce"/>
+        <FinalEffect value="BeamHeroAnchorRepulsionDataDec"/>
+        <Modification MoveSpeedMinimum="3">
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+        <TechAliasArray value="Alias_BehaviorForceMovement"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BeamHeroSuperchargeChannel">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="1"/>
+        <Modification MoveSpeedMultiplier="0.01">
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="SuppressEnergyRegen" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="QueenSpawnLarvaTimer">
         <Duration value="12"/>
     </CBehaviorBuff>
@@ -894,6 +980,14 @@
         <Period value="0.25"/>
         <PeriodicEffect value="ThorLightningBarrageETU"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="NotInCombat">
+        <InfoIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel3.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <DisableValidatorArray value="ThorNoInCombat"/>
+        <DamageResponse ModifyFraction="0.1">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ThorThunderstep">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -970,47 +1064,6 @@
         <Duration value="30"/>
         <InitialEffect value="GasBombDousedSet"/>
         <RefreshEffect value="GasBombDousedSet"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="DrainingBeamStasis">
-        <InfoIcon value="Assets\Textures\btn-upgrade-protoss-fenix-colossuschampionslowbeam.dds"/>
-        <BehaviorCategories index="Stun" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="4"/>
-        <FinalEffect value="ApplyUnitWasStunned"/>
-        <Modification MoveSpeedMultiplier="0.01">
-            <ModifyFlags index="SuppressMoving" value="1"/>
-            <AbilClassDisableArray index="CAbilAttack" value="1"/>
-            <AbilClassDisableArray index="CAbilAugment" value="1"/>
-            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
-            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
-            <AbilClassDisableArray index="CAbilMove" value="1"/>
-        </Modification>
-        <InitialEffect value="SweepingBeamPerforateAB"/>
-        <RefreshEffect value="SweepingBeamPerforateAB"/>
-        <DamageResponse>
-            <Chance value="1"/>
-        </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="DrainingBeamStasisHeroic">
-        <Cost>
-            <Charge Link="Behavior/DrainingBeamStasis"/>
-            <Cooldown Link="Behavior/DrainingBeamStasis"/>
-        </Cost>
-        <InfoIcon value="Assets\Textures\btn-upgrade-protoss-fenix-colossuschampionslowbeam.dds"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="4"/>
-        <Modification MoveSpeedMultiplier="0.5">
-            <AdditiveAttackSpeedFactor value="-0.5"/>
-        </Modification>
-        <DamageResponse>
-            <Chance value="1"/>
-            <Cost>
-                <Charge Link="Behavior/DrainingBeamStasis"/>
-                <Cooldown Link="Behavior/DrainingBeamStasis"/>
-            </Cost>
-        </DamageResponse>
-        <InitialEffect value="SweepingBeamPerforateAB"/>
-        <RefreshEffect value="SweepingBeamPerforateAB"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="DynamicAlly">
         <InfoIcon value="Assets\OrbOfVitality.dds"/>
@@ -1119,12 +1172,6 @@
         <Duration value="0.1"/>
         <InitialEffect value="BloodFanaticalStartSet"/>
         <FinalEffect value="BloodFanaticalEndSet"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Fenced">
-        <Alignment value="Negative"/>
-        <InfoIcon value="Assets\ForwardBeamEx2.dds"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="0.25"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="FireHeroBlastwaveStun">
         <Alignment value="Negative"/>
@@ -1492,16 +1539,6 @@
             <BehaviorLinkDisableArray value="PylonOvercharge"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="RapidRepairsDisable">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="10"/>
-        <InitialEffect value="RapidRepairsRB"/>
-        <ExpireEffect value="RapidRepairsAB"/>
-        <Modification>
-            <BehaviorLinkDisableArray value="RapidRepairsController"/>
-        </Modification>
-    </CBehaviorBuff>
     <CBehaviorBuff id="SpellUnit">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -1522,11 +1559,6 @@
             <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="SweepingBeamAlternatingSides">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <RefreshEffect value="SweepingBeamAlternatingRB"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="Mangle">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\BladeStorm.dds"/>
@@ -1537,45 +1569,10 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
-    <CBehaviorBuff id="MobileBeam">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="MobileBeamSA"/>
-        <Modification>
-            <StateFlags index="Unselectable" value="1"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="MobileBeamUnpathable">
-        <InfoIcon value="EditorData\Images\TerrainModule\Palette\Path\NoPathing.tga"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="SourceUnitNotOnPathable"/>
-        <Modification MoveSpeedMultiplier="0.15"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="Muck">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="HasGasFireOrDoused"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="RapidRepairsController">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DamageResponse Handled="RapidRepairsDisableAB" Minimum="30" ModifyMinimumDamage="1">
-            <Chance value="1"/>
-        </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="RapidRepairs">
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-prismaticbeam.dds"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Modification>
-            <VitalRegenArray index="Life" value="10"/>
-            <VitalRegenArray index="Shields" value="10"/>
-            <VitalRegenMultiplier index="Life" value="5"/>
-            <VitalRegenMultiplier index="Shields" value="5"/>
-        </Modification>
-        <DamageResponse>
-            <Chance value="1"/>
-        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="ResourceCollector">
         <InfoFlags index="Hidden" value="1"/>
@@ -3043,7 +3040,8 @@
         <InfoIcon value="Assets\ToxicVaporEx3.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="2"/>
-        <DamageResponse Handled="FrailtyDMG">
+        <DamageResponse Handled="NatureHeroFrailtyDelay">
+            <ExcludeEffectArray value="FrailtyDMG"/>
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -3691,6 +3689,7 @@
             <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
         <DisableValidatorArray value="NotMassive"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Fortify">
         <InfoIcon value="Assets\Textures\btn-upgrade-zerg-organiccarapace.dds"/>
@@ -4489,9 +4488,6 @@
         <Modification>
             <VitalRegenArray index="Life" value="1000"/>
         </Modification>
-        <DamageResponse ModifyFraction="0.25">
-            <Chance value="1"/>
-        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="ShadowCharging">
         <Modification MoveSpeedMaximum="20" MoveSpeedMultiplier="3"/>

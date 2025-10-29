@@ -3,9 +3,41 @@
     <CRequirement id="ArmBroodlingEscort">
         <NodeArray index="Use" Link="LTCountUnitBroodlingEscortQueuedOrBetterAtUnit8"/>
     </CRequirement>
+    <CRequirement id="BeamHeroDepotGT0">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTCountUpgradeBeamHeroDepotCompleteOnly0"/>
+    </CRequirement>
+    <CRequirement id="BeamHeroDepotGT1">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTCountUpgradeBeamHeroDepotCompleteOnly1"/>
+    </CRequirement>
     <CRequirement id="BeamHeroHasCross">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
-        <NodeArray index="Use" Link="CountUpgradeCrossCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeBeamHeroCrossCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BeamHeroHasRadar">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBeamHeroRadarCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BeamHeroLinkLvl0">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="EqCountUpgradeBeamHeroLinkCompleteOnly0"/>
+    </CRequirement>
+    <CRequirement id="BeamHeroLinkLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="EqCountUpgradeBeamHeroLinkCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="BeamHeroStretchLvl3">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="EqCountUpgradeBeamHeroStretchCompleteOnly3"/>
+    </CRequirement>
+    <CRequirement id="BeamHeroStretchLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="EqCountUpgradeBeamHeroStretchCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="BeamHeroStretchLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="EqCountUpgradeBeamHeroStretchCompleteOnly2"/>
     </CRequirement>
     <CRequirement id="BlackDeathSpread1">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
