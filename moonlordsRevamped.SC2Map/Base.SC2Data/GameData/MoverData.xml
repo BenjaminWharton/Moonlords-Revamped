@@ -553,7 +553,7 @@
     <CMoverMissile id="ChaosLordMissileRedGreen" parent="WizSimpleMissile">
         <MotionPhases index="0">
             <Driver value="Guidance"/>
-            <Speed value="11"/>
+            <Speed value="10"/>
             <Clearance value="5"/>
             <RotationLaunchActorType value="LaunchToTarget"/>
             <ThrowBandYaw value="-360,-360,-360,-360"/>
@@ -576,7 +576,7 @@
     <CMoverMissile id="ExtinctionMissile" parent="WizSimpleMissile">
         <MotionPhases index="0">
             <Driver value="Guidance"/>
-            <Speed value="6"/>
+            <Speed value="5"/>
             <RotationLaunchActorType value="LaunchToTarget"/>
             <ThrowBandYaw value="-360,-360,-360,-360"/>
             <ThrowBandPitch value="-360,-360,-360,-360"/>

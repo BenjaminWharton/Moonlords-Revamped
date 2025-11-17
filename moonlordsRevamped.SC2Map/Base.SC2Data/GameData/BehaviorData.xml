@@ -1977,7 +1977,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="StormArmor">
         <InfoIcon value="Assets\Textures\hardenedwill_coop.dds"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Period value="1.5"/>
         <PeriodicEffect value="StormArmorSA"/>
     </CBehaviorBuff>

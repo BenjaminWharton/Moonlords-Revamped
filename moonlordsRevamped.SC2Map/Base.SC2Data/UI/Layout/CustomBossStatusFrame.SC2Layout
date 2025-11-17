@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <!-- Unit Name Templates -->
+    <Frame type="UnitStatusUnitName" name="UnitStatusBossNameTemplate">
+        <Frame type="Label" name="Label">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="BossNameRed"/>
+            <RenderType val="LDR"/>
+        </Frame>
+    </Frame>
+
+    <!-- Boss Status Bar -->
+    <Frame type="UnitStatusFrame" name="StatusFrameBossTemplate">
+        <Height val="75"/>
+        <Width val="450"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="225"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel" template="CustomBossStatusFrame/UnitStatusBossNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Image" name="BossUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="27"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/DummyBottom" pos="Max" offset="0"/>
+            <Width val="201"/>
+            <Texture val="Assets\Textures\CustomBossBarFrameEx6.dds"/>
+            <RenderPriority val="550"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Frame" name="DummyTop">
+            <Anchor side="Top" relative="$parent/BossUnitBackgroundImage" pos="Min" offset="6"/>
+            <Anchor side="Left" relative="$parent/BossUnitBackgroundImage" pos="Min" offset="6"/>
+            <Anchor side="Right" relative="$parent/BossUnitBackgroundImage" pos="Max" offset="-6"/>
+            <Height val="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="ShieldsFrame">
+            <Anchor side="Top" relative="$parent/DummyTop" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/DummyTop" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/DummyTop" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="ShieldsBar" pos="Max" offset="0"/>
+
+            <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="LotV_UnitStatus/UnitStatusShieldsBarTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Height val="10"/>
+                <Width val="0"/>
+                <BackgroundColor val="0, 25, 75"/>
+                <CollapseLayout val="true"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="HealthFrame">
+            <Anchor side="Top" relative="$parent/ShieldsFrame" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/ShieldsFrame" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/ShieldsFrame" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="HealthBar" pos="Max" offset="0"/>
+
+            <Frame type="UnitStatusHealthBar" name="HealthBar" template="LotV_UnitStatus/UnitStatusHealthBarTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="-3"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Height val="15"/>
+                <Width val="0"/>
+                <OwnerColor val="150, 15, 50"/>
+                <AllyColor val="150, 15, 50"/>
+                <EnemyColor val="150, 15, 50"/>
+                <BackgroundColor val="50, 0, 0"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="EnergyFrame">
+            <Anchor side="Top" relative="$parent/HealthFrame" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/HealthFrame" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/HealthFrame" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="EnergyBar" pos="Max" offset="0"/>
+
+            <Frame type="UnitStatusEnergyBar" name="EnergyBar" template="LotV_UnitStatus/UnitStatusEnergyBarTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="-3"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Height val="10"/>
+                <Width val="0"/>
+                <BackgroundColor val="50, 0, 50"/>
+                <CollapseLayout val="true"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="DummyBottom">
+            <Anchor side="Top" relative="$parent/EnergyFrame" pos="Max" offset="6"/>
+            <Anchor side="Left" relative="$parent/EnergyFrame" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/EnergyFrame" pos="Max" offset="0"/>
+            <Height val="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="LotV_UnitStatus/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/DummyBottom" pos="Max" offset="-3"/>
+            <Anchor side="Left" relative="$parent/DummyBottom" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/DummyBottom" pos="Max" offset="0"/>
+            <Height val="10"/>
+            <Width val="0"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="LotV_UnitStatus/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="-3"/>
+            <Anchor side="Left" relative="$parent/ProgressBar" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/ProgressBar" pos="Max" offset="0"/>
+            <Height val="10"/>
+            <Width val="0"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <StateGroup name="VitalsOffset">
+            <DefaultState val="NoShieldsNoEnergy"/>
+
+            <State name="ShieldsAndEnergy">
+                <When type="Property" frame="$this/ShieldsFrame/ShieldsBar" Visible="True"/>
+                <When type="Property" frame="$this/EnergyFrame/EnergyBar" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DummyTop" Height="4"/>
+                <Action type="SetProperty" frame="$this/DummyBottom" Height="4"/>
+            </State>
+
+            <State name="Shields">
+                <When type="Property" frame="$this/ShieldsFrame/ShieldsBar" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DummyTop" Height="2"/>
+                <Action type="SetProperty" frame="$this/DummyBottom" Height="2"/>
+            </State>
+
+            <State name="Energy">
+                <When type="Property" frame="$this/EnergyFrame/EnergyBar" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DummyTop" Height="2"/>
+                <Action type="SetProperty" frame="$this/DummyBottom" Height="2"/>
+            </State>
+
+            <State name="NoShieldsNoEnergy">
+                <Action type="SetProperty" frame="$this/DummyTop" Height="0"/>
+                <Action type="SetProperty" frame="$this/DummyBottom" Height="0"/>
+            </State>
+        </StateGroup>
+
+    </Frame>
+
+    <!-- Boss Status Bar Large -->
+    <Frame type="UnitStatusFrame" name="StatusFrameBossTemplateLarge">
+        <Height val="75"/>
+        <Width val="450"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="225"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel" template="CustomBossStatusFrame/UnitStatusBossNameTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Image" name="BossUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="27"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/DummyBottom" pos="Max" offset="0"/>
+            <Width val="301"/>
+            <Texture val="Assets\Textures\CustomBossBarFrameEx6.dds"/>
+            <RenderPriority val="550"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Frame" name="DummyTop">
+            <Anchor side="Top" relative="$parent/BossUnitBackgroundImage" pos="Min" offset="8"/>
+            <Anchor side="Left" relative="$parent/BossUnitBackgroundImage" pos="Min" offset="8"/>
+            <Anchor side="Right" relative="$parent/BossUnitBackgroundImage" pos="Max" offset="-8"/>
+            <Height val="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="ShieldsFrame">
+            <Anchor side="Top" relative="$parent/DummyTop" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/DummyTop" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/DummyTop" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="ShieldsBar" pos="Max" offset="0"/>
+
+            <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="LotV_UnitStatus/UnitStatusShieldsBarTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Height val="12"/>
+                <Width val="0"/>
+                <BackgroundColor val="0, 25, 75"/>
+                <CollapseLayout val="true"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="HealthFrame">
+            <Anchor side="Top" relative="$parent/ShieldsFrame" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/ShieldsFrame" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/ShieldsFrame" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="HealthBar" pos="Max" offset="0"/>
+
+            <Frame type="UnitStatusHealthBar" name="HealthBar" template="LotV_UnitStatus/UnitStatusHealthBarTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="-3"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Height val="18"/>
+                <Width val="0"/>
+                <OwnerColor val="150, 15, 50"/>
+                <AllyColor val="150, 15, 50"/>
+                <EnemyColor val="150, 15, 50"/>
+                <BackgroundColor val="50, 0, 0"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="EnergyFrame">
+            <Anchor side="Top" relative="$parent/HealthFrame" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/HealthFrame" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/HealthFrame" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="EnergyBar" pos="Max" offset="0"/>
+
+            <Frame type="UnitStatusEnergyBar" name="EnergyBar" template="LotV_UnitStatus/UnitStatusEnergyBarTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="-3"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Height val="12"/>
+                <Width val="0"/>
+                <BackgroundColor val="50, 0, 50"/>
+                <CollapseLayout val="true"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="DummyBottom">
+            <Anchor side="Top" relative="$parent/EnergyFrame" pos="Max" offset="8"/>
+            <Anchor side="Left" relative="$parent/EnergyFrame" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/EnergyFrame" pos="Max" offset="0"/>
+            <Height val="0"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar" template="LotV_UnitStatus/UnitStatusProgressBarTemplate">
+            <Anchor side="Top" relative="$parent/DummyBottom" pos="Max" offset="-3"/>
+            <Anchor side="Left" relative="$parent/DummyBottom" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/DummyBottom" pos="Max" offset="0"/>
+            <Height val="10"/>
+            <Width val="0"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <Frame type="UnitStatusDurationBar" name="DurationBar" template="LotV_UnitStatus/UnitStatusDurationBarTemplate">
+            <Anchor side="Top" relative="$parent/ProgressBar" pos="Max" offset="-3"/>
+            <Anchor side="Left" relative="$parent/ProgressBar" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/ProgressBar" pos="Max" offset="0"/>
+            <Height val="10"/>
+            <Width val="0"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+
+        <StateGroup name="VitalsOffset">
+            <DefaultState val="NoShieldsNoEnergy"/>
+
+            <State name="ShieldsAndEnergy">
+                <When type="Property" frame="$this/ShieldsFrame/ShieldsBar" Visible="True"/>
+                <When type="Property" frame="$this/EnergyFrame/EnergyBar" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DummyTop" Height="6"/>
+                <Action type="SetProperty" frame="$this/DummyBottom" Height="6"/>
+            </State>
+
+            <State name="Shields">
+                <When type="Property" frame="$this/ShieldsFrame/ShieldsBar" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DummyTop" Height="3"/>
+                <Action type="SetProperty" frame="$this/DummyBottom" Height="3"/>
+            </State>
+
+            <State name="Energy">
+                <When type="Property" frame="$this/EnergyFrame/EnergyBar" Visible="True"/>
+                <Action type="SetProperty" frame="$this/DummyTop" Height="3"/>
+                <Action type="SetProperty" frame="$this/DummyBottom" Height="3"/>
+            </State>
+
+            <State name="NoShieldsNoEnergy">
+                <Action type="SetProperty" frame="$this/DummyTop" Height="0"/>
+                <Action type="SetProperty" frame="$this/DummyBottom" Height="0"/>
+            </State>
+        </StateGroup>
+
+    </Frame>
+
+</Desc>

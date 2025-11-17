@@ -3190,7 +3190,7 @@
         <StationaryTurningRate value="0"/>
         <TurningRate value="0"/>
         <Sight value="20"/>
-        <Height value="3.75"/>
+        <Height value="2.5"/>
         <CostResource index="Minerals" value="400"/>
         <CostResource index="Vespene" value="400"/>
         <AttackTargetPriority value="20"/>

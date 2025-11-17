@@ -45,12 +45,10 @@
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CActorAction id="BeamHeroRazorBeamAttack" parent="GenericAttack" effectLaunch="BeamHeroRazorBeamLM">
-        <On index="6" Terms="Effect.##effectLaunch##.Start; At Caster" Send="Create"/>
         <Missile value="BeamHeroRazorBeamMissile"/>
         <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpShadow SOpMoveUpByDot5 SOpMoveUpByDot25"/>
     </CActorAction>
     <CActorAction id="BeamHeroRazorBeamCrossAttack" parent="GenericAttack" effectLaunch="BeamHeroRazorBeamCrossLM">
-        <On index="6" Terms="Effect.##effectLaunch##.Start; At Caster" Send="Create"/>
         <LaunchSiteOps Ops="SOpSourcePoint SOpShadow SOpMoveUpByDot5 SOpMoveUpByDot25"/>
         <Missile value="BeamHeroRazorBeamMissile"/>
         <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpShadow SOpMoveUpByDot5 SOpMoveUpByDot25"/>
@@ -350,6 +348,18 @@
         <On Terms="Effect.BeamHeroSuperchargeSA.Start; ValidateEffect DefaultDataGTE100" Send="Create"/>
         <HostSiteOps Ops="SOpSourceUnit" HoldPosition="1" HoldRotation="1"/>
     </CActorSound>
+    <CActorUnit id="BroodLord">
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
+    </CActorUnit>
     <CActorModel id="FireEnchantedExplosion" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.FireEnchantedDamage.Start" Send="Create"/>
         <Model value="ThorRavenSeekerImpact"/>
@@ -1252,6 +1262,16 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorTurret id="AnnihilatorTurret">
         <On Terms="TurretEnable.AnnihilatorTurret" Send="Create"/>
@@ -1293,8 +1313,8 @@
         <DeathCustoms ModelLink="WarbotDeathC" Name="Variation3"/>
         <DeathActorModelLow value="UnitDeathModel"/>
         <PortraitModel value="ARESPortrait"/>
-        <BarOffset value="180"/>
-        <BarWidth value="220"/>
+        <BarOffset value="45"/>
+        <BarWidth value="75"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
         </GroupIcon>
@@ -5287,6 +5307,17 @@
         <Wireframe>
             <Image index="0" value="Assets\Textures\wireframe-collection-webby-overlordtransport.dds"/>
         </Wireframe>
+        <BarOffset value="90"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="CorrosionLordAttack" parent="GenericAttack" effectImpact="MLCorrosiveAcidDMG" effectLaunch="MLCorrosiveAcidLM">
         <LaunchAssets Sound="Spell_Puke_Launch"/>
@@ -5360,6 +5391,17 @@
         <Wireframe>
             <Image index="0" value="Assets\Textures\wireframe-zerg-spotter.dds"/>
         </Wireframe>
+        <BarOffset value="90"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplateLarge"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="MLBanelingBarrageAttack" parent="GenericAttack" effectImpact="MLBanelingBarrageDMG" effectLaunch="MLBanelingBarrageLM">
         <Missile value="MLBanelingBarrageMissile"/>
@@ -5405,16 +5447,189 @@
         <Scale value="0.500000"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorBeamSimple>
-    <CActorUnit id="HordeLord" parent="BroodLord" unitName="HordeLord">
-        <On index="0" Terms="UnitBirth.HordeLord"/>
-        <On index="1" Terms="UnitBirth.HordeLord"/>
-        <On index="2" Terms="UnitRevive.HordeLord"/>
-        <On index="3" Terms="UnitRevive.HordeLord"/>
-        <On index="4" Terms="UnitConstruction.HordeLord.Start"/>
-        <On index="5" Terms="UnitConstruction.HordeLord.Finish"/>
-        <Model value="HordeLord"/>
-        <DeathArray index="Normal" ModelLink="HordeLordDeath"/>
-        <HighlightTooltip value="Unit/Name/HordeLord"/>
+    <CActorUnit id="HordeLord" parent="GenericUnitSelectable" unitName="HordeLord">
+        <Aliases value="_UnitHuge"/>
+        <Macros value="DeadAnimationMacro"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <AcceptedHostedPropTransfers index="Scale" value="0"/>
+        <On index="0" Terms="UnitBirth.HordeLord" Send="Create SoundEmitter BroodLord_Ambience"/>
+        <On Terms="UnitBirth.*.Normal" Send="$Birth 0 0.000000"/>
+        <On Terms="UnitFidget" Send="AnimPlay Fidget Fidget"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Fidget"/>
+        <On Terms="UnitDetectedByViewer.*.On; ValidateUnit IsHallucination" Target="_HallucinationTinter" Send="Signal HallucinationTintOn"/>
+        <On Terms="UnitDetectedByViewer.*.Off; ValidateUnit IsHallucination" Target="_HallucinationTinter" Send="Signal HallucinationTintOff"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit NotStructure; IsStatus InAir 1" Send="DeathCustomize AntiGravGeneric"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsProtossUnit; IsStatus InAir 1" Send="DeathCustomize AntiGravProtoss"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsTerranUnit; IsStatus InAir 1" Send="DeathCustomize AntiGravTerran"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsZergUnit; IsStatus InAir 1" Send="DeathCustomize AntiGravZerg"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsVortexed" Send="DeathCustomize Vortex"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HasForceLowDeathProtoss" Send="DeathCustomize AntiGravProtoss"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HasForceLowDeathZerg" Send="DeathCustomize AntiGravZerg"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HasForceLowDeathTerran" Send="DeathCustomize AntiGravTerran"/>
+        <On Terms="Behavior.PhoenixAntiGrav.On" Send="ModelSuddenMotionStart"/>
+        <On Terms="Behavior.PhoenixAntiGrav.Off" Send="ModelSuddenMotionStop"/>
+        <On Terms="Behavior.ForceLowDeath.On" Send="DeathCustomsEnablePhysics 0"/>
+        <On Terms="UnitTaunt.*.Start; Taunt" Send="AnimPlay Cheer Stand,Victory"/>
+        <On Terms="UnitTaunt.*.Stop; Taunt" Send="AnimClear Cheer"/>
+        <On Terms="UnitTaunt.*.Start; Taunt Dance" Send="AnimPlay Dance Stand,Dance"/>
+        <On Terms="UnitTaunt.*.Stop; Taunt Dance" Send="AnimClear Dance"/>
+        <On Terms="UnitTaunt.*.Start; Taunt Tease" Send="AnimPlay Taunt Taunt"/>
+        <On Terms="UnitTaunt.*.Stop; Taunt Tease" Send="AnimClear Taunt"/>
+        <On Terms="ActorCreation" Send="StatusSet InAir 0"/>
+        <On Terms="UnitHeightUpdate.*.Lift" Send="StatusSet InAir 1"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="StatusSet InAir 0"/>
+        <On Terms="BuildCoachHover.*.On" Send="TimerKill DelayUnhighlight"/>
+        <On Terms="BuildCoachHover.*.On" Send="SetTintColor 0,255,0 0.100000"/>
+        <On Terms="BuildCoachHover.*.Off" Send="TimerSet 0.300000 DelayUnhighlight"/>
+        <On Terms="TimerExpired; TimerName DelayUnhighlight" Send="SetTintColor 255,255,255 0.500000"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo BroodLord" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom BroodLord" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="$Birth 0 0.000000 -1.000000 0.000000"/>
+        <On Terms="Abil.BroodLordHangar.Launch" Send="AnimPlay SWE Stand,Work,End"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Broodlord_Land"/>
+        <On Terms="Effect.InfestedVentSpawnBroodLordCreateBroodLord.Create" Send="$Birth"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HaveVoidShade" Send="DeathCustomize Shadow"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HaveTerrazineShadow" Send="DeathCustomize Shadow"/>
+        <HostSiteOps Ops="SOpBankerBroodLord"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <EventDataFootprint Actor="UnitFootprint" Model="BroodLordFootprint"/>
+        <EventDataSound Actor="UnitSound"/>
+        <Baselines index="Stand" BlendIn="1.000000" BlendOut="1.000000"/>
+        <Baselines index="Walk" BlendIn="1.000000" BlendOut="1.000000"/>
+        <BuildModel value="BroodLord"/>
+        <DeathArray index="Normal">
+            <AnimProps value="Death"/>
+            <ModelLink value="HordeLordDeath"/>
+            <SoundLink value="BroodLord_Explode"/>
+            <VoiceLink value="BroodLordDeathVoice"/>
+        </DeathArray>
+        <DeathArray index="Eat" AnimProps="Death,Eat"/>
+        <DeathArray index="Eviscerate" AnimProps="Death,Eviscerate"/>
+        <DeathArray index="Fire" AnimProps="Death,Fire"/>
+        <DeathArray index="Silentkill" AnimProps="Death,Silentkill"/>
+        <DeathArray index="Squish" AnimProps="Death,Squish"/>
+        <DeathArray index="UnderConstruction" AnimProps="Death"/>
+        <DeathCustoms ModelLink="ZergSmallUnitDeathLow" Name="AntiGravGeneric"/>
+        <DeathCustoms ModelLink="ProtossSmallUnitDeathLow" Name="AntiGravProtoss"/>
+        <DeathCustoms ModelLink="TerranSmallUnitDeathLow" Name="AntiGravTerran"/>
+        <DeathCustoms ModelLink="ZergSmallUnitDeathLow" Name="AntiGravZerg"/>
+        <DeathCustoms ModelLink="Invisible" Name="Vortex"/>
+        <DeathCustoms>
+            <ActorModel value="BroodLordDeathRagdoll"/>
+            <ModelLink value="BroodLordDeathRagdoll"/>
+            <Name value="RagdollBasic"/>
+            <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms>
+            <ModelLink value="DeathVoidShadowLarge"/>
+            <SoundLink value="ShadowUnit_DeathFX"/>
+            <VoiceLink value="ShadowUnit_DeathVox"/>
+            <Name value="Shadow"/>
+        </DeathCustoms>
+        <DeathCustomData Name="RagdollBasic" SyncPassChance="50"/>
+        <DeathCustomData Name="RagdollBasicAndGibNoBlood" Members="RagdollBasicNoBlood;RagdollGibNoBlood" SyncPassChance="50"/>
+        <DeathCustomData Name="RagdollBaneling" Supersedes="RagdollBasic" SyncPassChance="50"/>
+        <DeathCustomData Name="RagdollSiegeTank" Supersedes="RagdollBasic" SyncPassChance="55"/>
+        <DeathCustomData Name="RagdollNuke" Supersedes="RagdollBasic" SyncPassChance="50"/>
+        <DeathCustomData Name="RagdollUltraUnburrow"/>
+        <DeathCustomData Name="RagdollSpineCrawlerHurl" SyncPassChance="25"/>
+        <DeathCustomData Name="RagdollOverkillDPRH" SyncPassChance="50"/>
+        <DeathCustomData Name="RagdollOverkillDOI" SyncPassChance="33"/>
+        <DeathCustomData Name="RagdollFire" Supersedes="RagdollBasic,RagdollOverkillDOI,RagdollOverkillDPRH" SyncPassChance="50"/>
+        <DeathCustomData Name="RagdollAcid" Supersedes="RagdollBasic,RagdollOverkillDOI,RagdollOverkillDPRH" SyncPassChance="50"/>
+        <DeathCustomData Name="RagdollMidair" Supersedes="RagdollBasic,RagdollOverkillDOI,RagdollOverkillDPRH"/>
+        <DeathCustomData Name="RagdollUpgraded" Supersedes="RagdollBasic,RagdollOverkillDOI,RagdollOverkillDPRH" SyncPassChance="50"/>
+        <DeathCustomData Name="RagdollUpgradedMidair" Supersedes="RagdollBasic,RagdollOverkillDOI,RagdollOverkillDPRH,RagdollMidair"/>
+        <DeathCustomData Name="RagdollAoE"/>
+        <DeathActorModel value="UnitDeathModelWithDeathMotionFlier"/>
+        <OverkillByDamagePastRemainingHealth Value="30" TestType="PercentageOfMaxLifePlusShields"/>
+        <OverkillByDamageOverInterval Value="70" Interval="1" TestType="PercentageOfMaxLifePlusShields"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <PlacementModel value="BroodLord"/>
+        <PlacementSound value="Zerg_BuildingPlacement"/>
+        <PortraitModel value="BroodLordEx1Portrait"/>
+        <TerrainSquibs>
+            <MovementDistance value="2.000000,3.000000"/>
+            <IdlePeriod value="1.500000,5.000000"/>
+            <RangeDown value="5.000000"/>
+            <RangeDownFade value="1.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMassive"/>
+        </TerrainSquibs>
+        <VarianceWindowStandIntro value="0.330000"/>
+        <VarianceWindowStand value="1.000000"/>
+        <VarianceWindowWalkIntro value="0.330000"/>
+        <VarianceWindowWalk value="1.000000"/>
+        <VarianceWindowWalkOutro value="0.330000"/>
+        <BarOffset value="60"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <GlossaryAnim value="Walk"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-BroodLord.dds"/>
+        </GroupIcon>
+        <GroupSoundArray index="What" value="BroodLord_GroupWhat"/>
+        <GroupSoundArray index="Yes" value="BroodLord_GroupYes"/>
+        <GroupSoundArray index="Attack" value="BroodLord_GroupAttack"/>
+        <GroupSoundArray index="Board" value="BroodLord_GroupBoard"/>
+        <HeroIcon value="Assets\Textures\btn-unit-zerg-mantalisk.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level0.dds"/>
+        <NameOffset value="80"/>
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <SoundArray index="Birth" value="BroodLord_Birth"/>
+        <SoundArray index="Ready" value="BroodLord_Ready"/>
+        <SoundArray index="Help" value="BroodLord_Help"/>
+        <SoundArray index="What" value="BroodLord_What"/>
+        <SoundArray index="Yes" value="BroodLord_Yes"/>
+        <SoundArray index="Attack" value="BroodLord_Attack"/>
+        <SoundArray index="Pissed" value="BroodLord_Pissed"/>
+        <SoundArray index="Movement" value="BroodLord_Movement"/>
+        <SoundArray index="Turning" value="BroodLord_Turning"/>
+        <SoundArray index="Board" value="BroodLord_Board"/>
+        <SoundArray index="Click" value="BroodLord_Click"/>
+        <SoundArray index="ClickError" value="BroodLord_ClickError"/>
+        <SoundArray index="Highlight" value="BroodLord_Highlight"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-mantalisk.dds"/>
+        <UnitModelFrameActor value="BroodLordUnitModelFrameActor"/>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-BroodLord.dds"/>
+        </Wireframe>
+        <WireframeShieldColor value="255,0,128,0"/>
     </CActorUnit>
     <CActorAction id="HordeLordAttack" parent="GenericAttack" effectImpact="AcidicEjectionDMG" effectLaunch="AcidicEjectionLM">
         <LaunchAssets Sound="Stukov_Acid_Launch"/>
@@ -5663,7 +5878,6 @@
         <DeathArray index="Normal" ModelLink="ExtinctionLordDeath" SoundLink="HybridZerg_Death"/>
         <PortraitModel value="ExtinctionLordPortrait"/>
         <AbilSoundArray/>
-        <BarOffset value="200"/>
         <BarWidth value="150"/>
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-protoss-narudvoid.dds"/>
@@ -5694,6 +5908,16 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-protoss-narudvoid.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplateLarge"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="FungalDischargeAttack" parent="GenericAttack" effectImpact="FungalDischargeDMG" effectLaunch="FungalDischargeLM">
         <LaunchAttachQuery Methods="AMFilterWeapon01"/>
@@ -6001,6 +6225,16 @@
         <Wireframe>
             <Image index="0" value="Assets\Textures\wireframe-zerg-devourerex3.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorModelMaterial id="AnointedGlaze" parent="BehaviorGlaze" buff="Anointed">
         <Model value="GlazePower"/>
@@ -7556,7 +7790,7 @@
         <PlacementModel value=""/>
         <PortraitModel value="PrimalZergKingPortrait"/>
         <WalkAnimMoveSpeed value="1.3984"/>
-        <BarOffset value="50"/>
+        <BarOffset value="180"/>
         <BarWidth value="160"/>
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-zerg-primalzergmeleeheavy.dds"/>
@@ -7571,6 +7805,16 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-zerg-primalzergmeleeheavy.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorQuad id="TimeHeroTimewaveQuad" parent="ZergGuideVisualQuadDown" abil="TimeHeroTimewave">
         <Remove Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
@@ -7606,7 +7850,7 @@
         <DeathArray index="Normal" ModelLink="StormLordDeath" SoundLink="Hybrid_Protoss_Death" VoiceLink="HybridADeath"/>
         <PortraitModel value="AmonDarkEx2Portrait"/>
         <BarDistance value="42"/>
-        <BarOffset value="120"/>
+        <BarOffset value="20"/>
         <BarWidth value="90"/>
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-protoss-voidconstruct.dds"/>
@@ -7626,6 +7870,16 @@
         <WireframeShield>
             <Image value="Assets\Textures\Wireframe-Hybrid-Destroyer-Shield03.dds"/>
         </WireframeShield>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplateLarge"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="SerpentLord" parent="Viper" unitName="SerpentLord">
         <On index="0" Terms="UnitBirth.SerpentLord"/>
@@ -7667,6 +7921,16 @@
         <DeathCustoms index="5" ModelLink="SerpentLordDeathRagdoll"/>
         <PlacementModel value="SerpentLord"/>
         <HighlightTooltip value="Unit/Name/SerpentLord"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorBeamSimple id="ParticleDestroyerBeam" parent="BeamSimpleAnimationStyleOneShot"/>
     <CActorQuad id="WaterHeroWaterBlastQuad" parent="GuideVisualQuadDown" abil="WaterBlast">
@@ -7993,6 +8257,16 @@
         <On index="5" Terms="UnitConstruction.CorruptionLord.Finish"/>
         <Model value="CorruptionLord"/>
         <HighlightTooltip value="Unit/Name/CorruptionLord"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="CorruptionLordAttack" parent="GenericAttack" effectImpact="CorruptedSporesApplyDMG" effectLaunch="CorruptedSporesLM">
         <LaunchAssets Model="CorruptorAttackLaunch" Sound="Corruptor_AttackLaunch"/>
@@ -8023,7 +8297,7 @@
         <PlacementModel value="Brutalisk"/>
         <PortraitModel value="BrutaliskPortrait"/>
         <WalkAnimMoveSpeed value="2.0976"/>
-        <BarOffset value="180"/>
+        <BarOffset value="70"/>
         <BarWidth value="180"/>
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-zerg-brutalisk.dds"/>
@@ -8039,6 +8313,16 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-zerg-brutalisk.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="DreadLordAttack" parent="GenericAttack" effectAttack="DreadClawsDMG">
         <LaunchAssets Sound="Brutalisk_AttackLaunch"/>
@@ -8076,7 +8360,6 @@
         <DeathArray index="Normal" ModelLink="DoomLordDeath" SoundLink="Hybrid_Protoss_Death" VoiceLink="HybridADeath"/>
         <PortraitModel value="HybridDominatorVoidPortrait"/>
         <BarDistance value="42"/>
-        <BarOffset value="120"/>
         <BarWidth value="90"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-Hybrid-Destroyer.dds"/>
@@ -8099,6 +8382,16 @@
             <Image value="Assets\Textures\Wireframe-Hybrid-Destroyer-Shield02.dds"/>
             <Image value="Assets\Textures\Wireframe-Hybrid-Destroyer-Shield03.dds"/>
         </WireframeShield>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplateLarge"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorModel id="Doomed" parent="ModelAddition">
         <Inherits index="BaseModelScale" value="0"/>
@@ -8314,6 +8607,16 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-zerg-ravagers.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorMissile id="CorruptedSporesMissile" parent="WizSimpleMissile" unitName="CorruptedSporesMissile">
         <Model value="SS_CorruptorMissile"/>
@@ -8602,7 +8905,7 @@
         <AnimBlendTime value="0.300000"/>
         <DeathArray index="Normal" ModelLink="LeviathanDeath" SoundLink="Leviathan_Explode"/>
         <PortraitModel value="LeviathanPortrait"/>
-        <BarOffset value="180"/>
+        <BarOffset value="60"/>
         <BarWidth value="216"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-zerg-leviathan.dds"/>
@@ -8619,6 +8922,16 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-zerg-leviathan.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplateLarge"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="TyrantLord" parent="GenericUnitBase" unitName="TyrantLord">
         <On Terms="ActorCreation" Send="AnimGroupApply Cover"/>
@@ -8634,7 +8947,7 @@
         <PlacementModel value="Terrorzor"/>
         <PortraitModel value="PrimalZerg04Portrait"/>
         <WalkAnimMoveSpeed value="1.3984"/>
-        <BarOffset value="50"/>
+        <BarOffset value="20"/>
         <BarWidth value="160"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-Zerg-Terrorzor.dds"/>
@@ -8649,6 +8962,16 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Zerg-Terrorzor.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="TyrantLordAttack" parent="GenericAttack" effectLaunch="SlashSA">
         <ShieldFlashType value="Header"/>
@@ -8679,6 +9002,16 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-zerg-guardian.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="SporeLordAttack" parent="GenericAttack" effectImpact="VoaltileSporesImpactDMG" effectLaunch="VolatileSporesLM">
         <LaunchAssets Sound="Corruptor_AttackLaunch"/>
@@ -8732,6 +9065,16 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Zerg-Infestedcolonist.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorMissile id="ChaosOrbMissileRed" parent="WizSimpleMissile" unitName="ChaosOrbMissileRed">
         <On index="1" Terms="UnitBirth" Send="AnimBracketStart Lifetime Stand Stand"/>
@@ -8823,6 +9166,17 @@
         <On index="67" Terms="WeaponStop.DeviantSmash.AttackStop"/>
         <On index="74" Terms="UnitBirth.MutationLord"/>
         <HighlightTooltip value="Unit/Name/MutationLord"/>
+        <BarOffset value="40"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="MutationLordAttack" parent="GenericAttack" effectAttack="DeviantSmashDMG">
         <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
@@ -8945,6 +9299,17 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Zerg-Dehaka.dds"/>
         </Wireframe>
+        <BarOffset value="60"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorMissile>
     <CActorAction id="DeathLordAttack" parent="GenericAttack" effectAttack="DeathsEmbraceDMG"/>
     <CActorUnit id="DeathLord" parent="GenericUnitStandard" unitName="DeathLord">
@@ -8957,7 +9322,7 @@
         <BuildModel value="HybridWarpIn"/>
         <DeathArray index="Normal" ModelLink="DeathLordDeath" SoundLink="HybridZerg_Death"/>
         <PortraitModel value="HybridZergPortrait"/>
-        <BarOffset value="120"/>
+        <BarOffset value="80"/>
         <BarWidth value="66"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-Hybrid-Viper.dds"/>
@@ -8989,6 +9354,16 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Hybrid-Viper.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="CarnageLord" parent="Hydralisk" unitName="CarnageLord">
         <On index="0" Terms="UnitBirth.CarnageLord"/>
@@ -9047,6 +9422,16 @@
         <DeathArray index="Normal" ModelLink="CarnageLordDeath"/>
         <PlacementModel value="CarnageLord"/>
         <HighlightTooltip value="Unit/Name/CarnageLord"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="CarnageLordAttack" parent="GenericAttack" effectImpact="CarnageSpinesSA" effectLaunch="CarnageSpinesLM">
         <LaunchSiteOps Ops="SOpAttachHarness SOpForwardImpactGuide"/>
@@ -9070,7 +9455,7 @@
         <BuildModel value="HybridBehemothBirth"/>
         <DeathArray index="Normal" ModelLink="OblivionLordDeath" SoundLink="HybridZerg_Death"/>
         <PortraitModel value="HybridBehemothPortrait"/>
-        <BarOffset value="200"/>
+        <BarOffset value="90"/>
         <BarWidth value="150"/>
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-zerg-hybridbehemoth.dds"/>
@@ -9101,6 +9486,16 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-zerg-hybridbehemoth.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplateLarge"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorModel id="Mutated" parent="ModelAddition">
         <On Terms="Behavior.Mutated.On" Send="Create"/>
@@ -9134,6 +9529,16 @@
         <DeathArray index="Normal" ModelLink="HiveLordDeath"/>
         <PlacementModel value="HiveLord"/>
         <HighlightTooltip value="Unit/Name/HiveLord"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="HiveLordAttack" parent="GenericAttack" effectAttack="RendingTalonsDMG">
         <LaunchAssets Model="QueenAttackLaunch" Sound="Queen_AttackLaunch"/>
@@ -9174,7 +9579,7 @@
         <DeathCustoms ModelLink="ZergLargeUnitDeathLow" Name="AntiGravZerg"/>
         <PortraitModel value="PrimalZerg02Portrait"/>
         <WalkAnimMoveSpeed value="5"/>
-        <BarOffset value="55"/>
+        <BarOffset value="30"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-Zerg-Terrorzor.dds"/>
         </GroupIcon>
@@ -9194,6 +9599,16 @@
             <Image value="Assets\Textures\Wireframe-Zerg-Terrorzor.dds"/>
         </Wireframe>
         <WireframeShieldColor value="255,0,128,0"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="SiegeLordAttack" parent="GenericAttack" effectImpact="VolatileVolleySA" effectLaunch="VolatileVolleyLM">
         <Missile value="SiegeLordMissile"/>
@@ -9279,7 +9694,6 @@
         <DeathArray index="Normal" ModelLink="VoidLordDeath" SoundLink="Hybrid_Protoss_Death" VoiceLink="HybridADeath"/>
         <PortraitModel value="HybridDominatorVoidPortrait"/>
         <BarDistance value="42"/>
-        <BarOffset value="120"/>
         <BarWidth value="90"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-Hybrid-Destroyer.dds"/>
@@ -9302,6 +9716,16 @@
             <Image value="Assets\Textures\Wireframe-Hybrid-Destroyer-Shield02.dds"/>
             <Image value="Assets\Textures\Wireframe-Hybrid-Destroyer-Shield03.dds"/>
         </WireframeShield>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplateLarge"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="VoidLordAttack" parent="GenericAttack" effectAttack="VoidBlastDMG">
         <LaunchSiteOps Ops="SOpAttachWeapon"/>
@@ -9336,6 +9760,16 @@
         <DeathActorModel value="UnitDeathModel"/>
         <PlacementModel value="SkyLord"/>
         <HighlightTooltip value="Unit/Name/SkyLord"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="PlagueLord" parent="GenericBurrowerStandard" unitName="PlagueLord">
         <Aliases value="_UnitLarge"/>
@@ -9367,6 +9801,16 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-defiler_ex3.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorModel id="LivingWaterFX" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.LivingWaterSA.Start" Send="Create"/>
@@ -9425,6 +9869,16 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Zerg-PrimalTownHall.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorModel id="SlimeImpact" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.SlimeSA.Start" Send="Create"/>
@@ -9501,6 +9955,16 @@
             <Image value="Assets\Textures\Wireframe-Zerg-roachex1b.dds"/>
         </Wireframe>
         <WireframeShieldColor value="255,0,128,0"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="SlimeLordAttack" parent="GenericAttack" effectImpact="SlimeDMG" effectLaunch="SlimeLM">
         <LaunchAttachQuery Methods="Head"/>
@@ -9566,7 +10030,7 @@
         <PlacementActorModel value="ZergPlacementModel"/>
         <PlaceholderActorModel value="ZergPlacementModel"/>
         <PortraitModel value="NydusBeastPortrait"/>
-        <BarOffset value="225"/>
+        <BarOffset value="110"/>
         <BarWidth value="155"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-Void-VoidThrasher.dds"/>
@@ -9587,6 +10051,16 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Void-VoidThrasher.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplateLarge"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorSound id="VolatileSporesSound" parent="SoundOneShot">
         <On Terms="Effect.VolatileSporesSA.Impact" Send="Create"/>
@@ -9609,7 +10083,7 @@
         <DeathCustoms ModelLink="ZergLargeUnitDeathLow" Name="AntiGravZerg"/>
         <PortraitModel value="HybridNemesisPortrait"/>
         <WalkAnimMoveSpeed value="1.7031"/>
-        <BarOffset value="75"/>
+        <BarOffset value="60"/>
         <ErrorArray Error="CantSeeBuildLocation" Sound="Alert_ZergBuildError" GroupSound="Alert_ZergBuildError"/>
         <ErrorArray Error="CantSeeLandLocation" Sound="Alert_ZergBuildError" GroupSound="Alert_ZergBuildError"/>
         <ErrorArray Error="CantBuildLocationInvalid" Sound="Alert_ZergBuildError" GroupSound="Alert_ZergBuildError"/>
@@ -9647,6 +10121,16 @@
             <Image value="Assets\Textures\wireframe-protoss-hybridnemesis-shield02.dds"/>
             <Image value="Assets\Textures\wireframe-protoss-hybridnemesis-shield03.dds"/>
         </WireframeShield>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorModel id="SpewBanelingsImpact" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.SpewBanelingsSA.Start" Send="Create"/>
@@ -9709,6 +10193,17 @@
         <DeathArray index="Normal" ModelLink="AcidLordDeath"/>
         <PlacementModel value="AcidLord"/>
         <HighlightTooltip value="Unit/Name/AcidLord"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
+        <BarOffset value="70"/>
     </CActorUnit>
     <CActorModel id="BurningFX" parent="ModelAnimationStyleOneShot">
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death OpeningPlayForever"/>
@@ -9854,7 +10349,7 @@
         <BuildModel value="HybridWarpIn"/>
         <DeathArray index="Normal" ModelLink="ThunderLordDeath" SoundLink="Hybrid_DeathFX"/>
         <PortraitModel value="HybridProtossPortrait"/>
-        <BarOffset value="120"/>
+        <BarOffset value="60"/>
         <BarWidth value="66"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-Hybrid-Destroyer.dds"/>
@@ -9878,6 +10373,16 @@
             <Image value="Assets\Textures\Wireframe-Hybrid-Destroyer-Shield02.dds"/>
             <Image value="Assets\Textures\Wireframe-Hybrid-Destroyer-Shield03.dds"/>
         </WireframeShield>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorMissile id="ImplantEggMissile" parent="GenericAttackMissile" unitName="ImplantEggMissile">
         <BarHeight value="1"/>
@@ -10055,6 +10560,16 @@
             <Image value="Assets\Textures\Wireframe-Zerg-SwarmHostEx1A.dds"/>
         </Wireframe>
         <WireframeShieldColor value="255,0,128,0"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorModel id="ThornRainImpactFX" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.ThornRainSA.Start" Send="Create"/>
@@ -10114,6 +10629,16 @@
         <Wireframe>
             <Image index="0" value="Assets\Textures\wireframe-dehaka-dakrun-primal.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorMissile id="SummonKillerMissile" parent="WizSimpleMissile" unitName="SummonKillerMissile">
         <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
@@ -10946,6 +11471,16 @@
         <DeathArray index="Normal" ModelLink="BeastLordDeath"/>
         <PlacementModel value="BeastLord"/>
         <HighlightTooltip value="Unit/Name/BeastLord"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="HydraliskImpaler">
         <On index="61" Terms="WeaponStart.HunterKiller.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart AttackSuperior Attack,Superior"/>
@@ -11868,6 +12403,16 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="ThorV3" parent="GenericUnitBase" unitName="ThorV3">
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
@@ -11915,6 +12460,16 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="AnnihilatorV1" parent="GenericUnitBase" unitName="AnnihilatorV1">
         <On Terms="Behavior.ThorInCombat.On" Send="AnimGroupApply C Stand,Work,End,C Stand,Work,Start,C"/>
@@ -11947,6 +12502,16 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-warbot.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="AnnihilatorV2" parent="GenericUnitBase" unitName="AnnihilatorV2">
         <On Terms="Behavior.ThorInCombat.On" Send="AnimGroupApply A Stand,Work,End,A Stand,Work,Start,A"/>
@@ -11979,6 +12544,16 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-warbot.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorModel id="BlastwaveImpact" parent="ModelAnimationStyleContinuous">
         <On Terms="Effect.FireHeroBlastwaveSA.Start" Send="Create"/>
@@ -12021,6 +12596,16 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-warbot.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="OdinV1" parent="GenericUnitBase" unitName="OdinV1">
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
@@ -12055,6 +12640,16 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="DemonLord" parent="Zergling" unitName="DemonLord">
         <On index="0" Terms="UnitBirth.DemonLord"/>
@@ -12103,6 +12698,16 @@
         <DeathArray index="Normal" ModelLink="DemonLordDeath"/>
         <PlacementModel value="DemonLord"/>
         <HighlightTooltip value="Unit/Name/DemonLord"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorAction id="DemonLordAttack" parent="GenericAttack" effectAttack="DemonClawsDMG">
         <ImpactAttachQuery Methods="AMFilterTargetVolumes"/>
@@ -12241,6 +12846,16 @@
         <DeathArray index="Normal" ModelLink="ParasiteLordDeath"/>
         <PlacementModel value="ParasiteLord"/>
         <HighlightTooltip value="Unit/Name/ParasiteLord"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorSound id="OrbitalCannonImpactSound2" parent="SoundOneShot">
         <On Terms="Effect.OrbitalCannonSearch.Start" Send="Create"/>
@@ -12267,6 +12882,16 @@
         <Wireframe>
             <Image index="0" value="Assets\Textures\wireframe-zerg-blightbringer.dds"/>
         </Wireframe>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorMissile id="TwilightCannonMissile" parent="GenericAttackMissile" unitName="TwilightCannonWeaponUnit">
         <Inherits index="BaseModelScale" value="1"/>
