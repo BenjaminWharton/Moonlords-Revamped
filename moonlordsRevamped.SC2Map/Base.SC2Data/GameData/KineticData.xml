@@ -35,4 +35,9 @@
         <Around Effect="AirHeroTornadoFate" Value="TargetUnit"/>
         <Yaw value="-270"/>
     </CKineticRotate>
+    <CKineticRotate id="LuckHeroDelugeRotate">
+        <Duration value="1"/>
+        <Yaw value="45"/>
+        <Around Value="CasterUnitOrPoint"/>
+    </CKineticRotate>
 </Catalog>

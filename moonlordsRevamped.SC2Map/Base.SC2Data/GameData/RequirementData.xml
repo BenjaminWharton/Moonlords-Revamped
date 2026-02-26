@@ -39,10 +39,6 @@
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Use" Link="EqCountUpgradeBeamHeroStretchCompleteOnly2"/>
     </CRequirement>
-    <CRequirement id="BlackDeathSpread1">
-        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="Eq0CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat"/>
-    </CRequirement>
     <CRequirement id="BladeHeroExcaliburLvl1">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Use" Link="EqCountUpgradeBladeHeroExcaliburCompleteOnly1"/>
@@ -191,13 +187,13 @@
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Use" Link="GTCountUpgradeDuplicateCompleteOnly1"/>
     </CRequirement>
+    <CRequirement id="LightningHeroNoOvercharge">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="EqCountUpgradeLightningHeroChargeUpCompleteOnly0"/>
+    </CRequirement>
     <CRequirement id="LuckHeroHasBoundless">
         <EditorCategories value="Race:Protoss"/>
         <NodeArray index="Use" Link="CountUpgradeBoundlessCompleteOnly"/>
-    </CRequirement>
-    <CRequirement id="MagmaArmorStacks">
-        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
-        <NodeArray index="Show" Link="LTCountBehaviorMagmaArmorQueuedOrBetterAtUnitSum4Mul2CountUpgradeFireHeroMoltenFuryQueuedOrBetter"/>
     </CRequirement>
     <CRequirement id="IsEarthInfused">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
@@ -334,6 +330,18 @@
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Show" Link="Eq1CountUpgradeTwilightHeroDilationQueuedOrBetter"/>
     </CRequirement>
+    <CRequirement id="RocketHeroMissileBarrageActive">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="CountBehaviorRocketHeroMissileBarrageChannelQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="RocketHeroNotReloading">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="Not643600613CountBehaviorRocketHeroReloadingQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="RocketHeroNotReloadingOrDryfire">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="Or643600613CountUpgradeRocketHeroDryfireCompleteOnlyNotCountBehaviorRocketHeroReloadingQueuedOrBetterAtUnit"/>
+    </CRequirement>
     <CRequirement id="ShadowHeroHasCloakofFear">
         <EditorCategories value="Race:Protoss"/>
         <NodeArray index="Use" Link="CountUpgradeShadowHeroCloakofFearCompleteOnly"/>
@@ -463,33 +471,9 @@
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Use" Link="LT0CountUpgradeWarpHeroDroneCompleteOnlyTechTreeCheat"/>
     </CRequirement>
-    <CRequirement id="BlackDeathSpread3">
-        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="Eq2CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat"/>
-    </CRequirement>
-    <CRequirement id="BlackDeathSpread2">
-        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="Eq1CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat"/>
-    </CRequirement>
     <CRequirement id="UseThorupgrade1">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Use" Link="LTCountUpgradeThorQuestRewardV3CompleteOnlyTechTreeCheat1"/>
-    </CRequirement>
-    <CRequirement id="UseMeteor1">
-        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="Eq1CountUpgradeFireHeroFieryJusticeCompleteOnlyTechTreeCheat"/>
-    </CRequirement>
-    <CRequirement id="UseMeteor2">
-        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="Eq2CountUpgradeFireHeroFieryJusticeCompleteOnlyTechTreeCheat"/>
-    </CRequirement>
-    <CRequirement id="UseMeteorChain">
-        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="Eq1CountUpgradeFireHeroBurningSkyCompleteOnlyTechTreeCheat"/>
-    </CRequirement>
-    <CRequirement id="UseArmageddon">
-        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="Eq1CountUpgradeFireHeroArmageddonCompleteOnlyTechTreeCheat"/>
     </CRequirement>
     <CRequirement id="UseMultiphaseRep0">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>

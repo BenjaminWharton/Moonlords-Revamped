@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CModel id="PoisonHeroDeath" parent="AdeptDeathBase">
+        <Model value="Assets\Units\Protoss\Purifier_Adept_Death\Purifier_Adept_Death.m3"/>
+    </CModel>
     <CModel id="AirHeroHurricane" parent="OneShotSpellFX">
         <Model value="Assets\HurricaneEx6.m3"/>
         <EditorCategories value="Race:Protoss"/>
@@ -15,6 +18,48 @@
     <CModel id="AirHeroOverdriveGlaze">
         <Model value="Assets\Effects\Glaze\SOA_Reconstruction_Beam_Glaze\SOA_Reconstruction_Beam_Glaze.m3"/>
         <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="LightningHeroLightningBeam">
+        <Model value="Assets\Effects\Protoss\TempestGroundBeam\TempestGroundBeam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="LightningHeroLightningMissile" Race="Neutral">
+        <Model value="Assets\Effects\Protoss\TempestPlasmaMissile\TempestPlasmaMissile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.400000,0.400000,0.400000"/>
+        <ScaleMin value="0.400000,0.400000,0.400000"/>
+    </CModel>
+    <CModel id="LightningHeroElectrified">
+        <Model value="Assets\Effects\Neutral\Void_VoidSliver_PsiArcImpact\Void_VoidSliver_PsiArcImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
+    <CModel id="PoisonHeroBlackDeath" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\DiseaseCloud\DiseaseCloud.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Lighting value="CorruptionModel"/>
+    </CModel>
+    <CModel id="PylonAbsoluteDefenseAttackLaunch">
+        <Model value="Assets\Effects\Protoss\TimeWarpLaunch\TimeWarpLaunch.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="PylonAbsoluteDefenseAttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\MotherShipCoreMissile\MotherShipCoreMissile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="Alarak_SoulSteal_Missile"/>
+            <Type value="Sound"/>
+            <Time value="0.009000"/>
+            <Payload value="Alarak_SoulSteal_Missile"/>
+        </Events>
+        <SelectionRadius value="0.333200"/>
+        <ShadowRadius value="0.333200"/>
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
     </CModel>
     <CModel id="AnnihilatorSupportBotHeal">
         <Model value="Assets\Effects\Zerg\MendBuff\MendBuff.m3"/>
@@ -110,6 +155,172 @@
         <EditorCategories value="Race:Protoss"/>
         <ScaleMax value="0.750000,0.750000,0.750000"/>
         <ScaleMin value="0.750000,0.750000,0.750000"/>
+    </CModel>
+    <CModel id="HiveLordHiveLordsProtectionGlaze">
+        <Model value="Assets\Effects\Glaze\Glaze_Symbiote_Carapace\Glaze_Symbiote_Carapace.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+    <CModel id="LuckHeroOrbOfHavocImpact">
+        <Model value="Assets\Effects\Protoss\Arbiter_Purifier_Coop_Missile_Impact\Arbiter_Purifier_Coop_Missile_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="PylonAbsoluteDefenseAttackImpact">
+        <Model value="Assets\Effects\Protoss\MothershipPurifyMissileImpact\MothershipPurifyMissileImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="PylonAbsoluteDefenseAura">
+        <Model value="Assets\Effects\Protoss\Mothership_Taldarim_Shield\Mothership_Taldarim_Shield.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.250000,1.250000,1.500000"/>
+        <ScaleMin value="1.250000,1.250000,1.500000"/>
+    </CModel>
+    <CModel id="PylonAbsoluteDefense">
+        <Model value="Assets\Buildings\Protoss\Pylon\Pylon.m3"/>
+        <AttachProps Id="Ref_Origin" SquibType="Shield" RadiusShield="4.000000"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="RocketHeroEmergencyThrusters">
+        <Model value="Assets\Effects\Zerg\PsionicShift\PsionicShift.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.000000,2.000000,1.000000"/>
+        <ScaleMin value="1.000000,2.000000,1.000000"/>
+    </CModel>
+    <CModel id="RocketHeroArsenalMissile">
+        <Model value="Assets\Effects\Terran\GoliathAirMissile\GoliathAirMissile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+    </CModel>
+    <CModel id="RocketHeroArsenalImpact">
+        <Model value="Assets\Effects\Terran\Banshee_Airstrike_Impact\Banshee_Airstrike_Impact.m3"/>
+        <AnimSpeed value="0.750000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Lighting value="RocketHeroRocketSalvoImpact"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+    </CModel>
+    <CModel id="RocketHeroUpgrade" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Scout_Purifier_Coop\Scout_Purifier_Coop.m3"/>
+        <Lighting value="RocketHero"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraLow05"/>
+        <Radius value="0.750000"/>
+        <SelectionRadius value="0.750000"/>
+        <ShadowRadius value="0.750000"/>
+        <TechPurchaseCamera value="Star2CameraLow05"/>
+        <UnitGlossaryCamera value="Star2CameraLow05"/>
+    </CModel>
+    <CModel id="RocketHeroMineEMPImpact">
+        <Model value="Assets\Effects\Terran\EMPImpact\EMPImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="RocketHeroMineImplosion">
+        <Model value="Assets\Effects\Neutral\PulloftheVoid_Coop\PulloftheVoid_Coop.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="RocketHeroMissileBarrageImpact">
+        <Model value="Assets\Effects\Terran\Liberator_Missile_Impact\Liberator_Missile_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="RocketHeroNukeZone">
+        <Model value="Assets\COOP\Mengsk\Splats\Ghost_Mengsk_COOP_MiniNuke_Splat\Ghost_Mengsk_COOP_MiniNuke_Splat.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+    </CModel>
+    <CModel id="RocketHeroMissileBarrageTarget">
+        <Model value="Assets\Effects\Protoss\TargetLockImpact\TargetLockImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="RocketHeroMissileBarrageZone">
+        <Model value="Assets\Effects\Terran\Liberator_GroundTargetSplat_Upgrade\Liberator_GroundTargetSplat_Upgrade.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.300000,1.300000,1.300000"/>
+        <ScaleMin value="1.300000,1.300000,1.300000"/>
+    </CModel>
+    <CModel id="RocketHeroMissileBarrageSplat">
+        <Model value="Assets\Effects\Terran\Liberator_GroundTargetSplat_Placement_Upgrade\Liberator_GroundTargetSplat_Placement_Upgrade.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+    </CModel>
+    <CModel id="RocketHeroNuke">
+        <Model value="Assets\Effects\Terran\NukeFalling\NukeFalling.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.200000,0.200000,0.200000"/>
+        <ScaleMin value="0.200000,0.200000,0.200000"/>
+    </CModel>
+    <CModel id="RocketHeroNukeImpact">
+        <Model value="Assets\COOP\Mengsk\Effects\Ghost_Mengsk_COOP_MiniNuke_Impact\Ghost_Mengsk_COOP_MiniNuke_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.200000,0.200000,0.200000"/>
+        <ScaleMin value="0.200000,0.200000,0.200000"/>
+    </CModel>
+    <CModel id="RocketHeroRocketSalvoImpact">
+        <Model value="Assets\Effects\Terran\Banshee_Airstrike_Impact\Banshee_Airstrike_Impact.m3"/>
+        <AnimSpeed value="0.750000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.750000,1.750000,1.750000"/>
+        <ScaleMin value="1.750000,1.750000,1.750000"/>
+    </CModel>
+    <CModel id="RocketHeroRocketSalvoMissile">
+        <Model value="Assets\Effects\Terran\GoliathAirMissile\GoliathAirMissile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="RocketHero" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Scout\Scout.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraLow05"/>
+        <Radius value="0.750000"/>
+        <SelectionRadius value="0.750000"/>
+        <ShadowRadius value="0.750000"/>
+        <TechPurchaseCamera value="Star2CameraLow05"/>
+        <UnitGlossaryCamera value="Star2CameraLow05"/>
+    </CModel>
+    <CModel id="RocketHeroDeath" parent="UnitDeath" Race="Protoss">
+        <Model value="Assets\Units\Protoss\ScoutDeath\ScoutDeath.m3"/>
+        <LowQualityModel value="ProtossMediumUnitDeathLow"/>
+        <Occlusion value="Show"/>
+        <Radius value="0.750000"/>
+        <SelectionRadius value="0.750000"/>
+        <ShadowRadius value="0.750000"/>
+    </CModel>
+    <CModel id="RocketHeroMine" parent="Unit" Race="Terran">
+        <Model value="Assets\Units\Terran\SpiderMine\SpiderMine.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraLow02"/>
+        <Radius value="0.250000"/>
+        <SelectionLayer value="3"/>
+        <SelectionRadius value="0.250000"/>
+        <ShadowRadius value="0.250000"/>
+        <TechPurchaseCamera value="Star2CameraLow02"/>
+        <UnitGlossaryCamera value="Star2CameraLow02"/>
+    </CModel>
+    <CModel id="RocketHeroMineExplosion" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Terran\TerranSmallUnitDeath\TerranSmallUnitDeath.m3"/>
+        <LowQualityModel value="SpiderMineExplosionLow"/>
+        <EditorCategories value="Race:Terran"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+        <SelectionRadius value="2.000000"/>
+        <ShadowRadius value="2.000000"/>
+    </CModel>
+    <CModel id="RocketHeroMissileBarrageMissile">
+        <Model value="Assets\Effects\Terran\MissilePodMissile\MissilePodMissile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
     </CModel>
     <CModel id="TwilightHeroDeath" parent="DarkTemplarDeathBase">
         <Model value="Assets\Units\Protoss\DarkTemplarDeath\DarkTemplarDeath_00.m3"/>
@@ -687,6 +898,12 @@
         <ScaleMin value="0.400000,0.400000,0.400000"/>
         <SelectionRadius value="1.999500"/>
         <ShadowRadius value="1.999500"/>
+    </CModel>
+    <CModel id="RocketHeroMineAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\TerranSmallUnitDeath\TerranSmallUnitDeath.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="1.400000,1.400000,1.400000"/>
+        <ScaleMin value="1.400000,1.400000,1.400000"/>
     </CModel>
     <CModel id="WarpHeroGuidedMissileImpact">
         <Model value="Assets\Effects\Protoss\MotherShipCoreMissileImpact\MotherShipCoreMissileImpact.m3"/>
@@ -1446,7 +1663,7 @@
         <Model value="Assets\Doodads\FireMedium\FireMedium.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
-    <CModel id="FrostShockBeam">
+    <CModel id="LightningHeroShortCircuitBeam">
         <Model value="Assets\COOP\Zeratul\Effects\Disruptor_Zeratul_COOP_Beam\Disruptor_Zeratul_COOP_Beam.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
@@ -1594,11 +1811,6 @@
         <Model value="Assets\Effects\Protoss\Nemesis_Support_Beam\Nemesis_Support_Beam.m3"/>
         <EditorCategories value="Race:Zerg"/>
     </CModel>
-    <CModelFoliage id="LighningMissile" parent="MissileFX">
-        <Model value="Assets\Effects\Protoss\TempestPlasmaMissile\TempestPlasmaMissile.m3"/>
-        <RandomDeviation value="0.000000"/>
-        <Flexibility value="0.000000"/>
-    </CModelFoliage>
     <CModel id="HorrorMarine" parent="MarineBase">
         <Model value="Assets\Units\Terran\Marine\Marine.m3"/>
         <EditorCategories value="Race:Zerg"/>
@@ -1649,7 +1861,6 @@
     <CModel id="MusclePoisonCenter">
         <Model value="Assets\Effects\Neutral\GasSpawn\GasSpawn.m3"/>
         <EditorCategories value="Race:Protoss"/>
-        <Lighting value="MusclePoisonImpact"/>
     </CModel>
     <CModel id="ExtinctionLordPortrait" parent="Portrait" Race="Terran">
         <Model value="Assets\Portraits\Protoss\Void_NarudPortrait\Void_NarudPortrait.m3"/>
@@ -1810,13 +2021,12 @@
         <Model value="Assets\Units\Protoss\Adept_Purifier_Collection\Adept_Purifier_Collection.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
-    <CModelFoliage id="Poisonbolt" parent="MissileFX">
+    <CModel id="Poisonbolt" Race="Neutral">
         <Model value="Assets\Effects\Zerg\SporeColonyMissile\SporeColonyMissile.m3"/>
-        <RandomDeviation value="0.000000"/>
-        <Flexibility value="0.000000"/>
+        <EditorCategories value="Race:Protoss"/>
         <ScaleMax value="1.100000,1.100000,1.100000"/>
         <ScaleMin value="1.100000,1.100000,1.100000"/>
-    </CModelFoliage>
+    </CModel>
     <CModel id="PoisonboltDeath">
         <Model value="Assets\Effects\Zerg\FungalGrowthMissileImpact\FungalGrowthMissileImpact.m3"/>
         <EditorCategories value="Race:Protoss"/>
@@ -2180,11 +2390,12 @@
         <Model value="Assets\Effects\Protoss\Zealot_Nerazim_PhaseChargeStun_Impact\Zealot_Nerazim_PhaseChargeStun_Impact.m3"/>
         <EditorCategories value="Race:Zerg"/>
     </CModel>
-    <CModel id="CoolantSearchModel" parent="OneShotSpellFX">
-        <Model value="Assets\Effects\Terran\YamatoMissileImpact\YamatoMissileImpact.m3"/>
-        <EditorCategories value="Race:Terran"/>
-        <Lighting value="GhostEMPAttackImpactEffect"/>
+    <CModel id="LightningHeroShortCircuitLatent" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Terran\CerberusYamatoMissileImpact\CerberusYamatoMissileImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
         <RadiusLoose value="1.000000"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
     </CModel>
     <CModel id="CorruptionLord">
         <Model value="Assets\Units\Zerg\Corruptor_CollectionSkin_Webby\Corruptor_CollectionSkin_Webby.m3"/>
@@ -3895,7 +4106,7 @@
         <SelectionRadius value="2.000000"/>
         <ShadowRadius value="2.000000"/>
     </CModel>
-    <CModelFoliage id="PoisonCloud" parent="MissileFX">
+    <CModelFoliage id="RoachPuddle" parent="MissileFX">
         <Model value="Assets\Effects\Protoss\NullField\NullField.m3"/>
         <Lighting value="Lightning"/>
         <RandomDeviation value="0.000000"/>
@@ -3915,5 +4126,8 @@
         <Model value="Assets\Units\Zerg\Zergling_CollectionSkin_Webby_Death\Zergling_CollectionSkin_Webby_Death.m3"/>
         <ScaleMax value="2.500000,2.500000,3.000000"/>
         <ScaleMin value="2.500000,2.500000,3.000000"/>
+    </CModel>
+    <CModel id="Zergling">
+        <Radius value="0.400000"/>
     </CModel>
 </Catalog>

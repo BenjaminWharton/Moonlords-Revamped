@@ -292,6 +292,9 @@
         <Find value="1"/>
         <Value value="BufferStacks"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareOrderCount id="CasterHasNoMoveOrders">
+        <AbilLink value="move"/>
+    </CValidatorUnitCompareOrderCount>
     <CValidatorUnitCompareVital id="CasterShieldsFull">
         <WhichUnit Value="Caster"/>
         <Type value="Fraction"/>
@@ -362,6 +365,11 @@
         <Key value="Default"/>
         <Value value="10"/>
     </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE1Dot5">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="1.5"/>
+    </CValidatorEffectTreeUserData>
     <CValidatorEffectTreeUserData id="DefaultDataGTE110">
         <Compare value="GE"/>
         <Key value="Default"/>
@@ -406,6 +414,16 @@
         <Compare value="GE"/>
         <Key value="Default"/>
         <Value value="190"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTEDot5">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="0.5"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorEffectTreeUserData id="DefaultDataGTE2">
+        <Compare value="GE"/>
+        <Key value="Default"/>
+        <Value value="2"/>
     </CValidatorEffectTreeUserData>
     <CValidatorEffectTreeUserData id="DefaultDataGTE200">
         <Compare value="GE"/>
@@ -474,10 +492,18 @@
         <Compare value="GT"/>
         <Range value="10"/>
     </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="DistanceFromCasterLT2">
+        <Compare value="LT"/>
+        <Range value="2"/>
+    </CValidatorLocationCompareRange>
     <CValidatorLocationCompareRange id="DistanceFromCasterLT14">
         <WhichLocation Value="TargetUnitOrPoint"/>
         <Compare value="LT"/>
         <Range value="14"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="DistanceFromCasterLT3">
+        <Compare value="LT"/>
+        <Range value="3"/>
     </CValidatorLocationCompareRange>
     <CValidatorLocationCompareRange id="DistanceFromCasterLT7">
         <WhichLocation Value="TargetUnitOrPoint"/>
@@ -742,6 +768,44 @@
     <CValidatorUnitType id="IsDemolisherShieldDummy">
         <Value value="ShieldUnit"/>
     </CValidatorUnitType>
+    <CValidatorCombine id="IsHeroicOrHasEnergy">
+        <CombineArray value="IsHeroic"/>
+        <CombineArray value="TargetHasEnergy"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="LightningHeroNoStaticDebuff">
+        <Behavior value="LightningHeroStatic"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="LightningHeroIsElectrified">
+        <CombineArray value="LightningHeroIsElectrifiedNormal"/>
+        <CombineArray value="LightningHeroIsElectrifiedHero"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="LightningHeroIsElectrifiedNormal">
+        <Compare value="GT"/>
+        <Behavior value="LightningHeroElectrified"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="LightningHeroIsElectrifiedHero">
+        <Compare value="GT"/>
+        <Behavior value="LightningHeroElectrifiedHeroic"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="LightningHeroNoOvercharge">
+        <Find value="1"/>
+        <Value value="LightningHeroNoOvercharge"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorEffectTreeUserData id="LightningHeroOverchargeDataGE50">
+        <Compare value="GE"/>
+        <Key value="Overcharge"/>
+        <Value value="50"/>
+        <BehaviorScope Behavior="LightningHeroStaticShieldBase"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorCombine id="LightningHeroOverchargeDataOrDefaultData">
+        <CombineArray value="LightningHeroOverchargeDataGE50"/>
+        <CombineArray value="DefaultDataGT0"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareDamageDealtTime id="MassacreTimeLimit">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="2.25"/>
+    </CValidatorUnitCompareDamageDealtTime>
     <CValidatorPlayerRequirement id="NoBehaviorForceMovementAlias">
         <Find value="1"/>
         <Value value="NoBehaviorForceMovementAlias"/>
@@ -856,10 +920,14 @@
         <Value value="24"/>
         <Behavior value="HadesStack"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="CasterHasHealingReagent">
+    <CValidatorUnitCompareBehaviorCount id="NotMainObjective">
+        <ResultFailed value="Error,Validator/NotMainObjective/Error"/>
+        <Behavior value="IsMainObjective"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="PoisonHeroCasterHasHealingReagent">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
-        <Behavior value="HealingReagent"/>
+        <Behavior value="PoisonHeroHealingReagent"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="IllusionHeroNotStealthed">
         <WhichUnit Value="Caster"/>
@@ -868,10 +936,13 @@
     <CValidatorUnitType id="IsLightningHero">
         <Value value="LightningHero"/>
     </CValidatorUnitType>
-    <CValidatorPlayerRequirement id="MagmaArmorStacks">
-        <Find value="1"/>
-        <Value value="MagmaArmorStacks"/>
-    </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="FireHeroMagmaArmorStacks">
+        <Compare value="LT"/>
+        <Value value="0">
+            <AccumulatorArray value="FireHeroMagmaArmorMaxStacks"/>
+        </Value>
+        <Behavior value="MagmaArmor"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="IsFireInfused">
         <WhichUnit Value="Source"/>
         <Compare value="NE"/>
@@ -944,6 +1015,142 @@
         <CombineArray value="CasterIsDead"/>
         <Negate value="1"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="PoisonHeroHasMusclePoisonBase">
+        <Compare value="GT"/>
+        <Behavior value="PoisonHeroMusclePoisonBase"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="PoisonHeroIsPoisoned">
+        <Compare value="GT"/>
+        <Behavior value="PoisonHeroPoisoned"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="PoisonHeroPoisonCloudBelowMax">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="0">
+            <AccumulatorArray value="PoisonHeroPoisonCloudMaxStacks"/>
+        </Value>
+        <Behavior value="PoisonHeroPoisonCloud"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="LightningHeroStaticShieldBelowMax">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="0">
+            <AccumulatorArray value="LightningHeroStaticShieldMax"/>
+        </Value>
+        <Behavior value="LightningHeroStaticArmor"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="ProbeHeroHasGuardian">
+        <Compare value="GT"/>
+        <Behavior value="ProbeHeroGuardian"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="PylonNoAbsoluteDefense">
+        <Behavior value="PylonAbsoluteDefense"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="PylonCasterHasAbsoluteDefense">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="PylonAbsoluteDefense"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="PylonNoAbsoluteDefenseFate">
+        <Behavior value="PylonAbsoluteDefenseFate"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationCompareRange id="RocketHeroRocketSalvoHomingRange">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LT"/>
+        <Range value="30"/>
+        <Value Effect="RocketHeroRocketSalvoDummyCU" Value="SourceUnit"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareBehaviorCount id="RocketHeroCasterHasEmergencyThrusters">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="RocketHeroEmergencyThrusters"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="RocketHeroHasSlipstream">
+        <Compare value="GT"/>
+        <Behavior value="RocketHeroSlipstream"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="RocketHeroHomingDistance">
+        <CombineArray value="RocketHeroRocketSalvoHoming"/>
+        <CombineArray value="RocketHeroRocketSalvoArsenalHoming"/>
+    </CValidatorCombine>
+    <CValidatorLocationCompareRange id="RocketHeroArsenalHomingRange">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LT"/>
+        <Range value="30"/>
+        <Value Effect="RocketHeroRocketSalvoArsenalDummyCU" Value="SourceUnit"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorCombine id="RocketHeroHomingRange">
+        <CombineArray value="RocketHeroArsenalHomingRange"/>
+        <CombineArray value="RocketHeroRocketSalvoHomingRange"/>
+    </CValidatorCombine>
+    <CValidatorCompareTrackedUnitsCount id="RocketHeroMissileBarrageInUse">
+        <Compare value="GT"/>
+        <BehaviorLink value="RocketHeroMissileBarrageTracker"/>
+    </CValidatorCompareTrackedUnitsCount>
+    <CValidatorCombine id="RocketHeroRocketSalvoHoming">
+        <Type value="And"/>
+        <CombineArray value="RocketHeroRocketSalvoHomingDistance"/>
+        <CombineArray value="RocketHeroSourceIsRocketSalvoMissile"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="RocketHeroIsMine">
+        <CombineArray value="RocketHeroIsMineBurrowed"/>
+        <CombineArray value="RocketHeroIsMineUnburrowed"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="RocketHeroIsMineUnburrowed">
+        <Value value="RocketHeroMine"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="RocketHeroIsMineBurrowed">
+        <Value value="RocketHeroMineBurrowed"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="RocketHeroNoArsenalCooldown">
+        <Behavior value="RocketHeroArsenalCooldown"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="RocketHeroNotReloadingOrDryfire">
+        <Find value="1"/>
+        <Value value="RocketHeroNotReloadingOrDryfire"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorEffectTreeUserData id="RocketHeroHasGT0Ammo">
+        <Compare value="GT"/>
+        <Key value="Ammo"/>
+        <BehaviorScope Behavior="RocketHeroAmmo"/>
+    </CValidatorEffectTreeUserData>
+    <CValidatorLocationCompareRange id="RocketHeroMissileBarrageLeashRange">
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <Compare value="LT"/>
+        <Range value="19"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareBehaviorCount id="RocketHeroNoMissileBarrageCooldown">
+        <Behavior value="RocketHeroMissileBarrageCooldown"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="RocketHeroNotReloading">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="RocketHeroReloading"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="RocketHeroRocketSalvoArsenalHoming">
+        <Type value="And"/>
+        <CombineArray value="RocketHeroRocketSalvoArsenalHomingDistance"/>
+        <CombineArray value="RocketHeroSourceIsArsenalMissile"/>
+    </CValidatorCombine>
+    <CValidatorLocationCompareRange id="RocketHeroRocketSalvoHomingDistance">
+        <WhichLocation Effect="RocketHeroRocketSalvoDummySideData" Value="TargetUnitOrPoint"/>
+        <Compare value="LT"/>
+        <Range value="1"/>
+        <Value Value="SourceUnit"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="RocketHeroRocketSalvoArsenalHomingDistance">
+        <WhichLocation Effect="RocketHeroRocketSalvoArsenalDummyCUSet" Value="TargetUnitOrPoint"/>
+        <Compare value="LT"/>
+        <Range value="1"/>
+        <Value Value="SourceUnit"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitType id="RocketHeroSourceIsRocketSalvoMissile">
+        <WhichUnit Value="Source"/>
+        <Value value="RocketHeroRocketSalvoMissile"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="RocketHeroSourceIsArsenalMissile">
+        <WhichUnit Value="Source"/>
+        <Value value="RocketHeroArsenalMissile"/>
+    </CValidatorUnitType>
     <CValidatorUnitFilters id="SourceNotHeroic">
         <WhichUnit Value="Caster"/>
         <Filters value="-;Heroic"/>
@@ -2189,11 +2396,11 @@
         <Value value="1"/>
         <Behavior value="ScaldedBase"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="UnitIsSoaked">
+    <CValidatorUnitCompareBehaviorCount id="WaterHeroIsSoaked">
         <Compare value="GT"/>
         <Behavior value="Soaked"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="UnitIsNotSoaked">
+    <CValidatorUnitCompareBehaviorCount id="WaterHeroNotSoaked">
         <Behavior value="Soaked"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="UnitIsFrozen">
@@ -2230,17 +2437,6 @@
         <Find value="1"/>
         <Value value="WarpDrone"/>
     </CValidatorPlayerRequirement>
-    <CValidatorPlayerRequirement id="BlackDeathSpread2">
-        <ResultNoPlayer value="Error"/>
-        <Find value="1"/>
-        <Value value="BlackDeathSpread2"/>
-    </CValidatorPlayerRequirement>
-    <CValidatorPlayerRequirement id="BlackDeathSpread3">
-        <ResultNoPlayer value="Error"/>
-        <Find value="1"/>
-        <Value value="BlackDeathSpread3"/>
-    </CValidatorPlayerRequirement>
-    <CValidatorUnitCompareMarkerCount id="BlackDeathValidator"/>
     <CValidatorCombine id="CasterANDSourceNotDead">
         <Type value="And"/>
         <CombineArray value="CasterNotDead"/>
@@ -2287,7 +2483,7 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="HasFrostshock">
         <Compare value="NE"/>
-        <Behavior value="FrostShock"/>
+        <Behavior value="LightningHeroShocked"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareVital id="WarpHeroCanCastMultishot">
         <Compare value="GE"/>
@@ -2318,11 +2514,6 @@
         </Value>
         <Behavior value="DecoyLimiter"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorPlayerRequirement id="BlackDeathSpread1">
-        <ResultNoPlayer value="Error"/>
-        <Find value="1"/>
-        <Value value="BlackDeathSpread1"/>
-    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="Dodgeball_onTarget">
         <Compare value="GE"/>
         <Value value="1"/>
@@ -2334,11 +2525,10 @@
         <Value value="1"/>
         <Behavior value="WarpDrone"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="HasStaticShield">
+    <CValidatorUnitCompareBehaviorCount id="LightningHeroHasStaticShield">
         <WhichUnit Value="Caster"/>
-        <Compare value="GE"/>
-        <Value value="1"/>
-        <Behavior value="StaticArmor"/>
+        <Compare value="GT"/>
+        <Behavior value="LightningHeroStaticArmor"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="AnnihilatorAbsoptionRocketsNotOnCooldown">
         <WhichUnit Value="Caster"/>
@@ -2355,21 +2545,10 @@
         <Value value="1"/>
         <Behavior value="Mutation"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="HasNOHiddenArmageddonINC">
-        <Compare value="LT"/>
-        <Value value="1"/>
-        <Behavior value="HiddenArmageddonINC"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="Has1HiddenArmageddonINC">
-        <Compare value="GE"/>
-        <Value value="1"/>
-        <Behavior value="HiddenArmageddonINC"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="HasPoisonCloud">
+    <CValidatorUnitCompareBehaviorCount id="PoisonHeroHasPoisonCloud">
         <WhichUnit Value="Caster"/>
-        <Compare value="GE"/>
-        <Value value="1"/>
-        <Behavior value="PoisonCloud"/>
+        <Compare value="GT"/>
+        <Behavior value="PoisonHeroPoisonCloud"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="HasMagmaArmor">
         <WhichUnit Value="Caster"/>
@@ -2377,54 +2556,6 @@
         <Value value="1"/>
         <Behavior value="MagmaArmor"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorPlayerRequirement id="MeteorChain">
-        <ResultNoPlayer value="Error"/>
-        <Find value="1"/>
-        <Value value="UseMeteorChain"/>
-    </CValidatorPlayerRequirement>
-    <CValidatorPlayerRequirement id="Meteor2">
-        <ResultNoPlayer value="Error"/>
-        <Find value="1"/>
-        <Value value="UseMeteor2"/>
-    </CValidatorPlayerRequirement>
-    <CValidatorPlayerRequirement id="Armageddon">
-        <ResultNoPlayer value="Error"/>
-        <Find value="1"/>
-        <Value value="UseArmageddon"/>
-    </CValidatorPlayerRequirement>
-    <CValidatorCombine id="MeteorReq">
-        <CombineArray value="MeteorSubreq1"/>
-        <CombineArray value="MeteorSubreq2"/>
-    </CValidatorCombine>
-    <CValidatorLocationEnumArea id="MeteorReqCount2">
-        <WhichLocation Value="SourceUnitOrPoint"/>
-        <AreaArray Radius="1.5"/>
-        <Compare value="GE"/>
-        <Count value="2"/>
-        <SearchFilters value="-;Player,Ally,Missile,Dead,Hidden,Invulnerable"/>
-    </CValidatorLocationEnumArea>
-    <CValidatorCombine id="MeteorSubreq1">
-        <Type value="And"/>
-        <CombineArray value="Meteor1"/>
-        <CombineArray value="MeteorReqCount1"/>
-    </CValidatorCombine>
-    <CValidatorCombine id="MeteorSubreq2">
-        <Type value="And"/>
-        <CombineArray value="Meteor2"/>
-        <CombineArray value="MeteorReqCount2"/>
-    </CValidatorCombine>
-    <CValidatorLocationEnumArea id="MeteorReqCount1">
-        <WhichLocation Value="SourceUnitOrPoint"/>
-        <AreaArray Radius="1.5"/>
-        <Compare value="GE"/>
-        <Count value="3"/>
-        <SearchFilters value="-;Player,Ally,Missile,Dead,Hidden,Invulnerable"/>
-    </CValidatorLocationEnumArea>
-    <CValidatorPlayerRequirement id="Meteor1">
-        <ResultNoPlayer value="Error"/>
-        <Find value="1"/>
-        <Value value="UseMeteor1"/>
-    </CValidatorPlayerRequirement>
     <CValidatorLocationEnumArea id="NoNearbyAllies">
         <AreaArray index="0" Count="0"/>
     </CValidatorLocationEnumArea>
@@ -2535,7 +2666,7 @@
     </CValidatorPlayerRequirement>
     <CValidatorCombine id="WaterHeroNotSoakedNotFrozen">
         <Type value="And"/>
-        <CombineArray value="UnitIsNotSoaked"/>
+        <CombineArray value="WaterHeroNotSoaked"/>
         <CombineArray value="UnitNotFrozen"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="WaterStackLessThan3">

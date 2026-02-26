@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CWeaponLegacy id="DisruptionBeam">
+        <TargetFilters value="Visible;Psionic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="7"/>
+        <Period value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HotSBanelingExplode">
+        <!--AcquireCallForHelpFilters value="-;-"/>
+        <AcquireProvokeFilters value="-;-"/-->
+        <AcquireScanFilters value="-;-"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RocketHeroMunitions">
+        <EditorCategories value="Race:Protoss"/>
+        <Options index="Hidden" value="1"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="LinkedCooldown" value="0"/>
+        <Options index="DisplayCooldown" value="1"/>
+        <Icon value="Assets\Textures\btn-ability-hornerhan-viking-missileupgrade.dds"/>
+        <DisplayEffect value="RocketHeroMineMunitionsUI"/>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="6"/>
+        <Arc value="360"/>
+        <Period value="8"/>
+        <Effect value="RocketHeroMineMunitionsStart"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="ThorLightningBarrage">
         <EditorCategories value="Race:Terran"/>
         <Options index="OnlyFireWhileInAttackOrder" value="0"/>
@@ -510,7 +535,7 @@
         <Tip value="Weapon/Tip/RendingTalons"/>
         <Options index="Hidden" value="0"/>
         <DisplayEffect value="RendingTalonsDMG"/>
-        <Range value="3"/>
+        <Range value="4"/>
         <Effect value="RendingTalonsCP"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="VoidBlast">
@@ -637,12 +662,25 @@
         <Period value="1"/>
         <Effect value="ChaosLordAttackDummy"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="RocketHeroMine">
+        <EditorCategories value="Race:Protoss"/>
+        <Options index="Melee" value="1"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="LinkedCooldown" value="0"/>
+        <Icon value="Assets\Textures\btn-unit-terran-spidermine.dds"/>
+        <DisplayEffect value="RocketHeroMineAttackDMG"/>
+        <TargetFilters value="Ground,Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.1"/>
+        <Period value="0.833"/>
+        <Effect value="RocketHeroMineAttackSet"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="Wave">
         <EditorCategories value="Race:Protoss"/>
         <Icon value="Assets\Textures\energytile1ablue.dds"/>
         <DisplayEffect value="WaveDMG"/>
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="15"/>
+        <Range value="14"/>
         <Period value="1.5"/>
         <Effect value="WaveOffset"/>
         <LegacyOptions index="CanRetargetWhileChanneling" value="1"/>
@@ -710,11 +748,6 @@
     <CWeaponLegacy id="Adept">
         <TargetFilters value="Visible;Psionic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Effect value="AdeptInitSet"/>
-    </CWeaponLegacy>
-    <CWeaponLegacy id="DisruptionBeam">
-        <Range value="7"/>
-        <Period value="0.5"/>
-        <TargetFilters value="Visible;Psionic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="HunterKiller"/>
     <CWeaponLegacy id="HydraliskMelee">

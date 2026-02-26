@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CAccumulatorConstant id="Add0"/>
+    <CAccumulatorConstant id="Add1">
+        <Amount value="1"/>
+    </CAccumulatorConstant>
     <CAccumulatorConstant id="AirHeroDebrisRotationDistance">
         <Amount value="1.2"/>
     </CAccumulatorConstant>
@@ -88,6 +91,10 @@
     <CAccumulatorUserData id="DamageDataAdd">
         <Key value="Damage"/>
     </CAccumulatorUserData>
+    <CAccumulatorConstant id="DamageMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="1"/>
+    </CAccumulatorConstant>
     <CAccumulatorUserData id="DataEnergy">
         <Key value="Energy"/>
     </CAccumulatorUserData>
@@ -124,6 +131,9 @@
         <UnitSource Value="Source"/>
         <ModificationType value="PerUnitMaxVital"/>
     </CAccumulatorVitals>
+    <CAccumulatorConstant id="FireHeroMagmaArmorMaxStacks">
+        <Amount value="4"/>
+    </CAccumulatorConstant>
     <CAccumulatorConstant id="GatewayHeroDeflectorDronePDCost">
         <Amount value="15"/>
     </CAccumulatorConstant>
@@ -187,6 +197,57 @@
         <ApplicationRule value="Multiply"/>
         <Amount value="1"/>
     </CAccumulatorConstant>
+    <CAccumulatorUserData id="LightningHeroOverchargeData">
+        <MinAccumulation value="0"/>
+        <MaxAccumulation value="50"/>
+        <Key value="Overcharge"/>
+        <BehaviorScope Behavior="LightningHeroStaticShieldBase"/>
+    </CAccumulatorUserData>
+    <CAccumulatorConstant id="LightningHeroOverchargeRadiusMultiplier">
+        <ApplicationRule value="Multiply"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="LightningHeroOverchargeDamageMultiplier">
+        <ApplicationRule value="Multiply"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="LightningHeroStaticShieldMax">
+        <Amount value="3"/>
+    </CAccumulatorConstant>
+    <CAccumulatorArithmetic id="LightningHeroThunderfuryRadius">
+        <MinAccumulation value="0"/>
+        <Parameters value="0">
+            <AccumulatorArray value="LightningHeroThunderfuryRadiusBase"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="LightningHeroThunderfuryRadiusBase"/>
+            <AccumulatorArray value="LightningHeroThunderfuryRadiusSwitch"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="LightningHeroThunderfuryDamage">
+        <MinAccumulation value="0"/>
+        <Parameters value="0">
+            <AccumulatorArray value="LightningHeroThunderfuryDamageBase"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="LightningHeroThunderfuryDamageBase"/>
+            <AccumulatorArray value="LightningHeroThunderfuryDamageSwitch"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="LightningHeroThunderfuryRadiusBase">
+        <Amount value="1.8"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="LightningHeroThunderfuryDamageBase">
+        <Amount value="50"/>
+    </CAccumulatorConstant>
+    <CAccumulatorSwitch id="LightningHeroThunderfuryRadiusSwitch">
+        <ApplicationRule value="Multiply"/>
+        <CaseArray Validator="LightningHeroOverchargeDataOrDefaultData" Accumulator="LightningHeroOverchargeRadiusMultiplier"/>
+        <CaseDefault value="Multiply0"/>
+    </CAccumulatorSwitch>
+    <CAccumulatorSwitch id="LightningHeroThunderfuryDamageSwitch">
+        <ApplicationRule value="Multiply"/>
+        <CaseArray Validator="LightningHeroOverchargeDataOrDefaultData" Accumulator="LightningHeroOverchargeDamageMultiplier"/>
+        <CaseDefault value="Multiply0"/>
+    </CAccumulatorSwitch>
     <CAccumulatorConstant id="LuckHeroDelugeMultiplier">
         <ApplicationRule value="Multiply"/>
         <Amount value="2"/>
@@ -203,6 +264,9 @@
             <AccumulatorArray value="DefaultDataMultiply"/>
         </Parameters>
     </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="LuckHeroOrbOfHavocBounceRadius">
+        <Amount value="3"/>
+    </CAccumulatorConstant>
     <CAccumulatorConstant id="LuckHeroOrbOfHavocDurationBase">
         <Amount value="5"/>
     </CAccumulatorConstant>
@@ -391,7 +455,7 @@
     </CAccumulatorArithmetic>
     <CAccumulatorConstant id="LuckHeroOrbOfVitalityRadiusMultiplier">
         <ApplicationRule value="Multiply"/>
-        <Amount value="0.3"/>
+        <Amount value="0.4"/>
     </CAccumulatorConstant>
     <CAccumulatorConstant id="LuckHeroOrbOfVitalityRadiusBase">
         <Amount value="2"/>
@@ -414,6 +478,14 @@
     <CAccumulatorConstant id="MultiplyDot125">
         <ApplicationRule value="Multiply"/>
         <Amount value="0.125"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="Multiply1Dot25">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="1.25"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="MultiplyDot0625">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.0625"/>
     </CAccumulatorConstant>
     <CAccumulatorConstant id="MultiplyNeg1">
         <ApplicationRule value="Multiply"/>
@@ -515,11 +587,121 @@
         <ApplicationRule value="Multiply"/>
         <CaseArray Validator="NotHeroic" Accumulator="Multiply0"/>
     </CAccumulatorSwitch>
+    <CAccumulatorConstant id="PoisonHeroPoisonCloudMaxStacks">
+        <Amount value="3"/>
+    </CAccumulatorConstant>
+    <CAccumulatorConstant id="PoisonHeroPoisonboltDamage">
+        <Amount value="30"/>
+    </CAccumulatorConstant>
+    <CAccumulatorArithmetic id="PoisonHeroPoisonboltPoisonDamage">
+        <Parameters value="0">
+            <AccumulatorArray value="PoisonHeroPoisonboltDamage"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="PoisonHeroPoisonboltPoisonDamageFraction"/>
+            <AccumulatorArray value="MultiplyDot125"/>
+        </Parameters>
+        <Operation value="Multiply"/>
+    </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="PoisonHeroPoisonboltPoisonDamageFraction">
+        <Amount value="0.15"/>
+    </CAccumulatorConstant>
     <CAccumulatorBehavior id="ProbeHeroGasFireStackMultiply">
         <ApplicationRule value="Multiply"/>
         <Behavior value="GasFireStack"/>
         <UnitSource Value="Target"/>
     </CAccumulatorBehavior>
+    <CAccumulatorSwitch id="ProbeHeroGuardianDuration">
+        <CaseArray Validator="ProbeHeroHasGuardian" Accumulator="Multiply0"/>
+    </CAccumulatorSwitch>
+    <CAccumulatorConstant id="RocketHeroAmmoCap">
+        <Amount value="45"/>
+    </CAccumulatorConstant>
+    <CAccumulatorUserData id="RocketHeroAmmoData">
+        <MinAccumulation value="0"/>
+        <Key value="Ammo"/>
+        <BehaviorScope Behavior="RocketHeroAmmo"/>
+    </CAccumulatorUserData>
+    <CAccumulatorUserData id="RocketHeroDisposeDataBehavior">
+        <MinAccumulation value="0"/>
+        <Key value="Dispose"/>
+        <BehaviorScope Behavior="RocketHeroAmmo"/>
+    </CAccumulatorUserData>
+    <CAccumulatorUserData id="RocketHeroDisposeData">
+        <MinAccumulation value="0"/>
+        <Key value="Dispose"/>
+        <MaxAccumulation value="0"/>
+    </CAccumulatorUserData>
+    <CAccumulatorArithmetic id="RocketHeroNukeDamage">
+        <Parameters value="100">
+            <AccumulatorArray value="Add0"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="RocketHeroNukeDamageBonus"/>
+        </Parameters>
+        <MinAccumulation value="0"/>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="RocketHeroNukeDamageBonus">
+        <MinAccumulation value="0"/>
+        <Parameters value="40">
+            <AccumulatorArray value="DefaultDataMultiply"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorUserData id="RocketHeroNukeData">
+        <Key value="Nuke"/>
+        <BehaviorScope Behavior="RocketHeroAmmo"/>
+    </CAccumulatorUserData>
+    <CAccumulatorDistance id="RocketHeroNukeDistance">
+        <StartLocation Value="TargetUnit"/>
+        <EndLocation Effect="RocketHeroMissileBarrageNukeDelay" Value="TargetPoint"/>
+    </CAccumulatorDistance>
+    <CAccumulatorArithmetic id="RocketHeroNukeRadius">
+        <MinAccumulation value="2.5"/>
+        <MaxAccumulation value="15"/>
+        <Parameters value="2.5">
+            <AccumulatorArray value="Add0"/>
+        </Parameters>
+        <Parameters value="0.075">
+            <AccumulatorArray value="DefaultDataMultiply"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="RocketHeroNukeRadiusMinusDistance">
+        <Parameters value="0">
+            <AccumulatorArray value="RocketHeroNukeRadius"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="RocketHeroNukeDistance"/>
+        </Parameters>
+        <Operation value="Subtract"/>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="RocketHeroReloadHealMultiplier">
+        <MinAccumulation value="0"/>
+        <ApplicationRule value="Multiply"/>
+        <Parameters value="0">
+            <AccumulatorArray value="RocketHeroAmmoCap"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="RocketHeroAmmoData"/>
+        </Parameters>
+        <Operation value="Subtract"/>
+    </CAccumulatorArithmetic>
+    <CAccumulatorSwitch id="RocketHeroRocketSalvoDryfireSwitch">
+        <CaseArray Validator="RocketHeroNotReloading" Accumulator="Add0"/>
+        <CaseDefault value="Subtract1"/>
+    </CAccumulatorSwitch>
+    <CAccumulatorArithmetic id="RocketHeroNukeFalloffMultiplier">
+        <MinAccumulation value="0.25"/>
+        <MaxAccumulation value="1"/>
+        <ApplicationRule value="Multiply"/>
+        <Parameters value="0">
+            <AccumulatorArray value="RocketHeroNukeRadiusMinusDistance"/>
+            <AccumulatorArray value="Multiply1Dot25"/>
+        </Parameters>
+        <Parameters value="0">
+            <AccumulatorArray value="RocketHeroNukeRadius"/>
+        </Parameters>
+        <Operation value="Divide"/>
+    </CAccumulatorArithmetic>
     <CAccumulatorConstant id="ShadowHeroEnergytapDrain">
         <Amount value="-5"/>
     </CAccumulatorConstant>
@@ -647,6 +829,9 @@
         </Parameters>
         <Operation value="Divide"/>
     </CAccumulatorArithmetic>
+    <CAccumulatorConstant id="Subtract1">
+        <Amount value="-1"/>
+    </CAccumulatorConstant>
     <CAccumulatorConstant id="TimeHeroTimewaveDelayConst">
         <Amount value="2.75"/>
     </CAccumulatorConstant>

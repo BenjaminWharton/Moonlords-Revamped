@@ -114,9 +114,13 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="GravityHeroPositive" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
-    <CRequirementCountBehavior id="CountBehaviorMagmaArmorQueuedOrBetterAtUnit">
+    <CRequirementCountBehavior id="CountBehaviorRocketHeroMissileBarrageChannelQueuedOrBetterAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="MagmaArmor" State="QueuedOrBetterAtUnit"/>
+        <Count Link="RocketHeroMissileBarrageChannel" State="QueuedOrBetterAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorRocketHeroReloadingQueuedOrBetterAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="RocketHeroReloading" State="QueuedOrBetterAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorShadowplayStackQueuedOrBetterAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
@@ -233,19 +237,6 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="FaultLines" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeFireHeroArmageddonCompleteOnlyTechTreeCheat">
-        <Count Link="FireHeroArmageddon" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeFireHeroBurningSkyCompleteOnlyTechTreeCheat">
-        <Count Link="FireHeroBurningSky" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeFireHeroFieryJusticeCompleteOnlyTechTreeCheat">
-        <Count Link="FireHeroFieryJustice" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeFireHeroMoltenFuryQueuedOrBetter">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="FireHeroMoltenFury" State="QueuedOrBetter"/>
-    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeFirewallQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Firewall" State="QueuedOrBetter"/>
@@ -260,6 +251,10 @@
     <CRequirementCountUpgrade id="CountUpgradeLandslideQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Landslide" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeLightningHeroChargeUpCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="LightningHeroChargeUp" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeParticleHeroDampenersCompleteOnlyTechTreeCheat">
         <Count Link="ParticleHeroDampeners" State="CompleteOnly"/>
@@ -281,9 +276,6 @@
     <CRequirementCountUpgrade id="CountUpgradeParticleHeroSupplyCompleteOnlyTechTreeCheat">
         <Count Link="ParticleHeroSupply" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat">
-        <Count Link="PoisonHeroTransfer" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradePotentialQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Potential" State="QueuedOrBetter"/>
@@ -299,6 +291,10 @@
     <CRequirementCountUpgrade id="CountUpgradeRetributionQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Retribution" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeRocketHeroDryfireCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="RocketHeroDryfire" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeSJHyperionHangerCheckCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
@@ -427,10 +423,6 @@
         <OperandArray index="0" value="0"/>
         <OperandArray index="1" value="CountUpgradeParticleHeroEmittersCompleteOnlyTechTreeCheat"/>
     </CRequirementEq>
-    <CRequirementEq id="Eq0CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat">
-        <OperandArray index="0" value="0"/>
-        <OperandArray index="1" value="CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat"/>
-    </CRequirementEq>
     <CRequirementEq id="Eq0CountUpgradePotentialQueuedOrBetter">
         <OperandArray index="0" value="0"/>
         <OperandArray index="1" value="CountUpgradePotentialQueuedOrBetter"/>
@@ -503,18 +495,6 @@
         <OperandArray index="0" value="1"/>
         <OperandArray index="1" value="CountUpgradeExpansionQueuedOrBetter"/>
     </CRequirementEq>
-    <CRequirementEq id="Eq1CountUpgradeFireHeroArmageddonCompleteOnlyTechTreeCheat">
-        <OperandArray index="0" value="1"/>
-        <OperandArray index="1" value="CountUpgradeFireHeroArmageddonCompleteOnlyTechTreeCheat"/>
-    </CRequirementEq>
-    <CRequirementEq id="Eq1CountUpgradeFireHeroBurningSkyCompleteOnlyTechTreeCheat">
-        <OperandArray index="0" value="1"/>
-        <OperandArray index="1" value="CountUpgradeFireHeroBurningSkyCompleteOnlyTechTreeCheat"/>
-    </CRequirementEq>
-    <CRequirementEq id="Eq1CountUpgradeFireHeroFieryJusticeCompleteOnlyTechTreeCheat">
-        <OperandArray index="0" value="1"/>
-        <OperandArray index="1" value="CountUpgradeFireHeroFieryJusticeCompleteOnlyTechTreeCheat"/>
-    </CRequirementEq>
     <CRequirementEq id="Eq1CountUpgradeFirewallQueuedOrBetter">
         <OperandArray index="0" value="1"/>
         <OperandArray index="1" value="CountUpgradeFirewallQueuedOrBetter"/>
@@ -538,10 +518,6 @@
     <CRequirementEq id="Eq1CountUpgradeParticleHeroSupplyCompleteOnlyTechTreeCheat">
         <OperandArray index="0" value="1"/>
         <OperandArray index="1" value="CountUpgradeParticleHeroSupplyCompleteOnlyTechTreeCheat"/>
-    </CRequirementEq>
-    <CRequirementEq id="Eq1CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat">
-        <OperandArray index="0" value="1"/>
-        <OperandArray index="1" value="CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat"/>
     </CRequirementEq>
     <CRequirementEq id="Eq1CountUpgradePotentialQueuedOrBetter">
         <OperandArray index="0" value="1"/>
@@ -575,10 +551,6 @@
         <OperandArray index="0" value="2"/>
         <OperandArray index="1" value="CountUpgradeCondensationQueuedOrBetter"/>
     </CRequirementEq>
-    <CRequirementEq id="Eq2CountUpgradeFireHeroFieryJusticeCompleteOnlyTechTreeCheat">
-        <OperandArray index="0" value="2"/>
-        <OperandArray index="1" value="CountUpgradeFireHeroFieryJusticeCompleteOnlyTechTreeCheat"/>
-    </CRequirementEq>
     <CRequirementEq id="Eq2CountUpgradeFirewallQueuedOrBetter">
         <OperandArray index="0" value="2"/>
         <OperandArray index="1" value="CountUpgradeFirewallQueuedOrBetter"/>
@@ -598,10 +570,6 @@
     <CRequirementEq id="Eq2CountUpgradeParticleHeroSupplyCompleteOnlyTechTreeCheat">
         <OperandArray index="0" value="2"/>
         <OperandArray index="1" value="CountUpgradeParticleHeroSupplyCompleteOnlyTechTreeCheat"/>
-    </CRequirementEq>
-    <CRequirementEq id="Eq2CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat">
-        <OperandArray index="0" value="2"/>
-        <OperandArray index="1" value="CountUpgradePoisonHeroTransferCompleteOnlyTechTreeCheat"/>
     </CRequirementEq>
     <CRequirementEq id="Eq2CountUpgradePotentialQueuedOrBetter">
         <OperandArray index="0" value="2"/>
@@ -747,6 +715,10 @@
         <OperandArray index="0" value="CountUpgradeColossalCompleteOnly"/>
         <OperandArray index="1" value="3"/>
     </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeLightningHeroChargeUpCompleteOnly0">
+        <OperandArray index="0" value="CountUpgradeLightningHeroChargeUpCompleteOnly"/>
+        <OperandArray index="1" value="0"/>
+    </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeProbeHeroEquipCompleteOnly1">
         <OperandArray index="0" value="CountUpgradeProbeHeroEquipCompleteOnly"/>
         <OperandArray index="1" value="1"/>
@@ -843,10 +815,6 @@
         <OperandArray index="0" value="CountBehaviorBufferQueuedOrBetterAtUnit"/>
         <OperandArray index="1" value="Mul10CountUpgradeBufferQueuedOrBetter"/>
     </CRequirementLT>
-    <CRequirementLT id="LTCountBehaviorMagmaArmorQueuedOrBetterAtUnitSum4Mul2CountUpgradeFireHeroMoltenFuryQueuedOrBetter">
-        <OperandArray index="0" value="CountBehaviorMagmaArmorQueuedOrBetterAtUnit"/>
-        <OperandArray index="1" value="Sum4Mul2CountUpgradeFireHeroMoltenFuryQueuedOrBetter"/>
-    </CRequirementLT>
     <CRequirementLT id="LTCountUnitBroodlingEscortQueuedOrBetterAtUnit8">
         <OperandArray index="0" value="CountUnitBroodlingEscortQueuedOrBetterAtUnit"/>
         <OperandArray index="1" value="8"/>
@@ -859,10 +827,6 @@
     <CRequirementMul id="Mul10CountUpgradeBufferQueuedOrBetter">
         <OperandArray value="10"/>
         <OperandArray value="CountUpgradeBufferQueuedOrBetter"/>
-    </CRequirementMul>
-    <CRequirementMul id="Mul2CountUpgradeFireHeroMoltenFuryQueuedOrBetter">
-        <OperandArray value="2"/>
-        <OperandArray value="CountUpgradeFireHeroMoltenFuryQueuedOrBetter"/>
     </CRequirementMul>
     <CRequirementMul id="MulCountUpgradeShadowHeroDarkArtCompleteOnly2">
         <OperandArray value="CountUpgradeShadowHeroDarkArtCompleteOnly"/>
@@ -888,6 +852,9 @@
         <OperandArray index="0" value="1"/>
     </CRequirementNot>
     <CRequirementNot id="Not2"/>
+    <CRequirementNot id="Not643600613CountBehaviorRocketHeroReloadingQueuedOrBetterAtUnit">
+        <OperandArray index="0" value="CountBehaviorRocketHeroReloadingQueuedOrBetterAtUnit"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorAlias_BehaviorForceMovementQueuedOrBetterAtUnit">
         <OperandArray index="0" value="CountBehaviorAlias_BehaviorForceMovementQueuedOrBetterAtUnit"/>
     </CRequirementNot>
@@ -897,6 +864,13 @@
     <CRequirementNot id="NotCountBehaviorGravityHeroPositiveCompleteOnlyAtUnit">
         <OperandArray index="0" value="CountBehaviorGravityHeroPositiveCompleteOnlyAtUnit"/>
     </CRequirementNot>
+    <CRequirementNot id="NotCountBehaviorRocketHeroReloadingQueuedOrBetterAtUnit">
+        <OperandArray index="0" value="CountBehaviorRocketHeroReloadingQueuedOrBetterAtUnit"/>
+    </CRequirementNot>
+    <CRequirementOr id="Or643600613CountUpgradeRocketHeroDryfireCompleteOnlyNotCountBehaviorRocketHeroReloadingQueuedOrBetterAtUnit">
+        <OperandArray value="CountUpgradeRocketHeroDryfireCompleteOnly"/>
+        <OperandArray value="NotCountBehaviorRocketHeroReloadingQueuedOrBetterAtUnit"/>
+    </CRequirementOr>
     <CRequirementOr id="OrEq1CountBehaviorFireInfusedQueuedOrBetterAtUnitEq1CountBehaviorWindInfusedQueuedOrBetterAtUnitEq1CountBehaviorEarthInfusedQueuedOrBetterAtUnitEq1CountBehaviorWaterInfusedQueuedOrBetterAtUnit">
         <OperandArray value="Eq1CountBehaviorFireInfusedQueuedOrBetterAtUnit"/>
         <OperandArray value="Eq1CountBehaviorWindInfusedQueuedOrBetterAtUnit"/>
@@ -920,10 +894,6 @@
         <OperandArray value="NE3CountBehaviorEarthStackQueuedOrBetterAtUnit"/>
     </CRequirementOr>
     <CRequirementSum id="Sum"/>
-    <CRequirementSum id="Sum4Mul2CountUpgradeFireHeroMoltenFuryQueuedOrBetter">
-        <OperandArray value="4"/>
-        <OperandArray value="Mul2CountUpgradeFireHeroMoltenFuryQueuedOrBetter"/>
-    </CRequirementSum>
     <CRequirementSum id="SumMulCountUpgradeShadowHeroDarkArtCompleteOnly24">
         <OperandArray value="MulCountUpgradeShadowHeroDarkArtCompleteOnly2"/>
         <OperandArray value="4"/>

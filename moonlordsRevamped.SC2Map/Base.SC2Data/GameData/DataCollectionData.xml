@@ -255,6 +255,23 @@
         <TechInfoUpgradeUsed value="RewardArmor"/>
         <TechInfoUpgradeUsed value="RewardArmor2"/>
     </CDataCollectionUnit>
+    <CDataCollectionUnit id="RocketHero">
+        <EditorCategories value="DataGroup:Unit,Race:Protoss"/>
+        <DataRecord Entry="Unit,RocketHero"/>
+        <DataRecord Entry="Actor,RocketHero"/>
+        <TechInfoUpgradeUsed value="RewardEnergy"/>
+        <TechInfoUpgradeUsed value="RewardEnergy2"/>
+        <TechInfoUpgradeUsed value="RewardEnergyReg"/>
+        <TechInfoUpgradeUsed value="RewardEnergyReg2"/>
+        <TechInfoUpgradeUsed value="RewardShieldHP"/>
+        <TechInfoUpgradeUsed value="RewardShieldHP2"/>
+        <TechInfoUpgradeUsed value="RewardRegen"/>
+        <TechInfoUpgradeUsed value="RewardRegen2"/>
+        <TechInfoUpgradeUsed value="RewardSpeed"/>
+        <TechInfoUpgradeUsed value="RewardSpeed2"/>
+        <TechInfoUpgradeUsed value="RewardArmor"/>
+        <TechInfoUpgradeUsed value="RewardArmor2"/>
+    </CDataCollectionUnit>
     <CDataCollectionUnit id="ShadowHero">
         <EditorCategories value="DataGroup:Unit,Race:Protoss"/>
         <DataRecord Entry="Unit,ShadowHero"/>

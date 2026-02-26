@@ -9,12 +9,16 @@
 <Asset path="assets\textures\ui_charbaricons_zerg_all.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_loading_purifier01.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_loading_taldarim02.dds" Type="Image"/>
+<Asset path="assets\textures\mlteleportfogsquare.dds" Type="Image"/>
+<Asset path="assets\textures\mlteleportfogcircle.dds" Type="Image"/>
 <Asset path="assets\textures\sm_pt05_marsaraskypano.dds" Type="Image"/>
 <Asset path="assets\textures\credits_2017_charbattlezone.dds" Type="Image"/>
 <Asset path="assets\textures\voidthrasherportrait_static.dds" Type="Image"/>
 <Asset path="assets\textures\loading-ulnar.dds" Type="Image"/>
 <Asset path="assets\textures\blank.dds" Type="Image"/>
 <Asset path="assets\textures\sm_pt05_marsaraskypano.lvl0" Type="Image"/>
+<Asset path="assets\textures\ui_ingame_lotv_progressbarfill.dds" Type="Image"/>
+<Asset path="assets\textures\ui_void_loading_aiur03.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_loading_aiur01.dds" Type="Image"/>
 <Asset path="assets\textures\lurker_primal_collection_portrait_static.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_loading_prologue01.dds" Type="Image"/>
@@ -22,22 +26,25 @@
 <Asset path="assets\textures\zergling_webby_collection_portrait_static.dds" Type="Image"/>
 <Asset path="assets\textures\starbackground.dds" Type="Image"/>
 <Asset path="assets\textures\ui_hots_loading_missionselect_zhybrid03.dds" Type="Image"/>
-<Asset path="assets\textures\ui_void_shared_progressbarframe.dds" Type="Image"/>
 <Asset path="assets\textures\mrjack_zerusbg_matte.dds" Type="Image"/>
 <Asset path="assets\textures\korhalskybox_korhacloudbg_diffuse.lvl0" Type="Image"/>
 <Asset path="assets\textures\loading-zeratul01.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_loading_shakuras01.dds" Type="Image"/>
 <Asset path="assets\textures\evolutionbg.dds" Type="Image"/>
+<Asset path="assets\textures\ui_battlenet_glue_bluedropdownbuttonsmall_normalpressed.dds" Type="Image"/>
+<Asset path="assets\textures\ui_void_bossbar_progressbar_blue.dds" Type="Image"/>
 <Asset path="assets\textures\sc2_ui_coop_detail_background_artanis.dds" Type="Image"/>
 <Asset path="assets\textures\evolutionbg.lvl0" Type="Image"/>
 <Asset path="editordata\images\brushtextureoptimize.tga" Type="Image"/>
 <Asset path="assets\textures\mrjack_zerusbg_matte.lvl0" Type="Image"/>
-<Asset path="assets\textures\ui_void_shared_progressbarfill.dds" Type="Image"/>
+<Asset path="assets\textures\moonlordsmap.dds" Type="Image"/>
 <Asset path="assets\textures\narudportraitex2_static.dds" Type="Image"/>
 <Asset path="assets\textures\queen_webby_collection_portrait_static.dds" Type="Image"/>
+<Asset path="assets\textures\ui_battlenet_glues_pageassets_dialog_nobg.dds" Type="Image"/>
+<Asset path="assets\textures\ui_challenge_closebutton_normalandpressed.dds" Type="Image"/>
+<Asset path="assets\textures\ui_battlenet_glues_pageassets_dialogbg.dds" Type="Image"/>
 <Asset path="assets\textures\ui_homepanel_commander_artanis.dds" Type="Image"/>
 <Asset path="assets\textures\starbackground.lvl0" Type="Image"/>
-<Asset path="assets\wallofdarknessex3.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_loading_taldarim01.dds" Type="Image"/>
 <Asset path="assets\textures\spotterportrait_static.dds" Type="Image"/>
 <Actor id="SYSTEM_ActorConfig"/>
@@ -58,6 +65,8 @@
 <Actor id="Slayn_Brambles" Variations="0,1,2,3,4,5"/>
 <Actor id="Slayn_TallGrass" Variations="0,1,2,3,4,5,6,7"/>
 <Behavior id="Enrage"/>
+<Behavior id="HIveLordHiveLordsProtection"/>
+<Behavior id="PylonAbsoluteDefense"/>
 <Behavior id="AnnihilatorFirewall"/>
 <Behavior id="AnnihilatorWeaponDisable"/>
 <Behavior id="BladeStorm"/>
@@ -83,6 +92,8 @@
 <Behavior id="PylonWeaponDisable"/>
 <Behavior id="InitOrbType"/>
 <Behavior id="WarpHeroDecoyTracker"/>
+<Behavior id="WorldInversion"/>
+<Behavior id="ZergSpawnerInactive"/>
 <Behavior id="ButtonUpdater1"/>
 <Behavior id="ButtonUpdater2"/>
 <Behavior id="DemonRageStack"/>
@@ -94,7 +105,6 @@
 <Behavior id="Champion"/>
 <Behavior id="Champion2"/>
 <Behavior id="CloakofFear"/>
-<Behavior id="CoopInitdelay"/>
 <Behavior id="AnnihilatorDematerializationFieldBase"/>
 <Behavior id="DodgeballSpire"/>
 <Behavior id="Doom"/>
@@ -112,31 +122,23 @@
 <Behavior id="GreaterSpireBonusLightningDamage"/>
 <Behavior id="Guardian"/>
 <Behavior id="Insane"/>
-<Behavior id="HealingReagentBonusArmor"/>
 <Behavior id="Legendary"/>
 <Behavior id="LightningEnchanted2"/>
-<Behavior id="MusclePoison"/>
 <Behavior id="Normal"/>
 <Behavior id="MightAuraChampion"/>
 <Behavior id="FireEnchanted"/>
-<Behavior id="Lightning"/>
 <Behavior id="HasteAuraChampion"/>
 <Behavior id="HardShell"/>
 <Behavior id="Newbprotection"/>
 <Behavior id="Hard"/>
 <Behavior id="PlasmaTorpedo"/>
-<Behavior id="PoisonCloud"/>
-<Behavior id="Poisoned"/>
 <Behavior id="OverlordBanelingdrop"/>
 <Behavior id="RewardEnergyAura"/>
-<Behavior id="TerminatorHidden"/>
 <Behavior id="UnitIsInActiveArmyTriggers"/>
 <Behavior id="Shadowcrash"/>
 <Behavior id="Shadowplay"/>
 <Behavior id="ShadowplayStack"/>
 <Behavior id="StoneSkin"/>
-<Behavior id="StaticArmor"/>
-<Behavior id="Thunderfury"/>
 <Behavior id="TimedSuicide"/>
 <Behavior id="Youfailed"/>
 <Behavior id="ThorInvulnerabilityShield"/>
@@ -147,9 +149,10 @@
 <Behavior id="plasmacharge"/>
 <Behavior id="rewardarmor"/>
 <Behavior id="rewarddmg"/>
+<Behavior id="RespawnSafety"/>
 <Effect id="FullHeal"/>
 <Effect id="AnnihilatorTurretETU"/>
-<Effect id="ZapSet"/>
+<Effect id="TerminatorHeal"/>
 <Effect id="AnnihilatorFirewallCP"/>
 <Effect id="AnnihilatorLaserTrackingDMG"/>
 <Effect id="BladeHeroBloodFanaticalEvisStartSwitch"/>
@@ -160,19 +163,11 @@
 <Effect id="WarpHeroStrafeHeal"/>
 <Effect id="WarpHeroTurretAimStart"/>
 <Effect id="NatureHeroExpelCostUpMP"/>
-<Effect id="PoisonHeroHealingReagentMU"/>
-<Effect id="PoisonHeroPoisonBoltMU"/>
-<Effect id="PoisonHeroMusclePoisonMU"/>
 <Effect id="DarknessSet"/>
 <Effect id="WarpHeroStrafeSet"/>
-<Effect id="LightningHitDamage"/>
 <Effect id="ShadowplayApplyEntropy"/>
 <Effect id="FireballImpactSearchSpire"/>
-<Effect id="LightningHeroThunderfurySet"/>
-<Effect id="LightningHeroThunderfuryWrathSet"/>
 <Effect id="BossBanelingThrow"/>
-<Effect id="PoisonBubbleAtTarget"/>
-<Effect id="PoisonBubble"/>
 <Effect id="BossFirespewerSet"/>
 <Effect id="ChampionLightningDamage"/>
 <Effect id="MultiphaseShield"/>
@@ -181,7 +176,6 @@
 <Effect id="FireballDamage"/>
 <Effect id="FireDotDamage"/>
 <Effect id="LightningDamage"/>
-<Effect id="PsnDMGDamage"/>
 <Effect id="ShadowcrashImpact"/>
 <Effect id="DoomDetonate"/>
 <Effect id="MultishotImpactSearchArea"/>
@@ -245,6 +239,7 @@
 <Unit id="ProtossAlliesImmortal"/>
 <Unit id="ProtossAlliesHighTemplar"/>
 <Unit id="Metalisk"/>
+<Unit id="RocketHero"/>
 <Unit id="ThorRaven"/>
 <Unit id="ThorV1"/>
 <Unit id="GatewayHero"/>
@@ -391,6 +386,36 @@
 <Upgrade id="GravityHeroClash"/>
 <Upgrade id="GravityHeroDiffusion"/>
 <Upgrade id="GravityHeroWhiplash"/>
+<Upgrade id="PoisonHeroRelapse"/>
+<Upgrade id="RocketHeroAOE"/>
+<Upgrade id="RocketHeroAntenna"/>
+<Upgrade id="RocketHeroCapacious"/>
+<Upgrade id="RocketHeroCartridge"/>
+<Upgrade id="RocketHeroClip"/>
+<Upgrade id="RocketHeroDeploy"/>
+<Upgrade id="RocketHeroDispose"/>
+<Upgrade id="RocketHeroDryfire"/>
+<Upgrade id="RocketHeroEMP"/>
+<Upgrade id="RocketHeroEconomic"/>
+<Upgrade id="RocketHeroFeint"/>
+<Upgrade id="RocketHeroFusillade"/>
+<Upgrade id="RocketHeroHoming"/>
+<Upgrade id="RocketHeroLoaded"/>
+<Upgrade id="RocketHeroMagazine"/>
+<Upgrade id="RocketHeroMunitions"/>
+<Upgrade id="RocketHeroRefund"/>
+<Upgrade id="RocketHeroMethod"/>
+<Upgrade id="RocketHeroNitro"/>
+<Upgrade id="RocketHeroNuke"/>
+<Upgrade id="RocketHeroPayload"/>
+<Upgrade id="RocketHeroPlating"/>
+<Upgrade id="RocketHeroRefill"/>
+<Upgrade id="RocketHeroSpan"/>
+<Upgrade id="RocketHeroSlipstream"/>
+<Upgrade id="RocketHeroArsenal"/>
+<Upgrade id="RocketHeroTargeted"/>
+<Upgrade id="RocketHeroTorrent"/>
+<Upgrade id="RocketHeroZoned"/>
 <Upgrade id="TimeHeroVanish"/>
 <Upgrade id="TimeHeroInevitable"/>
 <Upgrade id="TimeHeroConservation"/>
@@ -440,12 +465,12 @@
 <Upgrade id="IllusionHeroMirage"/>
 <Upgrade id="LightningHeroCapacity"/>
 <Upgrade id="LightningHeroChain"/>
-<Upgrade id="LightningHeroConductor"/>
+<Upgrade id="LightningHeroChargeUp"/>
 <Upgrade id="LightningHeroOverload"/>
 <Upgrade id="LightningHeroExhaustion"/>
 <Upgrade id="LightningHeroRetention"/>
 <Upgrade id="LightningHeroStaticDrain"/>
-<Upgrade id="LightningHeroSupercharge"/>
+<Upgrade id="LightningHeroConductor"/>
 <Upgrade id="LightningHeroVolatileEnergy"/>
 <Upgrade id="Misdirection"/>
 <Upgrade id="ProbeHeroEquip"/>
@@ -458,7 +483,7 @@
 <Upgrade id="WarpHeroCover"/>
 <Upgrade id="WarpHeroFocus"/>
 <Upgrade id="Frenzy"/>
-<Upgrade id="LightningHeroFrostFury"/>
+<Upgrade id="LightningHeroInduction"/>
 <Upgrade id="Furor"/>
 <Upgrade id="Gravitate"/>
 <Upgrade id="Guardian"/>
@@ -678,7 +703,7 @@
 <Upgrade id="FireHeroWarmth"/>
 <Upgrade id="GravityHeroFissure"/>
 <Upgrade id="Fragments"/>
-<Upgrade id="LightningHeroCoolant"/>
+<Upgrade id="LightningHeroLatent"/>
 <Upgrade id="Gateway"/>
 <Upgrade id="Flurry"/>
 <Upgrade id="Longevity"/>
@@ -690,10 +715,10 @@
 <Upgrade id="FireHeroBurningSky"/>
 <Upgrade id="FireHeroBlazingSpeed"/>
 <Upgrade id="FireHeroInnerFire"/>
-<Upgrade id="LightningHeroIceAge"/>
-<Upgrade id="LightningHeroShatter"/>
-<Upgrade id="LightningHeroBlizzard"/>
-<Upgrade id="LightningHeroWinter"/>
+<Upgrade id="LightningHeroUnleash"/>
+<Upgrade id="LightningHeroBlister"/>
+<Upgrade id="LightningHeroVoltage"/>
+<Upgrade id="LightningHeroCoil"/>
 <Upgrade id="WarpHeroSplit"/>
 <Upgrade id="WarpHeroZortrium"/>
 <Upgrade id="WarpHeroSonar"/>

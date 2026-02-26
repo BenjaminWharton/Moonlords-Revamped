@@ -34,90 +34,16 @@
     <CAbilEffectTarget id="330mmBarrageCannons">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="AdeptPhaseShift">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AetherMawAetherStorm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AggressiveMutation">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AlarakForkedLightning">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AlarakKnockback">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AlarakMindBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <!--CAbilEffectTarget id="AlarakInsanity">-->
-    <!--        <EditorCategories value="AbilityorEffectType:Units"/>-->
-    <!--        <Effect index="0" value="AlarakInsanityInitialSearch"/>-->
-    <!--        <Cost>-->
-    <!--            <Cooldown TimeUse="20"/>-->
-    <!--        </Cost>-->
-    <!--        <Range value="9"/>-->
-    <!--        <CursorEffect value="AlarakInsanityInitialSearch"/>-->
-    <!--        <CmdButtonArray index="Execute" DefaultButtonFace="AlarakInsanity"/>-->
-    <!--    </CAbilEffectTarget-->
-    <CAbilEffectTarget id="AlarakPsiOrb">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AlarakSingularity">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="AmonCrystalDematerialize">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AmonHostDeathBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AmonHostDeathBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AmonTentacleA">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AmonTentacleB">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AmonTentacleC">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AmonTentacleCHeal">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AmonTentacleDGroundSlam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AmonTentacleDGroundSlamShowsAoE">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="AntiGravitonBurst">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="Apocalypse">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-        <!--Flags index="DeferCooldown" value="1"/-->
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArbiterMPRecall">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="ArtanisAreaStun">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisBlinkStrikeAiur02">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="ArtanisFeedback">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisHallucinationArmy">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisLightningDash">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ArtanisLineAttack">
@@ -132,16 +58,7 @@
     <CAbilEffectTarget id="ArtanisStasisField">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisTemporalField">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="ArtanisVoidPsiStorm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisVortex">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisWormholeTransit">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="AscendantSacrifice">
@@ -239,7 +156,7 @@
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
-        <CursorEffect value="BlackDeathSpread2SpreadSearch"/>
+        <CursorEffect value="PoisonHeroBlackDeathSA"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="BlackDeath"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="BlightbringerCreateEggs">
@@ -333,9 +250,6 @@
     <CAbilEffectTarget id="CritterFlee">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="DarkArchonChampionMaelstrom">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="DarkArchonConfusion">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
@@ -387,9 +301,6 @@
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="DehakaMirrorImage">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DestructionWaveNoOffset">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="DevastatingShot">
@@ -623,13 +534,14 @@
         <InfoArray index="Specialize1" Time="30" Effect="ForgeUpgradesDummy">
             <Button DefaultButtonFace="UpgradeProtossForces"/>
         </InfoArray>
+        <Activity value="UI/Researching"/>
     </CAbilSpecialize>
     <CAbilEffectTarget id="GasBomb">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="GasBombLM"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
-        <Range value="12"/>
+        <Range value="10"/>
         <CursorEffect value="GasBombSA"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="GasBomb"/>
         <Cost>
@@ -753,7 +665,7 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="HealingStationCU"/>
         <Flags index="RequireTargetVision" value="0"/>
-        <Range value="12"/>
+        <Range value="10"/>
         <IgnoreFilters value="-;Player,Ally,Neutral,Enemy"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="HealingStation"/>
         <Cost>
@@ -903,9 +815,6 @@
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="HyperionKorhalYamato">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HyperionPickup">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="HyperionYamatoSpecial">
@@ -1155,12 +1064,6 @@
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="LiberatorAGTarget">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LightningShooter">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LightningShooterDummy">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="LightningStrike">
@@ -1728,37 +1631,72 @@
     <CAbilEffectTarget id="RestoreShields">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="RocketHeroAmmo">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="RocketHeroAmmoReloadAB"/>
+        <Flags index="Transient" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RocketHeroAmmo" Requirements="RocketHeroNotReloading"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="RocketHeroMineField">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="Transient" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RocketHeroMineField" Requirements="RocketHeroNotReloading"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="RocketHeroEmergencyThrusters">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+            <Charge CountMax="2" CountUse="1" TimeUse="5"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RocketHeroEmergencyThrusters"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="RocketHeroMissileBarrage">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RocketHeroMissileBarrage"/>
+        <Range value="10"/>
+        <CursorEffect value="RocketHeroMissileBarrageSearchTarget"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="RocketHeroMissileBarrageCancel">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="RocketHeroMissileBarrageCancelETU"/>
+        <Flags index="Transient" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RocketHeroCancelMissileBarrage" Requirements="RocketHeroMissileBarrageActive"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="RocketHeroRocketSalvo">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="500"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RocketHeroRocketSalvo" Requirements="RocketHeroNotReloadingOrDryfire"/>
+        <Cost>
+            <Vital index="Energy" value="15"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastValidatorArray value="CasterEnergyGE85"/>
+        <AutoCastRange value="12"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="RocketHeroSelfDestruct">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Suicide"/>
+        <Flags index="Transient" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RocketHeroSelfDestruct"/>
+    </CAbilEffectInstant>
     <CAbilEffectTarget id="RoguePurifierSupportDroneBShieldRepair">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="SJCloakedMineAttack">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="SJHyperionBanshees">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SJHyperionBlink">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SJHyperionBlinkDummy">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SJHyperionFighters">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SJHyperionYamato">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="SJPickupHealth500">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SJPickupMinerals">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SJPickupSalvage">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SJPirateYamato">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="SOACheatDeath">
@@ -2028,9 +1966,6 @@
     <CAbilEffectTarget id="SpectreShield">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="SpiderMineUnburrowRangeDummy">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="SpineLash">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
@@ -2081,7 +2016,7 @@
             <Charge Link="Abil/MineralSpikes"/>
             <Cooldown Link="Abil/MineralSpikes"/>
         </Cost>
-        <Range value="12"/>
+        <Range value="10"/>
         <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
@@ -2194,6 +2129,7 @@
         <Arc value="360"/>
         <AutoCastFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastRange value="0.5"/>
+        <AutoCastValidatorArray value="NotMainObjective"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="SystemsReset">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -2250,7 +2186,7 @@
             <Charge Link="Abil/EruptionFire"/>
             <Cooldown Link="Abil/EruptionFire"/>
         </InterruptCost>
-        <Range value="12"/>
+        <Range value="10"/>
         <Arc value="360"/>
         <CursorEffect value="QuicksandEarthSA"/>
         <AINotifyEffect value="EruptionFire"/>
@@ -2260,7 +2196,7 @@
     <CAbilEffectTarget id="EruptionFire">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="EruptionFireCastSet"/>
-        <Range value="12"/>
+        <Range value="10"/>
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="EruptionFire" Requirements="IsFireInfused"/>
         <Flags index="RequireTargetVision" value="0"/>
@@ -2283,7 +2219,7 @@
             <Charge Link="Abil/EruptionFire"/>
             <Cooldown Link="Abil/EruptionFire"/>
         </InterruptCost>
-        <Range value="12"/>
+        <Range value="10"/>
         <Arc value="360"/>
         <Marker Link="Abil/EruptionFire"/>
         <AINotifyEffect value="EruptionFire"/>
@@ -2385,7 +2321,7 @@
             <Charge Link="Abil/EruptionFire"/>
             <Cooldown Link="Abil/EruptionFire"/>
         </InterruptCost>
-        <Range value="12"/>
+        <Range value="10"/>
         <Arc value="360"/>
         <CursorEffect value="QuicksandWaterSA"/>
         <AINotifyEffect value="EruptionFire"/>
@@ -2411,7 +2347,7 @@
     <CAbilEffectTarget id="SandstormWind">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Flags index="RequireTargetVision" value="0"/>
-        <Range value="12"/>
+        <Range value="10"/>
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="SandstormWind" Requirements="IsWindInfused"/>
         <Effect index="0" value="SandstormWindCP"/>
@@ -2435,7 +2371,7 @@
             <Charge Link="Abil/SandstormWind"/>
             <Cooldown Link="Abil/SandstormWind"/>
         </InterruptCost>
-        <Range value="12"/>
+        <Range value="10"/>
         <Arc value="360"/>
         <Marker Link="Abil/SandstormWind"/>
         <CursorEffect value="SandstormEarthSA"/>
@@ -2452,7 +2388,7 @@
             <Cooldown TimeUse="10"/>
         </Cost>
         <TargetFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="12"/>
+        <Range value="10"/>
         <Arc value="360"/>
         <IgnoreFilters value="-;Player,Ally"/>
         <CursorEffect value="SteamFireSA"/>
@@ -2471,7 +2407,7 @@
             <Cooldown Link="Abil/SteamFire"/>
         </InterruptCost>
         <TargetFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="12"/>
+        <Range value="10"/>
         <Arc value="360"/>
         <Marker Link="Abil/SteamFire"/>
         <AINotifyEffect value="SteamFire"/>
@@ -2940,7 +2876,7 @@
             <Charge Link=""/>
             <Cooldown Link=""/>
         </Cost>
-        <Range value="12"/>
+        <Range value="10"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
@@ -3011,18 +2947,6 @@
     <CAbilEffectTarget id="TimeStop">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="TitanMechBombardment">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TitanMechGunShot">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TitanMechGunShotCharge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TitanMechMissileShot">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="TossGrenade">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
@@ -3059,7 +2983,6 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="FireHeroFireball">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
-        <Effect index="0" value="FireballInit"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
@@ -3248,7 +3171,7 @@
         <Flags index="AutoCast" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Flags index="TransientPreferred" value="1"/>
-        <Range value="12"/>
+        <Range value="10"/>
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Tornado"/>
         <Cost>
@@ -3283,7 +3206,7 @@
             <Vital index="Life" value="150"/>
         </Cost>
         <TargetFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="12"/>
+        <Range value="10"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="CasterNotBelow50PHealth"/>
@@ -3565,15 +3488,6 @@
     <CAbilEffectTarget id="VoidTendrilVoidZone">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidThrasherEpilogueLightningAoE">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidThrasherLightningAoE">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidThrasherLightningAoEExtra">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="VorazunShadowDash">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
@@ -3583,9 +3497,51 @@
     <CAbilEffectTarget id="VulcanChampionShieldRestore">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="VultureSpiderMines">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
+    <CAbilMorph id="RocketHeroMineBurrow">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <ActorKey value="BurrowDown"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <InfoArray Unit="RocketHeroMineBurrowed">
+            <SectionArray index="Actor">
+                <DurationArray index="Delay" value="3.5332"/>
+                <DurationArray index="Duration" value="1.067"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="3.5332"/>
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="4.5332"/>
+                <EffectArray index="Start" value="SpiderMineVulnerable"/>
+            </SectionArray>
+        </InfoArray>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Worker,Missile,Stasis,Dead,Hidden,Invulnerable,Benign"/>
+        <AutoCastRange value="2"/>
+    </CAbilMorph>
+    <CAbilMorph id="RocketHeroMineUnburrow">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <ActorKey value="BurrowUp"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <InfoArray Unit="RocketHeroMine">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.6"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0.6"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.6"/>
+                <EffectArray index="Start" value="SpiderMineInvulnerable"/>
+            </SectionArray>
+        </InfoArray>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Worker,Missile,Stasis,Dead,Hidden,Invulnerable,Benign"/>
+        <AutoCastRange value="2"/>
+        <AutoCastCountMin value="1"/>
+    </CAbilMorph>
     <CAbilEffectTarget id="WarbotCharge">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
@@ -3646,7 +3602,7 @@
             <Charge Link=""/>
             <Cooldown Link=""/>
         </Cost>
-        <Range value="12"/>
+        <Range value="10"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
@@ -3697,7 +3653,7 @@
             <Charge Link=""/>
             <Cooldown Link=""/>
         </Cost>
-        <Range value="12"/>
+        <Range value="10"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
@@ -3759,7 +3715,7 @@
             <Cooldown Link=""/>
         </Cost>
         <TargetFilters value="-;Player,Ally,Neutral,Missile,Dead,Hidden,Invulnerable"/>
-        <Range value="10"/>
+        <Range value="12"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
@@ -3812,9 +3768,8 @@
         <AINotifyEffect value="WarpHeroMultishotDummy"/>
         <Arc value="360"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="MusclePoison">
+    <CAbilEffectTarget id="PoisonHeroMusclePoison">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
-        <Effect index="0" value="MusclePoisonDummy"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
@@ -3826,8 +3781,8 @@
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
-        <AINotifyEffect value="LightningHeroThunderfury"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="MusclePoison"/>
+        <CursorEffect value="PoisonHeroMusclePoisonSA"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="FireInfusion">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -3852,9 +3807,8 @@
         <Flags index="RequireTargetVision" value="0"/>
         <Effect index="0" value="DummyEffect"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="LightningHeroFrostShock">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Effect index="0" value="FrostshockCastSet"/>
+    <CAbilEffectTarget id="LightningHeroShortCircuit">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
@@ -3867,9 +3821,9 @@
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Revivable,Hidden,Invulnerable"/>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Frostshock"/>
-        <CursorEffect value="FrostshockSpreadSearch"/>
+        <CursorEffect value="LightningHeroShortCircuitSpreadSA"/>
         <IgnoreFilters value="-;Player,Ally,Neutral"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LightningHeroShortCircuit"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="Inferno">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -3907,8 +3861,7 @@
         </InfoArray>
     </CAbilTrain>
     <CAbilEffectTarget id="LightningHeroLightning">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Effect index="0" value="DummyEffect"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
@@ -3923,9 +3876,8 @@
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Lightning"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="Poisonbolt">
+    <CAbilEffectTarget id="PoisonHeroPoisonbolt">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
-        <Effect index="0" value="DummyEffect"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
@@ -3940,22 +3892,20 @@
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
         <Marker Link="Abil/Lightning"/>
         <AINotifyEffect value="Lightning"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Poisonbolt"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PoisonHeroPoisonbolt"/>
     </CAbilEffectTarget>
-    <CAbilEffectInstant id="PowerDrain">
-        <EditorCategories value="AbilityorEffectType:Units"/>
+    <CAbilEffectInstant id="LightningHeroPowerDrain">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Flags index="Transient" value="1"/>
         <Cost>
             <Vital index="Energy" value="50"/>
             <Charge Link=""/>
             <Cooldown Link=""/>
         </Cost>
         <CmdButtonArray index="Execute" DefaultButtonFace="PowerDrain"/>
-        <Effect index="0" value="PowerDrainApplySet"/>
-        <Flags index="Transient" value="1"/>
     </CAbilEffectInstant>
-    <CAbilEffectInstant id="HealingReagent">
+    <CAbilEffectInstant id="PoisonHeroHealingReagent">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
-        <Effect index="0" value="ApplyHealingReagent"/>
         <Flags index="Transient" value="1"/>
         <Cost>
             <Vital index="Energy" value="50"/>
@@ -4009,7 +3959,7 @@
             <Cooldown Link=""/>
         </Cost>
         <TargetFilters value="-;Player,Ally,Neutral,Missile,Hidden,Invulnerable"/>
-        <Range value="10"/>
+        <Range value="12"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Shadowcontrol"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ShadowHeroShadowcrash">
@@ -4049,7 +3999,7 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="Strafe"/>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="LightningHeroThunderfury">
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
@@ -4062,6 +4012,7 @@
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Thunderfury"/>
+        <CursorEffect value="LightningHeroThunderfurySA"/>
     </CAbilEffectTarget>
     <CAbilMorph id="UpgradeToWarpGate"/>
     <CAbilWarpTrain id="WarpGateTrain">
@@ -4149,7 +4100,7 @@
             <Vital index="Energy" value="45"/>
             <Cooldown TimeUse="7.5"/>
         </Cost>
-        <Range value="12"/>
+        <Range value="10"/>
         <Arc value="360"/>
         <CursorEffect value="WindstormSA"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Windstorm" Requirements="IsWindInfusedAndNot3WindStacksOr3EarthStacks"/>
@@ -4168,7 +4119,7 @@
             <Charge Link="Abil/Windstorm"/>
             <Cooldown Link="Abil/Windstorm"/>
         </InterruptCost>
-        <Range value="12"/>
+        <Range value="10"/>
         <Arc value="360"/>
         <Marker Link="Abil/Windstorm"/>
         <CursorEffect value="EverlastingStormSA"/>
@@ -4236,9 +4187,6 @@
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ZurvanEatMeat">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZurvanLightningBreath">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ZurvanSpawnPrimalHydralisk">

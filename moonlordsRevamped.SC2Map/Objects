@@ -16224,19 +16224,13 @@
         <Flag Index="HeightAbsolute" Value="1"/>
         <Flag Index="ForcePlacement" Value="1"/>
     </ObjectDoodad>
+    <ObjectUnit Id="6" Position="215,177,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="13" Position="69,53,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
     <ObjectUnit Id="16" Position="50,58,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
-        <Flag Index="ForcePlacement" Value="1"/>
-    </ObjectUnit>
-    <ObjectUnit Id="18" Position="42,119,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
-        <Flag Index="ForcePlacement" Value="1"/>
-    </ObjectUnit>
-    <ObjectUnit Id="9" Position="164,160,0" Rotation="0.8725" Scale="1,1,1" UnitType="DestructibleRampVerticalHuge">
-        <Flag Index="ForcePlacement" Value="1"/>
-    </ObjectUnit>
-    <ObjectUnit Id="2" Position="183,128,0" Rotation="2.5305" Scale="0.6665,0.6665,0.6665" UnitType="DestructibleRampHorizontalHuge">
-        <Flag Index="ForcePlacement" Value="1"/>
-    </ObjectUnit>
-    <ObjectUnit Id="11" Position="122,130,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
         <Flag Index="ForcePlacement" Value="1"/>
     </ObjectUnit>
     <ObjectUnit Id="12" Position="41,53,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
@@ -16245,16 +16239,10 @@
     <ObjectUnit Id="7" Position="229,57,0" Rotation="0.8725" Scale="1,1,1" UnitType="DestructibleRampVerticalHuge">
         <Flag Index="ForcePlacement" Value="1"/>
     </ObjectUnit>
-    <ObjectUnit Id="5" Position="215,177,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
+    <ObjectUnit Id="17" Position="45,56,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
         <Flag Index="ForcePlacement" Value="1"/>
     </ObjectUnit>
-    <ObjectUnit Id="14" Position="59,56,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
-        <Flag Index="ForcePlacement" Value="1"/>
-    </ObjectUnit>
-    <ObjectUnit Id="6" Position="215,177,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
-        <Flag Index="ForcePlacement" Value="1"/>
-    </ObjectUnit>
-    <ObjectUnit Id="13" Position="69,53,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
+    <ObjectUnit Id="18" Position="42,119,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
         <Flag Index="ForcePlacement" Value="1"/>
     </ObjectUnit>
     <ObjectUnit Id="15" Position="64,54,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
@@ -16263,13 +16251,16 @@
     <ObjectUnit Id="4" Position="244,65,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
         <Flag Index="ForcePlacement" Value="1"/>
     </ObjectUnit>
-    <ObjectUnit Id="17" Position="45,56,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
-        <Flag Index="ForcePlacement" Value="1"/>
-    </ObjectUnit>
     <ObjectUnit Id="24" Position="82,196,0" Rotation="0.8725" Scale="1,1,1" UnitType="DestructibleRampVerticalHuge">
         <Flag Index="ForcePlacement" Value="1"/>
     </ObjectUnit>
     <ObjectUnit Id="19" Position="48,119,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="5" Position="215,177,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="14" Position="59,56,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
         <Flag Index="ForcePlacement" Value="1"/>
     </ObjectUnit>
     <ObjectUnit Id="3" Position="189,128,0" Rotation="2.5305" Scale="0.6665,0.6665,0.6665" UnitType="DestructibleRampHorizontalHuge">
@@ -16278,10 +16269,19 @@
     <ObjectUnit Id="8" Position="229,57,0" Rotation="0.8725" Scale="1,1,1" UnitType="DestructibleRampVerticalHuge">
         <Flag Index="ForcePlacement" Value="1"/>
     </ObjectUnit>
+    <ObjectUnit Id="9" Position="164,160,0" Rotation="0.8725" Scale="1,1,1" UnitType="DestructibleRampVerticalHuge">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="2" Position="183,128,0" Rotation="2.5305" Scale="0.6665,0.6665,0.6665" UnitType="DestructibleRampHorizontalHuge">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
     <ObjectUnit Id="10" Position="111,130,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
         <Flag Index="ForcePlacement" Value="1"/>
     </ObjectUnit>
     <ObjectUnit Id="1" Position="244,65,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
+        <Flag Index="ForcePlacement" Value="1"/>
+    </ObjectUnit>
+    <ObjectUnit Id="11" Position="122,130,0" Rotation="2.5305" Scale="1,1,1" UnitType="DestructibleRampHorizontalHuge">
         <Flag Index="ForcePlacement" Value="1"/>
     </ObjectUnit>
 </PlacedObjects>

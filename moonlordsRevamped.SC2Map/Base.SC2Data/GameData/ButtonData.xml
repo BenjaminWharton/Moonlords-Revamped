@@ -47,10 +47,6 @@
         <Icon value="Assets\Textures\btn-command-cancel.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
-    <CButton id="ChatCommands">
-        <Icon value="Assets\Textures\ui_tip_questionmark.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
     <CButton id="Dexterity">
         <Icon value="Assets\Textures\btn-upgrade-protoss-phoenixrange.dds"/>
         <EditorCategories value="Race:Protoss"/>
@@ -125,6 +121,44 @@
     <CButton id="GravityHeroCompress">
         <Icon value="Assets\CompressEx5.dds"/>
         <Hotkey value="Button/Hotkey/GravityHeroR"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="NatureHeroHarvest2">
+        <Icon value="Assets\Textures\ui_glues_icons_groupcategory_schools.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="NatureHeroHarvest"/>
+    </CButton>
+    <CButton id="RocketHeroCancelMissileBarrage">
+        <Icon value="Assets\Textures\btn-command-cancel.dds"/>
+        <Hotkey value="Button/Hotkey/RocketHeroMissileBarrage"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="RocketHeroMissileBarrage"/>
+        <Tooltip value="Button/Tooltip/RocketHeroMissileBarrage"/>
+        <AlertTooltip value="Button/Tooltip/RocketHeroMissileBarrage"/>
+    </CButton>
+    <CButton id="RocketHeroRocketSalvo">
+        <Icon value="Assets\Textures\btn-ability-hornerhan-viking-missileupgrade.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="RocketHeroMineField">
+        <Icon value="Assets\Textures\btn-upgrade-siegetank-spidermines.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="RocketHeroAmmo">
+        <Icon value="Assets\Textures\btn-techupgrade-terran-fullborecanisterammo.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Button/ChargeText/RocketHeroAmmo"/>
+    </CButton>
+    <CButton id="RocketHeroMissileBarrage">
+        <Icon value="Assets\Textures\btn-ability-stetmann-corruptormissilebarrage.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="RocketHeroEmergencyThrusters">
+        <Icon value="Assets\Textures\btn-upgrade-terran-jotunboosters.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="RocketHeroSelfDestruct">
+        <Icon value="Assets\Textures\btn-command-cancel.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="TimeHeroChronofield">
@@ -631,13 +665,14 @@
         <Icon value="Assets\LightningEx1.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
-    <CButton id="Frostshock">
+    <CButton id="LightningHeroShortCircuit">
         <Icon value="Assets\Frost Shockex1.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="Thunderfury">
         <Icon value="Assets\Textures\btn-ability-protoss-feedback-color.dds"/>
         <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="Tooltip/Thunderfury/ChargeText"/>
     </CButton>
     <CButton id="StaticShield">
         <Icon value="Assets\Textures\btn-ability-protoss-cloakfield-color.dds"/>
@@ -648,7 +683,7 @@
         <Icon value="Assets\Textures\btn-ability-zerg-blindingcloud.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
-    <CButton id="Poisonbolt">
+    <CButton id="PoisonHeroPoisonbolt">
         <Icon value="Assets\Textures\btn-ability-zerg-contaminate-color.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
@@ -656,10 +691,10 @@
         <Icon value="Assets\Textures\btn-ability-protoss-gravitonbeam-color.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
-    <CButton id="MagmaArmor">
+    <CButton id="FireHeroMagmaArmor">
         <Icon value="Assets\MagmaArmorex1.dds"/>
         <EditorCategories value="Race:Protoss"/>
-        <ChargeText value="MagmaArmorChargeText"/>
+        <ChargeText value="MagmaArmorChargeTextFireHeroMagmaArmorChargeText"/>
     </CButton>
     <CButton id="HealingReagent">
         <Icon value="Assets\Textures\btn-ability-zerg-dehaka-ultralisk-healingadaptation.dds"/>
