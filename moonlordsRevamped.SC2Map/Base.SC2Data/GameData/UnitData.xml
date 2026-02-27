@@ -188,7 +188,6 @@
         <FlagArray index="Untargetable" value="1"/>
         <FlagArray index="Invulnerable" value="1"/>
         <FlagArray index="Unstoppable" value="1"/>
-        <FlagArray index="NeverThink" value="1"/>
         <Mover value="Fly"/>
         <Height value="0.5"/>
         <BehaviorArray Link="SpellUnit"/>
