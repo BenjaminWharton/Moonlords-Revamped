@@ -67,6 +67,7 @@
 <Behavior id="Enrage"/>
 <Behavior id="HIveLordHiveLordsProtection"/>
 <Behavior id="PylonAbsoluteDefense"/>
+<Behavior id="RespawnSafety"/>
 <Behavior id="AnnihilatorFirewall"/>
 <Behavior id="AnnihilatorWeaponDisable"/>
 <Behavior id="BladeStorm"/>
@@ -149,7 +150,6 @@
 <Behavior id="plasmacharge"/>
 <Behavior id="rewardarmor"/>
 <Behavior id="rewarddmg"/>
-<Behavior id="RespawnSafety"/>
 <Effect id="FullHeal"/>
 <Effect id="AnnihilatorTurretETU"/>
 <Effect id="TerminatorHeal"/>
