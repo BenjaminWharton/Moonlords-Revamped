@@ -1995,6 +1995,7 @@ DocInfo/PatchNote725=- Luck Hero
 DocInfo/PatchNote726=  - Havoc Orbs will now strike the ground if no enemies are in range
 DocInfo/PatchNote727=  - Attrition Orbs created by Deluge now spiral outwards
 DocInfo/PatchNote728=  - Changed Deviance and Perpetuation
+DocInfo/PatchNote729=Removed broken localization
 DocInfo/Screenshot01=Reward points carry over to subsequent games and can be beneficial in a variety of ways.
 DocInfo/Screenshot02=Standing near a Pylon enables you to teleport to any other base.
 DocInfo/Screenshot05=Spend talent points to increase your power.
