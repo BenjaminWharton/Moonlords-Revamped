@@ -374,7 +374,7 @@
         <Range value="8"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="BladeStorm"/>
         <Cost>
-            <Vital index="Energy" value="35"/>
+            <Vital index="Energy" value="30"/>
         </Cost>
         <AutoCastRange value="8"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
@@ -3072,6 +3072,13 @@
         <CastIntroTime value="0.4"/>
         <AINotifyEffect value=""/>
         <CmdButtonArray index="Execute" DefaultButtonFace="ProtossAlliesTeleport"/>
+        <UninterruptibleArray index="Approach" value="1"/>
+        <UninterruptibleArray index="Wait" value="1"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <UninterruptibleArray index="Bail" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ThunderstormWind">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>

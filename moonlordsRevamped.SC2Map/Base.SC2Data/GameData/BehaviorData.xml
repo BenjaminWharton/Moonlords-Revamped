@@ -366,6 +366,9 @@
         <Duration value="0.5"/>
         <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GreaterSpireFireballSpawner">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ThorAbsorberShield">
         <InfoIcon value="Assets\Textures\btn-shield-protoss-plasmashields.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
@@ -1614,26 +1617,22 @@
             <StateFlags index="Stun" value="1"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="RewardEnergyAuraBase">
-        <InfoFlags index="Hidden" value="1"/>
+    <CBehaviorBuff id="RefreshmentBase">
+        <BehaviorFlags index="Permanent" value="1"/>
         <InfoIcon value="Assets\Textures\btn-minimap-ping.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <TimeScaleSource Value="Global"/>
         <Period value="0.5"/>
         <PeriodicEffect value="RewardEnergyAuraSearch"/>
-        <TimeScaleSource Value="Global"/>
-        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="RewardEnergyAuraCDS">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+    <CBehaviorBuff id="RefreshedNonHero">
+        <InfoIcon value="Assets\Textures\btn-minimap-ping.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <MaxStackCount value="0"/>
-        <Duration value="0.5"/>
-        <Modification>
-            <RateMultiplierArray index="Charge" value="1.01"/>
-            <RateMultiplierArray index="Cooldown" value="1.01"/>
-        </Modification>
+        <MaxStackCountPerCaster value="1"/>
         <TimeScaleSource Value="Global"/>
-        <DamageResponse ModifyFraction="0.99">
+        <Duration value="1"/>
+        <DamageResponse>
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -4741,16 +4740,6 @@
         <InfoIcon value="Assets\Textures\wireframe-terran-pointdefensedrone.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <DisableValidatorArray value="guardianakaclosetopylon"/>
-        <MaxStackCount value="0"/>
-        <Modification>
-            <DamageDealtFraction index="Spell" value="0.03"/>
-            <DamageDealtFraction index="Melee" value="0.03"/>
-            <DamageDealtFraction index="Ranged" value="0.03"/>
-            <DamageDealtFraction index="Splash" value="0.03"/>
-            <VitalMaxIncreaseAffectsCurrentArray index="Energy" value="0"/>
-            <VitalMaxArray index="Energy" value="5"/>
-            <VitalRegenArray index="Energy" value="0.5"/>
-        </Modification>
         <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Hallucination">
@@ -5299,12 +5288,13 @@
             </DeathResponse>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="RewardEnergyAura">
+    <CBehaviorBuff id="RefreshedHero">
         <InfoIcon value="Assets\Textures\btn-minimap-ping.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <MaxStackCount value="0"/>
-        <InfoFlags index="Hidden" value="1"/>
+        <MaxStackCountPerCaster value="1"/>
         <TimeScaleSource Value="Global"/>
+        <Duration value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ThorDefensiveNukeKB">
         <Alignment value="Negative"/>
@@ -5820,7 +5810,7 @@
     <CBehaviorBuff id="rewardarmor">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DamageResponse ModifyFraction="0.99">
+        <DamageResponse>
             <ValidatorArray value="IsHeroic"/>
             <Chance value="1"/>
         </DamageResponse>
@@ -5829,18 +5819,6 @@
     <CBehaviorBuff id="rewarddmg">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
-        <Modification>
-            <DamageDealtFraction index="Spell" value="0.03"/>
-            <DamageDealtFraction index="Melee" value="0.03"/>
-            <DamageDealtFraction index="Ranged" value="0.03"/>
-            <DamageDealtFraction index="Splash" value="0.03"/>
-            <DeathResponse>
-                <Cost>
-                    <Charge Link="Behavior/rewardmaxenergy"/>
-                </Cost>
-            </DeathResponse>
-        </Modification>
         <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ScienceVesselScienceBase">

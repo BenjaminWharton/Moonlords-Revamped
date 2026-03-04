@@ -7463,17 +7463,22 @@ void gf_rewardreset (int lp_pnum) {
     libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardSpeed2", 0);
     libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardArmor", 0);
     libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardArmor2", 0);
+    CatalogFieldValueModify(c_gameCatalogBehavior, "rewardarmor", "DamageResponse.ModifyFraction", lp_pnum, "1", c_upgradeOperationSet);
     libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardRegen", 0);
     libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardRegen2", 0);
     libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardDamage", 0);
     libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardDamage2", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardGuardian", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardGuardian2", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardRefreshment", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardRefreshment2", 0);
+    CatalogFieldValueModify(c_gameCatalogBehavior, "RefreshedNonHero", "DamageResponse.ModifyFraction", lp_pnum, "1", c_upgradeOperationSet);
     libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "EarthHeroBonusSkin", 0);
     UnitBehaviorRemove(gv_hero[lp_pnum], "rewarddmg", 0);
     UnitBehaviorRemove(gv_hero[lp_pnum], "rewardarmor", 0);
-    UnitBehaviorRemove(gv_hero[lp_pnum], "RewardEnergyAuraBase", 0);
-    UnitBehaviorRemove(gv_hero[lp_pnum], "RewardEnergyAura", 0);
+    UnitBehaviorRemove(gv_hero[lp_pnum], "RefreshmentBase", 0);
+    UnitBehaviorRemove(gv_hero[lp_pnum], "RefreshedHero", 0);
     UnitBehaviorRemove(gv_hero[lp_pnum], "Guardian", 0);
-    UnitBehaviorRemove(gv_hero[lp_pnum], "TerminatorHidden", 0);
     UnitBehaviorRemove(gv_hero[lp_pnum], "Inspiration", 0);
     UnitBehaviorRemove(gv_hero[lp_pnum], "MLPowerField", 0);
     UnitBehaviorRemove(gv_hero[lp_pnum], "MoonLord", 0);
@@ -7504,20 +7509,31 @@ void gf_rewardadd (int lp_typ, int lp_amount, int lp_pnum, bool lp_respawn) {
     }
 
     if ((lp_typ == 2)) {
-        UnitBehaviorAdd(gv_hero[lp_pnum], "rewarddmg", gv_hero[lp_pnum], lp_amount);
-        libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardDamage", ((UnitBehaviorCount(gv_hero[lp_pnum], "Guardian") + UnitBehaviorCount(gv_hero[lp_pnum], "rewarddmg")) % 100));
-        libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardDamage2", ((UnitBehaviorCount(gv_hero[lp_pnum], "Guardian") + UnitBehaviorCount(gv_hero[lp_pnum], "rewarddmg")) / 100));
+        if ((UnitHasBehavior2(gv_hero[lp_pnum], "rewarddmg") == false)) {
+            UnitBehaviorAdd(gv_hero[lp_pnum], "rewarddmg", gv_hero[lp_pnum], 1);
+        }
+
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardDamage2", (gv_rewardUsed[lp_pnum][lp_typ] / 100));
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardDamage", (gv_rewardUsed[lp_pnum][lp_typ] % 100));
     }
 
     if ((lp_typ == 3) && (lp_amount >= 1)) {
-        UnitBehaviorAdd(gv_hero[lp_pnum], "RewardEnergyAuraBase", gv_hero[lp_pnum], 1);
-        UnitBehaviorAdd(gv_hero[lp_pnum], "RewardEnergyAura", gv_hero[lp_pnum], lp_amount);
+        if ((UnitHasBehavior2(gv_hero[lp_pnum], "RefreshmentBase") == false)) {
+            UnitBehaviorAdd(gv_hero[lp_pnum], "RefreshmentBase", gv_hero[lp_pnum], 1);
+        }
+
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardRefreshment2", (gv_rewardUsed[lp_pnum][lp_typ] / 100));
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardRefreshment", (gv_rewardUsed[lp_pnum][lp_typ] % 100));
+        CatalogFieldValueModify(c_gameCatalogBehavior, "RefreshedNonHero", "DamageResponse.ModifyFraction", lp_pnum, FixedToString(Pow(0.99, gv_rewardUsed[lp_pnum][lp_typ]), c_fixedPrecisionAny), c_upgradeOperationSet);
     }
 
     if ((lp_typ == 4) && (lp_amount >= 1)) {
-        UnitBehaviorAdd(gv_hero[lp_pnum], "Guardian", gv_hero[lp_pnum], lp_amount);
-        libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardDamage", ((UnitBehaviorCount(gv_hero[lp_pnum], "Guardian") + UnitBehaviorCount(gv_hero[lp_pnum], "rewarddmg")) % 100));
-        libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardDamage2", ((UnitBehaviorCount(gv_hero[lp_pnum], "Guardian") + UnitBehaviorCount(gv_hero[lp_pnum], "rewarddmg")) / 100));
+        if ((UnitHasBehavior2(gv_hero[lp_pnum], "Guardian") == false)) {
+            UnitBehaviorAdd(gv_hero[lp_pnum], "Guardian", gv_hero[lp_pnum], 1);
+        }
+
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardGuardian2", (gv_rewardUsed[lp_pnum][lp_typ] / 100));
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardGuardian", (gv_rewardUsed[lp_pnum][lp_typ] % 100));
     }
 
     if ((lp_typ == 5)) {
@@ -7536,9 +7552,13 @@ void gf_rewardadd (int lp_typ, int lp_amount, int lp_pnum, bool lp_respawn) {
     }
 
     if ((lp_typ == 8)) {
+        if ((UnitHasBehavior2(gv_hero[lp_pnum], "rewardarmor") == false)) {
+            UnitBehaviorAdd(gv_hero[lp_pnum], "rewardarmor", gv_hero[lp_pnum], 1);
+        }
+
         libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardArmor2", (gv_rewardUsed[lp_pnum][lp_typ] / 100));
         libNtve_gf_SetUpgradeLevelForPlayer(lp_pnum, "RewardArmor", (gv_rewardUsed[lp_pnum][lp_typ] % 100));
-        UnitBehaviorAdd(gv_hero[lp_pnum], "rewardarmor", gv_hero[lp_pnum], lp_amount);
+        CatalogFieldValueModify(c_gameCatalogBehavior, "rewardarmor", "DamageResponse.ModifyFraction", lp_pnum, FixedToString(Pow(0.99, gv_rewardUsed[lp_pnum][lp_typ]), c_fixedPrecisionAny), c_upgradeOperationSet);
     }
 
     if ((lp_typ == 9) && (lp_respawn == false)) {
@@ -9199,7 +9219,7 @@ bool auto_gf_BladeStormRight_TriggerFunc (bool testConds, bool runActions) {
     lv_count = (lv_circumference * 2.0);
     lv_angle = (360.0 / lv_count);
     lv_count += (lv_count * ((1 + lv_encompass) / 2.0));
-    while ((lv_count > 0.0)) {
+    while ((UnitIsAlive(lv_missile) == true) && (lv_count > 0.0)) {
         UnitSetPosition(lv_missile, PointWithOffsetPolar(lv_center, (lv_castdistance / 2.0), (AngleBetweenPoints(lv_center, lv_casterpoint) + (lv_angle * lv_i))), true);
         lv_i += 1;
         lv_count -= 1.0;
@@ -9265,7 +9285,7 @@ bool auto_gf_BladeStormLeft_TriggerFunc (bool testConds, bool runActions) {
     lv_count = (lv_circumference * 2.0);
     lv_angle = (360.0 / lv_count);
     lv_count += (lv_count * ((1 + lv_encompass) / 2.0));
-    while ((lv_count > 0.0)) {
+    while ((UnitIsAlive(lv_missile) == true) && (lv_count > 0.0)) {
         UnitSetPosition(lv_missile, PointWithOffsetPolar(lv_center, (lv_castdistance / 2.0), (AngleBetweenPoints(lv_center, lv_casterpoint) - (lv_angle * lv_i))), true);
         lv_i += 1;
         lv_count -= 1.0;
@@ -9867,38 +9887,42 @@ bool auto_gf_GreaterSpire2_TriggerFunc (bool testConds, bool runActions) {
     lv_lstage = gv_stage;
 
     // Implementation
-    UnitBehaviorAdd(lp_spire, "GreaterSpireBonusLightningDamage", lp_spire, FixedToInt(gv_difficulty));
-    while ((UnitIsAlive(lp_spire) == true)) {
-        if ((lv_lstage <= gv_stage) && (UnitGroupCount(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(lv_origin, 25.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) >= 1)) {
-            lv_j = 0.0;
-            while ((lv_j < lp_lightnings)) {
-                gf_Lightning2(lv_origin, PointWithOffsetPolar(lv_origin, 5.0, lv_i+((360/lp_lightnings)*lv_j)), lp_spire, 6, UnitGroupEmpty(), lp_ttl);
-                lv_j += 1.0;
-            }
-            lv_i = (lv_i+1)%360;
-            if ((UnitIsAlive(lp_spire) == true) && (UnitGetPropertyFixed(lp_spire, c_unitPropLifePercent, c_unitPropCurrent) < lv_hpstage)) {
-                lv_hpstageactive = true;
-                lv_hpstage = lv_hpstage-25;
-                lv_hpstagetimer = 40;
-            }
-
-            if ((lv_hpstageactive == true)) {
-                if ((lv_hpstagetimer > 1)) {
-                    lv_hpstagetimer -= 1;
+    if ((UnitHasBehavior2(lp_spire, "GreaterSpireFireballSpawner") == false)) {
+        UnitBehaviorAdd(lp_spire, "GreaterSpireFireballSpawner", lp_spire, 1);
+        UnitBehaviorAdd(lp_spire, "GreaterSpireBonusLightningDamage", lp_spire, FixedToInt(gv_difficulty));
+        while ((UnitIsAlive(lp_spire) == true)) {
+            if ((lv_lstage <= gv_stage) && (UnitGroupCount(UnitGroupAlliance(6, c_unitAllianceEnemy, RegionCircle(lv_origin, 25.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) >= 1)) {
+                lv_j = 0.0;
+                while ((lv_j < lp_lightnings)) {
+                    gf_Lightning2(lv_origin, PointWithOffsetPolar(lv_origin, 5.0, lv_i+((360/lp_lightnings)*lv_j)), lp_spire, 6, UnitGroupEmpty(), lp_ttl);
+                    lv_j += 1.0;
                 }
-                else {
-                    lv_hpstageactive = false;
-                    while ((lv_hpstagetimer < 360)) {
-                        gf_Lightning2(lv_origin, PointWithOffsetPolar(lv_origin, 5.0, IntToFixed(lv_hpstagetimer)), lp_spire, 6, UnitGroupEmpty(), 3.5);
-                        lv_hpstagetimer += 6;
+                lv_i = (lv_i+1)%360;
+                if ((UnitIsAlive(lp_spire) == true) && (UnitGetPropertyFixed(lp_spire, c_unitPropLifePercent, c_unitPropCurrent) < lv_hpstage)) {
+                    lv_hpstageactive = true;
+                    lv_hpstage = lv_hpstage-25;
+                    lv_hpstagetimer = 40;
+                }
+
+                if ((lv_hpstageactive == true)) {
+                    if ((lv_hpstagetimer > 1)) {
+                        lv_hpstagetimer -= 1;
+                    }
+                    else {
+                        lv_hpstageactive = false;
+                        while ((lv_hpstagetimer < 360)) {
+                            gf_Lightning2(lv_origin, PointWithOffsetPolar(lv_origin, 5.0, IntToFixed(lv_hpstagetimer)), lp_spire, 6, UnitGroupEmpty(), 3.5);
+                            lv_hpstagetimer += 6;
+                        }
                     }
                 }
+
             }
 
+            Wait(0.125, c_timeGame);
         }
-
-        Wait(0.125, c_timeGame);
     }
+
     while ((lv_k < lp_rewardamount)) {
         gf_GainReward(1);
         lv_k += 1;
@@ -10461,6 +10485,7 @@ bool auto_gf_challengemodearmyAI_TriggerFunc (bool testConds, bool runActions) {
     unitgroup lv_army;
     unitgroup lv_enemystructures;
     point lv_target;
+    unit lv_targetunit;
     unit lv_closestpylon;
     int lv_pathingcost;
 
@@ -10474,6 +10499,8 @@ bool auto_gf_challengemodearmyAI_TriggerFunc (bool testConds, bool runActions) {
     unitgroup auto19D31ED0_g;
     int auto19D31ED0_u;
     unit auto19D31ED0_var;
+    const int autoC9BEB6C7_n = 40;
+    int autoC9BEB6C7_i;
     unitgroup auto2D00CB04_g;
     int auto2D00CB04_u;
     unit auto2D00CB04_var;
@@ -10485,7 +10512,7 @@ bool auto_gf_challengemodearmyAI_TriggerFunc (bool testConds, bool runActions) {
 
     // Implementation
     while ((UnitGroupCount(lv_army, c_unitCountAlive) > 0)) {
-        if ((gv_challengemodescout != null)) {
+        if ((gv_challengemodescout != null) && (UnitGroupUnit(lv_army, 1) != gv_demolisher)) {
             lv_target = PointWithOffsetPolar(UnitGetPosition(gv_challengemodescout), 3.0, UnitGetFacing(gv_challengemodescout));
             UnitGroupIssueOrder(lv_army, OrderTargetingPoint(AbilityCommand("attack", 0), lv_target), c_orderQueueReplace);
             auto2D00CB04_g = lv_army;
@@ -10504,6 +10531,7 @@ bool auto_gf_challengemodearmyAI_TriggerFunc (bool testConds, bool runActions) {
             lv_enemystructures = UnitGroup(null, gv_eNEMYPLAYER, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterHeroic) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
             lv_pathingcost = 10000;
             lv_target = null;
+            lv_targetunit = null;
             auto11BB3BAC_g = lv_enemystructures;
             auto11BB3BAC_u = UnitGroupCount(auto11BB3BAC_g, c_unitCountAll);
             for (;; auto11BB3BAC_u -= 1) {
@@ -10511,6 +10539,7 @@ bool auto_gf_challengemodearmyAI_TriggerFunc (bool testConds, bool runActions) {
                 if (auto11BB3BAC_var == null) { break; }
                 if ((AIPathingCostMap(UnitGetPosition(UnitGroupUnit(lv_army, 1)), UnitGetPosition(auto11BB3BAC_var)) < lv_pathingcost) && (AIPathingCostMap(UnitGetPosition(UnitGroupUnit(lv_army, 1)), UnitGetPosition(auto11BB3BAC_var)) >= 0)) {
                     lv_target = UnitGetPosition(auto11BB3BAC_var);
+                    lv_targetunit = auto11BB3BAC_var;
                     lv_pathingcost = AIPathingCostMap(UnitGetPosition(UnitGroupUnit(lv_army, 1)), lv_target);
                 }
 
@@ -10546,12 +10575,21 @@ bool auto_gf_challengemodearmyAI_TriggerFunc (bool testConds, bool runActions) {
                 }
 
             }
-            UnitGroupIssueOrder(lv_army, OrderTargetingPoint(AbilityCommand("attack", 0), lv_target), c_orderQueueReplace);
-            Wait(1.5, c_timeGame);
-            if ((UnitGroupCount(lv_army, c_unitCountAlive) > 1)) {
-                Wait(1.5, c_timeGame);
+            if ((UnitIsAlive(lv_targetunit) == true)) {
+                for (autoC9BEB6C7_i = 1; autoC9BEB6C7_i <= autoC9BEB6C7_n; autoC9BEB6C7_i += 1) {
+                    if ((UnitIsAlive(lv_targetunit) == true)) {
+                        UnitGroupIssueOrder(lv_army, OrderTargetingPoint(AbilityCommand("attack", 0), lv_target), c_orderQueueReplace);
+                        Wait(0.25, c_timeGame);
+                    }
+                    else {
+                        break;
+                    }
+                }
             }
-
+            else {
+                UnitGroupIssueOrder(lv_army, OrderTargetingPoint(AbilityCommand("attack", 0), lv_target), c_orderQueueReplace);
+                Wait(3.0, c_timeGame);
+            }
         }
     }
     return true;
@@ -11120,6 +11158,7 @@ bool auto_gf_ProtossAttackAI_TriggerFunc (bool testConds, bool runActions) {
     int lv_override;
     unitgroup lv_enemystructures;
     point lv_target;
+    unit lv_targetunit;
     unit lv_closestpylon;
     int lv_pathdistance;
     int lv_furthestunitpathdistance;
@@ -11138,6 +11177,8 @@ bool auto_gf_ProtossAttackAI_TriggerFunc (bool testConds, bool runActions) {
     unitgroup autoEF0F9C71_g;
     int autoEF0F9C71_u;
     unit autoEF0F9C71_var;
+    const int auto7F275984_n = 40;
+    int auto7F275984_i;
 
     // Variable Initialization
     lv_army = UnitGroupCopy(lp_unitsRecievingOrder);
@@ -11156,6 +11197,7 @@ bool auto_gf_ProtossAttackAI_TriggerFunc (bool testConds, bool runActions) {
             lv_furthestunit = UnitGroupUnit(lv_army, 1);
             lv_closestpylon = gf_getpylonofstage();
             lv_target = UnitGetPosition(gf_getpylonofstage());
+            lv_targetunit = null;
             autoF5EB2564_g = lv_army;
             autoF5EB2564_u = UnitGroupCount(autoF5EB2564_g, c_unitCountAll);
             for (;; autoF5EB2564_u -= 1) {
@@ -11177,6 +11219,7 @@ bool auto_gf_ProtossAttackAI_TriggerFunc (bool testConds, bool runActions) {
                         if ((AIPathingCostMap(UnitGetPosition(auto94B34099_var), UnitGetPosition(lv_furthestunit)) < lv_pathdistance) && (AIPathingCostMap(UnitGetPosition(auto94B34099_var), UnitGetPosition(lv_furthestunit)) >= 0)) {
                             lv_pathdistance = AIPathingCostMap(UnitGetPosition(auto94B34099_var), UnitGetPosition(lv_furthestunit));
                             lv_target = UnitGetPosition(auto94B34099_var);
+                            lv_targetunit = auto94B34099_var;
                         }
 
                     }
@@ -11220,12 +11263,21 @@ bool auto_gf_ProtossAttackAI_TriggerFunc (bool testConds, bool runActions) {
                 }
 
             }
-            UnitGroupIssueOrder(lv_army, OrderTargetingPoint(AbilityCommand("attack", 0), lv_target), c_orderQueueReplace);
-            Wait(1.5, c_timeGame);
-            if ((UnitGroupCount(lv_army, c_unitCountAlive) > 1)) {
-                Wait(1.5, c_timeGame);
+            if ((UnitIsAlive(lv_targetunit) == true)) {
+                for (auto7F275984_i = 1; auto7F275984_i <= auto7F275984_n; auto7F275984_i += 1) {
+                    if ((UnitIsAlive(lv_targetunit) == true)) {
+                        UnitGroupIssueOrder(lv_army, OrderTargetingPoint(AbilityCommand("attack", 0), lv_target), c_orderQueueReplace);
+                        Wait(0.25, c_timeGame);
+                    }
+                    else {
+                        break;
+                    }
+                }
             }
-
+            else {
+                UnitGroupIssueOrder(lv_army, OrderTargetingPoint(AbilityCommand("attack", 0), lv_target), c_orderQueueReplace);
+                Wait(3.0, c_timeGame);
+            }
         }
         else {
             Wait(2.0, c_timeGame);

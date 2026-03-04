@@ -366,12 +366,21 @@
         <Key value="Fate"/>
         <SourceKey value="Fate"/>
     </CEffectUserData>
-    <CEffectSet id="FireHeroFireballImpact2">
+    <CEffectUserData id="FireHeroBlastwaveChainData">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="MeteorReq"/>
-        <EffectArray value="FireHeroFireballSA"/>
-        <EffectArray value="Suicide"/>
-    </CEffectSet>
+        <Chance value="0"/>
+        <EffectSuccess value="FireHeroBlastwaveChainDelay"/>
+    </CEffectUserData>
+    <CEffectDamage id="FireballImpactDamage">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <ArmorReduction value="1"/>
+        <Amount value="40"/>
+        <Death value="Fire"/>
+        <AreaArray/>
+    </CEffectDamage>
     <CEffectDamage id="FireHeroInfernoArmageddonMarker">
         <EditorCategories value="Race:Protoss"/>
     </CEffectDamage>
@@ -1517,6 +1526,11 @@
         <SearchFilters value="-;Neutral,Enemy,Missile,Stasis,Dead,Hidden"/>
         <AreaArray Radius="4" Effect="PylonAbsoluteDefenseAB"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="RewardEnergyAuraABHero">
+        <ValidatorArray index="0" value="IsHeroic"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="RefreshedHero"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="RocketHeroEmergencyThrustersFeintAB">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
@@ -6258,11 +6272,9 @@
     </CEffectApplyBehavior>
     <CEffectCreatePersistent id="FireHeroBlastwaveChainDelay">
         <EditorCategories value="Race:Protoss"/>
-        <Chance value="0"/>
         <Flags index="RandomPeriod" value="1"/>
         <PeriodCount value="1"/>
-        <PeriodicEffectArray value="FireHeroBlastwaveChainSA"/>
-        <PeriodicPeriodArray value="0.1875"/>
+        <PeriodicEffectArray value="FireHeroBlastwaveSA"/>
         <PeriodicPeriodArray value="0.25"/>
         <PeriodicPeriodArray value="0.3125"/>
         <PeriodicPeriodArray value="0.375"/>
@@ -6548,7 +6560,7 @@
     <CEffectModifyPlayer id="BloodFanaticalBladeIncrease">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/BloodFanaticalEvisDecrease"/>
-        <EffectArray Operation="Set" Reference="Abil,BladeStorm,Cost[0].Vital[Energy]" Value="35"/>
+        <EffectArray Operation="Set" Reference="Abil,BladeStorm,Cost[0].Vital[Energy]" Value="30"/>
     </CEffectModifyPlayer>
     <CEffectSet id="BloodFanaticalEndSet">
         <EditorCategories value="Race:Protoss"/>
@@ -6564,7 +6576,7 @@
     <CEffectModifyPlayer id="BloodFanaticalBladeDecrease">
         <EditorCategories value="Race:Protoss"/>
         <Marker Link="Effect/BloodFanaticalEvisDecrease"/>
-        <EffectArray Operation="Set" Reference="Abil,BladeStorm,Cost[0].Vital[Energy]" Value="17.5"/>
+        <EffectArray Operation="Set" Reference="Abil,BladeStorm,Cost[0].Vital[Energy]" Value="15"/>
     </CEffectModifyPlayer>
     <CEffectModifyPlayer id="BloodFanaticalEvisIncrease">
         <EditorCategories value="Race:Protoss"/>
@@ -7212,29 +7224,16 @@
         <EditorCategories value="Race:Protoss"/>
         <ImpactUnit Value="Caster"/>
     </CEffectModifyUnit>
-    <CEffectApplyBehavior id="RewardEnergyAuraAB">
+    <CEffectApplyBehavior id="RewardEnergyAuraABNonHero">
         <ValidatorArray index="0" value="NotHeroic"/>
-        <EditorCategories value=""/>
-        <Behavior value="RewardEnergyAuraCDS"/>
-        <Count value="1">
-            <AccumulatorArray value="EnergyAuraStackcountMultiply"/>
-        </Count>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="RefreshedNonHero"/>
     </CEffectApplyBehavior>
-    <CEffectModifyUnit id="RewardEnergyAuraEnergy2">
-        <ValidatorArray value="IsHeroic"/>
-        <EditorCategories value=""/>
-        <VitalArray index="Energy">
-            <Change value="0.125">
-                <AccumulatorArray value="EnergyAuraStackcountMultiply"/>
-            </Change>
-        </VitalArray>
-    </CEffectModifyUnit>
-    <CEffectSet id="RewardEnergyAuraSet">
-        <EditorCategories value=""/>
-        <EffectArray value="RewardEnergyAuraEnergy"/>
-        <EffectArray value="RewardEnergyAuraEnergy2"/>
-        <EffectArray value="RewardEnergyAuraAB"/>
-    </CEffectSet>
+    <CEffectSwitch id="RewardEnergyAuraSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="IsHeroic" Effect="RewardEnergyAuraABHero"/>
+        <CaseDefault value="RewardEnergyAuraABNonHero"/>
+    </CEffectSwitch>
     <CEffectApplyBehavior id="ShadowplayDummyEffectTarget">
         <ValidatorArray index="0" value="NoParasiticInvasion"/>
         <ValidatorArray value="ShadowplayCast"/>
@@ -7997,7 +7996,8 @@
     <CEffectEnumArea id="BladeStormSA">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="0.8" Effect="BladeStormSet"/>
+        <AreaArray Radius="1" Effect="BladeStormSet"/>
+        <DebugTrace value="1"/>
     </CEffectEnumArea>
     <CEffectSet id="BladeStormSet">
         <EditorCategories value="Race:Protoss"/>
@@ -15792,25 +15792,9 @@
             <RevealFlags index="Unfog" value="1"/>
         </RevealerParams>
     </CEffectEnumArea>
-    <CEffectEnumArea id="FireHeroBlastwaveChainSA">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2.5" Effect="FireHeroBlastwaveChainSet"/>
-        <RevealerParams Duration="0.5">
-            <RevealFlags index="Unfog" value="1"/>
-        </RevealerParams>
-    </CEffectEnumArea>
     <CEffectSet id="FireHeroBlastwaveSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="FireHeroBlastwaveChainDelay"/>
-        <EffectArray value="FireHeroBlastwaveABStun"/>
-        <EffectArray value="FireHeroBlastwaveABSlow"/>
-        <EffectArray value="FireHeroBlastwaveMUDelay"/>
-        <EffectArray value="FireHeroBlastwaveDMG"/>
-    </CEffectSet>
-    <CEffectSet id="FireHeroBlastwaveChainSet">
-        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="FireHeroBlastwaveChainData"/>
         <EffectArray value="FireHeroBlastwaveABStun"/>
         <EffectArray value="FireHeroBlastwaveABSlow"/>
         <EffectArray value="FireHeroBlastwaveMUDelay"/>
@@ -18448,6 +18432,7 @@
     </CEffectSet>
     <CEffectLaunchMissile id="StonesLM">
         <ValidatorArray index="0" value="DistanceLessThan10Source"/>
+        <ValidatorArray value="NotInvulnerable"/>
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
         <FinishEffect value="StonesSet"/>
@@ -19750,7 +19735,7 @@
     </CEffectEnumArea>
     <CEffectSet id="FireballSetSpire">
         <EditorCategories value=""/>
-        <EffectArray value="FireHeroFireballDMG"/>
+        <EffectArray value="FireballImpactDamage"/>
         <EffectArray value="Spireballed"/>
     </CEffectSet>
     <CEffectModifyUnit id="ShadowplayEntropyEnergy">
@@ -21385,19 +21370,11 @@
         <Marker Link="Effect/RegenerationApply"/>
         <Behavior value="RegenerationCDHidden"/>
     </CEffectApplyBehavior>
-    <CEffectModifyUnit id="RewardEnergyAuraEnergy">
-        <EditorCategories value=""/>
-        <VitalArray index="Energy">
-            <Change value="0.0124">
-                <AccumulatorArray value="EnergyAuraStackcountMultiply"/>
-            </Change>
-        </VitalArray>
-        <ValidatorArray value="NotHeroic"/>
-    </CEffectModifyUnit>
     <CEffectEnumArea id="RewardEnergyAuraSearch">
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Neutral,Enemy,Structure,Missile,Dead,Hidden"/>
-        <AreaArray Radius="12" Effect="RewardEnergyAuraSet"/>
+        <AreaArray Radius="12" Effect="RewardEnergyAuraSwitch"/>
+        <ExcludeArray/>
     </CEffectEnumArea>
     <CEffectCreatePersistent id="ShadowcrashImpact">
         <EditorCategories value=""/>

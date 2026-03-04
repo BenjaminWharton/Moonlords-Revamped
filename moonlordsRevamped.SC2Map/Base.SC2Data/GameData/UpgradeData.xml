@@ -188,7 +188,7 @@
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="BeamHeroCremate">
-        <EffectArray Reference="Accumulator,BeamHeroSuperchargeChargeMultiplier,Amount" Value="0.01"/>
+        <EffectArray Reference="Accumulator,BeamHeroSuperchargeChargeMultiplier,Amount" Value="0.005"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -425,6 +425,44 @@
         <EffectArray Reference="Effect,PoisonHeroBlackDeathHealMU,VitalArray[Energy].Change" Value="3.5"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="RewardGuardian">
+        <EffectArray Reference="Behavior,Guardian,Modification.DamageDealtFraction[Melee]" Value="0.03"/>
+        <EffectArray Reference="Behavior,Guardian,Modification.DamageDealtFraction[Ranged]" Value="0.03"/>
+        <EffectArray Reference="Behavior,Guardian,Modification.DamageDealtFraction[Spell]" Value="0.03"/>
+        <EffectArray Reference="Behavior,Guardian,Modification.DamageDealtFraction[Splash]" Value="0.03"/>
+        <EffectArray Reference="Behavior,Guardian,Modification.VitalMaxArray[Energy]" Value="5"/>
+        <EffectArray Reference="Behavior,Guardian,Modification.VitalRegenArray[Energy]" Value="0.5"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="100"/>
+    </CUpgrade>
+    <CUpgrade id="RewardGuardian2">
+        <EffectArray Reference="Behavior,Guardian,Modification.DamageDealtFraction[Melee]" Value="3"/>
+        <EffectArray Reference="Behavior,Guardian,Modification.DamageDealtFraction[Ranged]" Value="3"/>
+        <EffectArray Reference="Behavior,Guardian,Modification.DamageDealtFraction[Spell]" Value="3"/>
+        <EffectArray Reference="Behavior,Guardian,Modification.DamageDealtFraction[Splash]" Value="3"/>
+        <EffectArray Reference="Behavior,Guardian,Modification.VitalMaxArray[Energy]" Value="500"/>
+        <EffectArray Reference="Behavior,Guardian,Modification.VitalRegenArray[Energy]" Value="50.000000"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="100"/>
+    </CUpgrade>
+    <CUpgrade id="RewardRefreshment">
+        <EffectArray Reference="Behavior,RefreshmentBase,Modification.VitalRegenArray[Energy]" Value="0.25"/>
+        <EffectArray Reference="Behavior,RefreshedHero,Modification.VitalRegenArray[Energy]" Value="0.25"/>
+        <EffectArray Reference="Behavior,RefreshedNonHero,Modification.VitalRegenArray[Energy]" Value="0.023400"/>
+        <EffectArray Reference="Behavior,RefreshedNonHero,Modification.RateMultiplierArray[Charge]" Value="0.01"/>
+        <EffectArray Reference="Behavior,RefreshedNonHero,Modification.RateMultiplierArray[Cooldown]" Value="0.01"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="100"/>
+    </CUpgrade>
+    <CUpgrade id="RewardRefreshment2">
+        <EffectArray Reference="Behavior,RefreshmentBase,Modification.VitalRegenArray[Energy]" Value="25.000000"/>
+        <EffectArray Reference="Behavior,RefreshedHero,Modification.VitalRegenArray[Energy]" Value="25.000000"/>
+        <EffectArray Reference="Behavior,RefreshedNonHero,Modification.VitalRegenArray[Energy]" Value="2.500000"/>
+        <EffectArray Reference="Behavior,RefreshedNonHero,Modification.RateMultiplierArray[Charge]" Value="1"/>
+        <EffectArray Reference="Behavior,RefreshedNonHero,Modification.RateMultiplierArray[Cooldown]" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <MaxLevel value="100"/>
     </CUpgrade>
     <CUpgrade id="RocketHeroAOE">
         <EffectArray Reference="Effect,RocketHeroMineAttackDMG,AreaArray[0].Radius" Value="0.6"/>
@@ -708,7 +746,7 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Broaden">
-        <EffectArray Reference="Effect,BladeStormSA,AreaArray[0].Radius" Value="0.2"/>
+        <EffectArray Reference="Effect,BladeStormSA,AreaArray[0].Radius" Value="0.25"/>
         <EffectArray Reference="Actor,BladeStorm,Scale" Value="0.250000"/>
         <EffectArray Reference="Actor,BladeStormUnit,Scale" Value="0.250000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -1175,7 +1213,7 @@
         <EffectArray Reference="Unit,GatewayHeroZealot,ShieldRegenRate" Value="1.000000"/>
         <EffectArray Reference="Unit,GatewayHeroZealot,LifeRegenRate" Value="0.500000"/>
         <EffectArray Reference="Unit,HoloShieldUnit,LifeRegenRate" Value="0.500000"/>
-        <EffectArray Reference="Accumulator,HealingMultiplier,Amount" Value="0.02"/>
+        <EffectArray Reference="Accumulator,HealingMultiplier,Amount" Value="0.03"/>
         <EffectArray Reference="Behavior,ParticleHeroOverheal,Modification.VitalMaxArray[Shields]" Value="0.04"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,LifeRegenRate" Value="0.5"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldRegenRate" Value="1"/>
@@ -1185,7 +1223,7 @@
         <EffectArray Reference="Unit,GatewayHeroZealot,ShieldRegenRate" Value="100.000000"/>
         <EffectArray Reference="Unit,GatewayHeroZealot,LifeRegenRate" Value="50.000000"/>
         <EffectArray Reference="Unit,HoloShieldUnit,LifeRegenRate" Value="50.000000"/>
-        <EffectArray Reference="Accumulator,HealingMultiplier,Amount" Value="2"/>
+        <EffectArray Reference="Accumulator,HealingMultiplier,Amount" Value="3"/>
         <EffectArray Reference="Behavior,ParticleHeroOverheal,Modification.VitalMaxArray[Shields]" Value="4"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,LifeRegenRate" Value="50"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldRegenRate" Value="100"/>
@@ -2303,7 +2341,8 @@
         <MaxLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="FireHeroPyroblast">
-        <EffectArray Reference="Effect,FireHeroBlastwaveChainDelay,Chance" Value="0.05"/>
+        <EffectArray Reference="Effect,FireHeroBlastwaveChainData,Chance" Value="0.1"/>
+        <EffectArray Reference="Effect,FireHeroBlastwaveChainData,ValidateMax" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -4152,6 +4191,10 @@
         <EffectArray Reference="Effect,OrbOfHavocWispDMG,Amount" Value="75"/>
         <EffectArray Reference="Effect,GatewayHeroZealotAttackDMG,Amount" Value="100"/>
         <EffectArray Reference="Accumulator,DamageMultiplier,Amount" Value="3"/>
+        <EffectArray Reference="Behavior,rewarddmg,Modification.DamageDealtFraction[Melee]" Value="3"/>
+        <EffectArray Reference="Behavior,rewarddmg,Modification.DamageDealtFraction[Ranged]" Value="3"/>
+        <EffectArray Reference="Behavior,rewarddmg,Modification.DamageDealtFraction[Spell]" Value="3"/>
+        <EffectArray Reference="Behavior,rewarddmg,Modification.DamageDealtFraction[Splash]" Value="3"/>
         <EditorCategories value="Race:Protoss"/>
         <AffectedUnitArray value="ZealotAiur"/>
         <MaxLevel value="100"/>
@@ -4162,6 +4205,10 @@
         <EffectArray Reference="Effect,ZealotAttackRendDMG,Amount" Value="0.05"/>
         <EffectArray Reference="Effect,OrbOfHavocWispDMG,Amount" Value="0.75"/>
         <EffectArray Reference="Accumulator,DamageMultiplier,Amount" Value="0.03"/>
+        <EffectArray Reference="Behavior,rewarddmg,Modification.DamageDealtFraction[Melee]" Value="0.03"/>
+        <EffectArray Reference="Behavior,rewarddmg,Modification.DamageDealtFraction[Ranged]" Value="0.03"/>
+        <EffectArray Reference="Behavior,rewarddmg,Modification.DamageDealtFraction[Spell]" Value="0.03"/>
+        <EffectArray Reference="Behavior,rewarddmg,Modification.DamageDealtFraction[Splash]" Value="0.03"/>
         <EditorCategories value="Race:Protoss"/>
         <AffectedUnitArray value="ZealotAiur"/>
         <MaxLevel value="100"/>

@@ -2355,6 +2355,7 @@
         <LifeMax value="35"/>
         <ShieldsStart value="35"/>
         <ShieldsMax value="35"/>
+        <Food value="0"/>
     </CUnit>
     <CUnit id="IncinerateIcefireMissile" parent="MISSILE">
         <Race value="Prot"/>
@@ -2838,6 +2839,7 @@
         <Collide index="ForceField" value="0"/>
         <Collide index="Locust" value="0"/>
         <Collide index="Small" value="0"/>
+        <Food value="0"/>
     </CUnit>
     <CUnit id="Meteor" parent="MISSILE_INVULNERABLE">
         <ReviveType value=""/>

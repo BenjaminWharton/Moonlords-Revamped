@@ -68,6 +68,7 @@
 <Behavior id="HIveLordHiveLordsProtection"/>
 <Behavior id="PylonAbsoluteDefense"/>
 <Behavior id="RespawnSafety"/>
+<Behavior id="GreaterSpireFireballSpawner"/>
 <Behavior id="AnnihilatorFirewall"/>
 <Behavior id="AnnihilatorWeaponDisable"/>
 <Behavior id="BladeStorm"/>
@@ -86,7 +87,7 @@
 <Behavior id="Inspiration"/>
 <Behavior id="MLPowerField"/>
 <Behavior id="MoonLord"/>
-<Behavior id="RewardEnergyAuraBase"/>
+<Behavior id="RefreshmentBase"/>
 <Behavior id="ShadowplayDummy"/>
 <Behavior id="TimedSuicideNOSHOW"/>
 <Behavior id="ShadowplayHeroic"/>
@@ -134,7 +135,6 @@
 <Behavior id="Hard"/>
 <Behavior id="PlasmaTorpedo"/>
 <Behavior id="OverlordBanelingdrop"/>
-<Behavior id="RewardEnergyAura"/>
 <Behavior id="UnitIsInActiveArmyTriggers"/>
 <Behavior id="Shadowcrash"/>
 <Behavior id="Shadowplay"/>

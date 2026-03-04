@@ -1264,8 +1264,8 @@
     <CModel id="BladeStorm">
         <Model value="Assets\Effects\Protoss\Zealot_Purifier_Collection_Cleave\Zealot_Purifier_Collection_Cleave.m3"/>
         <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="0.480000,0.480000,0.480000"/>
-        <ScaleMin value="0.480000,0.480000,0.480000"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
     </CModel>
     <CModel id="BladeStormImpact">
         <Model value="Assets\Effects\Other\BloodTargetImpact\BloodTargetImpact.m3"/>
@@ -1276,8 +1276,8 @@
     <CModel id="BladeStormUnit">
         <Model value="Assets\Effects\Protoss\Fenix_Whirlwind\Fenix_Whirlwind.m3"/>
         <EditorCategories value="Race:Protoss"/>
-        <ScaleMax value="0.400000,0.400000,0.400000"/>
-        <ScaleMin value="0.400000,0.400000,0.400000"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
     </CModel>
     <CModel id="Blastwave">
         <Model value="Assets\Effects\Terran\ThorShoulderMissileImpact\ThorShoulderMissileImpact.m3"/>

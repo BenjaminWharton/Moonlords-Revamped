@@ -366,11 +366,6 @@
     <CAccumulatorDistance id="DistanceFromCasterUnittoTargetPoint">
         <EndLocation Value="TargetPoint"/>
     </CAccumulatorDistance>
-    <CAccumulatorBehavior id="EnergyAuraStackcountMultiply">
-        <MinAccumulation value="0"/>
-        <ApplicationRule value="AdditiveMultiply"/>
-        <Behavior value="RewardEnergyAura"/>
-    </CAccumulatorBehavior>
     <CAccumulatorVitals id="EnergyCurrentTarget">
         <Ratio value="1"/>
         <VitalType value="Energy"/>
