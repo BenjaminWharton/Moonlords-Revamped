@@ -4,6 +4,14 @@
         <Arc value="360"/>
         <Radius value="10"/>
     </CShapeArc>
+    <CShapeArc id="Circle20">
+        <Arc value="360"/>
+        <Radius value="20"/>
+    </CShapeArc>
+    <CShapeArc id="Circle30">
+        <Arc value="360"/>
+        <Radius value="30"/>
+    </CShapeArc>
     <CShapeArc id="Circle5">
         <Arc value="360"/>
         <Radius value="5"/>

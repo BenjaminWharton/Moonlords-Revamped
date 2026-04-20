@@ -356,13 +356,14 @@
         <DisplayEffect value="DisintegratorDMG"/>
         <TargetFilters value="Ground,Visible,MapBoss;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AcquirePrioritization value="ByDistanceFromTarget"/>
-        <Range value="30"/>
+        <Range value="36"/>
         <RangeSlop value="0"/>
         <Arc value="90"/>
-        <Period value="3"/>
+        <Period value="1"/>
         <DamagePoint value="0.0832"/>
         <Effect value="DisintegrationCP"/>
         <LegacyOptions index="CanRetargetWhileChanneling" value="1"/>
+        <MinScanRange value="37"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="StormStrike">
         <Icon value="Assets\Textures\amonshards_weapon.dds"/>

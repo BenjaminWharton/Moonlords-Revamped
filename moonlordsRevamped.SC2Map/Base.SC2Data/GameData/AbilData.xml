@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
-    <CAbilEffectTarget default="1" id="ArcNodeSpawnShadowOfTheVoidUnitParent">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <!--                                                                                         -->
     <!--                                                                                         -->
     <!-- Defaults ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -11,96 +8,7 @@
     <CAbilEffectTarget default="1">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
-    <!--                                                                                         -->
-    <!--                                                                                         -->
-    <!-- Added For Wizards ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!--                                                                                         -->
-    <!--                                                                                         -->
-    <CAbilEffectTarget default="1" id="SimpleTargetAbil">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget default="1" id="SprayParent">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget default="1" id="WizSimpleChain">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget default="1" id="WizSimpleGrenade">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget default="1" id="WizSimpleSkillshot">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="330mmBarrageCannons">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="AmonCrystalDematerialize">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AntiGravitonBurst">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisAreaStun">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisFeedback">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisLineAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisMaelstrom">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisOvercharge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisStasisField">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ArtanisVoidPsiStorm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AscendantSacrifice">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AshWormBurrowMove">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BarbedTentacleAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BeamCaster1">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BeamCaster10">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BeamCaster11">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BeamCaster2">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BeamCaster3">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BeamCaster4">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BeamCaster5">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BeamCaster6">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BeamCaster7">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BeamCaster8">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BeamCaster9">
         <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="BeamHeroAnchor">
@@ -139,9 +47,6 @@
             <VitalFraction index="Energy" value="1"/>
         </Cost>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="BioStasis">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="BlackDeath">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Effect index="0" value="PoisonHeroBlackDeath"/>
@@ -159,194 +64,11 @@
         <CursorEffect value="PoisonHeroBlackDeathSA"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="BlackDeath"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="BlightbringerCreateEggs">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BlightbringerCreateLargeEggs">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BlindingCloud">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BlinkMultiple">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BlinkShieldRestore">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BonesHeal">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BonesTossGrenade">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BuildAutoTurret">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BuildingShield">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BuildingStasis">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BurrowChargeRevD">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BurrowChargeTrial">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="BurrowSurge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="CapResource">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="CarrierBomberBomb">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="CarrierHyperjump">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="CarrierRepairDroneHeal">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="CarryCarcass">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="CausticSpray">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="CelestialBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ChangeFacing">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ChargedBlastTargeted">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ChargedCannon">
-        <SharedFlags index="DisableWhileDead" value="1"/>
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ChomperBeastEatMeat">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="CloakingDrone">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ColonyInfestation">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ConsumeMoveToCaster">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Consumption">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="CorruptionBomb">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="CritterFlee">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DarkArchonConfusion">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DarkArchonMindControl">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DarkShrineAssignRally">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DarkTemplarChampionBlink">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DarkTemplarChampionVoidPrison">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DarkTemplarShadowFury">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DarkTemplarVoidStasis">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="DeepTunnel">
         <Cost index="0">
             <Vital index="Energy" value="0"/>
             <Cooldown TimeStart="5" TimeUse="5"/>
         </Cost>
-    </CAbilEffectTarget>
-    <!--                                                                                         -->
-    <!-- Defiler............................................................................... -->
-    <!--                                                                                         -->
-    <CAbilEffectTarget id="DefilerMPConsume">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DefilerMPPlague">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DehakaDevour">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <!--CAbilEffectInstant id="DehakaHeal">-->
-    <!--        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>-->
-    <!--        <Flags index="Transient" value="1"/>-->
-    <!--        <Cost>-->
-    <!--            <Cooldown Link="DehakaHeal" Location="Unit" TimeUse="10"/>-->
-    <!--        </Cost>-->
-    <!--        <CmdButtonArray index="Execute" DefaultButtonFace="DehakaHeal"/>-->
-    <!--    </CAbilEffectInstant-->
-    <CAbilEffectTarget id="DehakaLeap">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DehakaMirrorImage">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DevastatingShot">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DevourTongue">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DigesterCreepSpray">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DisablingCloud">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Domination">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Drag">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DroneCarcassHarvest">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DukesRevengeMissilePods">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DukesRevengeYamato">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="DutchPlaceTurret">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="EggPop">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="EnergyChannel">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Ensnare">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="EnterWormhole">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="EntropicBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Eviscerate">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -490,45 +212,6 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="ThunderingSiphon" Requirements="IsWaterInfusedAndHas3WaterStacksAnd3WindStacks"/>
         <CursorEffect value="EternalLifeSA"/>
     </CAbilEffectInstant>
-    <CAbilEffectTarget id="ExperimentalPlasmaGun">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="EyeStalk">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="FenixChampionAirGravitonPrison">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="FenixCharge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="FenixChargeStun">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="FenixExecute">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="FenixLeapAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="FlagshipWarpInPhoenix">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="FlagshipWarpInScout">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="FlameBeastFireball">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="FlyerShield">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ForceFieldMonitor">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ForceFieldVoid">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilSpecialize id="ForgeUpgrades">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <InfoArray index="Specialize1" Time="30" Effect="ForgeUpgradesDummy">
@@ -551,15 +234,6 @@
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="GatherSpecialObject">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="GiantYetiLeap">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="GiantYetiLeapOld">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectInstant id="GlaiveBarrage">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="AdeptAB"/>
@@ -576,15 +250,6 @@
         <AutoCastValidatorArray value="GlaiveBarrageLT9"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="GlaiveBarrage"/>
     </CAbilEffectInstant>
-    <CAbilEffectTarget id="Grapple">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="GravitonBeamUrun">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="GravitonBeamVoidCampaign">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="GravityHeroE">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Range value="500"/>
@@ -655,12 +320,6 @@
             <SortArray value="TSRandom"/>
         </TargetSorts>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="GravityWell">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HealerBotHeal">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="HealingStation">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="HealingStationCU"/>
@@ -691,9 +350,6 @@
         <AutoCastRange value="3"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="HealingStationShell"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="HealthDispenserPickup">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectInstant id="HellfireQuake">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="HellfireQuakeCastSet"/>
@@ -707,18 +363,6 @@
         <Flags index="Transient" value="1"/>
         <CursorEffect value="HellfireQuakeSA"/>
     </CAbilEffectInstant>
-    <CAbilEffectTarget id="HercGrapple">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HerdInteract">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HighArchonPsiStorm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HighTemplarCripple">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="HoloShield">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Range value="6"/>
@@ -769,60 +413,6 @@
         <AutoCastRange value="6"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="HotSRaptorCharge"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="HotSBioPlasmidDischarge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HotSBioStasis">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HotSHunterSapStructure">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HotSSplitterlingSapStructure">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HybridBlink">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HybridCPlasmaBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HybridDominatorVoidGravitonPrison">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HybridDominatorVoidPlasmaBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HybridDominatorVoidPsiStorm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HybridGeneralMindControl">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HybridGeneralPhaseShift">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HybridNemesisStream">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HybridRelease">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HybridReleaseFallback">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HybridReleaseVoid">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HyperionKorhalYamato">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="HyperionYamatoSpecial">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Hyperjump">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="IcefireBlast">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="IcefireBlastInit"/>
@@ -858,130 +448,6 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
-    <CAbilEffectTarget id="ImmortalShakurasAntiAirMissiles">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ImmortalShakurasShadowCannon">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Impale">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Implosion">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="InfestedHeal">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="InfestedTerrans">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="InvulnerabilityShield">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Irradiate">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="JellyGrab">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="K5DropPods">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KD8Charge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KaiserWormBanelingMissile">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KaiserWormScourgeMissile">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KarassPlasmaSurge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KarassPsiStorm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KaraxDisintegrationBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KaraxEmergencyShield">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KaraxMicroBotShieldRecharge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KaraxOverload">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KaraxRepairDrone">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KaraxStasisField">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganEpilogue03CreepTeleport">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganEpilogue03LeapAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganEpilogue03LineDashAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganEpilogue03QuantumBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganEpilogue03QuantumRay">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganEpilogue03StrikeAmon">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganEpilogue03StrikeGround">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganSearch">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganVoidApocalypse">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-        <!--Flags index="DeferCooldown" value="1"/-->
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganVoidCoopEconDrop1Pickup">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganVoidCoopEconDrop2Pickup">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganVoidCoopEconDrop3Pickup">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganVoidCoopEconDrop4Pickup">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganVoidCoopEconDrop5Pickup">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganVoidCoopEconDropLT1Pickup">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganVoidKineticBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KerriganVoidSpawnBanelings">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KorhalSporeCannonBombardment">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KraithCrashingCharge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="KraithSpineVolley">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="LaunchOrbsOfDestruction">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="OrbOfDestructionInit"/>
@@ -1057,579 +523,10 @@
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
         <CursorEffect value="LuckHeroOrbOfVitalityUISA"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="Leech">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LeechResources">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LiberatorAGTarget">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LightningStrike">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LockOn">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LockOnAir">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LocustLaunch">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LocustLaunchCreeper">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LocustMPFlyingSwoop">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LokiMissilePods">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="LokiYamato">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MassiveKnockover">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MedivacDoubleBeamHeal">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MegalithCutterDock">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MegalithCutterDockInstant">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MengskBCMissilePods">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MengskBCYamato">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MengskMedicHeal">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MengskThor250mmStrikeCannons">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MercMedicHeal">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MindBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MindBolt">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MindControl">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissilePods">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterBurst1">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterBurst2">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterBurst3">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterBurst4">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterBurst5">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterBurst6">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterChannel1">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterChannel2">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterChannel3">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterChannel4">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterChannel5">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterChannel6">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterChannel7">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MissileShooterChannel8">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MohandarStickyBomb">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MothershipCoreEnergize">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MothershipCoreMassRecall">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MothershipCorePurifyNexus">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MothershipCoreTeleport">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MothershipMassRecall">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NPDomination">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NPSwarm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NarudEpilogueBlink">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NarudEpilogueMine">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NarudEpilogueShadowStep">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NarudEpilogueSpawnShadeofNarud">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NarudEpilogueStun">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NarudEpilogueVoidMissile">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NexusInvulnerability">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NexusPhaseShift">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaArmorBlinkSuitBlink">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaEradicatorLaunchMissile">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaEradicatorRailgun">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaEradicatorRailgunFire">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaEradicatorTurnTurret">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaGadgetDefensiveDroneSummon">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaGadgetFlashBangGrenades">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaGadgetHiveMindAmplifier">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaGadgetHolographicDecoy">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaGadgetPulseGrenades">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaGadgetSwarmGrenades">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaHelmetDomination">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaHelmetHiveMindAmplifier">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaPsiStrike">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaSilentkill">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-        <!--AutoCastRange value="2"/>
-        <AutoCastValidatorArray value="TargetLE2Range"/-->
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaSnipe">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaVultureWeaponCanisterRifleSnipe">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaWeaponBlazefireBladeShadowFury">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaWeaponCanisterRifleSnipe">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaWeaponHellfireShotgunBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaWeaponInvictusLongshotLockdown">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaWeaponPlasmaBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NovaWeaponPsiRifleAbduct">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NoxiousCreep">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NoxiousCreepStukov">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NydusBeastDeepTunnel">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NydusBeastFireball">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NydusBeastShieldFireball">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NydusBeastSpawnBaneling">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NydusBeastSpawnHydralisk">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NydusBeastSpawnRoach">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="NydusBeastSpawnZergling">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ObserverTargetLock">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="OdinBarrage">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="OdinNuclearStrike">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="OmegaStorm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="OracleCloakingFieldTargeted">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="OraclePhaseShift">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="OracleStasisTrap">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ParasiticBomb">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ParasiticInvasion">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PenetratingShot">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PhaseCannon">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PhaseMineBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PhaseShift">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PhoenixAiurGravitonBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PhoenixBomberGround">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PhoenixDisruptionWeb">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PhoenixDoubleGravitonBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PhotonCannonBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PhotonCannonTeleport">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Pickup">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupArcade">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupEnergy100">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupEnergy25">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupEnergy50">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupEnergyFull">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupGas100Air">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupGas200">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupHealth100">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupHealth25">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupHealth50">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupHealthFull">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupMinerals100Air">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupMinerals250">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupMineralsAir100">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupNovaEquipment">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupNovaGadgetCharges">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupNovaJetPack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupNovaMonoMolecularBlade">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupNovaPlasmaRifle">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupNovaPulseGrenade">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupNovaSniperRifle">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupNovaTechnology">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupPalletGas">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupPalletMinerals">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupScrapLarge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupScrapMedium">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PickupScrapSmall">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitAlarakBlink">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitAlarakFightDummyAbility">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitAlarakKillMalash">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitAlarakMindBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitAlarakPsiOrb">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitAlarakPsiShift">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitAlarakSuperMove">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitAlarakTerrazineTeleport">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitMalashFightDummyAbility">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitMalashKillAlarak">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitMalashPsiShift">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitMalashSuperMove">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PitMalashUppercut">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PlacePointDefenseDrone">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PlacePsiEmitter">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PlaceSJPointDefenseDrone">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PlaceWormhole">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PrimalCarryCarcass">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PrimalConsume">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PrimalGasCloud">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PrimalRavage">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PrimalSlash">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PrimalSlashUpgraded">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ProjectileCreep">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ProtossWarpAway">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ProtossWarpAwayImminent">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ProtossWarpAwayImminent2">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PsiBolt">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PsiGrip">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PsiStormShakuras">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PsiStrike">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PsiStrikeBlink">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-        <!-- <CursorEffect value="PsiStrikeTargetSearch"/> -->
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PsiStrikeWalk">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PsionicLift">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PulsarBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MothershipCorePurifyNexus"/>
     <CAbilEffectTarget id="PurificationNovaTargeted">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
         <SharedFlags index="RegisterChargeEvent" value="0"/>
         <SharedFlags index="RegisterCooldownEvent" value="0"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="PylonShieldRecharge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="QueenBurstHeal">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="QueenChannel">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="QueenClassicParasite">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <!--CAbilTrain id="K5Leviathan">-->
-    <!--        <InfoArray index="Train1" Time="0">-->
-    <!--            <Button DefaultButtonFace="K5Leviathan" Requirements="HaveK5Leviathan"/>-->
-    <!--            <Unit value="HotSLeviathan"/>-->
-    <!--            <Cooldown Location="Unit" TimeUse="30"/>-->
-    <!--            <Vital index="Energy" value="100"/>-->
-    <!--        </InfoArray>-->
-    <!--    </CAbilTrain-->
-    <CAbilEffectTarget id="QueenHeal">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <!--                                                                                         -->
-    <!-- Brood Queen .............................................................................. -->
-    <!--                                                                                         -->
-    <CAbilEffectTarget id="QueenMPEnsnare">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="QueenMPInfestCommandCenter">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="RallyBlock">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Rampage">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="RavagerCorrosiveBile">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="RaynorC4">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="RaynorSnipe">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Reclamation">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <!--                                                                                        -->
-    <!-- End Of New Zerg Upgrade                                                                -->
-    <!--                                                                                        -->
-    <CAbilEffectTarget id="ReleaseInterceptors">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ReplicantReplicate">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="RestoreShields">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="RocketHeroAmmo">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -1690,189 +587,6 @@
         <Flags index="Transient" value="1"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="RocketHeroSelfDestruct"/>
     </CAbilEffectInstant>
-    <CAbilEffectTarget id="RoguePurifierSupportDroneBShieldRepair">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SJCloakedMineAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SJPickupHealth500">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOACheatDeath">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAChronoBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOACloak">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAFenixCalldown">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAGravitonBomb">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAGravitonBombExecute">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAHarvestingBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOALaserAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAMothership">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAMothershipBlink">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAMothershipBlinkStrike">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAMothershipLineAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAOrbitalStrikeExecute">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAOrbitalStrikeTargetingDummy">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAPlanetCrackerA">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAPlanetCrackerB">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAPlanetCrackerTargetingDummy">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAPurification">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAPurifierBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAPurifierMothership">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAPurifierMothershipBeamAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAPylonPower">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAPylonWeapon">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOARecall">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOARepairBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAShieldRestore">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAStarfall">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOASuperChrono">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAThermalLanceTargetingDummy">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOATimeWarp">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAVortex">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SOAVortexStorm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_BattlecruiserHunterSeekerAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_CarrierBossAttackLaunch">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_CarrierBossAttackTarget">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_CarrierSpawnInterceptor">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_CorruptorAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_InterceptorAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_LeviathanTentacleAttackL1">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_LeviathanTentacleAttackL1NoDelay">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_LeviathanTentacleAttackL2">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_LeviathanTentacleAttackL2NoDelay">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_LeviathanTentacleAttackR1">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_LeviathanTentacleAttackR1NoDelay">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_LeviathanTentacleAttackR2">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_LeviathanTentacleAttackR2NoDelay">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_ScienceVesselAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_ScienceVesselTeleport">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_ScoutAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_SwarmGuardianAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_TerraTronBeamAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SS_WraithAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Scryer">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SeekerDummyChannel">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SentryEnsnare">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SentryMineVoidAttack">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Shadow01YamatoBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ShadowBlade">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilBehavior id="ShadowHeroPenumbra">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <CmdButtonArray index="On" DefaultButtonFace="WallofDarkness" Requirements="ShadowHeroHasPenumbra"/>
@@ -1888,58 +602,6 @@
         </OffCost>
         <BehaviorArray value="ShadowHeroPenumbra"/>
     </CAbilBehavior>
-    <CAbilEffectTarget id="ShadowYamato">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Shatter">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ShieldBatteryRecharge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ShieldBatteryRechargeChanneled">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ShrineGuardianAntiGrav">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ShrineGuardianDeath">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SingleRecall">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Siphon">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Slam">
-        <SharedFlags index="DisableWhileDead" value="1"/>
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SlaynElementalGrab">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SlivanPuke">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SnipeDoT">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SoulChannel">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SpaceStationNanoRepair">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SpawnBanelings">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SpawnBroodlings">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SpawnChangelingTarget">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="SpawnLarva">
         <Flags index="AllowMovement" value="1"/>
         <Flags index="AutoCast" value="1"/>
@@ -1953,48 +615,6 @@
         </TargetSorts>
         <Range index="0" value="1.5"/>
         <AutoCastRange value="6"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SpearofAdunLineAOE">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SpearofAdunSingleTarget">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SpectreNuke">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SpectreShield">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SpineLash">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="StasisCocoon">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="StranglerBeastStrangle">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="StranglerTentacleStrangle">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="StukovBossBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="StukovInfestedTerrans">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="StunningBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Suplex">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SwarmHostDeepBurrow">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="SwarmQueenParasiticInvasion">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="BladeHeroLeap">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -2467,6 +1087,7 @@
         <TargetFilters value="-;Self,Ally,Neutral,Enemy,Structure,Heroic,Missile,Item,Dead,Hidden"/>
         <Range value="500"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Disintegrate"/>
+        <SharedFlags index="TargetCursorVisibleInBlackMask" value="0"/>
     </CAbilEffectTarget>
     <CAbilArmMagazine id="DroneHangerShielder">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -2587,7 +1208,7 @@
         <Flags index="AutoCast" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
-            <Vital index="Energy" value="50"/>
+            <Vital index="Energy" value="40"/>
         </Cost>
         <Range value="10"/>
         <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
@@ -2794,36 +1415,6 @@
             <Unit value="HotSSplitterlingMedium"/>
         </InfoArray>
     </CAbilTrain>
-    <CAbilEffectTarget id="Taunt">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TemporalField">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TemporalRift">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TestHeroDebugMissileAbility">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TestHeroDebugTrackingAbility">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TestHeroGrab">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TestHeroThrow">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TestLeveledSpell">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TestZerg">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TheMorosDevice">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="TimeHeroMutation">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Effect index="0" value="Mutation"/>
@@ -2944,12 +1535,6 @@
             <Vital index="Energy" value="50"/>
         </Cost>
     </CAbilEffectInstant>
-    <CAbilEffectTarget id="TimeStop">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="TossGrenade">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectInstant id="TwilightHeroRecombulator">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Effect index="0" value="Recombulator"/>
@@ -2980,6 +1565,7 @@
         </Cost>
         <Range value="12"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="TwistCannon"/>
+        <SharedFlags index="TargetCursorVisibleInBlackMask" value="0"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="FireHeroFireball">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -3047,7 +1633,7 @@
         <Flags index="LineMovement" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
-            <Vital index="Energy" value="25"/>
+            <Vital index="Energy" value="20"/>
         </Cost>
         <Range value="500"/>
         <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
@@ -3243,90 +1829,6 @@
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
         <CursorEffect value="TrickerySA"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="Tychus03OmegaStorm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UltraliskBurrowCharge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-        <!--This makes it so it will no longer snap to units, also makes it so it wont autocast on units though-->
-        <!--IgnoreFilters value="Structure;-"/-->
-    </CAbilEffectTarget>
-    <!--CAbilEffectTarget id="UltraliskBurrowCharge">-->
-    <!--        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>-->
-    <!--        <Flags index="AutoCast" value="1"/>-->
-    <!--        <Flags index="AutoCastOn" value="1"/>-->
-    <!--        <Flags index="RequireTargetVision" value="0"/>-->
-    <!--        <Flags index="Smart" value="1"/>-->
-    <!--        <Flags index="WaitToSpend" value="0"/>-->
-    <!--        <Cost>-->
-    <!--            <Cooldown Link="UltraliskBurrowCharge" Location="Unit" TimeUse="10"/>-->
-    <!--        </Cost>-->
-    <!--        <Range value="9"/>-->
-    <!--        <CastIntroTime value="0.5"/>-->
-    <!--        <FinishTime value="0.125"/>-->
-    <!--        <UninterruptibleArray index="Cast" value="1"/>-->
-    <!--        <UninterruptibleArray index="Channel" value="1"/>-->
-    <!--        <UninterruptibleArray index="Finish" value="1"/>-->
-    <!--        <CmdButtonArray index="Execute" DefaultButtonFace="UltraliskBurrowCharge" Requirements="HaveHotSUltraliskBurrowCharge"/>-->
-    <!--        <Effect index="0" value="BurrowChargeSwitch"/>-->
-    <!--        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>-->
-    <!--        <AutoCastRange value="9"/>-->
-    <!--        <AutoCastValidatorArray value="CasterNotHoldingPosition"/>-->
-    <!--        <AutoCastValidatorArray value="UltraliskHasntRecentlyAttacked"/>-->
-    <!--        <AutoCastValidatorArray value="TargetNotHarmless"/>-->
-    <!--        <AutoCastValidatorArray value="UltraliskBurrowChargeRangeFinder"/>-->
-    <!--        <AutoCastValidatorArray value="BurrowChargeMinimumRange"/>-->
-    <!--        <SmartValidatorArray value="TargetIsEnemy"/>-->
-    <!--        <CursorEffect value="BurrowChargeTargetSearch"/>-->
-    <!--    </CAbilEffectTarget-->
-    <CAbilEffectTarget id="UltraliskBurrowChargeNoxious">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UltrasonicPulse">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UltrasonicPulseEnhanced">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidBanshee">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidBattlecruiser">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidColossus">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidGhost">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidHydralisk">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidMarine">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidMutalisk">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidOverseer">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidStalker">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidUltralisk">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidVoidRay">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidZealot">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmbraSpireSpawnShadowOfTheVoidZergling">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="Upheaval">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="UpheavalOffsets"/>
@@ -3343,115 +1845,6 @@
         <AutoCastFilters value="Visible;Player,Ally,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastRange value="4"/>
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="UrunsFury">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="Val03QueenOfBladesDeepTunnel">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ViperConsume">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ViperConsumeMinerals">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ViperConsumeStructure">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ViperConsumption">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidCarrierBombingRun">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidCorruptionMissile">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidDarkTemplarDeepShadowBlink">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidDarkTemplarPowerStrike">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidDarkTemplarStunningBlow">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidHighTemplarMindBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <!--CAbilMorph id="VoidImmortalReviveRebuild">-->
-    <!--        <EditorCategories value="Race:Protoss,AbilityorEffectType:MorphsandBurrows"/>-->
-    <!--        <CmdButtonArray index="Execute" DefaultButtonFace="Immortal"/>-->
-    <!--        <Flags index="BestUnit" value="1"/>-->
-    <!--        <Flags index="Birth" value="1"/>-->
-    <!--        <Flags index="DisableAbils" value="1"/>-->
-    <!--        <Flags index="FastBuild" value="1"/>-->
-    <!--        <Flags index="IgnoreFacing" value="1"/>-->
-    <!--        <Flags index="IgnoreFood" value="1"/>-->
-    <!--        <Flags index="IgnoreUnitCost" value="1"/>-->
-    <!--        <Flags index="Produce" value="1"/>-->
-    <!--        <Flags index="Rally" value="1"/>-->
-    <!--        <Flags index="ShowProgress" value="1"/>-->
-    <!--        <Flags index="SuppressMovement" value="1"/>-->
-    <!--        <InfoArray Score="1" Unit="ImmortalAiur">-->
-    <!--            <SectionArray index="Abils">-->
-    <!--                <DurationArray index="Delay" value="10"/>-->
-    <!--            </SectionArray>-->
-    <!--            <SectionArray index="Actor">-->
-    <!--                <DurationArray index="Delay" value="10"/>-->
-    <!--            </SectionArray>-->
-    <!--            <SectionArray index="Stats">-->
-    <!--                <DurationArray index="Delay" value="10"/>-->
-    <!--                <EffectArray index="Finish" value="VoidImmortalReviveSet"/>-->
-    <!--            </SectionArray>-->
-    <!--        </InfoArray>-->
-    <!--    </CAbilMorph-->
-    <!--CAbilMorph id="VoidImmortalReviveDeath">-->
-    <!--        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>-->
-    <!--        <CmdButtonArray index="Execute" DefaultButtonFace="Immortal"/>-->
-    <!--        <Flags index="IgnoreFacing" value="1"/>-->
-    <!--        <Flags index="RallyReset" value="1"/>-->
-    <!--        <Flags index="SuppressMovement" value="1"/>-->
-    <!--        <InfoArray Unit="VoidImmortalReviveCorpse">-->
-    <!--            <SectionArray index="Stats">-->
-    <!--                <EffectArray index="Finish" value="VoidImmortalReviveDeadSet"/>-->
-    <!--            </SectionArray>-->
-    <!--        </InfoArray>-->
-    <!--    </CAbilMorph-->
-    <CAbilEffectTarget id="VoidHighTemplarPsiOrb">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidImmortalPurifierCannon">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidOracleMiniTimeWarp">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidScienceVesselNanoRepair">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidSeekerPhaseMineBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidSentryBlackHole">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidSentryChronoBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidSentryCombatChrono">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidSentryForcePush">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidSentryHallucination">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-        <!--AutoCastValidatorArray value="VoidSentryHallucinationEnemyInRange"/-->
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidSentryMiniTimeWarp">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="VoidSentryShieldRepair">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -3470,39 +1863,6 @@
         <AutoCastValidatorArray index="1" value="CasterHasEnergy"/>
         <AutoCastValidatorArray index="2" value="MissingHealthOrShields"/>
         <AutoCastValidatorArray value="NoZealotTimedLife"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidSentryShieldRepairDouble">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidSiphon">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidSwarmHostSpawnLocust">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidTendrilDeathGrip">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidTendrilDeathGripAutoCast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidTendrilDeathGripCreateUnit">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidTendrilUnstableEnergy">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VoidTendrilVoidZone">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VorazunShadowDash">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VorazunShadowFury">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="VulcanChampionShieldRestore">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilMorph id="RocketHeroMineBurrow">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -3549,18 +1909,6 @@
         <AutoCastRange value="2"/>
         <AutoCastCountMin value="1"/>
     </CAbilMorph>
-    <CAbilEffectTarget id="WarbotCharge">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="WarpConduitWarpAway">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="WarpConduitWarpAwayImminent">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="WarpConduitWarpAwayImminent2">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilWarpTrain id="WarpInReinforcements">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <InfoArray index="Train1" Time="5" Unit="Zealot">
@@ -3634,7 +1982,7 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="PlasmaTorpedo"/>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="Shockwave">
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Effect index="0" value="ShockwaveInit"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
@@ -3834,6 +2182,7 @@
     </CAbilEffectTarget>
     <CAbilEffectInstant id="Inferno">
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="InfernoInit"/>
         <Flags index="AllowMovement" value="1"/>
         <Flags index="AllowMovingSuppressed" value="1"/>
         <Flags index="BestUnit" value="1"/>
@@ -3848,7 +2197,6 @@
         <AutoCastValidatorArray value="CasterEnergyGE85"/>
         <AutoCastValidatorArray value="EnemiesInFront"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Inferno"/>
-        <Effect index="0" value="InfernoInit"/>
     </CAbilEffectInstant>
     <CAbilTrain id="LarvaTrain">
         <InfoArray index="Train2">
@@ -4092,12 +2440,6 @@
         </Cost>
         <CmdButtonArray index="Execute" DefaultButtonFace="Expel"/>
     </CAbilEffectInstant>
-    <CAbilEffectTarget id="WildAggresion">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="WildMutation">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="Windstorm">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="WindstormCastSet"/>
@@ -4132,84 +2474,6 @@
         <CursorEffect value="EverlastingStormSA"/>
         <AINotifyEffect value="Windstorm"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="ContinentalStorm" Requirements="IsWindInfusedAndHas3WindStacksAnd3EarthStacks"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="WormholeTransit">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="XelNagaConstructChaseBeam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="XelNagaConstructSmash">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="XelNagaObeliskEnergyChannel">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="XelNagaShadowStep">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="YagdraFireball">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="YagdraFireballHard">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="YagdraFirebreath">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="YagdraTunnel">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="YamatoBlastAmbient">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZHybridGravitonPrison">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZHybridPlasmaBlast">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZHybridPsiStorm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZaGaraDeepTunnel">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZaGaraSpawnLarva">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZenithStonePsiStorm">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZeratulBlinkAiur01">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZeratulKnockback">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZeratulStun">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZergCocoonPickup">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZurvanEatMeat">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZurvanSpawnPrimalHydralisk">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZurvanSpawnPrimalUltralisk">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZurvanSpawnPrimalZergling">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZurvanSpawnRavasaur">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="ZurvanTentacleSlam">
-        <SharedFlags index="TargetCursorVisibleInBlackMask" value="1"/>
     </CAbilEffectTarget>
     <CAbilAttack id="attack">
         <SupportedFilters value="-;Self,Ally,Outer"/>

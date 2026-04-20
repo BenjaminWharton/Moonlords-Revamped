@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CModel id="DisintegratorAttackBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\ColossusBeam\ColossusBeam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.000000,3.250000,1.000000"/>
+        <ScaleMin value="1.000000,3.250000,1.000000"/>
+    </CModel>
+    <CModel id="DisintegratorAttackImpact" Race="Neutral">
+        <Model value="Assets\Effects\Protoss\ColossusBeamImpact\ColossusBeamImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Flags index="Wait" value="0"/>
+        <Priority value="24"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
     <CModel id="PoisonHeroDeath" parent="AdeptDeathBase">
         <Model value="Assets\Units\Protoss\Purifier_Adept_Death\Purifier_Adept_Death.m3"/>
     </CModel>

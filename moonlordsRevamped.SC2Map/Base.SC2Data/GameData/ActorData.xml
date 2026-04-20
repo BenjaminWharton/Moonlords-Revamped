@@ -102,6 +102,14 @@
     <CActorRange id="ProbeHeroGasBombRange" parent="RangeAbil" abil="GasBomb"/>
     <CActorRange id="ProbeHeroHealingStationCastRange" parent="RangeAbil" abil="HealingStation"/>
     <CActorRange id="ProbeHeroProbeCannonRange" parent="RangeAbil" abil="ProbeCannon"/>
+    <CActorModel id="ProtossAlliesDisintegratorAttackImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,0"/>
+        <Model value="DisintegratorAttackImpact"/>
+    </CActorModel>
+    <CActorSound id="ProtossAlliesDisintegratorAttack_Loop" parent="SoundContinuous">
+        <On Terms="Effect.DisintegrationCP.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.DisintegrationCP.Stop; At Caster" Send="Destroy"/>
+    </CActorSound>
     <CActorAction id="PylonAbsoluteDefenseAttack" parent="GenericAttack" effectImpact="PylonAbsoluteDefenseMissileDMG" effectLaunch="PylonAbsoluteDefenseMissileLM">
         <LaunchSiteOps Ops="SOpAttachOrigin SOpForwardTargetPoint SOpMoveBy3 SOpMoveUpBy2 RotUp45"/>
         <LaunchAssets Sound="MotherShip_Purify_AttackLaunch"/>
@@ -2011,6 +2019,16 @@
         <Macros index="5" removed="1"/>
         <Macros index="6" removed="1"/>
     </CActorUnit>
+    <CActorModel id="WarpHeroDecoyBirthTest" parent="ModelAnimationStyleOneShot">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.WarpHeroDecoyCUSet.Start" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="RefSetFromActor"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="HallucinationBirth"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
     <CActorRange id="WarpHeroDecoyRange" parent="RangeAbil" abil="WarpHeroDecoy"/>
     <CActorSiteOpTether id="WarpHeroDoublegangerTether">
         <HostTether Subject="::QuerySubject"/>
@@ -8753,6 +8771,8 @@
         <On index="3" Terms="UnitRevive.Disintegrator"/>
         <On index="4" Terms="UnitConstruction.Disintegrator.Start"/>
         <On index="5" Terms="UnitConstruction.Disintegrator.Finish"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimGroupApply Channel Start End"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimGroupRemove Channel"/>
         <Model value="Disintegrator"/>
         <HighlightTooltip value="Unit/Name/Disintegrator"/>
     </CActorUnit>
@@ -8800,7 +8820,11 @@
         <On Terms="Effect.DisintegrationCP.Start; At Caster" Send="Create"/>
         <On Terms="Effect.DisintegratorDMG.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
         <On Terms="Effect.DisintegrationCP.Stop" Send="Destroy WhenReady"/>
-        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance SOpForwardLaunchGuide"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance"/>
+        <ImpactMap index="None" Sound="Colossus_AttackImpact"/>
+        <ImpactModel value="ProtossAlliesDisintegratorAttackImpact"/>
+        <DamageMap index="None" Model="DisintegratorAttackImpact" Sound="Colossus_AttackImpact"/>
+        <DamageModel value="ProtossAlliesDisintegratorAttackImpact"/>
         <AcquisitionYawHalfArc value="10.000000"/>
         <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
         <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
@@ -8810,10 +8834,7 @@
     <CActorBeamSimple id="DisintegratorAttackBeam" parent="BeamSimpleAnimationStyleContinuous">
         <Macros value="ActionTargetTeleportDestroy"/>
         <On Terms="Effect.DisintegrationCP.Stop; At Effect" Send="AnimBracketStop BSD"/>
-        <On Terms="ActorCreation" Send="RefSetFromRequest ::actor.CasterUnit _Unit Caster Find"/>
-        <On Terms="ActorCreation" Target="::actor.CasterUnit" Send="Signal CampaignBeamCreated"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,255,0"/>
-        <Model value="ColossusAttackBeam"/>
     </CActorBeamSimple>
     <CActorMissile id="SlimeAttackMissile" parent="GenericAttackMissile" unitName="SlimeAttackMissile">
         <Model value="RoachVileAcidSalivaWeapon"/>
@@ -13034,7 +13055,7 @@
         <HostSiteOps Ops="SOpTargetPointStationary SOpShadow"/>
         <Map index="None" Model="GhostNukeExplode" Sound="Ghost_NukeExplode2"/>
     </CActorSquib>
-    <CActorModel id="DecoyBirth" parent="ModelAnimationStyleOneShot">
+    <CActorModel id="WarpHeroDecoyBirth" parent="ModelAnimationStyleOneShot">
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
         <On Terms="Behavior.DecoyFate.On" Send="Create"/>
@@ -13043,7 +13064,7 @@
         <Model value="HallucinationBirth"/>
         <AutoScaleFactor value="1.000000"/>
     </CActorModel>
-    <CActorSimple id="DecoyTint">
+    <CActorSimple id="WarpHeroDecoyTint">
         <Aliases value="_HallucinationTinter"/>
         <On Terms="Behavior.DecoyFate.On" Send="Create"/>
         <On Terms="Behavior.DecoyFate.On; ViewerTreatsUnitAs Detected" Send="Signal HallucinationTintOn"/>
@@ -13891,8 +13912,7 @@
         <On Terms="ActorCreation" Send="SetOpacity 0.600000"/>
         <Model value="Poisonbolt"/>
     </CActorMissile>
-    <CActorMissile id="ShadowcrashMissile" parent="GenericAttackMissile" unitName="Fireball">
-        <On index="0" Terms="UnitBirth.ShadowCrashMissile" Send="Create"/>
+    <CActorMissile id="ShadowcrashMissile" parent="GenericAttackMissile" unitName="ShadowCrashMissile">
         <On index="1" Terms="UnitBirth.ShadowCrashMissile" Send="SetTintColor 0,0,0"/>
         <On index="2" Terms="UnitBirth" Send="AnimBracketStart Lifetime Birth Stand"/>
         <On index="3" Terms="UnitDeath.ShadowCrashMissile" Send="Destroy"/>

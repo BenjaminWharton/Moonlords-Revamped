@@ -463,6 +463,10 @@
         <EditorCategories value="Race:Protoss"/>
         <NodeArray index="Use" Link="GTCountUpgradeTwilightHeroReflectorCompleteOnly1"/>
     </CRequirement>
+    <CRequirement id="DisintegratedLT99">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="LTCountUpgradeDisintegratedCompleteOnly99"/>
+    </CRequirement>
     <CRequirement id="Unstoppable">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Use" Link="CountUpgradeUnstoppableoldCompleteOnly"/>

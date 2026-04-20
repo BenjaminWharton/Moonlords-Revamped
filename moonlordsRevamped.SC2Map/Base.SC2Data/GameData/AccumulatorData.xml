@@ -145,10 +145,10 @@
         <Amount value="1"/>
     </CAccumulatorConstant>
     <CAccumulatorConstant id="GatewayHeroDestroyerSplitterCost">
-        <Amount value="25"/>
+        <Amount value="20"/>
     </CAccumulatorConstant>
     <CAccumulatorConstant id="GatewayHeroDestroyerExploderCost">
-        <Amount value="50"/>
+        <Amount value="40"/>
     </CAccumulatorConstant>
     <CAccumulatorArithmetic id="GatewayHeroDestroyerReinforceCost">
         <Parameters value="0">

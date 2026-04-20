@@ -924,6 +924,10 @@
         <ResultFailed value="Error,Validator/NotMainObjective/Error"/>
         <Behavior value="IsMainObjective"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNeutralOrb">
+        <Compare value="GT"/>
+        <Behavior value="IsNeutralOrb"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="PoisonHeroCasterHasHealingReagent">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
@@ -1043,6 +1047,11 @@
         <Compare value="GT"/>
         <Behavior value="ProbeHeroGuardian"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="ProtossAlliesDisintegratedLT99">
+        <WhichPlayer Value="Target"/>
+        <Find value="1"/>
+        <Value value="DisintegratedLT99"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="PylonNoAbsoluteDefense">
         <Behavior value="PylonAbsoluteDefense"/>
     </CValidatorUnitCompareBehaviorCount>

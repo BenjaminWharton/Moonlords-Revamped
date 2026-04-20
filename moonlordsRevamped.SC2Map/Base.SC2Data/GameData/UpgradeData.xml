@@ -1214,7 +1214,7 @@
         <EffectArray Reference="Unit,GatewayHeroZealot,LifeRegenRate" Value="0.500000"/>
         <EffectArray Reference="Unit,HoloShieldUnit,LifeRegenRate" Value="0.500000"/>
         <EffectArray Reference="Accumulator,HealingMultiplier,Amount" Value="0.03"/>
-        <EffectArray Reference="Behavior,ParticleHeroOverheal,Modification.VitalMaxArray[Shields]" Value="0.04"/>
+        <EffectArray Reference="Behavior,ParticleHeroOverheal,Modification.VitalMaxArray[Shields]" Value="0.06"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,LifeRegenRate" Value="0.5"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldRegenRate" Value="1"/>
         <MaxLevel value="100"/>
@@ -1645,6 +1645,7 @@
     </CUpgrade>
     <CUpgrade id="WildCard">
         <EffectArray Operation="Set" Reference="Effect,OrbsOfLuckApplyOrbTypeWildCard,Random" Value="1"/>
+        <EffectArray Operation="Subtract" Reference="Abil,OrbsOfLuck,Cost[0].Vital[Energy]" Value="7"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Wither">
@@ -2267,8 +2268,8 @@
         <EffectArray Operation="Subtract" Reference="Abil,DefensiveMatrix,Cost[0].Vital[Energy]" Value="6"/>
         <EffectArray Operation="Subtract" Reference="Accumulator,GatewayHeroDeflectorDronePDCost,Amount" Value="3"/>
         <EffectArray Operation="Subtract" Reference="Accumulator,GatewayHeroDestroyerCostFactor,Amount" Value="0.2"/>
-        <EffectArray Operation="Subtract" Reference="Accumulator,GatewayHeroDestroyerExploderCost,Amount" Value="10"/>
-        <EffectArray Operation="Subtract" Reference="Accumulator,GatewayHeroDestroyerSplitterCost,Amount" Value="5"/>
+        <EffectArray Operation="Subtract" Reference="Accumulator,GatewayHeroDestroyerExploderCost,Amount" Value="8"/>
+        <EffectArray Operation="Subtract" Reference="Accumulator,GatewayHeroDestroyerSplitterCost,Amount" Value="4"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -2945,7 +2946,7 @@
         <EffectArray Operation="Subtract" Reference="Abil,WarpGateTrain,InfoArray[Train8].Cooldown.TimeUse" Value="0.600000"/>
         <EffectArray Reference="Effect,LightningStrikesDMG,Amount" Value="0.75"/>
         <EffectArray Reference="Effect,LightningStrikesCP,Chance" Value="0.006"/>
-        <EffectArray Reference="Effect,DisintegratorDMG,Amount" Value="0.5"/>
+        <EffectArray Reference="Effect,DisintegratorDMG,Amount" Value="0.4"/>
         <EffectArray Reference="Unit,Disintegrator,LifeMax" Value="15"/>
         <EffectArray Reference="Unit,Disintegrator,LifeStart" Value="15"/>
         <EffectArray Reference="Unit,Disintegrator,LifeArmor" Value="0.1"/>

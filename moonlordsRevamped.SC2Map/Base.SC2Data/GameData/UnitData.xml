@@ -1231,9 +1231,14 @@
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
     <CUnit id="Hatchery">
-        <AbilArray Link="attack"/>
+        <AbilArray index="6" Link="RallyBlock"/>
+        <AbilArray index="7" Link="attack"/>
+        <AbilArray index="8" removed="1"/>
+        <AbilArray index="9" removed="1"/>
+        <AbilArray index="10" removed="1"/>
+        <AbilArray index="11" removed="1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="3"/>
+            <LayoutButtons index="11" Face="Attack" AbilCmd="attack,Execute" Column="3"/>
         </CardLayouts>
         <BehaviorArray index="2" Link="makeCreep8x6Enhanced"/>
         <BehaviorArray index="3" Link="GameTime5Seconds"/>
@@ -3403,8 +3408,6 @@
         <TurningRate value="0"/>
         <Sight value="20"/>
         <Height value="2.5"/>
-        <CostResource index="Minerals" value="400"/>
-        <CostResource index="Vespene" value="400"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -5302,6 +5305,9 @@
         <BehaviorArray Link="makeCreep4x4"/>
         <Attributes index="Psionic" value="1"/>
         <Attributes index="Heroic" value="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="11" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="ParticleHero">
         <DeathRevealRadius value="3"/>
@@ -6581,9 +6587,14 @@
     <CUnit id="Hive">
         <LifeMax value="7500"/>
         <LifeStart value="7500"/>
-        <AbilArray Link="attack"/>
+        <AbilArray index="5" Link="RallyBlock"/>
+        <AbilArray index="6" Link="attack"/>
+        <AbilArray index="7" removed="1"/>
+        <AbilArray index="8" removed="1"/>
+        <AbilArray index="9" removed="1"/>
+        <AbilArray index="10" removed="1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="3"/>
+            <LayoutButtons index="9" Face="Attack" AbilCmd="attack,Execute" Column="3"/>
         </CardLayouts>
         <BehaviorArray index="1" Link="SpawnLarvaeFast"/>
         <BehaviorArray index="2" Link="makeCreep8x6Enhanced"/>
@@ -7025,9 +7036,14 @@
         <BehaviorArray index="2" Link="QueenofVenomHatcherySearch"/>
         <BehaviorArray index="3" Link="makeCreep8x6Enhanced"/>
         <BehaviorArray index="4" removed="1"/>
-        <AbilArray Link="attack"/>
+        <AbilArray index="6" Link="RallyBlock"/>
+        <AbilArray index="7" Link="attack"/>
+        <AbilArray index="8" removed="1"/>
+        <AbilArray index="9" removed="1"/>
+        <AbilArray index="10" removed="1"/>
+        <AbilArray index="11" removed="1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="3"/>
+            <LayoutButtons index="11" Face="Attack" AbilCmd="attack,Execute" Column="3"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="PoisonHeroPoisonbolt" parent="MISSILE">
@@ -7874,13 +7890,16 @@
         <BehaviorArray Link="TimedSuicideZergUnits"/>
         <CardLayouts index="0">
             <LayoutButtons index="5" Face="BurrowDown" AbilCmd="BurrowZerglingDown,Execute" Column="4"/>
-            <LayoutButtons index="6" Face="HotSRedundantMembranes" Type="Passive" AbilCmd="" Requirements="HaveHotSZerglingHealth" Column="1"/>
-            <LayoutButtons index="7" Face="HotSZerglingFrenzy" Type="Passive" AbilCmd="" Requirements="HaveHotSZerglingFrenzy" Column="1"/>
-            <LayoutButtons index="8" Face="HotSMetabolicBoost" Type="Passive" AbilCmd="" Requirements="HaveHotSMetabolicBoost" Column="1"/>
+            <LayoutButtons index="6" removed="1"/>
+            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="8" removed="1"/>
             <LayoutButtons index="9" removed="1"/>
             <LayoutButtons index="10" removed="1"/>
             <LayoutButtons index="11" removed="1"/>
         </CardLayouts>
+        <AbilArray index="5" removed="1"/>
+        <AbilArray index="6" removed="1"/>
+        <AbilArray index="7" removed="1"/>
     </CUnit>
     <CUnit id="DemonLord" parent="Zergling">
         <Name value="Unit/Name/DemonLord"/>
@@ -7894,16 +7913,10 @@
         <SpeedMultiplierCreep value="1"/>
         <AbilArray index="3" removed="1"/>
         <AbilArray index="4" removed="1"/>
-        <AbilArray index="5" removed="1"/>
-        <AbilArray index="6" removed="1"/>
-        <AbilArray index="7" removed="1"/>
         <BehaviorArray index="0" Link="DemonRage"/>
         <WeaponArray index="0" Link="DemonClaws"/>
         <CardLayouts index="0">
             <LayoutButtons index="5" removed="1"/>
-            <LayoutButtons index="6" removed="1"/>
-            <LayoutButtons index="7" removed="1"/>
-            <LayoutButtons index="8" removed="1"/>
         </CardLayouts>
         <AlliedPushPriority value="20"/>
         <Radius value="1"/>

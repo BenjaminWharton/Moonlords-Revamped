@@ -873,6 +873,13 @@
         <ImpactEffect value="FireHeroMeteorImpact"/>
         <AmmoUnit value="Meteor"/>
     </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="LuckHeroOrbsOfLuckWildcardPerp">
+        <ValidatorArray value="IsNeutralOrb"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <InitialDelay value="0.0625"/>
+        <InitialEffect value="LuckHeroOrbOfAttritionPerpetuationCP"/>
+    </CEffectCreatePersistent>
     <CEffectModifyUnit id="OceanLordLivingWaterEnergy">
         <EditorCategories value="Race:Zerg"/>
         <ImpactUnit Value="Caster"/>
@@ -1478,6 +1485,20 @@
         <EffectFailure value="PoisonHeroHealingReagentVirulentResetData"/>
         <BehaviorScope Behavior="PoisonHeroPoisonCloudBase"/>
     </CEffectUserData>
+    <CEffectApplyBehavior id="ProtossAlliesDisintegratorAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="ProtossAlliesDisintegrated"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="ProtossAlliesDisintegratorMP">
+        <ValidatorArray value="ProtossAlliesDisintegratedLT99"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Upgrades Upgrade="Disintegrated" Count="1"/>
+    </CEffectModifyPlayer>
+    <CEffectSet id="ProtossAlliesDisintegratorSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="ProtossAlliesDisintegratorAB"/>
+        <EffectArray value="DisintegratorDMG"/>
+    </CEffectSet>
     <CEffectDamage id="PsionicShockwaveDamage">
         <ValidatorArray value="NotMainObjective"/>
         <ValidatorArray value="NotLarva"/>
@@ -6525,10 +6546,9 @@
         <SpawnUnit value="OrbOfHavocWisp"/>
     </CEffectCreateUnit>
     <CEffectCreatePersistent id="LuckHeroOrbOfAttritionPerpetuationCP">
-        <ValidatorArray value="NotNeutralOrb"/>
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
-        <WhichLocation Value="SourceUnitOrPoint"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
         <PeriodCount value="2"/>
         <PeriodicEffectArray value="OrbOfAttritionPerpetuationCU"/>
         <PeriodicOffsetArray value="0,0,0"/>
@@ -7997,7 +8017,6 @@
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1" Effect="BladeStormSet"/>
-        <DebugTrace value="1"/>
     </CEffectEnumArea>
     <CEffectSet id="BladeStormSet">
         <EditorCategories value="Race:Protoss"/>
@@ -9768,6 +9787,7 @@
         <EffectArray value="ApplyDestructionOrbCounterAB"/>
         <EffectArray value="ApplyHavocOrbCounterAB"/>
         <EffectArray value="ApplyVitalityOrbCounterAB"/>
+        <EffectArray value="LuckHeroOrbOfAttritionPerpetuationCP"/>
     </CEffectSet>
     <CEffectSet id="OrbsOfLuckWildCardRemoveSet">
         <EditorCategories value="Race:Protoss"/>
@@ -10684,6 +10704,7 @@
         <EffectArray value="OrbsOfLuckShieldedMU"/>
         <EffectArray value="LuckHeroOrbsOfLuckApplyLaunched"/>
         <EffectArray value="LuckHeroOrbsOfLuckDelay"/>
+        <EffectArray value="LuckHeroOrbsOfLuckWildcardPerp"/>
     </CEffectSet>
     <CEffectCreatePersistent id="PartingGift">
         <EditorCategories value="Race:Protoss"/>
@@ -14943,9 +14964,9 @@
         <TimeScaleSource Value="Caster"/>
         <Flags index="Channeled" value="1"/>
         <Flags index="PersistUntilDestroyed" value="1"/>
-        <InitialEffect value="DisintegratorDMG"/>
+        <InitialEffect value="ProtossAlliesDisintegratorSet"/>
         <PeriodicEffectArray value="DisintegratorDMG"/>
-        <PeriodicPeriodArray value="3"/>
+        <PeriodicPeriodArray value="1"/>
     </CEffectCreatePersistent>
     <CEffectApplyBehavior id="DisintegratorApplySlow">
         <EditorCategories value="Race:Protoss"/>
@@ -14954,7 +14975,7 @@
     </CEffectApplyBehavior>
     <CEffectDamage id="DisintegratorDMG">
         <EditorCategories value="Race:Protoss"/>
-        <Amount value="20"/>
+        <Amount value="10"/>
     </CEffectDamage>
     <CEffectEnumArea id="NatureHeroExpelSA">
         <EditorCategories value="Race:Protoss"/>

@@ -8,6 +8,7 @@
 <Asset path="assets\textures\ui_hots_loading_missionselect_zzerus01.dds" Type="Image"/>
 <Asset path="assets\textures\ui_charbaricons_zerg_all.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_loading_purifier01.dds" Type="Image"/>
+<Asset path="assets\textures\btn-tips-sellzergbiosamples.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_loading_taldarim02.dds" Type="Image"/>
 <Asset path="assets\textures\mlteleportfogsquare.dds" Type="Image"/>
 <Asset path="assets\textures\mlteleportfogcircle.dds" Type="Image"/>
@@ -33,6 +34,7 @@
 <Asset path="assets\textures\evolutionbg.dds" Type="Image"/>
 <Asset path="assets\textures\ui_battlenet_glue_bluedropdownbuttonsmall_normalpressed.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_bossbar_progressbar_blue.dds" Type="Image"/>
+<Asset path="assets\textures\btn-building-protoss-forge.dds" Type="Image"/>
 <Asset path="assets\textures\sc2_ui_coop_detail_background_artanis.dds" Type="Image"/>
 <Asset path="assets\textures\evolutionbg.lvl0" Type="Image"/>
 <Asset path="editordata\images\brushtextureoptimize.tga" Type="Image"/>
@@ -45,6 +47,7 @@
 <Asset path="assets\textures\ui_battlenet_glues_pageassets_dialogbg.dds" Type="Image"/>
 <Asset path="assets\textures\ui_homepanel_commander_artanis.dds" Type="Image"/>
 <Asset path="assets\textures\starbackground.lvl0" Type="Image"/>
+<Asset path="assets\textures\btn-tips-sellprotossartifacts.dds" Type="Image"/>
 <Asset path="assets\textures\ui_void_loading_taldarim01.dds" Type="Image"/>
 <Asset path="assets\textures\spotterportrait_static.dds" Type="Image"/>
 <Actor id="SYSTEM_ActorConfig"/>
@@ -74,8 +77,6 @@
 <Behavior id="BladeStorm"/>
 <Behavior id="CastLeftSide"/>
 <Behavior id="ChronoWave"/>
-<Behavior id="Ironcore"/>
-<Behavior id="Hardcore"/>
 <Behavior id="ShadowplayMedic"/>
 <Behavior id="TerranTargetTracker"/>
 <Behavior id="AnnihilatorLaserTrackingFate"/>
@@ -110,7 +111,6 @@
 <Behavior id="AnnihilatorDematerializationFieldBase"/>
 <Behavior id="DodgeballSpire"/>
 <Behavior id="Doom"/>
-<Behavior id="Easy"/>
 <Behavior id="EasyDefense"/>
 <Behavior id="Energytap"/>
 <Behavior id="Flying"/>
@@ -123,16 +123,12 @@
 <Behavior id="RestlessPassive"/>
 <Behavior id="GreaterSpireBonusLightningDamage"/>
 <Behavior id="Guardian"/>
-<Behavior id="Insane"/>
-<Behavior id="Legendary"/>
 <Behavior id="LightningEnchanted2"/>
-<Behavior id="Normal"/>
 <Behavior id="MightAuraChampion"/>
 <Behavior id="FireEnchanted"/>
 <Behavior id="HasteAuraChampion"/>
 <Behavior id="HardShell"/>
 <Behavior id="Newbprotection"/>
-<Behavior id="Hard"/>
 <Behavior id="PlasmaTorpedo"/>
 <Behavior id="OverlordBanelingdrop"/>
 <Behavior id="UnitIsInActiveArmyTriggers"/>

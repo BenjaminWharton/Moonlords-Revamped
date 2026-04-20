@@ -162,6 +162,16 @@
         <Period value="10"/>
         <PeriodicEffect value="LightningHeroStaticShieldAB"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ProtossAlliesDisintegrated">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <BuffFlags index="Channeling" value="1"/>
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+        <TimeScaleSource Value="Global"/>
+        <Period value="4"/>
+        <PeriodicEffect value="ProtossAlliesDisintegratorMP"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="PylonAbsoluteDefense">
         <InfoIcon value="Assets\Textures\btn-ability-protoss-invulnerabilityshield.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -1013,11 +1023,6 @@
         </DamageResponse>
         <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Ironcore">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="IllusionHeroAegis">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -1039,11 +1044,6 @@
         <DamageResponse ModifyFraction="0.5">
             <Chance value="1"/>
         </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Hardcore">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NatureHeroFruitExplodeFate">
         <InfoFlags index="Hidden" value="1"/>
@@ -2052,6 +2052,8 @@
                 <Cooldown Link="Behavior/IsDestructionOrb"/>
             </Cost>
         </DamageResponse>
+        <Period value="1.5"/>
+        <PeriodicEffect value="OrbOfDestructionSupplimentChance"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="IsVitalityOrb">
         <Cost>
@@ -3848,11 +3850,6 @@
         <MaxStackCount value="0"/>
         <Duration value="6"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Easy">
-        <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <BehaviorFlags index="Permanent" value="1"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="EasyDefense">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <MaxStackCount value="0"/>
@@ -4776,11 +4773,6 @@
         <Period value="0.25"/>
         <PeriodicEffect value="FireHeroFireballIgniteDMG"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Insane">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
-        <BehaviorFlags index="Permanent" value="1"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="PoisonHeroHealingReagent">
         <InfoIcon value="Assets\Textures\btn-ability-zerg-dehaka-ultralisk-healingadaptation.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
@@ -4803,11 +4795,6 @@
         <DamageResponse ModifyFraction="0.9">
             <Chance value="1"/>
         </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Legendary">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
-        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="LightningEnchanted2">
         <InfoIcon value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
@@ -4971,11 +4958,6 @@
             <DamageDealtFraction index="Splash" value="-0.75"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Normal">
-        <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <BehaviorFlags index="Permanent" value="1"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="HasteAura">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
@@ -5107,6 +5089,7 @@
         <InfoIcon value="Assets\MagmaArmorex1.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <MaxStackCount value="0"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="HardShell">
         <Alignment value="Positive"/>
@@ -5129,11 +5112,6 @@
         </Modification>
         <MaxStackCount value="0"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Hard">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <InfoIcon value="Assets\Textures\btn-tips-sellprotossartifacts.dds"/>
-        <BehaviorFlags index="Permanent" value="1"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="OrbitalCannonIgnite">
         <InfoIcon value="Assets\Textures\btn-ability-terran-yamatogun-color.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -5155,6 +5133,7 @@
         <InfoIcon value="Assets\Textures\btn-ability-zerg-poisonnova.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <MaxStackCount value="5"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PoisonHeroPoisoned">
         <Alignment value="Negative"/>
