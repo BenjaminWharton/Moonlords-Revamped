@@ -295,14 +295,14 @@
         <Icon value="Assets\Textures\propagator_coop.dds"/>
         <DisplayEffect value="HorrorMarineDMG"/>
         <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="8"/>
+        <Range value="12"/>
         <Marker Link="Weapon/Lurker"/>
         <Cost>
             <Cooldown Link="Weapon/Lurker"/>
         </Cost>
         <Period value="3"/>
         <Effect value="HorrorInit"/>
-        <LegacyOptions index="KeepChanneling" value="1"/>
+        <LegacyOptions index="FaceTargetWhileInCooldown" value="0"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="PrimalClaws">
         <EditorCategories value="Race:Zerg"/>
@@ -494,7 +494,7 @@
             <Cooldown Link="Weapon/Lurker"/>
         </Cost>
         <Period value="0.8"/>
-        <Effect value="ShadowSpinesInitOffset"/>
+        <Effect value="ShadowLordShadowSpines"/>
         <LegacyOptions index="KeepChanneling" value="1"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="OblivionOrbs">
@@ -601,9 +601,9 @@
         <Icon value="Assets\Textures\ui_tipicon_campaign_zerus03-yagdrafireball.dds"/>
         <DisplayEffect value="FireBallDMG"/>
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="6"/>
+        <Range value="12"/>
         <Period value="1.5"/>
-        <Effect value="FireBallLM"/>
+        <Effect value="FireLordFireBall"/>
         <AllowedMovement value="Slowing"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="LaunchContagion">

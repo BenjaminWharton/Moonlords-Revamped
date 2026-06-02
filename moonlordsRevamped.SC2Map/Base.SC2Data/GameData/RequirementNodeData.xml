@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CRequirementConst id="99">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Value value="99"/>
     </CRequirementConst>
     <CRequirementAnd id="And1CountUpgradeChargeTalentQueuedOrBetter">
@@ -215,7 +214,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDisintegratedCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="Disintegrated" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDistendQueuedOrBetter">
@@ -368,6 +366,11 @@
     <CRequirementCountUpgrade id="CountUpgradeWarpHeroDurableCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="WarpHeroDurable" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeWarpHeroGeneratorsCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="WarpHeroGenerators" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeWarpHeroMultitaskCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
@@ -829,7 +832,6 @@
         <OperandArray index="1" value="8"/>
     </CRequirementLT>
     <CRequirementLT id="LTCountUpgradeDisintegratedCompleteOnly99">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeDisintegratedCompleteOnly"/>
         <OperandArray index="1" value="99"/>
     </CRequirementLT>

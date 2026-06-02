@@ -2405,6 +2405,9 @@
         <Value value="1"/>
         <Behavior value="ScaldedBase"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="WarpHeroHasGenerators">
+        <Value value="WarpHeroHasGenerators"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="WaterHeroIsSoaked">
         <Compare value="GT"/>
         <Behavior value="Soaked"/>

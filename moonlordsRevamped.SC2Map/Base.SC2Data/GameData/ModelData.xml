@@ -14,6 +14,33 @@
         <ScaleMax value="2.000000,2.000000,2.000000"/>
         <ScaleMin value="2.000000,2.000000,2.000000"/>
     </CModel>
+    <CModel id="HorrorLordHorrificClouds">
+        <Model value="Assets\Doodads\Hybrid01GasCloud\Hybrid01GasCloud.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="ShadowLordDeath" parent="UnitDeath" Race="Zerg">
+        <Model value="Assets\Units\Zerg\LurkerEx1BDeath\LurkerEx1BDeath.m3"/>
+        <LowQualityModel value="ZergMediumUnitDeathLow"/>
+        <Lighting value="LurkerDeath"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="ShadowLord" Prefix="Units\" Race="Zerg">
+        <Model value="Assets\Units\Zerg\Lurker_Ex2\Lurker_Ex2.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Lighting value="Lurker"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraMid07"/>
+        <Radius value="0.700000"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+        <SelectionRadius value="0.590500"/>
+        <ShadowRadius value="0.900000"/>
+        <SquibTypeDefault value="Flesh"/>
+        <TechPurchaseCamera value="Star2CameraMid07"/>
+        <UnitGlossaryCamera value="Star2CameraMid07"/>
+    </CModel>
     <CModel id="PoisonHeroDeath" parent="AdeptDeathBase">
         <Model value="Assets\Units\Protoss\Purifier_Adept_Death\Purifier_Adept_Death.m3"/>
     </CModel>
@@ -335,6 +362,13 @@
     <CModel id="RocketHeroMissileBarrageMissile">
         <Model value="Assets\Effects\Terran\MissilePodMissile\MissilePodMissile.m3"/>
         <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="TimeHeroMutationDamage">
+        <Model value="Assets\Effects\Protoss\InterceptorMissile\InterceptorMissile.m3"/>
+        <AnimSpeed value="1.500000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
     </CModel>
     <CModel id="TwilightHeroDeath" parent="DarkTemplarDeathBase">
         <Model value="Assets\Units\Protoss\DarkTemplarDeath\DarkTemplarDeath_00.m3"/>
@@ -1693,7 +1727,7 @@
         <ScaleMax value="0.600000,0.600000,0.600000"/>
         <ScaleMin value="0.600000,0.600000,0.600000"/>
     </CModel>
-    <CModel id="HorrorIllusion">
+    <CModel id="HorrorLord">
         <Model value="Assets\Units\Neutral\Propagator_Coop\Propagator_Coop.m3"/>
         <EditorCategories value="Race:Zerg"/>
         <ScaleMax value="3.000000,3.000000,3.000000"/>

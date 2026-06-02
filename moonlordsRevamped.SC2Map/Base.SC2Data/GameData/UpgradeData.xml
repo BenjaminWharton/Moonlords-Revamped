@@ -643,16 +643,20 @@
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="TimeHeroVanish">
-        <EffectArray Reference="Effect,AlteredTimeDMG,Amount[0]" Value="8"/>
-        <EffectArray Reference="Effect,AlterTimeMutationDmg,Amount[0]" Value="4"/>
+        <EffectArray Reference="Effect,AlteredTimeDMG,Amount[0]" Value="7.5"/>
+        <EffectArray Reference="Effect,AlterTimeMutationDmg,Amount[0]" Value="7.5"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,AlteredTime,Duration" Value="1.000000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,AlteredTime,Period" Value="0.050000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="TimeHeroInevitable">
         <EffectArray Operation="Set" Reference="Effect,AlteredTimeDMG,ArmorReduction[0]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Effect,AlteredTimeDMGhaste,ArmorReduction" Value="0"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="TimeHeroConservation">
         <EffectArray Reference="Effect,AlteredTimeDMG,LeechFraction[Shields]" Value="0.05"/>
+        <EffectArray Reference="Effect,AlteredTimeDMGhaste,LeechFraction[Shields]" Value="0.05"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -666,7 +670,8 @@
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="TimeHeroQuicken">
-        <EffectArray Reference="Effect,AlterTimeApply2,Count[0]" Value="1"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,AlteredTime,Duration" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,AlteredTime,Period" Value="0.100000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="2"/>
     </CUpgrade>
@@ -3084,8 +3089,8 @@
         <MaxLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="TimeHeroSupply">
-        <EffectArray Reference="Effect,AlterTimeMutationDmg,Amount[0]" Value="1.5"/>
-        <EffectArray Reference="Effect,TimewaveDamageMutation,Amount[0]" Value="0.5"/>
+        <EffectArray Reference="Accumulator,TimeHeroMutationDamageMultiplier,Amount" Value="0.083"/>
+        <EffectArray Reference="Actor,TimeHeroMutationDamageBeam,Scale" Value="0.150000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>
     </CUpgrade>
@@ -4064,7 +4069,7 @@
         <EffectArray Reference="Actor,Timewave,Scale" Value="0.080000,0.030000,0.020000"/>
         <EffectArray Reference="Effect,TimewaveSearchInstability,AreaArray[0].Radius" Value="0.25"/>
         <EffectArray Reference="Effect,TimewaveSearch,AreaArray[0].Radius[0]" Value="0.25"/>
-        <EffectArray Reference="Actor,TimewaveInstability2,Scale" Value="0.080000"/>
+        <EffectArray Reference="Actor,TimeHeroTimewaveInstability,Scale" Value="0.080000"/>
         <EffectArray Reference="Actor,TimeHeroTimewaveQuad,Width" Value="0.250000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <MaxLevel value="3"/>

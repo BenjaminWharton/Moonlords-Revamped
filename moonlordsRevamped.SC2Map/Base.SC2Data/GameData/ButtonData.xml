@@ -732,6 +732,7 @@
     <CButton id="PowerPlating">
         <Icon value="Assets\Textures\btn-techupgrade-terran-juggernautplating.dds"/>
         <EditorCategories value="Race:Protoss"/>
+        <ChargeText value="PowerPlating/ChargeText"/>
     </CButton>
     <CButton id="WaterBlast">
         <Icon value="Assets\btn-ability-protoss-waterblast.dds"/>

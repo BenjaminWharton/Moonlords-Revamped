@@ -344,6 +344,13 @@
         <PeriodicEffectArray value="BeamHeroRazorBeamDoTSASet"/>
         <PeriodicPeriodArray value="0.125"/>
     </CEffectCreatePersistent>
+    <CEffectModifyUnit id="CasterEnergyFractionNeg1">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Energy">
+            <ChangeFraction value="-1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectCreatePersistent id="DisruptionBeam">
         <ValidatorArray value="NotMainObjective"/>
         <ValidatorArray value="NotLarva"/>
@@ -371,6 +378,23 @@
         <Chance value="0"/>
         <EffectSuccess value="FireHeroBlastwaveChainDelay"/>
     </CEffectUserData>
+    <CEffectCreatePersistent id="FireLordFireBall">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="CasterUnitOrPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="FireBallLM"/>
+        <PeriodicOffsetArray value="0,-13,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="FireLordFireBallImpact">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="FireBallSA"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectEnumArea id="FireLordFireBallSearchTarget" parent="BSearchArea">
+        <EditorCategories value="Race:Zerg"/>
+        <DebugTrace value="1"/>
+        <AreaArray index="0" MaxCount="1" RectangleWidth="0.8" Effect="FireLordFireBallImpact"/>
+    </CEffectEnumArea>
     <CEffectDamage id="FireballImpactDamage">
         <ValidatorArray value="noMarkers"/>
         <EditorCategories value="Race:Protoss"/>
@@ -410,6 +434,66 @@
         <AreaArray index="0" MaxCount="1" Radius="1" Effect="FireHeroMeteorLM"/>
         <MinCount value="4"/>
     </CEffectEnumArea>
+    <CEffectCreatePersistent id="HorrorLordHorrorCP">
+        <EditorCategories value="Race:Zerg"/>
+        <Flags index="RandomOffset" value="1"/>
+        <InitialEffect value="HorrorLordHorrorRand"/>
+        <PeriodCount value="5"/>
+        <PeriodicEffectArray value="HorrorLordHorrorRand"/>
+        <PeriodicPeriodArray value="0.25"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="HorrorLordHorrificAB">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HorrorLordFright"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HorrorLordHorrificCloudsAB">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="HorrorLordHorrificClouds"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="HorrorLordHorrificCloudsCP">
+        <EditorCategories value="Race:Zerg"/>
+        <InitialEffect value="HorrorLordHorrificCloudsSA"/>
+        <PeriodCount value="10"/>
+        <PeriodicEffectArray value="HorrorLordHorrificCloudsSA"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="HorrorLordHorrificCloudsInit">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="CasterUnitOrPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="HorrorLordHorrificCloudsCP"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="HorrorLordHorrificCloudsSA">
+        <EditorCategories value="Race:Zerg"/>
+        <DebugTrace value="1"/>
+        <SearchFilters value="-;Neutral,Enemy,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="12" Effect="HorrorLordHorrificCloudsAB"/>
+    </CEffectEnumArea>
+    <CEffectUserData id="HorrorLordHorrorData">
+        <EditorCategories value="Race:Zerg"/>
+        <ValidateMax value="1"/>
+        <EffectSuccess value="HorrorIllusion"/>
+        <EffectFailure value="HorrorCUIllusion"/>
+    </CEffectUserData>
+    <CEffectCreatePersistent id="HorrorLordHorrorOffset">
+        <EditorCategories value="Race:Zerg"/>
+        <OffsetVectorStartLocation Effect="HorrorLordHorrorRand" Value="TargetPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="HorrorLordHorrorData"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+    </CEffectCreatePersistent>
+    <CEffectRandomPointInCircle id="HorrorLordHorrorRand">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetPoint"/>
+        <Effect value="HorrorLordHorrorOffset"/>
+        <Radius value="3"/>
+    </CEffectRandomPointInCircle>
+    <CEffectApplyBehavior id="HorrorLordHorrorRetreat">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HorrorLordRetreat"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="LightningHeroLightningVolatileEnergy">
         <EditorCategories value="Race:Protoss"/>
         <Chance value="0"/>
@@ -2523,6 +2607,34 @@
         <EffectFailure value="RocketHeroRocketSalvoOffsetLeft"/>
         <BehaviorScope Behavior="RocketHeroAmmo"/>
     </CEffectUserData>
+    <CEffectApplyBehavior id="ShadowLordLurkerAB">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ShadowLordUnseen"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="ShadowLordLurkerSet">
+        <ValidatorArray value="EnergyFullCaster"/>
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="ShadowLordLurkerAB"/>
+        <EffectArray value="CasterEnergyFractionNeg1"/>
+    </CEffectSet>
+    <CEffectSet id="HorrorLordHorrificSet">
+        <ValidatorArray value="EnergyFullCaster"/>
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="HorrorLordHorrificAB"/>
+        <EffectArray value="HorrorLordHorrificCloudsInit"/>
+        <EffectArray value="CasterEnergyFractionNeg1"/>
+    </CEffectSet>
+    <CEffectSet id="ShadowLordShadowSpines">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="ShadowSpinesOffset"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ShadowLordShadowSpinesRetreat">
+        <EditorCategories value="Race:Zerg"/>
+        <Chance value="0.5"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ShadowLordRetreat"/>
+    </CEffectApplyBehavior>
     <CEffectModifyUnit id="TerminatorHeal">
         <EditorCategories value="Race:Protoss"/>
         <VitalArray index="Life">
@@ -2652,7 +2764,7 @@
     </CEffectDamage>
     <CEffectEnumArea id="AnnihilatorFirewallSA" parent="BSearchArea">
         <EditorCategories value="Race:Terran"/>
-        <AreaArray index="0" Radius="1" Effect="AnnihilatorFirewallDMG"/>
+        <AreaArray index="0" Radius="0.8" Effect="AnnihilatorFirewallDMG"/>
     </CEffectEnumArea>
     <CEffectDamage id="AnnihilatorLaserTrackingDMG">
         <EditorCategories value="Race:Terran"/>
@@ -10345,20 +10457,11 @@
         <InitialEffect value="HorrorCUIllusion"/>
         <Flags index="RandomEffect" value="1"/>
     </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="HorrorInit">
+    <CEffectSet id="HorrorInit">
         <EditorCategories value="Race:Zerg"/>
-        <Flags index="RandomOffset" value="1"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="HorrorIllusion"/>
-        <PeriodicOffsetArray value="0,5,0"/>
-        <PeriodicOffsetArray value="3.5,3.5,0"/>
-        <PeriodicOffsetArray value="5,0,0"/>
-        <PeriodicOffsetArray value="3.5,-3.5,0"/>
-        <PeriodicOffsetArray value="0,-5,0"/>
-        <PeriodicOffsetArray value="-3.5,-3.5,0"/>
-        <PeriodicOffsetArray value="-5,0,0"/>
-        <PeriodicOffsetArray value="-3.5,3.5,0"/>
-    </CEffectCreatePersistent>
+        <EffectArray value="HorrorLordHorrorCP"/>
+        <EffectArray value="HorrorLordHorrorRetreat"/>
+    </CEffectSet>
     <CEffectModifyUnit id="HorrorMarineAngle">
         <EditorCategories value="Race:Zerg"/>
         <FacingLocation Effect="HorrorInit" Value="TargetPoint"/>
@@ -10372,7 +10475,7 @@
     <CEffectDamage id="HorrorMarineDMG">
         <EditorCategories value="Race:Zerg"/>
         <ArmorReduction value="5"/>
-        <Amount value="350"/>
+        <Amount value="300"/>
         <Death value="Fire"/>
         <AreaArray Radius="2" Fraction="1"/>
         <ExcludeArray Value="Target"/>
@@ -10447,8 +10550,8 @@
     <CEffectDamage id="HorrorZealotDMG">
         <EditorCategories value="Race:Zerg"/>
         <DamageModifierSource Effect="HorrorInit" Value="Caster"/>
-        <ArmorReduction value="0.6"/>
-        <Amount value="60"/>
+        <ArmorReduction value="1"/>
+        <Amount value="50"/>
         <Death value="Eviscerate"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="HorrorZealotLM">
@@ -10461,13 +10564,11 @@
     <CEffectCreatePersistent id="HorrorZealotLineOffset">
         <EditorCategories value="Race:Zerg"/>
         <OffsetVectorStartLocation Effect="HorrorZealotOffset" Value="TargetPoint"/>
-        <PeriodCount value="5"/>
+        <PeriodCount value="3"/>
         <PeriodicEffectArray value="HorrorZealotCU"/>
-        <PeriodicOffsetArray value="-5,0,0"/>
         <PeriodicOffsetArray value="-2.5,0,0"/>
         <PeriodicOffsetArray value="0,0,0"/>
         <PeriodicOffsetArray value="2.5,0,0"/>
-        <PeriodicOffsetArray value="5,0,0"/>
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="HorrorZealotOffset">
         <EditorCategories value="Race:Zerg"/>
@@ -14506,16 +14607,9 @@
         <AttributeFactor index="Heroic" value="-0.75"/>
         <Amount value="15"/>
     </CEffectDamage>
-    <CEffectApplyBehavior id="AlterTimeApply1">
+    <CEffectApplyBehavior id="AlterTimeApply">
         <EditorCategories value=""/>
         <Behavior value="AlteredTime"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="AlterTimeApply2">
-        <ValidatorArray index="0" value="AlterTimeApply1TargetFilters"/>
-        <EditorCategories value=""/>
-        <Marker Link="Effect/AlterTimeApply1"/>
-        <Behavior value="AlteredTimeHaste"/>
-        <Count value="0"/>
     </CEffectApplyBehavior>
     <CEffectSet id="AlterTimeDMGset">
         <EditorCategories value=""/>
@@ -14525,7 +14619,9 @@
     <CEffectDamage id="AlterTimeMutationDmg">
         <EditorCategories value=""/>
         <ArmorReduction value="0.5"/>
-        <Amount value="8"/>
+        <Amount value="15">
+            <AccumulatorArray value="TimeHeroMutationDamageMultiplier"/>
+        </Amount>
     </CEffectDamage>
     <CEffectEnumArea id="AlterTimeSearch">
         <EditorCategories value=""/>
@@ -14540,7 +14636,7 @@
         <EditorCategories value=""/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <ArmorReduction value="1"/>
+        <ArmorReduction value="0.5"/>
         <Amount value="2"/>
     </CEffectDamage>
     <CEffectEnumArea id="AnnihilatorAbsorptionFieldRocketSA">
@@ -16332,12 +16428,16 @@
         <EditorCategories value="Race:Zerg"/>
         <ImpactEffect value="FireBallSA"/>
         <AmmoUnit value="FireBallMissile"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchEffect value="FireLordFireBallSearchTarget"/>
+        <SearchFlags index="DynamicSearchArea" value="1"/>
     </CEffectLaunchMissile>
     <CEffectEnumArea id="FireBallSA">
         <EditorCategories value="Race:Zerg"/>
         <SearchFilters value="-;Player,Ally,Neutral,RawResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="2" Effect="FireBallSet"/>
         <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <DebugTrace value="1"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="FireBallSearchNextTarget">
         <EditorCategories value="Race:Zerg"/>
@@ -16951,10 +17051,11 @@
         <ArmorReduction value="0.5"/>
         <Amount value="40"/>
     </CEffectDamage>
-    <CEffectCreatePersistent id="ShadowSpinesInitOffset">
+    <CEffectCreatePersistent id="ShadowSpinesOffset">
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Value="TargetUnit"/>
         <Flags index="RandomOffset" value="1"/>
+        <InitialEffect value="ShadowLordShadowSpinesRetreat"/>
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="ShadowSpinesLM"/>
         <PeriodicOffsetArray value="0,8,0"/>
@@ -16969,7 +17070,7 @@
     <CEffectLaunchMissile id="ShadowSpinesLM">
         <EditorCategories value="Race:Zerg"/>
         <LaunchLocation Value="TargetPoint"/>
-        <ImpactLocation Effect="ShadowSpinesInitOffset" Value="TargetUnitOrPoint"/>
+        <ImpactLocation Effect="ShadowSpinesOffset" Value="TargetUnitOrPoint"/>
         <ImpactOffset value="0,-8,0"/>
         <PeriodicEffect value="ShadowSpinesOffsetSA"/>
         <PeriodicPeriod value="0.1"/>
@@ -20226,15 +20327,14 @@
     </CEffectEnumArea>
     <CEffectSet id="AlterTimeSet">
         <EditorCategories value=""/>
-        <EffectArray value="AlterTimeApply1"/>
-        <EffectArray value="AlterTimeApply2"/>
+        <EffectArray value="AlterTimeApply"/>
     </CEffectSet>
     <CEffectDamage id="AlteredTimeDMG">
         <EditorCategories value=""/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
         <ArmorReduction value="0.5"/>
-        <Amount value="16"/>
+        <Amount value="15"/>
     </CEffectDamage>
     <CEffectSet id="AlteredTimeMutationSet">
         <ValidatorArray value="HasMutationtarget"/>
@@ -20464,7 +20564,9 @@
         <EditorCategories value=""/>
         <Marker Link="Effect/TimewaveDamage"/>
         <ArmorReduction value="0.25"/>
-        <Amount value="3"/>
+        <Amount value="6">
+            <AccumulatorArray value="TimeHeroMutationDamageMultiplier"/>
+        </Amount>
     </CEffectDamage>
     <CEffectApplyBehavior id="Timewaved">
         <ValidatorArray index="0" value="noMarkers"/>

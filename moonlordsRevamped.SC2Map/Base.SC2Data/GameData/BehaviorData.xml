@@ -112,6 +112,24 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="HorrorLordHorrificClouds">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="1"/>
+        <Modification>
+            <StateFlags index="Cloak" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HorrorLordRetreat">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowLordRetreat">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="LightningHeroThunderfuryKB">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -378,6 +396,30 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="GreaterSpireFireballSpawner">
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowLordUnseen">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="5"/>
+        <Modification MoveSpeedMinimum="1.5" MoveSpeedMultiplier="2.5">
+            <StateFlags index="Cloak" value="1"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0.5">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HorrorLordFright">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="5"/>
+        <Modification MoveSpeedMinimum="1.5" MoveSpeedMultiplier="2.5">
+            <StateFlags index="Cloak" value="1"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0.5">
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="ThorAbsorberShield">
         <InfoIcon value="Assets\Textures\btn-shield-protoss-plasmashields.dds"/>
@@ -1510,6 +1552,9 @@
     <CBehaviorBuff id="Horrific">
         <InfoIcon value="Assets\Textures\propagator_coop.dds"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DamageResponse Handled="HorrorLordHorrificSet">
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="InsaneBoss">
         <InfoIcon value="Assets\Textures\coop_mutators_difficulty_hard_150.dds"/>
@@ -1557,7 +1602,10 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Lurker">
         <InfoIcon value="Assets\Textures\talent-kerrigan-level05-unlocklurker.dds"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DamageResponse Handled="ShadowLordLurkerSet">
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="MLInspired">
         <Alignment value="Positive"/>
@@ -1959,7 +2007,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="HorrorIllusionFate">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <Duration value="2.1"/>
+        <Duration value="2.6"/>
         <FinalEffect value="Suicide"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="HorrorZerglingFate">
@@ -3552,23 +3600,6 @@
         <Duration value="10"/>
         <TimeScaleSource Value="Global"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AlteredTimeHaste">
-        <InfoIcon value="Assets\AlteredTimelineEx3.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <DeathResponse>
-                <Cost>
-                    <Charge Link="Behavior/AlteredTime"/>
-                    <Cooldown Link="Behavior/AlteredTime"/>
-                </Cost>
-            </DeathResponse>
-        </Modification>
-        <MaxStackCount value="0"/>
-        <Duration value="10"/>
-        <Period value="0.5"/>
-        <PeriodicEffect value="AlteredTimeDMGhaste"/>
-        <TimeScaleSource Value="Global"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AnnihilatorHealOnDeath">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
@@ -4128,6 +4159,7 @@
         <DisableValidatorArray value="CasterLifeNotFull"/>
         <MaxStackCount value="100"/>
         <Duration value="10"/>
+        <BuffFlags index="RefreshStack" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PowerPlatingenergybonus">
         <InfoFlags index="Hidden" value="1"/>
@@ -4135,6 +4167,7 @@
         <DisableValidatorArray value="CasterLifeFull"/>
         <MaxStackCount value="100"/>
         <Duration value="10"/>
+        <BuffFlags index="RefreshStack" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="QuicksandEarth">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -5168,6 +5201,7 @@
             <VitalRegenMultiplier index="Shields" value="0.5"/>
         </Modification>
         <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PowerPlating2">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -5181,6 +5215,7 @@
         <Modification>
             <VitalRegenArray index="Energy" value="2"/>
         </Modification>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PsiStorm">
         <MaxStackCount value="0"/>

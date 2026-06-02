@@ -165,7 +165,6 @@ Behavior/Name/Absorb=Absorb
 Behavior/Name/Absorber=Absorber
 Behavior/Name/AirHeroHurricaneFate=Air Hero - Hurricane Fate
 Behavior/Name/AlteredTime=Altered Time
-Behavior/Name/AlteredTimeHaste=Altered Time Haste
 Behavior/Name/AnnihilatorDematerializationFieldDelay=Annihilator - Dematerialization Field Delay
 Behavior/Name/Anointed=Anointed
 Behavior/Name/ArdentDefender=Ardent Defender
@@ -285,6 +284,7 @@ Behavior/Name/HoloShield=Holo Shield
 Behavior/Name/HoloShieldFate=Holo Shield Fate
 Behavior/Name/Horrific=Horrific
 Behavior/Name/HorrorIllusionFate=Horror Illusion Fate
+Behavior/Name/HorrorLordHorrificClouds=Horrific Clouds
 Behavior/Name/HorrorZerglingFate=Horror Zergling Fate
 Behavior/Name/IcefireBlastExterminate=Icefire Blast Exterminate
 Behavior/Name/IcefireBlaze=Icefire Blaze
@@ -373,8 +373,6 @@ Behavior/Name/PoisonHeroMusclePoison=Muscle Poison
 Behavior/Name/PoisonHeroPoisoned=Poisoned
 Behavior/Name/Polymercrust=Polymercrust
 Behavior/Name/Portal=Portal
-Behavior/Name/PowerPlating=Power Plating
-Behavior/Name/PowerPlating2=Power Plating
 Behavior/Name/ProbeCannon=Probe Cannon
 Behavior/Name/ProjectionFate=Projection Fate
 Behavior/Name/ProjectionHeist=Projection Heist
@@ -497,7 +495,6 @@ Behavior/Name/wallofshadowhidden=wallofshadowhidden
 Behavior/Tooltip/Absorb=Increased energy regeneration
 Behavior/Tooltip/Absorber=This unit gains 75% damage reduction
 Behavior/Tooltip/AlteredTime=Fading out of existance.
-Behavior/Tooltip/AlteredTimeHaste=Warped time.
 Behavior/Tooltip/AnnihilatorDematerializationFieldDelay=After charging up this field deals massive damage to all units outside the self preservation area
 Behavior/Tooltip/ArdentDefender=Ardent Defender<n/>'This defense will not fall'
 Behavior/Tooltip/Attrition=Slowed
@@ -588,7 +585,7 @@ Behavior/Tooltip/HellfireEruptionExterminate=Taking damage over time.
 Behavior/Tooltip/HellfireInundated=This unit will create a mini Fire Blast on death.
 Behavior/Tooltip/HellfireQuakeExterminate=Taking damage over time.
 Behavior/Tooltip/HoloShield=Invulnerable to damage.
-Behavior/Tooltip/Horrific=The Horror Lord masks its presence and uses 3 types of random attacks, while also creating illusions to distract you
+Behavior/Tooltip/Horrific=The Horror Lord will mask its presence and cloak everything around it when energy is full
 Behavior/Tooltip/IcefireBlastExterminate=Taking damage over time.
 Behavior/Tooltip/IcefireInundated=This unit will create a mini Fire Blast on death.
 Behavior/Tooltip/IcefireSteamExterminate=Taking damage over time
@@ -615,7 +612,7 @@ Behavior/Tooltip/LightningHeroElectrifiedHeroic=Cannot move
 Behavior/Tooltip/LightningHeroPowerDrain=Restoring hitpoints & shields based on damage dealt
 Behavior/Tooltip/LightningHeroShocked=Attack and movement speed slowed
 Behavior/Tooltip/LightningHeroStatic=Static
-Behavior/Tooltip/Lurker=The Shadow Lord cannot be seen
+Behavior/Tooltip/Lurker=Will cloak and take reduced damage when energy is full
 Behavior/Tooltip/MLCorroded=Armor Reduced.
 Behavior/Tooltip/MLInspired=This unit has +30% timescale and damage reduction
 Behavior/Tooltip/MLPowerField=Makes protoss allies able to use your position as a waypoint for their attacks
@@ -649,8 +646,6 @@ Behavior/Tooltip/PoisonHeroHealingReagent=Restores health when using energy.
 Behavior/Tooltip/PoisonHeroMusclePoison=Movement & Attack speed reduced
 Behavior/Tooltip/PoisonHeroPoisoned=Poisoned - taking damage over time
 Behavior/Tooltip/Polymercrust=Reduces damage taken.
-Behavior/Tooltip/PowerPlating=Increase health and shield regeneration by <d ref="Behavior,PowerPlating,Modification.VitalRegenMultiplier[Life]*100"/>% + <d ref="Behavior,PowerPlating,Modification.VitalRegenArray[Life]"/>
-Behavior/Tooltip/PowerPlating2=Restores <d ref="Behavior,PowerPlating2,Modification.VitalRegenArray[Energy]"/> energy per second
 Behavior/Tooltip/ProbeCannon=Periodically fires projectiles at surrounding enemies.
 Behavior/Tooltip/PylonAbsoluteDefense=Impervious to all damage
 Behavior/Tooltip/PylonWithinAbsoluteDefense=Protected by Absolute Defense
@@ -913,7 +908,7 @@ Button/Tooltip/AcidLord=The Acid Lord explodes when it dies.
 Button/Tooltip/AirHero=Your enemies will be blown away.
 Button/Tooltip/AirHeroHurricaneUnit=
 Button/Tooltip/AirHeroMicroBurstUnit=
-Button/Tooltip/AlteredTimeline=Removes all units in the target area from reality. Targets will slowly fade away into nonexistance.
+Button/Tooltip/AlteredTimeline=Removes all units within a radius of <c val="FFFF80"><d ref="Effect,AlterTimeSearch,AreaArray[0].Radius" precision="1"/></c> from reality. Targets will slowly fade away into nonexistance, taking <c val="FFFF80"><d ref="Effect,AlteredTimeDMG,Amount/Behavior,AlteredTime,Period"/></c> damage per second for <c val="FFFF80"><d ref="Behavior,AlteredTime,Duration"/></c> seconds
 Button/Tooltip/AnnihilatorSupportBot=Can sacrifice itself to heal its allies
 Button/Tooltip/AnnihilatorV1=
 Button/Tooltip/AnnihilatorV2=
@@ -921,7 +916,7 @@ Button/Tooltip/AnnihilatorV3=
 Button/Tooltip/Append/ToggleOff=<n/><n/><c val="FFFF80">Toggle Off</c>
 Button/Tooltip/Append/ToggleOn=<n/><n/><c val="FFFF80">Toggle On</c>
 Button/Tooltip/AppendToggleOn=
-Button/Tooltip/Bane=The target mutates for <c val="FFFF80">15</c> seconds and will take damage when you deal damage to any unit within <c val="FFFF80"><d ref="Effect,AlterTimeSearchMutation,AreaArray[0].Radius" precision="1"/></c> range of it.
+Button/Tooltip/Bane=The target mutates for <c val="FFFF80">15</c> seconds and will take <c val="FFFF80"><d ref="Accumulator,TimeHeroMutationDamageMultiplier,Amount*100"/>%</c> of all damage you deal to units within <c val="FFFF80"><d ref="Effect,AlterTimeSearchMutation,AreaArray[0].Radius" precision="1"/></c> range of it.
 Button/Tooltip/BeamHero=When in doubt, cover everything with laser beams.
 Button/Tooltip/BeamHeroAnchor=Cap movement speed to <c val="FFFF80"><d ref="Behavior,BeamHeroAnchored,Modification.MoveSpeedMaximum" precision="1"/></c> and restore <c val="FFFF80"><d ref="Effect,BeamHeroAnchorMU,VitalArray[Life].Change*16"/></c> health, <c val="FFFF80"><d ref="Effect,BeamHeroAnchorMU,VitalArray[Shields].Change*16"/></c> shields and <c val="FFFF80"><d ref="Effect,BeamHeroAnchorMU,VitalArray[Energy].Change*16"/></c> energy per second<n/><n/>Gain <c val="FFFF80"><d ref="Behavior,BeamHeroAnchored,Modification.DamageTotalMultiplier[Melee]*100"/>%</c> bonus damage and <c val="FFFF80"><d ref="(1-Behavior,BeamHeroAnchored,DamageResponse.ModifyFraction)*100"/>%</c> damage reduction while Anchored
 Button/Tooltip/BeamHeroLaserFence=Create a Laser Fence at the target location which deals <c val="FFFF80"><d ref="$RunAccumulators:EnergyMaxCaster$*Accumulator,BeamHeroLaserFenceDamageMultiplier,Amount"/></c> damage per second to all enemies in a perpendicular line with a width of <c val="FFFF80"><d ref="Effect,BeamHeroLaserFenceSA,AreaArray[0].RectangleWidth" precision="1"/></c><n/><n/>Lasts for <c val="FFFF80"><d ref="Effect,BeamHeroLaserFenceCP,PeriodCount/8"/></c> seconds and slows affected enemies movement speed to <c val="FFFF80"><d ref="Behavior,BeamHeroLaserFence,Modification.MoveSpeedMultiplier*100"/>%</c> and attack speed to <c val="FFFF80"><d ref="Behavior,BeamHeroLaserFence,Modification.AttackSpeedMultiplier*100"/>%</c><n/><n/>Base damage is equal to <c val="FFFF80"><d ref="Accumulator,BeamHeroLaserFenceDamageMultiplier,Amount*100"/>%</c> of maximum energy
@@ -1039,7 +1034,7 @@ Button/Tooltip/HoloShield=Creates a Holo Shield at the target location rendering
 Button/Tooltip/HoloShieldUnit=Summons a Tornado lasting <d ref="Behavior,Tornado,Duration" precision="1"/> seconds.
 Button/Tooltip/HordeLord=Spawns Broodlings when receiving damage.
 Button/Tooltip/HorrorIllusion=Changelings cannot attack. When a Changeling first encounters an enemy unit, it will match that unit's color and change into a Zealot, Marine, or Zergling, depending on the enemy race. Dies after <d time="150"/>.
-Button/Tooltip/HorrorLord=The Horror Lord masks its presence and uses 3 types of random attacks, while also creating illusions to distract you
+Button/Tooltip/HorrorLord=The Horror Lord 3 uses types of random attacks while also creating illusions to distract you. Will mask its presence, taking 50% reduced damage and cloaking everything around it for 5 seconds when energy is full<n/><n/><c val="FFFF80">Gains energy when receiving damage</c><n/><n/><c val="FFFF80">Loses energy over time</c>
 Button/Tooltip/HorrorZealot=Changelings cannot attack. When a Changeling first encounters an enemy unit, it will match that unit's color and change into a Zealot, Marine, or Zergling, depending on the enemy race. Dies after <d time="150"/>.
 Button/Tooltip/HorrorZergling=Changelings cannot attack. When a Changeling first encounters an enemy unit, it will match that unit's color and change into a Zealot, Marine, or Zergling, depending on the enemy race. Dies after <d time="150"/>.
 Button/Tooltip/Hurricane=Summon a devastating blast of wind that travels up to a distance of <c val="FFFF80"><d ref="Effect,AirHeroHurricaneDMGDummy,ArmorReduction"/></c> and deals <c val="FFFF80"><d ref="Effect,AirHeroHurricaneDMG,Amount"/></c> damage to enemies within a width of <c val="FFFF80"><d ref="Effect,HurricaneSA,AreaArray[0].RectangleWidth"/></c><n/><n/>Lifted enemies and Tornado debris in its path will be picked up and pulled along with it.<n/><n/>Hurricane deals <c val="FFFF80"><d ref="Effect,AirHeroHurricaneDMG,AttributeFactor[Heroic]*100"/>%</c> additional damage to enemies that cannot be lifted.<n/><n/>Micro Bursts affected by Hurricane will be able to impact on lifted enemies.
@@ -1118,7 +1113,7 @@ Button/Tooltip/PoisonCloud=Store up to <c val="FFFF80"><d ref="Accumulator,Poiso
 Button/Tooltip/PoisonHero=Inflicts unimaginable pain.
 Button/Tooltip/PoisonHeroPoisonbolt=Launches a Poisonbolt towards the target location, dealing <c val="FFFF80"><d ref="Accumulator,PoisonHeroPoisonboltDamage,Amount"/></c> damage within a radius of <c val="FFFF80"><d ref="Effect,PoisonHeroPoisonboltSA,AreaArray[0].Radius" precision="2"/></c> on impact and poisoning the targets for <c val="FFFF80"><d ref="Accumulator,PoisonHeroPoisonboltPoisonDamageFraction,Amount*100"precision="1"/>%</c> of the initial damage per second for <c val="FFFF80"><d ref="Behavior,PoisonHeroPoisoned,Duration"/></c> seconds
 Button/Tooltip/PowerDrain=Power Drain restores health and shields equal to <c val="FFFF80"><d ref="Behavior,LightningHeroPowerDrain,Modification.VitalDamageLeechArray[Life].KindArray[Spell]*100"/>%</c> of damage dealt.<n/><n/>Lasts for <c val="FFFF80"><d ref="Behavior,LightningHeroPowerDrain,Duration"/></c> seconds.
-Button/Tooltip/PowerPlating=Transfers power from propulsion to armor when you are attacked
+Button/Tooltip/PowerPlating=If health is damaged then health/shield regeneration is increased by <c val="FFFF80"><d ref="Behavior,PowerPlating,Modification.VitalRegenArray[Life]"/></c> + <c val="FFFF80"><d ref="Behavior,PowerPlating,Modification.VitalRegenMultiplier[Life]*100"/>%</c>, otherwise energy regeneration is increased by <c val="FFFF80"><d ref="Behavior,PowerPlating2,Modification.VitalRegenArray[Energy]"/></c>
 Button/Tooltip/PreserverBase=
 Button/Tooltip/PrimalLord=Periodically eats nearby zerg units to heal itself.
 Button/Tooltip/PrimalTownHall=
@@ -1158,7 +1153,7 @@ Button/Tooltip/SandstormWind=Infusion: <c val="FFFFFF">Wind</c><n/>Release: <c v
 Button/Tooltip/SerpentLord=Has 25% life steal and pulls its target towards itself.
 Button/Tooltip/ShadowCrashMissile=Launches a Poisonbolt at the target location dealing 30 damage on impact and poisoning the targets for 11% of the initial damage per second over 3 seconds.
 Button/Tooltip/ShadowHero=Become one with the darkness...
-Button/Tooltip/ShadowLord=The Shadow Lord cannot be seen
+Button/Tooltip/ShadowLord=Cloaks and takes <d ref="(1-Behavior,ShadowLordUnseen,DamageResponse.ModifyFraction)*100"/>% reduced damage for <d ref="Behavior,ShadowLordUnseen,Duration"/> seconds when energy is full<n/><n/><c val="FFFF80">Gains energy when receiving damage</c><n/><n/><c val="FFFF80">Loses energy over time</c>
 Button/Tooltip/Shadowcontrol=You gain control of the target enemy unit. Can control up to <c val="FFFF80"><d ref="Effect,ShadowplayDummyEffectTarget,Duration + 4"/></c> units at once. Controlled units will release a Doom explosion when killed<n/><n/>Casting on heroic/structure enemies will reveal them and cause them to lose <c val="FFFF80"><d ref="Behavior,ShadowplayHeroic,Modification.LifeArmorBonus*(-1)"/></c> armor and take <c val="FFFF80"><d ref="(Behavior,ShadowplayHeroic,DamageResponse.ModifyFraction-1)*100"/>%</c> more damage for <c val="FFFF80"><d ref="Behavior,ShadowplayHeroic,Duration"/></c> seconds
 Button/Tooltip/Shadowcrash=Fires a shadow missile at a target, dealing <c val="FFFF80">40</c> damage to all enemies near the impact point and pulling them to the center of the crash.
 Button/Tooltip/Shielder=<c val="00FF00"><c val="0080FF">Shields</c> allied units and structures for <c val="FFFFFF">15</c> seconds at the cost of <c val="FFFFFF"><d ref="Abil,DefensiveMatrix,Cost[0].Vital[Energy]"/></c> <c val="FF00FF">energy</c>.<n/><n/><c val="0080FF">Shield</c> strength is <c val="0080FF">500</c>(+<c val="0080FF">15</c> per Maximum <c val="008000">health</c>/<c val="0080FF">shield</c> reward)<n/>Current <c val="0080FF">shield</c> strength is <c val="0080FF"><d ref="Behavior,DefensiveMatrix,Modification.VitalMaxArray[Shields]"/></c><n/><n/><c val="FF00FF">Energy</c> maximum is <c val="FF00FF">300</c>(+<c val="FF00FF">10</c> for every <c val="FF00FF">energy</c> maximum reward)<n/>Current maximum is <c val="FF00FF"><d ref="Unit,ShielderDrone,EnergyMax"/></c></c>
@@ -1196,7 +1191,7 @@ Button/Tooltip/TimeHero=Erase your enemies from existence!
 Button/Tooltip/TimeHeroChronofield=All enemies and projectiles within a radius of <c val="FFFF80"><d ref="Effect,TImeHeroChronofieldSA,AreaArray[2].Radius"/></c> have their timescale reduced by <c val="FFFF80"><d ref="(1-(Behavior,TimeHeroChronofield3,Modification.TimeScale))*100"/>%</c> - <c val="FFFF80"><d ref="(1-(Behavior,TimeHeroChronofield1,Modification.TimeScale))*100"/>%</c> depending on distance
 Button/Tooltip/TimeHeroEscape=Escape on cooldown
 Button/Tooltip/Timerift=Alters the fabric of time causing you to return to a previous location. Health and shields are reset back to their previous values + <c val="FFFF80"><d ref="Effect,TimeHeroTimeriftMU,VitalArray[Life].Change"/></c>
-Button/Tooltip/Timewave=Sends out a Timewave towards the target point damaging all enemy units in it's path
+Button/Tooltip/Timewave=Send a Timewave towards the target point that inflicts enemies with <c val="FFFF80"><d ref="Effect,TimewaveDamage,Amount/Behavior,Timewaved,Period"/></c> damage per second for <c val="FFFF80"><d ref="Behavior,Timewaved,Duration"precision="1"/></c> seconds
 Button/Tooltip/ToggleOn=
 Button/Tooltip/Tornado=Summon a Tornado that lasts for <c val="FFFF80"><d ref="Behavior,TornadoFate,Duration" precision="1"/></c> seconds and deals <c val="FFFF80"><d ref="Effect,AirHeroTornadoDMG,Amount*8"/></c> damage per second within a radius of <c val="FFFF80"><d ref="Effect,TornadoSA,AreaArray[0].Radius" precision="1"/></c><n/><n/>Tornadoes can pick up Micro Bursts and lifted enemies, and can hold up to <c val="FFFF80"><d ref="Effect,AirHeroTornadoDataInit,Amount"/></c> at a time.
 Button/Tooltip/ToxicVapor=Grows a mushroom at the target point which deals <c val="FFFF80"><d ref="Effect,NatureHeroToxicVaporDMG,Amount/Effect,NatureHeroToxicVaporCP,PeriodicPeriodArray[0]"/></c> damage per second in a radius of <c val="FFFF80"><d ref="Accumulator,NatureHeroToxicVaporRadiusBase,Amount"/></c> for <c val="FFFF80">10</c> seconds<n/></c></c><n/>Casting <c val="FFFF80">Toxic Vapor</c> adds <c val="FFFF80">1</c> combo power to <c val="FFFF80">Expel</c></c><n/><n/>Each combo power increases the damage area by <c val="FFFF80"><d ref="Accumulator,NatureHeroToxicVaporRadiusMultiplier,Amount" precision="1"/></c> and damage by <c val="FFFF80"><d ref="Accumulator,NatureHeroToxicVaporDamageMultiplier,Amount*100" precision="1"/>%</c> for the next <c val="FFFF80">Toxic Vapor</c> cast<n/><n/>Casting <c val="FFFF80">Toxic Vapor</c> consumes all stacks.<n/>
@@ -2004,6 +1999,10 @@ DocInfo/PatchNote745=  - Increased requirements for MVP achievement
 DocInfo/PatchNote746=  - Changed requirements for Captain Planet achievement
 DocInfo/PatchNote747=  - Removed Twintwins and replaced with a new achievement called "Beatdown"
 DocInfo/PatchNote748=  - Speedrun achievement times now scale linearly instead of exponentially
+DocInfo/PatchNote749=- General
+DocInfo/PatchNote750=  - Made auto upgrades toggle-able
+DocInfo/PatchNote751=  - Reworked Horror Lord
+DocInfo/PatchNote752=  - Reworked Shadow Lord
 DocInfo/Screenshot01=Reward points carry over to subsequent games and can be beneficial in a variety of ways.
 DocInfo/Screenshot02=Standing near a Pylon enables you to teleport to any other base.
 DocInfo/Screenshot05=Spend talent points to increase your power.
@@ -2116,8 +2115,7 @@ Effect/Name/AirHeroTornadoTempestDataInc=Air Hero - Tornado Tempest (DataInc)
 Effect/Name/AirHeroTornadoTempestDataReset=Air Hero - Tornado Tempest (DataReset)
 Effect/Name/AirHeroTornadoTempestRand=Air Hero - Tornado Tempest (Rand)
 Effect/Name/AirHeroTornadoTempestSet=Air Hero - Tornado Tempest (Set)
-Effect/Name/AlterTimeApply1=AlterTimeApply1
-Effect/Name/AlterTimeApply2=AlterTimeApply2
+Effect/Name/AlterTimeApply=AlterTimeApply
 Effect/Name/AlterTimeDMGset=AlterTimeDMGset
 Effect/Name/AlterTimeMutationDmg=AlterTimeMutationDmg
 Effect/Name/AlterTimeSearch=AlterTimeSearch
@@ -2466,6 +2464,7 @@ Effect/Name/CarnageSpinesDMG=Carnage Spines
 Effect/Name/CarnageSpinesLM=Carnage Spines
 Effect/Name/CarnageSpinesOffsets=Carnage Spines
 Effect/Name/CarnageSpinesSA=Carnage Spines
+Effect/Name/CasterEnergyFractionNeg1=Caster Energy Fraction Neg 1
 Effect/Name/CasterFaceTargetPoint=Caster Face Target Point
 Effect/Name/ChampionLightningDamage=ChampionLightningDamage
 Effect/Name/ChampionLightningDestroyPersistent=ChampionLightningDestroyPersistent
@@ -2836,6 +2835,9 @@ Effect/Name/FireInfusionMoltenFuryCP=Fire Infusion Molten Fury (CP)
 Effect/Name/FireInfusionPeriodic=Fire Infusion (Periodic)
 Effect/Name/FireInfusionSelfDMG=Fire Infusion (SelfDMG)
 Effect/Name/FireInfusionShieldMU=Fire Infusion (ShieldMU)
+Effect/Name/FireLordFireBall=Fire Lord - Fire Ball (Init)
+Effect/Name/FireLordFireBallImpact=Fire Lord - Fire Ball (Impact)
+Effect/Name/FireLordFireBallSearchTarget=Fire Lord - Fire Ball (SearchTarget)
 Effect/Name/FireballAttackCPFire=Fireball Attack
 Effect/Name/FireballAttackFireDMG=Fireball Attack
 Effect/Name/FireballAttackImpactDMG=Fireball Attack
@@ -3250,6 +3252,17 @@ Effect/Name/HordeLordBroodlingCarrierCUSet=Horde Lord - Broodling Carrier (CUSet
 Effect/Name/HorrorCUIllusion=Horror
 Effect/Name/HorrorIllusion=Horror
 Effect/Name/HorrorInit=Horror
+Effect/Name/HorrorLordHorrificAB=Horror Lord - Horrific (AB)
+Effect/Name/HorrorLordHorrificCloudsAB=Horror Lord - Horrific Clouds (AB)
+Effect/Name/HorrorLordHorrificCloudsCP=Horror Lord - Horrific Clouds (CP)
+Effect/Name/HorrorLordHorrificCloudsInit=Horror Lord - Horrific Clouds (Init)
+Effect/Name/HorrorLordHorrificCloudsSA=Horror Lord - Horrific Clouds (SA)
+Effect/Name/HorrorLordHorrificSet=Horror Lord - Horrific (Set)
+Effect/Name/HorrorLordHorrorCP=Horror Lord - Horror (CP)
+Effect/Name/HorrorLordHorrorData=Horror Lord - Horror (Data)
+Effect/Name/HorrorLordHorrorOffset=Horror Lord - Horror (Offset)
+Effect/Name/HorrorLordHorrorRand=Horror Lord - Horror (Rand)
+Effect/Name/HorrorLordHorrorRetreat=Horror Lord - Horror (Retreat)
 Effect/Name/HorrorMarineAngle=Horror Marine
 Effect/Name/HorrorMarineCU=Horror Marine
 Effect/Name/HorrorMarineCUSet=Horror Marine
@@ -4475,9 +4488,13 @@ Effect/Name/SetHealth1Source=Set Health 1 Source
 Effect/Name/ShadowEnergyChargeDummy=Shadow Energy Charge Dummy
 Effect/Name/ShadowHeroPenumbraAB=Shadow Hero - Penumbra (AB)
 Effect/Name/ShadowHeroPenumbraSA=Shadow Hero - Penumbra (SA)
+Effect/Name/ShadowLordLurkerAB=Shadow Lord - Lurker (AB)
+Effect/Name/ShadowLordLurkerSet=Shadow Lord - Lurker (Set)
+Effect/Name/ShadowLordShadowSpines=Shadow Lord - Shadow Spines (Init)
+Effect/Name/ShadowLordShadowSpinesRetreat=Shadow Lord - Shadow Spines (Retreat)
 Effect/Name/ShadowSpinesDMG=Shadow Spines
-Effect/Name/ShadowSpinesInitOffset=Shadow Spines
 Effect/Name/ShadowSpinesLM=Shadow Spines
+Effect/Name/ShadowSpinesOffset=Shadow Spines
 Effect/Name/ShadowSpinesOffsetSA=Shadow Spines
 Effect/Name/ShadowSpinesSA=Shadow Spines
 Effect/Name/ShadowcrashImpact=ShadowcrashImpact
@@ -5178,9 +5195,8 @@ Param/Value/0E21D8E9=
 Param/Value/0E435F26=Recharge
 Param/Value/0E6B54DC=Preheat
 Param/Value/0E92446A=Increase evasion chance by 10/20/30%
-Param/Value/0EB2C9E0=Auto
+Param/Value/0EB2C9E0=
 Param/Value/0EB60932=We discovered 2 Ultralisk brothers.<n/>If you kill them we will be able to study their claws to increase the strength of our troops.<n/>Beware of the rage of the 2nd Ultralisk after killing one ... 
-Param/Value/0EB825DC=<c val="FFFF80">Upgrades are being spent automatically</c>
 Param/Value/0ED93643=Gain a 10/20/30% chance for a non heroic enemy unit to be cut in half when damaged by Eviscerate. Enemies that are cut in half will split into two units of the same type and have greatly reduced stats.<n/><n/>Deal 15/30/45% extra damage to units that cannot be cut in half
 Param/Value/0F12ED6A=Priorities
 Param/Value/0F1FB79D=A master of the skies who can race across the battlefield with unequaled speed and agility
@@ -5211,6 +5227,7 @@ Param/Value/112B327F=Earth
 Param/Value/11342A36=NYI
 Param/Value/1160956A=Increases the radius of the Altered Time effect by 0/25/50/75%
 Param/Value/1176EA72=Cauterize
+Param/Value/118CBB8F=Auto
 Param/Value/11A8BADC=Reduce the Shield cost of Water Blast by 10/20/30
 Param/Value/11C2CF1C=ThorV3 dismantled in less than 180s
 Param/Value/11E57ACD=You gain 0/0.125/0.25 Energy for every point of Dark Energy you generate
@@ -5563,7 +5580,7 @@ Param/Value/38CB99CF=A Serpent Lord has spawned.
 Param/Value/38E4C064=Guardian
 Param/Value/38F113EF=Further increase the damage multiplier of Supercharge by an additive 0.5/1% per charge
 Param/Value/39149838=Antenna
-Param/Value/39154C9F=Targets fade quite a bit faster with 75% increased damage
+Param/Value/39154C9F=Targets will fade 10% faster with 50% increased total damage
 Param/Value/39198FB5=Scout escorted<n/>Reward: 1 Talentpoint
 Param/Value/393A71C0=Increase the size of the Tornado by 20/40/60%
 Param/Value/3947C1F0=Quicken
@@ -5625,6 +5642,7 @@ Param/Value/40E3918E=Supplement
 Param/Value/40E5C974=Complete an assault stage in Challenge mode in under 3 minutes <n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
 Param/Value/411A5505=A Death Lord has spawned.
 Param/Value/417A5305=Shadow Feast
+Param/Value/418B7EA7=Manual
 Param/Value/41A55A8B=Warning
 Param/Value/41AFAF49=Gale
 Param/Value/41CAD975=Complete every assault stage in less than 5 minutes in challenge mode<n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
@@ -5924,6 +5942,7 @@ Param/Value/6409B4BD=Boss down
 Param/Value/643186AC=Shadowfury
 Param/Value/643A33C0=Increase base Health Shield and Energy regeneration by 3/6
 Param/Value/648FEC2F=Gives Boulders a 6/12/18% chance to flatten enemies it hits. Flattened enemies take 50% more damage and lose 5/10/15 armor for 5 seconds
+Param/Value/64D49D99=Spend upgrade points manually
 Param/Value/650D534A=Quest complete
 Param/Value/651B7550=Armageddon
 Param/Value/65302BE0=Releasing an ability with Fire gives 10% more damage + 5% per Scorch talent learned for 10 seconds.<n/><n/>Releasing an ability with Wind will periodically shock enemies up to 8 times in a range of 6 + 3 per Sky talent learned.<n/><n/>Releasing an ability with Earth will cause a meteor shower at the target location lasting for 2 seconds + 2 per Endure talent learned.<n/><n/>Releasing an ability with Water will apply Refresh to self and all allied units in a range of 6.<n/><n/>(These bonuses only apply if an Elemental stack was actually added)
@@ -6021,7 +6040,7 @@ Param/Value/7020FE5F=Evolution averted +1 upgrade
 Param/Value/70328626= - destroy it.
 Param/Value/705766A1=Transmission
 Param/Value/7060D0E1=Sever
-Param/Value/70BDB199=spend all upgrade points automatically from now on
+Param/Value/70BDB199=
 Param/Value/70DDDAF5=The Zerg have estastablished a Nydus Worm exit on the hill to the north. Reaching it wont be easy though because they set up some pretty damn near unkillable defenses but you might just be able to avoid their attacks and run through.
 Param/Value/71450B81=Unit Energy Regeneration
 Param/Value/7155BE54=Increase the attack range of your allies pylon overcharge ability by 1 per point
@@ -6194,7 +6213,7 @@ Param/Value/82DC83EE=Beam
 Param/Value/82F84D04=Defeat the Odin<n/>On <c val="FF0000">Legendary</c>,<c val="FF8000">Insane</c>,<c val="FFFF00">Hard</c>,<c val="00FF00">Normal</c>,<c val="0000FF">Easy</c>.
 Param/Value/82FFD9B4= has despawned.
 Param/Value/832802A9=Torrasque Rage
-Param/Value/834BA8F4=All Rocket Salvo rockets that have reached the end of their flight path will redirect towards your Targeting Zone (if active) and bypass its targeting cooldown<n/><n/>Primary rockets will count towards number of missiles fired when calculating "Nuke" damage and area (regardless of reaching the end of their flight path)
+Param/Value/834BA8F4=All rockets that have reached the end of their flight path will redirect towards your Targeting Zone (if active) and bypass its targeting cooldown<n/><n/>Primary Rocket Salvo rockets will count towards number of missiles fired when calculating "Nuke" damage and area (regardless of reaching the end of their flight path)
 Param/Value/834DDDB6=New Quest: 
 Param/Value/83621CA7=Elemental
 Param/Value/83885E08=Reduces the cost of Fire Infusion by 0/10
@@ -7020,7 +7039,7 @@ Param/Value/E271F43E=Reload
 Param/Value/E27D782B=Scout escorted<n/>Reward: 1 Talentpoint
 Param/Value/E2F8110C=Reduces the energy cost of Decoy by 40%.
 Param/Value/E31D6DFB=Increase Explosion damage by 33/66%
-Param/Value/E32B606B=Targets hit with Altered Timeline will live and fade 0/20/40% faster.
+Param/Value/E32B606B=Targets hit with Altered Timeline will fade 0/20/40% faster, with the same total damage
 Param/Value/E33C41C2=
 Param/Value/E354AB9E=Cruise
 Param/Value/E375D6AE=Den destroyed - good job!<n/>Reward: +1 Zealot armor
@@ -7028,6 +7047,7 @@ Param/Value/E377150F=Warning
 Param/Value/E3A7581E=Upgrades:
 Param/Value/E3ADAB4D=Desolation
 Param/Value/E3C9CBBA=Everytime you gain a Multiphase Shield charge you also gain 0/10/20 Shield & Life.
+Param/Value/E407C257= has set the upgrade selection to manual.
 Param/Value/E4084452=Probe Cannon projectiles have a 15/30% chance to douse enemies.<n/><n/>Additionally, any unit or structure hosting a Probe Cannon gains a 50/100% chance to create a Gas Explosion when they die. (excluding the healing station)
 Param/Value/E40C884A=Increase the travel distance of Hurricane by 3/6
 Param/Value/E412BFC6=Warning
@@ -7170,7 +7190,7 @@ Param/Value/F2BEC8D4=
 Param/Value/F2FAB2E8=<n/><n/>
 Param/Value/F309EDE6=Corruption
 Param/Value/F33BEA3B=Casting Muscle Poison grants 1 stack of Poison Cloud.
-Param/Value/F3423517=Mutation damage is equal to 50/59/68/75% of the linked damage.
+Param/Value/F3423517=Mutation damage is equal to 50/58/67/75% of the linked damage.
 Param/Value/F35A1873=<n/>Already completed hardcore with: 
 Param/Value/F36B900A=0
 Param/Value/F3767DC8=Speed
@@ -7215,6 +7235,7 @@ Param/Value/F98AF4ED=Enemies hit by Attrition Orbs will take 1/2 extra damage fr
 Param/Value/F9A2ACFD= has despawned.
 Param/Value/F9B53E09=Warning
 Param/Value/FA0647F4=Increase the radius of Crush and Lift by 25/50%
+Param/Value/FA18DBEB=Spend upgrade points automatically
 Param/Value/FA488F7B=Handle<n/>write -handle or -h or playerid:<n/>displays your player handle<n/><n/>clear<n/>write -c or -clear<n/>toggles display of boss announcements (reduces transmission spam)
 Param/Value/FA694E31=<s val="DifficultyEasy">
 Param/Value/FA69C16A=Just northeast of your location we lost com with one of our scouts, we think he might have useful information - try to find him and escort him back to or mainbase.
@@ -7271,6 +7292,7 @@ Param/Value/FFE29741=Boss despawned
 Param/Value/FFEC81D3=Warning
 Param/Value/FFF15752=Win with <c val="FF0000">20</c>,<c val="FF8000">16</c>,<c val="FFFF00">12</c>,<c val="00FF00">8</c>,<c val="0000FF">4</c> different heroes on difficulty hard or higher.
 PoisonCloudChargeText=<d ref="$BehaviorStackCount:PoisonHeroPoisonCloud$"/>
+PowerPlating/ChargeText=<s validator="WarpHeroHasGenerators" val="BInvisible"><d ref="$BehaviorStackCount:PowerPlatingarmorbonus$+$BehaviorStackCount:PowerPlatingenergybonus$"/></s>
 Renew/ChargeText=<d ref="$BehaviorStackCount:RenewComboCount$"/>
 RequirementNode/Tooltip/CountBehaviorGatewayHeroEquipDeflectorDroneQueuedOrBetterAtUnit500177299=Drone must be active
 RequirementNode/Tooltip/CountBehaviorGatewayHeroEquipHealerDroneQueuedOrBetterAtUnit500177299=Drone must be active

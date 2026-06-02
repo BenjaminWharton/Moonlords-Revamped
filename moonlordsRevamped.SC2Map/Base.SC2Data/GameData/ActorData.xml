@@ -36,6 +36,10 @@
     </CActorSound>
     <CActorRange id="GatewayHeroExplosiveVirusRange" parent="RangeAbil" abil="ExplosiveVirus"/>
     <CActorRange id="GatewayHeroReinforceRange" parent="RangeAbil" abil="Reinforce"/>
+    <CActorModel id="HorrorLordHorrificClouds" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.HorrorLordHorrificCloudsCP.Start" Send="Create"/>
+        <On Terms="Effect.HorrorLordHorrificCloudsCP.Stop; FromEffectTreeDescendant" Send="Destroy"/>
+    </CActorModel>
     <CActorSound id="LightningHeroLightningMissile_Launch" parent="SoundOneShot">
         <On Terms="Effect.LightningHeroLightningLM.Start; At Caster" Send="Create"/>
     </CActorSound>
@@ -2010,7 +2014,27 @@
         <Sound value="Vulture_SpiderMinePlace"/>
     </CActorSound>
     <CActorRange id="TimeHeroAlterTimelineRange" parent="RangeAbil" abil="TimeHeroAlterTimeline"/>
+    <CActorAction id="TimeHeroMutationTimewaveAttack" parent="GenericAttack" effectAttack="TimewaveDamageMutation">
+        <On index="0" Terms="Effect.##effectAttack##.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <On index="5" Terms="Effect.##effectAttack##.Start; At Caster" Send="Create"/>
+        <Beam value="TimeHeroMutationDamageBeam"/>
+    </CActorAction>
+    <CActorBeamSimple id="TimeHeroMutationDamageBeam" parent="BeamSimpleAnimationStyleOneShot">
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,255"/>
+        <Model value="TimeHeroMutationDamage"/>
+    </CActorBeamSimple>
     <CActorRange id="TimeHeroMutationRange" parent="RangeAbil" abil="TimeHeroMutation"/>
+    <CActorAction id="TimeHeroMutationAlteredTimelineAttack" parent="GenericAttack" effectAttack="AlterTimeMutationDmg">
+        <On index="0" Terms="Effect.##effectAttack##.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <On index="5" Terms="Effect.##effectAttack##.Start; At Caster" Send="Create"/>
+        <LaunchAssets Model="TimeHeroMutationTimewaveAttackLaunch" Sound="TimeHeroMutationTimewaveAttackLaunch"/>
+        <Beam value="TimeHeroMutationDamageBeam"/>
+        <Missile value="TimeHeroMutationTimewaveAttackMissile"/>
+        <ImpactMap index="None" Model="TimeHeroMutationTimewaveAttackImpact" Sound="TimeHeroMutationTimewaveAttackImpact" ModelReaction="TimeHeroMutationTimewaveAttackImpactReaction"/>
+        <ImpactMap index="Shield" Sound="TimeHeroMutationTimewaveAttackImpactShield" ModelReaction="TimeHeroMutationTimewaveAttackImpactReactionShield"/>
+        <DamageMap index="None" Model="TimeHeroMutationTimewaveAttackDamage" Sound="TimeHeroMutationTimewaveAttackDamage" ModelReaction="TimeHeroMutationTimewaveAttackDamageReaction"/>
+        <DamageMap index="Shield" Sound="TimeHeroMutationTimewaveAttackDamageShield" ModelReaction="TimeHeroMutationTimewaveAttackDamageReactionShield"/>
+    </CActorAction>
     <CActorRange id="TwilightHeroNightstormRange" parent="RangeAbil" abil="TwilightHeroNightstorm"/>
     <CActorRange id="TwiligtHeroWarpoutRange" parent="RangeAbil" abil="TwilightHeroWarpout"/>
     <CActorUnit id="WarpGate">
@@ -6440,7 +6464,7 @@
         <On index="74" removed="1"/>
         <On index="75" removed="1"/>
         <On index="76" removed="1"/>
-        <Model value="HorrorIllusion"/>
+        <Model value="HorrorLord"/>
         <DeathArray index="Normal" ModelLink=""/>
         <HighlightTooltip value="Unit/Name/HorrorIllusion2"/>
     </CActorUnit>
@@ -6747,8 +6771,6 @@
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Lurker_Land"/>
         <On Terms="WeaponStart.*.AttackStart" Send="AnimPlay Attack Attack DontResetOnUnhide"/>
         <On Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
-        <Model value="Invisible"/>
-        <Scale value="3.000000"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <DeathArray index="Normal" ModelLink="HorrorLordDeath" SoundLink="Changeling_Death"/>
         <DeathArray index="Disintegrate" ModelLink="LurkerMPDeathAcid" SoundLink="Uni_DeathFXAcid"/>
@@ -6778,8 +6800,6 @@
         </DeathCustoms>
         <PortraitModel value="ChangelingPortrait"/>
         <WalkAnimMoveSpeed value="3"/>
-        <BarOffset value="70"/>
-        <BarWidth value="80"/>
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-zerg-changeling.dds"/>
         </GroupIcon>
@@ -6797,6 +6817,17 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-zerg-changeling.dds"/>
         </Wireframe>
+        <VisibilityShape Shape="Circle10"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorModel id="HorrorMarineImpact" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.HorrorMarineDMG.Start" Send="Create"/>
@@ -9890,7 +9921,7 @@
         <On Terms="AbilMorph.*.Finish; MorphTo LurkerMP; MorphFrom LurkerMPBurrowed" Send="AnimClear Burrow"/>
         <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Birth" Send="AnimClear Birth"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Lurker_Land"/>
-        <On Terms="WeaponStart.*.AttackStart" Send="AnimPlay Attack Attack DontResetOnUnhide"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimPlay Attack Fidget DontResetOnUnhide -1.000000 -1.000000 2.000000 AsTimeScale"/>
         <On Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <DeathArray index="Normal" ModelLink="ShadowLordDeath" SoundLink="Lurker_Explode"/>
@@ -9921,8 +9952,6 @@
         </DeathCustoms>
         <PortraitModel value="LurkerMPPortrait"/>
         <WalkAnimMoveSpeed value="3"/>
-        <BarOffset value="70"/>
-        <BarWidth value="80"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-Zerg-Lurker.dds"/>
         </GroupIcon>
@@ -9940,7 +9969,17 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Zerg-Lurker.dds"/>
         </Wireframe>
-        <Model value="Invisible"/>
+        <VisibilityShape Shape="Circle10"/>
+        <CustomUnitStatusFrame value="CustomBossStatusFrame/StatusFrameBossTemplate"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="MutationLord" parent="InfestedAbomination" unitName="MutationLord">
         <On index="0" Terms="UnitBirth.MutationLord"/>
@@ -12837,9 +12876,9 @@
         <HostSiteOps Ops="SOpShadow"/>
         <Scale value="1.800000"/>
     </CActorModel>
-    <CActorModel id="TimewaveInstability2" parent="ModelAnimationStyleContinuous">
+    <CActorModel id="TimeHeroTimewaveInstability" parent="ModelAnimationStyleContinuous">
         <On Terms="Effect.TimewaveInstability.Start" Send="Create"/>
-        <On Terms="Effect.TimewaveInstability.Stop" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.TimewaveInstability.Stop; FromEffectTreeDescendant" Send="AnimBracketStop BSD"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,80,255"/>
         <HostSiteOps Ops="SOpShadow"/>
         <Model value="ProtossBuildingBirth"/>

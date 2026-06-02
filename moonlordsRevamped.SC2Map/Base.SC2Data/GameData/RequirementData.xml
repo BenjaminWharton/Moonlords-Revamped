@@ -527,6 +527,10 @@
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Use" Link="EqCountUpgradeWarpHeroDurableCompleteOnly1"/>
     </CRequirement>
+    <CRequirement id="WarpHeroHasGenerators">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeWarpHeroGeneratorsCompleteOnly"/>
+    </CRequirement>
     <CRequirement id="WarpHeroMultitaskingGTE1">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Use" Link="GTECountUpgradeWarpHeroMultitaskCompleteOnly1"/>

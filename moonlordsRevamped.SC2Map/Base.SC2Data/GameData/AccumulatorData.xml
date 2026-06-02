@@ -827,6 +827,10 @@
     <CAccumulatorConstant id="Subtract1">
         <Amount value="-1"/>
     </CAccumulatorConstant>
+    <CAccumulatorConstant id="TimeHeroMutationDamageMultiplier">
+        <ApplicationRule value="Multiply"/>
+        <Amount value="0.501"/>
+    </CAccumulatorConstant>
     <CAccumulatorConstant id="TimeHeroTimewaveDelayConst">
         <Amount value="2.75"/>
     </CAccumulatorConstant>

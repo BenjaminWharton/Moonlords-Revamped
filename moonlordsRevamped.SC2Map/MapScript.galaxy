@@ -177,6 +177,7 @@ int gv_upgradesLabel;
 int gv_upgradesAuto;
 int gv_upgradesAvailable;
 int gv_upgradesTotalLimit;
+bool gv_upgradesAutoOption;
 int gv_optionsDialog;
 int gv_optionsExitButton;
 int gv_optionsPowerSelectCheckbox;
@@ -412,6 +413,7 @@ text gf_GetUpgradeName (text lp_name, string lp_upgrade);
 void gf_CreateUpgradeDialog ();
 void gf_CreateUpgrade (int lp_row, int lp_column, text lp_name, text lp_tooltip, string lp_upgrade);
 void gf_UpgradePressed (int lp_row, int lp_column);
+void gf_UpdateAutoUpgradesButton ();
 void gf_laForge (unit lp_forge);
 bool gf_isMod (string lp_playerhandle);
 void gf_CreateOptionsDialog ();
@@ -628,7 +630,7 @@ trigger gt_AchievementRestless;
 trigger gt_UpgradeDialogOpen;
 trigger gt_UpgradeDialogButtonPressed;
 trigger gt_UpgradeDialogButtonPressedAuto;
-trigger gt_UpgradesDiffEasyAuto;
+trigger gt_UpgradesAuto;
 trigger gt_talenttest;
 trigger gt_rewardtest;
 trigger gt_killtest;
@@ -5745,7 +5747,7 @@ void gf_CreateUpgradeDialog () {
     gf_CreateUpgrade(4, 1, StringExternal("Param/Value/F169B837"), StringExternal("Param/Value/499F6306"), "UnitEnergyMaximum");
     gf_CreateUpgrade(5, 1, StringExternal("Param/Value/350D8033"), StringExternal("Param/Value/259292C3"), "UnitShieldRegeneration");
     gf_CreateUpgrade(6, 1, StringExternal("Param/Value/98D13FBE"), StringExternal("Param/Value/B4F111C8"), "UnitHealthRegeneration");
-    libNtve_gf_CreateDialogItemButton(gv_upgradeDialog, 150, 50, c_anchorTopLeft, 25, 25, StringExternal("Param/Value/70BDB199"), StringExternal("Param/Value/0EB2C9E0"), "");
+    libNtve_gf_CreateDialogItemButton(gv_upgradeDialog, 150, 50, c_anchorTopLeft, 25, 25, StringToText(""), StringToText(""), "");
     libNtve_gf_SetDialogItemImageType(DialogControlLastCreated(), c_triggerImageTypeEndCap, PlayerGroupAll());
     libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_battlenet_glue_bluedropdownbuttonsmall_normalpressed.dds", PlayerGroupAll());
     libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_battlenet_glue_bluedropdownbuttonsmall_normaloverpressedover.dds", PlayerGroupAll());
@@ -5755,10 +5757,14 @@ void gf_CreateUpgradeDialog () {
     libNtve_gf_SetDialogItemImageType(libNtve_gf_ScreenButton(gv_sB_UPGRADES), c_triggerImageTypeEndCap, PlayerGroupAll());
     libNtve_gf_SetDialogItemImage(libNtve_gf_ScreenButton(gv_sB_UPGRADES), "Assets\\Textures\\ui_battlenet_glue_bluedropdownbuttonsmall_normalpressed.dds", PlayerGroupAll());
     libNtve_gf_SetDialogItemImage2(libNtve_gf_ScreenButton(gv_sB_UPGRADES), "Assets\\Textures\\ui_battlenet_glue_bluedropdownbuttonsmall_normaloverpressedover.dds", PlayerGroupAll());
+    TriggerExecute(gt_UpgradesAuto, true, false);
     if ((gv_difficulty < 2.0)) {
-        TriggerExecute(gt_UpgradesDiffEasyAuto, true, false);
+        gv_upgradesAutoOption = true;
     }
-
+    else {
+        gv_upgradesAutoOption = false;
+    }
+    gf_UpdateAutoUpgradesButton();
 }
 
 void gf_CreateUpgrade (int lp_row, int lp_column, text lp_name, text lp_tooltip, string lp_upgrade) {
@@ -5809,6 +5815,23 @@ void gf_UpgradePressed (int lp_row, int lp_column) {
     }
     libNtve_gf_SetDialogItemText(gv_upgradesLabel, gf_GetUpgradePointsText(), PlayerGroupAll());
     libNtve_gf_SetDialogItemText(gv_resourceLabelUpgrades, IntToText(gv_upgradesAvailable), PlayerGroupAll());
+    if ((gv_upgradesTotalLimit >= 110) && (gv_upgradesAvailable == 0)) {
+        DialogControlSetEnabled(gv_upgradesAuto, PlayerGroupAll(), false);
+    }
+
+}
+
+void gf_UpdateAutoUpgradesButton () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((gv_upgradesAutoOption == false)) {
+        libNtve_gf_SetDialogItemText(gv_upgradesAuto, StringExternal("Param/Value/418B7EA7"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemTooltip(gv_upgradesAuto, StringExternal("Param/Value/64D49D99"), PlayerGroupAll());
+    }
+    else {
+        libNtve_gf_SetDialogItemText(gv_upgradesAuto, StringExternal("Param/Value/118CBB8F"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemTooltip(gv_upgradesAuto, StringExternal("Param/Value/FA18DBEB"), PlayerGroupAll());
+    }
 }
 
 trigger auto_gf_laForge_Trigger = null;
@@ -12849,6 +12872,9 @@ void gf_BossStart (point lp_point) {
         lv_random = RandomInt(1, 24);
     }
 
+    lv_random = 2;
+    lv_random = 37;
+    lv_random = 32;
     if ((gv_stage == 11)) {
         libNtve_gf_ShowHideBossBar(false, 1);
         gv_bossActive = true;
@@ -13706,10 +13732,6 @@ bool auto_gf_DoomLord9_TriggerFunc (bool testConds, bool runActions) {
     int lv_initstage;
 
     // Automatic Variable Declarations
-    const int auto3C3BC8CD_n = 2;
-    int auto3C3BC8CD_i;
-    const int autoCBD52E23_n = 3;
-    int autoCBD52E23_i;
     const int auto036EB548_ae = gv_pLAYERCOUNT;
     int auto036EB548_var;
 
@@ -13741,26 +13763,28 @@ bool auto_gf_DoomLord9_TriggerFunc (bool testConds, bool runActions) {
 
     }
 
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingBoss", Point(0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
     lv_ping = PingLastCreated();
+    PingSetUnit(lv_ping, lv_boss);
     while ((libNtve_gf_UnitIsHidden(lv_boss) == false) && (UnitIsAlive(lv_boss) == true)) {
         if ((lv_initstage > (gv_stage + 1))) {
             libNtve_gf_ShowHideUnit(lv_boss, false);
         }
 
-        UnitIssueOrder(lv_boss, OrderTargetingPoint(AbilityCommand("move", 0), RegionRandomPoint(RegionCircle(UnitGetPosition(lv_boss), 4.0))), c_orderQueueReplace);
-        for (auto3C3BC8CD_i = 1; auto3C3BC8CD_i <= auto3C3BC8CD_n; auto3C3BC8CD_i += 1) {
-            if ((libNtve_gf_UnitIsHidden(lv_boss) == false) && (UnitIsAlive(lv_boss) == true)) {
-                Wait(1, c_timeGame);
-            }
-
+        if ((UnitBehaviorCount(lv_boss, "HorrorLordFright") > 0)) {
+            PingSetVisible(lv_ping, false);
         }
-        UnitIssueOrder(lv_boss, OrderTargetingPoint(AbilityCommand("attack", 0), gv_protossBase), c_orderQueueReplace);
-        for (autoCBD52E23_i = 1; autoCBD52E23_i <= autoCBD52E23_n; autoCBD52E23_i += 1) {
-            if ((libNtve_gf_UnitIsHidden(lv_boss) == false) && (UnitIsAlive(lv_boss) == true)) {
-                Wait(1, c_timeGame);
-            }
-
+        else {
+            PingSetVisible(lv_ping, true);
         }
+        if ((UnitBehaviorCount(lv_boss, "HorrorLordRetreat") > 0)) {
+            UnitBehaviorRemove(lv_boss, "HorrorLordRetreat", 1);
+            UnitIssueOrder(lv_boss, OrderTargetingPoint(AbilityCommand("move", 0), RegionRandomPoint(RegionCircle(lp_point, 4.0))), c_orderQueueReplace);
+        }
+        else {
+            UnitIssueOrder(lv_boss, OrderTargetingPoint(AbilityCommand("attack", 0), gv_protossBase), c_orderQueueReplace);
+        }
+        Wait(1, c_timeGame);
     }
     if ((gv_mode == 0)) {
         if ((gv_currentBoss == lv_boss)) {
@@ -14437,10 +14461,6 @@ bool auto_gf_DoomLord7_TriggerFunc (bool testConds, bool runActions) {
     int lv_initstage;
 
     // Automatic Variable Declarations
-    const int autoBAD1F190_n = 2;
-    int autoBAD1F190_i;
-    const int autoC862DA77_n = 3;
-    int autoC862DA77_i;
     const int auto899AF9D1_ae = gv_pLAYERCOUNT;
     int auto899AF9D1_var;
 
@@ -14472,26 +14492,28 @@ bool auto_gf_DoomLord7_TriggerFunc (bool testConds, bool runActions) {
 
     }
 
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingBoss", Point(0.0, 0.0), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 9000.0, 270.0);
     lv_ping = PingLastCreated();
+    PingSetUnit(lv_ping, lv_boss);
     while ((libNtve_gf_UnitIsHidden(lv_boss) == false) && (UnitIsAlive(lv_boss) == true)) {
         if ((lv_initstage > (gv_stage + 1))) {
             libNtve_gf_ShowHideUnit(lv_boss, false);
         }
 
-        UnitIssueOrder(lv_boss, OrderTargetingPoint(AbilityCommand("move", 0), RegionRandomPoint(RegionCircle(UnitGetPosition(lv_boss), 4.0))), c_orderQueueReplace);
-        for (autoBAD1F190_i = 1; autoBAD1F190_i <= autoBAD1F190_n; autoBAD1F190_i += 1) {
-            if ((libNtve_gf_UnitIsHidden(lv_boss) == false) && (UnitIsAlive(lv_boss) == true)) {
-                Wait(1, c_timeGame);
-            }
-
+        if ((UnitBehaviorCount(lv_boss, "ShadowLordUnseen") > 0)) {
+            PingSetVisible(lv_ping, false);
         }
-        UnitIssueOrder(lv_boss, OrderTargetingPoint(AbilityCommand("attack", 0), gv_protossBase), c_orderQueueReplace);
-        for (autoC862DA77_i = 1; autoC862DA77_i <= autoC862DA77_n; autoC862DA77_i += 1) {
-            if ((libNtve_gf_UnitIsHidden(lv_boss) == false) && (UnitIsAlive(lv_boss) == true)) {
-                Wait(1, c_timeGame);
-            }
-
+        else {
+            PingSetVisible(lv_ping, true);
         }
+        if ((UnitBehaviorCount(lv_boss, "ShadowLordRetreat") > 0)) {
+            UnitBehaviorRemove(lv_boss, "ShadowLordRetreat", 1);
+            UnitIssueOrder(lv_boss, OrderTargetingPoint(AbilityCommand("move", 0), RegionRandomPoint(RegionCircle(lp_point, 4.0))), c_orderQueueReplace);
+        }
+        else {
+            UnitIssueOrder(lv_boss, OrderTargetingPoint(AbilityCommand("attack", 0), gv_protossBase), c_orderQueueReplace);
+        }
+        Wait(1.0, c_timeGame);
     }
     if ((gv_mode == 0)) {
         if ((gv_currentBoss == lv_boss)) {
@@ -18015,8 +18037,21 @@ bool gt_UpgradeDialogButtonPressedAuto_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/4C67EE7F")));
-    TriggerExecute(gt_UpgradesDiffEasyAuto, true, false);
+    DialogControlSetEnabled(gv_upgradesAuto, PlayerGroupAll(), false);
+    if ((gv_upgradesAutoOption == false)) {
+        gv_upgradesAutoOption = true;
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/4C67EE7F")));
+    }
+    else {
+        gv_upgradesAutoOption = false;
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/E407C257")));
+    }
+    gf_UpdateAutoUpgradesButton();
+    Wait(2.0, c_timeGame);
+    if ((!(((gv_upgradesTotalLimit >= 110) && (gv_upgradesAvailable == 0))))) {
+        DialogControlSetEnabled(gv_upgradesAuto, PlayerGroupAll(), true);
+    }
+
     return true;
 }
 
@@ -18027,11 +18062,14 @@ void gt_UpgradeDialogButtonPressedAuto_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: UpgradesDiffEasyAuto
+// Trigger: UpgradesAuto
 //--------------------------------------------------------------------------------------------------
-bool gt_UpgradesDiffEasyAuto_Func (bool testConds, bool runActions) {
+bool gt_UpgradesAuto_Func (bool testConds, bool runActions) {
     // Variable Declarations
     bool lv_break;
+    int lv_column;
+    int lv_row;
+    string lv_upgrade;
 
     // Automatic Variable Declarations
     // Variable Initialization
@@ -18041,89 +18079,25 @@ bool gt_UpgradesDiffEasyAuto_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    DialogSetVisible(gv_upgradeDialog, PlayerGroupAll(), false);
-    DialogControlSetEnabled(libNtve_gf_ScreenButton(gv_sB_UPGRADES), PlayerGroupAll(), false);
-    libNtve_gf_SetDialogItemTooltip(libNtve_gf_ScreenButton(gv_sB_UPGRADES), StringExternal("Param/Value/0EB825DC"), PlayerGroupAll());
     while ((lv_break == false)) {
-        if ((gv_upgradesAvailable > 0)) {
-            if ((TechTreeUpgradeCount(5, "StructureAttackSpeed", c_techCountQueuedOrBetter) < 10)) {
-                TechTreeUpgradeAddLevel(5, "StructureAttackSpeed", 1);
+        if ((gv_upgradesAvailable > 0) && (gv_upgradesAutoOption == true)) {
+            lv_upgrade = gv_upgrades[lv_row][lv_column].lv_upgrade;
+            if ((TechTreeUpgradeCount(gv_aLLIEDPLAYER, lv_upgrade, c_techCountCompleteOnly) < CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, lv_upgrade, "MaxLevel", gv_aLLIEDPLAYER))) {
+                gf_UpgradePressed(lv_row, lv_column);
+                Wait(0.25, c_timeGame);
             }
             else {
-                if ((TechTreeUpgradeCount(5, "StructureShieldArmor", c_techCountQueuedOrBetter) < 10)) {
-                    TechTreeUpgradeAddLevel(5, "StructureShieldArmor", 1);
+                lv_row += 1;
+                if ((lv_row > 6)) {
+                    lv_row = 0;
+                    lv_column += 1;
                 }
-                else {
-                    if ((TechTreeUpgradeCount(5, "StructureArmor", c_techCountQueuedOrBetter) < 10)) {
-                        TechTreeUpgradeAddLevel(5, "StructureArmor", 1);
-                    }
-                    else {
-                        if ((TechTreeUpgradeCount(5, "StructureShieldRegeneration", c_techCountQueuedOrBetter) < 5)) {
-                            TechTreeUpgradeAddLevel(5, "StructureShieldRegeneration", 1);
-                        }
-                        else {
-                            if ((TechTreeUpgradeCount(5, "StructureHealthRegeneration", c_techCountQueuedOrBetter) < 5)) {
-                                TechTreeUpgradeAddLevel(5, "StructureHealthRegeneration", 1);
-                            }
-                            else {
-                                if ((TechTreeUpgradeCount(5, "OverchargeDuration", c_techCountQueuedOrBetter) < 10)) {
-                                    TechTreeUpgradeAddLevel(5, "OverchargeDuration", 1);
-                                }
-                                else {
-                                    if ((TechTreeUpgradeCount(5, "OverchargeRange", c_techCountQueuedOrBetter) < 5)) {
-                                        TechTreeUpgradeAddLevel(5, "OverchargeRange", 1);
-                                    }
-                                    else {
-                                        if ((TechTreeUpgradeCount(5, "UnitMovementSpeed", c_techCountQueuedOrBetter) < 10)) {
-                                            TechTreeUpgradeAddLevel(5, "UnitMovementSpeed", 1);
-                                        }
-                                        else {
-                                            if ((TechTreeUpgradeCount(5, "UnitAttackSpeed", c_techCountQueuedOrBetter) < 10)) {
-                                                TechTreeUpgradeAddLevel(5, "UnitAttackSpeed", 1);
-                                            }
-                                            else {
-                                                if ((TechTreeUpgradeCount(5, "UnitEnergyStartingAmount", c_techCountQueuedOrBetter) < 10)) {
-                                                    TechTreeUpgradeAddLevel(5, "UnitEnergyStartingAmount", 1);
-                                                }
-                                                else {
-                                                    if ((TechTreeUpgradeCount(5, "UnitEnergyRegeneration", c_techCountQueuedOrBetter) < 10)) {
-                                                        TechTreeUpgradeAddLevel(5, "UnitEnergyRegeneration", 1);
-                                                    }
-                                                    else {
-                                                        if ((TechTreeUpgradeCount(5, "UnitEnergyMaximum", c_techCountQueuedOrBetter) < 5)) {
-                                                            TechTreeUpgradeAddLevel(5, "UnitEnergyMaximum", 1);
-                                                        }
-                                                        else {
-                                                            if ((TechTreeUpgradeCount(5, "UnitShieldRegeneration", c_techCountQueuedOrBetter) < 5)) {
-                                                                TechTreeUpgradeAddLevel(5, "UnitShieldRegeneration", 1);
-                                                            }
-                                                            else {
-                                                                if ((TechTreeUpgradeCount(5, "UnitHealthRegeneration", c_techCountQueuedOrBetter) < 5)) {
-                                                                    TechTreeUpgradeAddLevel(5, "UnitHealthRegeneration", 1);
-                                                                    if ((TechTreeUpgradeCount(5, "UnitHealthRegeneration", c_techCountQueuedOrBetter) == 5)) {
-                                                                        lv_break = true;
-                                                                    }
 
-                                                                }
-                                                                else {
-                                                                    lv_break = true;
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                if ((lv_column > 1)) {
+                    break;
                 }
+
             }
-            gv_upgradesAvailable -= 1;
-            libNtve_gf_SetDialogItemText(gv_resourceLabelUpgrades, IntToText(gv_upgradesAvailable), PlayerGroupAll());
-            Wait(0.25, c_timeGame);
         }
         else {
             Wait(1.0, c_timeGame);
@@ -18133,8 +18107,8 @@ bool gt_UpgradesDiffEasyAuto_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void gt_UpgradesDiffEasyAuto_Init () {
-    gt_UpgradesDiffEasyAuto = TriggerCreate("gt_UpgradesDiffEasyAuto_Func");
+void gt_UpgradesAuto_Init () {
+    gt_UpgradesAuto = TriggerCreate("gt_UpgradesAuto_Func");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -22952,7 +22926,7 @@ void InitTriggers () {
     gt_UpgradeDialogOpen_Init();
     gt_UpgradeDialogButtonPressed_Init();
     gt_UpgradeDialogButtonPressedAuto_Init();
-    gt_UpgradesDiffEasyAuto_Init();
+    gt_UpgradesAuto_Init();
     gt_talenttest_Init();
     gt_rewardtest_Init();
     gt_killtest_Init();
