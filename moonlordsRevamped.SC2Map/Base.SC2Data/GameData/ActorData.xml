@@ -82,8 +82,21 @@
     <CActorRange id="LightningHeroThunderfuryRange" parent="RangeAbil" abil="LightningHeroThunderfury"/>
     <CActorSite id="LightningHeroWrathSite"/>
     <CActorRange id="NatureHeroToxicVaporRange" parent="RangeAbil" abil="NatureHeroToxicVapor"/>
+    <CActorSound id="ParticleHeroPlasmaTorpedo_Launch" parent="SoundOneShot">
+        <On Terms="Effect.ParticleHeroPlasmaTorpedo.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="ParticleHeroShockwave_Launch" parent="SoundOneShot">
+        <On Terms="Effect.ShockwaveLaunch.Start; At Caster" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="ParticleHeroShockwave_Deflect" parent="SoundOneShot">
+        <On Terms="Effect.ShockwaveProjectileSet.Start" Send="Create"/>
+    </CActorSound>
     <CActorRange id="ParticleHeroDematierializeRange" parent="RangeAbil" abil="Dematerialize"/>
     <CActorRange id="ParticleHeroOrbitalCannonRange" parent="RangeAbil" abil="ParticleHeroOrbitalCannon"/>
+    <CActorModel id="ParticleHeroShockwaveDeflect" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.ShockwaveProjectileSet.Start" Send="Create"/>
+        <HostSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
     <CActorRange id="PoisonHeroBlackDeathRange" parent="RangeAbil" abil="BlackDeath"/>
     <CActorSound id="PoisonHeroBlackDeath_Cast" parent="SoundOneShot">
         <On Terms="Effect.PoisonHeroBlackDeathCP.Start" Send="Create"/>
@@ -1067,6 +1080,12 @@
     </CActorMissile>
     <CActorRange id="ShadowHeroDoomRange" parent="RangeAbil" abil="Doom"/>
     <CActorRange id="ShadowHeroShadowplayRange" parent="RangeAbil" abil="ShadowHeroShadowplay"/>
+    <CActorSound id="ParticleHeroMultiphaseShield_Impact" parent="SoundOneShot">
+        <On Terms="Behavior.MultiphaseShieldHidden.DamageHandled" Send="Create"/>
+        <On Terms="Behavior.MultiphaseShieldHidden2.DamageHandled" Send="Create"/>
+        <On Terms="Behavior.MultiphaseShieldHidden3.DamageHandled" Send="Create"/>
+        <On Terms="Behavior.MultiphaseShieldHidden4.DamageHandled" Send="Create"/>
+    </CActorSound>
     <CActorModel id="ThorLightningBarrage" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.ThorLightningBarrageSA.Start" Send="Create"/>
         <On Terms="Effect.ThorThunderstepOrbsSA.Start" Send="Create"/>
@@ -1092,6 +1111,7 @@
         <On Terms="ActorCreation" Send="SetTintColor 255,255,0"/>
         <On Terms="ActorCreation" Send="SetOpacity 0.850000"/>
         <On Terms="ActorCreation" Send="Create ThorThunderOrbsMissileAddition"/>
+        <HostSiteOps Ops="SOpShadow SOpMoveUpByDot5"/>
     </CActorMissile>
     <CActorModel id="ThorAbsorptionShield" parent="ModelAddition">
         <Inherits index="BaseModelScale" value="0"/>
@@ -2015,8 +2035,6 @@
     </CActorSound>
     <CActorRange id="TimeHeroAlterTimelineRange" parent="RangeAbil" abil="TimeHeroAlterTimeline"/>
     <CActorAction id="TimeHeroMutationTimewaveAttack" parent="GenericAttack" effectAttack="TimewaveDamageMutation">
-        <On index="0" Terms="Effect.##effectAttack##.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
-        <On index="5" Terms="Effect.##effectAttack##.Start; At Caster" Send="Create"/>
         <Beam value="TimeHeroMutationDamageBeam"/>
     </CActorAction>
     <CActorBeamSimple id="TimeHeroMutationDamageBeam" parent="BeamSimpleAnimationStyleOneShot">
@@ -2025,8 +2043,6 @@
     </CActorBeamSimple>
     <CActorRange id="TimeHeroMutationRange" parent="RangeAbil" abil="TimeHeroMutation"/>
     <CActorAction id="TimeHeroMutationAlteredTimelineAttack" parent="GenericAttack" effectAttack="AlterTimeMutationDmg">
-        <On index="0" Terms="Effect.##effectAttack##.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
-        <On index="5" Terms="Effect.##effectAttack##.Start; At Caster" Send="Create"/>
         <LaunchAssets Model="TimeHeroMutationTimewaveAttackLaunch" Sound="TimeHeroMutationTimewaveAttackLaunch"/>
         <Beam value="TimeHeroMutationDamageBeam"/>
         <Missile value="TimeHeroMutationTimewaveAttackMissile"/>
@@ -13673,10 +13689,6 @@
         <StatusBarOn index="Custom" value="1"/>
         <VisibilityShape Shape="Circle10"/>
     </CActorUnit>
-    <CActorSound id="OrbitalCannonImpactSound2" parent="SoundOneShot">
-        <On Terms="Effect.OrbitalCannonSearch.Start" Send="Create"/>
-        <Sound value="HighTemplar_PsionicStormImpact"/>
-    </CActorSound>
     <CActorUnit id="FleshLord" parent="Infestor" unitName="FleshLord">
         <On index="0" Terms="UnitBirth.FleshLord"/>
         <On index="1" Terms="UnitBirth.FleshLord"/>
@@ -13776,9 +13788,8 @@
         <On Terms="Behavior.OrbitalCannonIgnite.Off" Send="Destroy"/>
         <Model value="FireMedium"/>
     </CActorModel>
-    <CActorSound id="OrbitalCannonImpactSound" parent="SoundOneShot">
+    <CActorSound id="ParticleHeroOrbitalCannon_Impact" parent="SoundOneShot">
         <On Terms="Effect.OrbitalCannonSearch.Start" Send="Create"/>
-        <Sound value="HighTemplar_PsionicStormImpact"/>
     </CActorSound>
     <CActorModel id="OrbitalCannon" parent="ModelAnimationStyleContinuous">
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
@@ -14181,32 +14192,19 @@
     <CActorSiteOpLocalOffset id="SOpWingedHorror">
         <LocalOffset value="0.000000,-0.300000,0.750000"/>
     </CActorSiteOpLocalOffset>
-    <CActorSound id="ShieldAbsorbImmortalSound">
-        <On Terms="Behavior.MultiphaseShieldHidden.DamageHandled" Send="Create"/>
-        <On Terms="Behavior.MultiphaseShieldHidden2.DamageHandled" Send="Create"/>
-        <On Terms="Behavior.MultiphaseShieldHidden3.DamageHandled" Send="Create"/>
-        <On Terms="Behavior.MultiphaseShieldHidden4.DamageHandled" Send="Create"/>
-    </CActorSound>
     <CActorSound id="ShieldAbsorbImmortalSound2" parent="SoundOneShot">
         <On Terms="Behavior.HardenedShield2.DamageHandled" Send="Create"/>
         <Sound value="Immortal_HardenedShieldImpact"/>
     </CActorSound>
-    <!--                                                                                         -->
-    <CActorModel id="ShieldAbsorbImmortalViz">
+    <CActorModel id="ParticleHeroMultiphaseShieldImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="AnimDone" Send="Destroy"/>
         <On Terms="Behavior.MultiphaseShieldHidden.DamageHandled" Send="Create"/>
         <On Terms="Behavior.MultiphaseShieldHidden2.DamageHandled" Send="Create"/>
         <On Terms="Behavior.MultiphaseShieldHidden3.DamageHandled" Send="Create"/>
         <On Terms="Behavior.MultiphaseShieldHidden4.DamageHandled" Send="Create"/>
         <On Terms="ActorCreation" Send="SetTintColor {255,255,0 2.000000}"/>
-    </CActorModel>
-    <CActorModel id="ShieldAbsorbImmortalViz2" parent="ModelAnimationStyleOneShot">
-        <Terms value="Cap 1"/>
-        <On Terms="Behavior.HardenedShield2.DamageHandled" Send="Create"/>
-        <On Terms="AnimDone" Send="Destroy"/>
         <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachCenter"/>
-        <Model value="ShieldAbsorbImmortalViz"/>
-        <Scale value="1.500000"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
     </CActorModel>
     <CActorMissile id="SporeCrawlerAttackMissile2" parent="GenericAttackMissile" unitName="BanelingThrowMissile">
         <Model value="Baneling"/>

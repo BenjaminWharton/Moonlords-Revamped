@@ -20,6 +20,14 @@
         <ScaleMax value="1.500000,1.500000,1.500000"/>
         <ScaleMin value="1.500000,1.500000,1.500000"/>
     </CModel>
+    <CModel id="ParticleHeroMultiphaseShieldImpact">
+        <Model value="Assets\Effects\Protoss\DragoonForceShield\DragoonForceShield.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="ParticleHeroShockwaveDeflect">
+        <Model value="Assets\Effects\Protoss\Adept_Collection_Purifier_RicochetGlaive_Missile_Impact\Adept_Collection_Purifier_RicochetGlaive_Missile_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
     <CModel id="ShadowLordDeath" parent="UnitDeath" Race="Zerg">
         <Model value="Assets\Units\Zerg\LurkerEx1BDeath\LurkerEx1BDeath.m3"/>
         <LowQualityModel value="ZergMediumUnitDeathLow"/>

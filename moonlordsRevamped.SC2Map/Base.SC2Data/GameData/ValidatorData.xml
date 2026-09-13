@@ -747,12 +747,6 @@
         <Compare value="GT"/>
         <Behavior value="GravityHeroKillDelay"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="HasNOShockwaveOrbiAntirecast">
-        <WhichUnit Value="Source"/>
-        <Compare value="LT"/>
-        <Value value="1"/>
-        <Behavior value="ShockwaveOrbiAntiRecast"/>
-    </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="IllusionHeroDuplicateGT1">
         <Find value="1"/>
         <Value value="IllusionHeroDuplicateGT1"/>
@@ -806,6 +800,14 @@
         <Compare value="LT"/>
         <Value value="2.25"/>
     </CValidatorUnitCompareDamageDealtTime>
+    <CValidatorPlayerRequirement id="MurculiteIsLvl2">
+        <Find value="1"/>
+        <Value value="ParticleHeroMurculiteIsLvl2"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="MurculiteIsLvl3">
+        <Find value="1"/>
+        <Value value="ParticleHeroMurculiteIsLvl3"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="NoBehaviorForceMovementAlias">
         <Find value="1"/>
         <Value value="NoBehaviorForceMovementAlias"/>
@@ -1063,6 +1065,10 @@
     <CValidatorUnitCompareBehaviorCount id="PylonNoAbsoluteDefenseFate">
         <Behavior value="PylonAbsoluteDefenseFate"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="MurculiteIsLvl1">
+        <Find value="1"/>
+        <Value value="ParticleHeroMurculiteIsLvl1"/>
+    </CValidatorPlayerRequirement>
     <CValidatorLocationCompareRange id="RocketHeroRocketSalvoHomingRange">
         <WhichLocation Value="TargetUnit"/>
         <Compare value="LT"/>
@@ -1212,11 +1218,11 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="ParticleHeroReloadGTLvl0">
         <Find value="1"/>
-        <Value value="ParticleheroReloadGTLvl0"/>
+        <Value value="ParticleHeroReloadGTLvl0"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="ParticleHeroReloadGTLvl1">
         <Find value="1"/>
-        <Value value="ParticleheroReloadGTLvl1"/>
+        <Value value="ParticleHeroReloadGTLvl1"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="ProbeHeroEquipE2">
         <Find value="1"/>
@@ -2706,12 +2712,6 @@
         <Value value="1"/>
         <Behavior value="plasmacharge"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="HasNOShockwaveAntirecast">
-        <WhichUnit Value="Source"/>
-        <Compare value="LT"/>
-        <Value value="1"/>
-        <Behavior value="ShockwaveAntiRecast"/>
-    </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="ImmortalMultishotFireResearched">
         <ResultNoPlayer value="Error"/>
         <Find value="1"/>
@@ -2767,9 +2767,12 @@
         <Find value="1"/>
         <Value value="UseMultiphase0"/>
     </CValidatorPlayerRequirement>
-    <CValidatorLocationEnumArea id="OrbitalLinkCount">
+    <CValidatorLocationEnumArea id="ShockwaveCount">
         <WhichLocation Value="SourceUnitOrPoint"/>
-        <AreaArray Radius="1.1"/>
+        <AreaArray Radius="0.8"/>
+        <AreaArray Radius="1" Validator="MurculiteIsLvl1"/>
+        <AreaArray Radius="1.2" Validator="MurculiteIsLvl2"/>
+        <AreaArray Radius="1.4" Validator="MurculiteIsLvl3"/>
         <Compare value="GE"/>
         <Count value="3"/>
         <SearchFilters value="-;Player,Ally,Missile,Dead,Hidden,Invulnerable"/>

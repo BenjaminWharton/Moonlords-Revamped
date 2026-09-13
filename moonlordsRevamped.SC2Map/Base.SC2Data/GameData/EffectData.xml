@@ -964,6 +964,19 @@
         <InitialDelay value="0.0625"/>
         <InitialEffect value="LuckHeroOrbOfAttritionPerpetuationCP"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="MultiphaseShieldRetaliateDamage">
+        <EditorCategories value="Race:Protoss"/>
+        <ArmorReduction value="1"/>
+        <Amount value="50"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="MultiphaseShieldRetaliateSearch" parent="BSearchAreaReveal">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <DebugTrace value="1"/>
+        <ImpactLocation Value="CasterUnitOrPoint"/>
+        <AreaArray index="0" Radius="3" Effect="MultiphaseShieldRetaliateDamage"/>
+    </CEffectEnumArea>
     <CEffectModifyUnit id="OceanLordLivingWaterEnergy">
         <EditorCategories value="Race:Zerg"/>
         <ImpactUnit Value="Caster"/>
@@ -2635,6 +2648,48 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="ShadowLordRetreat"/>
     </CEffectApplyBehavior>
+    <CEffectSet id="Shockwave">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="ShockwaveOffset"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectUserData id="ShockwaveOrbitalData">
+        <ValidatorArray value="ShockwaveCount"/>
+        <ValidatorArray value="CasterNotDead"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Orbital"/>
+        <SourceKey value="Orbital"/>
+        <EffectSuccess value="OrbitalCannon2"/>
+        <BehaviorScope Value="Source" Behavior="UserDataDummy"/>
+    </CEffectUserData>
+    <CEffectUserData id="ShockwaveProjectileData">
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Projectile"/>
+        <SourceKey value="Projectile"/>
+        <EffectSuccess value="ShockwaveProjectileSet"/>
+        <BehaviorScope Value="Source" Behavior="UserDataDummy"/>
+    </CEffectUserData>
+    <CEffectEnumArea id="ShockwaveProjectileSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <DebugTrace value="1"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="Missile;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.8" Effect="ShockwaveProjectileData"/>
+    </CEffectEnumArea>
+    <CEffectSet id="ShockwaveProjectileSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="NullifyMissile"/>
+        <EffectArray value="Kill"/>
+    </CEffectSet>
+    <CEffectUserData id="ShockwaveRecastData">
+        <ValidatorArray value="ShockwaveCount"/>
+        <ValidatorArray value="CasterNotDead"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Key value="Recast"/>
+        <SourceKey value="Recast"/>
+        <EffectSuccess value="ShockwaveRecast"/>
+        <BehaviorScope Value="Source" Behavior="UserDataDummy"/>
+    </CEffectUserData>
     <CEffectModifyUnit id="TerminatorHeal">
         <EditorCategories value="Race:Protoss"/>
         <VitalArray index="Life">
@@ -4656,14 +4711,11 @@
         </VitalArray>
         <ModifyFlags index="SetVitals" value="1"/>
     </CEffectModifyUnit>
-    <CEffectApplyBehavior id="ShockwaveOrbiAntiRecast">
-        <EditorCategories value=""/>
-        <WhichUnit Value="Source"/>
-    </CEffectApplyBehavior>
     <CEffectSet id="ShockwaveTravelSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="OrbitalCannon2"/>
-        <EffectArray value="ShockwaveInitLink"/>
+        <EffectArray value="ShockwaveOrbitalData"/>
+        <EffectArray value="ShockwaveRecastData"/>
+        <EffectArray value="ShockwaveProjectileSearch"/>
     </CEffectSet>
     <CEffectAddTrackedUnit id="TerranTargetTrackerAdd">
         <EditorCategories value="Race:Terran"/>
@@ -7655,7 +7707,7 @@
     <CEffectModifyUnit id="TimeHeroTimeriftMU">
         <EditorCategories value="Race:Protoss"/>
         <VitalArray index="Life">
-            <Change value="100">
+            <Change value="120">
                 <AccumulatorArray value="HealingMultiplier"/>
             </Change>
             <ChangeFraction value="0">
@@ -7663,7 +7715,7 @@
             </ChangeFraction>
         </VitalArray>
         <VitalArray index="Shields">
-            <Change value="100">
+            <Change value="120">
                 <AccumulatorArray value="HealingMultiplier"/>
             </Change>
             <ChangeFraction value="0">
@@ -10771,7 +10823,8 @@
     <CEffectModifyUnit id="NaturalSelectionMU">
         <EditorCategories value="Race:Zerg"/>
         <VitalArray index="Life">
-            <ChangeFraction value="0.04"/>
+            <Change value="100"/>
+            <ChangeFraction value="0.03"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectEnumArea id="NaturalSelectionSA">
@@ -12874,6 +12927,7 @@
     <CEffectSet id="MultiphaseShieldremoveset">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="MultiphaseShieldremove"/>
+        <EffectArray value="MultiphaseShieldRetaliateSearch"/>
         <EffectArray value="ParticleHeroTransmute"/>
     </CEffectSet>
     <CEffectApplyBehavior id="ProjectionAB">
@@ -14632,13 +14686,6 @@
             <RevealFlags index="Unfog" value="1"/>
         </RevealerParams>
     </CEffectEnumArea>
-    <CEffectDamage id="AlteredTimeDMGhaste">
-        <EditorCategories value=""/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
-        <ArmorReduction value="0.5"/>
-        <Amount value="2"/>
-    </CEffectDamage>
     <CEffectEnumArea id="AnnihilatorAbsorptionFieldRocketSA">
         <EditorCategories value="Race:Terran"/>
         <Chance value="0"/>
@@ -20947,10 +20994,7 @@
         <Behavior value="MultiphaseShieldHiddenreplenish3"/>
     </CEffectApplyBehavior>
     <CEffectCreatePersistent id="OrbitalCannon2">
-        <ValidatorArray value="OrbitalLinkCount"/>
-        <ValidatorArray value="HasNOShockwaveOrbiAntirecast"/>
         <EditorCategories value=""/>
-        <Chance value="0"/>
         <WhichLocation Value="SourceUnitOrPoint"/>
         <OffsetVectorStartLocation Value="CasterPoint"/>
         <OffsetVectorEndLocation Value="SourceUnitOrPoint"/>
@@ -20960,7 +21004,6 @@
         <PeriodicOffsetArray value="0,-1.5,0"/>
         <PeriodicOffsetArray value="0,-3,0"/>
         <PeriodicPeriodArray value="0.4"/>
-        <InitialEffect value="ShockwaveOrbiAntiRecast"/>
     </CEffectCreatePersistent>
     <CEffectSet id="OverlordZerglingsSet">
         <EditorCategories value=""/>
@@ -21237,10 +21280,6 @@
         <EffectArray value="AcidSalivaU"/>
         <EffectArray value="RoachPersistent"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="ShockwaveAntiRecast">
-        <EditorCategories value=""/>
-        <WhichUnit Value="Source"/>
-    </CEffectApplyBehavior>
     <CEffectDamage id="TwilightCannonDamage">
         <ValidatorArray value="noMarkers"/>
         <EditorCategories value=""/>
@@ -21253,9 +21292,10 @@
         <SearchFilters value="-;Missile,Dead,Hidden,Invulnerable"/>
         <Total value="Combine"/>
     </CEffectDamage>
-    <CEffectCreatePersistent id="ShockwaveInit">
-        <EditorCategories value=""/>
-        <WhichLocation Value="SourcePoint"/>
+    <CEffectCreatePersistent id="ShockwaveOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterUnitOrPoint"/>
+        <OffsetVectorStartLocation Value="CasterUnitOrPoint"/>
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="ShockwaveLaunch"/>
         <PeriodicOffsetArray value="0,-15,0.5"/>
@@ -21286,18 +21326,15 @@
         <PeriodicPeriodArray value="0.1875"/>
         <InitialEffect value="WarpoutRB"/>
     </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="ShockwaveInitLink">
-        <ValidatorArray value="HasNOShockwaveAntirecast"/>
-        <ValidatorArray value="OrbitalLinkCount"/>
-        <ValidatorArray value="CasterNotDead"/>
+    <CEffectCreatePersistent id="ShockwaveRecast">
         <EditorCategories value=""/>
-        <Marker Link="Effect/ShockwaveInit"/>
-        <Chance value="0"/>
-        <WhichLocation Value="CasterUnit"/>
-        <FinalEffect value="ShockwaveAntiRecast"/>
+        <WhichLocation Value="CasterUnitOrPoint"/>
+        <OffsetVectorStartLocation Value="CasterUnitOrPoint"/>
+        <OffsetVectorEndLocation Value="SourceUnitOrPoint"/>
+        <InitialDelay value="0.3125"/>
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="ShockwaveLaunch"/>
-        <PeriodicOffsetArray value="0,15,0.5"/>
+        <PeriodicOffsetArray value="0,-15,0.5"/>
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="ChampionLightningInit">
         <EditorCategories value=""/>
@@ -21328,7 +21365,7 @@
     </CEffectLaunchMissile>
     <CEffectEnumArea id="ShockwaveSearch">
         <EditorCategories value=""/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="-;Player,Ally,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray RectangleWidth="1.2" Effect="ShockwaveSet"/>
     </CEffectEnumArea>
     <CEffectCreatePersistent id="ChampionLightningPersistent">
@@ -21528,7 +21565,7 @@
         </Marker>
         <SearchEffect value="ShockwaveSearch"/>
         <PeriodicEffect value="ShockwaveTravelSet"/>
-        <PeriodicPeriod value="0.25"/>
+        <PeriodicPeriod value="0.125"/>
         <SearchFlags index="DynamicSearchArea" value="1"/>
         <ImpactRange value="3"/>
     </CEffectLaunchMissile>

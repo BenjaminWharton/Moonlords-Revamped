@@ -5824,7 +5824,7 @@ void gf_UpgradePressed (int lp_row, int lp_column) {
 void gf_UpdateAutoUpgradesButton () {
     // Automatic Variable Declarations
     // Implementation
-    if ((gv_upgradesAutoOption == false)) {
+    if ((gv_upgradesAutoOption == true)) {
         libNtve_gf_SetDialogItemText(gv_upgradesAuto, StringExternal("Param/Value/418B7EA7"), PlayerGroupAll());
         libNtve_gf_SetDialogItemTooltip(gv_upgradesAuto, StringExternal("Param/Value/64D49D99"), PlayerGroupAll());
     }
@@ -6135,7 +6135,7 @@ void gf_CreateStatsDialog () {
 
                 lv_j -= 1;
             }
-            libNtve_gf_CreateDialogItemLabel(gv_statsDialog, 150, 50, c_anchorTopLeft, 50+(150*lv_i), 720, IntToText(gv_rewardaccumulated[lv_i]), ColorWithAlpha(0,0,0,0), false, 2.0);
+            libNtve_gf_CreateDialogItemLabel(gv_statsDialog, 150, 50, c_anchorTopLeft, 50+(150*lv_i), 720, IntToText(gv_totalRewards[lv_i]), ColorWithAlpha(0,0,0,0), false, 2.0);
             libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "MLRewardPoints", PlayerGroupAll());
             gv_rewardLabels[lv_i] = DialogControlLastCreated();
             libNtve_gf_SetDialogItemTooltip(gv_rewardLabels[lv_i], gf_getrewardinfo(lv_i), PlayerGroupAll());
@@ -6500,7 +6500,7 @@ void gf_TalentDialogParticle (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
     gf_CreateTalentDialog(lp_player, "Assets\\Textures\\ui_void_loading_epilogue03.dds", ge_Heroes_Particle);
-    gf_CreateTalent(0, 0, lp_player, StringExternal("Param/Value/F8470490"), StringExternal("Param/Value/47D8A29F"), "ParticleHeroClock", 0);
+    gf_CreateTalent(0, 0, lp_player, StringExternal("Param/Value/F8470490"), StringExternal("Param/Value/47D8A29F"), "ParticleHeroDisintegrate", 0);
     gf_CreateTalent(1, 0, lp_player, StringExternal("Param/Value/8E6ED95A"), StringExternal("Param/Value/78841606"), "ParticleHeroRipfield", 0);
     gf_CreateTalent(2, 0, lp_player, StringExternal("Param/Value/9017719B"), StringExternal("Param/Value/F8BC8BEC"), "ParticleHeroMerculite", 0);
     gf_CreateTalent(3, 0, lp_player, StringExternal("Param/Value/5195670D"), StringExternal("Param/Value/95BBE029"), "ParticleHeroPattern", 0);
@@ -6524,6 +6524,7 @@ void gf_TalentDialogParticle (int lp_player) {
     gf_CreateTalent(0, 4, lp_player, StringExternal("Param/Value/E6F40D98"), StringExternal("Param/Value/5A788D95"), "ParticleHeroEmitters", 0);
     gf_CreateTalent(1, 4, lp_player, StringExternal("Param/Value/337E6E21"), StringExternal("Param/Value/FCEAB7C7"), "ParticleHeroDampeners", 0);
     gf_CreateTalent(2, 4, lp_player, StringExternal("Param/Value/76C2FA2E"), StringExternal("Param/Value/E3C9CBBA"), "ParticleHeroConverter", 0);
+    gf_CreateTalent(3, 4, lp_player, StringExternal("Param/Value/45F08D3E"), StringExternal("Param/Value/04E3B446"), "ParticleHeroRetaliate", 0);
     gf_CreateTalent(5, 4, lp_player, StringExternal("Param/Value/AE8F6B63"), StringExternal("Param/Value/8ED4838E"), "ParticleHeroTransmute", 10);
 }
 
@@ -12872,9 +12873,6 @@ void gf_BossStart (point lp_point) {
         lv_random = RandomInt(1, 24);
     }
 
-    lv_random = 2;
-    lv_random = 37;
-    lv_random = 32;
     if ((gv_stage == 11)) {
         libNtve_gf_ShowHideBossBar(false, 1);
         gv_bossActive = true;

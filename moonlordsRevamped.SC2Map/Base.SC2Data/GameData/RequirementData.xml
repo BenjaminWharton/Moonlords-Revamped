@@ -254,11 +254,23 @@
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Show" Link="AndEq0CountBehaviorEarthInfusedQueuedOrBetterAtUnitEq0CountBehaviorFireInfusedQueuedOrBetterAtUnitEq0CountBehaviorWaterInfusedQueuedOrBetterAtUnitEq0CountBehaviorWindInfusedQueuedOrBetterAtUnit"/>
     </CRequirement>
-    <CRequirement id="ParticleheroReloadGTLvl0">
+    <CRequirement id="ParticleHeroMurculiteIsLvl2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="EqCountUpgradeParticleHeroMerculiteCompleteOnly2"/>
+    </CRequirement>
+    <CRequirement id="ParticleHeroMurculiteIsLvl3">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="EqCountUpgradeParticleHeroMerculiteCompleteOnly3"/>
+    </CRequirement>
+    <CRequirement id="ParticleHeroReloadGTLvl0">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Use" Link="GTCountUpgradeParticleHeroReloadCompleteOnly0"/>
     </CRequirement>
-    <CRequirement id="ParticleheroReloadGTLvl1">
+    <CRequirement id="ParticleHeroMurculiteIsLvl1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="EqCountUpgradeParticleHeroMerculiteCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="ParticleHeroReloadGTLvl1">
         <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
         <NodeArray index="Use" Link="GTCountUpgradeParticleHeroReloadCompleteOnly1"/>
     </CRequirement>

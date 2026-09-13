@@ -2265,8 +2265,8 @@
         <BehaviorArray Link="Horrific"/>
         <Radius value="1"/>
         <InnerRadius value="1"/>
-        <EnergyMax value="250"/>
-        <EnergyRegenRate value="-15"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="-25"/>
         <EnergyDamageGain index="Spell" value="0.2"/>
         <EnergyDamageGain index="Melee" value="0.2"/>
         <EnergyDamageGain index="Ranged" value="0.2"/>
@@ -3627,8 +3627,8 @@
         <BehaviorArray Link="Lurker"/>
         <Radius value="1"/>
         <InnerRadius value="1"/>
-        <EnergyMax value="250"/>
-        <EnergyRegenRate value="-15"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="-25"/>
         <EnergyDamageGain index="Spell" value="0.2"/>
         <EnergyDamageGain index="Melee" value="0.2"/>
         <EnergyDamageGain index="Ranged" value="0.2"/>
@@ -6142,6 +6142,7 @@
         <Height value="0.5"/>
         <VisionHeight value="4"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+        <BehaviorArray Link="UserDataDummy"/>
     </CUnit>
     <CUnit id="AnnihilatorStopMoveIndicator">
         <DeathRevealRadius value="1"/>

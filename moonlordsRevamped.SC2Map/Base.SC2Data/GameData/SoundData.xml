@@ -561,6 +561,60 @@
         <LoopCount value="-1"/>
         <Volume value="2.000000,2.000000"/>
     </CSound>
+    <CSound id="ParticleHeroMultiphaseShield_Impact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_HardenedShieldImpact0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_HardenedShieldImpact1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_HardenedShieldImpact2.wav" FacialGroup=""/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="ParticleHeroPlasmaTorpedo_Launch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\PurifierProtossTurret_Launch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PurifierProtossTurret_Launch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PurifierProtossTurret_Launch03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PurifierProtossTurret_Launch04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PurifierProtossTurret_Launch05_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PurifierProtossTurret_Launch06_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PurifierProtossTurret_Launch07_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PurifierProtossTurret_Launch08_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PurifierProtossTurret_Launch09_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PurifierProtossTurret_Launch10_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PurifierProtossTurret_Launch11_1ch.wav" FacialGroup=""/>
+        <Pitch value="3.000000,3.000000"/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="ParticleHeroShockwave_Launch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormImpact0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormImpact1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormImpact2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormImpact3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormImpact4.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-4.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="ParticleHeroShockwave_Deflect" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Raven_SeekerMissile_Fizzle_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Raven_SeekerMissile_Fizzle_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Raven_SeekerMissile_Fizzle_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Raven_SeekerMissile_Fizzle_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Raven_SeekerMissile_Fizzle_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Raven_SeekerMissile_Fizzle_06.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-2.000000"/>
+        <Volume value="5.000000,5.000000"/>
+    </CSound>
+    <CSound id="ParticleHeroOrbitalCannon_Impact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormImpact0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormImpact1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormImpact2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormImpact3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormImpact4.wav" FacialGroup=""/>
+        <Pitch value="4.000000,4.000000"/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
     <CSound id="ParticleHeroDematerializeMissile_Launch" parent="Spell">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Alarak_SoulTake_Missile_01.wav" FacialGroup=""/>

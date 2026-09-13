@@ -104209,7 +104209,7 @@
     </Element>
     <Element Type="Param" Id="31095194">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
-        <Value>false</Value>
+        <Value>true</Value>
         <ValueType Type="bool"/>
     </Element>
     <Element Type="Trigger" Id="17582BED">
@@ -120890,7 +120890,7 @@
     </Element>
     <Element Type="Param" Id="8915B1C3">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="D125FE97"/>
-        <Variable Type="Variable" Id="C15B8EF0"/>
+        <Variable Type="Variable" Id="7146A7F5"/>
         <Array Type="Param" Id="20B30A67"/>
     </Element>
     <Element Type="Param" Id="20B30A67">
@@ -130167,6 +130167,7 @@
         <FunctionCall Type="FunctionCall" Id="AB2DDAEE"/>
         <FunctionCall Type="FunctionCall" Id="06D42123"/>
         <FunctionCall Type="FunctionCall" Id="63F88D0F"/>
+        <FunctionCall Type="FunctionCall" Id="637F1DAC"/>
         <FunctionCall Type="FunctionCall" Id="466EDAF8"/>
     </Element>
     <Element Type="ParamDef" Id="E8BAF217">
@@ -130238,7 +130239,7 @@
     </Element>
     <Element Type="Param" Id="A5F76B1E">
         <ParameterDef Type="ParamDef" Id="1A502B78"/>
-        <Value>ParticleHeroClock</Value>
+        <Value>ParticleHeroDisintegrate</Value>
         <ValueType Type="gamelink"/>
         <ValueGameType Type="Upgrade"/>
     </Element>
@@ -131252,6 +131253,49 @@
         <ValueGameType Type="Upgrade"/>
     </Element>
     <Element Type="Param" Id="8A924071">
+        <ParameterDef Type="ParamDef" Id="EC353A16"/>
+        <Value>0</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="FunctionCall" Id="637F1DAC">
+        <FunctionDef Type="FunctionDef" Id="DE2EF5B0"/>
+        <Parameter Type="Param" Id="3489AE4B"/>
+        <Parameter Type="Param" Id="6B0D8E45"/>
+        <Parameter Type="Param" Id="21732715"/>
+        <Parameter Type="Param" Id="45F08D3E"/>
+        <Parameter Type="Param" Id="04E3B446"/>
+        <Parameter Type="Param" Id="1CB14ECA"/>
+        <Parameter Type="Param" Id="8465FFBF"/>
+    </Element>
+    <Element Type="Param" Id="3489AE4B">
+        <ParameterDef Type="ParamDef" Id="A4BED16F"/>
+        <Value>3</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="6B0D8E45">
+        <ParameterDef Type="ParamDef" Id="68546696"/>
+        <Value>4</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="21732715">
+        <ParameterDef Type="ParamDef" Id="CE974B10"/>
+        <Parameter Type="ParamDef" Id="E8BAF217"/>
+    </Element>
+    <Element Type="Param" Id="45F08D3E">
+        <ParameterDef Type="ParamDef" Id="8009C728"/>
+        <ValueType Type="text"/>
+    </Element>
+    <Element Type="Param" Id="04E3B446">
+        <ParameterDef Type="ParamDef" Id="714F71A0"/>
+        <ValueType Type="text"/>
+    </Element>
+    <Element Type="Param" Id="1CB14ECA">
+        <ParameterDef Type="ParamDef" Id="1A502B78"/>
+        <Value>ParticleHeroRetaliate</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Upgrade"/>
+    </Element>
+    <Element Type="Param" Id="8465FFBF">
         <ParameterDef Type="ParamDef" Id="EC353A16"/>
         <Value>0</Value>
         <ValueType Type="int"/>
@@ -295889,9 +295933,6 @@
         <Variable Type="Variable" Id="3E6B6A8E"/>
         <Variable Type="Variable" Id="F2FA5A02"/>
         <FunctionCall Type="FunctionCall" Id="0F9D8781"/>
-        <FunctionCall Type="FunctionCall" Id="9B8675BE"/>
-        <FunctionCall Type="FunctionCall" Id="E3D03E10"/>
-        <FunctionCall Type="FunctionCall" Id="3BC3384F"/>
         <FunctionCall Type="FunctionCall" Id="3A03430B"/>
     </Element>
     <Element Type="ParamDef" Id="058966EA">
@@ -296037,48 +296078,6 @@
     <Element Type="Param" Id="66A84CF9">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
         <Value>4</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="FunctionCall" Id="9B8675BE">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
-        <Parameter Type="Param" Id="6BF937C6"/>
-        <Parameter Type="Param" Id="3A3A6F52"/>
-    </Element>
-    <Element Type="Param" Id="6BF937C6">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
-        <Variable Type="Variable" Id="F2FA5A02"/>
-    </Element>
-    <Element Type="Param" Id="3A3A6F52">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-        <Value>2</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="FunctionCall" Id="E3D03E10">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
-        <Parameter Type="Param" Id="D9737CAB"/>
-        <Parameter Type="Param" Id="E5597D75"/>
-    </Element>
-    <Element Type="Param" Id="D9737CAB">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
-        <Variable Type="Variable" Id="F2FA5A02"/>
-    </Element>
-    <Element Type="Param" Id="E5597D75">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-        <Value>37</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="FunctionCall" Id="3BC3384F">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
-        <Parameter Type="Param" Id="4438D892"/>
-        <Parameter Type="Param" Id="8F4AE70B"/>
-    </Element>
-    <Element Type="Param" Id="4438D892">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
-        <Variable Type="Variable" Id="F2FA5A02"/>
-    </Element>
-    <Element Type="Param" Id="8F4AE70B">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-        <Value>32</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="FunctionCall" Id="3A03430B">

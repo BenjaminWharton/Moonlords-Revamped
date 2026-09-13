@@ -272,6 +272,11 @@
     <CRequirementCountUpgrade id="CountUpgradeParticleHeroEmittersCompleteOnlyTechTreeCheat">
         <Count Link="ParticleHeroEmitters" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeParticleHeroMerculiteCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="ParticleHeroMerculite" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeParticleHeroReloadCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="ParticleHeroReload" State="CompleteOnly"/>
@@ -369,7 +374,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeWarpHeroGeneratorsCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="WarpHeroGenerators" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeWarpHeroMultitaskCompleteOnly">
@@ -730,6 +734,21 @@
     <CRequirementEq id="EqCountUpgradeLightningHeroChargeUpCompleteOnly0">
         <OperandArray index="0" value="CountUpgradeLightningHeroChargeUpCompleteOnly"/>
         <OperandArray index="1" value="0"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeParticleHeroMerculiteCompleteOnly1">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeParticleHeroMerculiteCompleteOnly"/>
+        <OperandArray index="1" value="1"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeParticleHeroMerculiteCompleteOnly2">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeParticleHeroMerculiteCompleteOnly"/>
+        <OperandArray index="1" value="2"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeParticleHeroMerculiteCompleteOnly3">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeParticleHeroMerculiteCompleteOnly"/>
+        <OperandArray index="1" value="3"/>
     </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeProbeHeroEquipCompleteOnly1">
         <OperandArray index="0" value="CountUpgradeProbeHeroEquipCompleteOnly"/>

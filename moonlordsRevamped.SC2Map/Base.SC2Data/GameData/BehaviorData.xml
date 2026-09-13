@@ -1228,9 +1228,6 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
-    <CBehaviorBuff id="ShockwaveOrbiAntiRecast">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-    </CBehaviorBuff>
     <CBehaviorUnitTracker id="TerranTargetTracker">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -4967,7 +4964,9 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <RemoveValidatorArray value="PoisonHeroHasMusclePoisonBase"/>
         <MaxStackCount value="0"/>
-        <Modification MoveSpeedMultiplier="0.9" AttackSpeedMultiplier="0.9"/>
+        <Modification MoveSpeedMultiplier="0.9" AttackSpeedMultiplier="0.9">
+            <LifeArmorBonus value="-0.125"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="Mutation">
         <Alignment value="Negative"/>
@@ -5453,9 +5452,6 @@
         <BehaviorFlags index="Permanent" value="1"/>
         <RemoveValidatorArray value="CasterNotDead"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="ShockwaveAntiRecast">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="Shockwaved">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\ShockwaveEx6.dds"/>
@@ -5628,6 +5624,7 @@
         <Duration value="10"/>
         <Modification>
             <StateFlags index="Cloak" value="1"/>
+            <StateFlags index="Undetectable" value="1"/>
         </Modification>
         <DisplayDuration index="Self" value="1"/>
     </CBehaviorBuff>

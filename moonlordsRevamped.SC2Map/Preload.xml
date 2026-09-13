@@ -382,6 +382,7 @@
 <Upgrade id="GravityHeroClash"/>
 <Upgrade id="GravityHeroDiffusion"/>
 <Upgrade id="GravityHeroWhiplash"/>
+<Upgrade id="ParticleHeroRetaliate"/>
 <Upgrade id="PoisonHeroRelapse"/>
 <Upgrade id="RocketHeroAOE"/>
 <Upgrade id="RocketHeroAntenna"/>
@@ -803,7 +804,7 @@
 <Upgrade id="ShadowHeroOverlord"/>
 <Upgrade id="FireHeroEternalFlame"/>
 <Upgrade id="ParticleHeroOrbitalLink"/>
-<Upgrade id="ParticleHeroClock"/>
+<Upgrade id="ParticleHeroDisintegrate"/>
 <Upgrade id="ParticleHeroMerculite"/>
 <Upgrade id="ParticleHeroRipfield"/>
 <Upgrade id="ParticleHeroPattern"/>
